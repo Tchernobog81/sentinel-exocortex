@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+venv/
+env/
+.venv/
+__pycache__/
+*.pyc
+
+# IDE & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+.windows-folder-icon
+
+# Backups (les vrais backups sont dans Google Drive)
+*.backup
+*.bak
+*~
+.tmp/
+
+# Generated files (ne pas commiter les fichiers générés)
+dist/
+build/
+*.min.js
+*.min.css
+
+# Sensitive data
+secrets.json
+credentials.json
+config.local.json
+
+# Google Apps Script credentials (gérer via Apps Script Editor)
+# Ne pas commiter les URLs de déploiement brutes
+# Utiliser des variables d'environnement ou des secrets
+
+# Test outputs
+.coverage/
+htmlcov/
+.pytest_cache/
+test-results/
+
+# Temporary files
+tmp/
+temp/
+.cache/
+
+# Local data files (keep in Drive, not in repo)
+# Les données sont source de vérité dans Google Drive
+# LOOM_DB.json devrait être ignoré
+LOOM_DB.json
+*.local.json
+
+# Version lock files (optionnel - décider en équipe)
+# package-lock.json
+# poetry.lock
