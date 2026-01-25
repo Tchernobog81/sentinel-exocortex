@@ -2,32 +2,31 @@ name: Sentinel Daily Scan
 
 on:
   schedule:
-    # Déclenchement à 06:00 et 18:00 UTC tous les jours
-    - cron: '0 6,18 * * *'
-  # Permet de lancer manuellement depuis l'interface GitHub pour tester
-  workflow_dispatch:
+    - cron: '0 6,18 * * *' # 06h00 et 18h00 UTC
+  workflow_dispatch: # Bouton manuel pour tester
+
+permissions:
+  contents: read
 
 jobs:
   run-sentinel:
     runs-on: ubuntu-latest
-    
     steps:
-      # 1. Récupère ton code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Installe Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
+          cache: 'pip' # Accélère les prochaines exécutions
 
-      # 3. Installe la librairie 'requests'
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          # Sécurité : on installe requests même si le fichier manque
+          pip install requests 
 
-      # 4. Lance ton script
       - name: Run Sentinel Script
         run: python sentinel.py
