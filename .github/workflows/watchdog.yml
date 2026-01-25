@@ -2,15 +2,13 @@ name: Sentinel Daily Scan
 
 on:
   schedule:
-    - cron: '0 6,18 * * *' # 06h00 et 18h00 UTC
-  workflow_dispatch: # Bouton manuel pour tester
-
-permissions:
-  contents: read
+    - cron: '0 6,18 * * *'
+  workflow_dispatch:
 
 jobs:
   run-sentinel:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -19,14 +17,14 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-          cache: 'pip' # Accélère les prochaines exécutions
 
       - name: Install dependencies
         run: |
           pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          # Sécurité : on installe requests même si le fichier manque
-          pip install requests 
+          pip install requests
 
       - name: Run Sentinel Script
         run: python sentinel.py
+        env: # <--- C'EST ICI QUE CA SE JOUE
+          CLOUD_URL: ${{ secrets.CLOUD_URL }}
