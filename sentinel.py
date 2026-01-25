@@ -4,36 +4,38 @@ import os
 import datetime
 import random
 
-# --- CONFIGURATION SÉCURISÉE ---
-# On récupère l'URL depuis les secrets GitHub
+# --- CONFIGURATION ---
 CLOUD_URL = os.environ.get("CLOUD_URL")
+if not CLOUD_URL: raise Exception("❌ CLOUD_URL manquante.")
 
-if not CLOUD_URL:
-    raise Exception("❌ ERREUR : La variable CLOUD_URL est vide. Vérifie tes Secrets GitHub.")
-
-# --- 1. GÉNÉRATEUR D'EVENT (SIMULATION AVANCÉE) ---
+# --- 1. SIMULATION D'UN AGENT DE VEILLE ---
+# (À remplacer plus tard par une vraie API de recherche)
 def scan_for_singularity_events():
-    print("🔎 Scan des fréquences du futur...")
+    print("🔎 Scan des signaux faibles...")
     
-    # Pour le test, on génère une date future proche
     today = datetime.date.today()
-    future_year = today.year + round(random.uniform(0.1, 2.0), 2) # Entre maintenant et dans 2 ans
+    # Génère une date dans le futur proche (entre demain et +18 mois)
+    future_year = today.year + round(random.uniform(0.01, 1.5), 3)
     
+    # Pool d'événements plausibles pour la simulation
     events_pool = [
-        {"l": "GPT-5 Release", "c": "🔵 INTELLIGENCE", "d": "Capacités de raisonnement avancées confirmées."},
-        {"l": "Fusion Ignition", "c": "🟡 SUBSTRAT", "d": "Gain net d'énergie stable pendant 10 sec."},
-        {"l": "Boston Dynamics Home", "c": "🟣 EXTENSION", "d": "Commercialisation massive du robot domestique."},
-        {"l": "Deepfake Senator", "c": "☢️ RISQUES", "d": "Scandale politique majeur causé par IA."}
+        {"l": "GPT-5 (Reasoning Alpha)", "c": "🔵 INTELLIGENCE", "d": "Capacités de planification multi-étapes démontrées en labo."},
+        {"l": "Qubit Stable (100ms)", "c": "🟡 SUBSTRAT", "d": "Franchissement du seuil de correction d'erreur."},
+        {"l": "Optimus (Usine Pilote)", "c": "🟣 EXTENSION", "d": "Déploiement de 500 unités autonomes chez Tesla."},
+        {"l": "Régulation IA Globale", "c": "🔴 MATRICE", "d": "Accord préliminaire ONU sur le contrôle des modèles frontières."},
+        {"l": "Organoïde Connecté", "c": "🟢 VIVANT", "d": "Première interface bidirectionnelle silicium-neurones biologiques."},
+        {"l": "Deepfake Krach Boursier", "c": "☢️ RISQUES", "d": "Flash crash causé par une vidéo synthétique d'un dirigeant."}
     ]
     
     choice = random.choice(events_pool)
     
     new_event = {
-        "year": future_year, 
-        "value": random.randint(150000, 200000), 
-        "label": f"TEST: {choice['l']}", # Je mets TEST pour que tu le repères
+        "year": future_year,
+        # Valeur Y aléatoire pour le placer sur le graphique log
+        "value": random.randint(150000, 350000), 
+        "label": choice['l'], # Nom propre, sans préfixe TEST
         "category": choice['c'], 
-        "whoWhat": "Sentinel Bot", 
+        "whoWhat": "Sentinel Watch", 
         "description": choice['d'],
         "realYear": None 
     }
@@ -42,44 +44,40 @@ def scan_for_singularity_events():
 
 # --- 2. RÉCUPÉRATION ---
 def get_current_loom():
-    print("📥 Téléchargement de la base...")
     try:
-        response = requests.get(CLOUD_URL)
+        response = requests.get(CLOUD_URL, timeout=10)
         return response.json()
     except Exception as e:
-        print(f"Erreur download: {e}")
+        print(f"⚠️ Erreur download (sera écrasé): {e}")
         return []
 
 # --- 3. INJECTION ---
 def update_loom():
     try:
         current_data = get_current_loom()
-        print(f"✅ Base chargée : {len(current_data)} entrées.")
-
         intel = scan_for_singularity_events()
         
-        # Vérification doublon (basique)
+        # Vérification simple de doublon sur le label
         exists = any(item.get('label') == intel['label'] for item in current_data)
         
         if not exists:
             current_data.append(intel)
-            print(f"🆕 Injection : {intel['label']} ({intel['year']})")
+            print(f"🆕 Injection : {intel['label']} ({intel['year']:.2f})")
             
             headers = {'Content-Type': 'text/plain;charset=utf-8'}
-            response = requests.post(CLOUD_URL, data=json.dumps(current_data), headers=headers)
+            # Timeout plus long pour l'upload
+            response = requests.post(CLOUD_URL, data=json.dumps(current_data), headers=headers, timeout=30)
             
             res_json = response.json()
             if res_json.get('result') == 'success':
-                print(f"🚀 SUCCESS : Base mise à jour ({res_json.get('count')} items).")
+                print(f"🚀 SUCCESS : Base à jour ({res_json.get('count')} items).")
             else:
-                print(f"❌ Erreur Google : {res_json}")
+                print(f"❌ Erreur Google Script : {res_json}")
         else:
-            print("⏸️ Événement déjà connu. Pas d'injection.")
+            print(f"⏸️ Doublon détecté ({intel['label']}). Pas d'injection.")
 
     except Exception as e:
         print(f"⚠️ CRASH SENTINEL : {e}")
-        # On ne raise pas l'erreur pour ne pas faire échouer le workflow brutalement, 
-        # mais on pourrait si on veut une alerte mail.
 
 if __name__ == "__main__":
     update_loom()
