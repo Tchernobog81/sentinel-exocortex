@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>THE LOOM : EXOCORTEX v92 (Livestream)</title>
+    <title>THE LOOM : EXOCORTEX v93 (Overwatch)</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -23,20 +23,25 @@
         }
         #viewport { position: absolute; inset: 0; display: flex; flex-direction: column; width: 100%; height: 100%; }
         
+        /* HEADER & STATS PANNEL */
         header { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 50px;
+            position: absolute; top: 0; left: 0; width: 100%; height: 60px; /* Hauteur augmentée pour le panel */
             background: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 100%);
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 0 1rem; z-index: 1000; pointer-events: none;
+            display: flex; justify-content: space-between; align-items: start; 
+            padding: 10px 1rem; z-index: 1000; pointer-events: none;
         }
+        #header-left { display: flex; flex-direction: column; }
+        #stats-panel { font-size: 9px; color: #888; margin-top: 2px; display: flex; gap: 10px; }
+        .stat-item span { color: var(--accent); font-weight: bold; }
+
         .hud-element { pointer-events: auto; }
-        .canvas-container { flex: 1; position: relative; width: 100%; height: 100%; overflow: hidden; z-index: 1; }
+        .canvas-container { flex: 1; position: relative; width: 100%; height: 100%; overflow: hidden; z-index: 1; margin-top: 60px; }
         canvas { width: 100% !important; height: 100% !important; display: block; }
         
         /* UI ELEMENTS */
         #sync-console {
-            position: fixed; top: 60px; right: 20px; width: 340px;
+            position: fixed; top: 70px; right: 20px; width: 340px;
             background: rgba(5, 5, 10, 0.98); border: 1px solid rgba(255,255,255,0.1);
             backdrop-filter: blur(30px); z-index: 6000; padding: 1.5rem; 
             display: none; flex-direction: column; border-radius: 4px;
@@ -53,7 +58,7 @@
             transition: opacity 0.5s ease;
         }
         
-        #last-sync {
+        #last-sync-status {
             font-size: 9px; color: #666; margin-right: 15px; text-transform: uppercase; font-weight: bold;
         }
 
@@ -72,11 +77,18 @@
 
     <div id="viewport">
         <header>
-            <h1 class="text-[10px] font-black tracking-[0.3em] uppercase text-zinc-500 italic">The Loom <span class="text-amber-500 font-bold">v92</span></h1>
-            <div class="flex items-center gap-4">
-                <span id="last-sync">OFFLINE</span>
-                <button onclick="resetToModern()" class="hud-element text-zinc-500 text-[9px] hover:text-white uppercase font-black transition-all">Reset (1960-2040)</button>
-                <button onclick="toggleSyncConsole()" class="hud-element px-3 py-1.5 bg-amber-500/10 text-amber-500 text-[9px] font-black border border-amber-500/30 uppercase rounded-sm hover:bg-amber-500 hover:text-black transition-all">Data Inject</button>
+            <div id="header-left">
+                <h1 class="text-[10px] font-black tracking-[0.3em] uppercase text-zinc-500 italic mb-1">The Loom <span class="text-amber-500 font-bold">v93</span></h1>
+                <div id="stats-panel">
+                    <div class="stat-item">BASE: <span id="total-events">0</span> NUTRIENTS</div>
+                    <div class="stat-item">STATUS: <span id="system-status" class="text-emerald-500">ACTIVE</span></div>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-4 hud-element mt-2">
+                <span id="last-sync-status">OFFLINE</span>
+                <button onclick="resetToModern()" class="text-zinc-500 text-[9px] hover:text-white uppercase font-black transition-all">Reset View</button>
+                <button onclick="toggleSyncConsole()" class="px-3 py-1.5 bg-amber-500/10 text-amber-500 text-[9px] font-black border border-amber-500/30 uppercase rounded-sm hover:bg-amber-500 hover:text-black transition-all">Data Inject</button>
             </div>
         </header>
 
@@ -150,14 +162,12 @@
             document.getElementById('status-msg').style.display = 'none';
         }
         function closeAll() { closeDetail(); document.getElementById('sync-console').style.display = 'none'; }
-        
         function showStatus(msg, type) {
             const el = document.getElementById('status-msg');
             el.style.display = 'block';
             el.innerText = msg;
             el.className = type === 'error' ? 'status-error' : (type === 'success' ? 'status-success' : 'status-info');
         }
-
         function resetToModern() {
             if (!loomChart) return;
             loomChart.options.scales.x.min = 1960; 
@@ -165,10 +175,7 @@
             loomChart.update('active');
         }
 
-        function validateInput(json) {
-            if (!Array.isArray(json)) throw new Error("Format invalide.");
-            return true;
-        }
+        function validateInput(json) { if (!Array.isArray(json)) throw new Error("Format invalide."); return true; }
 
         function convertFlatDataToStrands(flatData) {
             const strandsMap = {};
@@ -181,20 +188,14 @@
                     if (match) catName = match;
                     else catName = "DEFAUT";
                 }
-                if (!strandsMap[catName]) {
-                    strandsMap[catName] = { name: catName, color: CATEGORY_COLORS[catName], events: [] };
-                }
+                if (!strandsMap[catName]) strandsMap[catName] = { name: catName, color: CATEGORY_COLORS[catName], events: [] };
                 strandsMap[catName].events.push({
-                    year: parseFloat(row.year),
-                    value: parseFloat(row.value) || 10,
-                    label: row.label,
-                    whoWhat: row.whoWhat || "",
-                    how: row.description || row.how || "",
-                    img: row.image || row.img || "",
+                    year: parseFloat(row.year), value: parseFloat(row.value) || 10, label: row.label,
+                    whoWhat: row.whoWhat || "", how: row.description || row.how || "", img: row.image || row.img || "",
                     realYear: row.realYear ? parseFloat(row.realYear) : null
                 });
             });
-            return { strands: Object.values(strandsMap) };
+            return { strands: Object.values(strandsMap), totalCount: flatData.length };
         }
 
         function updateChart(rawData) {
@@ -202,32 +203,31 @@
             currentData = processed;
             loomChart.data.datasets = processed.strands.map(s => ({
                 label: `${s.name} (${s.events.length})`,
-                data: s.events.map(e => ({ 
-                    x: e.year, y: e.value, label: e.label, whoWhat: e.whoWhat, how: e.how, img: e.img, realYear: e.realYear 
-                })),
-                borderColor: s.color, backgroundColor: s.color, 
-                tension: 0.3, pointRadius: 4, hitRadius: 15
+                data: s.events.map(e => ({ x: e.year, y: e.value, label: e.label, whoWhat: e.whoWhat, how: e.how, img: e.img, realYear: e.realYear })),
+                borderColor: s.color, backgroundColor: s.color, tension: 0.3, pointRadius: 4, hitRadius: 15
             }));
             loomChart.update('none');
             
-            // Mise à jour de l'indicateur de synchro
+            // MISE A JOUR DES STATS
             const now = new Date();
-            document.getElementById('last-sync').innerText = "LIVE: " + now.getHours() + ":" + (now.getMinutes()<10?'0':'') + now.getMinutes();
-            document.getElementById('last-sync').style.color = '#10b981'; // Vert
+            document.getElementById('last-sync-status').innerText = "SYNC: " + ("0"+now.getHours()).slice(-2) + ":" + ("0"+now.getMinutes()).slice(-2);
+            document.getElementById('last-sync-status').style.color = '#10b981';
+            // Utilise le totalCount calculé ou compte manuellement si format strands
+            const total = processed.totalCount || processed.strands.reduce((acc, s) => acc + s.events.length, 0);
+            document.getElementById('total-events').innerText = total;
         }
 
         async function loadData(isInitial = false) {
             try {
-                if(!isInitial) console.log("Auto-Refresh en cours...");
+                if(!isInitial) console.log("Auto-Refresh...");
                 const res = await fetch(CLOUD_URL);
                 const txt = await res.text();
                 if (txt.trim().startsWith("<") || txt.length < 5) throw new Error("Err");
                 const json = JSON.parse(txt);
                 validateInput(json);
                 updateChart(json);
-                console.log("Cloud chargé.");
             } catch (e) { 
-                console.warn("Backup chargé (ou erreur refresh).");
+                console.warn("Backup/Erreur.");
                 if (isInitial) updateChart(BACKUP_DATA);
             } finally {
                 if (isInitial) {
@@ -248,8 +248,7 @@
                 showStatus("Sauvegarde...", "info");
                 await fetch(CLOUD_URL, { method: 'POST', body: JSON.stringify(parsed), headers: { "Content-Type": "text/plain;charset=utf-8" }});
                 showStatus("SUCCÈS !", "success");
-                textArea.value = ""; 
-                setTimeout(() => toggleSyncConsole(), 1500);
+                textArea.value = ""; setTimeout(() => toggleSyncConsole(), 1500);
             } catch(err) { showStatus("Erreur", "error"); }
         }
 
@@ -259,45 +258,28 @@
             document.getElementById('card-when').innerText = decimalToDate(d.x);
             document.getElementById('card-how').innerText = d.how || "";
             document.getElementById('card-icon').src = d.img || FALLBACK_IMG;
-            
-            const area = document.getElementById('link-area');
-            const btn = document.getElementById('jump-btn');
-            const yearSpan = document.getElementById('jump-year');
-            
-            if (d.realYear) {
-                area.classList.remove('hidden');
-                yearSpan.innerText = decimalToDate(d.realYear);
-                btn.onclick = () => jumpToTarget(d.realYear);
-            } else {
-                area.classList.add('hidden');
-            }
+            const area = document.getElementById('link-area'); const btn = document.getElementById('jump-btn'); const yearSpan = document.getElementById('jump-year');
+            if (d.realYear) { area.classList.remove('hidden'); yearSpan.innerText = decimalToDate(d.realYear); btn.onclick = () => jumpToTarget(d.realYear); } else { area.classList.add('hidden'); }
             document.getElementById('detail-card').classList.remove('hidden');
         }
 
         function jumpToTarget(targetYear) {
             document.getElementById('detail-card').classList.add('hidden');
-            const scale = loomChart.scales.x;
-            const range = scale.max - scale.min;
-            loomChart.options.scales.x.min = targetYear - (range / 2);
-            loomChart.options.scales.x.max = targetYear + (range / 2);
+            const scale = loomChart.scales.x; const range = scale.max - scale.min;
+            loomChart.options.scales.x.min = targetYear - (range / 2); loomChart.options.scales.x.max = targetYear + (range / 2);
             loomChart.update('active');
             let target = null, minDist = Infinity;
-            loomChart.data.datasets.forEach(ds => {
-                ds.data.forEach(p => {
-                    const dist = Math.abs(p.x - targetYear);
-                    if (dist < minDist && dist < 1.0) { minDist = dist; target = p; }
-                });
-            });
+            loomChart.data.datasets.forEach(ds => { ds.data.forEach(p => { const dist = Math.abs(p.x - targetYear); if (dist < minDist && dist < 1.0) { minDist = dist; target = p; } }); });
             if (target) setTimeout(() => showDetail(target), 600);
         }
-
         function closeDetail() { document.getElementById('detail-card').classList.add('hidden'); }
 
         const chartConfig = {
             type: 'line', data: { datasets: [] },
             options: {
                 responsive: true, maintainAspectRatio: false,
-                layout: { padding: { top: 60, bottom: 20, left: 10, right: 80 } }, 
+                // CORRECTION ICI : Augmentation du padding left/right pour éviter que les étiquettes ne sortent
+                layout: { padding: { top: 40, bottom: 20, left: 50, right: 100 } }, 
                 scales: {
                     x: { type: 'linear', min: 1960, max: 2040, ticks: { color: '#666', font: { family: 'JetBrains Mono' }, callback: (v) => decimalToDate(v) }, grid: { color: '#1a1a1a' } },
                     y: { type: 'logarithmic', position: 'right', ticks: { color: '#222' }, grid: { color: '#080808' } }
@@ -315,6 +297,8 @@
                         offset: 35, backgroundColor: (ctx) => hexToRgba(ctx.dataset.borderColor, 0.8),
                         borderRadius: 3, padding: 6, font: { size: 10, weight: 'bold', family: 'Inter' },
                         formatter: (v) => v.label ? v.label : '',
+                        // Empêche le clipping des étiquettes par le canvas
+                        clip: false,
                         listeners: { 
                             click: (ctx) => showDetail(ctx.dataset.data[ctx.dataIndex]),
                             enter: (ctx) => { ctx.chart.canvas.style.cursor = 'pointer'; return true; },
@@ -327,8 +311,7 @@
                     if (el.length > 0) {
                         const d = loomChart.data.datasets[el[0].datasetIndex].data[el[0].index];
                         f.style.display = 'flex'; f.style.left = (e.x + 15) + 'px'; f.style.top = (e.y - 15) + 'px';
-                        document.getElementById('label-text').innerText = d.label;
-                        img.src = d.img || FALLBACK_IMG;
+                        document.getElementById('label-text').innerText = d.label; img.src = d.img || FALLBACK_IMG;
                     } else f.style.display = 'none';
                 }
             },
@@ -356,12 +339,9 @@
         window.onload = () => {
             const canvas = document.getElementById('loomChart');
             loomChart = new Chart(canvas, chartConfig);
-            loadData(true); // Chargement initial
-            
-            // --- AUTOMATISATION ---
-            // Rafraichissement toutes les 5 minutes (300 000 ms)
+            loadData(true);
+            // Rafraichissement auto toutes les 5 minutes
             setInterval(() => loadData(false), 300000);
-
             new ResizeObserver(() => loomChart.resize()).observe(document.body);
         };
     </script>
