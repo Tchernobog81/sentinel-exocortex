@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v113
+- 🖱️ UX : "Focus Mode" sur la légende (clic = mise en avant de la ligne, transparence des autres).
+- 🎨 UI : Correction du fil d'ariane des bulles (coordonnées natives).
+- 🐛 Fix : Curseur "doigt" forcé sur le canvas au survol.
+
 ## v112
 - 🎨 UI : Ajout d'un "fil" visuel reliant l'infobulle au point sur le graphique.
 - ⏱️ Timer : Formatage strict `hh:mm` (ex: 01:05).

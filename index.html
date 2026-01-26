@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v112</title>
+    <title>THE LOOM : EXOCORTEX v113</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -137,7 +137,7 @@
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v112</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v113</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -218,6 +218,7 @@
 
         Chart.register(ChartDataLabels);
         let loomChart;
+        let activeCategory = null; // État du focus (null = tout visible)
 
         // LOGGER DEBUG
         function log(msg, type="info") {
@@ -319,6 +320,17 @@
             loomChart.update();
         }
 
+        // Applique les couleurs en fonction du focus actif
+        function getStrandStyle(cat) {
+            const baseColor = COLORS[cat] || COLORS["DEFAUT"];
+            if (activeCategory && activeCategory !== cat) {
+                // Mode Focus : on estompe les autres
+                return { color: hexToRgba(baseColor, 0.1), width: 1 };
+            }
+            // Mode Normal ou Focus sur cette ligne
+            return { color: baseColor, width: activeCategory ? 3 : 2 };
+        }
+
         function updateChart(flatData) {
             const strands = {};
             if(!Array.isArray(flatData)) return;
@@ -326,7 +338,9 @@
             flatData.forEach(d => {
                 let c = d.category || "DEFAUT";
                 if(!COLORS[c]) c = Object.keys(COLORS).find(k => k.includes(c)) || "DEFAUT";
-                if(!strands[c]) strands[c] = { label: c, borderColor: COLORS[c], backgroundColor: COLORS[c], data: [], pointRadius: 4, hitRadius: 10, tension: 0.3 };
+                
+                const style = getStrandStyle(c);
+                if(!strands[c]) strands[c] = { label: c, borderColor: style.color, backgroundColor: style.color, borderWidth: style.width, data: [], pointRadius: 4, hitRadius: 10, tension: 0.3 };
                 strands[c].data.push({ x: d.year, y: d.value, ...d });
             });
             
@@ -384,14 +398,21 @@
                 if(!counts[cat]) return;
                 const div = document.createElement('div');
                 div.className = 'legend-item';
+                div.dataset.cat = cat;
+                
+                // Gestion de l'opacité dans la légende
+                if (activeCategory && activeCategory !== cat) div.style.opacity = 0.2;
+                else div.style.opacity = 1;
+
                 div.onclick = () => {
-                    const ds = loomChart.data.datasets.find(d => d.label === cat);
-                    if(ds) {
-                        const meta = loomChart.getDatasetMeta(loomChart.data.datasets.indexOf(ds));
-                        meta.hidden = meta.hidden === null ? !ds.hidden : null;
-                        div.classList.toggle('hidden-line');
-                        loomChart.update();
+                    if (activeCategory === cat) {
+                        activeCategory = null; // Désactive le focus
+                    } else {
+                        activeCategory = cat; // Active le focus
                     }
+                    // Recharger le graphique avec les nouvelles couleurs
+                    updateChart(loomChart.data.datasets.flatMap(d => d.data));
+                    updateLegend(loomChart.data.datasets.flatMap(d => d.data));
                 };
                 
                 // Séparateur visuel pour la singularité
@@ -455,13 +476,17 @@
                     },
                     onHover: (e, el) => {
                         // Gestion robuste du curseur
-                        const canvas = e.chart.canvas;
+                        const canvas = e.native.target;
                         canvas.style.cursor = el.length > 0 ? 'pointer' : 'default';
                         
                         const f = document.getElementById('label-float'), img = document.getElementById('label-icon');
                         if (el.length > 0) {
                             const d = loomChart.data.datasets[el[0].datasetIndex].data[el[0].index];
-                            f.style.display = 'flex'; f.style.left = (e.x + 15) + 'px'; f.style.top = (e.y - 15) + 'px';
+                            // Utilisation de clientX/Y pour un positionnement fixe parfait (fil d'ariane)
+                            f.style.display = 'flex'; 
+                            f.style.left = (e.native.clientX + 15) + 'px'; 
+                            f.style.top = (e.native.clientY - 15) + 'px';
+                            
                             document.getElementById('label-text').innerText = d.label; 
                             
                             // Affiche l'icône de catégorie si pas d'image spécifique
