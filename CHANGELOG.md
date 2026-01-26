@@ -1,5 +1,15 @@
 # CHANGELOG - Cortex Loom
 
+## v106
+- 🔧 Pipeline : Configuration de la source de déploiement sur "GitHub Actions".
+- 🐛 Fix : Correction de la balise meta viewport pour une meilleure compatibilité mobile.
+
+## v105
+- 🎨 UI : Bouton "Retour vers le Futur" stylisé et centré.
+- 🔍 UX : Zoom adaptatif sur 1985 (Focus étiquette).
+- ⏱️ Timer : "Mise à jour dans..." synchronisé sur l'heure pile.
+- 📚 Data : Ajout Barjavel (Ravage, Nuit des temps) & Iain M. Banks (Culture).
+
 ## v104 (Actuel)
 - 🔧 Pipeline : Ajout du workflow GitHub Actions explicite (`static.yml`).
 - 📝 Doc : Création du CHANGELOG.

@@ -867,5 +867,48 @@
     "label": "Crise des Missiles",
     "category": "☢️ ENTROPIE",
     "timestamp": "2026-01-25T00:00:00Z"
+  },
+  {
+    "year": 1943,
+    "value": 150,
+    "label": "Ravage",
+    "category": "☢️ ENTROPIE",
+    "author": "René Barjavel",
+    "how": "Effondrement technologique total.",
+    "timestamp": "2026-01-25T00:00:00Z"
+  },
+  {
+    "year": 1968,
+    "value": 400,
+    "label": "La Nuit des temps",
+    "category": "🔮 IMAGINAIRE",
+    "author": "René Barjavel",
+    "how": "Énergie universelle, civilisation perdue.",
+    "timestamp": "2026-01-25T00:00:00Z"
+  },
+  {
+    "year": 1987,
+    "value": 700,
+    "label": "Une Forme de Guerre (Culture)",
+    "category": "🔮 IMAGINAIRE",
+    "author": "Iain M. Banks",
+    "how": "IA superintelligentes (Minds), post-scarcity.",
+    "timestamp": "2026-01-25T00:00:00Z"
+  },
+  {
+    "year": 1996,
+    "value": 1100,
+    "label": "Excession (Culture)",
+    "category": "🔮 IMAGINAIRE",
+    "author": "Iain M. Banks",
+    "how": "Problème hors contexte (OOP) pour des IA divines.",
+    "timestamp": "2026-01-25T00:00:00Z"
+  },
+  {
+    "year": 2001.7,
+    "value": 2500,
+    "label": "11 Septembre",
+    "category": "☢️ ENTROPIE",
+    "timestamp": "2026-01-25T00:00:00Z"
   }
 ]

@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>THE LOOM : EXOCORTEX v104.1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>THE LOOM : EXOCORTEX v106</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -37,7 +37,7 @@
         }
         .brand-title { font-size: 11px; font-weight: 900; letter-spacing: 0.1em; color: #666; text-transform: uppercase; }
         .brand-version { color: var(--accent); }
-        .timer-badge { font-size: 10px; color: #10b981; font-weight: bold; }
+        .timer-badge { font-size: 10px; color: #10b981; font-weight: bold; white-space: nowrap; }
 
         /* BLOC 1: FLUX ENTRANT */
         #flux-container {
@@ -73,9 +73,13 @@
         
         .bttf-btn {
             font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -0.5px;
-            background: var(--bttf-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0px 2px 10px rgba(255, 160, 0, 0.4); transform: skewX(-10deg); font-size: 14px;
+            background: var(--bttf-grad); color: black;
+            padding: 6px 16px; border-radius: 2px; border: none;
+            box-shadow: 0 4px 15px rgba(255, 160, 0, 0.4); 
+            transform: skewX(-10deg); font-size: 12px; text-transform: uppercase;
+            transition: all 0.2s ease;
         }
+        .bttf-btn:hover { transform: skewX(-10deg) scale(1.05); box-shadow: 0 0 25px rgba(255, 160, 0, 0.8); color: black; }
 
         /* CANVAS */
         .canvas-wrapper { flex: 1; position: relative; width: 100%; overflow: hidden; }
@@ -122,8 +126,8 @@
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v104</span></div>
-                <div id="timer-badge" class="timer-badge">SYNC --:--</div>
+                <div class="brand-title">The Loom <span class="brand-version">v106</span></div>
+                <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
             <div id="flux-container">
@@ -375,18 +379,22 @@
 
         function updateTimer() {
             const now = new Date();
-            const targets = [8, 20].map(h => {
-                const d = new Date(now); d.setUTCHours(h,0,0,0);
-                if(d < now) d.setDate(d.getDate()+1);
-                return d;
-            }).sort((a,b)=>a-b);
-            const diff = targets[0] - now;
+            // Cible la prochaine heure pile (ex: 14:00 -> 15:00) pour s'aligner sur Sentinel
+            const target = new Date(now);
+            target.setHours(target.getHours() + 1, 0, 0, 0);
+            
+            const diff = target - now;
             const h = Math.floor(diff/3600000);
             const m = Math.floor((diff%3600000)/60000);
-            document.getElementById('timer-badge').innerText = `SYNC ${h}H ${m}M`;
+            document.getElementById('timer-badge').innerText = `Mise à jour dans ${h}h ${m < 10 ? '0'+m : m}`;
         }
 
-        function resetView() { loomChart.options.scales.x.min=1960; loomChart.options.scales.x.max=2040; loomChart.update(); }
+        function resetView() { 
+            // Focus serré sur 1985 (1975-1995) pour bien voir l'étiquette
+            loomChart.options.scales.x.min=1975; 
+            loomChart.options.scales.x.max=1995; 
+            loomChart.update(); 
+        }
         function showDetail(d) {
             document.getElementById('card-title').innerText = d.label;
             document.getElementById('card-who').innerText = d.whoWhat || "?";

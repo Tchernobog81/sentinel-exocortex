@@ -1,7 +1,13 @@
 import requests
 import json
 import os
-from dotenv import load_dotenv
+
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    print("ERREUR CRITIQUE : Module 'python-dotenv' manquant.")
+    print("--> Veuillez exécuter : pip install -r requirements.txt")
+    exit(1)
 
 # Charge la configuration
 load_dotenv()
