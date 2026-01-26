@@ -1,5 +1,8 @@
 # CHANGELOG - Cortex Loom
 
+## v111
+- 🐛 Fix : Correction du numéro de version affiché dans la sidebar (était resté bloqué sur v109).
+
 ## v110
 - 🐛 UI Fix : Le bouton "Retour vers le Futur" est enfin correctement centré (correction du JS qui écrasait les classes CSS).
 - 🖱️ UX : Amélioration des curseurs sur la légende et les éléments interactifs.
