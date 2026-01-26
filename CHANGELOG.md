@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v112
+- 🎨 UI : Ajout d'un "fil" visuel reliant l'infobulle au point sur le graphique.
+- ⏱️ Timer : Formatage strict `hh:mm` (ex: 01:05).
+- 🐛 Fix : Amélioration de la détection du survol pour le curseur "doigt".
+
 ## v111
 - 🐛 Fix : Correction du numéro de version affiché dans la sidebar (était resté bloqué sur v109).
 
