@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v106</title>
+    <title>THE LOOM : EXOCORTEX v108</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -83,7 +83,8 @@
 
         /* CANVAS */
         .canvas-wrapper { flex: 1; position: relative; width: 100%; overflow: hidden; }
-        
+        canvas { cursor: crosshair; } /* Curseur par défaut sur la grille */
+
         /* --- ECRAN DE CHARGEMENT & DEBUG (MODIFIÉ) --- */
         #loading-screen { 
             position: fixed; inset: 0; background: #020205; z-index: 9000; 
@@ -111,7 +112,7 @@
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
         }
         #label-float { position: fixed; pointer-events: none; background: rgba(0,0,0,0.95); border: 1px solid var(--accent); color: #fff; padding: 5px 10px; z-index: 4000; display: none; align-items: center; gap: 8px; font-size: 10px; }
-        .cyber-icon-frame { width: 24px; height: 24px; border: 1px solid #333; overflow: hidden; background: #000; }
+        .cyber-icon-frame { width: 24px; height: 24px; border: 1px solid #333; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -126,7 +127,7 @@
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v106</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v108</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -154,7 +155,7 @@
         </main>
     </div>
 
-    <div id="label-float"><div class="cyber-icon-frame"><img id="label-icon" src=""></div><span id="label-text"></span></div>
+    <div id="label-float"><div class="cyber-icon-frame"><span id="label-icon"></span></div><span id="label-text"></span></div>
 
     <div id="detail-card">
         <button onclick="closeDetail()" class="absolute top-4 right-4 text-zinc-500 hover:text-white text-2xl">&times;</button>
@@ -190,6 +191,19 @@
             "☢️ ENTROPIE": "#f97316", 
             "DEFAUT": "#9ca3af" 
         };
+        
+        const ICONS = {
+            "⚪ SINGULARITÉ": "🧠",
+            "🔮 IMAGINAIRE": "📚",
+            "🟡 HARDWARE": "💾",
+            "🔵 COGNITION": "⚡",
+            "🔴 RÉSEAU": "🌐",
+            "🟣 ESPACE": "🚀",
+            "🟢 BIOTECH": "🧬",
+            "☢️ ENTROPIE": "☢️",
+            "DEFAUT": "📂"
+        };
+
         const FALLBACK_IMG = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmYmJmMjQiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHJ4PSIyIiByeT0iMiI+PC9yZWN0Pjwvc3ZnPg==';
 
         Chart.register(ChartDataLabels);
@@ -330,10 +344,11 @@
             if(recent.length === 0) list.innerHTML = '<li class="italic text-zinc-700">Aucun flux récent...</li>';
             else recent.forEach(item => {
                 const li = document.createElement('li');
-                const col = COLORS[item.category] || '#fff';
+                const cat = item.category || "DEFAUT";
+                const col = COLORS[cat] || '#fff';
                 const mins = Math.floor((now - new Date(item.timestamp))/60000);
                 const timeStr = mins < 60 ? `${mins}m` : `${Math.floor(mins/60)}h`;
-                li.innerHTML = `<span style="color:${col}">●</span> <span class="text-zinc-500 mr-1">[${timeStr}]</span> ${item.label}`;
+                li.innerHTML = `<span style="color:${col}">${ICONS[cat] || '●'}</span> <span class="text-zinc-500 mr-1">[${timeStr}]</span> ${item.label}`;
                 list.appendChild(li);
             });
         }
@@ -372,7 +387,7 @@
                 // Séparateur visuel pour la singularité
                 if(cat.includes("SINGULARITÉ")) div.style.marginBottom = "15px";
 
-                div.innerHTML = `<div class="legend-left"><div class="legend-color" style="background:${COLORS[cat]}"></div><div class="legend-text">${cat.split(' ')[1] || cat}</div></div><div class="legend-text" style="color:#444">${counts[cat]}</div>`;
+                div.innerHTML = `<div class="legend-left"><div class="legend-color" style="background:${COLORS[cat]}"></div><div class="legend-text">${ICONS[cat] || ''} ${cat.split(' ')[1] || cat}</div></div><div class="legend-text" style="color:#444">${counts[cat]}</div>`;
                 container.appendChild(div);
             });
         }
@@ -429,11 +444,19 @@
                         zoom: { zoom: { wheel: { enabled: true }, mode: 'x' }, pan: { enabled: true, mode: 'xy' } }
                     },
                     onHover: (e, el) => {
+                        // Gestion robuste du curseur
+                        const canvas = e.native.target;
+                        canvas.style.cursor = el.length > 0 ? 'pointer' : 'crosshair';
+                        
                         const f = document.getElementById('label-float'), img = document.getElementById('label-icon');
                         if (el.length > 0) {
                             const d = loomChart.data.datasets[el[0].datasetIndex].data[el[0].index];
                             f.style.display = 'flex'; f.style.left = (e.x + 15) + 'px'; f.style.top = (e.y - 15) + 'px';
-                            document.getElementById('label-text').innerText = d.label; img.src = d.img || FALLBACK_IMG;
+                            document.getElementById('label-text').innerText = d.label; 
+                            
+                            // Affiche l'icône de catégorie si pas d'image spécifique
+                            const catIcon = ICONS[d.category] || "📂";
+                            img.innerHTML = d.img ? `<img src="${d.img}" style="width:100%;height:100%;object-fit:cover;">` : catIcon;
                         } else f.style.display = 'none';
                     }
                 }

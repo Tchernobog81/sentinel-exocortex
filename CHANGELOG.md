@@ -1,5 +1,9 @@
 # CHANGELOG - Cortex Loom
 
+## v107
+- 🖱️ UX : Curseur "pointer" (main) au survol des événements du graphique.
+- 🚀 Pipeline : Push de déclenchement pour GitHub Actions.
+
 ## v106
 - 🔧 Pipeline : Configuration de la source de déploiement sur "GitHub Actions".
 - 🐛 Fix : Correction de la balise meta viewport pour une meilleure compatibilité mobile.

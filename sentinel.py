@@ -20,6 +20,8 @@ load_dotenv() # Charge les variables depuis le fichier .env
 CLOUD_URL = os.environ.get("CLOUD_URL")
 # Convertir l'intervalle en entier, avec une valeur par défaut de 3600s (1h)
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
+# Mode "Single Run" pour GitHub Actions (évite la boucle infinie)
+SINGLE_RUN = os.environ.get("SINGLE_RUN", "false").lower() == "true"
 
 # Configuration du Logging
 logging.basicConfig(
@@ -132,6 +134,12 @@ def run_sentinel_cycle():
 
 if __name__ == "__main__":
     logging.info("--- SENTINEL EXOCORTEX v102.1 (Daemon) ---")
+    
+    if SINGLE_RUN:
+        logging.info("Mode SINGLE_RUN activé (GitHub Actions). Exécution unique.")
+        run_sentinel_cycle()
+        exit(0)
+
     while True:
         should_continue = run_sentinel_cycle()
         if not should_continue: break
