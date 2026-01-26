@@ -66,6 +66,9 @@ temp/
 LOOM_DB.json
 *.local.json
 
+# Doublons ou dossiers temporaires
+sentinel-exocortex/
+
 # Version lock files (optionnel - décider en équipe)
 # package-lock.json
 # poetry.lock

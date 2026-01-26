@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>THE LOOM : EXOCORTEX v102 (Debug)</title>
+    <title>THE LOOM : EXOCORTEX v104.1</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -13,11 +13,11 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     
     <style>
-        :root { --bg: #010102; --sidebar-bg: #050508; --border: rgba(255,255,255,0.08); --accent: #fbbf24; }
+        :root { --bg: #010102; --sidebar-bg: #050508; --border: rgba(255,255,255,0.08); --accent: #fbbf24; --bttf-grad: linear-gradient(180deg, #ff9d00 0%, #ffbd00 45%, #ffff00 100%); }
         html, body { 
             margin: 0; padding: 0; width: 100vw; height: 100dvh; 
             background-color: var(--bg); overflow: hidden; position: fixed; inset: 0; 
-            font-family: 'JetBrains Mono', monospace; color: white; user-select: none;
+            font-family: 'JetBrains Mono', monospace; color: white; user-select: text;
         }
 
         /* LAYOUT GLOBAL */
@@ -25,7 +25,7 @@
 
         /* SIDEBAR GAUCHE (Flux + Légende) */
         aside {
-            width: 260px; height: 100%; 
+            width: 200px; height: 100%; 
             background: var(--sidebar-bg); border-right: 1px solid var(--border);
             display: flex; flex-direction: column; z-index: 20;
         }
@@ -53,11 +53,12 @@
         #legend-container {
             flex: 1; padding: 15px; overflow-y: auto;
         }
-        .legend-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; cursor: pointer; transition: opacity 0.2s; }
+        .legend-item { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; cursor: pointer; transition: opacity 0.2s; }
         .legend-item:hover { opacity: 0.8; }
         .legend-item.hidden-line { opacity: 0.3; }
+        .legend-left { display: flex; align-items: center; gap: 8px; overflow: hidden; }
         .legend-color { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
-        .legend-text { font-size: 10px; color: #888; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .legend-text { font-size: 9px; color: #888; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
         /* ZONE GRAPHIQUE */
         main { flex: 1; position: relative; height: 100%; background: var(--bg); display: flex; flex-direction: column; }
@@ -65,11 +66,16 @@
         /* TOP BAR */
         .top-bar {
             height: 40px; border-bottom: 1px solid var(--border);
-            display: flex; justify-content: flex-end; align-items: center; padding: 0 20px; gap: 15px;
+            display: flex; justify-content: center; align-items: center; padding: 0 20px; position: relative;
         }
         .hud-btn { font-size: 10px; font-weight: 800; color: #666; text-transform: uppercase; cursor: pointer; transition: color 0.2s; }
         .hud-btn:hover { color: white; }
-        .hud-btn.inject { color: var(--accent); border: 1px solid rgba(251, 191, 36, 0.3); padding: 2px 8px; border-radius: 2px; }
+        
+        .bttf-btn {
+            font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -0.5px;
+            background: var(--bttf-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0px 2px 10px rgba(255, 160, 0, 0.4); transform: skewX(-10deg); font-size: 14px;
+        }
 
         /* CANVAS */
         .canvas-wrapper { flex: 1; position: relative; width: 100%; overflow: hidden; }
@@ -94,17 +100,6 @@
         }
         #btn-emergency:hover { background: #555; }
 
-        /* MODALS */
-        #sync-console { 
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            width: 450px; background: #08080c; border: 1px solid var(--accent); 
-            display: none; flex-direction: column; padding: 20px; z-index: 6000; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
-        }
-        #upload-ticker {
-            height: 20px; margin-top: 15px; font-size: 11px; color: var(--accent); 
-            font-weight: bold; overflow: hidden; white-space: nowrap; text-align: center;
-        }
         #detail-card { 
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
             width: 90%; max-width: 600px; background: rgba(5,5,8,0.98); 
@@ -127,7 +122,7 @@
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v102</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v104</span></div>
                 <div id="timer-badge" class="timer-badge">SYNC --:--</div>
             </div>
 
@@ -146,22 +141,13 @@
 
         <main>
             <div class="top-bar">
-                <span id="sync-status" class="text-[9px] font-bold text-zinc-600 mr-auto">OFFLINE</span>
-                <button onclick="resetView()" class="hud-btn">Vue Standard (1985)</button>
-                <button onclick="toggleConsole()" class="hud-btn inject">INJECT DATA</button>
+                <span id="sync-status" class="text-[9px] font-bold text-zinc-600 absolute left-4">OFFLINE</span>
+                <button onclick="resetView()" class="hud-btn bttf-btn">RETOUR VERS LE FUTUR</button>
             </div>
             <div class="canvas-wrapper">
                 <canvas id="loomChart"></canvas>
             </div>
         </main>
-    </div>
-
-    <div id="sync-console">
-        <h3 class="text-amber-500 font-bold text-xs mb-2 uppercase">Injection Données</h3>
-        <textarea id="json-paste" class="w-full h-32 bg-black border border-zinc-800 text-green-500 text-[10px] p-2 mb-4 font-mono outline-none" placeholder='[{"year": 2026, "label": "Exemple", "category": "..."}]'></textarea>
-        <button onclick="executeInjection()" id="btn-inject" class="w-full bg-amber-600 text-black font-bold py-3 text-[10px] uppercase hover:bg-amber-500 transition-colors">LANCER L'UPLOAD</button>
-        <div id="upload-ticker"></div>
-        <button onclick="toggleConsole()" class="mt-4 text-[9px] text-zinc-600 uppercase hover:text-white text-center w-full">Fermer</button>
     </div>
 
     <div id="label-float"><div class="cyber-icon-frame"><img id="label-icon" src=""></div><span id="label-text"></span></div>
@@ -183,13 +169,23 @@
         
         // DONNEES DE SECOURS (Si le cloud plante)
         const BACKUP_DATA = [
-            { "year": 1945, "value": 400, "label": "Trinity (BACKUP)", "category": "☢️ RISQUES" },
-            { "year": 1969, "value": 5000, "label": "Apollo 11", "category": "🟣 EXTENSION" },
-            { "year": 1989, "value": 15000, "label": "WWW", "category": "🔴 MATRICE" },
-            { "year": 2026, "value": 200000, "label": "LE GENOU", "category": "⚪ CONVERGENCE" }
+            { "year": 1945, "value": 400, "label": "Trinity (BACKUP)", "category": "☢️ ENTROPIE" },
+            { "year": 1969, "value": 5000, "label": "Apollo 11", "category": "🟣 ESPACE" },
+            { "year": 1989, "value": 15000, "label": "WWW", "category": "🔴 RÉSEAU" },
+            { "year": 2026, "value": 200000, "label": "LE GENOU", "category": "⚪ SINGULARITÉ" }
         ];
 
-        const COLORS = { "🟡 SUBSTRAT": "#fbbf24", "🔵 INTELLIGENCE": "#3b82f6", "🔴 MATRICE": "#ef4444", "🟣 EXTENSION": "#a855f7", "🟢 VIVANT": "#10b981", "☢️ RISQUES": "#f97316", "⚪ CONVERGENCE": "#ffffff", "💗 ORACLES": "#f472b6", "DEFAUT": "#9ca3af" };
+        const COLORS = { 
+            "⚪ SINGULARITÉ": "#ffffff", 
+            "🔮 IMAGINAIRE": "#f472b6", 
+            "🟡 HARDWARE": "#fbbf24", 
+            "🔵 COGNITION": "#3b82f6", 
+            "🔴 RÉSEAU": "#ef4444", 
+            "🟣 ESPACE": "#a855f7", 
+            "🟢 BIOTECH": "#10b981", 
+            "☢️ ENTROPIE": "#f97316", 
+            "DEFAUT": "#9ca3af" 
+        };
         const FALLBACK_IMG = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmYmJmMjQiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHJ4PSIyIiByeT0iMiI+PC9yZWN0Pjwvc3ZnPg==';
 
         Chart.register(ChartDataLabels);
@@ -305,7 +301,15 @@
                 if(!strands[c]) strands[c] = { label: c, borderColor: COLORS[c], backgroundColor: COLORS[c], data: [], pointRadius: 4, hitRadius: 10, tension: 0.3 };
                 strands[c].data.push({ x: d.year, y: d.value, ...d });
             });
-            loomChart.data.datasets = Object.values(strands);
+            
+            // Tri des datasets pour mettre la Singularité en dernier (au dessus) et le reste dans l'ordre
+            const sortedDatasets = Object.values(strands).sort((a, b) => {
+                if (a.label.includes("SINGULARITÉ")) return 1;
+                if (b.label.includes("SINGULARITÉ")) return -1;
+                return a.label.localeCompare(b.label);
+            });
+
+            loomChart.data.datasets = sortedDatasets;
             loomChart.update('none');
         }
 
@@ -339,7 +343,15 @@
             });
             const container = document.getElementById('legend-container');
             container.innerHTML = ''; 
-            Object.keys(COLORS).forEach(cat => {
+            
+            // Ordre spécifique pour la légende : Singularité en premier
+            const orderedKeys = Object.keys(COLORS).sort((a,b) => {
+                if(a.includes("SINGULARITÉ")) return -1;
+                if(b.includes("SINGULARITÉ")) return 1;
+                return a.localeCompare(b);
+            });
+
+            orderedKeys.forEach(cat => {
                 if(!counts[cat]) return;
                 const div = document.createElement('div');
                 div.className = 'legend-item';
@@ -352,57 +364,13 @@
                         loomChart.update();
                     }
                 };
-                div.innerHTML = `<div class="legend-color" style="background:${COLORS[cat]}"></div><div class="legend-text" style="flex:1">${cat.split(' ')[1] || cat}</div><div class="legend-text" style="color:#444">${counts[cat]}</div>`;
+                
+                // Séparateur visuel pour la singularité
+                if(cat.includes("SINGULARITÉ")) div.style.marginBottom = "15px";
+
+                div.innerHTML = `<div class="legend-left"><div class="legend-color" style="background:${COLORS[cat]}"></div><div class="legend-text">${cat.split(' ')[1] || cat}</div></div><div class="legend-text" style="color:#444">${counts[cat]}</div>`;
                 container.appendChild(div);
             });
-        }
-
-        async function executeInjection() {
-            const txt = document.getElementById('json-paste').value;
-            const btn = document.getElementById('btn-inject');
-            const ticker = document.getElementById('upload-ticker');
-            
-            if(!txt) return;
-
-            try {
-                const json = JSON.parse(txt);
-                const now = new Date().toISOString();
-                json.forEach(i => { if(!i.timestamp) i.timestamp = now; });
-                
-                btn.disabled = true;
-                btn.innerText = "UPLOADING...";
-                btn.classList.add('opacity-50');
-                
-                let idx = 0;
-                const tInt = setInterval(() => {
-                    if(idx >= json.length) idx = 0;
-                    ticker.innerText = `> SENDING: ${json[idx].label}...`;
-                    idx++;
-                }, 100);
-
-                await fetch(CLOUD_URL, { method:'POST', body:JSON.stringify(json) });
-
-                clearInterval(tInt);
-                ticker.innerText = "> SUCCESS: DATA INJECTED.";
-                ticker.style.color = "#10b981";
-                
-                setTimeout(() => {
-                    toggleConsole();
-                    loadData(true); 
-                    btn.disabled = false;
-                    btn.innerText = "LANCER L'UPLOAD";
-                    btn.classList.remove('opacity-50');
-                    document.getElementById('json-paste').value = "";
-                    ticker.innerText = "";
-                    ticker.style.color = "var(--accent)";
-                }, 1500);
-
-            } catch(e) {
-                alert("Erreur: " + e.message);
-                btn.disabled = false;
-                btn.innerText = "RETRY";
-                btn.classList.remove('opacity-50');
-            }
         }
 
         function updateTimer() {
@@ -418,7 +386,6 @@
             document.getElementById('timer-badge').innerText = `SYNC ${h}H ${m}M`;
         }
 
-        function toggleConsole() { const c=document.getElementById('sync-console'); c.style.display=c.style.display==='flex'?'none':'flex'; }
         function resetView() { loomChart.options.scales.x.min=1960; loomChart.options.scales.x.max=2040; loomChart.update(); }
         function showDetail(d) {
             document.getElementById('card-title').innerText = d.label;

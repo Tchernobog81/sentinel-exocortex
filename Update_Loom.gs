@@ -38,19 +38,7 @@ function getDbFile() {
  * Retourne la structure de données par défaut
  */
 function getDefaultData() {
-  return {
-    "strands": [
-      {
-        "name": "⚪ CONVERGENCE",
-        "color": "#ffffff",
-        "events": []
-      }
-    ],
-    "metadata": {
-      "lastUpdate": new Date().toISOString(),
-      "version": "1.0"
-    }
-  };
+  return [];
 }
 
 /**
@@ -122,26 +110,21 @@ function doPost(e) {
     // Parse les données entrantes
     var newData = JSON.parse(e.postData.contents);
     
-    // Validation basique
-    if (!newData.strands || !Array.isArray(newData.strands)) {
-      throw new Error("Invalid data format: missing 'strands' array");
+    // Validation v102 : On attend un Array
+    if (!Array.isArray(newData)) {
+      throw new Error("Invalid data format: expected a JSON Array for v102");
     }
     
     // Crée une sauvegarde avant d'écrire
     createBackup();
-    
-    // Ajoute les métadonnées
-    newData.metadata = newData.metadata || {};
-    newData.metadata.lastUpdate = new Date().toISOString();
-    newData.metadata.version = "1.0";
     
     // Écrit les données
     getDbFile().setContent(JSON.stringify(newData, null, 2));
     
     return ContentService.createTextOutput(JSON.stringify({
       "status": "ok",
-      "items": newData.strands.reduce((sum, s) => sum + s.events.length, 0),
-      "timestamp": newData.metadata.lastUpdate
+      "items": newData.length,
+      "timestamp": new Date().toISOString()
     })).setMimeType(ContentService.MimeType.JSON);
     
   } catch (err) {
@@ -167,9 +150,8 @@ function getDbInfo() {
     "fileId": dbFile.getId(),
     "lastModified": dbFile.getLastUpdated(),
     "size": dbFile.getSize(),
-    "strands": content.strands.length,
-    "events": content.strands.reduce((sum, s) => sum + s.events.length, 0),
-    "metadata": content.metadata
+    "items": Array.isArray(content) ? content.length : 0,
+    "type": Array.isArray(content) ? "Array (v102)" : "Legacy"
   };
 }
 
