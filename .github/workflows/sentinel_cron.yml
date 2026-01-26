@@ -25,4 +25,5 @@ jobs:
         env:
           CLOUD_URL: ${{ secrets.CLOUD_URL }}
           SINGLE_RUN: "true"
+          SCAN_MODE: "RSS_NEWS"
         run: python sentinel.py

@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v109
+- 🤖 Agent : Sentinel peut maintenant scanner Google News (mode `RSS_NEWS`).
+- 🤖 Agent : Ajout d'un classificateur de news par mots-clés.
+- 🔧 Pipeline : Le workflow Sentinel sur GitHub utilise maintenant le mode `RSS_NEWS`.
+- 🐛 UI Fix : Comportement du curseur (flèche/doigt) corrigé sur le graphique.
+
 ## v107
 - 🖱️ UX : Curseur "pointer" (main) au survol des événements du graphique.
 - 🚀 Pipeline : Push de déclenchement pour GitHub Actions.

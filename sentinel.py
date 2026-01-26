@@ -6,6 +6,7 @@ import datetime
 import random
 import logging
 from typing import List, Dict, Any
+import feedparser
 
 try:
     from dotenv import load_dotenv
@@ -22,6 +23,8 @@ CLOUD_URL = os.environ.get("CLOUD_URL")
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
 # Mode "Single Run" pour GitHub Actions (évite la boucle infinie)
 SINGLE_RUN = os.environ.get("SINGLE_RUN", "false").lower() == "true"
+# Mode de scan : SIMULATOR (défaut) ou RSS_NEWS
+SCAN_MODE = os.environ.get("SCAN_MODE", "SIMULATOR")
 
 # Configuration du Logging
 logging.basicConfig(
@@ -33,8 +36,53 @@ logging.basicConfig(
     ]
 )
 
-# --- 1. SIMULATION D'UN AGENT DE VEILLE ---
-def scan_zeitgeist() -> Dict[str, Any] | None:
+# --- 1. AGENTS DE VEILLE ---
+
+def classify_entry(title: str, summary: str) -> str:
+    """Tente de classifier un article en fonction de mots-clés."""
+    text = (title + " " + summary).lower()
+    if any(k in text for k in ["quantum", "chip", "gpu", "hardware", "moore", "nvidia"]):
+        return "🟡 HARDWARE"
+    if any(k in text for k in ["gpt", "model", "reasoning", "agi", "cognitive", "openai", "anthropic"]):
+        return "🔵 COGNITION"
+    if any(k in text for k in ["dna", "crispr", "biotech", "neuralink", "organoid"]):
+        return "🟢 BIOTECH"
+    if any(k in text for k in ["space", "rocket", "mars", "starship", "spacex"]):
+        return "🟣 ESPACE"
+    if any(k in text for k in ["risk", "danger", "regulation", "bias", "threat", "law"]):
+        return "☢️ ENTROPIE"
+    return "🔴 RÉSEAU" # Catégorie par défaut pour les news générales, internet, etc.
+
+def scan_google_news_rss() -> Dict[str, Any] | None:
+    """Scanne le flux RSS de Google News sur la singularité."""
+    logging.info("[SCAN] Scan du flux Google News RSS...")
+    # URL pour les actualités en français sur "technological singularity" OR "artificial general intelligence"
+    RSS_URL = "https://news.google.com/rss/search?q=%22technological+singularity%22+OR+%22artificial+general+intelligence%22&hl=fr&gl=FR&ceid=FR:fr"
+    
+    feed = feedparser.parse(RSS_URL)
+    if not feed.entries:
+        logging.info("... Aucun article trouvé dans le flux RSS.")
+        return None
+
+    latest_entry = feed.entries[0] # On prend le plus récent
+    
+    today = datetime.date.today()
+    # On place l'événement dans l'année en cours
+    event_year = today.year + (today.month / 12)
+
+    return {
+        "year": round(event_year, 3),
+        "value": random.randint(20000, 50000), # Valeur Y aléatoire pour le moment
+        "label": latest_entry.title,
+        "category": classify_entry(latest_entry.title, latest_entry.summary),
+        "whoWhat": latest_entry.source.get('title', 'Google News'),
+        "description": latest_entry.summary,
+        "url": latest_entry.link,
+        "timestamp": datetime.datetime.now().isoformat(),
+        "tipping": False
+    }
+
+def scan_simulator() -> Dict[str, Any] | None:
     """
     Simule une veille technologique.
     TODO: Remplacer par une vraie source (flux RSS, API, etc.)
@@ -118,8 +166,13 @@ def run_sentinel_cycle():
         logging.critical("[CRITICAL] CLOUD_URL n'est pas définie dans le fichier .env. Arrêt de l'agent.")
         return False # Signal pour arrêter la boucle principale
     try:
-        new_intel = scan_zeitgeist()
+        if SCAN_MODE == "RSS_NEWS":
+            new_intel = scan_google_news_rss()
+        else:
+            new_intel = scan_simulator()
+
         if not new_intel: return True
+
         current_data = get_current_loom()
         is_duplicate = any(item.get('label') == new_intel['label'] for item in current_data)
         if is_duplicate:
@@ -133,7 +186,7 @@ def run_sentinel_cycle():
     return True
 
 if __name__ == "__main__":
-    logging.info("--- SENTINEL EXOCORTEX v102.1 (Daemon) ---")
+    logging.info(f"--- SENTINEL EXOCORTEX v109 --- MODE: {SCAN_MODE} ---")
     
     if SINGLE_RUN:
         logging.info("Mode SINGLE_RUN activé (GitHub Actions). Exécution unique.")

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v108</title>
+    <title>THE LOOM : EXOCORTEX v109</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -83,7 +83,7 @@
 
         /* CANVAS */
         .canvas-wrapper { flex: 1; position: relative; width: 100%; overflow: hidden; }
-        canvas { cursor: crosshair; } /* Curseur par défaut sur la grille */
+        canvas { cursor: default; } /* Curseur par défaut sur la grille */
 
         /* --- ECRAN DE CHARGEMENT & DEBUG (MODIFIÉ) --- */
         #loading-screen { 
@@ -127,7 +127,7 @@
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v108</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v109</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -446,7 +446,7 @@
                     onHover: (e, el) => {
                         // Gestion robuste du curseur
                         const canvas = e.native.target;
-                        canvas.style.cursor = el.length > 0 ? 'pointer' : 'crosshair';
+                        canvas.style.cursor = el.length > 0 ? 'pointer' : 'default';
                         
                         const f = document.getElementById('label-float'), img = document.getElementById('label-icon');
                         if (el.length > 0) {
