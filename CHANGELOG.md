@@ -1,5 +1,9 @@
 # CHANGELOG - Cortex Loom
 
+## v115
+- 🐛 Debug : Affichage explicite de la version dans l'écran de chargement ("Init v115...").
+- 🔖 Version : Passage en v115 pour forcer le rafraîchissement du cache.
+
 ## v114
 - 🐛 Fix : Les labels sont maintenant coupés ("clippés") quand ils sortent de la zone du graphique.
 - 🐛 Fix : Le "fil" de l'infobulle est maintenant correctement ancré au point de donnée survolé.
