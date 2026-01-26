@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v113</title>
+    <title>THE LOOM : EXOCORTEX v114</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -137,7 +137,7 @@
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v113</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v114</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -467,31 +467,34 @@
                         legend: { display: false }, 
                         datalabels: { 
                             color: '#fff', align: 'top', offset: 12, 
-                            backgroundColor: ctx => hexToRgba(ctx.dataset.borderColor, 0.8),
+                            // On utilise la couleur de base de la catégorie pour éviter les problèmes avec le mode focus (RGBA)
+                            backgroundColor: ctx => hexToRgba(COLORS[ctx.dataset.label] || '#9ca3af', 0.8),
                             borderRadius: 2, padding: 4, font: { size: 9, weight: 'bold' },
-                            formatter: v => v.label, clip: false,
+                            formatter: v => v.label, 
+                            clip: true, // ✅ CORRECTION: Coupe les labels qui sortent du cadre
                             listeners: { click: c => showDetail(c.dataset.data[c.dataIndex]) }
                         },
                         zoom: { zoom: { wheel: { enabled: true }, mode: 'x' }, pan: { enabled: true, mode: 'xy' } }
                     },
                     onHover: (e, el) => {
                         // Gestion robuste du curseur
-                        const canvas = e.native.target;
+                        const canvas = e.chart.canvas;
                         canvas.style.cursor = el.length > 0 ? 'pointer' : 'default';
                         
                         const f = document.getElementById('label-float'), img = document.getElementById('label-icon');
                         if (el.length > 0) {
-                            const d = loomChart.data.datasets[el[0].datasetIndex].data[el[0].index];
-                            // Utilisation de clientX/Y pour un positionnement fixe parfait (fil d'ariane)
-                            f.style.display = 'flex'; 
-                            f.style.left = (e.native.clientX + 15) + 'px'; 
-                            f.style.top = (e.native.clientY - 15) + 'px';
+                            const point = el[0].element;
+                            const dataPoint = loomChart.data.datasets[el[0].datasetIndex].data[el[0].index];
+                            const canvasRect = canvas.getBoundingClientRect();
                             
-                            document.getElementById('label-text').innerText = d.label; 
+                            f.style.display = 'flex';
+                            f.style.left = (canvasRect.left + point.x + 15) + 'px';
+                            f.style.top = (canvasRect.top + point.y - 15) + 'px';
+                            document.getElementById('label-text').innerText = dataPoint.label; 
                             
                             // Affiche l'icône de catégorie si pas d'image spécifique
-                            const catIcon = ICONS[d.category] || "📂";
-                            img.innerHTML = d.img ? `<img src="${d.img}" style="width:100%;height:100%;object-fit:cover;">` : catIcon;
+                            const catIcon = ICONS[dataPoint.category] || "📂";
+                            img.innerHTML = dataPoint.img ? `<img src="${dataPoint.img}" style="width:100%;height:100%;object-fit:cover;">` : catIcon;
                         } else f.style.display = 'none';
                     }
                 }

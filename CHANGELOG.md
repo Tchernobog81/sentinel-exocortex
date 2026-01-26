@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v114
+- 🐛 Fix : Les labels sont maintenant coupés ("clippés") quand ils sortent de la zone du graphique.
+- 🐛 Fix : Le "fil" de l'infobulle est maintenant correctement ancré au point de donnée survolé.
+- 🐛 Fix : Le curseur "doigt" est maintenant correctement appliqué au survol des points.
+
 ## v113
 - 🖱️ UX : "Focus Mode" sur la légende (clic = mise en avant de la ligne, transparence des autres).
 - 🎨 UI : Correction du fil d'ariane des bulles (coordonnées natives).
