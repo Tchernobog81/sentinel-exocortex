@@ -1,5 +1,9 @@
 # CHANGELOG - Cortex Loom
 
+## v110
+- 🐛 UI Fix : Le bouton "Retour vers le Futur" est enfin correctement centré (correction du JS qui écrasait les classes CSS).
+- 🖱️ UX : Amélioration des curseurs sur la légende et les éléments interactifs.
+
 ## v109
 - 🤖 Agent : Sentinel peut maintenant scanner Google News (mode `RSS_NEWS`).
 - 🤖 Agent : Ajout d'un classificateur de news par mots-clés.

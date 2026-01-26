@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v109</title>
+    <title>THE LOOM : EXOCORTEX v110</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -53,7 +53,7 @@
         #legend-container {
             flex: 1; padding: 15px; overflow-y: auto;
         }
-        .legend-item { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; cursor: pointer; transition: opacity 0.2s; }
+        .legend-item { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; cursor: pointer; transition: opacity 0.2s; user-select: none; }
         .legend-item:hover { opacity: 0.8; }
         .legend-item.hidden-line { opacity: 0.3; }
         .legend-left { display: flex; align-items: center; gap: 8px; overflow: hidden; }
@@ -266,14 +266,14 @@
                 const d = new Date();
                 const st = document.getElementById('sync-status');
                 st.innerText = `LAST SYNC ${("0"+d.getHours()).slice(-2)}:${("0"+d.getMinutes()).slice(-2)}`;
-                st.className = 'text-[9px] font-bold text-emerald-500 mr-auto';
+                st.className = 'text-[9px] font-bold text-emerald-500 absolute left-4';
 
             } catch(e) {
                 console.error(e);
                 log(`ERREUR FATALE: ${e.message}`, "error");
                 const st = document.getElementById('sync-status');
                 st.innerText = "CONNEXION ERROR";
-                st.className = 'text-[9px] font-bold text-red-500 mr-auto';
+                st.className = 'text-[9px] font-bold text-red-500 absolute left-4';
                 
                 // Afficher le bouton de secours
                 document.getElementById('btn-emergency').style.display = 'block';
