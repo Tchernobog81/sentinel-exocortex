@@ -1,5 +1,9 @@
 # CHANGELOG - Cortex Loom
 
+## v116
+- 🐛 Fix : Augmentation de la zone de survol (`hitRadius`) des points pour une détection plus fiable du curseur et de l'infobulle, même en survolant le texte du label.
+- 🐛 Debug : Version v116 affichée au démarrage.
+
 ## v115
 - 🐛 Debug : Affichage explicite de la version dans l'écran de chargement ("Init v115...").
 - 🔖 Version : Passage en v115 pour forcer le rafraîchissement du cache.

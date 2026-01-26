@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v115</title>
+    <title>THE LOOM : EXOCORTEX v116</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -130,14 +130,14 @@
     <div id="loading-screen">
         <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT</div>
         <div class="text-xs text-zinc-500 mb-4">Veuillez patienter pendant la connexion neuronale...</div>
-        <div id="debug-log">Init v115...</div>
+        <div id="debug-log">Init v116...</div>
         <button id="btn-emergency" onclick="loadBackupData()">⚠️ CHARGER DONNÉES DE SECOURS (OFFLINE)</button>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v115</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v116</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -340,7 +340,7 @@
                 if(!COLORS[c]) c = Object.keys(COLORS).find(k => k.includes(c)) || "DEFAUT";
                 
                 const style = getStrandStyle(c);
-                if(!strands[c]) strands[c] = { label: c, borderColor: style.color, backgroundColor: style.color, borderWidth: style.width, data: [], pointRadius: 4, hitRadius: 10, tension: 0.3 };
+                if(!strands[c]) strands[c] = { label: c, borderColor: style.color, backgroundColor: style.color, borderWidth: style.width, data: [], pointRadius: 4, hitRadius: 20, tension: 0.3 };
                 strands[c].data.push({ x: d.year, y: d.value, ...d });
             });
             
