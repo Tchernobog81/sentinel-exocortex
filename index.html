@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v120</title>
+    <title>THE LOOM : EXOCORTEX v121</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -129,15 +129,15 @@
 
     <div id="loading-screen">
         <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v120...</div>
-        <div id="debug-log">Init v120...</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v121...</div>
+        <div id="debug-log">Init v121...</div>
         <button id="btn-emergency" onclick="loadBackupData()">⚠️ CHARGER DONNÉES DE SECOURS (OFFLINE)</button>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v120</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v121</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -374,7 +374,20 @@
                 if(!COLORS[c]) c = Object.keys(COLORS).find(k => k.includes(c)) || "DEFAUT";
                 
                 const style = getStrandStyle(c);
-                if(!strands[c]) strands[c] = { label: c, borderColor: style.color, backgroundColor: style.color, borderWidth: style.width, data: [], pointRadius: 4, hitRadius: 20, tension: 0.3 };
+                if(!strands[c]) strands[c] = { 
+                    label: c, 
+                    borderColor: style.color, 
+                    backgroundColor: style.color, 
+                    borderWidth: style.width, 
+                    data: [], 
+                    pointRadius: 5, // Rend les points plus visibles
+                    pointHoverRadius: 8,
+                    pointBorderColor: style.color,
+                    pointBackgroundColor: '#010102', // Centre du "donut"
+                    pointBorderWidth: 2,
+                    hitRadius: 10, // Réduit pour éviter conflit avec label
+                    tension: 0.3 
+                };
                 strands[c].data.push({ x: d.year, y: d.value, ...d });
             });
             
@@ -539,7 +552,8 @@
                             // On utilise la couleur de base de la catégorie pour éviter les problèmes avec le mode focus (RGBA)
                             backgroundColor: ctx => hexToRgba(COLORS[ctx.dataset.label] || '#9ca3af', 0.8),
                             borderRadius: 2, padding: 4, font: { size: 9, weight: 'bold' },
-                            formatter: v => v.label, 
+                            // Affiche le label uniquement si c'est un "tipping point" pour alléger le visuel
+                            formatter: v => v.tipping ? v.label : null, 
                             clip: true, // ✅ CORRECTION: Coupe les labels qui sortent du cadre
                             listeners: { 
                                 click: c => showDetail(c.dataset.data[c.dataIndex]),

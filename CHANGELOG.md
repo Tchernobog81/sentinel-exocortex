@@ -1,5 +1,13 @@
 # CHANGELOG - Cortex Loom
 
+## v121
+- 🐛 **UI Fix :** Le curseur "doigt" est maintenant fonctionnel au survol des étiquettes.
+- 🎨 **UI :** Les points sur le graphique sont plus visibles (style "donut") pour éviter les étiquettes flottantes.
+- ✨ **UX :** Seuls les événements "points d'inflexion" (`tipping: true`) affichent une étiquette persistante pour clarifier le graphique.
+- 📚 **Data :** Enrichissement de l'événement "Tchernobyl" (description, image, analyse Pharmakon).
+- 📚 **Data :** Enrichissement de l'événement "Test de Turing" (description, analyse Pharmakon).
+- 🔖 **Version :** Passage en v121.
+
 ## v120
 - 🚀 **Pipeline :** Correction du workflow de déploiement GitHub Actions.
 - 🔧 **CI/CD :** Ajout d'un fichier de workflow `sentinel_workflow.yml` dédié et robuste.
