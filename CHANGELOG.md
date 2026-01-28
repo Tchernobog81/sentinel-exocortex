@@ -1,5 +1,17 @@
 # CHANGELOG - Cortex Loom
 
+## v133
+- 🛠️ **DevEnv :** Ajout de configurations VS Code pour stabiliser Pylance et l'environnement Python.
+- 📝 **Docs :** Ajout d'une section Troubleshooting dans le README pour les erreurs courantes.
+- 🧹 **Data :** Nettoyage et validation de la structure JSON consolidée.
+- 🔖 **Version :** Passage en v133.
+
+## v132
+- 🔖 **Version :** Consolidation générale des versions suite aux itérations rapides.
+- 🧠 **Data Intelligence :** L'analyse Pharmakon est maintenant **déterministe**. Les pourcentages sont calculés via un hash du nom de l'événement (stable entre les injections).
+- 🔧 **Pipeline :** Synchronisation stricte de la logique d'enrichissement entre `sentinel.py` et `inject_data.py`.
+- 🔖 **Version :** Passage en v132.
+
 ## v131
 - 🔧 **Pipeline Fix :** Correction critique de la perte des analyses Pharmakon lors de l'injection de données.
 - 🧠 **Data Intelligence :** Le script `inject_data.py` enrichit désormais automatiquement les données (S-Curve, Pharmakon) avant l'envoi.

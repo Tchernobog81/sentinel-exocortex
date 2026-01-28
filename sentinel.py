@@ -4,6 +4,7 @@ import time
 import datetime
 import random
 import logging
+import zlib
 from typing import List, Dict, Any
 
 try:
@@ -114,6 +115,10 @@ def enrich_event_if_needed(event: Dict[str, Any]) -> Dict[str, Any]:
     year = event.get("year", 1900)
     category = event.get("category", "DEFAUT")
 
+    # 0. Déterminisme (Idem inject_data.py)
+    seed_val = zlib.crc32(event.get('label', '').encode('utf-8'))
+    random.seed(seed_val)
+
     # 1. Simulation plausible de la phase de la courbe en S
     if year < 1940: s_curve_phase = 1
     elif year < 1990: s_curve_phase = 2
@@ -142,6 +147,8 @@ def enrich_event_if_needed(event: Dict[str, Any]) -> Dict[str, Any]:
     event["convergences"] = event.get("convergences") or "Analyse simulée : N/A"
     event["grand_filter_analysis"] = event.get("grand_filter_analysis") or "Analyse simulée : N/A"
     event["final_note"] = event.get("final_note") or "Note finale simulée."
+
+    random.seed() # Reset
 
     return event
 

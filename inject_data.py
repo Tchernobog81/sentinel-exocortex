@@ -2,6 +2,7 @@ import requests
 import json
 import os
 import random
+import zlib
 
 try:
     from dotenv import load_dotenv
@@ -26,6 +27,11 @@ def enrich_event_if_needed(event):
     year = event.get("year", 1900)
     category = event.get("category", "DEFAUT")
 
+    # 0. Déterminisme : On utilise le hash du label comme graine
+    # Cela garantit que "Tchernobyl" aura toujours les mêmes stats si on relance le script
+    seed_val = zlib.crc32(event.get('label', '').encode('utf-8'))
+    random.seed(seed_val)
+
     # 1. Simulation plausible de la phase de la courbe en S
     if year < 1940: s_curve_phase = 1
     elif year < 1990: s_curve_phase = 2
@@ -49,6 +55,9 @@ def enrich_event_if_needed(event):
     event["s_curve_phase"] = s_curve_phase
     event["pharmakon_remedy_percent"] = remedy
     event["pharmakon_poison_percent"] = poison
+    
+    # Reset du seed pour ne pas impacter d'autres usages
+    random.seed()
     
     return event
 
