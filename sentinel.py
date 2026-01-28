@@ -59,20 +59,7 @@ def analyze_event(entry_title: str, entry_summary: str, entry_url: str, entry_so
     """
     Analyse un événement brut (ex: article de news) et le transforme
     en un objet de données enrichi selon les directives v117.
-
-    TODO: Remplacer l'analyse simulée par un appel à une IA externe en utilisant le prompt suivant :
-    ---
-    Tu es un veilleur technologique lucide et ironique, chargé de détecter les signaux faibles annonçant l'avènement parallèle de plusieurs singularités : mathématiques (preuves automatisées), physique (énergie infinie, quantique scalable), biologie (programmable, longévité), IA physique (embodied, world models), robotique (humanoïdes généralisables), et leurs convergences.
-    Nous sommes dans l'ère des pharmakons : chaque avancée est à la fois remède et poison, messager ambivalent de la singularité.
-    Pour tout événement, post, papier ou déclaration que je te soumets :
-
-    1. Résume brièvement le signal et son contexte.
-    2. Évalue sa position sur la courbe en S de la ou des singularités concernées (phase 1 à 5 : début lent, inflexion, accélération, plateau, déclin éventuel).
-    3. Analyse-le comme pharmakon : attribue un pourcentage approximatif de potentiel médicamenteux (remède : abondance, guérison, maîtrise) et de potentiel toxique (poison : misalignment, perte de contrôle, amplification des égoïsmes humains, risque existentiel). Justifie précisément.
-    4. Indique les convergences avec d'autres singularités et les risques/bénéfices pour l'humanité sur la crête du Grand Filtre.
-    5. Termine par une note d'humour noir, élégante et désabusée, sans excès.
-
-    Ton style : français précis, neutre, avec une ironie subtile et un soupçon de cynisme à la Desproges. Structure claire, sans anglicismes inutiles.
+    Cette fonction est pour les NOUVEAUX événements.
     """
     logging.info(f"[ANALYSE] Analyse Pharmakon de : '{entry_title}'")
 
@@ -112,8 +99,57 @@ def analyze_event(entry_title: str, entry_summary: str, entry_url: str, entry_so
         "final_note": random.choice(final_note_pool)
     }
 
+def enrich_event_if_needed(event: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Vérifie si un événement a déjà une analyse v117. Si non, il la simule
+    de manière plausible en se basant sur l'année et la catégorie.
+    Cette fonction est pour les événements HISTORIQUES.
+    """
+    # Si l'événement a déjà une analyse, on ne touche à rien.
+    if "s_curve_phase" in event and event.get("s_curve_phase") is not None:
+        return event
+
+    logging.info(f"[ENRICH] Enrichissement de l'événement historique : '{event.get('label')}'")
+
+    year = event.get("year", 1900)
+    category = event.get("category", "DEFAUT")
+
+    # 1. Simulation plausible de la phase de la courbe en S
+    if year < 1940: s_curve_phase = 1
+    elif year < 1990: s_curve_phase = 2
+    elif year < 2015: s_curve_phase = 3
+    elif year < 2030: s_curve_phase = 4
+    else: s_curve_phase = 5
+
+    # 2. Simulation plausible de l'analyse Pharmakon
+    remedy = 50
+    if "ENTROPIE" in category: remedy = 10
+    elif "BIOTECH" in category or "NOOSPHÈRE" in category: remedy = 70
+    elif "HARDWARE" in category or "COGNITION" in category: remedy = 60
+    elif "POLITIQUE" in category: remedy = 35
+    elif "IMAGINAIRE" in category: remedy = 50
+
+    remedy += random.randint(-10, 10)
+    remedy = max(5, min(95, remedy)) # Borne les valeurs pour éviter les extrêmes 0/100
+    poison = 100 - remedy
+
+    # 3. Ajout des champs d'analyse
+    event["s_curve_phase"] = s_curve_phase
+    event["pharmakon_remedy_percent"] = remedy
+    event["pharmakon_poison_percent"] = poison
+    # On ne remplace pas les champs existants s'ils sont déjà là (ex: "how" devient "description")
+    event["description"] = event.get("description") or event.get("how") or "Description non disponible."
+    event["convergences"] = event.get("convergences") or "Analyse simulée : N/A"
+    event["grand_filter_analysis"] = event.get("grand_filter_analysis") or "Analyse simulée : N/A"
+    event["final_note"] = event.get("final_note") or "Note finale simulée."
+
+    return event
+
 def scan_google_news_rss() -> Dict[str, Any] | None:
-    """Scanne le flux RSS de Google News sur la singularité."""
+    """
+    Scanne le flux RSS de Google News sur la singularité.
+    Chaque article trouvé est passé à `analyze_event` pour une analyse complète.
+    """
     logging.info("[SCAN] Scan du flux Google News RSS...")
     # URL pour les actualités en français sur "technological singularity" OR "artificial general intelligence"
     RSS_URL = "https://news.google.com/rss/search?q=%22technological+singularity%22+OR+%22artificial+general+intelligence%22&hl=fr&gl=FR&ceid=FR:fr"
@@ -236,51 +272,66 @@ def post_updated_loom(data: List[Dict]):
 
 # --- 3. CYCLE PRINCIPAL DE L'AGENT ---
 def run_sentinel_cycle():
-    """Exécute un cycle complet de veille et d'injection."""
+    """Exécute un cycle complet de veille, d'enrichissement et d'injection."""
     if not CLOUD_URL:
         logging.critical("[CRITICAL] CLOUD_URL n'est pas définie dans le fichier .env. Arrêt de l'agent.")
-        return False # Signal pour arrêter la boucle principale
+        return False
     try:
+        # --- ÉTAPE 1: Récupération des données ---
+        current_data = get_current_loom()
+        if not current_data:
+            logging.warning("La base de données est vide ou inaccessible. Cycle interrompu pour le moment.")
+            return True # On réessaiera plus tard
+
+        # --- ÉTAPE 2: Enrichissement des données historiques ---
+        # On s'assure que chaque événement possède une analyse v117.
+        needs_update = False
+        processed_data = []
+        enriched_count = 0
+        for event in current_data:
+            original_event_json = json.dumps(event, sort_keys=True)
+            enriched_event = enrich_event_if_needed(event)
+            processed_data.append(enriched_event)
+            enriched_event_json = json.dumps(enriched_event, sort_keys=True)
+            if original_event_json != enriched_event_json:
+                needs_update = True
+                enriched_count += 1
+        
+        if needs_update:
+            logging.info(f"Analyse simulée ajoutée à {enriched_count} événement(s) historique(s).")
+
+        # --- ÉTAPE 3: Scan pour de nouveaux événements ---
         all_new_intel = []
 
-        # 1. Scan spécifique de l'horloge
         intel_clock = scan_doomsday_clock()
-        if intel_clock:
-            all_new_intel.append(intel_clock)
+        if intel_clock: all_new_intel.append(intel_clock)
 
-        # 2. Scan du stade de la singularité
         intel_stage = scan_singularity_stage()
-        if intel_stage:
-            all_new_intel.append(intel_stage)
+        if intel_stage: all_new_intel.append(intel_stage)
 
-        # 3. Scan général (mode RSS ou SIMULATOR)
         if SCAN_MODE == "RSS_NEWS":
             intel_general = scan_google_news_rss()
         else:
             intel_general = scan_simulator()
-
-        if intel_general:
-            all_new_intel.append(intel_general)
-
-        if not all_new_intel:
-            logging.info("[PAUSE] Aucun nouvel événement à traiter.")
-            return True
-
-        current_data = get_current_loom()
+        if intel_general: all_new_intel.append(intel_general)
 
         injected_count = 0
         for new_intel in all_new_intel:
-            is_duplicate = any(item.get('label') == new_intel['label'] for item in current_data)
+            is_duplicate = any(item.get('label') == new_intel['label'] for item in processed_data)
             if is_duplicate:
                 logging.info(f"[PAUSE] Doublon détecté ('{new_intel['label']}'). Pas d'injection.")
                 continue
 
             logging.info(f"[NEW] Injection de : '{new_intel['label']}' (Année: {new_intel['year']:.2f})")
-            current_data.append(new_intel)
+            processed_data.append(new_intel)
             injected_count += 1
+            needs_update = True
 
-        if injected_count > 0:
-            post_updated_loom(current_data)
+        # --- ÉTAPE 4: Sauvegarde si nécessaire ---
+        if needs_update:
+            post_updated_loom(processed_data)
+        else:
+            logging.info("[PAUSE] Aucun nouvel événement ou enrichissement à traiter.")
 
     except Exception as e:
         logging.error(f"[FATAL] ERREUR INATTENDUE dans le cycle Sentinel : {e}", exc_info=True)

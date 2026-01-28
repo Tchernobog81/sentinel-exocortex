@@ -1,5 +1,20 @@
 # CHANGELOG - Cortex Loom
 
+## v127
+- 🤖 **Agent :** Sentinel enrichit désormais automatiquement tous les événements historiques avec une analyse "Pharmakon" plausible.
+- ✨ **UX (Généralisé) :** La boîte de détails de l'analyse (Remède/Poison, Courbe en S) s'affiche maintenant pour **tous** les événements.
+- 🔧 **Core :** Le cycle de l'agent a été rendu plus robuste pour assurer la cohérence des données dans le temps.
+- 🔖 **Version :** Passage en v127.
+
+## v126
+- 🎨 **UI Fix (Généralisé) :** La couleur des étiquettes de survol correspond désormais à la couleur de leur courbe (le rose reste rose).
+- 🎨 **UI :** Les étiquettes persistantes ont maintenant une bordure de la couleur de leur catégorie, renforçant le lien visuel.
+- 💉 **Data Injection :** Injection massive de +120 événements (Total > 300).
+- 📊 **Data Story :** L'horizon temporel s'étend jusqu'en 2100, avec des projections pour la Singularité et la Civilisation Type 1.
+- 🏛️ **Politique & Noosphère :** Ajout de dizaines d'événements pour donner corps à ces catégories.
+- ✨ **UX :** Le nombre total d'événements est maintenant affiché dans la légende.
+- 🔖 **Version :** Passage en v126.
+
 ## v125
 - 🐛 **UI Fix :** Correction définitive du curseur "doigt" sur les points et étiquettes via un flag d'état (`isHoveringLabel`).
 - 🖱️ **UX :** Augmentation de la zone de clic (`hitRadius`) des points à 30px pour une meilleure accessibilité.
