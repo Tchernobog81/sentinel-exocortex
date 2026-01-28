@@ -1,4 +1,3 @@
-import requests
 import json
 import os
 import time
@@ -6,12 +5,13 @@ import datetime
 import random
 import logging
 from typing import List, Dict, Any
-import feedparser
 
 try:
+    import requests
+    import feedparser
     from dotenv import load_dotenv
-except ImportError:
-    print("ERREUR CRITIQUE : Module 'python-dotenv' manquant.")
+except ImportError as e:
+    print(f"ERREUR CRITIQUE : Module manquant ({e.name}).")
     print("--> Veuillez exécuter : pip install -r requirements.txt")
     exit(1)
 

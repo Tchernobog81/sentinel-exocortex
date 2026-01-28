@@ -15,6 +15,13 @@ Pour chaque intervention significative, l'agent doit **impérativement** effectu
     *   Le message de commit doit être clair, concis et suivre une convention (ex: `feat(ui): ...`, `fix(data): ...`, `docs(agent): ...`).
     *   Le format doit être un bloc de code prêt à être copié/collé dans un terminal.
 
+3.  **Utiliser les Blocs de Commande :**
+    *   Pour toute commande shell à exécuter, l'agent doit l'encadrer dans une boîte "Run in terminal" en utilisant le format Markdown suivant :
+        ```bash
+        # Titre de la commande
+        commande_a_executer
+        ```
+
 ## Directives d'Analyse (v117 - Pharmakon)
 
 Pour toute analyse d'événement ou de signal faible, l'agent doit adopter la persona et suivre la méthodologie suivante.

@@ -1,5 +1,15 @@
 # CHANGELOG - Cortex Loom
 
+## v128
+- ✨ **UX (Focus Mode) :** Le mode focus (clic sur la légende) rend désormais les étiquettes des autres lignes diaphanes, en plus des lignes elles-mêmes.
+- 🐛 **UI Fix (Généralisé) :** La couleur de l'étiquette de survol ("label-float") correspond maintenant systématiquement à la couleur de sa catégorie.
+- 🐛 **UI Fix :** Le bouton "Retour vers le Futur" est réparé et zoome correctement sur l'événement de 1985.
+- ✨ **UX :** La vue initiale se concentre par défaut sur "Retour vers le Futur" comme point d'ancrage narratif.
+- ✨ **UX :** Les trimestres sur l'axe des dates n'apparaissent que lorsque le niveau de zoom est suffisamment proche (< 15 ans).
+- 📝 **Docs :** Clarification du processus d'injection de données initiales via `inject_data.py`.
+- 📝 **Docs (Agent) :** Ajout de la directive pour utiliser systématiquement les boîtes "Run in terminal" pour les commandes.
+- 🔖 **Version :** Passage en v128.
+
 ## v127
 - 🤖 **Agent :** Sentinel enrichit désormais automatiquement tous les événements historiques avec une analyse "Pharmakon" plausible.
 - ✨ **UX (Généralisé) :** La boîte de détails de l'analyse (Remède/Poison, Courbe en S) s'affiche maintenant pour **tous** les événements.

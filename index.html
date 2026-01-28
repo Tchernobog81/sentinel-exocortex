@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v127</title>
+    <title>THE LOOM : EXOCORTEX v128</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -128,16 +128,16 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v127</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v127...</div>
-        <div id="debug-log">Init v127...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v128</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v128...</div>
+        <div id="debug-log">Init v128...</div>
         <button id="btn-emergency" onclick="loadBackupData()">⚠️ CHARGER DONNÉES DE SECOURS (OFFLINE)</button>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v127</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v128</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -350,9 +350,18 @@
                 loomChart.options.scales.x.max = target + 10;
                 log(`Focus Actu: ${target}`);
             } else {
-                loomChart.options.scales.x.min = 1940;
-                loomChart.options.scales.x.max = 2050;
-                log(`Focus Standard: 1940-2050`);
+                // Fallback to BTTF event
+                const bttfEvent = json.find(d => d.label.includes("Retour vers le Futur"));
+                if (bttfEvent) {
+                    const targetYear = bttfEvent.year;
+                    loomChart.options.scales.x.min = targetYear - 10;
+                    loomChart.options.scales.x.max = targetYear + 10;
+                    log(`Focus initial: Retour vers le Futur (${targetYear})`);
+                } else {
+                    loomChart.options.scales.x.min = 1940;
+                    loomChart.options.scales.x.max = 2050;
+                    log(`Focus Standard: 1940-2050`);
+                }
             }
             loomChart.update();
         }
@@ -488,10 +497,16 @@
         }
 
         function resetView() { 
-            // Focus serré sur 1985 (1975-1995) pour bien voir l'étiquette
-            loomChart.options.scales.x.min=1975; 
-            loomChart.options.scales.x.max=1995; 
-            loomChart.update(); 
+            const allData = loomChart.data.datasets.flatMap(d => d.data);
+            const bttfEvent = allData.find(d => d.label.includes("Retour vers le Futur"));
+            if (bttfEvent) {
+                const targetYear = bttfEvent.year;
+                loomChart.options.scales.x.min = targetYear - 10;
+                loomChart.options.scales.x.max = targetYear + 10;
+                loomChart.update();
+            } else {
+                log("Événement 'Retour vers le Futur' introuvable pour le focus.", "warn");
+            }
         }
         function showDetail(d) {
             document.getElementById('card-title').innerText = d.label;
@@ -547,7 +562,19 @@
                         }
                     },
                     scales: {
-                        x: { type: 'linear', min: 1800, max: 2120, grid: { color: '#222' }, ticks: { color: '#666', callback: decToDate } },
+                        x: { 
+                            type: 'linear', min: 1800, max: 2120, grid: { color: '#222' }, 
+                            ticks: { 
+                                color: '#666', 
+                                callback: function(value, index, ticks) {
+                                    const zoomLevel = this.chart.scales.x.max - this.chart.scales.x.min;
+                                    if (zoomLevel <= 15) { // Si le zoom est de 15 ans ou moins, on affiche les trimestres
+                                        return decToDate(value);
+                                    }
+                                    return Math.floor(value); // Sinon, on affiche juste l'année
+                                } 
+                            } 
+                        },
                         y: { type: 'logarithmic', position: 'right', grid: { color: '#111' } }
                     },
                     plugins: {
@@ -558,8 +585,11 @@
                             borderColor: ctx => COLORS[ctx.dataset.label] || '#9ca3af',
                             borderWidth: 1,
                             borderRadius: 2, padding: 4, font: { size: 9, weight: 'bold' },
-                            // Affiche le label uniquement si c'est un "tipping point" pour alléger le visuel
-                            formatter: v => v.tipping ? v.label : null, 
+                            formatter: v => {
+                                // En mode focus, on n'affiche que les labels de la catégorie active
+                                if (activeCategory && v.category !== activeCategory) return null;
+                                return v.tipping ? v.label : null;
+                            }, 
                             clip: true, // ✅ CORRECTION: Coupe les labels qui sortent du cadre
                             listeners: { // Le curseur est géré ici uniquement pour les labels
                                 click: c => showDetail(c.dataset.data[c.dataIndex]),
