@@ -1,5 +1,13 @@
 # CHANGELOG - Cortex Loom
 
+## v129
+- 🎨 **UI (Focus Mode) :** Transparence forte appliquée aux étiquettes non sélectionnées lors du focus sur une catégorie.
+- 🎨 **UI (Labels) :** Ajout d'un "fil" de connexion visuel pour toutes les étiquettes permanentes (plugin `connectorPlugin`).
+- 🎨 **UI (Hover) :** Les bulles surgissantes adoptent le même style (fond coloré, bordure) que les étiquettes permanentes.
+- 💉 **Data :** Injection massive pour atteindre >300 événements (Histoire sciences, Politique, Futurisme).
+- 🔍 **UX (Zoom) :** Les trimestres ne s'affichent sur l'axe X que si le zoom est très serré (< 2 ans).
+- 🔖 **Version :** Passage en v129 (Correction affichage version).
+
 ## v128
 - ✨ **UX (Focus Mode) :** Le mode focus (clic sur la légende) rend désormais les étiquettes des autres lignes diaphanes, en plus des lignes elles-mêmes.
 - 🐛 **UI Fix (Généralisé) :** La couleur de l'étiquette de survol ("label-float") correspond maintenant systématiquement à la couleur de sa catégorie.

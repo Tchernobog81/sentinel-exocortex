@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v128</title>
+    <title>THE LOOM : EXOCORTEX v129</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -112,14 +112,16 @@
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
         }
         #label-float { 
-            position: fixed; pointer-events: none; background: rgba(0,0,0,0.95); 
-            border: 1px solid var(--accent); color: #fff; padding: 5px 10px; 
+            --label-bg: rgba(0,0,0,0.9); --label-border: var(--accent);
+            position: fixed; pointer-events: none; background: var(--label-bg); 
+            border: 1px solid var(--label-border); color: #fff; padding: 5px 10px; 
             z-index: 4000; display: none; align-items: center; gap: 8px; font-size: 10px; 
+            border-radius: 2px; font-weight: bold;
         }
         /* Le "fil" qui relie la bulle au point */
         #label-float::after {
             content: ''; position: absolute; left: -1px; bottom: -1px;
-            width: 22px; height: 1px; background: var(--accent);
+            width: 22px; height: 1px; background: var(--label-border);
             transform-origin: left center; transform: rotate(135deg);
         }
         .cyber-icon-frame { width: 24px; height: 24px; border: 1px solid #333; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; font-size: 14px; }
@@ -128,16 +130,16 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v128</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v128...</div>
-        <div id="debug-log">Init v128...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v129</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v129...</div>
+        <div id="debug-log">Init v129...</div>
         <button id="btn-emergency" onclick="loadBackupData()">⚠️ CHARGER DONNÉES DE SECOURS (OFFLINE)</button>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v128</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v129</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -414,6 +416,33 @@
             loomChart.update('none');
         }
 
+        // Plugin pour dessiner les fils des étiquettes permanentes
+        const connectorPlugin = {
+            id: 'connectorPlugin',
+            afterDatasetsDraw: (chart) => {
+                const ctx = chart.ctx;
+                chart.data.datasets.forEach((dataset, i) => {
+                    const meta = chart.getDatasetMeta(i);
+                    if (meta.hidden) return;
+                    meta.data.forEach((element, index) => {
+                        const dataPoint = dataset.data[index];
+                        if (!dataPoint.tipping) return; // Seulement pour les étiquettes permanentes
+                        if (activeCategory && dataPoint.category !== activeCategory) return; // Pas de fil si estompé
+
+                        const model = element.tooltipPosition();
+                        ctx.save();
+                        ctx.beginPath();
+                        ctx.lineWidth = 1;
+                        ctx.strokeStyle = dataset.borderColor;
+                        ctx.moveTo(model.x, model.y);
+                        ctx.lineTo(model.x, model.y - 12); // Connecte au bas de l'étiquette (offset 12)
+                        ctx.stroke();
+                        ctx.restore();
+                    });
+                });
+            }
+        };
+
         function updateFlux(data) {
             const now = new Date();
             const limit = new Date(now.getTime() - (12 * 60 * 60 * 1000)); 
@@ -568,7 +597,7 @@
                                 color: '#666', 
                                 callback: function(value, index, ticks) {
                                     const zoomLevel = this.chart.scales.x.max - this.chart.scales.x.min;
-                                    if (zoomLevel <= 15) { // Si le zoom est de 15 ans ou moins, on affiche les trimestres
+                                    if (zoomLevel <= 2) { // Si le zoom est de 2 ans ou moins, on affiche les trimestres
                                         return decToDate(value);
                                     }
                                     return Math.floor(value); // Sinon, on affiche juste l'année
@@ -577,17 +606,33 @@
                         },
                         y: { type: 'logarithmic', position: 'right', grid: { color: '#111' } }
                     },
+                    plugins: [connectorPlugin], // Ajout du plugin de connexion
                     plugins: {
                         legend: { display: false }, 
                         datalabels: { 
                             color: '#fff', align: 'top', offset: 12, 
-                            backgroundColor: ctx => hexToRgba(COLORS[ctx.dataset.label] || '#9ca3af', 0.8),
-                            borderColor: ctx => COLORS[ctx.dataset.label] || '#9ca3af',
+                            // Gestion de la transparence en mode focus
+                            backgroundColor: ctx => {
+                                const dp = ctx.dataset.data[ctx.dataIndex];
+                                const color = COLORS[dp.category] || '#9ca3af';
+                                if (activeCategory && dp.category !== activeCategory) return hexToRgba(color, 0.1);
+                                return hexToRgba(color, 0.8);
+                            },
+                            borderColor: ctx => {
+                                const dp = ctx.dataset.data[ctx.dataIndex];
+                                const color = COLORS[dp.category] || '#9ca3af';
+                                if (activeCategory && dp.category !== activeCategory) return hexToRgba(color, 0.1);
+                                return color;
+                            },
+                            color: ctx => {
+                                const dp = ctx.dataset.data[ctx.dataIndex];
+                                if (activeCategory && dp.category !== activeCategory) return 'rgba(255,255,255,0.1)';
+                                return '#fff';
+                            },
                             borderWidth: 1,
                             borderRadius: 2, padding: 4, font: { size: 9, weight: 'bold' },
                             formatter: v => {
-                                // En mode focus, on n'affiche que les labels de la catégorie active
-                                if (activeCategory && v.category !== activeCategory) return null;
+                                // On retourne toujours le label si tipping, la couleur gère la transparence
                                 return v.tipping ? v.label : null;
                             }, 
                             clip: true, // ✅ CORRECTION: Coupe les labels qui sortent du cadre
@@ -620,7 +665,9 @@
                             const dataPoint = loomChart.data.datasets[el[0].datasetIndex].data[el[0].index];
                             // *** FIX COULEUR HOVER LABEL ***
                             const catColor = COLORS[dataPoint.category] || COLORS['DEFAUT'];
-                            f.style.setProperty('--label-accent', catColor);
+                            // On applique le style "permanent" à la bulle hover
+                            f.style.setProperty('--label-bg', hexToRgba(catColor, 0.8));
+                            f.style.setProperty('--label-border', catColor);
 
                             const canvasRect = canvas.getBoundingClientRect();
                             
