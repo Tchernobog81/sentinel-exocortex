@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v120
+- 🚀 **Pipeline :** Correction du workflow de déploiement GitHub Actions.
+- 🔧 **CI/CD :** Ajout d'un fichier de workflow `sentinel_workflow.yml` dédié et robuste.
+- 📦 **Dépendances :** Création d'un fichier `requirements.txt` pour fiabiliser l'installation.
+- 🔖 **Version :** Passage en v120.
+
 ## v119
 - 🐛 **UI Fix :** Le curseur se transforme désormais correctement en "doigt" au survol des étiquettes d'événements sur le graphique.
 - 📚 **Data Injection :** Ajout d'événements historiques clés pour l'Horloge de l'Apocalypse (1949, 1984, 2018).
