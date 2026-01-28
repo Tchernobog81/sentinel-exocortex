@@ -1,5 +1,14 @@
 # CHANGELOG - Cortex Loom
 
+## v124
+- 🐛 **UI Fix :** Le curseur "doigt" est maintenant fonctionnel au survol des étiquettes (conflit `onHover` résolu).
+- 📚 **Data :** Les événements de la catégorie `🏛️ POLITIQUE` affichent désormais leurs étiquettes persistantes (`tipping: true`).
+- 📚 **Data :** Vérification et confirmation de la description et de la source pour "Tchernobyl".
+- 🎨 **UI :** La date des événements historiques dans la carte de détail affiche l'année entière (ex: 1986).
+- 📝 **Docs :** Ajout d'une section "Directives de Qualité des Données" dans `GEMINI_INSTRUCTIONS.md`.
+- 🔧 **CI/CD :** Ajout d'un `run-name` au workflow GitHub Actions pour une meilleure identification des exécutions.
+- 🔖 **Version :** Passage en v124.
+
 ## v123
 - 🚀 **Pipeline Fix :** Ajout d'une règle de concurrence (`concurrency`) au workflow GitHub Actions pour empêcher les exécutions en double.
 - 🔖 **Version :** Passage rigoureux à la v123 sur tous les composants pour corriger les problèmes de cache et d'affichage.

@@ -12,6 +12,7 @@ concurrency:
 
 jobs:
   run-sentinel:
+    name: Run Sentinel Agent on ${{ github.ref_name }} - ${{ github.run_id }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

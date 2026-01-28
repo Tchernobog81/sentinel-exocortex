@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v123</title>
+    <title>THE LOOM : EXOCORTEX v124</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -129,15 +129,15 @@
 
     <div id="loading-screen">
         <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v123...</div>
-        <div id="debug-log">Init v123...</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v124...</div>
+        <div id="debug-log">Init v124...</div>
         <button id="btn-emergency" onclick="loadBackupData()">⚠️ CHARGER DONNÉES DE SECOURS (OFFLINE)</button>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v123</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v124</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -493,7 +493,7 @@
         function showDetail(d) {
             document.getElementById('card-title').innerText = d.label;
             document.getElementById('card-who').innerText = d.whoWhat || "?";
-            document.getElementById('card-date').innerText = decToDate(d.x);
+            document.getElementById('card-date').innerText = Math.floor(d.x); // Affiche l'année entière pour les événements historiques
             document.getElementById('card-desc').innerText = d.description || d.how || "Aucune description.";
             document.getElementById('card-stamp').innerText = d.timestamp || "ARCHIVE";
 
@@ -557,7 +557,7 @@
                             // Affiche le label uniquement si c'est un "tipping point" pour alléger le visuel
                             formatter: v => v.tipping ? v.label : null, 
                             clip: true, // ✅ CORRECTION: Coupe les labels qui sortent du cadre
-                            listeners: { 
+                            listeners: { // Le curseur est géré ici uniquement pour les labels
                                 click: c => showDetail(c.dataset.data[c.dataIndex]),
                                 enter: function(context) {
                                     context.chart.canvas.style.cursor = 'pointer';
@@ -570,9 +570,7 @@
                         zoom: { zoom: { wheel: { enabled: true }, mode: 'x' }, pan: { enabled: true, mode: 'xy' } }
                     },
                     onHover: (e, el) => {
-                        // Gestion robuste du curseur
-                        const canvas = e.chart.canvas;
-                        canvas.style.cursor = el.length > 0 ? 'pointer' : 'default';
+                        // La gestion du curseur est maintenant déléguée aux listeners de datalabels pour les labels
                         
                         const f = document.getElementById('label-float'), img = document.getElementById('label-icon');
                         if (el.length > 0) {

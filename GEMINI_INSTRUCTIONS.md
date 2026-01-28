@@ -46,6 +46,17 @@ Pour chaque événement soumis :
 
 **Exemple d'encart final :**
 ```bash
+
+### Directives de Qualité des Données
+
+Pour chaque événement injecté ou analysé, les champs suivants doivent être renseignés avec la plus grande précision :
+
+-   **`whoWhat`** : L'acteur principal ou l'entité responsable de l'événement.
+-   **`description`** : Une description détaillée et contextuelle de l'événement.
+-   **`url`** : Un lien pertinent vers une source d'information fiable (Wikipédia, article scientifique, etc.).
+-   **Dates (`year`, `timestamp`)** :
+    -   `year` peut être décimal pour un positionnement précis sur le graphique.
+    -   La date affichée dans les détails de l'événement (`card-date`) doit être l'année entière (arrondie à l'inférieur) pour les événements historiques, ou une date précise si le `timestamp` est plus pertinent.
 # Commandes à exécuter dans le terminal
 git add .
 git commit -m "feat(feature): Description de la fonctionnalité"
