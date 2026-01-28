@@ -347,8 +347,8 @@
                 loomChart.options.scales.x.max = target + 5;
                 log(`Focus Actu: ${target}`);
             } else {
-                loomChart.options.scales.x.min = 1960;
-                loomChart.options.scales.x.max = 2040;
+                loomChart.options.scales.x.min = 1975;
+                loomChart.options.scales.x.max = 1995;
                 log(`Focus Standard: 1985`);
             }
             loomChart.update();
@@ -522,6 +522,12 @@
                 options: {
                     responsive: true, maintainAspectRatio: false,
                     layout: { padding: { left: 20, right: 50, top: 20, bottom: 20 } },
+                    onClick: (e, el) => {
+                        if (el.length > 0) {
+                            const d = loomChart.data.datasets[el[0].datasetIndex].data[el[0].index];
+                            showDetail(d);
+                        }
+                    },
                     scales: {
                         x: { type: 'linear', min: 1960, max: 2040, grid: { color: '#222' }, ticks: { color: '#666', callback: decToDate } },
                         y: { type: 'logarithmic', position: 'right', grid: { color: '#111' } }
