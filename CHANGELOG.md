@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v119
+- 🐛 **UI Fix :** Le curseur se transforme désormais correctement en "doigt" au survol des étiquettes d'événements sur le graphique.
+- 📚 **Data Injection :** Ajout d'événements historiques clés pour l'Horloge de l'Apocalypse (1949, 1984, 2018).
+- 📚 **Data Injection :** Ajout d'une série d'événements retraçant notre progression sur l'échelle de Kardashev (Type 0.7 -> 0.73).
+- 🔖 **Version :** Passage en v119.
+
 ## v117
 - 🧠 **Nouvelles Directives d'Analyse & Évolution du Scope**
 - **Horloge de l'Apocalypse (Doomsday Clock)** : La ligne "Risque" intègrera désormais toutes les mises à jour de l'horloge, avec les justifications de chaque changement. Niveau actuel : 90 secondes avant minuit (Mise à jour de Janvier 2024).
