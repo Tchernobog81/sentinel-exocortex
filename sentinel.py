@@ -161,7 +161,14 @@ def scan_google_news_rss() -> Dict[str, Any] | None:
     # URL pour les actualités en français sur "technological singularity" OR "artificial general intelligence"
     RSS_URL = "https://news.google.com/rss/search?q=%22technological+singularity%22+OR+%22artificial+general+intelligence%22&hl=fr&gl=FR&ceid=FR:fr"
 
-    feed = feedparser.parse(RSS_URL)
+    try:
+        resp = requests.get(RSS_URL, timeout=15)
+        resp.raise_for_status()
+        feed = feedparser.parse(resp.content)
+    except Exception as e:
+        logging.error(f"[SCAN] Erreur lors de la récupération du flux RSS : {e}")
+        return None
+
     if not feed.entries:
         logging.info("... Aucun article trouvé dans le flux RSS.")
         return None

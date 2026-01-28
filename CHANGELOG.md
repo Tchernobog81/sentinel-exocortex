@@ -1,5 +1,17 @@
 # CHANGELOG - Cortex Loom
 
+## v135
+- 🚀 **Pipeline Fix :** Ajout d'un `timeout-minutes: 5` au workflow GitHub Actions pour tuer les processus bloqués.
+- 🤖 **Agent Fix :** Le scan RSS utilise désormais `requests` avec un timeout (15s) pour éviter les blocages réseau infinis.
+- 🔖 **Version :** Passage en v135.
+
+## v134
+- 🐛 **UI Fix :** Correction critique de la configuration Chart.js qui empêchait la désactivation des infobulles par défaut (doublons).
+- 🔍 **UX (Zoom & Labels) :** Affichage dynamique des étiquettes basé sur la densité. Zoom arrière = Majeures uniquement. Zoom avant (<15 ans) = Toutes (si place).
+- 🎨 **UI (Hover) :** Le fil de l'étiquette surgissante est maintenant ancré au coin haut-gauche, assurant une connexion parfaite avec le point quelle que soit la taille du texte.
+- 🔧 **Code :** Nettoyage de la déclaration des plugins dans `index.html`.
+- 🔖 **Version :** Passage en v134.
+
 ## v133
 - 🛠️ **DevEnv :** Ajout de configurations VS Code pour stabiliser Pylance et l'environnement Python.
 - 📝 **Docs :** Ajout d'une section Troubleshooting dans le README pour les erreurs courantes.

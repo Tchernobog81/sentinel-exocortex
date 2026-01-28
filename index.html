@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v133</title>
+    <title>THE LOOM : EXOCORTEX v135</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -120,7 +120,7 @@
         }
         /* Le "fil" qui relie la bulle au point */
         #label-float::after {
-            content: ''; position: absolute; left: -1px; bottom: -1px;
+            content: ''; position: absolute; left: -1px; top: -1px; /* Ancrage haut-gauche pour viser le point en bas-gauche */
             width: 22px; height: 1px; background: var(--label-border);
             transform-origin: left center; transform: rotate(135deg);
         }
@@ -130,16 +130,16 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v133</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v133...</div>
-        <div id="debug-log">Init v133...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v135</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v135...</div>
+        <div id="debug-log">Init v135...</div>
         <button id="btn-emergency" onclick="loadBackupData()">⚠️ CHARGER DONNÉES DE SECOURS (OFFLINE)</button>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v133</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v135</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -422,12 +422,16 @@
             id: 'connectorPlugin',
             afterDatasetsDraw: (chart) => {
                 const ctx = chart.ctx;
+                const xRange = chart.scales.x.max - chart.scales.x.min;
+                const isZoomedIn = xRange < 15; // Seuil de densité pour afficher les fils secondaires
+
                 chart.data.datasets.forEach((dataset, i) => {
                     const meta = chart.getDatasetMeta(i);
                     if (meta.hidden) return;
                     meta.data.forEach((element, index) => {
                         const dataPoint = dataset.data[index];
-                        if (!dataPoint.tipping) return; // Seulement pour les étiquettes permanentes
+                        // Affiche le fil si c'est un point majeur OU si on est assez zoomé
+                        if (!dataPoint.tipping && !isZoomedIn) return; 
                         if (activeCategory && dataPoint.category !== activeCategory) return; // Pas de fil si estompé
 
                         const model = element.tooltipPosition();
@@ -531,14 +535,14 @@
             const bttfEvent = allData.find(d => d.label.includes("Retour vers le Futur"));
             if (bttfEvent) {
                 const targetYear = bttfEvent.year;
-                loomChart.options.scales.x.min = targetYear - 5;
-                loomChart.options.scales.x.max = targetYear + 5;
+                loomChart.options.scales.x.min = targetYear - 2; // Zoom plus serré pour voir les détails
+                loomChart.options.scales.x.max = targetYear + 2;
                 loomChart.update();
             } else {
                 // Fallback si l'événement n'est pas trouvé
-                loomChart.options.scales.x.min = 1980;
-                loomChart.options.scales.x.max = 1990;
-                loomChart.update();
+                loomChart.options.scales.x.min = 1983;
+                loomChart.options.scales.x.max = 1987;
+                loomChart.update('active');
             }
         }
         function showDetail(d) {
@@ -602,6 +606,7 @@
             loomChart = new Chart(ctx, {
                 type: 'line',
                 data: { datasets: [] },
+                plugins: [connectorPlugin], // ✅ DÉPLACÉ ICI : Enregistrement correct du plugin custom
                 options: {
                     responsive: true, maintainAspectRatio: false,
                     layout: { padding: { left: 20, right: 50, top: 20, bottom: 20 } },
@@ -627,11 +632,19 @@
                         },
                         y: { type: 'logarithmic', position: 'right', grid: { color: '#111' } }
                     },
-                    plugins: [connectorPlugin], // Ajout du plugin de connexion
                     plugins: {
                         legend: { display: false },
                         tooltip: { enabled: false }, // Désactive l'infobulle native (doublon)
-                        datalabels: { 
+                        datalabels: {
+                            // LOGIQUE DE DENSITÉ
+                            display: function(context) {
+                                const chart = context.chart;
+                                const range = chart.scales.x.max - chart.scales.x.min;
+                                const data = context.dataset.data[context.dataIndex];
+                                if (data.tipping) return true; // Toujours afficher les majeurs
+                                if (range < 15) return 'auto'; // Afficher les autres si zoomé et si place (auto)
+                                return false; // Masquer les mineurs en vue large
+                            },
                             color: '#fff', align: 'top', offset: 12, 
                             // Gestion de la transparence en mode focus
                             backgroundColor: ctx => {
@@ -655,9 +668,8 @@
                             borderRadius: 2, padding: 4, font: { size: 9, weight: 'bold' },
                             formatter: v => {
                                 // On retourne toujours le label si tipping, la couleur gère la transparence
-                                // Ajout de l'icône dans le texte pour un design unifié
-                                return v.tipping ? (ICONS[v.category] || '') + ' ' + v.label : null;
-                            }, 
+                                return (ICONS[v.category] || '') + ' ' + v.label;
+                            },
                             clip: true, // ✅ CORRECTION: Coupe les labels qui sortent du cadre
                             listeners: { // Le curseur est géré ici uniquement pour les labels
                                 click: c => showDetail(c.dataset.data[c.dataIndex]),
@@ -677,7 +689,7 @@
                                 mode: 'xy' // Zoom vertical et horizontal
                             }, 
                             pan: { enabled: true, mode: 'xy' },
-                            limits: { x: { minRange: 1 } } // Limite le zoom à 1 an (4 trimestres)
+                            limits: { x: { minRange: 1 } } // ✅ BLOQUE LE ZOOM À 1 AN (4 trimestres)
                         }
                     },
                     onHover: (e, el) => {
@@ -694,8 +706,10 @@
                             const point = el[0].element;
                             const dataPoint = loomChart.data.datasets[el[0].datasetIndex].data[el[0].index];
                             
-                            // Si le point a déjà une étiquette permanente, on ne montre pas la surgissante
-                            if (dataPoint.tipping) {
+                            // Si le point a déjà une étiquette affichée (Majeur ou Zoomé), on ne montre pas la surgissante
+                            const range = loomChart.scales.x.max - loomChart.scales.x.min;
+                            const isLabelVisible = dataPoint.tipping || range < 15;
+                            if (isLabelVisible) {
                                 f.style.display = 'none';
                                 return;
                             }
