@@ -299,5 +299,13 @@
   {"year": 2026, "value": 19000, "label": "Lunettes AR (Meta/Apple)", "category": "🟡 HARDWARE", "description": "Adoption massive AR."},
   {"year": 2027, "value": 22000, "label": "Fusion (Q>1 soutenu)", "category": "🟡 HARDWARE", "description": "Avancée majeure énergie."},
   {"year": 2028, "value": 26000, "label": "Mission Retour Mars", "category": "🟣 ESPACE", "description": "Retour échantillons martiens."},
-  {"year": 2029, "value": 32000, "label": "AGI (Débat)", "category": "🔵 COGNITION", "description": "Premiers systèmes quasi-généraux."}
+  {"year": 2029, "value": 32000, "label": "AGI (Débat)", "category": "🔵 COGNITION", "description": "Premiers systèmes quasi-généraux."},
+  {"year": 2022.9, "value": 11000, "label": "Licenciements Tech (Vague 1)", "category": "🏛️ POLITIQUE", "description": "Début de la correction post-Covid et pivot vers l'IA."},
+  {"year": 2023.1, "value": 12000, "label": "Licenciements Google/MS (12k+)", "category": "🏛️ POLITIQUE", "description": "Réorientation massive des ressources vers l'IA générative."},
+  {"year": 2023.3, "value": 12500, "label": "Licenciements Meta (10k)", "category": "🏛️ POLITIQUE", "description": "L'année de l'efficacité selon Zuckerberg."},
+  {"year": 2024.1, "value": 14000, "label": "Licenciements Tech (Vague 2)", "category": "🏛️ POLITIQUE", "description": "Poursuite de l'automatisation et de la réduction des coûts."},
+  {"year": 2024.5, "value": 15000, "label": "Grèves Jeu Vidéo (IA)", "category": "🏛️ POLITIQUE", "description": "Acteurs de doublage contre l'IA vocale."},
+  {"year": 1950, "value": 155, "label": "Lois de la Robotique (I, Robot)", "category": "🔮 IMAGINAIRE", "author": "Isaac Asimov", "description": "Les trois lois fondamentales."},
+  {"year": 1968, "value": 420, "label": "Do Androids Dream? (Blade Runner)", "category": "🔮 IMAGINAIRE", "author": "Philip K. Dick", "description": "Questionnement sur l'empathie artificielle."},
+  {"year": 1982, "value": 720, "label": "Tron", "category": "🔮 IMAGINAIRE", "description": "Immersion dans le monde numérique."}
 ]

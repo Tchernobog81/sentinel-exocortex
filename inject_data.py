@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+import random
 
 try:
     from dotenv import load_dotenv
@@ -13,6 +14,43 @@ except ImportError:
 load_dotenv()
 CLOUD_URL = os.environ.get("CLOUD_URL")
 DATA_FILE = "loom_consolidated_v102.json"
+
+def enrich_event_if_needed(event):
+    """
+    Enrichit un événement avec des données analytiques simulées (Pharmakon, S-Curve)
+    si elles sont manquantes. Copié de sentinel.py pour cohérence.
+    """
+    if "s_curve_phase" in event and event.get("s_curve_phase") is not None:
+        return event
+
+    year = event.get("year", 1900)
+    category = event.get("category", "DEFAUT")
+
+    # 1. Simulation plausible de la phase de la courbe en S
+    if year < 1940: s_curve_phase = 1
+    elif year < 1990: s_curve_phase = 2
+    elif year < 2015: s_curve_phase = 3
+    elif year < 2030: s_curve_phase = 4
+    else: s_curve_phase = 5
+
+    # 2. Simulation plausible de l'analyse Pharmakon
+    remedy = 50
+    if "ENTROPIE" in category: remedy = 10
+    elif "BIOTECH" in category or "NOOSPHÈRE" in category: remedy = 70
+    elif "HARDWARE" in category or "COGNITION" in category: remedy = 60
+    elif "POLITIQUE" in category: remedy = 35
+    elif "IMAGINAIRE" in category: remedy = 50
+
+    remedy += random.randint(-10, 10)
+    remedy = max(5, min(95, remedy))
+    poison = 100 - remedy
+
+    # 3. Ajout des champs d'analyse
+    event["s_curve_phase"] = s_curve_phase
+    event["pharmakon_remedy_percent"] = remedy
+    event["pharmakon_poison_percent"] = poison
+    
+    return event
 
 def inject_massive_data():
     print("--- INJECTION DE DONNÉES (SEED) ---")
@@ -29,6 +67,16 @@ def inject_massive_data():
     try:
         with open(DATA_FILE, 'r', encoding='utf-8') as f:
             data = json.load(f)
+            
+        print(f"🧠 Enrichissement des données (Pharmakon/S-Curve)...")
+        enriched_count = 0
+        for event in data:
+            enrich_event_if_needed(event)
+            enriched_count += 1
+            
+        print(f"💾 Sauvegarde des données enrichies dans {DATA_FILE}...")
+        with open(DATA_FILE, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
             
         print(f"📦 Préparation de l'envoi de {len(data)} événements...")
         

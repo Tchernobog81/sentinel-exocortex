@@ -1,5 +1,21 @@
 # CHANGELOG - Cortex Loom
 
+## v131
+- 🔧 **Pipeline Fix :** Correction critique de la perte des analyses Pharmakon lors de l'injection de données.
+- 🧠 **Data Intelligence :** Le script `inject_data.py` enrichit désormais automatiquement les données (S-Curve, Pharmakon) avant l'envoi.
+- 💾 **Data Persistence :** Les données enrichies sont sauvegardées localement dans `loom_consolidated_v102.json` pour devenir la source de vérité.
+- 🔖 **Version :** Passage en v131.
+
+## v130
+- 🐛 **UI Fix :** Suppression des infobulles natives (doublons) et masquage de l'étiquette surgissante sur les points permanents.
+- 🎨 **UI (Labels) :** Les étiquettes permanentes incluent désormais l'icône de catégorie et un fil de connexion renforcé.
+- 🔍 **UX (Zoom) :** Zoom activé en XY, limité à une profondeur de 1 an (4 trimestres).
+- 🧭 **UX (Nav) :** Réintégration du saut "Prédit / Réalisé" dans la fiche de détail.
+- 🧭 **UX (Nav) :** Le bouton "Retour vers le Futur" centre strictement sur 1985.
+- 🏛️ **Data :** Ajout des vagues de licenciements Tech/IA (2023-2024).
+- 💉 **Data :** Injection complémentaire pour dépasser les 300 événements.
+- 🔖 **Version :** Passage en v130.
+
 ## v129
 - 🎨 **UI (Focus Mode) :** Transparence forte appliquée aux étiquettes non sélectionnées lors du focus sur une catégorie.
 - 🎨 **UI (Labels) :** Ajout d'un "fil" de connexion visuel pour toutes les étiquettes permanentes (plugin `connectorPlugin`).
