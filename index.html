@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v135</title>
+    <title>THE LOOM : EXOCORTEX v136</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -130,16 +130,16 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v135</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v135...</div>
-        <div id="debug-log">Init v135...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v136</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v136...</div>
+        <div id="debug-log">Init v136...</div>
         <button id="btn-emergency" onclick="loadBackupData()">⚠️ CHARGER DONNÉES DE SECOURS (OFFLINE)</button>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v135</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v136</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -374,7 +374,7 @@
             const baseColor = COLORS[cat] || COLORS["DEFAUT"];
             if (activeCategory && activeCategory !== cat) {
                 // Mode Focus : on estompe les autres
-                return { color: hexToRgba(baseColor, 0.1), width: 1 };
+                return { color: hexToRgba(baseColor, 0.25), width: 1 }; // Opacité augmentée pour lisibilité
             }
             // Mode Normal ou Focus sur cette ligne
             return { color: baseColor, width: activeCategory ? 3 : 2 };
@@ -650,18 +650,18 @@
                             backgroundColor: ctx => {
                                 const dp = ctx.dataset.data[ctx.dataIndex];
                                 const color = COLORS[dp.category] || '#9ca3af';
-                                if (activeCategory && dp.category !== activeCategory) return hexToRgba(color, 0.1);
+                                if (activeCategory && dp.category !== activeCategory) return hexToRgba(color, 0.25);
                                 return hexToRgba(color, 0.8);
                             },
                             borderColor: ctx => {
                                 const dp = ctx.dataset.data[ctx.dataIndex];
                                 const color = COLORS[dp.category] || '#9ca3af';
-                                if (activeCategory && dp.category !== activeCategory) return hexToRgba(color, 0.1);
+                                if (activeCategory && dp.category !== activeCategory) return hexToRgba(color, 0.25);
                                 return color;
                             },
                             color: ctx => {
                                 const dp = ctx.dataset.data[ctx.dataIndex];
-                                if (activeCategory && dp.category !== activeCategory) return 'rgba(255,255,255,0.1)';
+                                if (activeCategory && dp.category !== activeCategory) return 'rgba(255,255,255,0.25)';
                                 return '#fff';
                             },
                             borderWidth: 1,

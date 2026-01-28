@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v136
+- 📊 **Data Fix :** Correction de la courbe de Singularité (suppression de la "bosse" en 2030). Les valeurs suivent désormais une progression sigmoïde stricte.
+- 🎨 **UI (Focus) :** Ajustement de l'opacité des courbes non-actives (0.1 -> 0.25) pour une meilleure lisibilité du contexte.
+- 🔖 **Version :** Passage en v136.
+
 ## v135
 - 🚀 **Pipeline Fix :** Ajout d'un `timeout-minutes: 5` au workflow GitHub Actions pour tuer les processus bloqués.
 - 🤖 **Agent Fix :** Le scan RSS utilise désormais `requests` avec un timeout (15s) pour éviter les blocages réseau infinis.
