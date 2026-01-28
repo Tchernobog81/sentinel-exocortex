@@ -174,7 +174,39 @@
             <span>Source: <b id="card-who" class="text-zinc-300"></b></span>
             <span>Date: <b id="card-date" class="text-zinc-300"></b></span>
         </div>
-        <p id="card-desc" class="text-zinc-300 italic text-sm leading-relaxed"></p>
+        <p id="card-desc" class="text-zinc-300 italic text-sm leading-relaxed mb-6"></p>
+
+        <!-- v117 Analysis Section -->
+        <div id="card-analysis-section" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs border-t border-zinc-800 pt-4">
+            <!-- Pharmakon -->
+            <div>
+                <h3 class="font-bold text-amber-500 uppercase text-[10px] mb-2">Analyse Pharmakon</h3>
+                <div class="w-full flex rounded-full h-2.5 bg-zinc-800 overflow-hidden">
+                    <div id="pharmakon-remedy-bar" class="bg-emerald-500 h-2.5" style="width: 50%"></div>
+                    <div id="pharmakon-poison-bar" class="bg-red-500 h-2.5" style="width: 50%"></div>
+                </div>
+                <div class="flex justify-between text-[10px] mt-1">
+                    <span class="text-emerald-400">Remède: <b id="pharmakon-remedy">50%</b></span>
+                    <span class="text-red-400">Poison: <b id="pharmakon-poison">50%</b></span>
+                </div>
+            </div>
+            <!-- S-Curve -->
+            <div>
+                <h3 class="font-bold text-amber-500 uppercase text-[10px] mb-2">Position Courbe en S</h3>
+                <div class="text-zinc-300"><b id="s-curve-phase" class="text-2xl font-mono mr-2">3</b> / 5</div>
+                <p id="s-curve-desc" class="text-zinc-500 text-[10px]">Phase d'accélération</p>
+            </div>
+            <!-- Convergences -->
+            <div class="md:col-span-2">
+                <h3 class="font-bold text-amber-500 uppercase text-[10px] mb-1">Convergences & Grand Filtre</h3>
+                <p id="convergences-text" class="text-zinc-400"></p>
+            </div>
+            <!-- Final Note -->
+            <div class="md:col-span-2 border-t border-zinc-800 pt-3 mt-2">
+                 <p id="final-note-text" class="text-zinc-500 italic"></p>
+            </div>
+        </div>
+
         <div class="mt-4 text-[9px] text-zinc-700 font-mono">ID: <span id="card-stamp"></span></div>
     </div>
 
@@ -192,6 +224,7 @@
 
         const COLORS = { 
             "⚪ SINGULARITÉ": "#ffffff", 
+            "✨ NOOSPHÈRE": "#0ea5e9",
             "🔮 IMAGINAIRE": "#f472b6", 
             "🟡 HARDWARE": "#fbbf24", 
             "🔵 COGNITION": "#3b82f6", 
@@ -204,6 +237,7 @@
         
         const ICONS = {
             "⚪ SINGULARITÉ": "🧠",
+            "✨ NOOSPHÈRE": "🌍",
             "🔮 IMAGINAIRE": "📚",
             "🟡 HARDWARE": "💾",
             "🔵 COGNITION": "⚡",
@@ -445,8 +479,37 @@
             document.getElementById('card-title').innerText = d.label;
             document.getElementById('card-who').innerText = d.whoWhat || "?";
             document.getElementById('card-date').innerText = decToDate(d.x);
-            document.getElementById('card-desc').innerText = d.description || d.how || "";
+            document.getElementById('card-desc').innerText = d.description || d.how || "Aucune description.";
             document.getElementById('card-stamp').innerText = d.timestamp || "ARCHIVE";
+
+            // v117 analysis fields
+            const analysisSection = document.getElementById('card-analysis-section');
+            if (d.s_curve_phase !== undefined) {
+                analysisSection.style.display = 'grid';
+
+                // Pharmakon
+                const remedyPercent = d.pharmakon_remedy_percent || 0;
+                const poisonPercent = d.pharmakon_poison_percent || 0;
+                document.getElementById('pharmakon-remedy-bar').style.width = `${remedyPercent}%`;
+                document.getElementById('pharmakon-poison-bar').style.width = `${poisonPercent}%`;
+                document.getElementById('pharmakon-remedy').innerText = `${remedyPercent}%`;
+                document.getElementById('pharmakon-poison').innerText = `${poisonPercent}%`;
+
+                // S-Curve
+                const sPhase = d.s_curve_phase;
+                document.getElementById('s-curve-phase').innerText = sPhase;
+                const phaseDescriptions = ["", "1: Émergence lente", "2: Inflexion", "3: Accélération", "4: Plateau de maturité", "5: Déclin / Saturation"];
+                document.getElementById('s-curve-desc').innerText = phaseDescriptions[sPhase] || "";
+
+                // Convergences & Final Note
+                document.getElementById('convergences-text').innerText = d.grand_filter_analysis || d.convergences || "N/A";
+                const finalNote = d.final_note || "";
+                document.getElementById('final-note-text').innerText = finalNote ? `"${finalNote}"` : "";
+
+            } else {
+                analysisSection.style.display = 'none';
+            }
+
             document.getElementById('detail-card').style.display = 'block';
         }
         function closeDetail() { document.getElementById('detail-card').style.display = 'none'; }

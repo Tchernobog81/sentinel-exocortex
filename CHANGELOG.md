@@ -1,5 +1,21 @@
 # CHANGELOG - Cortex Loom
 
+## v117
+- 🧠 **Nouvelles Directives d'Analyse & Évolution du Scope**
+- **Horloge de l'Apocalypse (Doomsday Clock)** : La ligne "Risque" intègrera désormais toutes les mises à jour de l'horloge, avec les justifications de chaque changement. Niveau actuel : 90 secondes avant minuit (Mise à jour de Janvier 2024).
+- **Références Culturelles** : Ajout de nouvelles œuvres de science-fiction et de culture populaire pour enrichir les parallèles (ex: *Pluribus*, *The Expanse*, *The Simpsons*).
+- **Noosphère** : Une nouvelle ligne est créée pour suivre l'évolution du concept de noosphère, depuis sa conceptualisation par Pierre Teilhard de Chardin jusqu'à ses interprétations modernes.
+- **Changement d'Horizons de Surveillance** : Le projet se concentre maintenant sur deux horizons de convergence :
+    1.  **Civilisation de Type 1** : Suivi de notre progression sur l'échelle de Kardashev.
+    2.  **Singularités Technologiques** : Détection des signaux faibles avec une évaluation du stade d'avancement (stade actuel estimé entre 0,7 et 0,8).
+- **Analyse "Pharmakon"** : Chaque événement sera analysé comme un *pharmakon* (remède/poison), avec une attribution d'un pourcentage pour chaque potentiel.
+- **Nouveau Prompt d'Analyse** : Adoption d'un nouveau modèle pour l'évaluation des événements, basé sur les directives suivantes :
+    1.  **Signal & Contexte** : Résumé bref.
+    2.  **Courbe en S** : Positionnement sur la courbe de la singularité (phase 1-5).
+    3.  **Analyse Pharmakon** : Potentiel médicamenteux vs. toxique (%).
+    4.  **Convergences & Grand Filtre** : Analyse des risques et bénéfices croisés.
+    5.  **Note Finale** : Touche d'humour noir et désabusé.
+
 ## v116
 - 🐛 Fix : Augmentation de la zone de survol (`hitRadius`) des points pour une détection plus fiable du curseur et de l'infobulle, même en survolant le texte du label.
 - 🐛 Debug : Version v116 affichée au démarrage.

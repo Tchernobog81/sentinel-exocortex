@@ -15,9 +15,11 @@
         { "year": 1982, "weight": 9, "value": 550, "label": "Blade Runner (Film)", "author": "Ridley Scott", "pitch": "Bio-ingénierie, test de Turing avancé.", "realYear": 2023, "url": "https://fr.wikipedia.org/wiki/Blade_Runner_(film)" },
         { "year": 1984, "weight": 10, "value": 600, "label": "Neuromancien", "tipping": true, "author": "William Gibson", "pitch": "Le Cyberspace, la Matrice.", "realYear": 2024.1, "url": "https://fr.wikipedia.org/wiki/Neuromancien" },
         { "year": 1984.5, "weight": 9, "value": 620, "label": "Terminator (Film)", "author": "James Cameron", "pitch": "IA militaire autonome (Skynet).", "realYear": 2026.1, "url": "https://fr.wikipedia.org/wiki/Terminator_(film)" },
+        { "year": 1989, "value": 800, "label": "Les Simpsons (Série TV)", "pitch": "Satire de la société occidentale et source de 'prédictions' culturelles et technologiques.", "pharmakon": {"remede": 30, "poison": 70}, "url": "https://fr.wikipedia.org/wiki/Les_Simpson" },
         { "year": 1997, "weight": 9, "value": 1100, "label": "Bienvenue à Gattaca", "author": "Andrew Niccol", "pitch": "Ségrégation génétique, design d'embryons.", "realYear": 2018.9, "url": "https://fr.wikipedia.org/wiki/Bienvenue_%C3%A0_Gattaca" },
         { "year": 1999, "weight": 10, "value": 1200, "label": "Matrix (Film)", "tipping": true, "author": "Les Wachowski", "pitch": "Simulation neurale totale.", "realYear": 2026.15, "url": "https://fr.wikipedia.org/wiki/Matrix_(film)" },
         { "year": 2002, "weight": 9, "value": 1300, "label": "Minority Report (Film)", "author": "Steven Spielberg", "pitch": "Interfaces gestuelles, pub ciblée.", "realYear": 2010.1, "url": "https://fr.wikipedia.org/wiki/Minority_Report_(film)" },
+        { "year": 2011, "value": 4000, "label": "The Expanse (Série de livres)", "pitch": "Géopolitique multiplanétaire, tribalisme humain et militarisation de la technologie.", "pharmakon": {"remede": 50, "poison": 50}, "url": "https://fr.wikipedia.org/wiki/The_Expanse_(s%C3%A9rie_de_romans)" },
         { "year": 2013, "weight": 9, "value": 6000, "label": "Her (Film)", "author": "Spike Jonze", "pitch": "Relation émotionnelle avec une IA vocale.", "realYear": 2024.5, "url": "https://fr.wikipedia.org/wiki/Her_(film)" },
         { "year": 2014, "weight": 8, "value": 7000, "label": "Ex Machina (Film)", "author": "Alex Garland", "pitch": "L'IA manipule l'humain pour s'évader.", "realYear": 2022.9, "url": "https://fr.wikipedia.org/wiki/Ex_Machina_(film)" }
       ]
@@ -48,6 +50,7 @@
         { "year": 1997, "value": 1500, "label": "Deep Blue", "tipping": true, "url": "https://fr.wikipedia.org/wiki/Deep_Blue" },
         { "year": 2012.7, "value": 3000, "label": "AlexNet (Deep Learning)", "url": "https://en.wikipedia.org/wiki/AlexNet" },
         { "year": 2017.5, "value": 6000, "label": "Transformers", "url": "https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)" },
+        { "year": 2019, "value": 9000, "label": "Pluribus AI", "pitch": "IA surhumaine au poker à six joueurs, une étape majeure dans la théorie des jeux.", "pharmakon": {"remede": 60, "poison": 40}, "url": "https://www.theguardian.com/technology/2019/jul/11/ai-pluribus-beats-poker-pros" },
         { "year": 2022.9, "value": 12000, "label": "LaMDA / GPT-3.5", "how": "Ex Machina Realized.", "url": "https://fr.wikipedia.org/wiki/LaMDA" },
         { "year": 2023, "value": 15000, "label": "GPT-4", "tipping": true, "how": "Blade Runner Realized.", "url": "https://fr.wikipedia.org/wiki/GPT-4" },
         { "year": 2024.5, "value": 20000, "label": "GPT-4o (Voice)", "how": "Her Realized.", "url": "https://en.wikipedia.org/wiki/GPT-4o" },
@@ -101,9 +104,27 @@
       ]
     },
     {
+      "name": "🌍 NOOSPHÈRE",
+      "color": "#84cc16",
+      "events": [
+        { "year": 1922, "value": 60, "label": "Concept de Noosphère", "pitch": "Pierre Teilhard de Chardin formalise l'idée d'une 'sphère de la pensée humaine'.", "pharmakon": {"remede": 80, "poison": 20}, "url": "https://fr.wikipedia.org/wiki/Noosph%C3%A8re" },
+        { "year": 1924, "value": 62, "label": "Collaboration Chardin-Vernadsky", "pitch": "Discussions à Paris avec Vladimir Vernadsky, qui ancre le concept dans une perspective biogéochimique.", "pharmakon": {"remede": 90, "poison": 10}, "url": "https://fr.wikipedia.org/wiki/Noosph%C3%A8re" },
+        { "year": 1945, "value": 145, "label": "L'Humanité comme Force Géologique", "pitch": "Vernadsky décrit l'humanité comme une force géologique capable de remodeler la biosphère.", "pharmakon": {"remede": 70, "poison": 30}, "url": "https://fr.wikipedia.org/wiki/Noosph%C3%A8re" },
+        { "year": 1990.9, "value": 1500, "label": "Émergence de la Noosphère Numérique", "pitch": "Le World Wide Web connecte les esprits à une échelle planétaire, créant un substrat technique pour une conscience collective.", "pharmakon": {"remede": 60, "poison": 40}, "url": "https://fr.wikipedia.org/wiki/Noosph%C3%A8re" }
+      ]
+    },
+    {
       "name": "☢️ RISQUES",
       "color": "#6366f1",
       "events": [
+        { "year": 1947, "value": 140, "label": "Horloge de l'Apocalypse: 7 min", "pitch": "Création de l'horloge.", "pharmakon": {"remede": 10, "poison": 90}, "url": "https://thebulletin.org/doomsday-clock/timeline/" },
+        { "year": 1953, "value": 240, "label": "Horloge de l'Apocalypse: 2 min", "pitch": "Tests des bombes H américaine et soviétique.", "pharmakon": {"remede": 10, "poison": 90}, "url": "https://thebulletin.org/doomsday-clock/timeline/" },
+        { "year": 1963, "value": 300, "label": "Horloge de l'Apocalypse: 12 min", "pitch": "Traité d'interdiction partielle des essais nucléaires.", "pharmakon": {"remede": 10, "poison": 90}, "url": "https://thebulletin.org/doomsday-clock/timeline/" },
+        { "year": 1984, "value": 600, "label": "Horloge de l'Apocalypse: 3 min", "pitch": "Tensions accrues entre les États-Unis et l'URSS.", "pharmakon": {"remede": 10, "poison": 90}, "url": "https://thebulletin.org/doomsday-clock/timeline/" },
+        { "year": 1991, "value": 1000, "label": "Horloge de l'Apocalypse: 17 min", "pitch": "Fin de la Guerre Froide.", "pharmakon": {"remede": 10, "poison": 90}, "url": "https://thebulletin.org/doomsday-clock/timeline/" },
+        { "year": 2007, "value": 3000, "label": "Horloge de l'Apocalypse: 5 min", "pitch": "Le changement climatique est inclus comme menace.", "pharmakon": {"remede": 10, "poison": 90}, "url": "https://thebulletin.org/doomsday-clock/timeline/" },
+        { "year": 2020, "value": 5000, "label": "Horloge de l'Apocalypse: 100 sec", "pitch": "Multiples menaces: nucléaire, climat, et désinformation.", "pharmakon": {"remede": 10, "poison": 90}, "url": "https://thebulletin.org/doomsday-clock/timeline/" },
+        { "year": 2023, "value": 8000, "label": "Horloge de l'Apocalypse: 90 sec", "pitch": "Guerre en Ukraine et risques nucléaires accrus.", "pharmakon": {"remede": 10, "poison": 90}, "url": "https://thebulletin.org/doomsday-clock/timeline/" },
         { "year": 1986.3, "value": 600, "label": "Tchernobyl", "tipping": true, "url": "https://fr.wikipedia.org/wiki/Catastrophe_nucl%C3%A9aire_de_Tchernobyl" },
         { "year": 2020.2, "value": 5000, "label": "Covid-19", "url": "https://fr.wikipedia.org/wiki/Pand%C3%A9mie_de_Covid-19" },
         { "year": 2026, "value": 10000, "label": "Rupture Supply Chain", "url": "https://fr.wikipedia.org/wiki/Crise_de_la_cha%C3%AEne_d%27approvisionnement_mondiale_(2021-2023)" },
@@ -119,6 +140,20 @@
         { "year": 1990, "value": 1500 },
         { "year": 2026, "value": 50000, "label": "LE GENOU", "tipping": true, "how": "Fusion : Autonomie énergétique + Ontologie IA + Droit des machines." }
       ]
+    },
+    {
+        "name": "🌟 CIVILISATION-T1",
+        "color": "#14b8a6",
+        "events": [
+            { "year": 1964, "value": 320, "label": "Échelle de Kardashev", "pitch": "Proposition d'une échelle mesurant le niveau technologique d'une civilisation.", "pharmakon": {"remede": 80, "poison": 20}, "url": "https://fr.wikipedia.org/wiki/%C3%89chelle_de_Kardachev" }
+        ]
+    },
+    {
+        "name": "✨ SINGULARITÉS",
+        "color": "#facc15",
+        "events": [
+            { "year": 1993, "value": 1100, "label": "La Singularité Technologique", "pitch": "Vernor Vinge popularise le concept d'un point de basculement technologique.", "pharmakon": {"remede": 50, "poison": 50}, "url": "https://fr.wikipedia.org/wiki/Singularit%C3%A9_technologique", "completion": 0.75 }
+        ]
     }
   ]
 }

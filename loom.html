@@ -97,7 +97,7 @@
     </div>
 
     <script>
-        const CLOUD_URL = 'https://script.google.com/macros/s/AKfycbyE21C8B-slJVO1fg6pUFzdcIzTyg0UQeMzk2zvAGjTkhqOW6KCGami5sgUmaboDrTo/exec'; 
+        const LOCAL_DATA_URL = 'loom_data.json';
         const FALLBACK_IMG = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmYmJmMjQiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHJ4PSIyIiByeT0iMiI+PC9yZWN0PjxsaW5lIHgxPSIzIiB5MT0iOSIgeDI9IjIxIiB5Mj0iOSI+PC9saW5lPjxsaW5lIHgxPSI5IiB5MT0iMjEiIHgyPSI5IiB5Mj0iOSI+PC9saW5lPjwvc3ZnPg==';
         Chart.register(ChartDataLabels);
 
@@ -136,13 +136,16 @@
             loomChart.update();
         }
 
-        async function loadFromCloud() {
+        async function loadFromLocal() {
             try {
-                const res = await fetch(CLOUD_URL);
-                const txt = await res.text();
-                if (txt.startsWith('{')) updateChart(JSON.parse(txt));
+                const res = await fetch(LOCAL_DATA_URL);
+                const json = await res.json();
+                updateChart(json);
                 setTimeout(resetToCenter, 500);
-            } catch (e) { console.error("Cloud Error"); }
+            } catch (e) { 
+                console.error("Local data loading error. Is loom_data.json present and valid?", e);
+                alert("ERREUR : Impossible de charger loom_data.json. Vérifiez la console pour plus de détails.");
+            }
         }
 
         function handleFileUpload(input) {
@@ -245,9 +248,9 @@
         window.onload = () => {
             const canvas = document.getElementById('loomChart');
             loomChart = new Chart(canvas, chartConfig);
-            loadFromCloud();
+            loadFromLocal();
             
-            // FORÇAGE SUPPLÉMENTAIRE POUR LES ÉTIQUETTES
+            // FORÇAGE SUPPLÉMÉMENTAIRE POUR LES ÉTIQUETTES
             canvas.addEventListener('mousemove', (e) => {
                 const head = loomChart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false);
                 if (head.length > 0) canvas.classList.add('is-pointer');
