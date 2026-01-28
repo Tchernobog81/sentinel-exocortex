@@ -1,5 +1,13 @@
 # CHANGELOG - Cortex Loom
 
+## v122
+- 🐛 **UI Fix :** Le curseur "doigt" est maintenant **définitivement** fonctionnel au survol des étiquettes. Le conflit d'événements a été résolu.
+- 📊 **Data Story :** La ligne "Singularité" est désormais une courbe visible grâce à l'ajout de points de données historiques (Vinge, Kurzweil).
+- 📚 **Data :** Enrichissement de la description de l'événement "Tchernobyl" pour plus de contexte.
+- ✨ **Nouvelle Catégorie :** Ajout de la courbe `🏛️ POLITIQUE` pour tracer les réactions sociales à la technologie.
+- 📚 **Data :** Injection des événements fondateurs de la courbe politique (Luddites, Canuts, Unabomber, Accélérationnisme).
+- 🔖 **Version :** Passage en v122.
+
 ## v121
 - 🐛 **UI Fix :** Le curseur "doigt" est maintenant fonctionnel au survol des étiquettes.
 - 🎨 **UI :** Les points sur le graphique sont plus visibles (style "donut") pour éviter les étiquettes flottantes.
