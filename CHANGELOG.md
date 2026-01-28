@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v123
+- 🚀 **Pipeline Fix :** Ajout d'une règle de concurrence (`concurrency`) au workflow GitHub Actions pour empêcher les exécutions en double.
+- 🔖 **Version :** Passage rigoureux à la v123 sur tous les composants pour corriger les problèmes de cache et d'affichage.
+- 📝 **Docs :** Clarification de la correction dans le journal des modifications.
+
 ## v122
 - 🐛 **UI Fix :** Le curseur "doigt" est maintenant **définitivement** fonctionnel au survol des étiquettes. Le conflit d'événements a été résolu.
 - 📊 **Data Story :** La ligne "Singularité" est désormais une courbe visible grâce à l'ajout de points de données historiques (Vinge, Kurzweil).

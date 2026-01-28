@@ -6,6 +6,10 @@ on:
       - main # ou la branche principale de votre projet
   workflow_dispatch: # Permet de lancer manuellement
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   run-sentinel:
     runs-on: ubuntu-latest
