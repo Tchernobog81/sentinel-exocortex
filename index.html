@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v124</title>
+    <title>THE LOOM : EXOCORTEX v125</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -129,15 +129,15 @@
 
     <div id="loading-screen">
         <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v124...</div>
-        <div id="debug-log">Init v124...</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v125...</div>
+        <div id="debug-log">Init v125...</div>
         <button id="btn-emergency" onclick="loadBackupData()">⚠️ CHARGER DONNÉES DE SECOURS (OFFLINE)</button>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v124</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v125</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -254,6 +254,7 @@
 
         Chart.register(ChartDataLabels);
         let loomChart;
+        let isHoveringLabel = false; // Flag pour gérer le conflit de curseur entre points et labels
         let activeCategory = null; // État du focus (null = tout visible)
 
         // LOGGER DEBUG
@@ -387,7 +388,7 @@
                     pointBorderColor: style.color,
                     pointBackgroundColor: '#010102', // Centre du "donut"
                     pointBorderWidth: 2,
-                    hitRadius: 10, // Réduit pour éviter conflit avec label
+                    hitRadius: 30, // Augmenté pour faciliter le clic
                     tension: 0.3 
                 };
                 strands[c].data.push({ x: d.year, y: d.value, ...d });
@@ -559,10 +560,12 @@
                             clip: true, // ✅ CORRECTION: Coupe les labels qui sortent du cadre
                             listeners: { // Le curseur est géré ici uniquement pour les labels
                                 click: c => showDetail(c.dataset.data[c.dataIndex]),
-                                enter: function(context) {
+                                enter: (context) => {
+                                    isHoveringLabel = true;
                                     context.chart.canvas.style.cursor = 'pointer';
                                 },
-                                leave: function(context) {
+                                leave: (context) => {
+                                    isHoveringLabel = false;
                                     context.chart.canvas.style.cursor = 'default';
                                 }
                             }
@@ -570,7 +573,13 @@
                         zoom: { zoom: { wheel: { enabled: true }, mode: 'x' }, pan: { enabled: true, mode: 'xy' } }
                     },
                     onHover: (e, el) => {
-                        // La gestion du curseur est maintenant déléguée aux listeners de datalabels pour les labels
+                        // Gestion robuste du curseur (Points OU Labels)
+                        const canvas = e.chart.canvas;
+                        if (el.length > 0 || isHoveringLabel) {
+                            canvas.style.cursor = 'pointer';
+                        } else {
+                            canvas.style.cursor = 'default';
+                        }
                         
                         const f = document.getElementById('label-float'), img = document.getElementById('label-icon');
                         if (el.length > 0) {

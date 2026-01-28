@@ -1,5 +1,13 @@
 # CHANGELOG - Cortex Loom
 
+## v125
+- 🐛 **UI Fix :** Correction définitive du curseur "doigt" sur les points et étiquettes via un flag d'état (`isHoveringLabel`).
+- 🖱️ **UX :** Augmentation de la zone de clic (`hitRadius`) des points à 30px pour une meilleure accessibilité.
+- 💉 **Data Injection :** Injection massive de ~100 nouveaux événements (Total > 180).
+- 🏛️ **Politique :** La catégorie Politique est maintenant visible et peuplée (Luddites, RGPD, AI Act, Grèves...).
+- 🔬 **Recherche :** Ajout de jalons scientifiques majeurs (Physique, Biotech, IA historique).
+- 🔖 **Version :** Passage en v125.
+
 ## v124
 - 🐛 **UI Fix :** Le curseur "doigt" est maintenant fonctionnel au survol des étiquettes (conflit `onHover` résolu).
 - 📚 **Data :** Les événements de la catégorie `🏛️ POLITIQUE` affichent désormais leurs étiquettes persistantes (`tipping: true`).
