@@ -12,13 +12,14 @@ Ce document formalise les directives récurrentes pour l'agent Gemini.
 Pour chaque intervention significative, l'agent doit **impérativement** effectuer les actions suivantes :
 
 1.  **Générer une Nouvelle Version :**
-    *   Incrémenter le numéro de version (ex: `v108` -> `v109`) dans les fichiers pertinents (`index.html`, `CHANGELOG.md`, etc.).
-    *   Le changement de version doit être logique et justifié par les modifications apportées.
+    *   **Règle de Versionning :** Incrémenter le numéro de version (ex: `v108` -> `v109`) **UNIQUEMENT** lors de la phase de validation finale (Commit).
+    *   Tant que les modifications sont en cours de développement ou de correction, maintenir le numéro de version courant.
+    *   Toutes les modifications intermédiaires s'appliquent à la version courante.
     *   **CHECKLIST VERSIONING (OBLIGATOIRE) :**
         - [ ] `CHANGELOG.md` : Ajouter l'entrée.
         - [ ] `index.html` : Mettre à jour `<title>`, `SYSTEM BOOT`, `Init...`, et `brand-version`.
         - [ ] `sentinel.py` : Mettre à jour le log de démarrage (`if __name__ == "__main__":`).
-        - [ ] `workflow.yml` (si accessible) : Mettre à jour le `run-name`.
+        - [ ] `.github/workflows/static.yml` : **CRITIQUE** - Mettre à jour `run-name: The Loom vXXX 🚀`. Si le fichier n'est pas dans le contexte, générer une commande `sed` ou Python pour le faire.
 
 2.  **Fournir l'Encart de Commit Git :**
     *   À la toute fin de sa réponse, après toutes les autres modifications, l'agent doit inclure un bloc de code `bash` contenant les commandes `git add`, `git commit`, et `git push`.
@@ -74,6 +75,20 @@ Pour chaque événement injecté ou analysé, les champs suivants doivent être 
 -   **Dates (`year`, `timestamp`)** :
     -   `year` peut être décimal pour un positionnement précis sur le graphique.
     -   La date affichée dans les détails de l'événement (`card-date`) doit être l'année entière (arrondie à l'inférieur) pour les événements historiques, ou une date précise si le `timestamp` est plus pertinent.
+
+### Cohérence Graphique (Axe Y / Value)
+
+-   **Pas de Plongeon Injustifié :** La propriété `value` (Axe Y) sert à espacer les lignes. Pour une même catégorie, elle doit globalement croître avec le temps.
+-   **Vérification des Doublons :** Avant d'injecter un événement, vérifier s'il n'existe pas déjà (même année/label) avec une valeur contradictoire qui briserait la courbe.
+
+### Traitement des Œuvres de Fiction (Catégorie IMAGINAIRE)
+
+Pour éviter les fiches vides ou inutiles, toute œuvre de fiction doit obligatoirement comporter :
+1.  **`whoWhat`** : L'auteur (Livre) ou le Réalisateur (Film).
+2.  **`description`** : Un "pitch" concis de l'œuvre (pas juste le titre).
+3.  **`convergences` & `grand_filter_analysis`** : Une analyse réelle du thème (PAS de "N/A").
+4.  **`realYear`** : L'année de l'événement réel qui concrétise la prédiction (si applicable).
+5.  **`predictedBy`** : Sur l'événement réel correspondant, ajouter le titre de l'œuvre dans ce tableau.
 # Commandes à exécuter dans le terminal
 git add .
 git commit -m "feat(feature): Description de la fonctionnalité"
