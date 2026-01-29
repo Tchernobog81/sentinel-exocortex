@@ -166,6 +166,7 @@
     "category": "🔮 IMAGINAIRE",
     "author": "Aldous Huxley",
     "how": "Eugénisme d'État.",
+    "realYear": 2018.9,
     "s_curve_phase": 1,
     "pharmakon_remedy_percent": 43,
     "pharmakon_poison_percent": 57
@@ -206,7 +207,7 @@
   },
   {
     "year": 1945,
-    "value": 150,
+    "value": 200,
     "label": "Trinity (Bombe A)",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -226,16 +227,6 @@
     "s_curve_phase": 2,
     "pharmakon_remedy_percent": 45,
     "pharmakon_poison_percent": 55
-  },
-  {
-    "year": 1947,
-    "value": 150,
-    "label": "Horloge Apocalypse : 7 min",
-    "category": "☢️ ENTROPIE",
-    "whoWhat": "Bulletin Atomic Scientists",
-    "s_curve_phase": 2,
-    "pharmakon_remedy_percent": 12,
-    "pharmakon_poison_percent": 88
   },
   {
     "year": 1947.9,
@@ -277,15 +268,6 @@
     "pharmakon_poison_percent": 46
   },
   {
-    "year": 1949,
-    "value": 180,
-    "label": "Horloge Apocalypse : 3 min",
-    "category": "☢️ ENTROPIE",
-    "s_curve_phase": 2,
-    "pharmakon_remedy_percent": 6,
-    "pharmakon_poison_percent": 94
-  },
-  {
     "year": 1950,
     "value": 160,
     "label": "I, Robot",
@@ -309,16 +291,6 @@
     "s_curve_phase": 2,
     "pharmakon_remedy_percent": 57,
     "pharmakon_poison_percent": 43
-  },
-  {
-    "year": 1953,
-    "value": 200,
-    "label": "Horloge Apocalypse : 2 min",
-    "category": "☢️ ENTROPIE",
-    "tipping": true,
-    "s_curve_phase": 2,
-    "pharmakon_remedy_percent": 18,
-    "pharmakon_poison_percent": 82
   },
   {
     "year": 1953.3,
@@ -373,7 +345,7 @@
   },
   {
     "year": 1962,
-    "value": 300,
+    "value": 500,
     "label": "Crise des Missiles",
     "category": "☢️ ENTROPIE",
     "s_curve_phase": 2,
@@ -591,15 +563,6 @@
     "pharmakon_poison_percent": 42
   },
   {
-    "year": 1984,
-    "value": 600,
-    "label": "Horloge Apocalypse : 3 min",
-    "category": "☢️ ENTROPIE",
-    "s_curve_phase": 2,
-    "pharmakon_remedy_percent": 13,
-    "pharmakon_poison_percent": 87
-  },
-  {
     "year": 1984.5,
     "value": 620,
     "label": "Terminator",
@@ -636,7 +599,7 @@
   },
   {
     "year": 1986.3,
-    "value": 600,
+    "value": 1000,
     "label": "Tchernobyl",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -808,7 +771,7 @@
   },
   {
     "year": 2000,
-    "value": 2000,
+    "value": 1300,
     "label": "Bulle Internet",
     "category": "☢️ ENTROPIE",
     "s_curve_phase": 3,
@@ -817,7 +780,7 @@
   },
   {
     "year": 2001.7,
-    "value": 2500,
+    "value": 1350,
     "label": "11 Septembre",
     "category": "☢️ ENTROPIE",
     "s_curve_phase": 3,
@@ -1078,16 +1041,6 @@
     "pharmakon_poison_percent": 43
   },
   {
-    "year": 2016,
-    "value": 6000,
-    "label": "Tay (Chatbot)",
-    "category": "☢️ ENTROPIE",
-    "description": "Chatbot Microsoft devenu raciste en 24h.",
-    "s_curve_phase": 4,
-    "pharmakon_remedy_percent": 5,
-    "pharmakon_poison_percent": 95
-  },
-  {
     "year": 2018,
     "value": 8200,
     "label": "Horloge Apocalypse : 2 min",
@@ -1112,6 +1065,7 @@
     "value": 8500,
     "label": "Bébés CRISPR",
     "category": "🟢 BIOTECH",
+    "predictedBy": ["Le Meilleur des mondes"],
     "whoWhat": "He Jiankui",
     "s_curve_phase": 4,
     "pharmakon_remedy_percent": 65,
@@ -1136,15 +1090,6 @@
     "s_curve_phase": 4,
     "pharmakon_remedy_percent": 62,
     "pharmakon_poison_percent": 38
-  },
-  {
-    "year": 2020,
-    "value": 8000,
-    "label": "Horloge Apocalypse : 100 sec",
-    "category": "☢️ ENTROPIE",
-    "s_curve_phase": 4,
-    "pharmakon_remedy_percent": 7,
-    "pharmakon_poison_percent": 93
   },
   {
     "year": 2020,
@@ -1179,7 +1124,7 @@
   },
   {
     "year": 2020.2,
-    "value": 5000,
+    "value": 1900,
     "label": "Covid-19",
     "category": "☢️ ENTROPIE",
     "s_curve_phase": 4,
@@ -1290,16 +1235,6 @@
   },
   {
     "year": 2024,
-    "value": 15000,
-    "label": "Horloge Apocalypse : 90 sec",
-    "category": "☢️ ENTROPIE",
-    "tipping": true,
-    "s_curve_phase": 4,
-    "pharmakon_remedy_percent": 5,
-    "pharmakon_poison_percent": 95
-  },
-  {
-    "year": 2024,
     "value": 16000,
     "label": "EU AI Act",
     "category": "🏛️ POLITIQUE",
@@ -1404,7 +1339,7 @@
   },
   {
     "year": 2026,
-    "value": 16000,
+    "value": 2100,
     "label": "Rupture Supply Chain",
     "category": "☢️ ENTROPIE",
     "s_curve_phase": 4,
@@ -1548,7 +1483,7 @@
   },
   {
     "year": 2026.06,
-    "value": 16500,
+    "value": 2150,
     "label": "Brouillage Cognitif",
     "category": "☢️ ENTROPIE",
     "s_curve_phase": 4,
@@ -1696,7 +1631,7 @@
   },
   {
     "year": 1952,
-    "value": 190,
+    "value": 350,
     "label": "Bombe H",
     "category": "☢️ ENTROPIE",
     "description": "Premier test d'une bombe thermonucléaire, escalade de la course aux armements.",
@@ -1819,7 +1754,7 @@
   },
   {
     "year": 1979,
-    "value": 650,
+    "value": 800,
     "label": "Three Mile Island",
     "category": "☢️ ENTROPIE",
     "description": "Accident nucléaire aux USA, freinant le développement de la filière.",
@@ -1954,7 +1889,7 @@
   },
   {
     "year": 2009,
-    "value": 3800,
+    "value": 1500,
     "label": "Stuxnet",
     "category": "☢️ ENTROPIE",
     "description": "Premier usage connu d'une cyber-arme pour détruire des infrastructures physiques.",
@@ -2005,7 +1940,7 @@
   },
   {
     "year": 2022,
-    "value": 12500,
+    "value": 1950,
     "label": "Guerre en Ukraine",
     "category": "☢️ ENTROPIE",
     "description": "Retour de la guerre de haute intensité et des menaces nucléaires.",
@@ -2170,7 +2105,7 @@
   },
   {
     "year": 2050,
-    "value": 100000,
+    "value": 2200,
     "label": "Guerres de l'Eau (Climat)",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3320,7 +3255,7 @@
   },
   {
     "year": 1947,
-    "value": 400,
+    "value": 250,
     "label": "Horloge: 7 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3331,7 +3266,7 @@
   },
   {
     "year": 1949,
-    "value": 600,
+    "value": 300,
     "label": "Horloge: 3 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3342,7 +3277,7 @@
   },
   {
     "year": 1953,
-    "value": 1000,
+    "value": 400,
     "label": "Horloge: 2 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3353,7 +3288,7 @@
   },
   {
     "year": 1960,
-    "value": 400,
+    "value": 450,
     "label": "Horloge: 7 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3364,7 +3299,7 @@
   },
   {
     "year": 1963,
-    "value": 200,
+    "value": 550,
     "label": "Horloge: 12 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3375,7 +3310,7 @@
   },
   {
     "year": 1968,
-    "value": 400,
+    "value": 600,
     "label": "Horloge: 7 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3386,7 +3321,7 @@
   },
   {
     "year": 1969,
-    "value": 300,
+    "value": 650,
     "label": "Horloge: 10 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3397,7 +3332,7 @@
   },
   {
     "year": 1972,
-    "value": 200,
+    "value": 700,
     "label": "Horloge: 12 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3408,7 +3343,7 @@
   },
   {
     "year": 1974,
-    "value": 350,
+    "value": 750,
     "label": "Horloge: 9 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3419,7 +3354,7 @@
   },
   {
     "year": 1980,
-    "value": 400,
+    "value": 850,
     "label": "Horloge: 7 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3430,7 +3365,7 @@
   },
   {
     "year": 1981,
-    "value": 550,
+    "value": 900,
     "label": "Horloge: 4 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3441,7 +3376,7 @@
   },
   {
     "year": 1984,
-    "value": 600,
+    "value": 950,
     "label": "Horloge: 3 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3452,7 +3387,7 @@
   },
   {
     "year": 1988,
-    "value": 450,
+    "value": 1050,
     "label": "Horloge: 6 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3463,7 +3398,7 @@
   },
   {
     "year": 1990,
-    "value": 300,
+    "value": 1100,
     "label": "Horloge: 10 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3474,7 +3409,7 @@
   },
   {
     "year": 1991,
-    "value": 950,
+    "value": 1150,
     "label": "Horloge: 17 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3485,7 +3420,7 @@
   },
   {
     "year": 1995,
-    "value": 1050,
+    "value": 1200,
     "label": "Horloge: 14 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3496,7 +3431,7 @@
   },
   {
     "year": 1998,
-    "value": 1200,
+    "value": 1250,
     "label": "Horloge: 9 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3507,7 +3442,7 @@
   },
   {
     "year": 2002,
-    "value": 1300,
+    "value": 1400,
     "label": "Horloge: 7 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3518,7 +3453,7 @@
   },
   {
     "year": 2007,
-    "value": 1500,
+    "value": 1450,
     "label": "Horloge: 5 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3529,7 +3464,7 @@
   },
   {
     "year": 2010,
-    "value": 1600,
+    "value": 1550,
     "label": "Horloge: 6 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3540,7 +3475,7 @@
   },
   {
     "year": 2012,
-    "value": 1800,
+    "value": 1600,
     "label": "Horloge: 5 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3551,7 +3486,7 @@
   },
   {
     "year": 2015,
-    "value": 600,
+    "value": 1650,
     "label": "Horloge: 3 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3562,7 +3497,7 @@
   },
   {
     "year": 2017,
-    "value": 800,
+    "value": 1750,
     "label": "Horloge: 2.5 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3573,7 +3508,7 @@
   },
   {
     "year": 2018,
-    "value": 1000,
+    "value": 1800,
     "label": "Horloge: 2 min",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3584,7 +3519,7 @@
   },
   {
     "year": 2020,
-    "value": 8000,
+    "value": 1850,
     "label": "Horloge: 100 sec",
     "category": "☢️ ENTROPIE",
     "tipping": true,
@@ -3595,7 +3530,7 @@
   },
   {
     "year": 2023,
-    "value": 15000,
+    "value": 2000,
     "label": "Horloge: 90 sec",
     "category": "☢️ ENTROPIE",
     "tipping": true,

@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v147
+- 🐛 **Data Fix (Entropie) :** Correction définitive du "trou" de l'Horloge de l'Apocalypse. Suppression des doublons (séries concurrentes) et recalcul complet de l'axe Y pour garantir une courbe strictement croissante de 1943 à 2050.
+- 🔗 **Data Links :** Ajout du lien prédictif manquant entre *Le Meilleur des mondes* et *Bébés CRISPR*.
+- 📏 **Directives :** Ajout d'une règle de déduplication stricte.
+- 🔖 **Version :** Passage en v147.
+
 ## v146
 - 🧠 **Auto-Repair :** L'agent `sentinel.py` intègre désormais une "Matrice de Convergence". Il détectera et corrigera automatiquement les analyses manquantes ("N/A") lors de chaque cycle.
 - 🧠 **Data Intelligence (Remoulinage) :** Suppression totale des "N/A" dans les champs d'analyse (`convergences`, `grand_filter`). Un script heuristique a appliqué une matrice d'analyse par défaut basée sur la catégorie pour tous les événements incomplets.

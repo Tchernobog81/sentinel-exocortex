@@ -82,6 +82,7 @@ Pour chaque événement injecté ou analysé, les champs suivants doivent être 
 
 -   **Pas de Plongeon Injustifié :** La propriété `value` (Axe Y) sert à espacer les lignes. Pour une même catégorie, elle doit globalement croître avec le temps.
 -   **Harmonisation :** Si un nouvel événement est inséré entre deux existants, sa `value` doit être comprise entre les deux.
+-   **Déduplication Stricte :** Il ne doit y avoir qu'une seule entrée par événement majeur (ex: une seule "Horloge de l'Apocalypse" par année). Supprimer les doublons avant d'injecter.
 -   **Vérification des Doublons :** Avant d'injecter un événement, vérifier s'il n'existe pas déjà (même année/label) avec une valeur contradictoire qui briserait la courbe.
 
 ### Traitement des Œuvres de Fiction (Catégorie IMAGINAIRE)

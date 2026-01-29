@@ -458,7 +458,7 @@ def run_sentinel_cycle():
     return True
 
 if __name__ == "__main__":
-    logging.info(f"--- SENTINEL EXOCORTEX v146 (Protocol v117 + Gemini) --- MODE: {SCAN_MODE} ---")
+    logging.info(f"--- SENTINEL EXOCORTEX v147 (Protocol v117 + Gemini) --- MODE: {SCAN_MODE} ---")
 
     if SINGLE_RUN:
         logging.info("Mode SINGLE_RUN activé (GitHub Actions). Exécution unique.")
