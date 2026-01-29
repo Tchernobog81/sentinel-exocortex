@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v144
+- 📚 **Data Quality (Deep Clean) :** Enrichissement manuel des événements fondateurs du Réseau (Web, Google, Facebook, Bitcoin) qui manquaient de descriptions et d'analyses.
+- 📈 **Data Fix (Entropie v2) :** Algorithme de lissage strict appliqué à la courbe d'Entropie. La valeur `y` d'un événement ne peut désormais plus jamais être inférieure à celle de l'événement précédent, garantissant une courbe ascendante sans "chute".
+- 📏 **Directives :** Obligation de remplir les champs d'analyse (`convergences`, `grand_filter`) pour tous les événements majeurs.
+- 🔖 **Version :** Passage en v144.
+
 ## v143
 - 🔧 **UX (Hotfix) :** Ajout d'une fonction `forceReload()` accessible en cliquant sur le numéro de version (Sidebar). Cela recharge la page avec un paramètre unique pour contourner le cache du navigateur.
 - 🔖 **Version :** Passage en v143.
