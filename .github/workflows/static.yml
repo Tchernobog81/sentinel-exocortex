@@ -1,5 +1,5 @@
 name: Deploy to GitHub Pages
-run-name: The Loom v145 🚀
+run-name: The Loom v146 🚀
 
 on:
   push:

@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v146
+- 🧠 **Data Intelligence (Remoulinage) :** Suppression totale des "N/A" dans les champs d'analyse (`convergences`, `grand_filter`). Un script heuristique a appliqué une matrice d'analyse par défaut basée sur la catégorie pour tous les événements incomplets.
+- 📏 **Directives :** Interdiction absolue des champs d'analyse vides ou "N/A".
+- 🔖 **Version :** Passage en v146.
+
 ## v145
 - 🎨 **UI (Visual Check) :** Le numéro de version dans la barre latérale est maintenant **Vert Émeraude** pour confirmer visuellement la mise à jour et distinguer la v145 des versions cachées précédentes.
 - ⚙️ **CI/CD :** Inscription explicite du `run-name: The Loom v145 🚀` dans le fichier YAML pour garantir la traçabilité du déploiement.

@@ -76,7 +76,7 @@ Pour chaque événement injecté ou analysé, les champs suivants doivent être 
     -   `year` peut être décimal pour un positionnement précis sur le graphique.
     -   La date affichée dans les détails de l'événement (`card-date`) doit être l'année entière (arrondie à l'inférieur) pour les événements historiques, ou une date précise si le `timestamp` est plus pertinent.
 -   **`whoWhat` (Source)** : **OBLIGATOIRE**. Indiquer l'entité, la personne ou l'organisation à l'origine de l'événement. Ne jamais laisser vide ou "?".
--   **`convergences` & `grand_filter_analysis`** : **OBLIGATOIRE** pour tout événement marqué comme `tipping: true` ou majeur (Web, IA, etc.). Pas de "N/A".
+-   **`convergences` & `grand_filter_analysis`** : **STRICTEMENT OBLIGATOIRE**. Interdiction absolue du "N/A". Si l'info manque, déduire une convergence logique basée sur la catégorie (ex: Hardware = Loi de Moore + Énergie).
 
 ### Cohérence Graphique (Axe Y / Value)
 
