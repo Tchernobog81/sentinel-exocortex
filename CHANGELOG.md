@@ -1,6 +1,7 @@
 # CHANGELOG - Cortex Loom
 
 ## v141
+- 🔧 **Hotfix (Cache) :** Ajout de balises `meta` anti-cache et d'un timestamp sur les requêtes `fetch` pour forcer le rafraîchissement des données sur tous les navigateurs.
 - 🧭 **UX (Interface) :** La fiche de détail (`#detail-card`) est désormais **déplaçable** (draggable) à la souris.
 - 🛡️ **UX (Contraintes) :** Le déplacement de la fiche est contraint aux limites de l'écran pour éviter qu'elle ne devienne inaccessible.
 - 📚 **Data Quality :** Enrichissement massif des œuvres de fiction (Blade Runner, Matrix, Her, etc.) avec descriptions complètes, analyses Pharmakon et liens bidirectionnels (Prédit/Réalisé).
