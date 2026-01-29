@@ -1,4 +1,4 @@
-# 🚀 DIAGNOSTIC & PLAN DE REPRISE - SENTINEL v2
+# 🚀 DIAGNOSTIC & ARCHITECTURE - SENTINEL v2 (Ready for RPi5)
 
 ## 1. Contexte
 
@@ -61,7 +61,25 @@ La nouvelle version de `sentinel.py` s'articule autour de 4 axes majeurs :
 
 ---
 
-## 4. Prochaines Étapes
+## 4. Architecture Cible : Raspberry Pi 5 AI
+
+Le projet est prêt à être déployé sur un Raspberry Pi 5.
+
+### Pré-requis RPi 5 :
+- **OS :** Raspberry Pi OS (Bookworm) 64-bit.
+- **Python :** 3.11+ (Géré via environnement virtuel `venv` recommandé pour éviter les conflits système).
+- **Hardware AI (Optionnel) :** Le code actuel utilise l'API Cloud Gemini. Une migration vers un modèle local (Ollama/Hailo-8L) nécessitera une adaptation de la fonction `analyze_with_gemini` dans `sentinel.py`.
+
+### Installation RPi :
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+---
+
+## 5. Prochaines Étapes
 
 1.  **Validation :** Examiner et valider la nouvelle version de `sentinel.py`.
 2.  **Déploiement :** Mettre à jour le fichier sur le serveur ou dans le workflow GitHub Actions.

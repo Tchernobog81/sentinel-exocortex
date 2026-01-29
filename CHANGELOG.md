@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v139
+- 🧭 **UX (Nav Fix) :** Correction du saut temporel "Prédit <-> Réalisé". Le clic zoome désormais sur la cible ET ouvre automatiquement sa fiche détaillée après 600ms.
+- 🏗️ **Architecture :** Mise à jour des documents de diagnostic et d'instructions pour la compatibilité Raspberry Pi 5.
+- 📝 **Docs :** Ajout des procédures d'installation Python venv pour RPi OS Bookworm.
+- 🔖 **Version :** Passage en v139.
+
 ## v138
 - 🧭 **UX (Nav) :** Le saut temporel "Prédit <-> Réalisé" est de nouveau fonctionnel dans la fiche de détail.
 - 📚 **Data (Doomsday Clock) :** Injection de **toutes** les mises à jour de l'Horloge de l'Apocalypse depuis 1947, avec descriptions détaillées et étiquettes permanentes.

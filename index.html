@@ -568,6 +568,9 @@
                     loomChart.options.scales.x.max = d.realYear + 5;
                     loomChart.update();
                     closeDetail();
+                    if (targetEvent) {
+                        setTimeout(() => showDetail(targetEvent), 600); // Rouvre la fiche cible après le zoom
+                    }
                 };
                 navContainer.appendChild(btn);
             }
@@ -585,6 +588,7 @@
                         loomChart.options.scales.x.max = targetEvent.year + 5;
                         loomChart.update();
                         closeDetail();
+                        setTimeout(() => showDetail(targetEvent), 600); // Rouvre la fiche cible après le zoom
                     };
                     navContainer.appendChild(btn);
                 }

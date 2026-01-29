@@ -1,5 +1,10 @@
 # Instructions pour l'Agent Gemini
 
+**CONTEXTE HARDWARE :**
+Le projet est destiné à tourner sur un **Raspberry Pi 5**.
+- Privilégier l'efficacité du code (Python léger).
+- Les commandes doivent être compatibles Linux/Debian.
+
 Ce document formalise les directives récurrentes pour l'agent Gemini.
 
 ## Directives Systématiques
