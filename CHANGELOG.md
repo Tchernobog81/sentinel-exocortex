@@ -1,6 +1,7 @@
 # CHANGELOG - Cortex Loom
 
 ## v146
+- 🧠 **Auto-Repair :** L'agent `sentinel.py` intègre désormais une "Matrice de Convergence". Il détectera et corrigera automatiquement les analyses manquantes ("N/A") lors de chaque cycle.
 - 🧠 **Data Intelligence (Remoulinage) :** Suppression totale des "N/A" dans les champs d'analyse (`convergences`, `grand_filter`). Un script heuristique a appliqué une matrice d'analyse par défaut basée sur la catégorie pour tous les événements incomplets.
 - 📏 **Directives :** Interdiction absolue des champs d'analyse vides ou "N/A".
 - 🔖 **Version :** Passage en v146.

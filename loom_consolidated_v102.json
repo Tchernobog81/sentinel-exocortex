@@ -271,9 +271,7 @@
     "description": "Big Brother vous regarde. La technologie (télécrans) au service du contrôle totalitaire de la pensée et de l'histoire.",
     "convergences": "Surveillance + Réécriture de l'Histoire + Contrôle Social.",
     "realYear": 2013.4,
-    "predictedBy": [
-      "1984"
-    ],
+    "predictedBy": ["1984"],
     "s_curve_phase": 2,
     "pharmakon_remedy_percent": 54,
     "pharmakon_poison_percent": 46
@@ -689,6 +687,9 @@
     "category": "🔴 RÉSEAU",
     "tipping": true,
     "whoWhat": "Tim Berners-Lee (CERN)",
+    "description": "Tim Berners-Lee invente le World Wide Web au CERN. L'information mondiale devient un réseau hypertexte interconnecté.",
+    "convergences": "Hypertexte + Internet + Démocratisation du Savoir.",
+    "grand_filter_analysis": "La diffusion instantanée de l'information crée une conscience globale mais fragile.",
     "s_curve_phase": 3,
     "pharmakon_remedy_percent": 56,
     "pharmakon_poison_percent": 44
@@ -851,6 +852,9 @@
     "value": 3000,
     "label": "Facebook",
     "category": "🔴 RÉSEAU",
+    "description": "Lancement de TheFacebook. Le graphe social numérique commence à cartographier les relations humaines réelles.",
+    "convergences": "Réseaux Sociaux + Identité Numérique + Surveillance Commerciale.",
+    "grand_filter_analysis": "La polarisation sociale algorithmique menace la cohésion des démocraties.",
     "s_curve_phase": 3,
     "pharmakon_remedy_percent": 56,
     "pharmakon_poison_percent": 44
@@ -882,6 +886,9 @@
     "label": "iPhone",
     "category": "🟡 HARDWARE",
     "tipping": true,
+    "description": "Apple lance l'iPhone. L'informatique devient une extension permanente du corps humain.",
+    "convergences": "Mobile + Internet + Tactile + Géolocalisation.",
+    "grand_filter_analysis": "L'attention humaine devient la ressource la plus rare et la plus exploitée.",
     "s_curve_phase": 3,
     "pharmakon_remedy_percent": 53,
     "pharmakon_poison_percent": 47
@@ -892,6 +899,9 @@
     "label": "Bitcoin",
     "category": "🔴 RÉSEAU",
     "tipping": true,
+    "description": "Satoshi Nakamoto publie le livre blanc du Bitcoin. Première monnaie numérique décentralisée.",
+    "convergences": "Cryptographie + Théorie des Jeux + Énergie.",
+    "grand_filter_analysis": "La séparation de la monnaie et de l'État pourrait redéfinir la souveraineté.",
     "s_curve_phase": 3,
     "pharmakon_remedy_percent": 52,
     "pharmakon_poison_percent": 48
@@ -1005,9 +1015,7 @@
     "label": "Snowden (NSA)",
     "category": "🔴 RÉSEAU",
     "tipping": true,
-    "predictedBy": [
-      "1984"
-    ],
+    "predictedBy": ["1984"],
     "s_curve_phase": 3,
     "pharmakon_remedy_percent": 42,
     "pharmakon_poison_percent": 58
@@ -1020,8 +1028,9 @@
     "s_curve_phase": 3,
     "whoWhat": "Alex Garland",
     "description": "Un test de Turing huis-clos où une IA androïde manipule ses créateurs pour s'échapper.",
-    "realYear": 2022.9,
+    "realYear": 2023,
     "convergences": "Robotique Humanoïde + Manipulation Sociale + Alignement.",
+    "realYear": 2022.9,
     "pharmakon_remedy_percent": 40,
     "pharmakon_poison_percent": 60
   },
@@ -1202,11 +1211,7 @@
     "label": "Ameca / Optimus",
     "category": "🟡 HARDWARE",
     "s_curve_phase": 4,
-    "predictedBy": [
-      "Blade Runner",
-      "Metropolis",
-      "R.U.R."
-    ],
+    "predictedBy": ["Blade Runner", "Metropolis", "R.U.R."],
     "pharmakon_remedy_percent": 52,
     "pharmakon_poison_percent": 48
   },
@@ -1320,10 +1325,7 @@
     "label": "Neuralink (Humain)",
     "category": "🟢 BIOTECH",
     "tipping": true,
-    "predictedBy": [
-      "Ghost in the Shell",
-      "Matrix"
-    ],
+    "predictedBy": ["Ghost in the Shell", "Matrix"],
     "description": "Premier implant sur patient humain.",
     "s_curve_phase": 4,
     "pharmakon_remedy_percent": 63,
@@ -1334,10 +1336,8 @@
     "value": 20000,
     "label": "GPT-4o (Omni)",
     "category": "🔵 COGNITION",
-    "predictedBy": [
-      "Her",
-      "Minority Report"
-    ],
+    "predictedBy": ["Her", "Minority Report", "Ex Machina"],
+    "predictedBy": ["Her", "Minority Report"],
     "s_curve_phase": 4,
     "pharmakon_remedy_percent": 61,
     "pharmakon_poison_percent": 39
@@ -1465,9 +1465,7 @@
     "label": "Constitution IA",
     "category": "🔵 COGNITION",
     "tipping": true,
-    "predictedBy": [
-      "I, Robot"
-    ],
+    "predictedBy": ["I, Robot"],
     "s_curve_phase": 4,
     "pharmakon_remedy_percent": 53,
     "pharmakon_poison_percent": 47
@@ -1573,9 +1571,7 @@
     "label": "The Blitz (AGI)",
     "category": "🔵 COGNITION",
     "tipping": true,
-    "predictedBy": [
-      "Terminator"
-    ],
+    "predictedBy": ["Terminator"],
     "s_curve_phase": 4,
     "pharmakon_remedy_percent": 54,
     "pharmakon_poison_percent": 46
@@ -1596,9 +1592,7 @@
     "label": "Starship Mars",
     "category": "🟣 ESPACE",
     "tipping": true,
-    "predictedBy": [
-      "The Expanse"
-    ],
+    "predictedBy": ["The Expanse"],
     "s_curve_phase": 4,
     "pharmakon_remedy_percent": 40,
     "pharmakon_poison_percent": 60
@@ -1609,9 +1603,7 @@
     "label": "Jihad Butlérien (Début)",
     "category": "🏛️ POLITIQUE",
     "description": "Mouvements anti-IA violents.",
-    "predictedBy": [
-      "Dune"
-    ],
+    "predictedBy": ["Dune"],
     "tipping": true,
     "s_curve_phase": 4,
     "pharmakon_remedy_percent": 44,
@@ -1903,6 +1895,8 @@
     "label": "Google Fondé",
     "category": "🔴 RÉSEAU",
     "description": "Organisation de l'information mondiale.",
+    "convergences": "Algorithmes de tri + Big Data + Économie de l'Attention.",
+    "grand_filter_analysis": "Le contrôle de l'accès à la vérité par une entité unique est un risque systémique majeur.",
     "s_curve_phase": 3,
     "pharmakon_remedy_percent": 40,
     "pharmakon_poison_percent": 60
@@ -3051,9 +3045,7 @@
     "value": 4100,
     "label": "Siri",
     "category": "🔵 COGNITION",
-    "predictedBy": [
-      "2001 L'Odyssée"
-    ],
+    "predictedBy": ["2001 L'Odyssée"],
     "realYear": 2011,
     "description": "Assistant vocal.",
     "s_curve_phase": 3,
@@ -3115,9 +3107,7 @@
     "value": 6800,
     "label": "Fortnite",
     "category": "✨ NOOSPHÈRE",
-    "predictedBy": [
-      "Le Samouraï Virtuel"
-    ],
+    "predictedBy": ["Le Samouraï Virtuel"],
     "description": "Métavers social.",
     "s_curve_phase": 4,
     "pharmakon_remedy_percent": 68,
@@ -3179,9 +3169,7 @@
     "label": "Vision Pro (Annonce)",
     "category": "🟡 HARDWARE",
     "description": "Informatique spatiale.",
-    "predictedBy": [
-      "Neuromancien"
-    ],
+    "predictedBy": ["Neuromancien"],
     "s_curve_phase": 4,
     "pharmakon_remedy_percent": 51,
     "pharmakon_poison_percent": 49
@@ -3314,8 +3302,9 @@
     "category": "🔮 IMAGINAIRE",
     "author": "Philip K. Dick",
     "description": "Questionnement sur l'empathie artificielle.",
-    "realYear": 2023,
+    "realYear": 2021.5,
     "s_curve_phase": 2,
+    "realYear": 2023,
     "pharmakon_remedy_percent": 54,
     "pharmakon_poison_percent": 46
   },

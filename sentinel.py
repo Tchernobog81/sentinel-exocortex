@@ -110,6 +110,50 @@ def analyze_with_gemini(text: str) -> Dict[str, Any] | None:
         logging.error(f"[AI] Erreur Gemini : {e}")
         return None
 
+# Matrice heuristique par défaut pour combler les trous (N/A)
+DEFAULT_MATRIX = {
+    "🔴 RÉSEAU": {
+        "convergences": "Hyperconnectivité + Décentralisation + Vitesse",
+        "grand_filter": "Risque de surveillance de masse vs Outil d'émancipation globale."
+    },
+    "🟡 HARDWARE": {
+        "convergences": "Loi de Moore + Efficacité Énergétique + Nouveaux Matériaux",
+        "grand_filter": "Dépendance critique aux terres rares et à la chaîne logistique."
+    },
+    "🔵 COGNITION": {
+        "convergences": "Algorithmes + Big Data + Sciences Cognitives",
+        "grand_filter": "Alignement des valeurs de l'IA avec la survie humaine."
+    },
+    "🟢 BIOTECH": {
+        "convergences": "Génétique + IA + Nanotechnologies",
+        "grand_filter": "Démocratisation des pathogènes vs Guérison universelle."
+    },
+    "🟣 ESPACE": {
+        "convergences": "Propulsion + Robotique + IA",
+        "grand_filter": "Colonisation multi-planétaire vs Épuisement des ressources terrestres."
+    },
+    "☢️ ENTROPIE": {
+        "convergences": "Complexité systémique + Fragilité des infrastructures",
+        "grand_filter": "Effondrement en cascade des systèmes interconnectés."
+    },
+    "🏛️ POLITIQUE": {
+        "convergences": "Législation + Technologie + Société Civile",
+        "grand_filter": "Incapacité des institutions lentes à gérer l'accélération technologique."
+    },
+    "✨ NOOSPHÈRE": {
+        "convergences": "Conscience collective + Internet + Mémétique",
+        "grand_filter": "Infobésité et désinformation noyant la sagesse collective."
+    },
+    "🔮 IMAGINAIRE": {
+        "convergences": "Fiction + Réalité + Anticipation",
+        "grand_filter": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré."
+    },
+    "⚪ SINGULARITÉ": {
+        "convergences": "IA Forte + Nanotech + Bio-ingénierie",
+        "grand_filter": "Obsolescence de l'espèce biologique humaine."
+    }
+}
+
 def analyze_event(entry_title: str, entry_summary: str, entry_url: str, entry_source: str) -> Dict[str, Any]:
     """
     Analyse un événement brut (ex: article de news) et le transforme
@@ -201,6 +245,14 @@ def enrich_event_if_needed(event: Dict[str, Any]) -> Dict[str, Any]:
     event["convergences"] = event.get("convergences") or "Analyse simulée : N/A"
     event["grand_filter_analysis"] = event.get("grand_filter_analysis") or "Analyse simulée : N/A"
     event["final_note"] = event.get("final_note") or "Note finale simulée."
+
+    # 4. Correction automatique des N/A via la Matrice par défaut
+    cat = event.get("category", "DEFAUT")
+    if cat in DEFAULT_MATRIX:
+        if not event.get("convergences") or "N/A" in event.get("convergences"):
+            event["convergences"] = DEFAULT_MATRIX[cat]["convergences"]
+        if not event.get("grand_filter_analysis") or "N/A" in event.get("grand_filter_analysis"):
+            event["grand_filter_analysis"] = DEFAULT_MATRIX[cat]["grand_filter"]
 
     random.seed() # Reset
 
