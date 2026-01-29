@@ -14,6 +14,11 @@ Pour chaque intervention significative, l'agent doit **impérativement** effectu
 1.  **Générer une Nouvelle Version :**
     *   Incrémenter le numéro de version (ex: `v108` -> `v109`) dans les fichiers pertinents (`index.html`, `CHANGELOG.md`, etc.).
     *   Le changement de version doit être logique et justifié par les modifications apportées.
+    *   **CHECKLIST VERSIONING (OBLIGATOIRE) :**
+        - [ ] `CHANGELOG.md` : Ajouter l'entrée.
+        - [ ] `index.html` : Mettre à jour `<title>`, `SYSTEM BOOT`, `Init...`, et `brand-version`.
+        - [ ] `sentinel.py` : Mettre à jour le log de démarrage (`if __name__ == "__main__":`).
+        - [ ] `workflow.yml` (si accessible) : Mettre à jour le `run-name`.
 
 2.  **Fournir l'Encart de Commit Git :**
     *   À la toute fin de sa réponse, après toutes les autres modifications, l'agent doit inclure un bloc de code `bash` contenant les commandes `git add`, `git commit`, et `git push`.

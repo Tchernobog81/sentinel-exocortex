@@ -5,6 +5,7 @@
 - 🧭 **UX (Nav Fix) :** Amélioration de la tolérance de date (0.5 an) pour le saut "Prédit <-> Réalisé".
 - 📚 **Data Fix :** Correction du lien temporel *Neuromancien* -> *Vision Pro* (2023).
 - 🏗️ **Architecture :** Documentation spécifique pour l'installation sur Raspberry Pi 5 (venv obligatoire).
+- 📏 **Directives :** Mise à jour stricte des instructions (`GEMINI_INSTRUCTIONS.md`) pour forcer la synchronisation des numéros de version dans tous les fichiers (HTML, Python, Logs).
 - 🔖 **Version :** Passage en v140.
 
 ## v139
