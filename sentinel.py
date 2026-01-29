@@ -12,9 +12,15 @@ try:
     import feedparser
     from dotenv import load_dotenv
 except ImportError as e:
-    print(f"ERREUR CRITIQUE : Module manquant ({e.name}).")
+    print(f"ERREUR CRITIQUE : Module de base manquant ({e.name}).")
     print("--> Veuillez exécuter : pip install -r requirements.txt")
     exit(1)
+
+try:
+    import google.generativeai as genai
+except ImportError:
+    genai = None
+    print("⚠️ Module 'google-generativeai' manquant. Mode simulation IA activé.")
 
 # --- CONFIGURATION ---
 load_dotenv() # Charge les variables depuis le fichier .env
@@ -26,6 +32,7 @@ SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
 SINGLE_RUN = os.environ.get("SINGLE_RUN", "false").lower() == "true"
 # Mode de scan : SIMULATOR (défaut) ou RSS_NEWS
 SCAN_MODE = os.environ.get("SCAN_MODE", "SIMULATOR")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 # Configuration du Logging
 logging.basicConfig(
@@ -55,6 +62,48 @@ def categorize_text(text: str) -> str:
     if any(k in text for k in ["risk", "danger", "regulation", "bias", "threat", "law", "doomsday"]):
         return "☢️ ENTROPIE"
     return "🔴 RÉSEAU" # Catégorie par défaut pour les news générales, internet, etc.
+
+def analyze_with_gemini(text: str) -> Dict[str, Any] | None:
+    """
+    Interroge l'API Gemini pour une analyse 'Pharmakon' de l'événement.
+    Retourne un dictionnaire partiel avec les scores et l'analyse textuelle.
+    """
+    if not GEMINI_API_KEY or not genai:
+        return None
+    
+    try:
+        genai.configure(api_key=GEMINI_API_KEY)
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        
+        prompt = f"""
+        Agis comme le veilleur du projet Cortex Loom (Persona: Lucide, Ironique, Philosophie Pharmakon).
+        Analyse l'événement suivant pour une visualisation de données :
+        "{text}"
+        
+        Directives :
+        1. Courbe en S (1=Début, 5=Singularité/Plateau).
+        2. Pharmakon : % Remède vs % Poison (Total 100).
+        3. Convergences : Liens avec IA, Bio, Espace, etc.
+        4. Grand Filtre : Impact sur la survie de l'humanité.
+        5. Note Finale : Une phrase cynique ou humoristique noire.
+
+        Réponds UNIQUEMENT avec un objet JSON valide (sans Markdown) suivant cette structure :
+        {{
+            "s_curve_phase": int,
+            "pharmakon_remedy_percent": int,
+            "pharmakon_poison_percent": int,
+            "convergences": "string",
+            "grand_filter_analysis": "string",
+            "final_note": "string"
+        }}
+        """
+        
+        response = model.generate_content(prompt)
+        clean_json = response.text.replace('```json', '').replace('```', '').strip()
+        return json.loads(clean_json)
+    except Exception as e:
+        logging.error(f"[AI] Erreur Gemini : {e}")
+        return None
 
 def analyze_event(entry_title: str, entry_summary: str, entry_url: str, entry_source: str) -> Dict[str, Any]:
     """
@@ -352,7 +401,7 @@ def run_sentinel_cycle():
     return True
 
 if __name__ == "__main__":
-    logging.info(f"--- SENTINEL EXOCORTEX v117 --- MODE: {SCAN_MODE} ---")
+    logging.info(f"--- SENTINEL EXOCORTEX v138 (Protocol v117 + Gemini) --- MODE: {SCAN_MODE} ---")
 
     if SINGLE_RUN:
         logging.info("Mode SINGLE_RUN activé (GitHub Actions). Exécution unique.")

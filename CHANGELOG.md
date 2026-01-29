@@ -1,5 +1,18 @@
 # CHANGELOG - Cortex Loom
 
+## v138
+- 🧭 **UX (Nav) :** Le saut temporel "Prédit <-> Réalisé" est de nouveau fonctionnel dans la fiche de détail.
+- 📚 **Data (Doomsday Clock) :** Injection de **toutes** les mises à jour de l'Horloge de l'Apocalypse depuis 1947, avec descriptions détaillées et étiquettes permanentes.
+- 📊 **Data Fix :** Lissage de la courbe d'Entropie en ré-évaluant la "valeur" des événements pour éviter les plongeons incohérents.
+- 🧹 **Data :** Nettoyage des anciens points de données de l'Horloge.
+- 🔖 **Version :** Passage en v138.
+
+## v137
+- 📚 **Data Fix :** Correction de la date d'invention du Web (1989 au lieu de 1990).
+- 📚 **Data Injection :** Ajout d'événements fondateurs (Langage C, Python, Java) pour compléter le référentiel.
+- 🔖 **Version :** Passage en v137 pour garantir la cohérence du déploiement.
+- 🧹 **Data :** Validation et nettoyage du jeu de données de référence.
+
 ## v136
 - 📊 **Data Fix :** Correction de la courbe de Singularité (suppression de la "bosse" en 2030). Les valeurs suivent désormais une progression sigmoïde stricte.
 - 🎨 **UI (Focus) :** Ajustement de l'opacité des courbes non-actives (0.1 -> 0.25) pour une meilleure lisibilité du contexte.

@@ -636,12 +636,12 @@
     "pharmakon_poison_percent": 47
   },
   {
-    "year": 1990,
+    "year": 1989.2,
     "value": 1500,
     "label": "Le Web (WWW)",
     "category": "🔴 RÉSEAU",
     "tipping": true,
-    "whoWhat": "Tim Berners-Lee",
+    "whoWhat": "Tim Berners-Lee (CERN)",
     "s_curve_phase": 3,
     "pharmakon_remedy_percent": 56,
     "pharmakon_poison_percent": 44
@@ -1669,6 +1669,17 @@
     "s_curve_phase": 2,
     "pharmakon_remedy_percent": 57,
     "pharmakon_poison_percent": 43
+  },
+  {
+    "year": 1972,
+    "value": 500,
+    "label": "Langage C",
+    "category": "🟡 HARDWARE",
+    "whoWhat": "Dennis Ritchie",
+    "description": "Langage de programmation fondamental pour les systèmes d'exploitation.",
+    "s_curve_phase": 2,
+    "pharmakon_remedy_percent": 60,
+    "pharmakon_poison_percent": 40
   },
   {
     "year": 1974,
@@ -2701,6 +2712,17 @@
     "pharmakon_poison_percent": 27
   },
   {
+    "year": 1991.1,
+    "value": 950,
+    "label": "Python",
+    "category": "🔵 COGNITION",
+    "whoWhat": "Guido van Rossum",
+    "description": "Langage lisible devenu la lingua franca de l'IA.",
+    "s_curve_phase": 3,
+    "pharmakon_remedy_percent": 80,
+    "pharmakon_poison_percent": 20
+  },
+  {
     "year": 1991,
     "value": 940,
     "label": "GSM",
@@ -2739,6 +2761,17 @@
     "s_curve_phase": 3,
     "pharmakon_remedy_percent": 49,
     "pharmakon_poison_percent": 51
+  },
+  {
+    "year": 1995.4,
+    "value": 1100,
+    "label": "Java",
+    "category": "🔴 RÉSEAU",
+    "whoWhat": "Sun Microsystems",
+    "description": "Langage portable 'Write Once, Run Anywhere'.",
+    "s_curve_phase": 3,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50
   },
   {
     "year": 1995,

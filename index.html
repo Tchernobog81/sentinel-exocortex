@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>THE LOOM : EXOCORTEX v136</title>
+    <title>THE LOOM : EXOCORTEX v138</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -130,16 +130,16 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v136</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v136...</div>
-        <div id="debug-log">Init v136...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v138</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au sub-processeur ironique v138...</div>
+        <div id="debug-log">Init v138...</div>
         <button id="btn-emergency" onclick="loadBackupData()">⚠️ CHARGER DONNÉES DE SECOURS (OFFLINE)</button>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version">v136</span></div>
+                <div class="brand-title">The Loom <span class="brand-version">v138</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -555,11 +555,14 @@
             // Gestion des sauts temporels (Prédit / Réalisé)
             const navContainer = document.getElementById('card-nav');
             navContainer.innerHTML = '';
+            const allData = loomChart.data.datasets.flatMap(ds => ds.data);
             
+            // JUMP TO REALIZATION
             if (d.realYear) {
+                const targetEvent = allData.find(e => Math.abs(e.year - d.realYear) < 0.1);
                 const btn = document.createElement('button');
                 btn.className = "px-2 py-1 bg-zinc-800 border border-zinc-600 text-[10px] text-white hover:bg-zinc-700 uppercase";
-                btn.innerText = `Voir Réalisation (${d.realYear})`;
+                btn.innerText = `▶ Voir Réalisation (${targetEvent ? targetEvent.label : d.realYear})`;
                 btn.onclick = () => {
                     loomChart.options.scales.x.min = d.realYear - 5;
                     loomChart.options.scales.x.max = d.realYear + 5;
@@ -567,6 +570,24 @@
                     closeDetail();
                 };
                 navContainer.appendChild(btn);
+            }
+            
+            // JUMP TO PREDICTION
+            if (d.predictedBy && d.predictedBy.length > 0) {
+                const predictionLabel = d.predictedBy[0];
+                const targetEvent = allData.find(e => e.label === predictionLabel);
+                if (targetEvent) {
+                    const btn = document.createElement('button');
+                    btn.className = "px-2 py-1 bg-zinc-800 border border-zinc-600 text-[10px] text-white hover:bg-zinc-700 uppercase";
+                    btn.innerText = `◀ Voir Prédiction (${targetEvent.label})`;
+                    btn.onclick = () => {
+                        loomChart.options.scales.x.min = targetEvent.year - 5;
+                        loomChart.options.scales.x.max = targetEvent.year + 5;
+                        loomChart.update();
+                        closeDetail();
+                    };
+                    navContainer.appendChild(btn);
+                }
             }
 
             // v117 analysis fields
