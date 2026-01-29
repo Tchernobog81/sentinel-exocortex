@@ -1,4 +1,4 @@
-# 🚀 DIAGNOSTIC & ARCHITECTURE - SENTINEL v2 (Ready for RPi5)
+# 🚀 DIAGNOSTIC & ARCHITECTURE - SENTINEL v2 (RPi 5 Edition)
 
 ## 1. Contexte
 
@@ -67,13 +67,18 @@ Le projet est prêt à être déployé sur un Raspberry Pi 5.
 
 ### Pré-requis RPi 5 :
 - **OS :** Raspberry Pi OS (Bookworm) 64-bit.
-- **Python :** 3.11+ (Géré via environnement virtuel `venv` recommandé pour éviter les conflits système).
+- **Python :** 3.11+ (Attention: Bookworm impose l'usage de `venv`).
 - **Hardware AI (Optionnel) :** Le code actuel utilise l'API Cloud Gemini. Une migration vers un modèle local (Ollama/Hailo-8L) nécessitera une adaptation de la fonction `analyze_with_gemini` dans `sentinel.py`.
 
 ### Installation RPi :
 ```bash
+# 1. Créer l'environnement virtuel (Obligatoire sur RPi Bookworm)
 python3 -m venv venv
+
+# 2. Activer l'environnement
 source venv/bin/activate
+
+# 3. Installer les dépendances
 pip install -r requirements.txt
 ```
 

@@ -1,5 +1,12 @@
 # CHANGELOG - Cortex Loom
 
+## v140
+- 🛡️ **Sentinel Fix :** Sécurisation des imports (`dotenv` optionnel) pour éviter le crash "Exit Code 1" en CI/CD.
+- 🧭 **UX (Nav Fix) :** Amélioration de la tolérance de date (0.5 an) pour le saut "Prédit <-> Réalisé".
+- 📚 **Data Fix :** Correction du lien temporel *Neuromancien* -> *Vision Pro* (2023).
+- 🏗️ **Architecture :** Documentation spécifique pour l'installation sur Raspberry Pi 5 (venv obligatoire).
+- 🔖 **Version :** Passage en v140.
+
 ## v139
 - 🧭 **UX (Nav Fix) :** Correction du saut temporel "Prédit <-> Réalisé". Le clic zoome désormais sur la cible ET ouvre automatiquement sa fiche détaillée après 600ms.
 - 🏗️ **Architecture :** Mise à jour des documents de diagnostic et d'instructions pour la compatibilité Raspberry Pi 5.

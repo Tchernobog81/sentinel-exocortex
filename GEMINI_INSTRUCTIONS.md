@@ -2,7 +2,7 @@
 
 **CONTEXTE HARDWARE :**
 Le projet est destiné à tourner sur un **Raspberry Pi 5**.
-- Privilégier l'efficacité du code (Python léger).
+- **Environnement :** Toujours supposer l'exécution dans un `venv` Python.
 - Les commandes doivent être compatibles Linux/Debian.
 
 Ce document formalise les directives récurrentes pour l'agent Gemini.

@@ -559,10 +559,11 @@
             
             // JUMP TO REALIZATION
             if (d.realYear) {
-                const targetEvent = allData.find(e => Math.abs(e.year - d.realYear) < 0.1);
+                // Tolérance de 0.5 an pour trouver la cible
+                const targetEvent = allData.find(e => Math.abs(e.year - d.realYear) < 0.5);
                 const btn = document.createElement('button');
                 btn.className = "px-2 py-1 bg-zinc-800 border border-zinc-600 text-[10px] text-white hover:bg-zinc-700 uppercase";
-                btn.innerText = `▶ Voir Réalisation (${targetEvent ? targetEvent.label : d.realYear})`;
+                btn.innerText = `▶ Voir Réalisation (${targetEvent ? targetEvent.label.substring(0, 15)+'...' : d.realYear})`;
                 btn.onclick = () => {
                     loomChart.options.scales.x.min = d.realYear - 5;
                     loomChart.options.scales.x.max = d.realYear + 5;
@@ -582,7 +583,7 @@
                 if (targetEvent) {
                     const btn = document.createElement('button');
                     btn.className = "px-2 py-1 bg-zinc-800 border border-zinc-600 text-[10px] text-white hover:bg-zinc-700 uppercase";
-                    btn.innerText = `◀ Voir Prédiction (${targetEvent.label})`;
+                    btn.innerText = `◀ Voir Prédiction (${targetEvent.label.substring(0, 15)}...)`;
                     btn.onclick = () => {
                         loomChart.options.scales.x.min = targetEvent.year - 5;
                         loomChart.options.scales.x.max = targetEvent.year + 5;

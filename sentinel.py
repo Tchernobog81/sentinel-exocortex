@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 import time
 import datetime
 import random
@@ -10,11 +11,17 @@ from typing import List, Dict, Any
 try:
     import requests
     import feedparser
-    from dotenv import load_dotenv
 except ImportError as e:
-    print(f"ERREUR CRITIQUE : Module de base manquant ({e.name}).")
+    print(f"❌ ERREUR CRITIQUE : Module de base manquant ({e.name}).")
     print("--> Veuillez exécuter : pip install -r requirements.txt")
-    exit(1)
+    sys.exit(1)
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv() # Charge le .env en local uniquement
+except ImportError:
+    # En Prod/CI, les variables sont souvent déjà dans l'environnement
+    pass
 
 try:
     import google.generativeai as genai
@@ -23,8 +30,6 @@ except ImportError:
     print("⚠️ Module 'google-generativeai' manquant. Mode simulation IA activé.")
 
 # --- CONFIGURATION ---
-load_dotenv() # Charge les variables depuis le fichier .env
-
 CLOUD_URL = os.environ.get("CLOUD_URL")
 # Convertir l'intervalle en entier, avec une valeur par défaut de 3600s (1h)
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
@@ -406,7 +411,7 @@ if __name__ == "__main__":
     if SINGLE_RUN:
         logging.info("Mode SINGLE_RUN activé (GitHub Actions). Exécution unique.")
         run_sentinel_cycle()
-        exit(0)
+        sys.exit(0)
 
     while True:
         should_continue = run_sentinel_cycle()
