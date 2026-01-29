@@ -660,11 +660,26 @@
                             // LOGIQUE DE DENSITÉ
                             display: function(context) {
                                 const chart = context.chart;
-                                const range = chart.scales.x.max - chart.scales.x.min;
                                 const data = context.dataset.data[context.dataIndex];
+                                
+                                // 1. Priorité absolue aux points de bascule (Tipping Points)
                                 if (data.tipping) return true; // Toujours afficher les majeurs
-                                if (range < 15) return 'auto'; // Afficher les autres si zoomé et si place (auto)
-                                return false; // Masquer les mineurs en vue large
+                                
+                                // 2. Algorithme de densité visuelle (Pixel Collision)
+                                const xScale = chart.scales.x;
+                                const currentX = xScale.getPixelForValue(data.year);
+                                
+                                // On regarde le point précédent dans le même dataset
+                                if (context.dataIndex > 0) {
+                                    const prevData = context.dataset.data[context.dataIndex - 1];
+                                    const prevX = xScale.getPixelForValue(prevData.year);
+                                    
+                                    // Si moins de 40 pixels d'écart, on masque le point mineur
+                                    if (Math.abs(currentX - prevX) < 40) return false;
+                                }
+                                
+                                // 3. Si on a de la place, on affiche
+                                return 'auto'; 
                             },
                             color: '#fff', align: 'top', offset: 12, 
                             // Gestion de la transparence en mode focus

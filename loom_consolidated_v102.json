@@ -112,6 +112,7 @@
     "whoWhat": "Karel Čapek",
     "description": "Invention du mot 'Robot'.",
     "tipping": true,
+    "realYear": 2021.5,
     "s_curve_phase": 1,
     "pharmakon_remedy_percent": 52,
     "pharmakon_poison_percent": 48
@@ -258,6 +259,7 @@
     "tipping": true,
     "author": "George Orwell",
     "how": "Surveillance de masse.",
+    "realYear": 2013.4,
     "s_curve_phase": 2,
     "pharmakon_remedy_percent": 54,
     "pharmakon_poison_percent": 46
@@ -553,6 +555,7 @@
     "tipping": true,
     "author": "William Gibson",
     "how": "Cyberspace.",
+    "realYear": 2021.8,
     "s_curve_phase": 2,
     "pharmakon_remedy_percent": 58,
     "pharmakon_poison_percent": 42
@@ -574,6 +577,7 @@
     "author": "James Cameron",
     "how": "Skynet.",
     "s_curve_phase": 2,
+    "realYear": 2026.1,
     "pharmakon_remedy_percent": 45,
     "pharmakon_poison_percent": 55
   },
@@ -687,6 +691,7 @@
     "label": "Le Samouraï Virtuel",
     "category": "🔮 IMAGINAIRE",
     "author": "Neal Stephenson",
+    "realYear": 2017,
     "how": "Metaverse.",
     "s_curve_phase": 3,
     "pharmakon_remedy_percent": 50,
@@ -759,6 +764,7 @@
     "tipping": true,
     "author": "Wachowski",
     "s_curve_phase": 3,
+    "realYear": 2026.06,
     "pharmakon_remedy_percent": 41,
     "pharmakon_poison_percent": 59
   },
@@ -791,6 +797,7 @@
     "label": "Minority Report",
     "category": "🔮 IMAGINAIRE",
     "s_curve_phase": 3,
+    "realYear": 2024.5,
     "pharmakon_remedy_percent": 53,
     "pharmakon_poison_percent": 47
   },
@@ -939,6 +946,7 @@
     "label": "Her",
     "category": "🔮 IMAGINAIRE",
     "s_curve_phase": 3,
+    "realYear": 2024.5,
     "pharmakon_remedy_percent": 44,
     "pharmakon_poison_percent": 56
   },
@@ -969,6 +977,7 @@
     "label": "Ex Machina",
     "category": "🔮 IMAGINAIRE",
     "s_curve_phase": 3,
+    "realYear": 2022.9,
     "pharmakon_remedy_percent": 40,
     "pharmakon_poison_percent": 60
   },
@@ -1274,6 +1283,17 @@
     "pharmakon_poison_percent": 39
   },
   {
+    "year": 2024.4,
+    "value": 21000,
+    "label": "AlphaFold 3 (Alphagénome)",
+    "category": "🟢 BIOTECH",
+    "tipping": true,
+    "description": "Modélisation de toutes les molécules du vivant (ADN, ARN, Ligands). Le Pharmakon absolu : accélération des remèdes vs design de toxines.",
+    "s_curve_phase": 4,
+    "pharmakon_remedy_percent": 85,
+    "pharmakon_poison_percent": 15
+  },
+  {
     "year": 2024.8,
     "value": 18000,
     "label": "Civilisation Type 0.73",
@@ -1349,6 +1369,17 @@
     "s_curve_phase": 4,
     "pharmakon_remedy_percent": 67,
     "pharmakon_poison_percent": 33
+  },
+  {
+    "year": 2025.05,
+    "value": 23000,
+    "label": "DeepSeek-R1 (Open Source)",
+    "category": "🔵 COGNITION",
+    "tipping": true,
+    "description": "Choc géopolitique : un modèle chinois open-source rivalise avec o1. Effondrement du 'moat' des modèles fermés.",
+    "s_curve_phase": 4,
+    "pharmakon_remedy_percent": 60,
+    "pharmakon_poison_percent": 40
   },
   {
     "year": 2026.05,
