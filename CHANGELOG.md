@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v145
+- 🎨 **UI (Visual Check) :** Le numéro de version dans la barre latérale est maintenant **Vert Émeraude** pour confirmer visuellement la mise à jour et distinguer la v145 des versions cachées précédentes.
+- ⚙️ **CI/CD :** Inscription explicite du `run-name: The Loom v145 🚀` dans le fichier YAML pour garantir la traçabilité du déploiement.
+- 🔖 **Version :** Passage en v145.
+
 ## v144
 - 📚 **Data Quality (Deep Clean) :** Enrichissement manuel des événements fondateurs du Réseau (Web, Google, Facebook, Bitcoin) qui manquaient de descriptions et d'analyses.
 - 📈 **Data Fix (Entropie v2) :** Algorithme de lissage strict appliqué à la courbe d'Entropie. La valeur `y` d'un événement ne peut désormais plus jamais être inférieure à celle de l'événement précédent, garantissant une courbe ascendante sans "chute".
