@@ -1,5 +1,15 @@
 # CHANGELOG - Cortex Loom
 
+## v141
+- 🧭 **UX (Interface) :** La fiche de détail (`#detail-card`) est désormais **déplaçable** (draggable) à la souris.
+- 🛡️ **UX (Contraintes) :** Le déplacement de la fiche est contraint aux limites de l'écran pour éviter qu'elle ne devienne inaccessible.
+- 📚 **Data Quality :** Enrichissement massif des œuvres de fiction (Blade Runner, Matrix, Her, etc.) avec descriptions complètes, analyses Pharmakon et liens bidirectionnels (Prédit/Réalisé).
+- 🐛 **Data Fix :** Suppression du doublon "Horloge Apocalypse 1991" (valeur 100) qui cassait la courbe d'Entropie. Correction de syntaxe JSON sur les événements 2000/2001.
+- 💉 **Data Injection :** Ajout de 10 événements majeurs pour les catégories **Biotech** (PCR, OGM, iPS) et **Noosphère** (McLuhan, Intelligence Collective, Wikileaks) afin d'équilibrer le dataset.
+- � **Directives :** Ajout d'une règle stricte pour les fictions : Pitch obligatoire, pas de "N/A", et lien vers la réalité.
+- 🧭 **UX (Nav) :** Le maillage temporel est maintenant dense : Blade Runner pointe vers Ameca, Her vers GPT-4o, etc.
+- 🔖 **Version :** Passage en v141.
+
 ## v140
 - 🛡️ **Sentinel Fix :** Sécurisation des imports (`dotenv` optionnel) pour éviter le crash "Exit Code 1" en CI/CD.
 - 🧭 **UX (Nav Fix) :** Amélioration de la tolérance de date (0.5 an) pour le saut "Prédit <-> Réalisé".
