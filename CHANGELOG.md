@@ -1,5 +1,9 @@
 # CHANGELOG - Cortex Loom
 
+## v143
+- 🔧 **UX (Hotfix) :** Ajout d'une fonction `forceReload()` accessible en cliquant sur le numéro de version (Sidebar). Cela recharge la page avec un paramètre unique pour contourner le cache du navigateur.
+- 🔖 **Version :** Passage en v143.
+
 ## v142
 - 📚 **Data Fix (Massif) :** Injection automatique des sources (`whoWhat`) pour +100 événements orphelins. Plus aucun "Source: ?" ne devrait apparaître.
 - 📈 **Data Fix (Entropie) :** Harmonisation algorithmique de la courbe "☢️ ENTROPIE". Les valeurs de l'axe Y ont été recalculées pour être strictement croissantes, supprimant le "trou" de 1991 (Horloge 17mn).
