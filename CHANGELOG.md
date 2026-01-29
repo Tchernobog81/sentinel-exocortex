@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v142
+- 📚 **Data Fix (Massif) :** Injection automatique des sources (`whoWhat`) pour +100 événements orphelins. Plus aucun "Source: ?" ne devrait apparaître.
+- 📈 **Data Fix (Entropie) :** Harmonisation algorithmique de la courbe "☢️ ENTROPIE". Les valeurs de l'axe Y ont été recalculées pour être strictement croissantes, supprimant le "trou" de 1991 (Horloge 17mn).
+- 📏 **Directives :** Règle stricte imposant le champ `whoWhat` pour tout événement.
+- 🔖 **Version :** Passage en v142.
+
 ## v141
 - 🔧 **Hotfix (Cache) :** Ajout de balises `meta` anti-cache et d'un timestamp sur les requêtes `fetch` pour forcer le rafraîchissement des données sur tous les navigateurs.
 - 🧭 **UX (Interface) :** La fiche de détail (`#detail-card`) est désormais **déplaçable** (draggable) à la souris.

@@ -75,10 +75,12 @@ Pour chaque événement injecté ou analysé, les champs suivants doivent être 
 -   **Dates (`year`, `timestamp`)** :
     -   `year` peut être décimal pour un positionnement précis sur le graphique.
     -   La date affichée dans les détails de l'événement (`card-date`) doit être l'année entière (arrondie à l'inférieur) pour les événements historiques, ou une date précise si le `timestamp` est plus pertinent.
+-   **`whoWhat` (Source)** : **OBLIGATOIRE**. Indiquer l'entité, la personne ou l'organisation à l'origine de l'événement. Ne jamais laisser vide ou "?".
 
 ### Cohérence Graphique (Axe Y / Value)
 
 -   **Pas de Plongeon Injustifié :** La propriété `value` (Axe Y) sert à espacer les lignes. Pour une même catégorie, elle doit globalement croître avec le temps.
+-   **Harmonisation :** Si un nouvel événement est inséré entre deux existants, sa `value` doit être comprise entre les deux.
 -   **Vérification des Doublons :** Avant d'injecter un événement, vérifier s'il n'existe pas déjà (même année/label) avec une valeur contradictoire qui briserait la courbe.
 
 ### Traitement des Œuvres de Fiction (Catégorie IMAGINAIRE)
