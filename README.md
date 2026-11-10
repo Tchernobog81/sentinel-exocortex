@@ -366,3 +366,14 @@ Pour toute question ou problème, consulte :
 - **Zooms intelligents** : wheel/pinch/pan (chartjs-plugin-zoom, déjà chargé), double-clic = reset.
 - **Auto-zoom animé** vers le cluster des *nouveaux* événements détectés à chaque rafraîchissement, fenêtre adaptative (plus ça s'accélère, plus on zoome serré).
 - Zoom animé au clic sur une catégorie ; étiquettes textuelles quand on zoome (< 8 ans) ; transitions animées (`easeOutQuart`, 700 ms).
+
+### Boucle de veille autonome (push GitHub toutes les ~60 s)
+```bash
+./scripts/run_push_agent.sh
+```
+L'agent scrute le net à chaque cycle (LLM local outillé, focus AI2027), met à jour
+`loom_data.json` via le backend local, et **commit + push sur `main` uniquement si de
+nouveaux événements** ont été détectés → la page GitHub Pages (v148) se met à jour
+automatiquement (workflow `static.yml`). Pré-requis : accès SSH au dépôt
+(`git@github.com:Tchernobog81/sentinel-exocortex.git`, clé enregistrée sur le compte).
+Logs : `sentinel_push.log`. Verrou mono-instance : `.push_agent.lockdir/`.
