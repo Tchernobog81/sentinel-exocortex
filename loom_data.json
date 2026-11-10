@@ -322,6 +322,24 @@
     "pharmakon_poison_percent": 40
   },
   {
+    "id": "e0d2b62148c6f4be",
+    "year": 1495,
+    "value": 2000,
+    "label": "Chevalier mécanique de Léonard",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "Léonard de Vinci",
+    "description": "Premier automate humanoïde documenté (design).",
+    "url": "https://fr.wikipedia.org/wiki/L%C3%A9onard_de_Vinci",
+    "timestamp": "1495-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 1,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant."
+  },
+  {
     "id": "d9d5afd8df537db7",
     "year": 1543.0,
     "value": 272,
@@ -412,6 +430,24 @@
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 59,
     "pharmakon_poison_percent": 41
+  },
+  {
+    "id": "aa9c4618f5c65bad",
+    "year": 1738,
+    "value": 2700,
+    "label": "Canard digesteur de Vaucanson",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "Jacques de Vaucanson",
+    "description": "Automate mécanique animé, prouesse de l'ingénierie du XVIIIe.",
+    "url": "https://fr.wikipedia.org/wiki/Canard_digesteur",
+    "timestamp": "1738-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 1,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant."
   },
   {
     "id": "8018043a7f2d8fe6",
@@ -920,6 +956,43 @@
     "pharmakon_poison_percent": 48
   },
   {
+    "id": "60400fcd2676a907",
+    "year": 1920,
+    "value": 3400,
+    "label": "Le mot « robot » (R.U.R.)",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "Karel Čapek",
+    "description": "La pièce R.U.R. invente le mot robot (travail forcé tchèque) : robots esclaves.",
+    "url": "https://fr.wikipedia.org/wiki/R.U.R.",
+    "timestamp": "1920-06-01T00:00:00",
+    "tipping": true,
+    "s_curve_phase": 1,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant."
+  },
+  {
+    "id": "c96bc109bf0cb14c",
+    "year": 1920,
+    "value": 1500,
+    "label": "R.U.R. (robots révoltés)",
+    "category": "🔮 IMAGINAIRE",
+    "whoWhat": "Karel Čapek",
+    "description": "La révolte des robots de Čapek préfigure l'automatisation industrielle.",
+    "url": "https://fr.wikipedia.org/wiki/R.U.R.",
+    "timestamp": "1920-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 2,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50,
+    "convergences": "Fiction + robotique + IA",
+    "grand_filter_analysis": "La fiction comme avertissement.",
+    "final_note": "On avait prévenu.",
+    "realYear": 1954
+  },
+  {
     "id": "b5e09f01d51f4e47",
     "year": 1924.0,
     "value": 55,
@@ -1033,6 +1106,25 @@
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 53,
     "pharmakon_poison_percent": 47
+  },
+  {
+    "id": "82cedee98784d53f",
+    "year": 1927,
+    "value": 1500,
+    "label": "Metropolis (robot Maria)",
+    "category": "🔮 IMAGINAIRE",
+    "whoWhat": "Fritz Lang",
+    "description": "Le robot humanoïde de Metropolis préfigure les androïdes modernes.",
+    "url": "https://fr.wikipedia.org/wiki/Metropolis",
+    "timestamp": "1927-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 2,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50,
+    "convergences": "Fiction + robotique + IA",
+    "grand_filter_analysis": "La fiction comme avertissement.",
+    "final_note": "On avait prévenu.",
+    "realYear": 2013
   },
   {
     "id": "714d62a914571c18",
@@ -1748,6 +1840,25 @@
     "pharmakon_poison_percent": 59
   },
   {
+    "id": "8d8b630b131cc00b",
+    "year": 1950,
+    "value": 1500,
+    "label": "I, Robot (lois des robots)",
+    "category": "🔮 IMAGINAIRE",
+    "whoWhat": "Isaac Asimov",
+    "description": "Les trois lois d'Asimov encadrent la robotique réelle.",
+    "url": "https://fr.wikipedia.org/wiki/I,_Robot",
+    "timestamp": "1950-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 2,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50,
+    "convergences": "Fiction + robotique + IA",
+    "grand_filter_analysis": "La fiction comme avertissement.",
+    "final_note": "On avait prévenu.",
+    "realYear": 1954
+  },
+  {
     "id": "a2ab4e3498932adb",
     "year": 1951.0,
     "value": 180,
@@ -1815,6 +1926,25 @@
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 5,
     "pharmakon_poison_percent": 95
+  },
+  {
+    "id": "c596fae75f9c169d",
+    "year": 1952,
+    "value": 1500,
+    "label": "Astro Boy",
+    "category": "🔮 IMAGINAIRE",
+    "whoWhat": "Osamu Tezuka",
+    "description": "Astro Boy préfigure le robot humanoïde gentil et agile.",
+    "url": "https://fr.wikipedia.org/wiki/Astro_Boy",
+    "timestamp": "1952-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 2,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50,
+    "convergences": "Fiction + robotique + IA",
+    "grand_filter_analysis": "La fiction comme avertissement.",
+    "final_note": "On avait prévenu.",
+    "realYear": 2000
   },
   {
     "id": "316e05ac7de24a3d",
@@ -1930,6 +2060,28 @@
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45
+  },
+  {
+    "id": "09b479e23d2b220a",
+    "year": 1954,
+    "value": 4100,
+    "label": "Unimate, 1er robot industriel",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "George Devol",
+    "description": "Premier bras robotique programmable, précurseur de la robotique industrielle.",
+    "url": "https://fr.wikipedia.org/wiki/Unimate",
+    "timestamp": "1954-06-01T00:00:00",
+    "tipping": true,
+    "s_curve_phase": 3,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant.",
+    "predictedBy": [
+      "R.U.R. (robots révoltés)",
+      "I, Robot (lois des robots)"
+    ]
   },
   {
     "id": "4039a0992bd1ce5e",
@@ -2254,6 +2406,24 @@
     "pharmakon_poison_percent": 71
   },
   {
+    "id": "c1db68c947ad62c1",
+    "year": 1961,
+    "value": 4800,
+    "label": "Unimate déployé chez General Motors",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "General Motors",
+    "description": "Premier robot industriel en production (soudure par points).",
+    "url": "https://en.wikipedia.org/wiki/Unimate",
+    "timestamp": "1961-06-01T00:00:00",
+    "tipping": true,
+    "s_curve_phase": 3,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant."
+  },
+  {
     "id": "8e616329a355d487",
     "year": 1962.0,
     "value": 500,
@@ -2576,6 +2746,24 @@
     "pharmakon_poison_percent": 50
   },
   {
+    "id": "cca60f03a309e07d",
+    "year": 1966,
+    "value": 5500,
+    "label": "Shakey, 1er robot « intelligent »",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "Stanford Research Institute",
+    "description": "Premier robot mobile percevant et raisonnant sur son environnement.",
+    "url": "https://en.wikipedia.org/wiki/Shakey_the_robot",
+    "timestamp": "1966-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 3,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant."
+  },
+  {
     "id": "e8c1a28ffddc4b13",
     "year": 1967.0,
     "value": 380,
@@ -2758,6 +2946,25 @@
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50
+  },
+  {
+    "id": "a692a39491fb32d7",
+    "year": 1968,
+    "value": 1500,
+    "label": "2001, Odyssée (HAL 9000)",
+    "category": "🔮 IMAGINAIRE",
+    "whoWhat": "Arthur C. Clarke",
+    "description": "HAL préfigure l'automate doté d'intelligence embarquée.",
+    "url": "https://fr.wikipedia.org/wiki/2001,_Odyssée",
+    "timestamp": "1968-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 2,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50,
+    "convergences": "Fiction + robotique + IA",
+    "grand_filter_analysis": "La fiction comme avertissement.",
+    "final_note": "On avait prévenu.",
+    "realYear": 2000
   },
   {
     "id": "644530ed718b2568",
@@ -3979,6 +4186,25 @@
     "pharmakon_poison_percent": 50
   },
   {
+    "id": "aca3324eea57afe2",
+    "year": 1984,
+    "value": 1500,
+    "label": "Terminator (T-800)",
+    "category": "🔮 IMAGINAIRE",
+    "whoWhat": "James Cameron",
+    "description": "Le T-800 préfigure les machines autonomes mobiles.",
+    "url": "https://fr.wikipedia.org/wiki/Terminator",
+    "timestamp": "1984-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 2,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50,
+    "convergences": "Fiction + robotique + IA",
+    "grand_filter_analysis": "La fiction comme avertissement.",
+    "final_note": "On avait prévenu.",
+    "realYear": 2013
+  },
+  {
     "id": "25e28f9075777ce7",
     "year": 1984.5,
     "value": 620,
@@ -4184,6 +4410,25 @@
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50
+  },
+  {
+    "id": "72d28d36b4d62e0f",
+    "year": 1987,
+    "value": 1500,
+    "label": "RoboCop",
+    "category": "🔮 IMAGINAIRE",
+    "whoWhat": "Paul Verhoeven",
+    "description": "La police robotisée préfigure les robots d'intervention.",
+    "url": "https://fr.wikipedia.org/wiki/RoboCop",
+    "timestamp": "1987-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 2,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50,
+    "convergences": "Fiction + robotique + IA",
+    "grand_filter_analysis": "La fiction comme avertissement.",
+    "final_note": "On avait prévenu.",
+    "realYear": 2020
   },
   {
     "id": "764433cad0009b77",
@@ -5315,6 +5560,24 @@
     "pharmakon_poison_percent": 50
   },
   {
+    "id": "05293ffee24669cd",
+    "year": 1999,
+    "value": 6200,
+    "label": "AIBO, robot animal de compagnie",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "Sony",
+    "description": "Premier robot domestique à succès commercial (apprentissage machine embarqué).",
+    "url": "https://en.wikipedia.org/wiki/Aibo",
+    "timestamp": "1999-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 3,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant."
+  },
+  {
     "id": "cad8d8b61621b0e3",
     "year": 1999.2,
     "value": 1800,
@@ -5382,6 +5645,28 @@
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 67,
     "pharmakon_poison_percent": 33
+  },
+  {
+    "id": "a8b0608b36bc0e72",
+    "year": 2000,
+    "value": 6900,
+    "label": "ASIMO, humanoïde bipède",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "Honda",
+    "description": "Robot humanoïde le plus avancé de son époque (marche, course, interaction).",
+    "url": "https://en.wikipedia.org/wiki/ASIMO",
+    "timestamp": "2000-06-01T00:00:00",
+    "tipping": true,
+    "s_curve_phase": 4,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant.",
+    "predictedBy": [
+      "Astro Boy",
+      "2001, Odyssée (HAL 9000)"
+    ]
   },
   {
     "id": "a946f6a0c2a2f41f",
@@ -5683,6 +5968,24 @@
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 10,
     "pharmakon_poison_percent": 90
+  },
+  {
+    "id": "3ecc3a6138058efd",
+    "year": 2002,
+    "value": 7600,
+    "label": "Roomba, robot domestique autonome",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "iRobot",
+    "description": "Aspirateur autonome : la robotique entre dans les foyers.",
+    "url": "https://en.wikipedia.org/wiki/Roomba",
+    "timestamp": "2002-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 4,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant."
   },
   {
     "id": "99c0b25da231e51b",
@@ -6195,6 +6498,25 @@
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 41,
     "pharmakon_poison_percent": 59
+  },
+  {
+    "id": "d5c25761dfe68cc4",
+    "year": 2008,
+    "value": 1500,
+    "label": "Iron Man (exosquelette)",
+    "category": "🔮 IMAGINAIRE",
+    "whoWhat": "Marvel",
+    "description": "L'armure high-tech préfigure les exosquelettes industriels.",
+    "url": "https://fr.wikipedia.org/wiki/Iron_Man",
+    "timestamp": "2008-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 2,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50,
+    "convergences": "Fiction + robotique + IA",
+    "grand_filter_analysis": "La fiction comme avertissement.",
+    "final_note": "On avait prévenu.",
+    "realYear": 2024
   },
   {
     "id": "ba8336e232c0630e",
@@ -6989,6 +7311,28 @@
     "pharmakon_poison_percent": 50
   },
   {
+    "id": "050acbb40d1ebdd9",
+    "year": 2013,
+    "value": 8300,
+    "label": "Atlas, humanoïde hydraulique",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "Boston Dynamics",
+    "description": "Robot capable de courir, sauter et se relever après une chute.",
+    "url": "https://en.wikipedia.org/wiki/Boston_Dynamics#Atlas",
+    "timestamp": "2013-06-01T00:00:00",
+    "tipping": true,
+    "s_curve_phase": 4,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant.",
+    "predictedBy": [
+      "Metropolis (robot Maria)",
+      "Terminator (T-800)"
+    ]
+  },
+  {
     "id": "ea536a4a16779a29",
     "year": 2013.4,
     "value": 6000,
@@ -7457,6 +7801,24 @@
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50
+  },
+  {
+    "id": "08bbb05637fe90b8",
+    "year": 2016,
+    "value": 9000,
+    "label": "Sophia, robot « citoyen »",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "Hanson Robotics",
+    "description": "Premier robot à obtenir une citoyenneté (Arabie saoudite) : symbole médiatique.",
+    "url": "https://en.wikipedia.org/wiki/Sophia_(robot)",
+    "timestamp": "2016-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 4,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant."
   },
   {
     "id": "88f9c64582a9fa29",
@@ -8042,6 +8404,27 @@
     "pharmakon_poison_percent": 20
   },
   {
+    "id": "28dfeccf8a244994",
+    "year": 2020,
+    "value": 9700,
+    "label": "Spot, robot quadrupède commercial",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "Boston Dynamics",
+    "description": "Chien robot déployé en industrie (inspection, sites dangereux).",
+    "url": "https://en.wikipedia.org/wiki/Spot_(robot)",
+    "timestamp": "2020-06-01T00:00:00",
+    "tipping": true,
+    "s_curve_phase": 4,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant.",
+    "predictedBy": [
+      "RoboCop"
+    ]
+  },
+  {
     "id": "b03bd0ff3e3cd3c3",
     "year": 2020.2,
     "value": 1900,
@@ -8204,6 +8587,24 @@
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50
+  },
+  {
+    "id": "c2fd13c292400bb9",
+    "year": 2021,
+    "value": 10400,
+    "label": "Optimus, robot humanoïde Tesla",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "Tesla",
+    "description": "Tesla annonce un humanoïde généraliste pour l'usine et le domicile.",
+    "url": "https://en.wikipedia.org/wiki/Tesla_Optimus",
+    "timestamp": "2021-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 4,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant."
   },
   {
     "id": "ea5f3f43f0db61d0",
@@ -8781,6 +9182,27 @@
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 53,
     "pharmakon_poison_percent": 47
+  },
+  {
+    "id": "79dde30bac33d740",
+    "year": 2024,
+    "value": 11100,
+    "label": "Figure 01, humanoïde industriel",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "Figure AI",
+    "description": "Humanoïde déployé en usine BMW (assemblage automobile).",
+    "url": "https://en.wikipedia.org/wiki/Figure_AI",
+    "timestamp": "2024-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 4,
+    "pharmakon_remedy_percent": 55,
+    "pharmakon_poison_percent": 45,
+    "convergences": "Robotique + IA + capteurs + actionneurs + cloud",
+    "grand_filter_analysis": "Automatisation du travail et de la guerre.",
+    "final_note": "Ils travaillent pour nous. Enfin, pour l'instant.",
+    "predictedBy": [
+      "Iron Man (exosquelette)"
+    ]
   },
   {
     "id": "e104c8901c1384af",
