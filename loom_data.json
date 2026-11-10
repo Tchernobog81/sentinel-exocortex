@@ -1222,7 +1222,7 @@
   },
   {
     "id": "e5b2b504a52a0da6",
-    "year": 1929,
+    "year": 1929.0,
     "value": 2100,
     "label": "Manon des sources (Pagnol)",
     "category": "🔮 IMAGINAIRE",
@@ -1231,13 +1231,17 @@
     "url": "https://fr.wikipedia.org/wiki/Manon_des_sources",
     "timestamp": "1929-06-01T00:00:00",
     "tipping": false,
+    "realYear": 2050.0,
+    "predictedBy": null,
+    "img": null,
     "s_curve_phase": 2,
-    "pharmakon_remedy_percent": 40,
-    "pharmakon_poison_percent": 60,
+    "remedy_percent": 40,
+    "poison_percent": 60,
     "convergences": "Eau + climat + conflits territoriaux",
     "grand_filter_analysis": "La fiction préfigure les guerres de ressource (eau) du XXIe siècle.",
     "final_note": "L'eau, prochain or bleu.",
-    "realYear": 2050.0
+    "pharmakon_remedy_percent": 40,
+    "pharmakon_poison_percent": 60
   },
   {
     "id": "888b01d69a7b17fb",
