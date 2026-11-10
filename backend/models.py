@@ -52,6 +52,9 @@ class Event(BaseModel):
     url: str = Field(default="", description="URL de référence")
     timestamp: Optional[str] = Field(default=None, description="Timestamp ISO")
     tipping: bool = Field(default=False, description="Point de bascule")
+    realYear: Optional[float] = Field(default=None, description="Année de réalisation (si l'événement prédit un autre événement)")
+    predictedBy: Optional[List[str]] = Field(default=None, description="Œuvres de fiction ayant prédit cet événement")
+    img: Optional[str] = Field(default=None, description="URL image (optionnel)")
     analysis: Optional[PharmakonAnalysis] = Field(default=None, description="Analyse Pharmakon")
 
     @model_validator(mode="before")

@@ -42,7 +42,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_DATA_FILE = os.environ.get("LOCAL_DATA_FILE", str(PROJECT_ROOT / "loom_data.json"))
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
 
-VERSION = "v152"
+VERSION = "v153"
 
 # LLM local (Ollama) outillé
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
@@ -498,15 +498,28 @@ def scan_ai2027() -> Optional[Dict[str, Any]]:
 
 
 def scan_doomsday_clock() -> Dict[str, Any]:
-    """Événement pour l'Horloge de l'Apocalypse."""
-    logger.info("[SCAN] Vérification de l'Horloge de l'Apocalypse...")
+    """Horloge de l'Apocalypse : scrape la dernière heure OFFICIELLE (Bulletin of the Atomic
+    Scientists) à chaque cycle (la boucle tourne ~toutes les minutes ; le réglage est annuel).
+    Label stable par année -> upsert : la description est rafraîchie, pas de doublon."""
+    logger.info("[SCAN] Horloge de l'Apocalypse (source officielle)...")
+    year_now = datetime.date.today().year
+    seconds = 89  # repli : dernier réglage officiel connu (janv. 2025)
+    src_date = "janvier 2025"
+    page = fetch_url("https://thebulletin.org/doomsday-clock/current-time/", max_chars=8000)
+    if not page.startswith("ERREUR"):
+        m = re.search(r"(\d+)\s*seconds?\s*(?:to|avant)\s*midnight", page, re.I) or re.search(r"(\d+)\s*secondes?\s*avant\s*minuit", page, re.I)
+        if m:
+            seconds = int(m.group(1))
+        d = re.search(r"(January|janvier|February|février|March|mars|April|avril|May|mai|June|juin|July|juillet|August|août|September|septembre|October|octobre|November|novembre|December|décembre)\s+(\d{1,2}),?\s+(\d{4})", page)
+        if d:
+            src_date = d.group(0)
     return {
-        "year": 2025.08,
+        "year": float(year_now),
         "value": 48000,
-        "label": "Horloge de l'Apocalypse : 89 secondes",
+        "label": f"Horloge de l'Apocalypse {year_now}",
         "category": "☢️ ENTROPIE",
         "whoWhat": "Bulletin of the Atomic Scientists",
-        "description": "L'humanité se rapproche de la catastrophe mondiale. Les raisons incluent l'échec à maîtriser les risques nucléaires, les menaces climatiques, le développement non régulé de l'IA, les menaces biologiques et la propagation de la désinformation.",
+        "description": f"{seconds} secondes avant minuit (dernier réglage officiel, {src_date}). Menaces : nucléaire, climat, IA non régulée, biologie, désinformation.",
         "url": "https://thebulletin.org/doomsday-clock/current-time/",
         "timestamp": datetime.datetime.now().isoformat(),
         "tipping": True,

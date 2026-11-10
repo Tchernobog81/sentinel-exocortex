@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v152</title>
+    <title>THE LOOM : EXOCORTEX v153</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -112,11 +112,20 @@
         .log-warn { color: #f59e0b; }
         
         #detail-card { 
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -46%) scale(.98);
             width: 90%; max-width: 600px; background: rgba(5,5,8,0.98); 
             border: 1px solid #333; padding: 2rem; z-index: 5000; display: none;
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            opacity: 0; transition: opacity .25s ease, transform .25s ease;
         }
+        #detail-card.open { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        #search-input { background: #0a0a0f; border: 1px solid #222; color: #eee; font-size: 11px; padding: 5px 10px; width: 230px; outline: none; font-family: inherit; border-radius: 2px; }
+        #search-input:focus { border-color: var(--accent); }
+        #doomsday-widget { margin: 10px 15px 0; padding: 10px 12px; border: 1px solid #3f1d1d; background: rgba(120,20,20,0.10); border-radius: 2px; }
+        #doomsday-widget .dd-seconds { font-size: 30px; font-weight: 900; color: #ff5555; font-family: 'JetBrains Mono', monospace; line-height: 1.1; }
+        #doomsday-widget .dd-label { font-size: 9px; color: #b07070; text-transform: uppercase; letter-spacing: 1px; }
+        .card-nav-link { font-size: 10px; border: 1px solid #3a3a2a; padding: 3px 8px; cursor: pointer; color: #fbbf24; text-transform: uppercase; border-radius: 2px; transition: background .15s; }
+        .card-nav-link:hover { background: #1c1c14; }
         #label-float { 
             --label-bg: rgba(0,0,0,0.9); --label-border: var(--accent);
             position: fixed; pointer-events: none; background: var(--label-bg); 
@@ -139,16 +148,22 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v152</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v152...</div>
-        <div id="debug-log">Init v152...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v153</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v153...</div>
+        <div id="debug-log">Init v153...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v152</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v153</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
+            </div>
+
+            <div id="doomsday-widget" title="Dernière heure officielle (Bulletin of the Atomic Scientists), rafraîchie quotidiennement par l'agent">
+                <div class="section-title"><span>☢️ Horloge de l'Apocalypse</span><span id="dd-year" class="text-zinc-500"></span></div>
+                <div class="dd-seconds" id="dd-seconds">--</div>
+                <div class="dd-label" id="dd-sub">avant minuit · maj quotidienne (source officielle)</div>
             </div>
 
             <div id="flux-container">
@@ -167,6 +182,7 @@
         <main>
             <div class="top-bar">
                 <span id="sync-status" class="text-[9px] font-bold text-zinc-600 absolute left-4">OFFLINE</span>
+                <input id="search-input" type="text" placeholder="🔍 Rechercher un événement, une source, une catégorie..." oninput="applyFilter(this.value)">
                 <button onclick="resetView()" class="hud-btn bttf-btn">RETOUR VERS LE FUTUR</button>
             </div>
             <div class="canvas-wrapper">
@@ -272,6 +288,50 @@
         let isHoveringLabel = false;
         // Catégories éteintes (on/off indépendant par courbe)
         const hiddenCategories = new Set();
+        // Toutes les données chargées (pour la recherche et la navigation Prédit→Réalisé)
+        let ALL_DATA = [];
+
+        // --- Recherche textuelle (filtre les points affichés, didactic) ---
+        function applyFilter(q) {
+            q = (q || '').trim().toLowerCase();
+            if (!q) { updateChart(ALL_DATA); updateLegend(ALL_DATA); return; }
+            const filtered = ALL_DATA.filter(e =>
+                (e.label || '').toLowerCase().includes(q) ||
+                (e.description || '').toLowerCase().includes(q) ||
+                (e.category || '').toLowerCase().includes(q) ||
+                (e.whoWhat || '').toLowerCase().includes(q)
+            );
+            updateChart(filtered);
+            updateLegend(filtered);
+            log(`🔍 Filtre "${q}": ${filtered.length}/${ALL_DATA.length} événements`);
+        }
+
+        // --- Widget Horloge de l'Apocalypse (dernier réglage officiel connu) ---
+        function updateDoomsdayWidget(data) {
+            const clocks = data.filter(e => (e.category || '').includes('ENTROPIE') && (e.label || '').includes('Horloge'))
+                               .sort((a, b) => b.year - a.year);
+            const el = document.getElementById('dd-seconds');
+            if (!clocks.length) { el.innerText = '--'; return; }
+            const c = clocks[0];
+            const m = ((c.label || '') + ' ' + (c.description || '')).match(/(\d+)\s*(?:seconde|second)/i);
+            el.innerText = m ? m[1] + ' s' : '--';
+            document.getElementById('dd-year').innerText = Math.floor(c.year);
+            document.getElementById('dd-sub').innerText = `avant minuit · réglage ${Math.floor(c.year)} · maj quotidienne`;
+        }
+
+        // --- Navigation Prédit → Réalisé ---
+        function jumpToYear(year) {
+            const target = ALL_DATA.filter(e => Math.floor(e.year) === Math.floor(year)).sort((a, b) => b.year - a.year)[0];
+            if (!target) return;
+            animateZoomTo(target.year - 2, target.year + 2);
+            setTimeout(() => showDetail(target), 600);
+        }
+        function jumpToLabel(label) {
+            const target = ALL_DATA.find(e => e.label === label);
+            if (!target) return;
+            animateZoomTo(target.year - 2, target.year + 2);
+            setTimeout(() => showDetail(target), 600);
+        }
 
         function log(msg, type="info") {
             const el = document.getElementById('debug-log');
@@ -328,10 +388,12 @@
             for (const source of BACKEND_URLS.map(url => ({ url, label: url }))) {
                 const data = await loadDataFromSource(source, init);
                 if (data) {
+                    ALL_DATA = data;
                     try {
                         updateChart(data);
                         updateFlux(data);
                         updateLegend(data);
+                        updateDoomsdayWidget(data);
                         handleSmartFocus(data);
                     } catch (err) {
                         log(`❌ Erreur rendu: ${err.message}`, "error");
@@ -470,13 +532,8 @@
                         tooltip: {
                             enabled: false,
                             external: function(context) {
-                                if (context.tooltip.opacity === 0) {
-                                    if (detailCardTimeout) clearTimeout(detailCardTimeout);
-                                    return;
-                                }
-                                const dataPoint = context.tooltip.dataPoints && context.tooltip.dataPoints[0];
-                                if (!dataPoint || !dataPoint.raw) return;
-                                showDetail(dataPoint.raw);
+                                // Plus de popup au survol (trop surgissant) : la fiche s'ouvre au clic uniquement.
+                                if (detailCardTimeout) clearTimeout(detailCardTimeout);
                             }
                         },
                         datalabels: {
@@ -539,6 +596,28 @@
                     animation: { duration: 700, easing: 'easeOutQuart' }
                 },
                 plugins: [{
+                    id: 'nowLine',
+                    afterDatasetsDraw: (chart) => {
+                        // Ligne verticale "MAINTENANT" didactique
+                        const x = chart.scales.x;
+                        const now = new Date().getFullYear() + new Date().getMonth() / 12;
+                        if (now < x.min || now > x.max) return;
+                        const px = x.getPixelForValue(now);
+                        const ctx = chart.ctx;
+                        ctx.save();
+                        ctx.strokeStyle = 'rgba(251,191,36,0.55)';
+                        ctx.setLineDash([4, 4]);
+                        ctx.beginPath();
+                        ctx.moveTo(px, chart.chartArea.top);
+                        ctx.lineTo(px, chart.chartArea.bottom);
+                        ctx.stroke();
+                        ctx.setLineDash([]);
+                        ctx.fillStyle = 'rgba(251,191,36,0.85)';
+                        ctx.font = '10px JetBrains Mono, monospace';
+                        ctx.fillText('MAINTENANT', px + 5, chart.chartArea.top + 12);
+                        ctx.restore();
+                    }
+                }, {
                     id: 'connectorPlugin',
                     afterDatasetsDraw: (chart) => {
                         const ctx = chart.ctx;
@@ -656,13 +735,33 @@
         let detailCardTimeout;
         function showDetail(data) {
             if (detailCardTimeout) clearTimeout(detailCardTimeout);
-            
+
             const card = document.getElementById('detail-card');
             document.getElementById('card-title').innerText = data.label;
             document.getElementById('card-who').innerText = data.whoWhat || 'N/A';
             document.getElementById('card-date').innerText = data.year ? Math.floor(data.year) : 'N/A';
             document.getElementById('card-desc').innerText = data.description || 'Pas de description.';
-            
+
+            // Navigation Prédit -> Réalisé
+            const nav = document.getElementById('card-nav');
+            nav.innerHTML = '';
+            if (data.realYear) {
+                const b = document.createElement('span');
+                b.className = 'card-nav-link';
+                b.innerText = `→ S'est réalisé en ${Math.floor(data.realYear)}`;
+                b.onclick = () => jumpToYear(data.realYear);
+                nav.appendChild(b);
+            }
+            if (Array.isArray(data.predictedBy)) {
+                data.predictedBy.forEach(t => {
+                    const b = document.createElement('span');
+                    b.className = 'card-nav-link';
+                    b.innerText = `← Prédit par : ${t}`;
+                    b.onclick = () => jumpToLabel(t);
+                    nav.appendChild(b);
+                });
+            }
+
             // Analyse Pharmakon
             const remedy = data.pharmakon_remedy_percent || data.remedy_percent || 50;
             const poison = data.pharmakon_poison_percent || data.poison_percent || 50;
@@ -670,23 +769,28 @@
             document.getElementById('pharmakon-poison').innerText = `${poison}%`;
             document.getElementById('pharmakon-remedy-bar').style.width = `${remedy}%`;
             document.getElementById('pharmakon-poison-bar').style.width = `${poison}%`;
-            
+
             // Courbe en S
             const phase = data.s_curve_phase || 3;
             document.getElementById('s-curve-phase').innerText = phase;
             const phases = ["Début", "Croissance", "Accélération", "Maturité", "Plateau"];
             document.getElementById('s-curve-desc').innerText = phases[phase - 1] || "Phase inconnue";
-            
+
             // Convergences
             document.getElementById('convergences-text').innerText = data.convergences || 'N/A';
             document.getElementById('final-note-text').innerText = data.final_note || 'N/A';
-            
+
             document.getElementById('card-stamp').innerText = `${data.category} | ${data.year}`;
+            // Ouverture douce (fade + léger zoom), jamais surgissante
             card.style.display = 'block';
+            requestAnimationFrame(() => requestAnimationFrame(() => card.classList.add('open')));
         }
 
         function closeDetail() {
-            document.getElementById('detail-card').style.display = 'none';
+            const card = document.getElementById('detail-card');
+            card.classList.remove('open');
+            clearTimeout(detailCardTimeout);
+            detailCardTimeout = setTimeout(() => { card.style.display = 'none'; }, 260);
         }
 
         function resetView() {

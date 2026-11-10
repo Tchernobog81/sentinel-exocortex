@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v153
+- 🎨 **Dashboard :** popups adoucies (fiche au clic uniquement, plus au survol ; ouverture en fondu 250 ms) ; barre de recherche textuelle (label/source/catégorie/description) ; ligne verticale « MAINTENANT » ; widget Horloge de l'Apocalypse dans la sidebar (dernier réglage officiel, maj quotidienne) ; navigation Prédit→Réalisé cliquable dans la fiche (realYear / predictedBy, zoom animé vers la cible).
+- ☢️ **Horloge :** `scan_doomsday_clock()` scrape désormais la page officielle thebulletin.org à chaque cycle (label stable par année → upsert, description rafraîchie quotidiennement).
+- 📚 **Data :** +44 événements fiction→réalité (22 paires œuvre/réalisation avec liens predictedBy/realYear), seed verrouillé `scripts/seed_fiction_links.py`. Total 431 événements, 11 catégories.
+- 🔖 **Version :** Passage en v153.
+
 ## v152
 - 🎛️ **UI (légende) :** courbes en on/off **indépendant** — cliquer une catégorie allume/éteint UNIQUEMENT celle-ci (les autres restent inchangées) ; bouton ⟳ pour tout réafficher ; l'état on/off survit aux rafraîchissements auto.
 - ☠️ **Nouvelle courbe (11e) « RISQUES CYBER »** : 25 attaques cyber majeures des origines (ver Morris 1988) à aujourd'hui (Bybit 2025), seed via `scripts/seed_cyber_events.py` (upsert par id).
