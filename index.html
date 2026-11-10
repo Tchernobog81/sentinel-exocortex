@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v157</title>
+    <title>THE LOOM : EXOCORTEX v158</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -164,15 +164,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v157</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v157...</div>
-        <div id="debug-log">Init v157...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v158</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v158...</div>
+        <div id="debug-log">Init v158...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v157</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v158</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -499,8 +499,25 @@
             }
         }
 
+        // ===== Regroupement des catégories en 8 courbes (validé, option B) =====
+        // Le rendu groupe par courbe ; les données conservent leur catégorie d'origine.
+        const GROUPS = [
+            { name: '⚙️ INDUSTRIE & ROBOTS', color: '#fbbf24', icon: '⚙️', cats: ['🟡 HARDWARE', '🤖 ROBOTIQUE'] },
+            { name: '🚀 ESPACE',               color: '#8b5cf6', icon: '🚀', cats: ['🟣 ESPACE'] },
+            { name: '🧠 IA & COGNITION',       color: '#3b82f6', icon: '🧠', cats: ['🔵 COGNITION', '⚪ SINGULARITÉ'] },
+            { name: '🌍 NOOSPHÈRE & RÉSEAUX',  color: '#0ea5e9', icon: '🌍', cats: ['✨ NOOSPHÈRE', '🔴 RÉSEAU'] },
+            { name: '🧬 VIVANT & SANTÉ',       color: '#10b981', icon: '🧬', cats: ['🟢 BIOTECH', '💊 MÉDECINE'] },
+            { name: '🏛️ POLITIQUE',           color: '#d946ef', icon: '⚖️', cats: ['🏛️ POLITIQUE'] },
+            { name: '☢️ ENTROPIE & CYBER',     color: '#f97316', icon: '☢️', cats: ['☢️ ENTROPIE', '☠️ RISQUES CYBER'] },
+            { name: '🎬 FICTION',              color: '#f472b6', icon: '🎬', cats: ['🔮 IMAGINAIRE'] },
+        ];
+        const GROUP_OF = {};
+        GROUPS.forEach(g => g.cats.forEach(c => GROUP_OF[c] = g.name));
+        const GROUP_COLORS = Object.fromEntries(GROUPS.map(g => [g.name, g.color]));
+        const GROUP_ICONS = Object.fromEntries(GROUPS.map(g => [g.name, g.icon]));
+
         function getStrandStyle(cat) {
-            const baseColor = COLORS[cat] || COLORS["DEFAUT"];
+            const baseColor = GROUP_COLORS[cat] || COLORS[cat] || COLORS["DEFAUT"];
             // Courbes adoucies : ligne fine semi-transparente (lisibilité en zone dense)
             return { color: hexToRgba(baseColor, 0.7), width: 1.5 };
         }
@@ -510,8 +527,8 @@
             if(!Array.isArray(flatData)) return;
             flatData.sort((a,b) => a.year - b.year);
             flatData.forEach(d => {
-                let c = d.category || "DEFAUT";
-                if(!COLORS[c]) c = Object.keys(COLORS).find(k => k.includes(c)) || "DEFAUT";
+                let c = GROUP_OF[d.category] || d.category || "DEFAUT";
+                if(!GROUP_COLORS[c]) c = Object.keys(COLORS).find(k => k.includes(c)) || "DEFAUT";
                 
                 const style = getStrandStyle(c);
                 if(!strands[c]) strands[c] = { 
@@ -533,8 +550,8 @@
             });
             
             const sortedDatasets = Object.values(strands).sort((a, b) => {
-                if (a.label.includes("SINGULARITÉ")) return 1;
-                if (b.label.includes("SINGULARITÉ")) return -1;
+                if (a.label.includes("IA & COGNITION")) return 1;
+                if (b.label.includes("IA & COGNITION")) return -1;
                 return a.label.localeCompare(b.label);
             });
 
@@ -677,7 +694,7 @@
                             meta.data.forEach((element, index) => {
                                 const dataPoint = dataset.data[index];
                                 if (!dataPoint.tipping && !isZoomedIn) return;
-                                if (hiddenCategories.has(dataPoint.category)) return;
+                                if (hiddenCategories.has(GROUP_OF[dataPoint.category] || dataPoint.category)) return;
 
                                 const model = element.tooltipPosition();
                                 ctx.save();
@@ -728,36 +745,28 @@
             });
             const container = document.getElementById('legend-container');
             const totalEvents = Object.values(counts).reduce((a, b) => a + b, 0);
-            container.innerHTML = `<div class="section-title"><span>Catégories</span><span class="text-zinc-500 cursor-pointer" title="Tout réafficher" onclick="showAllCategories(event)">${totalEvents} ⟳</span></div>`;
+            container.innerHTML = `<div class="section-title"><span>Courbes</span><span class="text-zinc-500 cursor-pointer" title="Tout réafficher" onclick="showAllCategories(event)">${totalEvents} ⟳</span></div>`;
 
-            // Zone catégories réorganisée : groupes thématiques en grille de chips compacts (toggle on/off)
-            const THEMES = [
-                { name: 'Matière & Énergie', cats: ['🟡 HARDWARE', '🟣 ESPACE', '🤖 ROBOTIQUE'] },
-                { name: 'Vivant & Santé', cats: ['🟢 BIOTECH', '💊 MÉDECINE'] },
-                { name: 'Esprit & Idées', cats: ['🔵 COGNITION', '✨ NOOSPHÈRE', '🔮 IMAGINAIRE', '⚪ SINGULARITÉ'] },
-                { name: 'Société & Risques', cats: ['🔴 RÉSEAU', '🏛️ POLITIQUE', '☢️ ENTROPIE', '☠️ RISQUES CYBER'] },
-            ];
-            const shortName = c => c.replace(/^[^\wÀ-ÿ]+\s*/, '');
-            THEMES.forEach(theme => {
-                const present = theme.cats.filter(c => counts[c]);
-                if (!present.length) return;
-                const block = document.createElement('div');
-                block.className = 'theme-block';
-                block.innerHTML = `<div class="theme-title">${theme.name}</div>`;
-                const grid = document.createElement('div');
-                grid.className = 'legend-grid';
-                present.forEach(cat => {
-                    const chip = document.createElement('div');
-                    chip.className = 'legend-item legend-chip' + (hiddenCategories.has(cat) ? ' hidden-line' : '');
-                    chip.dataset.category = cat;
-                    chip.title = cat;
-                    chip.innerHTML = `<span class="legend-color" style="background:${COLORS[cat]}"></span><span class="legend-text">${ICONS[cat] || ''} ${shortName(cat)}</span><span class="chip-count">${counts[cat]}</span>`;
-                    chip.onclick = () => toggleCategory(cat);
-                    grid.appendChild(chip);
-                });
-                block.appendChild(grid);
-                container.appendChild(block);
+            // Bandeau des 8 courbes regroupées (option B validée) : une chip par courbe
+            const groupCounts = {};
+            data.forEach(d => {
+                const g = GROUP_OF[d.category] || d.category || "DEFAUT";
+                groupCounts[g] = (groupCounts[g] || 0) + 1;
             });
+            const grid = document.createElement('div');
+            grid.className = 'legend-grid';
+            GROUPS.forEach(g => {
+                const n = groupCounts[g.name];
+                if (!n) return;
+                const chip = document.createElement('div');
+                chip.className = 'legend-item legend-chip' + (hiddenCategories.has(g.name) ? ' hidden-line' : '');
+                chip.dataset.category = g.name;
+                chip.title = `${g.name} — ${g.cats.join(', ')}`;
+                chip.innerHTML = `<span class="legend-color" style="background:${g.color}"></span><span class="legend-text">${g.icon} ${g.name.replace(/^[^\wÀ-ÿ]+\s*/, '')}</span><span class="chip-count">${n}</span>`;
+                chip.onclick = () => toggleCategory(g.name);
+                grid.appendChild(chip);
+            });
+            container.appendChild(grid);
         }
 
         function showAllCategories(e) {

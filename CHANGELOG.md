@@ -1,5 +1,9 @@
 # CHANGELOG - Cortex Loom
 
+## v158
+- 🗂️ **13 catégories regroupées en 8 courbes** (option B validée, au rendu — données inchangées) : ⚙️ INDUSTRIE & ROBOTS · 🚀 ESPACE · 🧠 IA & COGNITION · 🌍 NOOSPHÈRE & RÉSEAUX · 🧬 VIVANT & SANTÉ · 🏛️ POLITIQUE · ☢️ ENTROPIE & CYBER · 🎬 FICTION. Toggle on/off par courbe dans le bandeau.
+- 🔖 **Version :** Passage en v158.
+
 ## v157
 - ⇄ **Liens fiction⇄réel systématisés** : Manon des sources (Pagnol) ⇄ Guerres de l'Eau 2050 ; +11 appariements auto conservateurs (token commun + fenêtre 90 ans). Bilan: 43/68 fictions avec realYear, 37 réels avec predictedBy.
 - 🎨 **Courbes adoucies** (lisibilité zone dense) : lignes 1,5 px à 70 % d'opacité, points 4 px / bordure 1 px.
