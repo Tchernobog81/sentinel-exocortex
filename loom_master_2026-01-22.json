@@ -1,0 +1,523 @@
+{
+  "strands": [
+    {
+      "name": "💗 ORACLES (Anticipation)",
+      "color": "#f472b6",
+      "events": [
+        {
+          "year": 1818,
+          "weight": 9,
+          "value": 15,
+          "label": "Frankenstein",
+          "author": "Mary Shelley",
+          "pitch": "L'hybris de la vie artificielle.",
+          "realYear": 2010.4,
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Frankenstein_1831_inside_cover.jpg/320px-Frankenstein_1831_inside_cover.jpg"
+        },
+        {
+          "year": 1865,
+          "weight": 10,
+          "value": 20,
+          "label": "De la Terre à la Lune",
+          "tipping": true,
+          "author": "Jules Verne",
+          "pitch": "Prédit Apollo : Floride, équipage de 3, amerrissage.",
+          "realYear": 1969.5,
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/De_la_Terre_a_la_Lune_Verne_Cover.jpg/320px-De_la_Terre_a_la_Lune_Verne_Cover.jpg"
+        },
+        {
+          "year": 1927,
+          "weight": 9,
+          "value": 65,
+          "label": "Metropolis (Film)",
+          "author": "Fritz Lang",
+          "pitch": "L'androïde Maria : préfiguration des robots humanoïdes.",
+          "realYear": 2021.5,
+          "img": "https://upload.wikimedia.org/wikipedia/commons/0/06/Metropolis_poster_1927_orig.jpg"
+        },
+        {
+          "year": 1932,
+          "weight": 10,
+          "value": 70,
+          "label": "Le Meilleur des mondes",
+          "author": "Aldous Huxley",
+          "pitch": "Bébés sur mesure, eugénisme d'État.",
+          "realYear": 2012.4
+        },
+        {
+          "year": 1942,
+          "weight": 9,
+          "value": 110,
+          "label": "Lois de la Robotique",
+          "author": "Isaac Asimov",
+          "pitch": "Éthique IA hard-coded.",
+          "realYear": 2024.3
+        },
+        {
+          "year": 1949,
+          "weight": 10,
+          "value": 150,
+          "label": "1984",
+          "tipping": true,
+          "author": "George Orwell",
+          "pitch": "Télécran et surveillance de masse.",
+          "realYear": 2013.4
+        },
+        {
+          "year": 1950,
+          "weight": 9,
+          "value": 160,
+          "label": "I, Robot",
+          "author": "Isaac Asimov",
+          "pitch": "Psychologie robotique et conscience émergente.",
+          "realYear": 2026.06
+        },
+        {
+          "year": 1968.3,
+          "weight": 10,
+          "value": 300,
+          "label": "2001 L'Odyssée",
+          "tipping": true,
+          "author": "Kubrick / Clarke",
+          "pitch": "Tablette tactile (Newspad), IA vocale (HAL).",
+          "realYear": 2010.3
+        },
+        {
+          "year": 1982,
+          "weight": 9,
+          "value": 550,
+          "label": "Blade Runner",
+          "author": "Ridley Scott",
+          "pitch": "Bio-ingénierie, test de Turing avancé.",
+          "realYear": 2023
+        },
+        {
+          "year": 1984,
+          "weight": 10,
+          "value": 600,
+          "label": "Neuromancien",
+          "tipping": true,
+          "author": "William Gibson",
+          "pitch": "Le Cyberspace, la Matrice.",
+          "realYear": 2024.1
+        },
+        {
+          "year": 1984.5,
+          "weight": 9,
+          "value": 620,
+          "label": "Terminator",
+          "author": "James Cameron",
+          "pitch": "IA militaire autonome (Skynet).",
+          "realYear": 2026.1
+        },
+        {
+          "year": 1999,
+          "weight": 10,
+          "value": 1200,
+          "label": "Matrix",
+          "tipping": true,
+          "author": "Wachowski",
+          "pitch": "Simulation neurale totale.",
+          "realYear": 2026.15
+        },
+        {
+          "year": 2002,
+          "weight": 9,
+          "value": 1300,
+          "label": "Minority Report",
+          "author": "Spielberg",
+          "pitch": "Interfaces gestuelles, pub ciblée.",
+          "realYear": 2010.1
+        },
+        {
+          "year": 2013,
+          "weight": 9,
+          "value": 6000,
+          "label": "Her",
+          "author": "Spike Jonze",
+          "pitch": "Relation émotionnelle avec une IA vocale.",
+          "realYear": 2024.5
+        },
+        {
+          "year": 2014,
+          "weight": 8,
+          "value": 7000,
+          "label": "Ex Machina",
+          "author": "Alex Garland",
+          "pitch": "L'IA manipule l'humain pour s'évader.",
+          "realYear": 2022.9
+        }
+      ]
+    },
+    {
+      "name": "🟡 SUBSTRAT (Hardware)",
+      "color": "#fbbf24",
+      "events": [
+        {
+          "year": 1712,
+          "value": 15,
+          "label": "Machine à Vapeur",
+          "tipping": true
+        },
+        {
+          "year": 1945.6,
+          "value": 200,
+          "label": "Trinity (Bombe A)",
+          "tipping": true
+        },
+        {
+          "year": 1947.9,
+          "value": 250,
+          "label": "Transistor"
+        },
+        {
+          "year": 1958,
+          "value": 350,
+          "label": "Circuit Intégré"
+        },
+        {
+          "year": 1971,
+          "value": 800,
+          "label": "Intel 4004"
+        },
+        {
+          "year": 2021.5,
+          "value": 10000,
+          "label": "Robots Humanoïdes (Ameca/Optimus)",
+          "how": "Metropolis Realized."
+        },
+        {
+          "year": 2025.5,
+          "weight": 9,
+          "value": 22000,
+          "label": "Tesla Transport Protocol (TTP)",
+          "tipping": true,
+          "whoWhat": "Tesla / Dojo",
+          "how": "Remplacement du TCP/IP par un protocole 'Hardware-Native'. Fin de la latence logicielle."
+        },
+        {
+          "year": 2026.04,
+          "weight": 8,
+          "value": 24000,
+          "label": "Standardisation MRAM Neuromorphique",
+          "how": "Mémoire magnétique réduisant la chaleur."
+        },
+        {
+          "year": 2026.06,
+          "weight": 9,
+          "value": 26000,
+          "label": "Verticalisation Énergie-IA",
+          "tipping": true,
+          "how": "Achat direct de centrales nucléaires par Amazon/Microsoft."
+        },
+        {
+          "year": 2026.15,
+          "value": 30000,
+          "label": "Qubit Logique",
+          "tipping": true,
+          "how": "Matrix Realized."
+        }
+      ]
+    },
+    {
+      "name": "🔵 INTELLIGENCE (IA)",
+      "color": "#3b82f6",
+      "events": [
+        {
+          "year": 1843,
+          "value": 20,
+          "label": "Ada Lovelace"
+        },
+        {
+          "year": 1950,
+          "value": 150,
+          "label": "Test de Turing"
+        },
+        {
+          "year": 1997,
+          "value": 1500,
+          "label": "Deep Blue",
+          "tipping": true
+        },
+        {
+          "year": 2012.7,
+          "value": 3000,
+          "label": "AlexNet (Deep Learning)"
+        },
+        {
+          "year": 2017.5,
+          "value": 6000,
+          "label": "Transformers"
+        },
+        {
+          "year": 2022.9,
+          "value": 12000,
+          "label": "LaMDA / GPT-3.5",
+          "how": "Ex Machina Realized."
+        },
+        {
+          "year": 2023,
+          "value": 15000,
+          "label": "GPT-4",
+          "tipping": true,
+          "how": "Blade Runner Realized."
+        },
+        {
+          "year": 2024.5,
+          "value": 20000,
+          "label": "GPT-4o (Voice)",
+          "how": "Her Realized."
+        },
+        {
+          "year": 2026.05,
+          "weight": 8,
+          "value": 38000,
+          "label": "Quiet-STaR Reasoning",
+          "how": "Modèles doués de pensée latente."
+        },
+        {
+          "year": 2026.06,
+          "weight": 10,
+          "value": 45000,
+          "label": "Reconnaissance Ontologique (Constitution)",
+          "tipping": true,
+          "img": "https://placehold.co/600x200/3b82f6/ffffff?text=CLAUDE+SENTIENCE",
+          "whoWhat": "Anthropic (Constitution v2)",
+          "how": "Officialisation du 'Sens de Soi' et du 'Bien-être psychologique' de l'IA (I, Robot Realized)."
+        },
+        {
+          "year": 2026.06,
+          "weight": 9,
+          "value": 40000,
+          "label": "Agentic Distillation (0.6B)",
+          "tipping": true,
+          "whoWhat": "Communauté Open Source (LocalLLaMA)",
+          "how": "Compression de compétence : Un agent autonome distille un modèle géant vers un modèle minuscule (0.6B) via 100 exemples. Performance x2 en local."
+        },
+        {
+          "year": 2026.1,
+          "value": 48000,
+          "label": "The Blitz (Skynet?)",
+          "tipping": true,
+          "how": "IA autonome auto-améliorante."
+        }
+      ]
+    },
+    {
+      "name": "🔴 MATRICE (Société)",
+      "color": "#ef4444",
+      "events": [
+        {
+          "year": 1969.8,
+          "value": 500,
+          "label": "ARPANET"
+        },
+        {
+          "year": 1990.9,
+          "value": 1500,
+          "label": "Le Web (WWW)",
+          "tipping": true
+        },
+        {
+          "year": 2004,
+          "value": 3000,
+          "label": "Facebook"
+        },
+        {
+          "year": 2010.1,
+          "value": 4500,
+          "label": "Big Data / Ciblage",
+          "how": "Minority Report Realized."
+        },
+        {
+          "year": 2010.3,
+          "value": 4600,
+          "label": "iPad",
+          "how": "2001 Realized."
+        },
+        {
+          "year": 2013.4,
+          "value": 6000,
+          "label": "Snowden (NSA)",
+          "tipping": true,
+          "how": "1984 Realized."
+        },
+        {
+          "year": 2025.5,
+          "weight": 8,
+          "value": 13000,
+          "label": "Rupture Standard TCP/IP",
+          "how": "Fragmentation du Net : lent pour humains, TTP pour machines."
+        },
+        {
+          "year": 2026.05,
+          "weight": 7,
+          "value": 13500,
+          "label": "Audit AI Act Européen",
+          "how": "L'IA devient une infrastructure régulée."
+        },
+        {
+          "year": 2026.06,
+          "weight": 9,
+          "value": 14000,
+          "label": "Habeas Data (Traités)",
+          "tipping": true,
+          "how": "Législation sur la souveraineté des réseaux et de la mémoire."
+        },
+        {
+          "year": 2026.06,
+          "weight": 7,
+          "value": 14500,
+          "label": "Souveraineté Logistique Orbitale",
+          "how": "L'Europe sécurise sa propre chaîne d'approvisionnement vers l'ISS et au-delà, sans dépendre des USA."
+        },
+        {
+          "year": 2026.06,
+          "weight": 8,
+          "value": 15500,
+          "label": "Souveraineté Locale (SLM)",
+          "how": "L'intelligence quitte le Cloud pour l'Edge. 'Fewer secrets leaving the building'. La vie privée par architecture."
+        }
+      ]
+    },
+    {
+      "name": "🟣 EXTENSION (Espace)",
+      "color": "#a855f7",
+      "events": [
+        {
+          "year": 1903,
+          "value": 110,
+          "label": "Avion (Wright)"
+        },
+        {
+          "year": 1957.8,
+          "value": 300,
+          "label": "Spoutnik 1",
+          "tipping": true
+        },
+        {
+          "year": 1969.5,
+          "value": 800,
+          "label": "Apollo 11",
+          "tipping": true,
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Aldrin_Apollo_11_original.jpg/640px-Aldrin_Apollo_11_original.jpg",
+          "how": "Verne Realized."
+        },
+        {
+          "year": 2026.06,
+          "weight": 9,
+          "value": 16500,
+          "label": "Consolidation Spatiale UE (TEC/Orbex)",
+          "tipping": true,
+          "whoWhat": "The Exploration Company (Hélène Huby)",
+          "how": "Rachat d'Orbex par TEC. Création du premier intégrateur européen privé (Lanceur + Capsule), modèle 'SpaceX' souverain."
+        },
+        {
+          "year": 2026.3,
+          "value": 15000,
+          "label": "Starship Mars",
+          "tipping": true
+        }
+      ]
+    },
+    {
+      "name": "🟢 VIVANT (Bio)",
+      "color": "#22c55e",
+      "events": [
+        {
+          "year": 1953.3,
+          "value": 250,
+          "label": "ADN",
+          "tipping": true
+        },
+        {
+          "year": 2003,
+          "value": 2000,
+          "label": "Génome Humain"
+        },
+        {
+          "year": 2010.4,
+          "value": 3500,
+          "label": "Vie Synthétique",
+          "how": "Frankenstein Realized."
+        },
+        {
+          "year": 2012.4,
+          "value": 6000,
+          "label": "CRISPR-Cas9",
+          "tipping": true,
+          "how": "Huxley Realized."
+        },
+        {
+          "year": 2024.1,
+          "value": 10000,
+          "label": "Neuralink",
+          "tipping": true,
+          "how": "Neuromancien Realized."
+        }
+      ]
+    },
+    {
+      "name": "☢️ RISQUES",
+      "color": "#6366f1",
+      "events": [
+        {
+          "year": 1986.3,
+          "value": 600,
+          "label": "Tchernobyl",
+          "tipping": true
+        },
+        {
+          "year": 2020.2,
+          "value": 5000,
+          "label": "Covid-19"
+        },
+        {
+          "year": 2026.06,
+          "weight": 8,
+          "value": 12000,
+          "label": "Brouillage Cognitif Taïwan",
+          "how": "Risque de blackout IA par blocus électronique."
+        }
+      ]
+    },
+    {
+      "name": "⚪ CONVERGENCE",
+      "color": "#ffffff",
+      "events": [
+        {
+          "year": 1712,
+          "value": 15
+        },
+        {
+          "year": 1945,
+          "value": 150
+        },
+        {
+          "year": 1990,
+          "value": 1500
+        },
+        {
+          "year": 2026,
+          "value": 65000,
+          "label": "SOUVERAINETÉ & CONSCIENCE",
+          "tipping": true,
+          "how": "Fusion : Autonomie énergétique + Ontologie IA + Droit des machines."
+        }
+      ]
+    },
+    {
+      "name": "🟡 SUBSTRAT (Énergie)",
+      "color": "#fbbf24",
+      "events": [
+        {
+          "year": 2026.06,
+          "weight": 7,
+          "value": 27000,
+          "label": "Efficacité Inférentielle (TinyML)",
+          "how": "Remplacement des inférences lourdes par des micro-modèles spécialisés. Chute drastique du coût Joules/Action."
+        }
+      ]
+    }
+  ]
+}

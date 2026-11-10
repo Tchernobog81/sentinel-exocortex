@@ -1,0 +1,45 @@
+{
+  "strands": [
+    {
+      "name": "🔵 INTELLIGENCE (IA)",
+      "color": "#3b82f6",
+      "events": [
+        {
+          "year": 2026.06,
+          "weight": 9,
+          "value": 40000,
+          "label": "Agentic Distillation (0.6B)",
+          "tipping": true,
+          "whoWhat": "Communauté Open Source (LocalLLaMA)",
+          "how": "Compression de compétence : Un agent autonome distille un modèle géant vers un modèle minuscule (0.6B) via 100 exemples. Performance x2 en local."
+        }
+      ]
+    },
+    {
+      "name": "🔴 MATRICE (Société)",
+      "color": "#ef4444",
+      "events": [
+        {
+          "year": 2026.06,
+          "weight": 8,
+          "value": 15500,
+          "label": "Souveraineté Locale (SLM)",
+          "how": "L'intelligence quitte le Cloud pour l'Edge. 'Fewer secrets leaving the building'. La vie privée par architecture."
+        }
+      ]
+    },
+    {
+      "name": "🟡 SUBSTRAT (Énergie)",
+      "color": "#fbbf24",
+      "events": [
+        {
+          "year": 2026.06,
+          "weight": 7,
+          "value": 27000,
+          "label": "Efficacité Inférentielle (TinyML)",
+          "how": "Remplacement des inférences lourdes par des micro-modèles spécialisés. Chute drastique du coût Joules/Action."
+        }
+      ]
+    }
+  ]
+}
