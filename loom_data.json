@@ -7520,6 +7520,7 @@
     "pharmakon_poison_percent": 40
   },
   {
+    "id": "e7320fc461da9394",
     "year": 2026.0,
     "value": 48000,
     "label": "Horloge de l'Apocalypse 2026",
@@ -7530,12 +7531,13 @@
     "timestamp": "2026-11-10T22:11:39.656513",
     "tipping": true,
     "s_curve_phase": 5,
-    "pharmakon_remedy_percent": 5,
-    "pharmakon_poison_percent": 95,
+    "remedy_percent": 5,
+    "poison_percent": 95,
     "convergences": "Convergence de toutes les menaces existentielles.",
     "grand_filter_analysis": "C'est littéralement l'indicateur du Grand Filtre.",
     "final_note": "Tic, tac. On se sent plus en sécurité, n'est-ce pas ?",
-    "id": "e7320fc461da9394"
+    "pharmakon_remedy_percent": 5,
+    "pharmakon_poison_percent": 95
   },
   {
     "id": "a26c8349c0411e6c",
