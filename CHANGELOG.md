@@ -1,5 +1,9 @@
 # CHANGELOG - Cortex Loom
 
+## v150
+- 🐛 **UI (bloqué) :** Fix du plantage au chargement (testé en navigateur headless Chromium) : `chartjs-plugin-datalabels` appelait `display()` avec `context.dataPoint` undefined → TypeError non capturée → écran de boot jamais retiré. Gardes sur `display`/`formatter`/tooltip externe + try/catch autour du rendu initial (l'écran de chargement disparaît désormais toujours).
+- 🔖 **Version :** Passage en v150.
+
 ## v149
 - 🔍 **UI (Pages) :** Ordre des sources de données contextuel — sur GitHub Pages, `loom_data.json` est lu directement (plus de tentative `localhost:8000` qui échouait à chaque rafraîchissement) ; en local, l'API FastAPI reste prioritaire. Cache-buster `?t=` appliqué aussi au JSON.
 - 🔖 **Version :** Passage en v149.

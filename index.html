@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v149</title>
+    <title>THE LOOM : EXOCORTEX v150</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -139,15 +139,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v149</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v149...</div>
-        <div id="debug-log">Init v149...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v150</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v150...</div>
+        <div id="debug-log">Init v150...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v149</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v150</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -324,11 +324,15 @@
             for (const source of BACKEND_URLS.map(url => ({ url, label: url }))) {
                 const data = await loadDataFromSource(source, init);
                 if (data) {
-                    updateChart(data);
-                    updateFlux(data);
-                    updateLegend(data);
-                    handleSmartFocus(data);
-                    
+                    try {
+                        updateChart(data);
+                        updateFlux(data);
+                        updateLegend(data);
+                        handleSmartFocus(data);
+                    } catch (err) {
+                        log(`❌ Erreur rendu: ${err.message}`, "error");
+                    }
+
                     if (init) {
                         setTimeout(() => {
                             const ls = document.getElementById('loading-screen');
@@ -464,13 +468,15 @@
                                     if (detailCardTimeout) clearTimeout(detailCardTimeout);
                                     return;
                                 }
-                                const dataPoint = context.tooltip.dataPoints[0];
+                                const dataPoint = context.tooltip.dataPoints && context.tooltip.dataPoints[0];
+                                if (!dataPoint || !dataPoint.raw) return;
                                 showDetail(dataPoint.raw);
                             }
                         },
                         datalabels: {
                             display: function(context) {
-                                const p = context.dataPoint.raw;
+                                const p = (context.dataset && context.dataset.data[context.dataIndex]) || (context.dataPoint && context.dataPoint.raw);
+                                if (!p) return false;
                                 const xRange = context.chart.scales.x.max - context.chart.scales.x.min;
                                 // Zoomé dehors : seuls les points de bascule. Zoomé dedans : tous les labels.
                                 return p.tipping || xRange < 8;
@@ -479,9 +485,10 @@
                                 return COLORS[context.dataset.label] || '#fff';
                             },
                             formatter: function(value, context) {
-                                const icon = ICONS[value.category] || '•';
+                                const p = (context.dataset && context.dataset.data[context.dataIndex]) || value || {};
+                                const icon = ICONS[p.category] || '•';
                                 const xRange = context.chart.scales.x.max - context.chart.scales.x.min;
-                                if (xRange < 8 && value.label) return `${icon} ${value.label.slice(0, 22)}`;
+                                if (xRange < 8 && p.label) return `${icon} ${p.label.slice(0, 22)}`;
                                 return icon;
                             },
                             font: { size: 14, weight: 'bold' },

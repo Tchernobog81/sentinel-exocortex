@@ -47,9 +47,9 @@ class Event(BaseModel):
     value: int = Field(description="Valeur cumulative")
     label: str = Field(description="Titre de l'événement")
     category: str = Field(description="Catégorie (ex: '☢️ ENTROPIE')")
-    whoWhat: str = Field(description="Source/Auteur")
-    description: str = Field(description="Description détaillée")
-    url: str = Field(description="URL de référence")
+    whoWhat: str = Field(default="", description="Source/Auteur")
+    description: str = Field(default="", description="Description détaillée")
+    url: str = Field(default="", description="URL de référence")
     timestamp: Optional[str] = Field(default=None, description="Timestamp ISO")
     tipping: bool = Field(default=False, description="Point de bascule")
     analysis: Optional[PharmakonAnalysis] = Field(default=None, description="Analyse Pharmakon")
@@ -103,6 +103,12 @@ class Event(BaseModel):
             analysis_data["remedy_percent"] = 100 - int(analysis_data["poison_percent"])
 
         event_data = {k: v for k, v in data.items() if k not in (legacy_fields + new_fields) and k != "analysis"}
+
+        # Champs legacy -> actuels
+        if not event_data.get("description") and data.get("how"):
+            event_data["description"] = data["how"]
+        if not event_data.get("whoWhat") and data.get("author"):
+            event_data["whoWhat"] = data["author"]
 
         analysis = None
         if analysis_data:
