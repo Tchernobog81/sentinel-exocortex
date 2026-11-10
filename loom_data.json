@@ -10408,6 +10408,7 @@
     "pharmakon_poison_percent": 50
   },
   {
+    "id": "0555be9527b830a2",
     "year": 2026.917,
     "value": 39448,
     "label": "Comment deux paramètres ont triplé nos scores au benchmark ARC-AGI-3 - OpenAI",
@@ -10417,15 +10418,20 @@
     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQQ0k3QTgzVnpwSkpYSlJiVjZTeFNQWlhLZVc2eGVKSXFoM25tMWhTcFdpR0hHSi04cGgyU1BzRm9qV1otamkycG00WnFnMzlINnBHOGJyYV96SUlQUlJIWVdXMlBBbGZYR3oyUDF4VkFOWVdmYlh5LWpCR0hKZlRGZW5JTQ?oc=5",
     "timestamp": "2026-11-10T23:17:37.841253",
     "tipping": false,
+    "realYear": null,
+    "predictedBy": null,
+    "img": null,
     "s_curve_phase": 3,
-    "pharmakon_remedy_percent": 85,
-    "pharmakon_poison_percent": 15,
+    "remedy_percent": 85,
+    "poison_percent": 15,
     "convergences": "['IA', 'apprentissage automatique', 'benchmarks', 'optimisation']",
     "grand_filter_analysis": "Cette avancée pourrait constituer un seuil critique dans la course à l'AGI, réduisant le risque de survenue d'un filtre cosmique mais exacerbant les enjeux de contrôle technologique.",
     "final_note": "Qui aurait cru que deux paramètres pouvaient tripler les scores... et doubler la dose de pharmakon.",
-    "id": "0555be9527b830a2"
+    "pharmakon_remedy_percent": 85,
+    "pharmakon_poison_percent": 15
   },
   {
+    "id": "1977a75ae299cacc",
     "year": 2026.917,
     "value": 22016,
     "label": "Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %, mais le test standard raconte une autre histoire - remio",
@@ -10435,13 +10441,17 @@
     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOSFlNOWIxTTlHWVI4MlpuTVVfQ0FFbEdYejNVSS1XMmhFQjdHNjBwUEl0SW5vYTlveEZRSmJxRFJzRVNlRjFkaFlRdmRDT3ZuMmljbWlDYnBBWG9xeTBua3pHSjNzcHRmRmhaSFFXWEQ4YjNqVDA4VWlFekVLT3ZxcDg3RmpjNThuZ2Z5N3BBeEdMVTNNZkVQU3VCRHBUam1HQTFOSTd3SlB0cWc1Snc?oc=5",
     "timestamp": "2026-11-10T23:17:49.482187",
     "tipping": false,
+    "realYear": null,
+    "predictedBy": null,
+    "img": null,
     "s_curve_phase": 4,
-    "pharmakon_remedy_percent": 65,
-    "pharmakon_poison_percent": 35,
+    "remedy_percent": 65,
+    "poison_percent": 35,
     "convergences": "Algorithmes + Big Data + Sciences Cognitives",
     "grand_filter_analysis": "Alignement des valeurs de l'IA avec la survie humaine.",
     "final_note": "Et une autre tuile.",
-    "id": "1977a75ae299cacc"
+    "pharmakon_remedy_percent": 65,
+    "pharmakon_poison_percent": 35
   },
   {
     "id": "1b98dd3fcf0f835e",
