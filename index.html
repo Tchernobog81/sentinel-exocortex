@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v156</title>
+    <title>THE LOOM : EXOCORTEX v157</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -164,15 +164,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v156</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v156...</div>
-        <div id="debug-log">Init v156...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v157</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v157...</div>
+        <div id="debug-log">Init v157...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v156</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v157</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -501,7 +501,8 @@
 
         function getStrandStyle(cat) {
             const baseColor = COLORS[cat] || COLORS["DEFAUT"];
-            return { color: baseColor, width: 2 };
+            // Courbes adoucies : ligne fine semi-transparente (lisibilité en zone dense)
+            return { color: hexToRgba(baseColor, 0.7), width: 1.5 };
         }
 
         function updateChart(flatData) {
@@ -520,11 +521,11 @@
                     borderWidth: style.width, 
                     showLine: true,              // courbe reliant les événements de la catégorie
                     data: [], 
-                    pointRadius: 5,
-                    pointHoverRadius: 8,
+                    pointRadius: 4,
+                    pointHoverRadius: 7,
                     pointBorderColor: style.color,
                     pointBackgroundColor: '#010102',
-                    pointBorderWidth: 2,
+                    pointBorderWidth: 1,
                     hitRadius: 30,
                     tension: 0.3 
                 };

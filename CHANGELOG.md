@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v157
+- ⇄ **Liens fiction⇄réel systématisés** : Manon des sources (Pagnol) ⇄ Guerres de l'Eau 2050 ; +11 appariements auto conservateurs (token commun + fenêtre 90 ans). Bilan: 43/68 fictions avec realYear, 37 réels avec predictedBy.
+- 🎨 **Courbes adoucies** (lisibilité zone dense) : lignes 1,5 px à 70 % d'opacité, points 4 px / bordure 1 px.
+- 🔖 **Version :** Passage en v157.
+
 ## v156
 - 🗂️ **Catégories déplacées** en bandeau horizontal au-dessus du graphique (scrollable, groupes thématiques + chips), la sidebar est libérée pour le flux.
 - 🧹 **Libellés nettoyés** : plus de « Mise à jour... » (horloge HH:MM discrète) ni de « Source: loom_data.json... » (simple ↻ HH:MM).

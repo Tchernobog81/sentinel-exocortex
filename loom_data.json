@@ -562,7 +562,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 1846.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 1,
@@ -632,7 +632,9 @@
     "timestamp": "1846-06-01T00:00:00",
     "tipping": true,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Frankenstein"
+    ],
     "img": null,
     "s_curve_phase": 3,
     "remedy_percent": 80,
@@ -1091,7 +1093,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2002.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 1,
@@ -1217,6 +1219,25 @@
     "final_note": "Le début de tout, en fait.",
     "pharmakon_remedy_percent": 80,
     "pharmakon_poison_percent": 20
+  },
+  {
+    "id": "e5b2b504a52a0da6",
+    "year": 1929,
+    "value": 2100,
+    "label": "Manon des sources (Pagnol)",
+    "category": "🔮 IMAGINAIRE",
+    "whoWhat": "Marcel Pagnol",
+    "description": "Roman (1929, film 1952) : la guerre de l'eau entre villages de Provence — conflit autour de la source.",
+    "url": "https://fr.wikipedia.org/wiki/Manon_des_sources",
+    "timestamp": "1929-06-01T00:00:00",
+    "tipping": false,
+    "s_curve_phase": 2,
+    "pharmakon_remedy_percent": 40,
+    "pharmakon_poison_percent": 60,
+    "convergences": "Eau + climat + conflits territoriaux",
+    "grand_filter_analysis": "La fiction préfigure les guerres de ressource (eau) du XXIe siècle.",
+    "final_note": "L'eau, prochain or bleu.",
+    "realYear": 2050.0
   },
   {
     "id": "888b01d69a7b17fb",
@@ -1804,7 +1825,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 1954.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -1850,7 +1871,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 1954.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -2106,7 +2127,9 @@
     "realYear": null,
     "predictedBy": [
       "R.U.R. (robots révoltés)",
-      "I, Robot (lois des robots)"
+      "I, Robot (lois des robots)",
+      "I, Robot",
+      "Lois de la Robotique (I, Robot)"
     ],
     "img": null,
     "s_curve_phase": 3,
@@ -2681,7 +2704,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 1980.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -3670,7 +3693,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 1984.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -3832,7 +3855,9 @@
     "timestamp": null,
     "tipping": false,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Dune"
+    ],
     "img": null,
     "s_curve_phase": 2,
     "remedy_percent": 71,
@@ -4177,7 +4202,9 @@
     "timestamp": null,
     "tipping": true,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Star Wars"
+    ],
     "img": null,
     "s_curve_phase": 2,
     "remedy_percent": 5,
@@ -4268,7 +4295,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2012.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -4935,7 +4962,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2035.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 3,
@@ -5144,7 +5171,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2021.9,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 3,
@@ -5305,7 +5332,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 1999.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 3,
@@ -5558,7 +5585,7 @@
     "url": "",
     "timestamp": null,
     "tipping": true,
-    "realYear": null,
+    "realYear": 2017.4,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 3,
@@ -5628,7 +5655,9 @@
     "timestamp": "1999-06-01T00:00:00",
     "tipping": false,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Tamagotchi"
+    ],
     "img": null,
     "s_curve_phase": 3,
     "remedy_percent": 55,
@@ -6047,7 +6076,9 @@
     "timestamp": "2002-06-01T00:00:00",
     "tipping": false,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Metropolis"
+    ],
     "img": null,
     "s_curve_phase": 4,
     "remedy_percent": 55,
@@ -7117,7 +7148,9 @@
     "timestamp": null,
     "tipping": true,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Terminator"
+    ],
     "img": null,
     "s_curve_phase": 3,
     "remedy_percent": 8,
@@ -8033,7 +8066,9 @@
     "timestamp": "2017-06-01T00:00:00",
     "tipping": true,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Matrix"
+    ],
     "img": null,
     "s_curve_phase": 5,
     "remedy_percent": 5,
@@ -8757,7 +8792,9 @@
     "timestamp": "2021-06-01T00:00:00",
     "tipping": true,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Ghost in the Shell"
+    ],
     "img": null,
     "s_curve_phase": 5,
     "remedy_percent": 5,
@@ -10741,7 +10778,9 @@
     "timestamp": null,
     "tipping": false,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Le Samouraï Virtuel"
+    ],
     "img": null,
     "s_curve_phase": 5,
     "remedy_percent": 77,
@@ -10925,7 +10964,9 @@
     "timestamp": null,
     "tipping": true,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Manon des sources (Pagnol)"
+    ],
     "img": null,
     "s_curve_phase": 5,
     "remedy_percent": 10,
