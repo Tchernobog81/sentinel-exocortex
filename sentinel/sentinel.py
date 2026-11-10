@@ -42,7 +42,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_DATA_FILE = os.environ.get("LOCAL_DATA_FILE", str(PROJECT_ROOT / "loom_data.json"))
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
 
-VERSION = "v151"
+VERSION = "v152"
 
 # LLM local (Ollama) outillé
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
@@ -753,11 +753,11 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
     else:
         logger.info("[CYCLE] Aucun nouvel événement trouvé")
 
-    # 4. Miroir local de l'état complet (atomique)
+    # 4. Miroir local : fusion par id sous verrou (ne perd pas les ajouts concurrents)
     all_data = existing_data + new_events
     all_data = remove_duplicates(all_data)
     all_data.sort(key=lambda x: x.get("year", 0))
-    storage.save(all_data)
+    storage.upsert_events(all_data)
 
     logger.info(f"[CYCLE] Total: {len(all_data)} événements")
     logger.info("=" * 60)

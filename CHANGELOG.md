@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v152
+- 🎛️ **UI (légende) :** courbes en on/off **indépendant** — cliquer une catégorie allume/éteint UNIQUEMENT celle-ci (les autres restent inchangées) ; bouton ⟳ pour tout réafficher ; l'état on/off survit aux rafraîchissements auto.
+- ☠️ **Nouvelle courbe (11e) « RISQUES CYBER »** : 25 attaques cyber majeures des origines (ver Morris 1988) à aujourd'hui (Bybit 2025), seed via `scripts/seed_cyber_events.py` (upsert par id).
+- 🔖 **Version :** Passage en v152.
+
 ## v151
 - 📈 **UI (courbes) :** `showLine: true` sur les datasets scatter — les événements d'une catégorie sont reliés par une courbe (les points restent visibles).
 - 🔍 **UI (zoom/pan) :** bloc `plugins.zoom` correctement imbriqué (`zoom.zoom.wheel/pinch`, `zoom.pan`) — zoom molette/pinch en mode `xy` restauré, pan glisser-déposer `xy` (avant/arrière/haut/bas), limite `x.minRange = 0.25 an`. Testé en headless Chromium (wheel + drag simulés).

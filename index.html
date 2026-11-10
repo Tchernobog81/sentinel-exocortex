@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v151</title>
+    <title>THE LOOM : EXOCORTEX v152</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -139,15 +139,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v151</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v151...</div>
-        <div id="debug-log">Init v151...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v152</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v152...</div>
+        <div id="debug-log">Init v152...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v151</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v152</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -247,6 +247,7 @@
             "🟣 ESPACE": "#a855f7", 
             "🟢 BIOTECH": "#10b981", 
             "☢️ ENTROPIE": "#f97316", 
+            "☠️ RISQUES CYBER": "#ff3860", 
             "🏛️ POLITIQUE": "#d946ef",
             "DEFAUT": "#9ca3af" 
         };
@@ -261,6 +262,7 @@
             "🟣 ESPACE": "🚀",
             "🟢 BIOTECH": "🧬",
             "☢️ ENTROPIE": "☢️",
+            "☠️ RISQUES CYBER": "🛡️",
             "🏛️ POLITIQUE": "⚖️",
             "DEFAUT": "📂"
         };
@@ -268,10 +270,12 @@
         Chart.register(ChartDataLabels);
         let loomChart;
         let isHoveringLabel = false;
-        let activeCategory = null;
+        // Catégories éteintes (on/off indépendant par courbe)
+        const hiddenCategories = new Set();
 
         function log(msg, type="info") {
             const el = document.getElementById('debug-log');
+            if (!el) return; // écran de boot retiré après l'init
             const time = new Date().toLocaleTimeString();
             let color = "#00ff00";
             if(type==="error") color="#ef4444";
@@ -404,10 +408,7 @@
 
         function getStrandStyle(cat) {
             const baseColor = COLORS[cat] || COLORS["DEFAUT"];
-            if (activeCategory && activeCategory !== cat) {
-                return { color: hexToRgba(baseColor, 0.25), width: 1 };
-            }
-            return { color: baseColor, width: activeCategory ? 3 : 2 };
+            return { color: baseColor, width: 2 };
         }
 
         function updateChart(flatData) {
@@ -445,6 +446,10 @@
 
             if (loomChart) {
                 loomChart.data.datasets = sortedDatasets;
+                // Réapplique l'état on/off des catégories (indépendant par courbe)
+                loomChart.data.datasets.forEach((ds, i) => {
+                    loomChart.getDatasetMeta(i).hidden = hiddenCategories.has(ds.label);
+                });
                 // Transition animée (fluide) lors des rafraîchissements
                 loomChart.update();
             } else {
@@ -546,7 +551,7 @@
                             meta.data.forEach((element, index) => {
                                 const dataPoint = dataset.data[index];
                                 if (!dataPoint.tipping && !isZoomedIn) return;
-                                if (activeCategory && dataPoint.category !== activeCategory) return;
+                                if (hiddenCategories.has(dataPoint.category)) return;
 
                                 const model = element.tooltipPosition();
                                 ctx.save();
@@ -595,7 +600,7 @@
             });
             const container = document.getElementById('legend-container');
             const totalEvents = Object.values(counts).reduce((a, b) => a + b, 0);
-            container.innerHTML = `<div class="section-title"><span>Catégories</span><span class="text-zinc-500">${totalEvents}</span></div>`;
+            container.innerHTML = `<div class="section-title"><span>Catégories</span><span class="text-zinc-500 cursor-pointer" title="Tout réafficher" onclick="showAllCategories(event)">${totalEvents} ⟳</span></div>`;
             
             const orderedKeys = Object.keys(COLORS).sort((a,b) => {
                 if(a.includes("SINGULARITÉ")) return -1;
@@ -620,37 +625,32 @@
             });
         }
 
+        function showAllCategories(e) {
+            if (e) e.stopPropagation();
+            hiddenCategories.clear();
+            document.querySelectorAll('.legend-item').forEach(el => el.classList.remove('hidden-line'));
+            loomChart.data.datasets.forEach((ds, i) => { loomChart.getDatasetMeta(i).hidden = false; });
+            loomChart.update();
+            log('Toutes les courbes réaffichées');
+        }
+
         function toggleCategory(cat) {
-            if (activeCategory === cat) {
-                activeCategory = null;
+            // On/off indépendant : bascule UNIQUEMENT la courbe cliquée, sans toucher aux autres
+            if (hiddenCategories.has(cat)) {
+                hiddenCategories.delete(cat);
             } else {
-                activeCategory = cat;
+                hiddenCategories.add(cat);
             }
-            
-            // Mise à jour des styles
+
             document.querySelectorAll('.legend-item').forEach(el => {
-                if (el.dataset.category === activeCategory) {
-                    el.classList.remove('hidden-line');
-                } else {
-                    el.classList.add('hidden-line');
-                }
+                el.classList.toggle('hidden-line', hiddenCategories.has(el.dataset.category));
             });
-            
-            updateChart(loomChart.data.datasets.flatMap(d => d.data));
-            
-            // Zoom intelligent sur la catégorie : fenêtre animée sur ses événements les plus récents
-            if (activeCategory) {
-                const catData = loomChart.data.datasets.flatMap(d => d.data)
-                    .filter(d => (d.category || "DEFAUT") === activeCategory);
-                if (catData.length) {
-                    const maxY = Math.max(...catData.map(d => d.year));
-                    const minY = Math.min(...catData.filter(d => d.year >= maxY - 20).map(d => d.year));
-                    animateZoomTo(minY - 1, maxY + 0.5);
-                    log(`Zoom catégorie ${activeCategory}: ${minY.toFixed(1)} … ${maxY.toFixed(1)}`);
-                }
-            } else {
-                resetView();
-            }
+
+            loomChart.data.datasets.forEach((ds, i) => {
+                loomChart.getDatasetMeta(i).hidden = hiddenCategories.has(ds.label);
+            });
+            loomChart.update();
+            log(`Courbe ${cat} ${hiddenCategories.has(cat) ? 'éteinte' : 'allumée'} (${hiddenCategories.size} éteinte(s))`);
         }
 
         let detailCardTimeout;
