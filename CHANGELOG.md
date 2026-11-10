@@ -1,5 +1,12 @@
 # CHANGELOG - Cortex Loom
 
+## v160
+- ⇄ **Toutes les fictions liées** : mapping manuel des 24 classiques (1984→PRISM, Blade Runner→Atlas, Gattaca→23andMe, Ex Machina→LLM, Tron→Métavers, WarGames→Stuxnet, Simpson→Higgs, Excession→Bitcoin…) + auto-liens. Bilan: 67/68 fictions avec realYear, 45 réels avec predictedBy — les popups fictionnelles pointent toutes vers leur réalisation.
+- 📏 **Flux à hauteur max dynamique** : max-height 45vh, scroll interne.
+- 📱 **Interface adaptative** : burger ☰ + sidebar en overlay coulissante ≤760px, top-bar qui wrap, fiche popup plein écran scrollable, recherche réduite.
+- 🗓️ **Axe X lisible en zoom** : ticks en "15 juin 2026" (zoom < 2 ans), "juin 2026" (< 20 ans), année sinon — plus de décimaux 2026.5.
+- 🔖 **Version :** Passage en v160.
+
 ## v159
 - 👆 **Flux cliquable** : chaque événement du flux amène (zoom animé) au point correspondant de la courbe et ouvre sa fiche popup.
 - ⏱️ **Flux chronologique strict** : tri par timestamp décroissant, dates invalides/futures exclues, affichage HH:MM (aujourd'hui) ou JJ/MM.

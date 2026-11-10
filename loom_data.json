@@ -702,7 +702,7 @@
     "url": "",
     "timestamp": null,
     "tipping": true,
-    "realYear": null,
+    "realYear": 1969.5,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 1,
@@ -955,7 +955,7 @@
     "url": "",
     "timestamp": null,
     "tipping": true,
-    "realYear": null,
+    "realYear": 1954.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 1,
@@ -1222,7 +1222,7 @@
   },
   {
     "id": "e5b2b504a52a0da6",
-    "year": 1929.0,
+    "year": 1929,
     "value": 2100,
     "label": "Manon des sources (Pagnol)",
     "category": "🔮 IMAGINAIRE",
@@ -1300,7 +1300,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2018.9,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 1,
@@ -1392,7 +1392,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 1954.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -1760,7 +1760,7 @@
     "url": "",
     "timestamp": null,
     "tipping": true,
-    "realYear": null,
+    "realYear": 2013.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -2133,7 +2133,9 @@
       "R.U.R. (robots révoltés)",
       "I, Robot (lois des robots)",
       "I, Robot",
-      "Lois de la Robotique (I, Robot)"
+      "Lois de la Robotique (I, Robot)",
+      "R.U.R. (Robot)",
+      "Lois de la Robotique"
     ],
     "img": null,
     "s_curve_phase": 3,
@@ -2777,7 +2779,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2007.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -2869,7 +2871,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2012.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -2915,7 +2917,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2013.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -3053,7 +3055,7 @@
     "url": "",
     "timestamp": null,
     "tipping": true,
-    "realYear": null,
+    "realYear": 2011.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -3169,7 +3171,9 @@
     "timestamp": null,
     "tipping": true,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "De la Terre à la Lune"
+    ],
     "img": null,
     "s_curve_phase": 2,
     "remedy_percent": 47,
@@ -3998,7 +4002,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2013.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -4044,7 +4048,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2021.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -4067,7 +4071,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2010.5,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -4159,7 +4163,7 @@
     "url": "",
     "timestamp": null,
     "tipping": true,
-    "realYear": null,
+    "realYear": 1993.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -4322,7 +4326,7 @@
     "url": "",
     "timestamp": null,
     "tipping": true,
-    "realYear": null,
+    "realYear": 2018.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -4437,7 +4441,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2001.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -4621,7 +4625,7 @@
     "url": "",
     "timestamp": null,
     "tipping": true,
-    "realYear": null,
+    "realYear": 2018.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -4736,7 +4740,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2012.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -5083,7 +5087,8 @@
     "tipping": true,
     "realYear": null,
     "predictedBy": [
-      "Neuromancer (cyberspace)"
+      "Neuromancer (cyberspace)",
+      "Neuromancien"
     ],
     "img": null,
     "s_curve_phase": 3,
@@ -5313,7 +5318,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2009.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 3,
@@ -5405,7 +5410,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2007.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 3,
@@ -5849,7 +5854,8 @@
     "tipping": true,
     "realYear": null,
     "predictedBy": [
-      "Terminator (robots tueurs)"
+      "Terminator (robots tueurs)",
+      "Une Forme de Guerre"
     ],
     "img": null,
     "s_curve_phase": 3,
@@ -5964,7 +5970,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2014.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 3,
@@ -6011,7 +6017,9 @@
     "timestamp": null,
     "tipping": false,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "The Expanse"
+    ],
     "img": null,
     "s_curve_phase": 3,
     "remedy_percent": 54,
@@ -6474,7 +6482,8 @@
     "tipping": true,
     "realYear": null,
     "predictedBy": [
-      "Star Trek (communicateur)"
+      "Star Trek (communicateur)",
+      "Star Trek (Série)"
     ],
     "img": null,
     "s_curve_phase": 3,
@@ -6524,7 +6533,8 @@
     "tipping": true,
     "realYear": null,
     "predictedBy": [
-      "Gattaca (eugénisme génétique)"
+      "Gattaca (eugénisme génétique)",
+      "Bienvenue à Gattaca"
     ],
     "img": null,
     "s_curve_phase": 3,
@@ -6732,7 +6742,9 @@
     "timestamp": "2025-01-01T00:00:00",
     "tipping": true,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Excession"
+    ],
     "img": null,
     "s_curve_phase": 3,
     "remedy_percent": 45,
@@ -6893,7 +6905,9 @@
     "timestamp": "2010-06-01T00:00:00",
     "tipping": true,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "WarGames"
+    ],
     "img": null,
     "s_curve_phase": 4,
     "remedy_percent": 5,
@@ -6915,7 +6929,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2016.85,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 3,
@@ -6986,7 +7000,8 @@
     "tipping": true,
     "realYear": null,
     "predictedBy": [
-      "2001, Odyssée de l'espace (HAL)"
+      "2001, Odyssée de l'espace (HAL)",
+      "2001 L'Odyssée"
     ],
     "img": null,
     "s_curve_phase": 3,
@@ -7034,7 +7049,8 @@
     "tipping": true,
     "realYear": null,
     "predictedBy": [
-      "Her (assistante virtuelle)"
+      "Her (assistante virtuelle)",
+      "Her"
     ],
     "img": null,
     "s_curve_phase": 3,
@@ -7106,7 +7122,10 @@
     "timestamp": null,
     "tipping": true,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Les Simpson",
+      "La Nuit des temps"
+    ],
     "img": null,
     "s_curve_phase": 3,
     "remedy_percent": 55,
@@ -7268,7 +7287,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2011.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 3,
@@ -7362,7 +7381,8 @@
     "tipping": true,
     "realYear": null,
     "predictedBy": [
-      "1984 (Orwell, télécrans)"
+      "1984 (Orwell, télécrans)",
+      "1984"
     ],
     "img": null,
     "s_curve_phase": 3,
@@ -7387,7 +7407,9 @@
     "tipping": true,
     "realYear": null,
     "predictedBy": [
-      "RoboCop (robots policiers)"
+      "RoboCop (robots policiers)",
+      "Do Androids Dream? (Blade Runner)",
+      "Blade Runner"
     ],
     "img": null,
     "s_curve_phase": 3,
@@ -7482,7 +7504,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2022.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 3,
@@ -7530,7 +7552,8 @@
     "tipping": true,
     "realYear": null,
     "predictedBy": [
-      "Minority Report (précrime)"
+      "Minority Report (précrime)",
+      "Minority Report"
     ],
     "img": null,
     "s_curve_phase": 3,
@@ -7645,7 +7668,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": null,
+    "realYear": 2002.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 4,
@@ -7978,7 +8001,9 @@
     "timestamp": "2016-06-01T00:00:00",
     "tipping": false,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Black Mirror"
+    ],
     "img": null,
     "s_curve_phase": 5,
     "remedy_percent": 5,
@@ -8187,7 +8212,10 @@
     "timestamp": null,
     "tipping": false,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Retour vers le Futur II",
+      "Retour vers le Futur"
+    ],
     "img": null,
     "s_curve_phase": 4,
     "remedy_percent": 50,
@@ -8258,7 +8286,9 @@
     "timestamp": null,
     "tipping": false,
     "realYear": null,
-    "predictedBy": null,
+    "predictedBy": [
+      "Le Meilleur des mondes"
+    ],
     "img": null,
     "s_curve_phase": 4,
     "remedy_percent": 65,
@@ -8703,7 +8733,8 @@
     "realYear": null,
     "predictedBy": [
       "Matrix (réalité simulée)",
-      "Snow Crash (mondes virtuels)"
+      "Snow Crash (mondes virtuels)",
+      "Tron"
     ],
     "img": null,
     "s_curve_phase": 3,
@@ -8914,7 +8945,8 @@
     "tipping": true,
     "realYear": null,
     "predictedBy": [
-      "Ex Machina (IA manipulatrice)"
+      "Ex Machina (IA manipulatrice)",
+      "Ex Machina"
     ],
     "img": null,
     "s_curve_phase": 3,

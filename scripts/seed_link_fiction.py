@@ -60,7 +60,59 @@ def main():
     index[manon["id"]] = {**index.get(manon["id"], {}), **manon}
     events = list(index.values())
 
-    # 2) Appariement conservateur des fictions sans realYear
+    # 2) Appariement manuel des classiques sans realYear (fiction label -> real label)
+    MANUAL_PAIRS = [
+        ("De la Terre à la Lune", "Apollo 11"),
+        ("R.U.R. (Robot)", "Unimate, 1er robot industriel"),
+        ("Le Meilleur des mondes", "Bébés CRISPR"),
+        ("Lois de la Robotique", "Unimate, 1er robot industriel"),
+        ("1984", "PRISM"),
+        ("Star Trek (Série)", "iPhone (smartphone)"),
+        ("Do Androids Dream?", "Boston Dynamics Atlas"),
+        ("2001 L'Odyssée", "IBM Watson"),
+        ("Blade Runner", "Boston Dynamics Atlas"),
+        ("Tron", "Métavers (Facebook/Meta)"),
+        ("WarGames", "Stuxnet"),
+        ("Neuromancien", "World Wide Web public"),
+        ("Retour vers le Futur II", "Waymo (Taxi autonome)"),
+        ("Retour vers le Futur", "Waymo (Taxi autonome)"),
+        ("Une Forme de Guerre", "Drones militaires armés"),
+        ("Les Simpson", "Boson de Higgs"),
+        ("Excession", "Bitcoin (Genesis Block)"),
+        ("Bienvenue à Gattaca", "23andMe"),
+        ("Minority Report", "Police prédictive algorithmique"),
+        ("Black Mirror", "Piratage du DNC"),
+        ("Her", "Alexa / Siri"),
+        ("Ex Machina", "Grand modèle de langage (LLM)"),
+        ("The Expanse", "SpaceX Fondé"),
+        ("La Nuit des temps", "Boson de Higgs"),
+    ]
+    by_label_lower = {e.get("label", "").lower(): e for e in events}
+    def find_event(label):
+        l = label.lower()
+        if l in by_label_lower:
+            return by_label_lower[l]
+        for k, e in by_label_lower.items():
+            if l in k:
+                return e
+        return None
+    manual_linked = 0
+    for fic_label, real_label in MANUAL_PAIRS:
+        f = find_event(fic_label)
+        r = find_event(real_label)
+        if not f or not r:
+            print(f"  !! introuvable: {fic_label} ou {real_label}")
+            continue
+        if not f.get("realYear"):
+            f["realYear"] = r["year"]
+            manual_linked += 1
+        pb = r.get("predictedBy") or []
+        if f["label"] not in pb:
+            pb.append(f["label"])
+        r["predictedBy"] = pb
+    print(f"liens manuels: {manual_linked} fictions liées, {len(MANUAL_PAIRS)} paires traitées")
+
+    # 3) Appariement conservateur des fictions sans realYear
     fictions = [e for e in events if e.get("category") == CAT_FICTION and not e.get("realYear")]
     reals = [e for e in events if e.get("category") != CAT_FICTION]
     linked = 0

@@ -42,7 +42,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_DATA_FILE = os.environ.get("LOCAL_DATA_FILE", str(PROJECT_ROOT / "loom_data.json"))
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
 
-VERSION = "v159"
+VERSION = "v160"
 
 # LLM local (Ollama) outillé
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
@@ -792,21 +792,27 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
             logger.error(f"[CYCLE] ❌ {name}: {e}")
 
     # 3. Envoi (upsert idempotent) : API d'abord, fallback local
+    api_ok = False
     if new_events:
         logger.info(f"[CYCLE] {len(new_events)} nouveaux événements à envoyer")
         if api_client.add_events(new_events):
             logger.info("[CYCLE] ✅ Événements envoyés à l'API (upsert)")
+            api_ok = True
         else:
             added, updated = storage.upsert_events(new_events)
             logger.info(f"[CYCLE] 💾 Fallback local: +{added} / ~{updated} événements")
     else:
         logger.info("[CYCLE] Aucun nouvel événement trouvé")
 
-    # 4. Miroir local : fusion par id sous verrou (ne perd pas les ajouts concurrents)
+    # 4. Miroir local UNIQUEMENT si l'API était indisponible (même fichier que le backend sinon) :
+    #    on n'upsert que les nouveaux événements pour ne jamais écraser des champs enrichis
+    #    (realYear/predictedBy...) par un snapshot périmé.
+    if new_events and not api_ok:
+        storage.upsert_events(new_events)
+
     all_data = existing_data + new_events
     all_data = remove_duplicates(all_data)
     all_data.sort(key=lambda x: x.get("year", 0))
-    storage.upsert_events(all_data)
 
     logger.info(f"[CYCLE] Total: {len(all_data)} événements")
     logger.info("=" * 60)
