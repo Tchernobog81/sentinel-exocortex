@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v154
+- 🏛️ **Référentiel élargi aux origines :** événements de -2600 (irrigation Égypte) au mécanisme d'Anticythère (~-100 av. J.-C.) et inventions grecques/romaines/égyptiennes/chinoises (papier 105, poudre 850, boussole ~1000, horloge mécanique 1300...). Vue initiale désormais calée sur toute la plage de données (`dataRange()`), plus 1940-2050 en dur.
+- 💊 **12e courbe « MÉDECINE »** : 15 jalons médicaux avérés (Hippocrate -400, Harvey 1628, Jenner 1796, Pasteur 1861, pénicilline 1928, ADN 1953, VIH 1983, CRISPR 2012, ARNm 2020...).
+- 📡 **Flux 12h = faits vérifiés uniquement** : la fiction (IMAGINAIRE) est exclue du flux entrant (tâche de fond) ; 69 timestamps de seeds normalisés (backdatés à leur année) pour ne plus polluer le flux.
+- 🔖 **Version :** Passage en v154.
+
 ## v153
 - 🎨 **Dashboard :** popups adoucies (fiche au clic uniquement, plus au survol ; ouverture en fondu 250 ms) ; barre de recherche textuelle (label/source/catégorie/description) ; ligne verticale « MAINTENANT » ; widget Horloge de l'Apocalypse dans la sidebar (dernier réglage officiel, maj quotidienne) ; navigation Prédit→Réalisé cliquable dans la fiche (realYear / predictedBy, zoom animé vers la cible).
 - ☢️ **Horloge :** `scan_doomsday_clock()` scrape désormais la page officielle thebulletin.org à chaque cycle (label stable par année → upsert, description rafraîchie quotidiennement).

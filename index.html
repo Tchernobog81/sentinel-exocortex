@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v153</title>
+    <title>THE LOOM : EXOCORTEX v154</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -148,15 +148,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v153</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v153...</div>
-        <div id="debug-log">Init v153...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v154</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v154...</div>
+        <div id="debug-log">Init v154...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v153</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v154</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -168,7 +168,7 @@
 
             <div id="flux-container">
                 <div class="section-title">
-                    <span>Flux Entrant (12h)</span>
+                    <span>Flux entrant (12h, faits vérifiés)</span>
                     <span id="flux-count" class="text-zinc-500">0</span>
                 </div>
                 <ul id="activity-list" class="scrollbar-thin">
@@ -264,6 +264,7 @@
             "🟢 BIOTECH": "#10b981", 
             "☢️ ENTROPIE": "#f97316", 
             "☠️ RISQUES CYBER": "#ff3860", 
+            "💊 MÉDECINE": "#a3e635", 
             "🏛️ POLITIQUE": "#d946ef",
             "DEFAUT": "#9ca3af" 
         };
@@ -279,6 +280,7 @@
             "🟢 BIOTECH": "🧬",
             "☢️ ENTROPIE": "☢️",
             "☠️ RISQUES CYBER": "🛡️",
+            "💊 MÉDECINE": "💊",
             "🏛️ POLITIQUE": "⚖️",
             "DEFAUT": "📂"
         };
@@ -446,14 +448,21 @@
             return 10;
         }
 
+        function dataRange() {
+            if (!ALL_DATA.length) return [1940, 2050];
+            const ys = ALL_DATA.map(d => d.year || 0);
+            return [Math.min(...ys) - 5, Math.max(...ys) + 5];
+        }
+
         function handleSmartFocus(json) {
             const ids = new Set(json.map(d => d.id || d.label));
             if (isFirstLoad) {
                 isFirstLoad = false;
                 lastSeenIds = ids;
-                // Vue initiale : timeline complète
-                animateZoomTo(1940, 2050);
-                log('Focus initial: 1940-2050 (vue complète)');
+                // Vue initiale : tout le référentiel, du mécanisme d'Anticythère (~-100) à aujourd'hui+marge
+                const [min, max] = dataRange();
+                animateZoomTo(min, max);
+                log(`Focus initial: ${min} … ${max} (vue complète)`);
                 return;
             }
             const newEvents = json.filter(d => !lastSeenIds.has(d.id || d.label));
@@ -651,7 +660,9 @@
         function updateFlux(data) {
             const now = new Date();
             const limit = new Date(now.getTime() - (12 * 60 * 60 * 1000));
-            const recent = data.filter(d => d.timestamp && new Date(d.timestamp) > limit)
+            // Flux 12h = faits récents UNIQUEMENT : la fiction (IMAGINAIRE) reste en tâche de fond
+            const recent = data.filter(d => !(d.category || "").includes("IMAGINAIRE")
+                                      && d.timestamp && new Date(d.timestamp) > limit)
                                .sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
             
             document.getElementById('flux-count').innerText = recent.length;
@@ -794,8 +805,9 @@
         }
 
         function resetView() {
-            loomChart.options.scales.x.min = 1940;
-            loomChart.options.scales.x.max = 2050;
+            const [min, max] = dataRange();
+            loomChart.options.scales.x.min = min;
+            loomChart.options.scales.x.max = max;
             loomChart.update();
             closeDetail();
         }

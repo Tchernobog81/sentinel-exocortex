@@ -42,7 +42,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_DATA_FILE = os.environ.get("LOCAL_DATA_FILE", str(PROJECT_ROOT / "loom_data.json"))
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
 
-VERSION = "v153"
+VERSION = "v154"
 
 # LLM local (Ollama) outillé
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
@@ -731,14 +731,15 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
         logger.info(f"[CYCLE] {len(existing_data)} événements chargés via API")
     existing_data = remove_duplicates(existing_data)
 
-    # 2. Scanners
+    # 2. Scanners — le simulateur n'est actif que si SIMULATOR=1 (le flux doit rester factuel)
     scanners = [
         ("AI2027", scan_ai2027),
         ("Doomsday Clock", scan_doomsday_clock),
         ("Google News RSS", scan_google_news_rss),
         ("Singularity Stage", scan_singularity_stage),
-        ("Simulateur", scan_simulator),
     ]
+    if os.environ.get("SIMULATOR", "0") == "1":
+        scanners.append(("Simulateur", scan_simulator))
 
     new_events = []
     for name, scanner in scanners:
