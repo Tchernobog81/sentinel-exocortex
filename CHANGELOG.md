@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v155
+- 🤖 **13e courbe « ROBOTIQUE »** : 14 jalons réels (Léonard 1495 → Figure 01 2024) + 8 liens fiction→réalité (Metropolis, R.U.R., I, Robot, Terminator...) avec realYear/predictedBy.
+- 🗂️ **Zone catégories réorganisée** : groupes thématiques (Matière & Énergie / Vivant & Santé / Esprit & Idées / Société & Risques) en grille de chips compacts on/off, compteurs inclus.
+- 🔬 **Lisibilité zone d'accélération** : décimation adaptative des étiquettes selon la densité de points visibles (>60: tipping seuls, >30: 1/3, >15: 1/2, sinon toutes) ; fenêtre d'auto-zoom encore plus serrée quand la densité récente est forte (half=1 si >6 events sur 3 ans).
+- 🔖 **Version :** Passage en v155.
+
 ## v154
 - 🏛️ **Référentiel élargi aux origines :** événements de -2600 (irrigation Égypte) au mécanisme d'Anticythère (~-100 av. J.-C.) et inventions grecques/romaines/égyptiennes/chinoises (papier 105, poudre 850, boussole ~1000, horloge mécanique 1300...). Vue initiale désormais calée sur toute la plage de données (`dataRange()`), plus 1940-2050 en dur.
 - 💊 **12e courbe « MÉDECINE »** : 15 jalons médicaux avérés (Hippocrate -400, Harvey 1628, Jenner 1796, Pasteur 1861, pénicilline 1928, ADN 1953, VIH 1983, CRISPR 2012, ARNm 2020...).

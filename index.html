@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v154</title>
+    <title>THE LOOM : EXOCORTEX v155</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -69,6 +69,15 @@
         }
         .legend-item:hover { opacity: 0.8; }
         .legend-item.hidden-line { opacity: 0.3; }
+        /* Zone catégories : groupes thématiques + grille de chips */
+        .theme-block { margin-bottom: 8px; }
+        .theme-title { font-size: 8px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; font-weight: 800; }
+        .legend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+        .legend-chip { display: flex; align-items: center; gap: 5px; padding: 4px 6px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 3px; cursor: pointer; font-size: 9px; font-weight: 700; color: #ccc; transition: opacity .2s, background .15s; min-width: 0; }
+        .legend-chip:hover { background: rgba(255,255,255,0.09); }
+        .legend-chip .legend-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .legend-chip .chip-count { margin-left: auto; color: #666; font-weight: 400; }
+        .legend-chip.hidden-line { opacity: 0.3; text-decoration: line-through; }
         .legend-left { display: flex; align-items: center; gap: 8px; overflow: hidden; }
         .legend-color { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
         .legend-text { 
@@ -148,15 +157,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v154</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v154...</div>
-        <div id="debug-log">Init v154...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v155</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v155...</div>
+        <div id="debug-log">Init v155...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v154</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v155</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -265,6 +274,7 @@
             "☢️ ENTROPIE": "#f97316", 
             "☠️ RISQUES CYBER": "#ff3860", 
             "💊 MÉDECINE": "#a3e635", 
+            "🤖 ROBOTIQUE": "#2dd4bf", 
             "🏛️ POLITIQUE": "#d946ef",
             "DEFAUT": "#9ca3af" 
         };
@@ -281,6 +291,7 @@
             "☢️ ENTROPIE": "☢️",
             "☠️ RISQUES CYBER": "🛡️",
             "💊 MÉDECINE": "💊",
+            "🤖 ROBOTIQUE": "🤖",
             "🏛️ POLITIQUE": "⚖️",
             "DEFAUT": "📂"
         };
@@ -441,8 +452,10 @@
         }
 
         function adaptiveHalfWindow(targetYear, allData) {
-            // Plus les événements s'accélèrent (denses autour de targetYear), plus on zoome serré
+            // Zoom adaptatif à la densité : plus la zone d'accélération est dense, plus on zoome serré
+            const recent = allData.filter(d => d.year >= targetYear - 3 && d.year <= targetYear + 0.5).length;
             const nearby = allData.filter(d => d.year >= targetYear - 15 && d.year <= targetYear + 1).length;
+            if (recent > 6) return 1;
             if (nearby > 12) return 2;
             if (nearby > 6) return 5;
             return 10;
@@ -549,9 +562,24 @@
                             display: function(context) {
                                 const p = (context.dataset && context.dataset.data[context.dataIndex]) || (context.dataPoint && context.dataPoint.raw);
                                 if (!p) return false;
-                                const xRange = context.chart.scales.x.max - context.chart.scales.x.min;
-                                // Zoomé dehors : seuls les points de bascule. Zoomé dedans : tous les labels.
-                                return p.tipping || xRange < 8;
+                                const chart = context.chart;
+                                const x = chart.scales.x;
+                                const xRange = x.max - x.min;
+                                // Points de bascule toujours étiquetés
+                                if (p.tipping) return true;
+                                if (xRange >= 8) return false;
+                                // Zoom adaptatif à la densité : décimation progressive des étiquettes
+                                let visible = 0;
+                                for (const ds of chart.data.datasets) {
+                                    if (chart.getDatasetMeta(chart.data.datasets.indexOf(ds)).hidden) continue;
+                                    for (const pt of ds.data) {
+                                        if (pt.x >= x.min && pt.x <= x.max) visible++;
+                                    }
+                                }
+                                if (visible > 60) return false;                       // très dense : tipping seulement
+                                if (visible > 30) return context.dataIndex % 3 === 0; // dense : 1 étiquette sur 3
+                                if (visible > 15) return context.dataIndex % 2 === 0; // moyen : 1 sur 2
+                                return true;                                          // lisible : toutes
                             },
                             color: function(context) {
                                 return COLORS[context.dataset.label] || '#fff';
@@ -691,27 +719,34 @@
             const container = document.getElementById('legend-container');
             const totalEvents = Object.values(counts).reduce((a, b) => a + b, 0);
             container.innerHTML = `<div class="section-title"><span>Catégories</span><span class="text-zinc-500 cursor-pointer" title="Tout réafficher" onclick="showAllCategories(event)">${totalEvents} ⟳</span></div>`;
-            
-            const orderedKeys = Object.keys(COLORS).sort((a,b) => {
-                if(a.includes("SINGULARITÉ")) return -1;
-                if(b.includes("SINGULARITÉ")) return 1;
-                return a.localeCompare(b);
-            });
 
-            orderedKeys.forEach(cat => {
-                if(!counts[cat]) return;
-                const div = document.createElement('div');
-                div.className = 'legend-item';
-                div.dataset.category = cat;
-                div.innerHTML = `
-                    <div class="legend-left">
-                        <div class="legend-color" style="background:${COLORS[cat]}"></div>
-                        <span class="legend-text">${cat}</span>
-                    </div>
-                    <span class="text-zinc-600">${counts[cat]}</span>
-                `;
-                div.onclick = () => toggleCategory(cat);
-                container.appendChild(div);
+            // Zone catégories réorganisée : groupes thématiques en grille de chips compacts (toggle on/off)
+            const THEMES = [
+                { name: 'Matière & Énergie', cats: ['🟡 HARDWARE', '🟣 ESPACE', '🤖 ROBOTIQUE'] },
+                { name: 'Vivant & Santé', cats: ['🟢 BIOTECH', '💊 MÉDECINE'] },
+                { name: 'Esprit & Idées', cats: ['🔵 COGNITION', '✨ NOOSPHÈRE', '🔮 IMAGINAIRE', '⚪ SINGULARITÉ'] },
+                { name: 'Société & Risques', cats: ['🔴 RÉSEAU', '🏛️ POLITIQUE', '☢️ ENTROPIE', '☠️ RISQUES CYBER'] },
+            ];
+            const shortName = c => c.replace(/^[^\wÀ-ÿ]+\s*/, '');
+            THEMES.forEach(theme => {
+                const present = theme.cats.filter(c => counts[c]);
+                if (!present.length) return;
+                const block = document.createElement('div');
+                block.className = 'theme-block';
+                block.innerHTML = `<div class="theme-title">${theme.name}</div>`;
+                const grid = document.createElement('div');
+                grid.className = 'legend-grid';
+                present.forEach(cat => {
+                    const chip = document.createElement('div');
+                    chip.className = 'legend-item legend-chip' + (hiddenCategories.has(cat) ? ' hidden-line' : '');
+                    chip.dataset.category = cat;
+                    chip.title = cat;
+                    chip.innerHTML = `<span class="legend-color" style="background:${COLORS[cat]}"></span><span class="legend-text">${ICONS[cat] || ''} ${shortName(cat)}</span><span class="chip-count">${counts[cat]}</span>`;
+                    chip.onclick = () => toggleCategory(cat);
+                    grid.appendChild(chip);
+                });
+                block.appendChild(grid);
+                container.appendChild(block);
             });
         }
 
