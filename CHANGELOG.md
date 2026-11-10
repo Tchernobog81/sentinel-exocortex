@@ -1,5 +1,12 @@
 # CHANGELOG - Cortex Loom
 
+## v159
+- 👆 **Flux cliquable** : chaque événement du flux amène (zoom animé) au point correspondant de la courbe et ouvre sa fiche popup.
+- ⏱️ **Flux chronologique strict** : tri par timestamp décroissant, dates invalides/futures exclues, affichage HH:MM (aujourd'hui) ou JJ/MM.
+- 🔄 **Rafraîchissement auto toutes les minutes** (60 s).
+- 🎯 **Clic catégorie = isolement réversible** : un clic invisibilise toutes les autres courbes, un re-clic sur la même les réaffiche toutes.
+- 🔖 **Version :** Passage en v159.
+
 ## v158
 - 🗂️ **13 catégories regroupées en 8 courbes** (option B validée, au rendu — données inchangées) : ⚙️ INDUSTRIE & ROBOTS · 🚀 ESPACE · 🧠 IA & COGNITION · 🌍 NOOSPHÈRE & RÉSEAUX · 🧬 VIVANT & SANTÉ · 🏛️ POLITIQUE · ☢️ ENTROPIE & CYBER · 🎬 FICTION. Toggle on/off par courbe dans le bandeau.
 - 🔖 **Version :** Passage en v158.
