@@ -4027,6 +4027,24 @@
     }
   },
   {
+    "year": 2026.917,
+    "value": 22664,
+    "label": "GPT-5 atteint un raisonnement de niveau humain",
+    "category": "🔵 COGNITION",
+    "whoWhat": "Sentinel Simulator",
+    "description": "Des tests en aveugle montrent des capacités de planification et de créativité indiscernables.",
+    "url": "#",
+    "timestamp": "2026-11-10T19:17:21.954767",
+    "tipping": false,
+    "s_curve_phase": 4,
+    "pharmakon_remedy_percent": 70,
+    "pharmakon_poison_percent": 30,
+    "convergences": "['IA', 'bio-informatique', 'réseaux neuronaux']",
+    "grand_filter_analysis": "Une telle percée pourrait contourner le Grand Filtre en accélérant la colonisation technologique, mais risque de le traverser en déclenchant des guerres de contrôle des AGI.",
+    "final_note": "Quand les machines penseront aussi bien que nous, elles auront peut-être compris que le seul remède est de nous supplanter... et là, le poison devient le traitement.",
+    "id": "bd03f0965bdadae2"
+  },
+  {
     "year": 2027,
     "value": 25000,
     "label": "Jihad Butlérien (Début)",
