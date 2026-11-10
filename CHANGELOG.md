@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v162
+- 🎬 **Rescan fiction complet** : +52 œuvres (romans Verne/Wells/Dick/Stephenson, manga Akira/Ghost in the Shell/Doraemon/Psycho-Pass, BD Valérian/Blake et Mortimer, films 1927-2023 : Metropolis, Tron, WarGames, Minority Report, Avatar, Interstellar, The Martian, Arrival, Westworld, Dune, The Creator, Dead Reckoning...). 116 fictions au total, 115 liées à une réalisation (realYear/predictedBy), dernière = The Creator (2023). Ancres réelles find-or-create.
+- 📏 **Flux pleine hauteur** : le panneau flux épouse toute la hauteur disponible du navigateur (flex 1 1 auto, plus de plafond 45vh), scroll interne.
+- 🔖 **Version :** Passage en v162.
+
 ## v161
 - 🧼 **Popups propres** : le HTML brut des flux RSS (Google News embarque <a>/<font>) est supprimé à l'ingestion (sentinel `clean_text`) ET à l'API (backend `_clean_text` sur label/description/source/analyse) ; les données existantes sont curées. Une popup affiche désormais « Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %… » sans balises.
 - 🔖 **Version :** Passage en v161.
