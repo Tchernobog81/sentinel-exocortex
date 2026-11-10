@@ -2,9 +2,21 @@
 Pydantic models for Cortex Loom events and analysis.
 """
 import hashlib
+import html as _html
+import re as _re
 from pydantic import BaseModel, Field, model_validator
 from typing import Optional, List, Dict, Any
 from datetime import datetime
+
+
+def _clean_text(t):
+    """Supprime le HTML brut et les entités (ex: RSS Google News)."""
+    if not isinstance(t, str):
+        return t
+    t = _re.sub(r"(?is)<(script|style)[^>]*>.*?</\\1>", " ", t)
+    t = _re.sub(r"<[^>]+>", " ", t)
+    t = _html.unescape(t)
+    return _re.sub(r"\s+", " ", t).strip()
 
 
 def compute_event_id(label: str, year: float, whoWhat: Optional[str] = None) -> str:
@@ -60,7 +72,13 @@ class Event(BaseModel):
     @model_validator(mode="before")
     @classmethod
     def _lift_flat_analysis(cls, data):
-        """Accepte les champs d'analyse aplatis à la racine (legacy ou nouveaux noms)."""
+        """Accepte les champs d'analyse aplatis à la racine (legacy ou nouveaux noms) + nettoie le HTML."""
+        if isinstance(data, dict):
+            for k in ("label", "description", "whoWhat", "convergences", "grand_filter_analysis", "final_note"):
+                if k in data:
+                    data[k] = _clean_text(data[k])
+            if isinstance(data.get("analysis"), dict):
+                data["analysis"] = {k: _clean_text(v) if isinstance(v, str) else v for k, v in data["analysis"].items()}
         if isinstance(data, dict) and "analysis" not in data:
             keys = ["s_curve_phase", "pharmakon_remedy_percent", "pharmakon_poison_percent",
                     "remedy_percent", "poison_percent", "convergences",
@@ -106,6 +124,9 @@ class Event(BaseModel):
             analysis_data["remedy_percent"] = 100 - int(analysis_data["poison_percent"])
 
         event_data = {k: v for k, v in data.items() if k not in (legacy_fields + new_fields) and k != "analysis"}
+        for k in ("label", "description", "whoWhat"):
+            if k in event_data:
+                event_data[k] = _clean_text(event_data[k])
 
         # Champs legacy -> actuels
         if not event_data.get("description") and data.get("how"):

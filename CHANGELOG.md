@@ -1,5 +1,9 @@
 # CHANGELOG - Cortex Loom
 
+## v161
+- 🧼 **Popups propres** : le HTML brut des flux RSS (Google News embarque <a>/<font>) est supprimé à l'ingestion (sentinel `clean_text`) ET à l'API (backend `_clean_text` sur label/description/source/analyse) ; les données existantes sont curées. Une popup affiche désormais « Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %… » sans balises.
+- 🔖 **Version :** Passage en v161.
+
 ## v160
 - ⇄ **Toutes les fictions liées** : mapping manuel des 24 classiques (1984→PRISM, Blade Runner→Atlas, Gattaca→23andMe, Ex Machina→LLM, Tron→Métavers, WarGames→Stuxnet, Simpson→Higgs, Excession→Bitcoin…) + auto-liens. Bilan: 67/68 fictions avec realYear, 45 réels avec predictedBy — les popups fictionnelles pointent toutes vers leur réalisation.
 - 📏 **Flux à hauteur max dynamique** : max-height 45vh, scroll interne.

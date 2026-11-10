@@ -42,7 +42,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_DATA_FILE = os.environ.get("LOCAL_DATA_FILE", str(PROJECT_ROOT / "loom_data.json"))
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
 
-VERSION = "v160"
+VERSION = "v161"
 
 # LLM local (Ollama) outillé
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
@@ -58,6 +58,18 @@ AI2027_URLS = ["https://ai2027.com/", "https://ai2027.com/scenarios/"]
 def compute_event_id(label: str, year: float, whoWhat: Optional[str] = None) -> str:
     key = f"{(label or '').strip().lower()}|{round(float(year), 2)}|{(whoWhat or '').strip().lower()}"
     return hashlib.sha1(key.encode("utf-8")).hexdigest()[:16]
+
+
+import html as _html
+
+def clean_text(t: Optional[str]) -> str:
+    """Supprime le HTML brut (RSS Google News en embarque) et normalise les espaces."""
+    if not t:
+        return ""
+    t = re.sub(r"(?is)<(script|style)[^>]*>.*?</\1>", " ", t)
+    t = re.sub(r"<[^>]+>", " ", t)
+    t = _html.unescape(t)
+    return re.sub(r"\s+", " ", t).strip()
 
 
 # --- Matrice heuristique par défaut ---
@@ -334,6 +346,12 @@ def research_and_analyze(title: str, summary: str, url: str, source: str) -> Opt
 def analyze_event(entry_title: str, entry_summary: str, entry_url: str, entry_source: str) -> Dict[str, Any]:
     """Analyse un événement : LLM local outillé si ANALYSIS_MODE=llm, sinon heuristique simulée."""
     logger.info(f"[ANALYSE] Analyse de : '{entry_title}'")
+    entry_title = clean_text(entry_title)
+    entry_summary = clean_text(entry_summary)
+    entry_source = clean_text(entry_source)
+    # Google News accole " - <source>" au titre : on le retire
+    if entry_source and entry_title.endswith(" - " + entry_source):
+        entry_title = entry_title[: -(len(entry_source) + 3)]
     today = datetime.date.today()
     event_year = round(today.year + (today.month / 12), 3)
     category = categorize_text(entry_title + " " + entry_summary)
