@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v162</title>
+    <title>THE LOOM : EXOCORTEX v163</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -185,15 +185,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v162</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v162...</div>
-        <div id="debug-log">Init v162...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v163</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v163...</div>
+        <div id="debug-log">Init v163...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v162</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v163</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -362,6 +362,7 @@
 
         // --- Navigation Prédit ⇄ Réalisé (inter-pointeurs entre événements liés) ---
         function jumpToYear(year) {
+            markNavigated();
             const cands = ALL_DATA.filter(e => Math.floor(e.year) === Math.floor(year));
             const target = cands.sort((a, b) => (b.predictedBy ? 1 : 0) - (a.predictedBy ? 1 : 0) || b.year - a.year)[0];
             if (!target) return;
@@ -369,6 +370,7 @@
             setTimeout(() => showDetail(target), 600);
         }
         function jumpToLabel(label) {
+            markNavigated();
             const cands = ALL_DATA.filter(e => e.label === label);
             // préfère l'entrée qui a des liens (realYear/predictedBy) si doublon de label
             const target = cands.find(e => e.realYear || e.predictedBy) || cands[0];
@@ -491,6 +493,11 @@
         let lastSeenIds = new Set();
         let isFirstLoad = true;
 
+        // Vrai si l'utilisateur a navigué manuellement (zoom/pan/saut/toggle) :
+        // dans ce cas, le rafraîchissement auto ne doit PAS recentrer la vue sur « maintenant ».
+        let userNavigated = false;
+        function markNavigated() { userNavigated = true; }
+
         function animateZoomTo(min, max) {
             // Zoom animé (Chart.js anime les bornes d'échelle via update())
             loomChart.options.scales.x.min = min;
@@ -527,7 +534,7 @@
             }
             const newEvents = json.filter(d => !lastSeenIds.has(d.id || d.label));
             lastSeenIds = ids;
-            if (newEvents.length > 0) {
+            if (newEvents.length > 0 && !userNavigated) {
                 // Nouveaux événements détectés : zoom animé vers le cluster le plus récent,
                 // avec une fenêtre adaptative (d'autant plus serrée que les événements s'accélèrent)
                 const target = Math.max(...newEvents.map(d => d.year));
@@ -668,7 +675,9 @@
                                 mode: 'xy'
                             },
                             pan: { enabled: true, mode: 'xy' },
-                            limits: { x: { minRange: 0.25 } }  // bloque le zoom à 1 trimestre min
+                            limits: { x: { minRange: 0.25 } },  // bloque le zoom à 1 trimestre min
+                            onZoomComplete: () => markNavigated(),
+                            onPanComplete: () => markNavigated()
                         }
                     },
                     scales: {
@@ -788,6 +797,7 @@
 
         // Saut vers le point de la courbe + ouverture de la fiche (flux cliquable)
         function jumpToEvent(ev) {
+            markNavigated();
             if (!ev) return;
             animateZoomTo(ev.year - 2, ev.year + 2);
             setTimeout(() => showDetail(ev), 600);
@@ -837,6 +847,7 @@
         }
 
         function toggleCategory(cat) {
+            markNavigated();
             // Clic = isole la courbe (invisibilise toutes les autres) ; re-clic = tout réaffiche
             const allGroups = loomChart.data.datasets.map(d => d.label);
             const alreadyIsolatedOnCat = hiddenCategories.size === allGroups.length - 1 && !hiddenCategories.has(cat);
@@ -918,6 +929,7 @@
         }
 
         function resetView() {
+            markNavigated();
             const [min, max] = dataRange();
             loomChart.options.scales.x.min = min;
             loomChart.options.scales.x.max = max;
@@ -941,6 +953,8 @@
             loadData(true);
             updateTimer();
             setInterval(updateTimer, 30000);
+            // Double-clic = reset : listener DOM direct (le plugin zoom avale l'événement Chart.js)
+            document.getElementById('loomChart').addEventListener('dblclick', () => { resetView(); log('Zoom reset (double-clic)'); });
 
             // Rafraîchissement automatique toutes les minutes
             setInterval(() => {

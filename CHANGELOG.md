@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v163
+- 🐛 **Fix « tout aligné à maintenant »** : l'auto-zoom de rafraîchissement ne s'applique que si l'utilisateur n'a pas navigué manuellement (`userNavigated`, levé par wheel/pan/sauts/toggles/reset). Le clic sur FICTION (ou toute courbe) ne fait plus sauter la vue à « maintenant » au prochain refresh.
+- 📜 **AGENT_DIRECTIVES.md** : toutes les directives retranscrites pour l'agent local (règle 0 = tester toutes les interactions en navigateur virtuel avant toute version ; versioning ; données factuelles ; liens ⇄ ; 8 courbes ; popups ; flux ; sentinel LLM ; pipeline).
+- ✅ Suite d'interactions complète exécutée en headless avant push (voir AGENT_DIRECTIVES.md §0).
+- 🔖 **Version :** Passage en v163.
+
 ## v162
 - 🎬 **Rescan fiction complet** : +52 œuvres (romans Verne/Wells/Dick/Stephenson, manga Akira/Ghost in the Shell/Doraemon/Psycho-Pass, BD Valérian/Blake et Mortimer, films 1927-2023 : Metropolis, Tron, WarGames, Minority Report, Avatar, Interstellar, The Martian, Arrival, Westworld, Dune, The Creator, Dead Reckoning...). 116 fictions au total, 115 liées à une réalisation (realYear/predictedBy), dernière = The Creator (2023). Ancres réelles find-or-create.
 - 📏 **Flux pleine hauteur** : le panneau flux épouse toute la hauteur disponible du navigateur (flex 1 1 auto, plus de plafond 45vh), scroll interne.
