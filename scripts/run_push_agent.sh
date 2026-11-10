@@ -4,10 +4,9 @@
 # Usage : ./scripts/run_push_agent.sh   (arrêt : Ctrl+C)
 cd "$(dirname "$0")/.."
 ROOT="$(pwd)"
-LOCK="$ROOT/.push_agent.lock"
-
-exec 9>"$LOCK"
-flock -n 9 || { echo "Une instance tourne déjà."; exit 0; }
+LOCKDIR="$ROOT/.push_agent.lockdir"
+if ! mkdir "$LOCKDIR" 2>/dev/null; then echo "Une instance tourne déjà."; exit 0; fi
+trap 'rmdir "$LOCKDIR" 2>/dev/null' EXIT
 
 PY="$ROOT/backend/venv/bin/python"
 [ -x "$PY" ] || PY="python3"
