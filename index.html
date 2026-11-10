@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v155</title>
+    <title>THE LOOM : EXOCORTEX v156</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -62,7 +62,14 @@
             line-height: 1.4; 
         }
         
-        #legend-container { flex: 1; padding: 15px; overflow-y: auto; }
+        #legend-container { padding: 0; }
+        /* Bandeau catégories horizontal au-dessus du graphique */
+        .legend-bar { padding: 4px 10px; border-bottom: 1px solid var(--border); background: rgba(5,5,8,0.92); flex: 0 0 auto; }
+        .legend-scroll { display: flex; gap: 18px; overflow-x: auto; overflow-y: hidden; padding-bottom: 2px; scrollbar-width: thin; }
+        .legend-scroll .theme-block { flex: 0 0 auto; margin-bottom: 0; }
+        .legend-scroll .theme-title { margin-bottom: 3px; }
+        .legend-scroll .legend-grid { display: flex; gap: 4px; }
+        .legend-scroll .legend-chip { white-space: nowrap; }
         .legend-item { 
             display: flex; align-items: center; justify-content: space-between; gap: 8px; 
             margin-bottom: 8px; cursor: pointer; transition: opacity 0.2s; user-select: none;
@@ -157,16 +164,16 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v155</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v155...</div>
-        <div id="debug-log">Init v155...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v156</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v156...</div>
+        <div id="debug-log">Init v156...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v155</span></div>
-                <div id="timer-badge" class="timer-badge">Mise à jour...</div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v156</span></div>
+                <div id="timer-badge" class="timer-badge"></div>
             </div>
 
             <div id="doomsday-widget" title="Dernière heure officielle (Bulletin of the Atomic Scientists), rafraîchie quotidiennement par l'agent">
@@ -184,8 +191,6 @@
                     <li class="italic text-zinc-700">Chargement...</li>
                 </ul>
             </div>
-
-            <div id="legend-container"></div>
         </aside>
 
         <main>
@@ -194,6 +199,7 @@
                 <input id="search-input" type="text" placeholder="🔍 Rechercher un événement, une source, une catégorie..." oninput="applyFilter(this.value)">
                 <button onclick="resetView()" class="hud-btn bttf-btn">RETOUR VERS LE FUTUR</button>
             </div>
+            <div class="legend-bar"><div id="legend-container" class="legend-scroll"></div></div>
             <div class="canvas-wrapper">
                 <canvas id="loomChart"></canvas>
             </div>
@@ -332,15 +338,18 @@
             document.getElementById('dd-sub').innerText = `avant minuit · réglage ${Math.floor(c.year)} · maj quotidienne`;
         }
 
-        // --- Navigation Prédit → Réalisé ---
+        // --- Navigation Prédit ⇄ Réalisé (inter-pointeurs entre événements liés) ---
         function jumpToYear(year) {
-            const target = ALL_DATA.filter(e => Math.floor(e.year) === Math.floor(year)).sort((a, b) => b.year - a.year)[0];
+            const cands = ALL_DATA.filter(e => Math.floor(e.year) === Math.floor(year));
+            const target = cands.sort((a, b) => (b.predictedBy ? 1 : 0) - (a.predictedBy ? 1 : 0) || b.year - a.year)[0];
             if (!target) return;
             animateZoomTo(target.year - 2, target.year + 2);
             setTimeout(() => showDetail(target), 600);
         }
         function jumpToLabel(label) {
-            const target = ALL_DATA.find(e => e.label === label);
+            const cands = ALL_DATA.filter(e => e.label === label);
+            // préfère l'entrée qui a des liens (realYear/predictedBy) si doublon de label
+            const target = cands.find(e => e.realYear || e.predictedBy) || cands[0];
             if (!target) return;
             animateZoomTo(target.year - 2, target.year + 2);
             setTimeout(() => showDetail(target), 600);
@@ -422,7 +431,7 @@
                     
                     const d = new Date();
                     const st = document.getElementById('sync-status');
-                    st.innerText = `Source: ${source.label} | ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+                    st.innerText = `↻ ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
                     st.className = 'text-[9px] font-bold text-emerald-500 absolute left-4';
                     return;
                 }
@@ -794,7 +803,7 @@
             if (data.realYear) {
                 const b = document.createElement('span');
                 b.className = 'card-nav-link';
-                b.innerText = `→ S'est réalisé en ${Math.floor(data.realYear)}`;
+                b.innerText = `⇄ réalisé en ${Math.floor(data.realYear)}`;
                 b.onclick = () => jumpToYear(data.realYear);
                 nav.appendChild(b);
             }
@@ -802,7 +811,7 @@
                 data.predictedBy.forEach(t => {
                     const b = document.createElement('span');
                     b.className = 'card-nav-link';
-                    b.innerText = `← Prédit par : ${t}`;
+                    b.innerText = `⇄ prédit par : ${t}`;
                     b.onclick = () => jumpToLabel(t);
                     nav.appendChild(b);
                 });
@@ -852,9 +861,18 @@
         }
 
         // Initialisation
+        // Horloge locale discrète (badge HH:MM)
+        function updateTimer() {
+            const d = new Date();
+            const el = document.getElementById('timer-badge');
+            if (el) el.innerText = `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             loadData(true);
-            
+            updateTimer();
+            setInterval(updateTimer, 30000);
+
             // Rafraîchissement automatique toutes les 5 minutes
             setInterval(() => {
                 loadData();

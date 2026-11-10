@@ -1,5 +1,12 @@
 # CHANGELOG - Cortex Loom
 
+## v156
+- 🗂️ **Catégories déplacées** en bandeau horizontal au-dessus du graphique (scrollable, groupes thématiques + chips), la sidebar est libérée pour le flux.
+- 🧹 **Libellés nettoyés** : plus de « Mise à jour... » (horloge HH:MM discrète) ni de « Source: loom_data.json... » (simple ↻ HH:MM).
+- ⇄ **Popups inter-liées** : navigation prédit ⇄ réalisé dans les deux sens (realYear / predictedBy), les doublons de label sautent vers l'entrée liée.
+- 📡 **Flux haut signal** : RSS multi-requêtes (ARC-AGI, FrontierMath, IMO, preuves maths/physique, labs) + filtre anti-hype par mots-clés factuels (benchmark/record/prouvé/résolu/découvert...). +8 faits 2026 vérifiés seedés (ARC-AGI-3 launch 25/03, Gemini 4 Argon 97,5 %, conjecture 42 ans en 12 h, réfutation Erdős Lean, 5/6 IMO, Science 2026...).
+- 🔖 **Version :** Passage en v156.
+
 ## v155
 - 🤖 **13e courbe « ROBOTIQUE »** : 14 jalons réels (Léonard 1495 → Figure 01 2024) + 8 liens fiction→réalité (Metropolis, R.U.R., I, Robot, Terminator...) avec realYear/predictedBy.
 - 🗂️ **Zone catégories réorganisée** : groupes thématiques (Matière & Énergie / Vivant & Santé / Esprit & Idées / Société & Risques) en grille de chips compacts on/off, compteurs inclus.

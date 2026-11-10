@@ -42,7 +42,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_DATA_FILE = os.environ.get("LOCAL_DATA_FILE", str(PROJECT_ROOT / "loom_data.json"))
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
 
-VERSION = "v155"
+VERSION = "v156"
 
 # LLM local (Ollama) outillé
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
@@ -449,32 +449,66 @@ def enrich_event_if_needed(event: Dict[str, Any]) -> Dict[str, Any]:
 
 # --- SCANNERS ---
 
-def scan_google_news_rss() -> Optional[Dict[str, Any]]:
-    """Scanne le flux RSS de Google News sur la singularité."""
-    logger.info("[SCAN] Scan du flux Google News RSS...")
-    RSS_URL = "https://news.google.com/rss/search?q=%22technological+singularity%22+OR+%22artificial+general+intelligence%22+OR+%22AI2027%22&hl=fr&gl=FR&ceid=FR:fr"
+# Requêtes RSS ciblées "haut signal" : benchmarks, preuves, records, découvertes scientifiques
+RSS_QUERIES = [
+    '"ARC-AGI" OR "ARC Prize" benchmark',
+    'IA record benchmark "ARC-AGI-3" OR FrontierMath OR olympiade OR IMO 2026',
+    'intelligence artificielle a prouvé OR a résolu conjecture OR problème maths OR physique 2026',
+    'DeepMind OR OpenAI OR Anthropic percée OR découverte OR record 2026 science',
+    '"grand challenge" OR "open problem" solved by AI Nature Science 2026',
+]
+# Filtre anti-hype : un article n'entre dans le flux que s'il contient un de ces signaux factuels
+SIGNAL_KEYWORDS = [
+    "benchmark", "record", "scored", "score", "proved", "prouvé", "résolu", "solved",
+    "discovery", "découvert", "discovered", "arc-agi", "arc prize", "frontiermath",
+    "imo", "olympiad", "theorem", "théorème", "conjecture", "physics", "physique",
+    "mathematics", "maths", "breakthrough", "percée", "nature", "science",
+    "deepmind", "openai", "anthropic", "agi", "nobel", "published", "preprint",
+]
 
-    try:
-        import requests
-        import feedparser
-        resp = requests.get(RSS_URL, timeout=15)
-        resp.raise_for_status()
-        feed = feedparser.parse(resp.content)
-    except Exception as e:
-        logger.error(f"[SCAN] Erreur RSS : {e}")
-        return None
 
-    if not feed.entries:
-        logger.info("... Aucun article trouvé.")
-        return None
+def scan_google_news_rss(max_events: int = 2) -> List[Dict[str, Any]]:
+    """Scanne plusieurs flux Google News ciblés et ne retient que les articles à haut signal
+    factuel (benchmark/record/preuve/découverte), dédoublonnés par titre."""
+    logger.info("[SCAN] Scan RSS multi-requêtes (haut signal factuel)...")
+    import requests
+    import feedparser
 
-    latest_entry = feed.entries[0]
-    return analyze_event(
-        entry_title=latest_entry.title,
-        entry_summary=latest_entry.summary,
-        entry_url=latest_entry.link,
-        entry_source=latest_entry.source.get('title', 'Google News')
-    )
+    seen_titles = set()
+    candidates = []
+    for q in RSS_QUERIES:
+        url = f"https://news.google.com/rss/search?q={requests.utils.quote(q)}&hl=fr&gl=FR&ceid=FR:fr"
+        try:
+            resp = requests.get(url, timeout=15)
+            resp.raise_for_status()
+            feed = feedparser.parse(resp.content)
+        except Exception as e:
+            logger.warning(f"[SCAN] RSS en échec pour {q!r}: {e}")
+            continue
+        for entry in feed.entries[:8]:
+            title = getattr(entry, "title", "")
+            text = (title + " " + getattr(entry, "summary", "")).lower()
+            if title in seen_titles:
+                continue
+            if not any(k in text for k in SIGNAL_KEYWORDS):
+                continue  # hype/pop filtré
+            seen_titles.add(title)
+            candidates.append(entry)
+
+    if not candidates:
+        logger.info("... Aucun article à haut signal trouvé.")
+        return []
+
+    # Les plus récents d'abord (feedparser: entries déjà triées par date desc par flux)
+    events = []
+    for entry in candidates[:max_events]:
+        events.append(analyze_event(
+            entry_title=entry.title,
+            entry_summary=getattr(entry, "summary", ""),
+            entry_url=getattr(entry, "link", "#"),
+            entry_source=entry.source.get('title', 'Google News') if hasattr(entry, "source") and entry.source else 'Google News'
+        ))
+    return events
 
 
 def scan_ai2027() -> Optional[Dict[str, Any]]:
@@ -744,8 +778,9 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
     new_events = []
     for name, scanner in scanners:
         try:
-            event = scanner()
-            if event:
+            result = scanner()
+            events = result if isinstance(result, list) else ([result] if result else [])
+            for event in events:
                 event = enrich_event_if_needed(event)
                 event["id"] = compute_event_id(event.get("label", ""), event.get("year", 0), event.get("whoWhat"))
                 if not is_duplicate(event, existing_data):
