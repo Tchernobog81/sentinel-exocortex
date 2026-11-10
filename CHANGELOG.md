@@ -1,5 +1,9 @@
 # CHANGELOG - Cortex Loom
 
+## v149
+- 🔍 **UI (Pages) :** Ordre des sources de données contextuel — sur GitHub Pages, `loom_data.json` est lu directement (plus de tentative `localhost:8000` qui échouait à chaque rafraîchissement) ; en local, l'API FastAPI reste prioritaire. Cache-buster `?t=` appliqué aussi au JSON.
+- 🔖 **Version :** Passage en v149.
+
 ## v148
 - 🏗️ **Architecture :** Publication de la version locale (backend FastAPI + sentinel LLM) dans le dépôt ; la page GitHub Pages lit désormais `loom_data.json` (poussé par l'agent) avec fallback GAS.
 - 🛡️ **Backend :** upsert idempotent par `id` stable, écriture atomique verrouillée (flock + os.replace), backups auto (10) avec endpoints restore, `GET /api/data?since=`.

@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v148</title>
+    <title>THE LOOM : EXOCORTEX v149</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -139,15 +139,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v148</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v148...</div>
-        <div id="debug-log">Init v148...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v149</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v149...</div>
+        <div id="debug-log">Init v149...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v148</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v149</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -218,11 +218,23 @@
 
     <script>
         // Configuration des URLs de fallback
-        const BACKEND_URLS = [
-            'http://localhost:8000/api/data',  // Backend local FastAPI (dev Mac)
-            'loom_data.json',                  // Fichier JSON du dépôt (GitHub Pages / push agent)
-            'https://script.google.com/macros/s/AKfycbwg-ZzMeSRyoaTRV-u824eQvnd8tHYxTsk-xDSK4vhYy42OnMpFrpumj2NSEaA45gP-/exec'  // Fallback legacy Google Apps Script
-        ];
+        // Sources de données : ordre intelligent selon le contexte.
+        // - Page servie en local (backend FastAPI, hostname localhost) : API d'abord.
+        // - Page publique (GitHub Pages) : loom_data.json du dépôt d'abord (poussé par l'agent),
+        //   puis GAS en fallback. Plus de tentative localhost qui échoue bruyamment.
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbwg-ZzMeSRyoaTRV-u824eQvnd8tHYxTsk-xDSK4vhYy42OnMpFrpumj2NSEaA45gP-/exec';
+        const isLocalHost = ['localhost', '127.0.0.1', '[::1]', ''].includes(location.hostname);
+        const BACKEND_URLS = isLocalHost
+            ? [
+                'http://localhost:8000/api/data',  // Backend local FastAPI (dev Mac)
+                'loom_data.json',                  // Fichier JSON local
+                GAS_URL                            // Fallback legacy Google Apps Script
+              ]
+            : [
+                'loom_data.json',                  // Fichier JSON du dépôt (GitHub Pages / push agent)
+                GAS_URL,                           // Fallback legacy Google Apps Script
+                'http://localhost:8000/api/data'   // Dernier recours (dev)
+              ];
         
         // Couleurs des catégories
         const COLORS = { 
@@ -280,7 +292,7 @@
             try {
                 if (source.url) {
                     log(`Tentative de chargement depuis ${source.label}...`);
-                    const res = await fetch(source.url + (source.url.includes('api/data') ? '?t=' + new Date().getTime() : ''));
+                    const res = await fetch(source.url + '?t=' + new Date().getTime());
                     
                     if (!res.ok) {
                         throw new Error(`HTTP ${res.status}`);
