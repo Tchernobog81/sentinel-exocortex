@@ -1,5 +1,13 @@
 # CHANGELOG - Cortex Loom
 
+## v148
+- 🏗️ **Architecture :** Publication de la version locale (backend FastAPI + sentinel LLM) dans le dépôt ; la page GitHub Pages lit désormais `loom_data.json` (poussé par l'agent) avec fallback GAS.
+- 🛡️ **Backend :** upsert idempotent par `id` stable, écriture atomique verrouillée (flock + os.replace), backups auto (10) avec endpoints restore, `GET /api/data?since=`.
+- 🤖 **Sentinel :** analyse Pharmakon v117 par LLM local outillé (Ollama hermes3:8b, fallback qwen3:8b) avec recherche web (web_search/fetch_url), focus AI2027 ; boucle de push toutes les minutes vers GitHub si nouveaux événements.
+- 🐛 **Fix :** somme remède+poison = 100 % (un seul tirage) ; label stable du stade de singularité (upsert au lieu de doublons).
+- 🔍 **UI :** zooms intelligents (wheel/pinch/pan, double-clic reset), auto-zoom animé vers les nouveaux événements avec fenêtre adaptative, transitions fluides 700 ms.
+- 🔖 **Version :** Passage en v148.
+
 ## v147
 - 🐛 **Data Fix (Entropie) :** Correction définitive du "trou" de l'Horloge de l'Apocalypse. Suppression des doublons (séries concurrentes) et recalcul complet de l'axe Y pour garantir une courbe strictement croissante de 1943 à 2050.
 - 🔗 **Data Links :** Ajout du lien prédictif manquant entre *Le Meilleur des mondes* et *Bébés CRISPR*.
