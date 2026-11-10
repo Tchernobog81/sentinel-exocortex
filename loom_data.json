@@ -4045,6 +4045,24 @@
     "id": "bd03f0965bdadae2"
   },
   {
+    "year": 2026.917,
+    "value": 27315,
+    "label": "Progrès vers la Civilisation Type 1 (Fusion)",
+    "category": "🔴 RÉSEAU",
+    "whoWhat": "Sentinel Simulator",
+    "description": "Un nouveau réacteur atteint un Q-plasma de 5 pendant 100 secondes.",
+    "url": "#",
+    "timestamp": "2026-11-10T19:20:49.218350",
+    "tipping": false,
+    "s_curve_phase": 4,
+    "pharmakon_remedy_percent": 48,
+    "pharmakon_poison_percent": 52,
+    "convergences": "Hyperconnectivité + Décentralisation + Vitesse",
+    "grand_filter_analysis": "Risque de surveillance de masse vs Outil d'émancipation globale.",
+    "final_note": "Et une autre tuile.",
+    "id": "a33330666bcc72c6"
+  },
+  {
     "year": 2027,
     "value": 25000,
     "label": "Jihad Butlérien (Début)",
