@@ -1,0 +1,44 @@
+name: Update Cortex Loom Data
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'  # Toutes les 12 heures
+  workflow_dispatch:         # Permet de lancer manuellement
+  push:
+    paths:
+      - 'sentinel/sentinel.py'
+      - 'scripts/update_data.py'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests feedparser python-dotenv
+      
+      - name: Run sentinel to update data
+        run: |
+          cd sentinel
+          python sentinel.py
+      
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add loom_data.json
+          # Vérifie s'il y a des changements
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "Aucun changement"
+          else
+            git commit -m "🤖 Auto-update loom data (GitHub Actions)"
+            git push
+          fi
