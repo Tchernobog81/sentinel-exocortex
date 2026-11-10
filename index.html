@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v150</title>
+    <title>THE LOOM : EXOCORTEX v151</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -139,15 +139,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v150</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v150...</div>
-        <div id="debug-log">Init v150...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v151</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v151...</div>
+        <div id="debug-log">Init v151...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v150</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v151</span></div>
                 <div id="timer-badge" class="timer-badge">Mise à jour...</div>
             </div>
 
@@ -424,6 +424,7 @@
                     borderColor: style.color, 
                     backgroundColor: style.color, 
                     borderWidth: style.width, 
+                    showLine: true,              // courbe reliant les événements de la catégorie
                     data: [], 
                     pointRadius: 5,
                     pointHoverRadius: 8,
@@ -496,12 +497,15 @@
                             align: 'top'
                         },
                         zoom: {
-                            wheel: { enabled: true, speed: 0.12 },
-                            pinch: { enabled: true },
-                            mode: 'x',
-                            animation: { duration: 500, easing: 'easeOutQuart' }
-                        },
-                        pan: { enabled: true, mode: 'x' }
+                            zoom: {
+                                wheel: { enabled: true, speed: 0.1 },
+                                pinch: { enabled: true },
+                                drag: { enabled: false },  // le clic sur un point ouvre sa fiche
+                                mode: 'xy'
+                            },
+                            pan: { enabled: true, mode: 'xy' },
+                            limits: { x: { minRange: 0.25 } }  // bloque le zoom à 1 trimestre min
+                        }
                     },
                     scales: {
                         x: {

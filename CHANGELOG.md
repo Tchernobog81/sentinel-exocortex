@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v151
+- 📈 **UI (courbes) :** `showLine: true` sur les datasets scatter — les événements d'une catégorie sont reliés par une courbe (les points restent visibles).
+- 🔍 **UI (zoom/pan) :** bloc `plugins.zoom` correctement imbriqué (`zoom.zoom.wheel/pinch`, `zoom.pan`) — zoom molette/pinch en mode `xy` restauré, pan glisser-déposer `xy` (avant/arrière/haut/bas), limite `x.minRange = 0.25 an`. Testé en headless Chromium (wheel + drag simulés).
+- 🔖 **Version :** Passage en v151.
+
 ## v150
 - 🐛 **UI (bloqué) :** Fix du plantage au chargement (testé en navigateur headless Chromium) : `chartjs-plugin-datalabels` appelait `display()` avec `context.dataPoint` undefined → TypeError non capturée → écran de boot jamais retiré. Gardes sur `display`/`formatter`/tooltip externe + try/catch autour du rendu initial (l'écran de chargement disparaît désormais toujours).
 - 🔖 **Version :** Passage en v150.
