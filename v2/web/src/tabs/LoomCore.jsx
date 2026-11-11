@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
-import { Clock3, Filter, Radio, X, ArrowLeftRight } from 'lucide-react';
+import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.1.3';
+export const LOOM_VERSION = '2.1.4';
 
 // Onglet 1 — LOOM CORE (V2.1.2) : le chart s'initialise UNE fois (le zoom utilisateur est préservé
 // entre les rafraîchissements SSE), les séries sont mises à jour en douceur.
@@ -31,7 +31,6 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     return Math.round(tail.reduce((a, b) => a + b, 0) / tail.length) || clockSeries[clockSeries.length - 1].seconds;
   }, [clockSeries, envelope.apocalypse_clock_seconds, clockSmooth]);
 
-  const cats = useMemo(() => [...new Set((allEvents || []).map(e => e.category))], [allEvents]);
   const groups = useMemo(() => {
     const g = {};
     for (const e of events) g[e.group] = e.groupColor;
@@ -179,15 +178,15 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       const real = pts.filter(e => (e.year || 0) <= nowYear + 0.05).sort((a, b) => a.year - b.year);
       if (real.length > 1) {
         series.push({
-          name, type: 'line', smooth: 0.45, showSymbol: false, z: 1, yAxisIndex: yIdx,
-          lineStyle: { color: g.color, width: 2.5, opacity: 0.85, shadowColor: g.color, shadowBlur: 6 },
+          name, type: 'line', smooth: 0.45, showSymbol: false, z: 5, yAxisIndex: yIdx,
+          lineStyle: { color: g.color, width: 3, opacity: 0.9, shadowColor: g.color, shadowBlur: 8 },
           areaStyle: { color: g.color, opacity: 0.06 },
           data: real.map(e => [e.year, e.value]),
         });
       }
       series.push({
         name, type: 'scatter', z: 3, yAxisIndex: yIdx,
-        symbolSize: d => (d[3]?.tipping ? 11 : 6),
+        symbolSize: d => (d[3]?.tipping ? 10 : 5),
         itemStyle: { color: g.color, opacity: 0.95, borderColor: '#050508', borderWidth: 1 },
         emphasis: { scale: 1.6 },
         // étiquette MINIMALE sur les POI principaux, anti-recouvrement par hideOverlap
@@ -309,12 +308,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
             </div>
           </div>
           <div className="text-[10px] text-zinc-400">Singularité: <b className="amber-text">{(envelope.singularity_index ?? 0).toFixed(3)}</b></div>
-          <div className="flex items-center gap-1 flex-wrap">
-            <Filter size={12} className="text-zinc-500" />
-            {cats.map(c => (
-              <span key={c} className={`chip ${filters[c] === false ? 'opacity-40' : 'on'}`} onClick={() => setFilters(f => ({ ...f, [c]: f[c] === false ? true : false }))}>{c}</span>
-            ))}
-          </div>
+
         </div>
 
         {/* légende custom : pastilles à la couleur des courbes */}

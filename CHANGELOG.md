@@ -1,5 +1,12 @@
 # CHANGELOG - Cortex Loom
 
+## V2.1.4 (dashboard V2)
+- 🧹 **Une seule légende** : suppression des chips de filtres catégories ambre qui doublonnaient la légende — il ne reste que la légende colorée (pastilles = couleurs des courbes, clic pour masquer/afficher).
+- 📈 **Lignes au-dessus des points** : z=5, largeur 3, opacité 0.9, glow néon — les 9 courbes reliées sont indiscutables (points légèrement réduits). Vérifié visuellement au décollage 2023-2026.
+- 🔖 V2.1.4 affichée.
+
+## V2.1.3
+
 ## V2.1.3 (dashboard V2)
 - 📥 **Flux rempli et véridique** : les 30 derniers événements antichronologiques de l'année en cours ; dates honnêtes — timestamp réel (« 11/11 15:51 ») sinon mois dérivé de la fraction d'année (« oct. 2026 »), plus aucun « 00:00 » fabriqué.
 - 🎯 **Cause racine des courbes plates** : l'axe Y incluait l'échelle « danger » de l'horloge (45000) qui écrasait les 8 autres courbes. L'horloge a maintenant **son axe Y caché** ; l'axe principal est **ajusté à la fenêtre visible** (hors prévisions, hors horloge) comme en V1 → **le décollage 2025/2026 occupe la hauteur** (Y max ~12400 en vue initiale au lieu de 49000).
