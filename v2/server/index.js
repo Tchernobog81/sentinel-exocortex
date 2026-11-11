@@ -1,225 +1,37 @@
 // THE LOOM V2 — serveur Fastify (air-gap : bind 127.0.0.1 uniquement)
-// - GET /api/data          : enveloppe V2 { apocalypse_clock_seconds, singularity_index, nela_status, events[] } depuis ../loom_data.json
-// - GET /api/events        : tableau legacy (V1)
-// - GET /api/stream        : SSE — push de l'enveloppe à chaque changement de loom_data.json + heartbeat
-// - GET /api/telemetry     : snapshot télémétrie (RAM/VRAM/CPU/GPU/ports/airgap/démons)
-// - GET /api/telemetry/stream : SSE télémétrie toutes les 2 s
-// - GET /api/rag           : statut base RAG locale (docs vectorisés, taille)
-// - POST /api/purge        : Purge VRAM / Hard Flush (décharge modèles Ollama + purge mémoire macOS, best effort)
 import fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
-import si from 'systeminformation';
 import fs from 'node:fs';
 import path from 'node:path';
-import { exec } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { ROOT, DATA_FILE, buildEnvelope, readEvents, telemetry, ragStatus, purgeVram } from './lib.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, '..', '..');               // racine repo
-const DATA_FILE = process.env.LOOM_DATA || path.join(ROOT, 'loom_data.json');
 const WEB_DIST = path.resolve(__dirname, '..', 'web', 'dist');
-const RAG_DIR = process.env.RAG_DIR || path.join(ROOT, '.vibe', 'knowledge');
-const QUARANTINE_LOG = path.join(__dirname, '..', 'data', 'quarantine.log');
-const HOST = process.env.LOOM_HOST || '127.0.0.1';               // air-gap : loopback only
+const HOST = process.env.LOOM_HOST || '127.0.0.1';
 const PORT = Number(process.env.LOOM_PORT || 8787);
-const OLLAMA_URL = process.env.OLLAMA_URL || 'http://127.0.0.1:11434';
-const EXO_URL = process.env.EXO_URL || 'http://127.0.0.1:5000';
 
 const app = fastify({ logger: true });
+// CORS : autorise la page Pages à appeler le serveur local (purge VRAM) en air-gap
+app.addHook('onRequest', (req, reply, done) => {
+  reply.header('Access-Control-Allow-Origin', '*');
+  reply.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  if (req.method === 'OPTIONS') { reply.code(204).send(); return; }
+  done();
+});
 
-// ---------- mapping données V1 -> enveloppe V2 ----------
-const CAT_FILTER = {
-  '🔵 COGNITION': 'IA', '⚪ SINGULARITÉ': 'IA',
-  '☠️ RISQUES CYBER': 'Cyber', '☢️ ENTROPIE': 'Cyber',
-  '🟢 BIOTECH': 'Vivant', '💊 MÉDECINE': 'Vivant',
-  '🟣 ESPACE': 'Espace',
-  '🟡 HARDWARE': 'Physique', '🤖 ROBOTIQUE': 'Physique',
-  '🏛️ POLITIQUE': 'Politique',
-  '⏰ HORLOGE': 'Horloge',
-  '🔮 IMAGINAIRE': 'Fiction',
-  '✨ NOOSPHÈRE': 'Réseau', '🔴 RÉSEAU': 'Réseau',
-};
-const GROUP_COLOR = {
-  '⚙️ INDUSTRIE & ROBOTS': '#fbbf24', '🚀 ESPACE': '#8b5cf6', '🧠 IA & COGNITION': '#3b82f6',
-  '🌍 NOOSPHÈRE & RÉSEAUX': '#0ea5e9', '🧬 VIVANT & SANTÉ': '#10b981', '🏛️ POLITIQUE': '#d946ef',
-  '☢️ ENTROPIE & CYBER': '#f97316', '🎬 FICTION': '#f472b6', "⏰ HORLOGE DE L'APOCALYPSE": '#ef4444',
-};
-const GROUP_OF = {};
-{
-  const G = [
-    ['🟡 HARDWARE', '⚙️ INDUSTRIE & ROBOTS'], ['🤖 ROBOTIQUE', '⚙️ INDUSTRIE & ROBOTS'],
-    ['🟣 ESPACE', '🚀 ESPACE'],
-    ['🔵 COGNITION', '🧠 IA & COGNITION'], ['⚪ SINGULARITÉ', '🧠 IA & COGNITION'],
-    ['✨ NOOSPHÈRE', '🌍 NOOSPHÈRE & RÉSEAUX'], ['🔴 RÉSEAU', '🌍 NOOSPHÈRE & RÉSEAUX'],
-    ['🟢 BIOTECH', '🧬 VIVANT & SANTÉ'], ['💊 MÉDECINE', '🧬 VIVANT & SANTÉ'],
-    ['🏛️ POLITIQUE', '🏛️ POLITIQUE'],
-    ['☢️ ENTROPIE', '☢️ ENTROPIE & CYBER'], ['☠️ RISQUES CYBER', '☢️ ENTROPIE & CYBER'],
-    ['🔮 IMAGINAIRE', '🎬 FICTION'],
-    ['⏰ HORLOGE', "⏰ HORLOGE DE L'APOCALYPSE"],
-  ];
-  for (const [c, g] of G) GROUP_OF[c] = g;
-}
-
-function readEvents() {
-  try { return JSON.parse(fs.readFileSync(DATA_FILE, 'utf8')); }
-  catch { return []; }
-}
-
-function buildEnvelope() {
-  const events = readEvents();
-  const now = Date.now();
-  // Horloge de l'apocalypse : dernier réglage ⏰ HORLOGE (doomsday_minutes -> secondes)
-  const clocks = events.filter(e => e.category === '⏰ HORLOGE' && e.doomsday_minutes != null)
-                       .sort((a, b) => (b.year || 0) - (a.year || 0));
-  const apocalypse_clock_seconds = clocks.length ? Math.round(clocks[0].doomsday_minutes * 60) : 85;
-  // Singularity index : fraction d'événements "point de bascule" pondérée par la récence (0..1)
-  const tip = events.filter(e => e.tipping && (e.year || 0) <= new Date().getFullYear() + 1);
-  const recency = events.length ? tip.reduce((a, e) => a + Math.min(1, Math.max(0, ((e.year || 0) + 2100) / 4200)), 0) / events.length : 0;  const singularity_index = Math.round(Math.min(1, 0.35 + 0.65 * recency) * 1000) / 1000;
-  const mapped = events.map(e => {
-    const group = GROUP_OF[e.category] || e.category || 'AUTRE';
-    return {
-      id: e.id || `evt-${e.year}-${(e.label || '').slice(0, 12)}`,
-      timestamp: e.timestamp || new Date((e.year || 1970), 0, 1).toISOString(),
-      year: e.year,
-      category: (CAT_FILTER[e.category] || e.category || 'Autre'),
-      group,
-      groupColor: GROUP_COLOR[group] || '#9ca3af',
-      title: e.label,
-      description: e.description || '',
-      url: e.url || '',
-      source: e.whoWhat || '',
-      impact_score: Math.round(Math.min(1, (e.value || 1000) / 49000) * 100) / 100,
-      value: e.value,
-      is_kinetic_signal: !!(e.tipping || e.verified),
-      tipping: !!e.tipping,
-      verified: e.verified !== false,
-      doomsday_minutes: e.doomsday_minutes ?? null,
-    };
-  });
-  return {
-    apocalypse_clock_seconds,
-    singularity_index,
-    nela_status: { airgap: true, joules_per_action_score: 'Optimal', active_engine: 'Ollama' }, // raffiné par /api/telemetry
-    generated_at: new Date(now).toISOString(),
-    events: mapped,
-  };
-}
-
-// ---------- télémétrie système ----------
-async function probe(url, ms = 1200) {
-  try {
-    const ctl = new AbortController();
-    const t = setTimeout(() => ctl.abort(), ms);
-    const r = await fetch(url, { signal: ctl.signal });
-    clearTimeout(t);
-    return r.ok ? await r.json().catch(() => ({})) : null;
-  } catch { return null; }
-}
-
-async function telemetry() {
-  const [mem, cpu, cpuTemp, graphics, fsSize, netConnsRaw, netStats] = await Promise.all([
-    si.mem(), si.currentLoad(), si.cpuTemperature(), si.graphics(), si.fsSize(), si.networkConnections(), si.networkStats(),
-  ]);
-  // fallback lsof si systeminformation ne voit pas les sockets (permissions macOS)
-  let netConns = netConnsRaw || [];
-  if (netConns.length === 0) {
-    const lsof = await new Promise(res => exec('lsof -iTCP -sTCP:LISTEN -P -n 2>/dev/null', { maxBuffer: 1 << 20 }, (e, out) => res(out || '')));
-    netConns = (lsof || '').split('\n').slice(1).filter(Boolean).map(l => {
-      const p = l.trim().split(/\s+/);
-      const m = (p[8] || '').match(/^(.+):(\d+)$/);
-      return { state: 'LISTEN', localAddress: m ? m[1] : '', localPort: m ? +m[2] : 0, protocol: 'TCP', pid: +p[1] };
-    }).filter(c => c.localPort);
-  }
-  // Air-gap : toute socket d'écoute non-loopback = fuite potentielle
-  const listeners = (netConns || []).filter(c => c.state === 'LISTEN');
-  const external = listeners.filter(c => {
-    const l = (c.localAddress || '').toLowerCase();
-    // loopback = OK ; wildcard (*, 0.0.0.0, ::) = toléré (audité mais pas compté comme fuite IP concrète)
-    if (l === '127.0.0.1' || l === '::1' || l === 'localhost' || l === '' || l === '::ffff:127.0.0.1') return false;
-    if (l === '*' || l === '0.0.0.0' || l === '::') return false;
-    return true; // IP concrète non-loopback = fuite potentielle
-  });
-  const airgap = external.length === 0;
-  // Démons d'inférence
-  const ollamaTags = await probe(`${OLLAMA_URL}/api/tags`);
-  const ollamaUp = !!ollamaTags;
-  const ollamaModels = (ollamaTags?.models || []).map(m => ({ name: m.name, size: m.size }));
-  const exo = await probe(`${EXO_URL}/v1/models`, 800);
-  // Joules par action : estimation heuristique (charge CPU * modèle chargé), labelisée comme estimation
-  const loadedBytes = ollamaModels.reduce((a, m) => a + (m.size || 0), 0);
-  const cpuLoad = cpu.currentLoad || 0;
-  const joulesPerAction = loadedBytes ? Math.round((cpuLoad / 100) * (loadedBytes / 1e9) * 12 * 10) / 10 : 0;
-  const score = joulesPerAction === 0 ? 'Optimal' : joulesPerAction < 5 ? 'Élevé' : 'Critique';
-  const gpu = (graphics?.controllers || [])[0] || {};
-  return {
-    ts: new Date().toISOString(),
-    airgap,
-    external_listeners: external.map(c => `${c.localAddress}:${c.localPort} (${c.protocol})`),
-    open_ports: listeners.map(c => ({ port: c.localPort, addr: c.localAddress, proto: c.protocol, pid: c.pid })),
-    mem: { used: mem.active, total: mem.total, pct: Math.round((mem.active / mem.total) * 100) },
-    cpu: { load: Math.round(cpuLoad * 10) / 10, temp: cpuTemp?.max ?? null, cores: cpu.cpus?.length || null },
-    gpu: { name: gpu.name || null, vram: gpu.vram || null, vramUsed: gpu.memoryUsed || null, temp: gpu.temperatureGpu || null },
-    disk: (fsSize || []).map(d => ({ fs: d.fs, size: d.size, used: d.used, pct: Math.round(d.use) })),
-    net: (netStats || [])[0] ? { rx: netStats[0].rx_bytes, tx: netStats[0].tx_bytes } : null,
-    daemons: {
-      ollama: { up: ollamaUp, url: OLLAMA_URL, models: ollamaModels },
-      exo: { up: !!exo, url: EXO_URL },
-    },
-    joules_per_action: joulesPerAction,
-    joules_per_action_score: score,
-    active_engine: ollamaUp ? 'Ollama' : (exo ? 'Exo' : 'Aucun'),
-  };
-}
-
-// ---------- RAG local ----------
-function ragStatus() {
-  let docs = 0, bytes = 0, files = [];
-  const walk = (dir) => {
-    if (!fs.existsSync(dir)) return;
-    for (const f of fs.readdirSync(dir)) {
-      const p = path.join(dir, f);
-      const st = fs.statSync(p);
-      if (st.isDirectory()) walk(p);
-      else if (/\.(db|sqlite|sqlite3|index|bin|jsonl|parquet|md|txt)$/i.test(f)) { docs++; bytes += st.size; files.push({ name: f, size: st.size, mtime: st.mtime }); }
-    }
-  };
-  walk(RAG_DIR);
-  let quarantine = [];
-  if (fs.existsSync(QUARANTINE_LOG)) {
-    quarantine = fs.readFileSync(QUARANTINE_LOG, 'utf8').split('\n').filter(Boolean).slice(-200).map(l => { try { return JSON.parse(l); } catch { return { raw: l }; } });
-  }
-  return { dir: RAG_DIR, documents: docs, bytes, db_mb: Math.round(bytes / 1e6 * 10) / 10, files: files.slice(-50), quarantine };
-}
-
-// ---------- routes ----------
 app.get('/api/data', async () => buildEnvelope());
 app.get('/api/events', async () => readEvents());
 app.get('/api/telemetry', async () => telemetry());
 app.get('/api/rag', async () => ragStatus());
-
-app.post('/api/purge', async () => {
-  const actions = [];
-  // 1) décharge tous les modèles Ollama (keep_alive=0)
-  const tags = await probe(`${OLLAMA_URL}/api/tags`);
-  for (const m of (tags?.models || [])) {
-    try {
-      await fetch(`${OLLAMA_URL}/api/generate`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ model: m.name, keep_alive: 0 }) });
-      actions.push(`ollama unload ${m.name}`);
-    } catch {}
-  }
-  // 2) purge mémoire inactive (macOS) — best effort
-  await new Promise(res => exec('purge', () => res()));
-  actions.push('macOS purge (mémoire inactive libérée)');
-  app.log.info({ actions }, 'PURGE VRAM / hard flush');
-  return { ok: true, actions, at: new Date().toISOString() };
-});
+app.post('/api/purge', async () => { const r = await purgeVram(); app.log.info({ actions: r.actions }, 'PURGE VRAM'); return r; });
 
 // SSE — données (push à chaque changement du fichier)
 app.get('/api/stream', async (req, reply) => {
   reply.raw.writeHead(200, { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache', Connection: 'keep-alive' });
   const send = () => reply.raw.write(`data: ${JSON.stringify(buildEnvelope())}\n\n`);
   send();
-  const iv = setInterval(send, 15000); // heartbeat
+  const iv = setInterval(send, 15000);
   let timer = null;
   try {
     const watcher = fs.watch(DATA_FILE, () => { clearTimeout(timer); timer = setTimeout(send, 300); });
@@ -236,7 +48,6 @@ app.get('/api/telemetry/stream', async (req, reply) => {
   req.raw.on('close', () => clearInterval(iv));
 });
 
-// statique V2 (build Vite) — 100 % local, aucun CDN
 if (fs.existsSync(WEB_DIST)) {
   await app.register(fastifyStatic, { root: WEB_DIST, prefix: '/' });
   app.get('/', async (req, reply) => reply.sendFile('index.html'));

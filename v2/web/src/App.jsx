@@ -17,7 +17,7 @@ export default function App() {
   const [tab, setTab] = useState('core');
   const [filters, setFilters] = useState({});            // {cat: bool} — filtres catégories onglet 1
   const [memetic, setMemetic] = useState({ noiseRatio: 30, smoothWindow: 3 }); // onglet 4 -> partagé
-  const { data, connected } = useSSE('/api/stream', null, 5000);
+  const { data, connected, mode } = useSSE('/api/stream', null, 5000);
   const { data: tel, connected: telOn } = useSSE('/api/telemetry/stream', null, 4000);
 
   const envelope = data || { apocalypse_clock_seconds: 85, singularity_index: 0.915, events: [] };
@@ -51,7 +51,7 @@ export default function App() {
         })}
         <div className="ml-auto flex items-center gap-3 text-[10px]">
           <span className={`flex items-center gap-1 ${connected ? 'text-neon-green' : 'text-neon-red'}`}>
-            <Radio size={12} className={connected ? 'animate-pulse' : ''} /> SSE {connected ? 'LIVE' : 'OFF'}
+            <Radio size={12} className={connected ? 'animate-pulse' : ''} /> {mode === 'static' ? 'POLL' : 'SSE'} {connected ? 'LIVE' : 'OFF'}
           </span>
           <span className={telOn ? 'text-neon-cyan' : 'text-zinc-500'}>TEL {telOn ? 'LIVE' : 'OFF'}</span>
           <span className="text-zinc-500">AIR-GAP {tel?.airgap === false ? <b className="red-text">OUVERT</b> : <b className="text-neon-green">ON</b>}</span>

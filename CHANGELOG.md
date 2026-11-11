@@ -1,5 +1,13 @@
 # CHANGELOG - Cortex Loom
 
+## v179 — V2 déployée sur l'URL publique
+- 🌐 **https://tchernobog81.github.io/sentinel-exocortex/ sert maintenant la V2** : build Vite (base relative) déployé à la racine ; l'ancienne V1 reste dispo sur **/v1/** (index.html déplacé, URL données rendue absolue).
+- 🛰️ **Mode statique air-gap sur Pages** : la V2 détecte l'absence du serveur local et polle `loom_data.json` + `telemetry.json` + `rag.json` (poussés à chaque cycle par la boucle agent via `v2/server/export-static.mjs`, commités avec les données). Le serveur local (127.0.0.1:8787) reste dispo pour le SSE temps réel + la purge VRAM (CORS ajouté).
+- 🧪 Tests : v2test.js OK en mode serveur (8787) ET en mode statique (racine servie en HTTP) ; 0 requête externe, 0 pageerror.
+- 🔖 **Version :** v179 (V1 reste v179 dans /v1/).
+
+## v178
+
 ## v178
 - 🫧 **Boxes bulles arrondies** : popup #detail-card `border-radius: 16px`, étiquette de survol #label-float `12px` (testé : radius mesurés 16px/12px, captures bubble_card.png / bubble_hover.png).
 - 🎨 **Connecteur de survol coloré** : la ligne étiquette→POI (`#label-line`) prend maintenant la couleur de l'étiquette/POI (`--label-border`) au lieu du cyan fixe — testé : `rgb(59,130,246)` == bordure `#3b82f6` (BUBBLES OK).

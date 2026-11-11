@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { fetchRag, purgeVram } from '../api.js';
 import { Database, ShieldAlert, Trash2, RefreshCw } from 'lucide-react';
 
 // Onglet 3 — STERI-NET & RAG : base de connaissances locale, quarantaine, purge VRAM
@@ -7,15 +8,12 @@ export default function SteriNet() {
   const [purging, setPurging] = useState(false);
   const [purgeResult, setPurgeResult] = useState(null);
 
-  const load = async () => { try { const r = await fetch('/api/rag'); if (r.ok) setRag(await r.json()); } catch {} };
+  const load = async () => { setRag(await fetchRag()); };
   useEffect(() => { load(); const iv = setInterval(load, 5000); return () => clearInterval(iv); }, []);
 
   const purge = async () => {
     setPurging(true); setPurgeResult(null);
-    try {
-      const r = await fetch('/api/purge', { method: 'POST' });
-      setPurgeResult(await r.json());
-    } catch (e) { setPurgeResult({ ok: false, error: String(e) }); }
+    setPurgeResult(await purgeVram());
     setPurging(false);
   };
 

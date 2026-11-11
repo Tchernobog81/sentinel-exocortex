@@ -2,7 +2,12 @@
 
 Refonte V2 du dashboard : backend **Node.js 20+ / Fastify** (SSE temps réel) + frontend **Vite + React 18 + TailwindCSS + Apache ECharts + lucide-react**, 100 % hors-ligne (aucun CDN, tout est bundlé en local par le build).
 
-## Lancer le dashboard
+## URL publique (GitHub Pages, mode statique)
+
+**https://tchernobog81.github.io/sentinel-exocortex/** sert la V2 buildée (racine du repo).
+Sans serveur local, la V2 polle `loom_data.json` / `telemetry.json` / `rag.json` poussés par l'agent local à chaque cycle. L'ancienne interface V1 est sur **/v1/**.
+
+## Lancer le dashboard en local (mode serveur, SSE temps réel)
 
 ```bash
 # 1) installer + builder le frontend (une fois, ou après chaque modif du front)
