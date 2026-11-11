@@ -1,5 +1,13 @@
 # CHANGELOG - Cortex Loom
 
+## V2.1.5 (dashboard V2)
+- 🐛 **Cause racine des bulles de survol fantômes** : `chart.on('mousemove'/'click')` (proxy ECharts) ne se déclenche QUE sur un symbole exact — le survol/clic était donc quasi impossible en zone dense. Le picking est désormais branché sur **ZRender** (`getZr().on(...)`) avec distance au pixel (±20 px) : la bulle et la popup apparaissent de façon fiable dès que le curseur approche un point.
+- 🧹 **Une seule légende** (V2.1.4, empaqueté) : les chips de filtres ambre sont supprimés ; seules restent les pastilles couleur des courbes.
+- 📈 **Lignes z=5, largeur 3, glow** au-dessus des points.
+- 🧪 Neuf suites OK en local (V2, V2FIX, V2ZOOM, V2FEED, V2DEEP, V21, V211, V213, V214), validées en virtuel avant push.
+
+## V2.1.4
+
 ## V2.1.4 (dashboard V2)
 - 🧹 **Une seule légende** : suppression des chips de filtres catégories ambre qui doublonnaient la légende — il ne reste que la légende colorée (pastilles = couleurs des courbes, clic pour masquer/afficher).
 - 📈 **Lignes au-dessus des points** : z=5, largeur 3, opacité 0.9, glow néon — les 9 courbes reliées sont indiscutables (points légèrement réduits). Vérifié visuellement au décollage 2023-2026.

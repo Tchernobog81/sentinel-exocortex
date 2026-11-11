@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.1.4';
+export const LOOM_VERSION = '2.1.5';
 
 // Onglet 1 — LOOM CORE (V2.1.2) : le chart s'initialise UNE fois (le zoom utilisateur est préservé
 // entre les rafraîchissements SSE), les séries sont mises à jour en douceur.
@@ -89,26 +89,40 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       series: [],
     }, { notMerge: true });
 
-    // clic -> popup détail
-    chart.on('click', p => { if (p.data?.[3]) setSelected(p.data[3]); });
+    // clic -> popup détail : même picking au pixel près que le survol (le proxy
+    // chart.on('click') ne se déclenche que sur un symbole exact)
+    const pickNearest = (zx, zy) => {
+      let best = null, bd = 22 * 22;
+      for (const ev of eventsRef.current) {
+        if (hiddenRef.current[ev.group]) continue;
+        const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [ev.year, ev.value]);
+        const d = (px[0] - zx) ** 2 + (px[1] - zy) ** 2;
+        if (d < bd) { bd = d; best = ev; }
+      }
+      return best;
+    };
+    chart.getZr().on('click', e => {
+      const zx = e.zrX ?? e.offsetX ?? (e.event && e.event.offsetX), zy = e.zrY ?? e.offsetY ?? (e.event && e.event.offsetY);
+      const hit = pickNearest(zx, zy);
+      if (hit) setSelected(hit);
+    });
 
-    // survol : picking manuel au pixel près (seuil 20 px)
+    // survol : picking manuel au pixel près (seuil 20 px), branché sur ZRENDER
+    // (chart.on('mousemove') ne se déclenche QUE sur un élément dessiné -> bulle fantôme)
     let raf = 0;
-    chart.on('mousemove', e => {
+    chart.getZr().on('mousemove', e => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
-        const zx = e.event.zrX ?? e.event.offsetX, zy = e.event.zrY ?? e.event.offsetY;
-        let best = null, bd = 20 * 20;
-        for (const ev of eventsRef.current) {
-          if (hiddenRef.current[ev.group]) continue;
-          const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [ev.year, ev.value]);
-          const d = (px[0] - zx) ** 2 + (px[1] - zy) ** 2;
-          if (d < bd) { bd = d; best = { x: px[0], y: px[1], ev }; }
-        }
-        setHover(best);
+        const zx = e.zrX ?? e.offsetX ?? (e.event && e.event.offsetX), zy = e.zrY ?? e.offsetY ?? (e.event && e.event.offsetY);
+        const hit = pickNearest(zx, zy);
+        if (hit) {
+          const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [hit.year, hit.value]);
+          setHover({ x: px[0], y: px[1], ev: hit });
+        } else setHover(null);
       });
     });
-    chart.on('mouseout', () => setHover(null));
+    chart.getZr().on('globalout', () => setHover(null));
+    chart.getDom().addEventListener('mouseleave', () => setHover(null));
 
     // fenêtre courante (années) + Y ajusté aux données réelles visibles (comme V1 : le décollage est visible)
     const winRange = () => {
