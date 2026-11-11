@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v171</title>
+    <title>THE LOOM : EXOCORTEX v172</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -186,7 +186,7 @@
             overflow: hidden; background: #000; display: flex; 
             align-items: center; justify-content: center; font-size: 14px; 
         }
-        /* ===== v171 — Thème CYBERPUNK HUD néon ===== */
+        /* ===== v172 — Thème CYBERPUNK HUD néon ===== */
         :root {
             --neon-cyan: #00f0ff;
             --neon-amber: #fbbf24;
@@ -244,7 +244,7 @@
         .theme-title { color: #5eead4; text-shadow: 0 0 6px rgba(94, 234, 212, 0.5); }
         .section-title { color: var(--neon-amber); text-shadow: 0 0 8px rgba(251, 191, 36, 0.6); }
         #detail-card {
-            border: 1px solid rgba(0, 240, 255, 0.4) !important;
+            border: 1px solid var(--card-accent, rgba(0, 240, 255, 0.4));
             box-shadow: 0 0 40px rgba(0, 240, 255, 0.15), 0 0 120px rgba(0, 240, 255, 0.08);
         }
         #card-title { color: var(--neon-amber) !important; text-shadow: 0 0 12px rgba(251, 191, 36, 0.7); }
@@ -259,15 +259,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v171</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v171...</div>
-        <div id="debug-log">Init v171...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v172</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v172...</div>
+        <div id="debug-log">Init v172...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v171</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v172</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -1067,29 +1067,37 @@
             if (detailCardTimeout) clearTimeout(detailCardTimeout);
 
             const card = document.getElementById('detail-card');
+            // la box prend la couleur du groupe de l'événement
+            const gcol = GROUP_COLORS[GROUP_OF[data.category] || data.category] || COLORS[data.category] || '#22d3ee';
+            card.style.setProperty('--card-accent', gcol + 'aa');
+            card.style.boxShadow = `0 0 40px ${gcol}2e, 0 0 120px ${gcol}1a`;
             document.getElementById('card-title').innerText = data.label;
             document.getElementById('card-who').innerText = data.whoWhat || 'N/A';
             document.getElementById('card-date').innerText = data.year ? Math.floor(data.year) : 'N/A';
             document.getElementById('card-desc').innerText = data.description || 'Pas de description.';
 
-            // Navigation Prédit -> Réalisé
+            // Navigation Prédit -> Réalisé : liens colorés comme la box, et JAMAIS de lien mort
+            // (on ne rend que les cibles qui existent réellement dans les données)
             const nav = document.getElementById('card-nav');
             nav.innerHTML = '';
-            if (data.realYear) {
+            const labelExists = t => ALL_DATA.some(e => e.label === t);
+            const mkLink = (txt, onclick) => {
                 const b = document.createElement('span');
                 b.className = 'card-nav-link';
-                const tgt = data.realLabel ? `${data.realLabel} (${Math.floor(data.realYear)})` : Math.floor(data.realYear);
-                b.innerText = `⇄ réalisé : ${tgt}`;
-                b.onclick = () => data.realLabel ? jumpToLabel(data.realLabel) : jumpToYear(data.realYear, data.label);
+                b.style.color = gcol;
+                b.style.borderColor = gcol + '66';
+                b.style.textShadow = `0 0 6px ${gcol}99`;
+                b.innerText = txt;
+                b.onclick = onclick;
                 nav.appendChild(b);
+            };
+            if (data.realYear && (!data.realLabel || labelExists(data.realLabel))) {
+                const tgt = data.realLabel ? `${data.realLabel} (${Math.floor(data.realYear)})` : Math.floor(data.realYear);
+                mkLink(`⇄ réalisé : ${tgt}`, () => data.realLabel ? jumpToLabel(data.realLabel) : jumpToYear(data.realYear, data.label));
             }
             if (Array.isArray(data.predictedBy)) {
-                data.predictedBy.forEach(t => {
-                    const b = document.createElement('span');
-                    b.className = 'card-nav-link';
-                    b.innerText = `⇄ prédit par : ${t}`;
-                    b.onclick = () => jumpToLabel(t);
-                    nav.appendChild(b);
+                data.predictedBy.filter(labelExists).forEach(t => {
+                    mkLink(`⇄ prédit par : ${t}`, () => jumpToLabel(t));
                 });
             }
 
