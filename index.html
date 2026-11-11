@@ -17,7 +17,7 @@
     } catch(e){} })();
     </script>
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v177</title>
+    <title>THE LOOM : EXOCORTEX v178</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -163,6 +163,7 @@
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -46%) scale(.98);
             width: 90%; max-width: 600px; background: rgba(5,5,8,0.98);
             border: 1px solid #333; padding: 2rem; z-index: 5000; display: none;
+            border-radius: 16px; /* v178 : box bulle arrondie */
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
             opacity: 0; transition: opacity .25s ease, transform .25s ease;
             --corner-x: left; --corner-y: top; /* coin HUD par défaut (showDetail les ajuste) */
@@ -180,9 +181,9 @@
             position: fixed; pointer-events: none; background: var(--label-bg); 
             border: 1px solid var(--label-border); color: #fff; padding: 5px 10px; 
             z-index: 4000; display: none; align-items: center; gap: 8px; font-size: 10px; 
-            border-radius: 2px; font-weight: bold;
+            border-radius: 12px; /* v178 : bulle arrondie */ font-weight: bold;
         }
-        /* v177 : équerre (2 traits) au coin de l'étiquette le plus proche du POI survolé
+        /* v178 : équerre (2 traits) au coin de l'étiquette le plus proche du POI survolé
            (--corner-x/--corner-y posés par onHover), couleur = bordure de l'étiquette */
         #label-float { --corner-x: left; --corner-y: top; }
         #label-float::after {
@@ -203,7 +204,7 @@
             overflow: hidden; background: #000; display: flex; 
             align-items: center; justify-content: center; font-size: 14px; 
         }
-        /* ===== v177 — Thème CYBERPUNK HUD néon ===== */
+        /* ===== v178 — Thème CYBERPUNK HUD néon ===== */
         :root {
             --neon-cyan: #00f0ff;
             --neon-amber: #fbbf24;
@@ -255,7 +256,7 @@
             background-repeat: no-repeat;
             filter: drop-shadow(0 0 4px var(--card-accent-solid, rgba(0, 240, 255, 0.8)));
         }
-        /* v177 : flèche de callout sur le bord de la box, tournée vers le POI cliqué */
+        /* v178 : flèche de callout sur le bord de la box, tournée vers le POI cliqué */
         #detail-card::before { content: ''; position: absolute; pointer-events: none; display: none; z-index: 2; }
         #detail-card.ptr-right::before { display: block; right: -13px; top: var(--ptr-pos, 50%); transform: translateY(-50%);
             border: 7px solid transparent; border-left: 9px solid var(--card-accent-solid, var(--neon-cyan)); border-right: 0;
@@ -285,6 +286,7 @@
         .theme-title { color: #5eead4; text-shadow: 0 0 6px rgba(94, 234, 212, 0.5); }
         .section-title { color: var(--neon-amber); text-shadow: 0 0 8px rgba(251, 191, 36, 0.6); }
         #detail-card {
+            border-radius: 16px !important; /* v178 : bulle arrondie */
             border: 1px solid var(--card-accent, rgba(0, 240, 255, 0.4));
             box-shadow: 0 0 40px rgba(0, 240, 255, 0.15), 0 0 120px rgba(0, 240, 255, 0.08);
         }
@@ -293,7 +295,7 @@
         #doomsday-widget .dd-seconds { color: var(--neon-red); text-shadow: 0 0 10px rgba(255, 56, 96, 0.9), 0 0 30px rgba(255, 56, 96, 0.5); }
         .card-nav-link { border-color: rgba(0, 240, 255, 0.4); color: var(--neon-cyan); text-shadow: 0 0 6px rgba(0, 240, 255, 0.6); }
         .card-nav-link:hover { background: rgba(0, 240, 255, 0.12); box-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
-        /* v177 : les liens ⇄ de la popup = couleur de la box (accent), toujours */
+        /* v178 : les liens ⇄ de la popup = couleur de la box (accent), toujours */
         #detail-card .card-nav-link {
             color: var(--card-accent-solid, var(--neon-cyan)) !important;
             border-color: var(--card-accent, rgba(0, 240, 255, 0.4)) !important;
@@ -306,15 +308,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v177</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v177...</div>
-        <div id="debug-log">Init v177...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v178</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v178...</div>
+        <div id="debug-log">Init v178...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v177</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v178</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -941,8 +943,10 @@
                             const fr = fl.getBoundingClientRect();
                             fl.style.setProperty('--corner-x', (px >= fr.left + fr.width / 2) ? 'right' : 'left');
                             fl.style.setProperty('--corner-y', (py >= fr.top + fr.height / 2) ? 'bottom' : 'top');
-                            // connecteur : de l'étiquette jusqu'au point exact
+                            // connecteur : de l'étiquette jusqu'au point exact, même couleur que l'étiquette
                             const dx = px - fx, dy = py - fy;
+                            ln.style.background = fl.style.getPropertyValue('--label-border') || 'var(--neon-cyan)';
+                            ln.style.boxShadow = '0 0 6px ' + (fl.style.getPropertyValue('--label-border') || 'rgba(0,240,255,0.9)');
                             ln.style.display = 'block';
                             ln.style.left = fx + 'px';
                             ln.style.top = fy + 'px';

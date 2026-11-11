@@ -1,5 +1,12 @@
 # CHANGELOG - Cortex Loom
 
+## v178
+- 🫧 **Boxes bulles arrondies** : popup #detail-card `border-radius: 16px`, étiquette de survol #label-float `12px` (testé : radius mesurés 16px/12px, captures bubble_card.png / bubble_hover.png).
+- 🎨 **Connecteur de survol coloré** : la ligne étiquette→POI (`#label-line`) prend maintenant la couleur de l'étiquette/POI (`--label-border`) au lieu du cyan fixe — testé : `rgb(59,130,246)` == bordure `#3b82f6` (BUBBLES OK).
+- 🔖 **Version :** Passage en v178.
+
+## v177
+
 ## v177
 - 🏷️ **Étiquette de SURVOL corrigée** (c'était elle les « deux tirets en haut à gauche » : `#label-float::after` avait un trait fixe rotaté à 135° en haut à gauche). L'étiquette a maintenant une **équerre (2 traits) au coin le plus proche du POI survolé** (--corner-x/--corner-y posés dans onHover selon la position du point), et sa **bordure + équerre prennent la couleur de la courbe du POI**. Preuve virtuelle (hoverlabel.js + captures hover_right.png / hover_left.png) : survol à droite -> équerre bas-droite bordure #3b82f6 ; survol à gauche -> équerre bas-gauche bordure #0ea5e9 ; `::after` = 2 couches, plus de rotation fixe ; 0 pageerror -> HOVERLABEL OK.
 - 🔖 **Version :** Passage en v177.
