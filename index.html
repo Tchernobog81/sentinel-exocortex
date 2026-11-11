@@ -17,7 +17,7 @@
     } catch(e){} })();
     </script>
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v176</title>
+    <title>THE LOOM : EXOCORTEX v177</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -182,10 +182,15 @@
             z-index: 4000; display: none; align-items: center; gap: 8px; font-size: 10px; 
             border-radius: 2px; font-weight: bold;
         }
+        /* v177 : équerre (2 traits) au coin de l'étiquette le plus proche du POI survolé
+           (--corner-x/--corner-y posés par onHover), couleur = bordure de l'étiquette */
+        #label-float { --corner-x: left; --corner-y: top; }
         #label-float::after {
-            content: ''; position: absolute; left: -1px; top: -1px;
-            width: 22px; height: 1px; background: var(--label-border);
-            transform-origin: left center; transform: rotate(135deg);
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background:
+                linear-gradient(var(--label-border), var(--label-border)) var(--corner-x, left) var(--corner-y, top) / 12px 2px,
+                linear-gradient(var(--label-border), var(--label-border)) var(--corner-x, left) var(--corner-y, top) / 2px 12px;
+            background-repeat: no-repeat;
         }
         /* connecteur étiquette flottante -> point de la courbe */
         #label-line {
@@ -198,7 +203,7 @@
             overflow: hidden; background: #000; display: flex; 
             align-items: center; justify-content: center; font-size: 14px; 
         }
-        /* ===== v176 — Thème CYBERPUNK HUD néon ===== */
+        /* ===== v177 — Thème CYBERPUNK HUD néon ===== */
         :root {
             --neon-cyan: #00f0ff;
             --neon-amber: #fbbf24;
@@ -250,7 +255,7 @@
             background-repeat: no-repeat;
             filter: drop-shadow(0 0 4px var(--card-accent-solid, rgba(0, 240, 255, 0.8)));
         }
-        /* v176 : flèche de callout sur le bord de la box, tournée vers le POI cliqué */
+        /* v177 : flèche de callout sur le bord de la box, tournée vers le POI cliqué */
         #detail-card::before { content: ''; position: absolute; pointer-events: none; display: none; z-index: 2; }
         #detail-card.ptr-right::before { display: block; right: -13px; top: var(--ptr-pos, 50%); transform: translateY(-50%);
             border: 7px solid transparent; border-left: 9px solid var(--card-accent-solid, var(--neon-cyan)); border-right: 0;
@@ -288,7 +293,7 @@
         #doomsday-widget .dd-seconds { color: var(--neon-red); text-shadow: 0 0 10px rgba(255, 56, 96, 0.9), 0 0 30px rgba(255, 56, 96, 0.5); }
         .card-nav-link { border-color: rgba(0, 240, 255, 0.4); color: var(--neon-cyan); text-shadow: 0 0 6px rgba(0, 240, 255, 0.6); }
         .card-nav-link:hover { background: rgba(0, 240, 255, 0.12); box-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
-        /* v176 : les liens ⇄ de la popup = couleur de la box (accent), toujours */
+        /* v177 : les liens ⇄ de la popup = couleur de la box (accent), toujours */
         #detail-card .card-nav-link {
             color: var(--card-accent-solid, var(--neon-cyan)) !important;
             border-color: var(--card-accent, rgba(0, 240, 255, 0.4)) !important;
@@ -301,15 +306,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v176</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v176...</div>
-        <div id="debug-log">Init v176...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v177</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v177...</div>
+        <div id="debug-log">Init v177...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v176</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v177</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -923,6 +928,8 @@
                             const el = hit.element;
                             document.getElementById('label-icon').textContent = ICONS[p.category] || '•';
                             document.getElementById('label-text').textContent = `${p.label} (${Math.floor(p.year)})`;
+                            // bordure + équerre de l'étiquette = couleur de la courbe du POI
+                            fl.style.setProperty('--label-border', GROUP_COLORS[GROUP_OF[p.category] || p.category] || COLORS[p.category] || '#fff');
                             const box = loomChart.canvas.getBoundingClientRect();
                             const cx = box.x + e.x, cy = box.y + e.y;           // curseur en coords viewport
                             const px = box.x + el.x, py = box.y + el.y;           // point en coords viewport
@@ -930,6 +937,10 @@
                             fl.style.display = 'flex';
                             fl.style.left = fx + 'px';
                             fl.style.top = fy + 'px';
+                            // équerre de l'étiquette au coin le plus proche du POI (px, py)
+                            const fr = fl.getBoundingClientRect();
+                            fl.style.setProperty('--corner-x', (px >= fr.left + fr.width / 2) ? 'right' : 'left');
+                            fl.style.setProperty('--corner-y', (py >= fr.top + fr.height / 2) ? 'bottom' : 'top');
                             // connecteur : de l'étiquette jusqu'au point exact
                             const dx = px - fx, dy = py - fy;
                             ln.style.display = 'block';

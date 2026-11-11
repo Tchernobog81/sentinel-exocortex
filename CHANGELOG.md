@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v177
+- 🏷️ **Étiquette de SURVOL corrigée** (c'était elle les « deux tirets en haut à gauche » : `#label-float::after` avait un trait fixe rotaté à 135° en haut à gauche). L'étiquette a maintenant une **équerre (2 traits) au coin le plus proche du POI survolé** (--corner-x/--corner-y posés dans onHover selon la position du point), et sa **bordure + équerre prennent la couleur de la courbe du POI**. Preuve virtuelle (hoverlabel.js + captures hover_right.png / hover_left.png) : survol à droite -> équerre bas-droite bordure #3b82f6 ; survol à gauche -> équerre bas-gauche bordure #0ea5e9 ; `::after` = 2 couches, plus de rotation fixe ; 0 pageerror -> HOVERLABEL OK.
+- 🔖 **Version :** Passage en v177.
+
+## v176
+
 ## v176
 - 📐 **Popup façon callout, vérifié en virtuel avec captures** : au-delà de l'équerre unique (coin le plus proche du POI, v175), la box a maintenant une **flèche (triangle) sur le bord tourné vers le POI/souris** (classes ptr-left/right/top/bottom + --ptr-pos), couleur de la box. Preuve virtuelle (cornercheck.js) : clic à droite -> équerre `100% 100%` + `ptr-right` ; clic à gauche/bas -> `corner-x=left` + flèche vers le POI ; `::after` = exactement 2 traits ; 0 pageerror. Captures : /tmp/pwtest/card_full.png, coin_*.png.
 - 🧹 **Anti-cache** : script inline qui fetch index.html en no-store et recharge avec cache-buster si une version plus récente existe en ligne (les prochaines évolutions se propageront seules) + badge version cliquable existant.
