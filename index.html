@@ -7,7 +7,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v174</title>
+    <title>THE LOOM : EXOCORTEX v175</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -149,12 +149,13 @@
         .log-err { color: #ef4444; font-weight: bold; }
         .log-warn { color: #f59e0b; }
         
-        #detail-card { 
+        #detail-card {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -46%) scale(.98);
-            width: 90%; max-width: 600px; background: rgba(5,5,8,0.98); 
+            width: 90%; max-width: 600px; background: rgba(5,5,8,0.98);
             border: 1px solid #333; padding: 2rem; z-index: 5000; display: none;
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
             opacity: 0; transition: opacity .25s ease, transform .25s ease;
+            --corner-x: left; --corner-y: top; /* coin HUD par défaut (showDetail les ajuste) */
         }
         #detail-card.open { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         #search-input { background: #0a0a0f; border: 1px solid #222; color: #eee; font-size: 11px; padding: 5px 10px; width: 230px; outline: none; font-family: inherit; border-radius: 2px; }
@@ -187,7 +188,7 @@
             overflow: hidden; background: #000; display: flex; 
             align-items: center; justify-content: center; font-size: 14px; 
         }
-        /* ===== v174 — Thème CYBERPUNK HUD néon ===== */
+        /* ===== v175 — Thème CYBERPUNK HUD néon ===== */
         :root {
             --neon-cyan: #00f0ff;
             --neon-amber: #fbbf24;
@@ -214,8 +215,8 @@
             backdrop-filter: blur(6px);
             position: relative;
         }
-        /* coins HUD (équerres néon) */
-        aside::after, #detail-card::after, .legend-bar::after {
+        /* coins HUD (équerres néon) — aside et legend gardent les 4 coins cyan */
+        aside::after, .legend-bar::after {
             content: ''; position: absolute; inset: 0; pointer-events: none;
             background:
                 linear-gradient(var(--neon-cyan), var(--neon-cyan)) top left / 14px 2px,
@@ -228,6 +229,16 @@
                 linear-gradient(var(--neon-cyan), var(--neon-cyan)) bottom right / 2px 14px;
             background-repeat: no-repeat;
             filter: drop-shadow(0 0 4px rgba(0, 240, 255, 0.8));
+        }
+        /* #detail-card : UN seul coin HUD (2 traits), au coin le plus proche de l'ancre du clic/POI.
+           --corner-x (left|right) et --corner-y (top|bottom) sont posés par showDetail(). */
+        #detail-card::after {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background:
+                linear-gradient(var(--card-accent-solid, var(--neon-cyan)), var(--card-accent-solid, var(--neon-cyan))) var(--corner-x, left) var(--corner-y, top) / 14px 2px,
+                linear-gradient(var(--card-accent-solid, var(--neon-cyan)), var(--card-accent-solid, var(--neon-cyan))) var(--corner-x, left) var(--corner-y, top) / 2px 14px;
+            background-repeat: no-repeat;
+            filter: drop-shadow(0 0 4px var(--card-accent-solid, rgba(0, 240, 255, 0.8)));
         }
         .brand-title {
             color: #e8ffff; letter-spacing: 0.18em;
@@ -253,7 +264,7 @@
         #doomsday-widget .dd-seconds { color: var(--neon-red); text-shadow: 0 0 10px rgba(255, 56, 96, 0.9), 0 0 30px rgba(255, 56, 96, 0.5); }
         .card-nav-link { border-color: rgba(0, 240, 255, 0.4); color: var(--neon-cyan); text-shadow: 0 0 6px rgba(0, 240, 255, 0.6); }
         .card-nav-link:hover { background: rgba(0, 240, 255, 0.12); box-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
-        /* v174 : les liens ⇄ de la popup = couleur de la box (accent), toujours */
+        /* v175 : les liens ⇄ de la popup = couleur de la box (accent), toujours */
         #detail-card .card-nav-link {
             color: var(--card-accent-solid, var(--neon-cyan)) !important;
             border-color: var(--card-accent, rgba(0, 240, 255, 0.4)) !important;
@@ -266,15 +277,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v174</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v174...</div>
-        <div id="debug-log">Init v174...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v175</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v175...</div>
+        <div id="debug-log">Init v175...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v174</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v175</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -472,7 +483,7 @@
             const target = cands.sort((a, b) => b.year - a.year)[0];
             if (!target) return;
             animateZoomTo(target.year - 2, target.year + 2);
-            setTimeout(() => { showDetail(target); highlightJump(target); }, 600);
+            setTimeout(() => { showDetail(target, pointAnchor(target)); highlightJump(target); }, 600);
         }
         function jumpToLabel(label, yearHint) {
             markNavigated();
@@ -487,7 +498,7 @@
                 target = cands.find(e => e.realYear || e.predictedBy) || cands[0];
             }
             animateZoomTo(target.year - 2, target.year + 2);
-            setTimeout(() => { showDetail(target); highlightJump(target); }, 600);
+            setTimeout(() => { showDetail(target, pointAnchor(target)); highlightJump(target); }, 600);
         }
 
         function log(msg, type="info") {
@@ -732,7 +743,7 @@
                     pointBorderWidth: 1,
                     hitRadius: 30,
                     // courbe horloge : tension plus forte pour adoucir les zigzags verticaux
-                    tension: key.includes('HORLOGE') ? 0.5 : 0.3
+                    tension: key.includes('HORLOGE') ? 0.6 : 0.3
                 };
                 strands[key].data.push({ x: d.year, y: d.value, ...d });
             });
@@ -913,7 +924,10 @@
                         const hit = pickNearestPoint(e, 26);
                         if (hit) {
                             const dataPoint = loomChart.data.datasets[hit.datasetIndex].data[hit.index];
-                            showDetail(dataPoint);
+                            // ancre = position du clic en coords viewport (pour le coin HUD de la popup)
+                            const box = loomChart.canvas.getBoundingClientRect();
+                            const anchor = { x: box.x + e.x, y: box.y + e.y };
+                            showDetail(dataPoint, anchor);
                         }
                     },
                     onDoubleClick: () => { resetView(); log('Zoom reset (double-clic)'); },
@@ -1044,7 +1058,7 @@
             markNavigated();
             if (!ev) return;
             animateZoomTo(ev.year - 2, ev.year + 2);
-            setTimeout(() => { showDetail(ev); highlightJump(ev); }, 600);
+            setTimeout(() => { showDetail(ev, pointAnchor(ev)); highlightJump(ev); }, 600);
             log(`⇢ ${ev.label} (${Math.floor(ev.year)})`);
         }
 
@@ -1115,8 +1129,34 @@
         }
 
         let detailCardTimeout;
-        function showDetail(data) {
+        let lastDetailAnchor = null;   // dernière ancre connue (viewport) : réutilisée si showDetail appelé sans ancre
+        // Position viewport du point d'un événement sur le canvas (pour ancrer le coin HUD de la popup)
+        function pointAnchor(target) {
+            if (!loomChart || !target) return null;
+            const box = loomChart.canvas.getBoundingClientRect();
+            let px = null, py = null;
+            loomChart.data.datasets.forEach((ds, di) => {
+                const meta = loomChart.getDatasetMeta(di);
+                if (meta.hidden || !meta.data) return;
+                ds.data.forEach((p, i) => {
+                    if (p.label === target.label && Math.abs((p.year || 0) - (target.year || 0)) < 0.01) {
+                        px = meta.data[i].x; py = meta.data[i].y;
+                    }
+                });
+            });
+            if (px == null) {
+                // repli : position via les échelles si le point n'est pas rendu (dataset caché, hors fenêtre...)
+                try {
+                    px = loomChart.scales.x.getPixelForValue(target.year);
+                    py = loomChart.scales.y.getPixelForValue(target.value != null ? target.value : 0);
+                } catch (_) { return null; }
+            }
+            if (!isFinite(px) || !isFinite(py)) return null;
+            return { x: box.x + px, y: box.y + py };
+        }
+        function showDetail(data, anchor) {
             if (detailCardTimeout) clearTimeout(detailCardTimeout);
+            if (anchor && isFinite(anchor.x) && isFinite(anchor.y)) lastDetailAnchor = anchor;
 
             const card = document.getElementById('detail-card');
             // la box prend la couleur du groupe de l'événement
@@ -1175,6 +1215,27 @@
             document.getElementById('card-stamp').innerText = `${data.category} | ${data.year}`;
             // Ouverture douce (fade + léger zoom), jamais surgissante
             card.style.display = 'block';
+            // Coin HUD unique : coin de la card le plus proche de l'ancre (clic / POI cible)
+            const a = lastDetailAnchor;
+            if (a) {
+                const r = card.getBoundingClientRect();
+                const corners = [
+                    { px: r.left,  py: r.top,    cx: 'left',  cy: 'top' },
+                    { px: r.right, py: r.top,    cx: 'right', cy: 'top' },
+                    { px: r.left,  py: r.bottom, cx: 'left',  cy: 'bottom' },
+                    { px: r.right, py: r.bottom, cx: 'right', cy: 'bottom' }
+                ];
+                let best = corners[0], bd = Infinity;
+                for (const c of corners) {
+                    const d = Math.hypot(c.px - a.x, c.py - a.y);
+                    if (d < bd) { bd = d; best = c; }
+                }
+                card.style.setProperty('--corner-x', best.cx);
+                card.style.setProperty('--corner-y', best.cy);
+            } else {
+                card.style.setProperty('--corner-x', 'left');
+                card.style.setProperty('--corner-y', 'top');
+            }
             requestAnimationFrame(() => requestAnimationFrame(() => card.classList.add('open')));
         }
 

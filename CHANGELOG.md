@@ -1,5 +1,14 @@
 # CHANGELOG - Cortex Loom
 
+## v175
+- 📐 **Coin HUD de la popup dynamique** : la popup #detail-card n'affiche plus qu'UNE équerre (2 traits), au coin le plus proche du POI cliqué (variables --corner-x/--corner-y posées depuis la position du clic ; les sauts ⇄/flux ancrent sur le point cible). Couleur = couleur de la box (--card-accent-solid). aside/legend gardent leurs 4 équerres. Testé en virtuel (corner.js : clic droite -> right, clic gauche -> left, 0 pageerror).
+- ⏰ **Zigzag horloge éliminé** : lissage itératif idempotent des valeurs HORLOGE (moyenne mobile centrée répétée jusqu'à maxDelta <= 6000) + tension 0.6. maxDelta 36705 -> 5208, creux 1991 (17 min) et record 2026 (85 s) préservés. Preuve d'idempotence : 3 runs -> sha256 identique. Métriques : scratchpad metrics-horloge.md.
+- 📍 **Tirets nus supprimés** (v174) validé par stubs.js : stubs <= labels, 0 stub orphelin en vues 1950-1965 et 2024-2027.
+- 🤖 **Travail en agents** : 3 sous-agents (popup-corner / horloge-smooth / qa-ergo) ont réalisé et testé ces évolutions en parallèle.
+- 🔖 **Version :** Passage en v175.
+
+## v174
+
 ## v174
 - ⏰ **Courbe horloge adoucie** : les zigzags verticaux venaient des valeurs « danger » brutes (sauts 17→2 min…) + tension 0.3. Corrigé : lissage par moyenne mobile (0.25/0.5/0.25) des valeurs dans `normalize_values.py` + `tension: 0.5` pour la courbe HORLOGE. maxDelta 36705 → 15530, le creux de 1991 et le record 2026 restent lisibles. Les libellés/popups conservent les vraies minutes (`doomsday_minutes`).
 - 📍 **Plus de tirets sans icône** : le plugin `connectorPlugin` dessinait un tiret au-dessus de CHAQUE point en vue zoomée, mais l'icône n'était dessinée que pour les points retenus par la décimation. Le connecteur ne suit désormais que les points où datalabels affiche une icône (même fonction `display`). Vérifié en capture : chaque tiret a son icône.
