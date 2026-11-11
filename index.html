@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v168</title>
+    <title>THE LOOM : EXOCORTEX v169</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -170,17 +170,23 @@
             z-index: 4000; display: none; align-items: center; gap: 8px; font-size: 10px; 
             border-radius: 2px; font-weight: bold;
         }
-        #label-float::after { 
-            content: ''; position: absolute; left: -1px; top: -1px; 
+        #label-float::after {
+            content: ''; position: absolute; left: -1px; top: -1px;
             width: 22px; height: 1px; background: var(--label-border);
             transform-origin: left center; transform: rotate(135deg);
+        }
+        /* connecteur étiquette flottante -> point de la courbe */
+        #label-line {
+            position: fixed; height: 1px; width: 0; background: var(--neon-cyan);
+            box-shadow: 0 0 6px rgba(0, 240, 255, 0.9); transform-origin: left center;
+            pointer-events: none; z-index: 4001; display: none;
         }
         .cyber-icon-frame { 
             width: 24px; height: 24px; border: 1px solid #333; 
             overflow: hidden; background: #000; display: flex; 
             align-items: center; justify-content: center; font-size: 14px; 
         }
-        /* ===== v168 — Thème CYBERPUNK HUD néon ===== */
+        /* ===== v169 — Thème CYBERPUNK HUD néon ===== */
         :root {
             --neon-cyan: #00f0ff;
             --neon-amber: #fbbf24;
@@ -253,15 +259,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v168</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v168...</div>
-        <div id="debug-log">Init v168...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v169</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v169...</div>
+        <div id="debug-log">Init v169...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v168</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v169</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -297,6 +303,7 @@
     </div>
 
     <div id="label-float"><div class="cyber-icon-frame"><span id="label-icon"></span></div><span id="label-text"></span></div>
+    <div id="label-line"></div>
 
     <div id="detail-card">
         <button onclick="closeDetail()" class="absolute top-4 right-4 text-zinc-500 hover:text-white text-2xl">&times;</button>
@@ -810,18 +817,31 @@
                         }
                     },
                     onHover: (e, els) => {
-                        // Libellé flottant au survol d'un point (lisibilité sans encombrer)
+                        // Libellé flottant au survol d'un point, AVEC connecteur vers le point
                         const fl = document.getElementById('label-float');
+                        const ln = document.getElementById('label-line');
                         if (els && els.length) {
                             const p = loomChart.data.datasets[els[0].datasetIndex].data[els[0].index];
+                            const el = loomChart.getDatasetMeta(els[0].datasetIndex).data[els[0].index];
                             document.getElementById('label-icon').textContent = ICONS[p.category] || '•';
                             document.getElementById('label-text').textContent = `${p.label} (${Math.floor(p.year)})`;
+                            const fx = e.x + 14, fy = e.y - 10;
                             fl.style.display = 'flex';
-                            fl.style.left = (e.x + 14) + 'px';
-                            fl.style.top = (e.y - 10) + 'px';
+                            fl.style.left = fx + 'px';
+                            fl.style.top = fy + 'px';
+                            // connecteur : du bord de l'étiquette jusqu'au point (el.x/el.y en coords canvas)
+                            const box = loomChart.canvas.getBoundingClientRect();
+                            const px = box.x + el.x, py = box.y + el.y;
+                            const dx = px - fx, dy = py - fy;
+                            ln.style.display = 'block';
+                            ln.style.left = fx + 'px';
+                            ln.style.top = fy + 'px';
+                            ln.style.width = Math.hypot(dx, dy) + 'px';
+                            ln.style.transform = `rotate(${Math.atan2(dy, dx)}rad)`;
                             e.chart.canvas.style.cursor = 'pointer';
                         } else {
                             fl.style.display = 'none';
+                            ln.style.display = 'none';
                             e.chart.canvas.style.cursor = 'default';
                         }
                     },
@@ -890,13 +910,19 @@
 
         function updateFlux(data) {
             const now = new Date();
-            const limit = new Date(now.getTime() - (12 * 60 * 60 * 1000));
-            // Flux 12h = faits récents UNIQUEMENT (fiction exclue, dates futures exclues), tri chrono strict
+            const nowYear = now.getFullYear() + now.getMonth() / 12;
+            // Liste complète antichronologique des derniers événements (30 derniers, faits vérifiés, non futurs)
             const recent = data
-                .filter(d => !(d.category || "").includes("IMAGINAIRE") && d.timestamp && d.verified !== false)
+                .filter(d => !(d.category || "").includes("IMAGINAIRE") && d.verified !== false && d.timestamp && (d.year || 0) <= nowYear + 0.05)
                 .map(d => ({ d, t: new Date(d.timestamp) }))
-                .filter(x => !isNaN(x.t.getTime()) && x.t <= now && x.t > limit)
-                .sort((a, b) => b.t - a.t);
+                .filter(x => !isNaN(x.t.getTime()))
+                .sort((a, b) => b.t - a.t)
+                .slice(0, 30);
+
+            // Le titre du flux reflète l'heure de dernière mise à jour
+            const titleEl = document.querySelector('#flux-container .section-title span');
+            if (titleEl) titleEl.textContent = `Flux entrant · MAJ ${lastUpdateText(data)}`;
+            document.getElementById('flux-count').innerText = recent.length;
 
             document.getElementById('flux-count').innerText = recent.length;
             const list = document.getElementById('activity-list');

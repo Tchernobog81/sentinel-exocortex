@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v169
+- 📡 **Flux** : titre « Flux entrant · MAJ HH:MM » (heure de dernière mise à jour) + liste complète antichronologique des 30 derniers événements vérifiés (plus la limite 12h).
+- 🔗 **Étiquettes flottantes connectées** : ligne néon (#label-line) entre l'étiquette de survol et le point exact de la courbe.
+- 🧵 **Courbes remplies** : +89 jalons intermédiaires réels (seed_fill_gaps.py + complément antique) -> 630 événements ; plus de trou brutal type 850→1942 (max trou INDUSTRIE: 500 ans, ENTROPIE comblé 1347-1929).
+- 🔖 **Version :** Passage en v169.
+
 ## v168
 - 🧹 **Lisibilité des étiquettes** : plus aucun texte persistant sur le graphique — icônes seules (points notables `tipping` toujours visibles, décimation par densité en zoom). Le libellé complet apparaît au **survol** (étiquette flottante #label-float avec icône + « label (année) ») et au clic (popup). Testé en headless (compteur de labels rendus, survol, popup).
 - 🚫 **Filtre de pertinence** : le fact-check du sentinel rejette aussi les sujets hors domaine (sport, faits divers…) via mots-clés de veille (IA, compute, espace, bio, cyber, climat, régulation, physique/maths…) — ex: « Tableau des médailles JO 2026 » supprimé des données et désormais rejeté à l'ingestion.
