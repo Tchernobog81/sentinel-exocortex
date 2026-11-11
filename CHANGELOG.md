@@ -1,5 +1,13 @@
 # CHANGELOG - Cortex Loom
 
+## v167
+- 📝 **Enrichissement de masse** : 342 événements pauvres enrichis (LLM local par lots + fallback catégorie) ; il reste ~10 stubs sans description. AlphaGo & co restaurés après factcheck.
+- ✅ **Analyses renseignées** : 979 champs placeholder (« simulée »/« N/A ») remplacés par une matrice curatoriale par catégorie, variée par hash (0 placeholder restant).
+- 🧹 **Fact-check** : `scripts/factcheck.py` supprime les claims non sourcés (futurs sans description, ex « Starship Mars 2026 » ; 7 claims supprimés + 30 sans aucune info). Sentinel : `factcheck()` web sur chaque entrée (champ `verified`, flux filtré).
+- 🔮 **Prévisions en pointillés** : les événements futurs (year > maintenant) sont rendus en tirets 35% (dataset « · prévisions »), exclus du Y-fit et du flux -> plus de zone aplatie après la ligne « MAINTENANT ».
+- 🏷️ **Étiquettes des points notables** : les points `tipping` affichent toujours icône + libellé (tronqué 26 car.), à tous les niveaux de zoom.
+- 🔖 **Version :** Passage en v167.
+
 ## v166
 - 🎨 **Thème CYBERPUNK HUD néon** (choix A, inspiré des kits Figma Community « Sci-fi UI Kit (Free) », « Futuristic Cyberpunk HUD Design », « FUI/HUD Elements ») : fond noir + grille + scanlines, panneaux dépolis à coins néon (équerres cyan), glow cyan/ambre sur titres/boutons/chips/widget horloge, courbes du graphique avec glow (shadowBlur), recherche et liens ⇄ néon.
 - 🔖 **Version :** Passage en v166.

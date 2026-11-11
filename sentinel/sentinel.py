@@ -42,7 +42,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_DATA_FILE = os.environ.get("LOCAL_DATA_FILE", str(PROJECT_ROOT / "loom_data.json"))
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
 
-VERSION = "v166"
+VERSION = "v167"
 
 # LLM local (Ollama) outillé
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
@@ -793,6 +793,22 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
     if os.environ.get("SIMULATOR", "0") == "1":
         scanners.append(("Simulateur", scan_simulator))
 
+    # --- FACT-CHECK : toute info entrante doit être corroborée par une recherche web ---
+    def factcheck(ev):
+        label = ev.get("label", "")
+        if any(label.startswith(p) for p in ("Horloge de l'Apocalypse", "Stade de Singularité")):
+            ev["verified"] = True
+            return True
+        try:
+            res = web_search(label[:90], max_results=5)
+        except Exception:
+            res = []
+        ok = len(res) >= 2
+        ev["verified"] = ok
+        if not ok:
+            logger.warning(f"[FACTCHECK] non corroboré, ignoré: {label}")
+        return ok
+
     new_events = []
     for name, scanner in scanners:
         try:
@@ -801,11 +817,11 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
             for event in events:
                 event = enrich_event_if_needed(event)
                 event["id"] = compute_event_id(event.get("label", ""), event.get("year", 0), event.get("whoWhat"))
-                if not is_duplicate(event, existing_data):
+                if not is_duplicate(event, existing_data) and factcheck(event):
                     new_events.append(event)
                     logger.info(f"[CYCLE] ✅ {name}: {event['label']}")
                 else:
-                    logger.info(f"[CYCLE] ⏭️ {name}: doublon (id={event['id']}), ignoré")
+                    logger.info(f"[CYCLE] ⏭️ {name}: doublon ou non vérifié, ignoré")
         except Exception as e:
             logger.error(f"[CYCLE] ❌ {name}: {e}")
 

@@ -31,6 +31,17 @@ def s_curve(t):
     return 1.0 / (1.0 + math.exp(-8.0 * (t - 0.55)))
 
 
+# Exponentielle "retours accélérés" (Kurzweil) : plate dans le passé, franche vers aujourd'hui.
+# frac(year) = exp(a*(year - ymax)) avec a choisi pour ~2% en 1900 -> la montée verticale
+# n'apparaît qu'à la toute fin, pas en 1940.
+YMAX = 2105.0
+A = math.log(50.0) / (YMAX - 1900.0)  # ~0.019
+
+
+def exp_frac(year):
+    return math.exp(A * (year - YMAX))
+
+
 def main():
     lock = open(str(DATA) + ".lock", "a+")
     fcntl.flock(lock, fcntl.LOCK_EX)
@@ -41,11 +52,8 @@ def main():
         groups.setdefault(g, []).append(e)
     changed = 0
     for g, evs in groups.items():
-        evs.sort(key=lambda e: (e.get("year") or 0))
-        n = len(evs)
-        for i, e in enumerate(evs):
-            t = i / (n - 1) if n > 1 else 0.5
-            v = int(1000 + 48000 * s_curve(t))
+        for e in evs:
+            v = int(1000 + 48000 * exp_frac(e.get("year") or 0))
             if e.get("value") != v:
                 e["value"] = v
                 changed += 1

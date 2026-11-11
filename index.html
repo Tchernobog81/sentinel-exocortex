@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v166</title>
+    <title>THE LOOM : EXOCORTEX v167</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -180,7 +180,7 @@
             overflow: hidden; background: #000; display: flex; 
             align-items: center; justify-content: center; font-size: 14px; 
         }
-        /* ===== v166 — Thème CYBERPUNK HUD néon ===== */
+        /* ===== v167 — Thème CYBERPUNK HUD néon ===== */
         :root {
             --neon-cyan: #00f0ff;
             --neon-amber: #fbbf24;
@@ -253,15 +253,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v166</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v166...</div>
-        <div id="debug-log">Init v166...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v167</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v167...</div>
+        <div id="debug-log">Init v167...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v166</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v167</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -544,7 +544,7 @@
                     
                     const d = new Date();
                     const st = document.getElementById('sync-status');
-                    st.innerText = `↻ ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+                    st.innerText = `MAJ ${lastUpdateText(data)}`;
                     st.className = 'text-[9px] font-bold text-emerald-500 absolute left-4';
                     return;
                 }
@@ -571,35 +571,34 @@
         let userNavigated = false;
         function markNavigated() { userNavigated = true; }
 
-        // Axe Y adaptatif : après zoom/pan, recadre Y sur les valeurs réellement visibles
-        // (sinon les courbes semblent aplaties quand la fenêtre X est étroite)
-        function fitYToView() {
-            if (!loomChart) return;
-            const x = loomChart.scales.x, y = loomChart.scales.y;
+        // Axe Y adaptatif : recadre Y sur les valeurs visibles dans la fenêtre X (options, pas l'instance)
+        function computeYFit() {
+            if (!loomChart) return false;
+            const xo = loomChart.options.scales.x;
             let mn = Infinity, mx = -Infinity;
             loomChart.data.datasets.forEach((ds, i) => {
-                if (loomChart.getDatasetMeta(i).hidden) return;
+                if (loomChart.getDatasetMeta(i).hidden || ds.future) return;  // prévisions hors Y-fit
                 for (const p of ds.data) {
-                    if (p.x >= x.min && p.x <= x.max) {
+                    if (p.x >= xo.min && p.x <= xo.max) {
                         if (p.y < mn) mn = p.y;
                         if (p.y > mx) mx = p.y;
                     }
                 }
             });
-            if (!isFinite(mn)) return;
+            if (!isFinite(mn)) return false;
             const pad = Math.max(500, (mx - mn) * 0.15);
-            // écrire dans les OPTIONS (l'instance d'échelle est recalculée à l'update)
             loomChart.options.scales.y.min = Math.max(0, mn - pad);
             loomChart.options.scales.y.max = mx + pad;
-            loomChart.update('none');
+            return true;
         }
+        function fitYToView() { if (computeYFit()) loomChart.update('none'); }
 
         function animateZoomTo(min, max) {
-            // Zoom animé (Chart.js anime les bornes d'échelle via update())
+            // Zoom animé SOUPLE : X et Y recalés d'abord, puis update() anime les deux ensemble
             loomChart.options.scales.x.min = min;
             loomChart.options.scales.x.max = max;
+            computeYFit();
             loomChart.update();
-            fitYToView();
         }
 
         function adaptiveHalfWindow(targetYear, allData) {
@@ -668,29 +667,34 @@
             const strands = {};
             if(!Array.isArray(flatData)) return;
             flatData.sort((a,b) => a.year - b.year);
+            const nowYear = new Date().getFullYear() + new Date().getMonth() / 12;
             flatData.forEach(d => {
-                let c = GROUP_OF[d.category] || d.category || "DEFAUT";
-                if(!GROUP_COLORS[c]) c = Object.keys(COLORS).find(k => k.includes(c)) || "DEFAUT";
-                
-                const style = getStrandStyle(c);
-                if(!strands[c]) strands[c] = { 
-                    label: c, 
-                    borderColor: style.color, 
-                    backgroundColor: style.color, 
-                    borderWidth: style.width, 
-                    showLine: true,              // courbe reliant les événements de la catégorie
-                    data: [], 
-                    pointRadius: 4,
+                const g = GROUP_OF[d.category] || d.category || "DEFAUT";
+                if(!GROUP_COLORS[g]) return;
+                const isFut = (d.year || 0) > nowYear + 0.05;   // futur = prévision -> pointillés, hors Y-fit
+                const key = isFut ? g + ' · prévisions' : g;
+                const style = getStrandStyle(g);
+                if(!strands[key]) strands[key] = {
+                    label: key,
+                    groupLabel: g,
+                    future: isFut,
+                    borderColor: isFut ? hexToRgba(style.color, 0.35) : style.color,
+                    backgroundColor: style.color,
+                    borderWidth: style.width,
+                    borderDash: isFut ? [6, 6] : [],
+                    showLine: true,
+                    data: [],
+                    pointRadius: isFut ? 3 : 4,
                     pointHoverRadius: 7,
                     pointBorderColor: style.color,
                     pointBackgroundColor: '#010102',
-                    shadowColor: style.color,
-                    shadowBlur: 8,
+                    shadowColor: isFut ? 'transparent' : style.color,
+                    shadowBlur: isFut ? 0 : 8,
                     pointBorderWidth: 1,
                     hitRadius: 30,
-                    tension: 0.3 
+                    tension: 0.3
                 };
-                strands[c].data.push({ x: d.year, y: d.value, ...d });
+                strands[key].data.push({ x: d.year, y: d.value, ...d });
             });
             
             const sortedDatasets = Object.values(strands).sort((a, b) => {
@@ -703,7 +707,7 @@
                 loomChart.data.datasets = sortedDatasets;
                 // Réapplique l'état on/off des catégories (indépendant par courbe)
                 loomChart.data.datasets.forEach((ds, i) => {
-                    loomChart.getDatasetMeta(i).hidden = hiddenCategories.has(ds.label);
+                    loomChart.getDatasetMeta(i).hidden = hiddenCategories.has(ds.groupLabel || ds.label);
                 });
                 // Transition animée (fluide) lors des rafraîchissements
                 loomChart.update();
@@ -744,7 +748,7 @@
                                 // Zoom adaptatif à la densité : décimation progressive des étiquettes
                                 let visible = 0;
                                 for (const ds of chart.data.datasets) {
-                                    if (chart.getDatasetMeta(chart.data.datasets.indexOf(ds)).hidden) continue;
+                                    if (chart.getDatasetMeta(chart.data.datasets.indexOf(ds)).hidden || ds.future) continue;
                                     for (const pt of ds.data) {
                                         if (pt.x >= x.min && pt.x <= x.max) visible++;
                                     }
@@ -760,6 +764,8 @@
                             formatter: function(value, context) {
                                 const p = (context.dataset && context.dataset.data[context.dataIndex]) || value || {};
                                 const icon = ICONS[p.category] || '•';
+                                // Points notables (tipping) : toujours étiquetés avec leur libellé
+                                if (p.tipping && p.label) return `${icon} ${p.label.slice(0, 26)}`;
                                 const xRange = context.chart.scales.x.max - context.chart.scales.x.min;
                                 if (xRange < 8 && p.label) return `${icon} ${p.label.slice(0, 22)}`;
                                 return icon;
@@ -870,7 +876,7 @@
             const limit = new Date(now.getTime() - (12 * 60 * 60 * 1000));
             // Flux 12h = faits récents UNIQUEMENT (fiction exclue, dates futures exclues), tri chrono strict
             const recent = data
-                .filter(d => !(d.category || "").includes("IMAGINAIRE") && d.timestamp)
+                .filter(d => !(d.category || "").includes("IMAGINAIRE") && d.timestamp && d.verified !== false)
                 .map(d => ({ d, t: new Date(d.timestamp) }))
                 .filter(x => !isNaN(x.t.getTime()) && x.t <= now && x.t > limit)
                 .sort((a, b) => b.t - a.t);
@@ -918,7 +924,9 @@
 
             // Bandeau des 8 courbes regroupées (option B validée) : une chip par courbe
             const groupCounts = {};
+            const nowY = new Date().getFullYear() + new Date().getMonth() / 12;
             data.forEach(d => {
+                if ((d.year || 0) > nowY + 0.05) return;  // prévisions non comptées dans les courbes factuelles
                 const g = GROUP_OF[d.category] || d.category || "DEFAUT";
                 groupCounts[g] = (groupCounts[g] || 0) + 1;
             });
@@ -950,7 +958,8 @@
         function toggleCategory(cat) {
             markNavigated();
             // Clic = isole la courbe (invisibilise toutes les autres) ; re-clic = tout réaffiche
-            const allGroups = loomChart.data.datasets.map(d => d.label);
+            // groupes UNIQUES (les prévisions partagent le groupLabel de leur courbe)
+            const allGroups = [...new Set(loomChart.data.datasets.map(d => d.groupLabel || d.label))];
             const alreadyIsolatedOnCat = hiddenCategories.size === allGroups.length - 1 && !hiddenCategories.has(cat);
             hiddenCategories.clear();
             if (!alreadyIsolatedOnCat) {
@@ -962,7 +971,7 @@
             });
 
             loomChart.data.datasets.forEach((ds, i) => {
-                loomChart.getDatasetMeta(i).hidden = hiddenCategories.has(ds.label);
+                loomChart.getDatasetMeta(i).hidden = hiddenCategories.has(ds.groupLabel || ds.label);
             });
             loomChart.update();
             log(alreadyIsolatedOnCat ? 'Toutes les courbes visibles' : `Isolement : ${cat} seul`);
@@ -1045,11 +1054,27 @@
         }
 
         // Initialisation
-        // Horloge locale discrète (badge HH:MM)
+        // Dernière mise à jour des données (max des timestamps) affichée HH:MM
+        function lastUpdateText(data) {
+            let mx = null;
+            for (const e of data) {
+                if (e.timestamp) {
+                    const t = new Date(e.timestamp);
+                    if (!isNaN(t) && (!mx || t > mx)) mx = t;
+                }
+            }
+            if (!mx) return '';
+            return `${String(mx.getHours()).padStart(2, '0')}:${String(mx.getMinutes()).padStart(2, '0')}`;
+        }
+
+        // Horloge locale discrète (badge HH:MM) + heure de dernière MAJ des données
         function updateTimer() {
             const d = new Date();
             const el = document.getElementById('timer-badge');
             if (el) el.innerText = `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+            const lu = lastUpdateText(ALL_DATA);
+            const st = document.getElementById('sync-status');
+            if (st && lu) st.innerText = `MAJ ${lu}`;
         }
 
         document.addEventListener('DOMContentLoaded', () => {

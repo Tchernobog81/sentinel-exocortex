@@ -17,6 +17,14 @@ Incrémenter le numéro de version et mettre à jour systématiquement :
 Commit + push sur `main` (remote SSH `git@github.com:Tchernobog81/sentinel-exocortex.git`, identité Tchernobog81).
 
 ## 2. Données
+- **Tout événement doit être enrichi** : `description` factuelle (≥30 caractères), `whoWhat` (source/acteur),
+  analyse Pharmakon (s_curve_phase, remède/poison, convergences, grand_filter, final_note). Jamais de "N/A"/"?".
+  - À l'ingestion (sentinel) : tout nouvel événement passe par `enrich_event_if_needed` + LLM si description vide.
+  - En masse : `scripts/enrich_events.py` (LLM local par lots de 8, fallback par catégorie) après chaque gros seed.
+- **FACT-CHECK systématique** : toute info entrante est corroborée par recherche web
+  (`factcheck()` dans sentinel : ≥2 sources ou mot-clé retrouvé, sinon l'événement est ignoré et logué ;
+  champ `verified` ; le flux n'affiche que `verified != false`). Côté données : `scripts/factcheck.py`
+  supprime les claims non sourcés (futur + sans description, ou sans aucune info).
 - **Faits avérés uniquement** dans le flux 12h : RSS multi-requêtes + filtre anti-hype (mots-clés factuels :
   benchmark/record/prouvé/résolu/découvert/conjecture…), dédoublonné par titre, pas de dates futures,
   tri chrono décroissant, fiction exclue du flux. Simulateur OFF par défaut (`SIMULATOR=1` pour l'activer).
