@@ -114,14 +114,36 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [events, hiddenGroups]);
 
-  // ---- flux entrant (SSE/poll, antichrono) ----
+  // ---- flux entrant (SSE/poll) : faits réels vérifiés, non futurs, tri antichrono robuste ----
+  const parseTs = e => {
+    const d = new Date(e.timestamp);
+    if (!isNaN(d.getTime())) return d;
+    const y = Math.floor(e.year || 1970);
+    return new Date(y, 0, 1); // repli: date dérivée de l'année (événements anciens)
+  };
+  const nowYear = new Date().getFullYear() + new Date().getMonth() / 12;
   const feed = useMemo(() => {
-    return [...events].filter(e => e.timestamp).sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)).slice(0, 30);
+    return events
+      .filter(e => !/fiction/i.test(e.category) && e.verified !== false && (e.year || 0) <= nowYear + 0.05)
+      .map(e => ({ e, t: parseTs(e) }))
+      .sort((a, b) => b.t - a.t)          // antichronologique strict
+      .slice(0, 30)
+      .map(x => x.e);
+  }, [events]);
+  // heure de dernière mise à jour = timestamp valide max (hors événements futurs)
+  const lastMaj = useMemo(() => {
+    let mx = null;
+    for (const e of events) {
+      if ((e.year || 0) > nowYear + 1) continue;
+      const d = new Date(e.timestamp);
+      if (isNaN(d.getTime()) || d > new Date()) continue;
+      if (!mx || d > mx) mx = d;
+    }
+    return mx ? `${String(mx.getHours()).padStart(2, '0')}:${String(mx.getMinutes()).padStart(2, '0')}` : '--:--';
   }, [events]);
   const fmtTs = e => {
-    const d = new Date(e.timestamp);
-    if (isNaN(d)) return String(Math.floor(e.year));
-    if (d.getMonth() === 0 && d.getDate() === 1 && d.getHours() === 0 && d.getMinutes() === 0) return String(Math.floor(e.year));
+    const d = parseTs(e);
+    if (d.getMonth() === 0 && d.getDate() === 1 && d.getHours() === 0 && d.getMinutes() === 0 && d.getFullYear() < 2100 && Math.abs(d.getFullYear() - (e.year || 0)) < 1) return String(Math.floor(e.year));
     return d.toLocaleString('fr-FR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
   };
 
@@ -137,7 +159,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       {/* panneau gauche : flux */}
       <aside className="panel p-3 overflow-y-auto min-h-0">
         <div className="flex items-center gap-2 text-neon-cyan text-[10px] tracking-widest mb-2">
-          <Radio size={12} className="animate-pulse" /> FLUX ENTRANT · LIVE
+          <Radio size={12} className="animate-pulse" /> FLUX ENTRANT · MAJ {lastMaj}
         </div>
         <ul className="space-y-1.5">
           {feed.map(e => (
