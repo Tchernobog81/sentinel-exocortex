@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Landmark, Zap, ShieldCheck, BrainCircuit, Radio } from 'lucide-react';
 import { useSSE } from './api.js';
-import LoomCore from './tabs/LoomCore.jsx';
+import LoomCore, { LOOM_VERSION } from './tabs/LoomCore.jsx';
 import NelaSubstrat from './tabs/NelaSubstrat.jsx';
 import SteriNet from './tabs/SteriNet.jsx';
 import FiltreMemetique from './tabs/FiltreMemetique.jsx';
@@ -40,7 +40,7 @@ export default function App() {
     <div className="h-full flex flex-col p-3 gap-3">
       {/* barre d'onglets */}
       <header className="panel flex items-center gap-2 px-3 py-2 shrink-0">
-        <div className="amber-text font-black tracking-widest text-sm mr-2">THE LOOM <span className="text-neon-cyan">V2</span></div>
+        <div className="amber-text font-black tracking-widest text-sm mr-2">THE LOOM <span className="text-neon-cyan">V{LOOM_VERSION}</span></div>
         {TABS.map(t => {
           const Icon = t.icon;
           return (

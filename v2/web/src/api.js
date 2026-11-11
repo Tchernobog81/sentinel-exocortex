@@ -60,6 +60,8 @@ export function mapEnvelope(events) {
         impact_score: Math.round(Math.min(1, (e.value || 1000) / 49000) * 100) / 100,
         value: e.value, is_kinetic_signal: !!(e.tipping || e.verified), tipping: !!e.tipping,
         verified: e.verified !== false, doomsday_minutes: e.doomsday_minutes ?? null,
+        realYear: e.realYear ?? null, realLabel: e.realLabel ?? null,
+        predictedBy: Array.isArray(e.predictedBy) ? e.predictedBy : [],
       };
     }),
   };

@@ -76,6 +76,8 @@ export function buildEnvelope() {
       tipping: !!e.tipping,
       verified: e.verified !== false,
       doomsday_minutes: e.doomsday_minutes ?? null,
+      realYear: e.realYear ?? null, realLabel: e.realLabel ?? null,
+      predictedBy: Array.isArray(e.predictedBy) ? e.predictedBy : [],
     };
   });
   return { apocalypse_clock_seconds, singularity_index, nela_status: { airgap: true, joules_per_action_score: 'Optimal', active_engine: 'Ollama' }, generated_at: new Date().toISOString(), events: mapped };

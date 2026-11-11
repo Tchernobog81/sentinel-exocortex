@@ -1,10 +1,12 @@
 {
   "name": "loom-v2-server",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "type": "module",
   "description": "THE LOOM V2 — backend Fastify : API loom_data.json, SSE temps réel, télémétrie système (air-gap), statut démons d'inférence",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "node --watch index.js"

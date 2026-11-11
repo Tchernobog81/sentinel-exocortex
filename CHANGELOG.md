@@ -1,5 +1,15 @@
 # CHANGELOG - Cortex Loom
 
+## V2.1.0 (dashboard V2)
+- 📈 **Lignes reliées de retour (style V1)** : chaque courbe relie tous ses points réels, lissée (smooth 0.45, width 2) — plus de "points seuls" ; les prévisions (futur) restent des points seuls hors ligne.
+- 🎯 **Vue initiale centrée sur aujourd'hui** (±60 ans) ; le bouton restore y revient ; molette/slider pour zoomer ailleurs.
+- 🏷️ **Étiquettes minimales anti-recouvrement** : seuls les POI principaux (tipping) sont étiquetés, tronqués à 22 caractères, `hideOverlap` gère la densité (au zoom, plus d'étiquettes apparaissent).
+- 💬 **Popup détail façon V1 au clic** : box centrée arrondie (16px) à la couleur de la courbe, détails complets + **liens ⇄ « réalisé : … » / « prédit par : … »** fonctionnels (saut zoom centré sur la cible + popup de la cible). Champs realLabel/realYear/predictedBy propagés dans l'enveloppe V2 (serveur + statique).
+- 🔢 **Versionnage 2.x** : "THE LOOM V2.1.0" affiché dans le header, versions package 2.1.0.
+- 🧪 Tests : V21 OK (12 checks) + V2/V2FIX/V2ZOOM/V2FEED/V2DEEP OK en local serveur et statique.
+
+## v179
+
 ## v179 — V2 déployée sur l'URL publique
 - 🌐 **https://tchernobog81.github.io/sentinel-exocortex/ sert maintenant la V2** : build Vite (base relative) déployé à la racine ; l'ancienne V1 reste dispo sur **/v1/** (index.html déplacé, URL données rendue absolue).
 - 🛰️ **Mode statique air-gap sur Pages** : la V2 détecte l'absence du serveur local et polle `loom_data.json` + `telemetry.json` + `rag.json` (poussés à chaque cycle par la boucle agent via `v2/server/export-static.mjs`, commités avec les données). Le serveur local (127.0.0.1:8787) reste dispo pour le SSE temps réel + la purge VRAM (CORS ajouté).
