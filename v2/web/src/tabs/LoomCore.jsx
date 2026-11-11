@@ -47,13 +47,22 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     const series = [];
     for (const [name, g] of Object.entries(byGroup)) {
       const pts = g.data;
-      // courbe en J (ligne lissée) — sous les points
-      if (pts.length > 1) {
+      // courbe en J (ligne lissée) — sous les points ; uniquement les événements réels (non futurs),
+      // avec CASSURE de la ligne quand l'écart entre deux points dépasse 120 ans (plus de grande ligne droite)
+      const nowY = new Date().getFullYear() + new Date().getMonth() / 12;
+      const real = pts.filter(e => (e.year || 0) <= nowY + 0.05).sort((a, b) => a.year - b.year);
+      if (real.length > 1) {
+        let prevY = null;
+        const lineData = real.map(e => {
+          if (prevY != null && e.year - prevY > 120) { prevY = e.year; return null; } // trou -> la ligne se casse
+          prevY = e.year;
+          return [e.year, e.value];
+        });
         series.push({
-          name, type: 'line', smooth: 0.45, showSymbol: false, z: 1,
+          name, type: 'line', smooth: 0.45, showSymbol: false, z: 1, connectNulls: false,
           lineStyle: { color: g.color, width: 1.5, opacity: 0.55 },
           areaStyle: { color: g.color, opacity: 0.05 },
-          data: pts.map(e => [e.year, e.value]),
+          data: lineData,
         });
       }
       // points
@@ -76,6 +85,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       backgroundColor: 'transparent',
       animationDuration: 600,
       tooltip: { show: false },   // bulle custom React (couleur courbe + trait vers le point)
+      legend: { show: false },     // légende custom HTML (pastilles colorées) ci-dessous
       toolbox: { right: 12, top: 6, itemSize: 16, feature: { dataZoom: { xAxisIndex: 0, yAxisIndex: 'none', title: { zoom: 'Zoom', back: 'Reset zoom' } }, restore: { title: 'Vue complète' } } },
       dataZoom: [
         { type: 'inside', xAxisIndex: 0, zoomOnMouseWheel: true, moveOnMouseWheel: false, zoomOnMouseMove: false },
@@ -115,17 +125,19 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
   }, [events, hiddenGroups]);
 
   // ---- flux entrant (SSE/poll) : faits réels vérifiés, non futurs, tri antichrono robuste ----
-  const parseTs = e => {
-    const d = new Date(e.timestamp);
-    if (!isNaN(d.getTime())) return d;
-    const y = Math.floor(e.year || 1970);
-    return new Date(y, 0, 1); // repli: date dérivée de l'année (événements anciens)
-  };
   const nowYear = new Date().getFullYear() + new Date().getMonth() / 12;
+  // timestamp effectif : un événement d'une année révolue retombe à son époque
+  // (les seeds anciens avaient un timestamp "maintenant" -> apparaissaient comme des MAJ récentes)
+  const effTs = e => {
+    const y = Math.floor(e.year || 1970);
+    const d = new Date(e.timestamp);
+    if (!isNaN(d.getTime()) && y >= nowYear - 1) return d;
+    return new Date(y, 0, 1);
+  };
   const feed = useMemo(() => {
     return events
-      .filter(e => !/fiction/i.test(e.category) && e.verified !== false && (e.year || 0) <= nowYear + 0.05)
-      .map(e => ({ e, t: parseTs(e) }))
+      .filter(e => !/fiction|horloge/i.test(e.category) && e.verified !== false && (e.year || 0) >= nowYear - 1 && (e.year || 0) <= nowYear + 0.05)
+      .map(e => ({ e, t: effTs(e) }))
       .sort((a, b) => b.t - a.t)          // antichronologique strict
       .slice(0, 30)
       .map(x => x.e);
@@ -134,7 +146,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
   const lastMaj = useMemo(() => {
     let mx = null;
     for (const e of events) {
-      if ((e.year || 0) > nowYear + 1) continue;
+      if ((e.year || 0) < nowYear - 1 || (e.year || 0) > nowYear + 1) continue; // MAJ = événements de l'année en cours
       const d = new Date(e.timestamp);
       if (isNaN(d.getTime()) || d > new Date()) continue;
       if (!mx || d > mx) mx = d;
@@ -142,7 +154,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     return mx ? `${String(mx.getHours()).padStart(2, '0')}:${String(mx.getMinutes()).padStart(2, '0')}` : '--:--';
   }, [events]);
   const fmtTs = e => {
-    const d = parseTs(e);
+    const d = effTs(e);
     if (d.getMonth() === 0 && d.getDate() === 1 && d.getHours() === 0 && d.getMinutes() === 0 && d.getFullYear() < 2100 && Math.abs(d.getFullYear() - (e.year || 0)) < 1) return String(Math.floor(e.year));
     return d.toLocaleString('fr-FR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
   };
