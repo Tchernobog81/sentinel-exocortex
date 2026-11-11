@@ -1,5 +1,9 @@
 # CHANGELOG - Cortex Loom
 
+## v166
+- 🎨 **Thème CYBERPUNK HUD néon** (choix A, inspiré des kits Figma Community « Sci-fi UI Kit (Free) », « Futuristic Cyberpunk HUD Design », « FUI/HUD Elements ») : fond noir + grille + scanlines, panneaux dépolis à coins néon (équerres cyan), glow cyan/ambre sur titres/boutons/chips/widget horloge, courbes du graphique avec glow (shadowBlur), recherche et liens ⇄ néon.
+- 🔖 **Version :** Passage en v166.
+
 ## v165
 - 📐 **Axe Y adaptatif** : après zoom/pan/saut/refresh, Y se recadre sur les valeurs visibles (`fitYToView`) — les courbes ne sont plus aplaties après un clic/zoom.
 - 🔖 **Version :** Passage en v165.
