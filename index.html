@@ -4,9 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+    <meta name="loom-version" content="2.1.2" />
+    <script>
+    // anti-cache : si une version plus récente est déployée, recharger avec cache-buster
+    (function(){ try {
+      fetch('index.html?cb=' + Date.now(), { cache: 'no-store' }).then(function(r){ return r.text(); }).then(function(t){
+        var m = t.match(/loom-version" content="([\d.]+)"/);
+        var cur = (document.querySelector('meta[name=loom-version]') || {}).content || '0';
+        if (m && parseFloat(m[1]) > parseFloat(cur)) location.href = '?v=' + m[1] + '&cb=' + Date.now();
+      }).catch(function(){});
+    } catch(e){} })();
+    </script>
     <title>THE LOOM V2 — NELA</title>
-    <script type="module" crossorigin src="./assets/index-fO1gKQ4t.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CNUKgtd_.css">
+    <script type="module" crossorigin src="./assets/index-Bo8RMwNC.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CrQ-kvAE.css">
   </head>
   <body>
     <div id="root"></div>

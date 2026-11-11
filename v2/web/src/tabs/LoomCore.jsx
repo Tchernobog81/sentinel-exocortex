@@ -2,16 +2,18 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Filter, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.1.0';
+export const LOOM_VERSION = '2.1.2';
 
-// Onglet 1 — LOOM CORE (V2.1) : vue centrée sur aujourd'hui, courbes J reliées (style V1),
-// étiquettes minimales anti-recouvrement, popup détail façon V1 au clic + liens ⇄ prédit/réalisé
+// Onglet 1 — LOOM CORE (V2.1.2) : le chart s'initialise UNE fois (le zoom utilisateur est préservé
+// entre les rafraîchissements SSE), les séries sont mises à jour en douceur.
 export default function LoomCore({ envelope, events, allEvents, filters, setFilters, clockSmooth }) {
   const chartRef = useRef(null);
   const wrapRef = useRef(null);
   const boxRef = useRef(null);
-  const [selected, setSelected] = useState(null);   // événement dont la popup est ouverte
-  const [hover, setHover] = useState(null);          // {x, y (px dans le wrap), ev}
+  const eventsRef = useRef(events);
+  const hiddenRef = useRef({});
+  const [selected, setSelected] = useState(null);
+  const [hover, setHover] = useState(null);
   const [hiddenGroups, setHiddenGroups] = useState({});
   window.__selectEvent = (ev) => setSelected(ev); // hook de test
 
@@ -36,84 +38,66 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     return g;
   }, [events]);
 
-  // ---- J-curve ECharts ----
+  // ---- INIT du chart : une seule fois (le zoom survit aux rafraîchissements) ----
   useEffect(() => {
-    if (!boxRef.current) return;
+    if (!boxRef.current || chartRef.current) return;
     const chart = echarts.init(boxRef.current, null, { renderer: 'canvas' });
     chartRef.current = chart;
     window.__loomChart = chart;
 
     const XMIN = -2700, XMAX = 2110;
-    const byGroup = {};
-    for (const e of events) {
-      if (hiddenGroups[e.group]) continue;
-      (byGroup[e.group] ||= { color: e.groupColor, data: [] }).data.push(e);
-    }
-    const series = [];
-    for (const [name, g] of Object.entries(byGroup)) {
-      const pts = g.data;
-      // courbe en J reliée (style V1) : tous les points RÉELS, triés par année, lissée.
-      // Seuls les événements futurs (prévisions) sont exclus de la ligne.
-      const real = pts.filter(e => (e.year || 0) <= nowYear + 0.05).sort((a, b) => a.year - b.year);
-      if (real.length > 1) {
-        series.push({
-          name, type: 'line', smooth: 0.45, showSymbol: false, z: 1,
-          lineStyle: { color: g.color, width: 2, opacity: 0.75 },
-          areaStyle: { color: g.color, opacity: 0.06 },
-          data: real.map(e => [e.year, e.value]),
-        });
-      }
-      series.push({
-        name, type: 'scatter', z: 3,
-        symbolSize: d => (d[3]?.tipping ? 11 : 6),
-        itemStyle: { color: g.color, opacity: 0.95, borderColor: '#050508', borderWidth: 1 },
-        emphasis: { scale: 1.6 },
-        // étiquette MINIMALE sur les POI principaux (tipping), anti-recouvrement par hideOverlap
-        label: {
-          show: true, position: 'top', fontSize: 9, color: '#cbd5e1',
-          formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 22)}…` : ''),
-        },
-        labelLayout: { hideOverlap: true },
-        data: pts.map(e => [e.year, e.value, e.title, e]),
-      });
-    }
-
-    // vue initiale CENTRÉE SUR AUJOURD'HUI (±60 ans), zoom molette + slider + restore
+    // vue initiale centrée sur aujourd'hui (±60 ans)
     const nowFrac = (nowYear - XMIN) / (XMAX - XMIN);
     const half = 60 / (XMAX - XMIN);
     const start = Math.max(0, Math.min(100, (nowFrac - half) * 100));
     const end = Math.max(0, Math.min(100, (nowFrac + half) * 100));
+    let xWin = (XMAX - XMIN) * (end - start) / 100;
 
     chart.setOption({
       backgroundColor: 'transparent',
-      animationDuration: 600,
+      animationDuration: 400,
       tooltip: { show: false },
       legend: { show: false },
-      toolbox: { right: 12, top: 6, itemSize: 16, feature: { dataZoom: { xAxisIndex: 0, yAxisIndex: 'none', title: { zoom: 'Zoom', back: 'Reset zoom' } }, restore: { title: 'Vue complète' } } },
+      toolbox: { right: 12, top: 6, itemSize: 16, feature: { dataZoom: { xAxisIndex: 0, yAxisIndex: 'none', title: { zoom: 'Zoom', back: 'Reset zoom' } }, restore: { title: "Vue d'aujourd'hui" } } },
       dataZoom: [
         { type: 'inside', xAxisIndex: 0, zoomOnMouseWheel: true, moveOnMouseWheel: false, zoomOnMouseMove: false, start, end },
         { type: 'slider', xAxisIndex: 0, bottom: 2, height: 16, filterMode: 'none', start, end },
       ],
       grid: { left: 50, right: 30, top: 40, bottom: 34 },
-      xAxis: { type: 'value', min: XMIN, max: XMAX, axisLabel: { color: '#6b7280', fontSize: 10 }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } }, name: 'année', nameTextStyle: { color: '#6b7280' } },
+      xAxis: { type: 'value', min: XMIN, max: XMAX, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } }, name: 'année', nameTextStyle: { color: '#6b7280' },
+        axisLabel: {
+          color: '#6b7280', fontSize: 10, hideOverlap: true,
+          // zoom temporel : années -> mois -> jours (fenêtre courante relue à chaque formatage)
+          formatter: v => {
+            try {
+              const dzs = chart.getOption().dataZoom || [];
+              const dz = dzs.find(d => d.type === 'inside') || dzs[0];
+              if (dz && dz.start != null) xWin = (XMAX - XMIN) * (dz.end - dz.start) / 100;
+            } catch {}
+            const range = xWin;
+            const MOIS = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+            if (range > 25) return String(Math.floor(v));
+            if (range > 2) { const y = Math.floor(v); const m = Math.max(0, Math.min(11, Math.floor((v - y) * 12))); return `${MOIS[m]} ${String(y).slice(2)}`; }
+            const y = Math.floor(v), frac = v - y, d = new Date(y, 0, 1 + Math.floor(frac * 365));
+            return `${String(d.getDate()).padStart(2, '0')}/${MOIS[d.getMonth()]}/${String(y).slice(2)}`;
+          },
+        } },
       yAxis: { type: 'value', axisLabel: { color: '#6b7280', fontSize: 10 }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
-      series,
+      series: [],
     }, { notMerge: true });
 
-    // clic -> popup détail (box façon V1)
+    // clic -> popup détail
     chart.on('click', p => { if (p.data?.[3]) setSelected(p.data[3]); });
 
-    // survol : picking manuel au pixel près
+    // survol : picking manuel au pixel près (seuil 20 px)
     let raf = 0;
-    const evsRef = { current: events };
-    evsRef.current = events;
     chart.on('mousemove', e => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
         const zx = e.event.zrX ?? e.event.offsetX, zy = e.event.zrY ?? e.event.offsetY;
         let best = null, bd = 20 * 20;
-        for (const ev of evsRef.current) {
-          if (hiddenGroups[ev.group]) continue;
+        for (const ev of eventsRef.current) {
+          if (hiddenRef.current[ev.group]) continue;
           const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [ev.year, ev.value]);
           const d = (px[0] - zx) ** 2 + (px[1] - zy) ** 2;
           if (d < bd) { bd = d; best = { x: px[0], y: px[1], ev }; }
@@ -125,11 +109,52 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
 
     const ro = new ResizeObserver(() => chart.resize());
     ro.observe(boxRef.current);
-    return () => { ro.disconnect(); chart.dispose(); chartRef.current = null; window.__loomChart = null; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // ---- MISE À JOUR des séries (préserve le zoom/pan utilisateur) ----
+  useEffect(() => {
+    eventsRef.current = events;
+    hiddenRef.current = hiddenGroups;
+    const chart = chartRef.current;
+    if (!chart) return;
+    const byGroup = {};
+    for (const e of events) {
+      if (hiddenGroups[e.group]) continue;
+      (byGroup[e.group] ||= { color: e.groupColor, data: [] }).data.push(e);
+    }
+    const series = [];
+    for (const [name, g] of Object.entries(byGroup)) {
+      const pts = g.data;
+      // courbe en J reliée (style V1) : points réels triés par année ; les prévisions restent des points
+      const real = pts.filter(e => (e.year || 0) <= nowYear + 0.05).sort((a, b) => a.year - b.year);
+      if (real.length > 1) {
+        series.push({
+          name, type: 'line', smooth: 0.45, showSymbol: false, z: 1,
+          lineStyle: { color: g.color, width: 2.5, opacity: 0.85, shadowColor: g.color, shadowBlur: 6 },
+          areaStyle: { color: g.color, opacity: 0.06 },
+          data: real.map(e => [e.year, e.value]),
+        });
+      }
+      series.push({
+        name, type: 'scatter', z: 3,
+        symbolSize: d => (d[3]?.tipping ? 11 : 6),
+        itemStyle: { color: g.color, opacity: 0.95, borderColor: '#050508', borderWidth: 1 },
+        emphasis: { scale: 1.6 },
+        // étiquette MINIMALE sur les POI principaux, anti-recouvrement par hideOverlap
+        label: {
+          show: true, position: 'top', fontSize: 9, color: '#cbd5e1',
+          formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 22)}…` : ''),
+        },
+        labelLayout: { hideOverlap: true },
+        data: pts.map(e => [e.year, e.value, e.title, e]),
+      });
+    }
+    chart.setOption({ series }, { lazyUpdate: true, notMerge: false });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [events, hiddenGroups]);
 
-  // ---- saut vers un événement (lien ⇄ ou flux) : centre le zoom dessus + ouvre sa popup ----
+  // ---- saut vers un événement (lien ⇄ ou flux) ----
   const jumpToEvent = (target) => {
     const chart = chartRef.current;
     if (chart && target?.year != null) {
@@ -149,7 +174,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     jumpToEvent(target);
   };
 
-  // ---- flux entrant : faits réels vérifiés de l'année en cours, antichrono ----
+  // ---- flux entrant : faits réels vérifiés de l'année en cours, antichrono, sans stamps "année seule" ----
   const effTs = e => {
     const y = Math.floor(e.year || 1970);
     const d = new Date(e.timestamp);
@@ -157,12 +182,16 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     return new Date(y, 0, 1);
   };
   const feed = useMemo(() => {
-    return events
+    const base = events
       .filter(e => !/fiction|horloge/i.test(e.category) && e.verified !== false && (e.year || 0) >= nowYear - 1 && (e.year || 0) <= nowYear + 0.05)
       .map(e => ({ e, t: effTs(e) }))
-      .sort((a, b) => b.t - a.t)
-      .slice(0, 30)
-      .map(x => x.e);
+      .sort((a, b) => b.t - a.t);
+    // vraie mise à jour = date réelle (pas une pseudo-date "1er janvier" dérivée de l'année)
+    const withRealDate = base.filter(x => {
+      const d = x.t, yy = Math.floor(x.e.year || 0);
+      return !(d.getMonth() === 0 && d.getDate() === 1 && d.getHours() === 0 && Math.abs(d.getFullYear() - yy) <= 1);
+    });
+    return (withRealDate.length >= 1 ? withRealDate : base).slice(0, 30).map(x => x.e);
   }, [events]);
   const lastMaj = useMemo(() => {
     let mx = null;
@@ -180,11 +209,11 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     return d.toLocaleString('fr-FR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
   };
 
-  // géométrie du trait bulle de survol -> point
-  const hb = hover ? { bx: Math.min(hover.x + 16, (wrapRef.current?.clientWidth || 800) - 280), by: Math.max(hover.y - 46, 8) } : null;
-  const line = hover && hb ? (() => {
-    const dx = hover.x - hb.bx, dy = hover.y - hb.by;
-    return { w: Math.hypot(dx, dy), r: Math.atan2(dy, dx) };
+  // bulle de survol : centrée AU-DESSUS du point, trait vertical court qui la rattache au point
+  const bubbleH = 36;
+  const hb = hover ? (() => {
+    const wrapW = wrapRef.current?.clientWidth || 800;
+    return { bx: Math.max(4, Math.min(hover.x - 110, wrapW - 290)), by: Math.max(6, hover.y - bubbleH - 26) };
   })() : null;
 
   return (
@@ -241,9 +270,9 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
           <div ref={boxRef} className="panel absolute inset-0" />
           {hover && hb && (
             <>
-              <div style={{ position: 'absolute', left: hb.bx, top: hb.by, width: line.w, height: 1,
-                background: hover.ev.groupColor, boxShadow: `0 0 6px ${hover.ev.groupColor}`,
-                transform: `rotate(${line.r}rad)`, transformOrigin: 'left center', pointerEvents: 'none', zIndex: 30 }} />
+              <div style={{ position: 'absolute', left: hover.x, top: hb.by + bubbleH - 2, width: 1.5,
+                height: Math.max(6, hover.y - (hb.by + bubbleH)), background: hover.ev.groupColor,
+                boxShadow: `0 0 6px ${hover.ev.groupColor}`, pointerEvents: 'none', zIndex: 30 }} />
               <div className="bubble absolute px-2.5 py-1.5 text-[10px] font-bold pointer-events-none z-40"
                    style={{ left: hb.bx, top: hb.by, borderColor: hover.ev.groupColor, color: hover.ev.groupColor, borderRadius: 12 }}>
                 {hover.ev.title} <span className="text-zinc-500">({Math.floor(hover.ev.year)})</span>
@@ -253,7 +282,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         </div>
       </section>
 
-      {/* popup détail façon V1 (box centrée, couleur de la courbe, liens ⇄) */}
+      {/* popup détail façon V1 + liens ⇄ */}
       {selected && (
         <div className="fixed inset-0 z-[5000] flex items-center justify-center bg-black/60" onClick={() => setSelected(null)}>
           <div className="bubble relative w-[90%] max-w-[600px] max-h-[82vh] overflow-y-auto p-6"
@@ -261,13 +290,12 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
                onClick={e => e.stopPropagation()}>
             <button onClick={() => setSelected(null)} className="absolute top-3 right-3 text-zinc-500 hover:text-white text-2xl leading-none"><X size={18} /></button>
             <h2 className="text-xl font-black uppercase pr-8" style={{ color: selected.groupColor }}>{selected.title}</h2>
-            <div className="flex gap-4 text-[10px] text-zinc-500 uppercase mt-1 mb-3 border-b border-zinc-800 pb-2">
+            <div className="flex gap-4 text-[10px] text-zinc-500 uppercase mt-1 mb-3 border-b border-zinc-800 pb-2 flex-wrap">
               <span>Source: <b className="text-zinc-300">{selected.source || 'N/A'}</b></span>
               <span>Date: <b className="text-zinc-300">{Math.floor(selected.year)}</b></span>
               <span>Catégorie: <b className="text-zinc-300">{selected.category}</b></span>
               <span>Impact: <b className="text-zinc-300">{selected.impact_score}</b></span>
             </div>
-            {/* liens ⇄ prédit <-> réalisé */}
             <div className="flex gap-2 flex-wrap mb-3">
               {selected.realLabel && (
                 <button className="chip on flex items-center gap-1" style={{ borderColor: selected.groupColor, color: selected.groupColor }}

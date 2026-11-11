@@ -1,5 +1,16 @@
 # CHANGELOG - Cortex Loom
 
+## V2.1.2 (dashboard V2)
+- 🔧 **Bug racine corrigé : le graphique était RECONSTRUIT à chaque tick SSE/poll (8-15 s) → le zoom de l'utilisateur était réinitialisé en permanence**. Le chart s'initialise maintenant une seule fois ; seules les séries sont mises à jour (zoom/pan préservés entre les rafraîchissements).
+- 🗓️ **Axe temporel adaptatif** : années quand la fenêtre > 25 ans, **mois** (« juil. 26 ») entre 25 et 2 ans, **jours** (« 02/juil./26 ») sous 2 ans — testé aux 3 niveaux en virtuel.
+- 💬 **Bulle de survol ré-ancrée** : directement au-dessus du point, court trait vertical qui la rattache EXACTEMENT au point (test géométrique : ligne x=945 vs point x=946, sous la bulle, au-dessus du point).
+- 📥 **Flux** : uniquement les vraies mises à jour (dates réelles), plus aucun stamp trompeur « [2026] » (6 items vérifiés, 0 année-seule).
+- 📈 **Lignes renforcées** : width 2.5 + glow néon, reliées à tous les points réels (style V1).
+- 🔢 **V2.1.2 affichée** dans le header + **auto-check anti-cache** (rechargement automatique si une version plus récente est déployée).
+- 🧪 V211 OK (10 checks), V21 OK, V2FIX OK, V2/V2DEEP/V2FEED/V2ZOOM OK.
+
+## V2.1.0
+
 ## V2.1.0 (dashboard V2)
 - 📈 **Lignes reliées de retour (style V1)** : chaque courbe relie tous ses points réels, lissée (smooth 0.45, width 2) — plus de "points seuls" ; les prévisions (futur) restent des points seuls hors ligne.
 - 🎯 **Vue initiale centrée sur aujourd'hui** (±60 ans) ; le bouton restore y revient ; molette/slider pour zoomer ailleurs.
