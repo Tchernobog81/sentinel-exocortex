@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v169</title>
+    <title>THE LOOM : EXOCORTEX v170</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -186,7 +186,7 @@
             overflow: hidden; background: #000; display: flex; 
             align-items: center; justify-content: center; font-size: 14px; 
         }
-        /* ===== v169 — Thème CYBERPUNK HUD néon ===== */
+        /* ===== v170 — Thème CYBERPUNK HUD néon ===== */
         :root {
             --neon-cyan: #00f0ff;
             --neon-amber: #fbbf24;
@@ -259,15 +259,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v169</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v169...</div>
-        <div id="debug-log">Init v169...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v170</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v170...</div>
+        <div id="debug-log">Init v170...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v169</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v170</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -725,6 +725,24 @@
             }
         }
 
+        // Picking manuel au pixel près : renvoie LE point visible le plus proche du curseur
+        // (seuil en px), ou null. Indépendant du hitRadius de Chart.js (trop imprécis en zone dense).
+        function pickNearestPoint(e, maxDist) {
+            if (!loomChart) return null;
+            let best = null, bestD = (maxDist || 26);
+            loomChart.data.datasets.forEach((ds, di) => {
+                const meta = loomChart.getDatasetMeta(di);
+                if (meta.hidden || !meta.data) return;
+                for (let i = 0; i < meta.data.length; i++) {
+                    const el = meta.data[i];
+                    if (el.skip) continue;
+                    const d = Math.hypot(el.x - e.x, el.y - e.y);
+                    if (d < bestD) { bestD = d; best = { datasetIndex: di, index: i, element: el, dist: d }; }
+                }
+            });
+            return best;
+        }
+
         function createChart(datasets) {
             const ctx = document.getElementById('loomChart').getContext('2d');
             loomChart = new Chart(ctx, {
@@ -749,24 +767,35 @@
                                 const chart = context.chart;
                                 const x = chart.scales.x;
                                 const xRange = x.max - x.min;
+                                // Hors de la fenêtre X visible : aucun label (évite les calculs/densité fantômes)
+                                if (p.x < x.min || p.x > x.max) return false;
                                 // Lisibilité : AUCUN texte persistant, que des icônes.
                                 // Le libellé complet apparaît au survol (label-float) et au clic (popup).
-                                const show = (() => {
-                                    if (p.tipping) return true;                 // points notables : icône toujours
-                                    if (xRange >= 8) return false;               // zoomé dehors : rien d'autre
-                                    // Zoomé dedans : décimation progressive selon la densité
-                                    let visible = 0;
-                                    for (const ds of chart.data.datasets) {
-                                        if (chart.getDatasetMeta(chart.data.datasets.indexOf(ds)).hidden || ds.future) continue;
-                                        for (const pt of ds.data) {
-                                            if (pt.x >= x.min && pt.x <= x.max) visible++;
-                                        }
+                                let visible = 0, tippingVisible = 0;
+                                for (const ds of chart.data.datasets) {
+                                    if (chart.getDatasetMeta(chart.data.datasets.indexOf(ds)).hidden || ds.future) continue;
+                                    for (const pt of ds.data) {
+                                        if (pt.x >= x.min && pt.x <= x.max) { visible++; if (pt.tipping) tippingVisible++; }
                                     }
-                                    if (visible > 60) return false;
-                                    if (visible > 30) return context.dataIndex % 3 === 0;
-                                    if (visible > 15) return context.dataIndex % 2 === 0;
-                                    return true;
-                                })();
+                                }
+                                let show;
+                                if (p.tipping) {
+                                    // points notables : icône toujours, décimation seulement si densité extrême
+                                    if (tippingVisible > 120) show = context.dataIndex % 4 === 0;
+                                    else if (tippingVisible > 80) show = context.dataIndex % 3 === 0;
+                                    else if (tippingVisible > 45) show = context.dataIndex % 2 === 0;
+                                    else show = true;
+                                } else if (xRange >= 8) {
+                                    show = false;                            // zoomé dehors : rien d'autre
+                                } else if (visible > 60) {
+                                    show = false;                            // zoomé dedans : décimation progressive
+                                } else if (visible > 30) {
+                                    show = context.dataIndex % 3 === 0;
+                                } else if (visible > 15) {
+                                    show = context.dataIndex % 2 === 0;
+                                } else {
+                                    show = true;
+                                }
                                 if (show) window.__labelsDrawn = (window.__labelsDrawn || 0) + 1;
                                 return show;
                             },
@@ -816,22 +845,24 @@
                             display: false
                         }
                     },
-                    onHover: (e, els) => {
-                        // Libellé flottant au survol d'un point, AVEC connecteur vers le point
+                    onHover: (e) => {
+                        // Libellé flottant au survol, AVEC connecteur vers LE point exact le plus proche (picking manuel au pixel près)
                         const fl = document.getElementById('label-float');
                         const ln = document.getElementById('label-line');
-                        if (els && els.length) {
-                            const p = loomChart.data.datasets[els[0].datasetIndex].data[els[0].index];
-                            const el = loomChart.getDatasetMeta(els[0].datasetIndex).data[els[0].index];
+                        const hit = pickNearestPoint(e, 26);
+                        if (hit) {
+                            const p = loomChart.data.datasets[hit.datasetIndex].data[hit.index];
+                            const el = hit.element;
                             document.getElementById('label-icon').textContent = ICONS[p.category] || '•';
                             document.getElementById('label-text').textContent = `${p.label} (${Math.floor(p.year)})`;
-                            const fx = e.x + 14, fy = e.y - 10;
+                            const box = loomChart.canvas.getBoundingClientRect();
+                            const cx = box.x + e.x, cy = box.y + e.y;           // curseur en coords viewport
+                            const px = box.x + el.x, py = box.y + el.y;           // point en coords viewport
+                            const fx = Math.min(cx + 16, window.innerWidth - 260), fy = Math.max(cy - 34, 8);
                             fl.style.display = 'flex';
                             fl.style.left = fx + 'px';
                             fl.style.top = fy + 'px';
-                            // connecteur : du bord de l'étiquette jusqu'au point (el.x/el.y en coords canvas)
-                            const box = loomChart.canvas.getBoundingClientRect();
-                            const px = box.x + el.x, py = box.y + el.y;
+                            // connecteur : de l'étiquette jusqu'au point exact
                             const dx = px - fx, dy = py - fy;
                             ln.style.display = 'block';
                             ln.style.left = fx + 'px';
@@ -846,9 +877,9 @@
                         }
                     },
                     onClick: (e) => {
-                        const points = loomChart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false);
-                        if (points.length) {
-                            const dataPoint = loomChart.data.datasets[points[0].datasetIndex].data[points[0].index];
+                        const hit = pickNearestPoint(e, 26);
+                        if (hit) {
+                            const dataPoint = loomChart.data.datasets[hit.datasetIndex].data[hit.index];
                             showDetail(dataPoint);
                         }
                     },

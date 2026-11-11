@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v170
+- 🎯 **Pointage POI au pixel près** : picking manuel (distance euclidienne curseur↔point, seuil 26 px) pour le survol ET le clic — le connecteur néon et l'étiquette flottante visent désormais LE point exact, même en zone dense (remplace le hitRadius 30 imprécis). Coordonnées corrigées en viewport (position:fixed).
+- 🧵 **Remplissage massif v2 des courbes** : +78 jalons intermédiaires réels -> 708 événements. Antiquité peuplée (miroirs d'Archimède -214, boulier -500, Anticythère -125, æolipile 60, boussole 1000), communication optique (signaux de fumée -1200/1812, sémaphores Chappe 1684/1793, télégraphe optique, câbles sous-marins 1851/1858/1866, Morse 1837/1844), industrie (Newcomen 1712, Watt 1769, Stephenson 1814/1825, dynamo Gramme 1866, Edison 1879, Tesla 1888, Ford 1908/1913), espace (V2 1944, Spoutnik 1957, Gagarine 1961, Apollo 11 1969), cognition (McCulloch-Pitts 1943, Dartmouth 1956, ARPANET 1969, Web 1989, Deep Blue 1997, DARPA Grand Challenge 2005), médecine/biotech (anesthésie 1846, antisepsie 1865, pénicilline 1928, ADN 1953, PCR 1983, génome 2003, iPS 2007), politique (ONU 1945, Kyoto 1997, Paris 2015, EU AI Act 2024), cyber (Creeper 1971, Morris 1988, Stuxnet 2010, WannaCry/NotPetya 2017, SolarWinds 2020, Log4Shell 2021). Philo appliquée à toutes les courbes : plus de saut brutal type 850→1942.
+- 🔖 **Version :** Passage en v170.
+
 ## v169
 - 📡 **Flux** : titre « Flux entrant · MAJ HH:MM » (heure de dernière mise à jour) + liste complète antichronologique des 30 derniers événements vérifiés (plus la limite 12h).
 - 🔗 **Étiquettes flottantes connectées** : ligne néon (#label-line) entre l'étiquette de survol et le point exact de la courbe.
