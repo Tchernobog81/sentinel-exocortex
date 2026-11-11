@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-yellow: #fbbf24;
+  --neon-red: #ff3860;
+  --neon-cyan: #00f0ff;
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  background: #050508;
+  color: #e5e7eb;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0, 240, 255, 0.025) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at 50% -20%, rgba(0, 240, 255, 0.08), transparent 60%);
+  overflow: hidden;
+}
+
+.panel {
+  background: rgba(5, 5, 8, 0.92);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.06), inset 0 0 18px rgba(0, 240, 255, 0.03);
+}
+
+.tab-btn {
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 12px;
+  padding: 6px 14px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7dd3e8;
+  transition: all 0.15s;
+}
+.tab-btn:hover { background: rgba(0, 240, 255, 0.1); color: #fff; }
+.tab-btn.active {
+  background: rgba(0, 240, 255, 0.16);
+  border-color: var(--neon-cyan);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+}
+
+.chip {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.chip.on { border-color: var(--neon-yellow); color: var(--neon-yellow); box-shadow: 0 0 8px rgba(251, 191, 36, 0.35); }
+
+.bubble {
+  border-radius: 16px;
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  background: rgba(3, 6, 10, 0.96);
+}
+
+.neon-text { text-shadow: 0 0 8px rgba(0, 240, 255, 0.7); }
+.amber-text { color: var(--neon-yellow); text-shadow: 0 0 10px rgba(251, 191, 36, 0.6); }
+.red-text { color: var(--neon-red); text-shadow: 0 0 10px rgba(255, 56, 96, 0.7); }
+
+input[type='range'] { accent-color: var(--neon-cyan); }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.25); border-radius: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
