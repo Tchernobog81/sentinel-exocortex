@@ -1,5 +1,12 @@
 # CHANGELOG - Cortex Loom
 
+## v176
+- 📐 **Popup façon callout, vérifié en virtuel avec captures** : au-delà de l'équerre unique (coin le plus proche du POI, v175), la box a maintenant une **flèche (triangle) sur le bord tourné vers le POI/souris** (classes ptr-left/right/top/bottom + --ptr-pos), couleur de la box. Preuve virtuelle (cornercheck.js) : clic à droite -> équerre `100% 100%` + `ptr-right` ; clic à gauche/bas -> `corner-x=left` + flèche vers le POI ; `::after` = exactement 2 traits ; 0 pageerror. Captures : /tmp/pwtest/card_full.png, coin_*.png.
+- 🧹 **Anti-cache** : script inline qui fetch index.html en no-store et recharge avec cache-buster si une version plus récente existe en ligne (les prochaines évolutions se propageront seules) + badge version cliquable existant.
+- 🔖 **Version :** Passage en v176.
+
+## v175
+
 ## v175
 - 📐 **Coin HUD de la popup dynamique** : la popup #detail-card n'affiche plus qu'UNE équerre (2 traits), au coin le plus proche du POI cliqué (variables --corner-x/--corner-y posées depuis la position du clic ; les sauts ⇄/flux ancrent sur le point cible). Couleur = couleur de la box (--card-accent-solid). aside/legend gardent leurs 4 équerres. Testé en virtuel (corner.js : clic droite -> right, clic gauche -> left, 0 pageerror).
 - ⏰ **Zigzag horloge éliminé** : lissage itératif idempotent des valeurs HORLOGE (moyenne mobile centrée répétée jusqu'à maxDelta <= 6000) + tension 0.6. maxDelta 36705 -> 5208, creux 1991 (17 min) et record 2026 (85 s) préservés. Preuve d'idempotence : 3 runs -> sha256 identique. Métriques : scratchpad metrics-horloge.md.
