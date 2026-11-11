@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v172</title>
+    <title>THE LOOM : EXOCORTEX v173</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -186,7 +186,7 @@
             overflow: hidden; background: #000; display: flex; 
             align-items: center; justify-content: center; font-size: 14px; 
         }
-        /* ===== v172 — Thème CYBERPUNK HUD néon ===== */
+        /* ===== v173 — Thème CYBERPUNK HUD néon ===== */
         :root {
             --neon-cyan: #00f0ff;
             --neon-amber: #fbbf24;
@@ -208,7 +208,7 @@
         }
         aside, .top-bar, .legend-bar, #detail-card, #doomsday-widget {
             background: var(--panel-bg);
-            border-color: rgba(0, 240, 255, 0.25) !important;
+            border-color: var(--card-accent, rgba(0, 240, 255, 0.25)) !important;
             box-shadow: 0 0 24px rgba(0, 240, 255, 0.06), inset 0 0 18px rgba(0, 240, 255, 0.03);
             backdrop-filter: blur(6px);
             position: relative;
@@ -259,15 +259,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v172</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v172...</div>
-        <div id="debug-log">Init v172...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v173</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v173...</div>
+        <div id="debug-log">Init v173...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v172</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v173</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -446,6 +446,14 @@
         }
 
         // --- Navigation Prédit ⇄ Réalisé (inter-pointeurs entre événements liés) ---
+        // Surbrillance temporaire du point d'arrivée d'un saut (anneau pulsant, plugin jumpHighlight)
+        function highlightJump(target) {
+            const col = GROUP_COLORS[GROUP_OF[target.category] || target.category] || COLORS[target.category] || '#fff';
+            window.__jumpTarget = { label: target.label, year: target.year, color: col };
+            clearTimeout(window.__jumpTargetTimer);
+            window.__jumpTargetTimer = setTimeout(() => { window.__jumpTarget = null; loomChart.update('none'); }, 3000);
+        }
+
         function jumpToYear(year, fromLabel) {
             markNavigated();
             let cands = ALL_DATA.filter(e => Math.floor(e.year) === Math.floor(year));
@@ -457,7 +465,7 @@
             const target = cands.sort((a, b) => b.year - a.year)[0];
             if (!target) return;
             animateZoomTo(target.year - 2, target.year + 2);
-            setTimeout(() => showDetail(target), 600);
+            setTimeout(() => { showDetail(target); highlightJump(target); }, 600);
         }
         function jumpToLabel(label) {
             markNavigated();
@@ -466,7 +474,7 @@
             const target = cands.find(e => e.realYear || e.predictedBy) || cands[0];
             if (!target) return;
             animateZoomTo(target.year - 2, target.year + 2);
-            setTimeout(() => showDetail(target), 600);
+            setTimeout(() => { showDetail(target); highlightJump(target); }, 600);
         }
 
         function log(msg, type="info") {
@@ -898,6 +906,35 @@
                     animation: { duration: 700, easing: 'easeOutQuart' }
                 },
                 plugins: [{
+                    id: 'jumpHighlight',
+                    afterDatasetsDraw: (chart) => {
+                        // Anneau pulsant sur le point d'arrivée d'un saut (lien ⇄ ou flux cliquable)
+                        const jt = window.__jumpTarget;
+                        if (!jt) return;
+                        let px = null, py = null;
+                        chart.data.datasets.forEach((ds, di) => {
+                            const meta = chart.getDatasetMeta(di);
+                            if (meta.hidden || !meta.data) return;
+                            ds.data.forEach((p, i) => {
+                                if (p.label === jt.label && Math.abs((p.year || 0) - jt.year) < 0.01) {
+                                    px = meta.data[i].x; py = meta.data[i].y;
+                                }
+                            });
+                        });
+                        if (px == null) return;
+                        const t = (performance.now() % 1200) / 1200;
+                        const ctx = chart.ctx;
+                        ctx.save();
+                        ctx.strokeStyle = jt.color || '#fff';
+                        ctx.lineWidth = 2;
+                        ctx.shadowColor = jt.color || '#fff';
+                        ctx.shadowBlur = 12;
+                        ctx.beginPath();
+                        ctx.arc(px, py, 9 + 5 * Math.sin(t * Math.PI * 2), 0, Math.PI * 2);
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+                }, {
                     id: 'nowLine',
                     afterDatasetsDraw: (chart) => {
                         // Ligne verticale "MAINTENANT" didactique
@@ -992,7 +1029,7 @@
             markNavigated();
             if (!ev) return;
             animateZoomTo(ev.year - 2, ev.year + 2);
-            setTimeout(() => showDetail(ev), 600);
+            setTimeout(() => { showDetail(ev); highlightJump(ev); }, 600);
             log(`⇢ ${ev.label} (${Math.floor(ev.year)})`);
         }
 
@@ -1149,12 +1186,16 @@
         // Initialisation
         // Dernière mise à jour des données (max des timestamps) affichée HH:MM
         function lastUpdateText(data) {
+            // Heure du dernier événement RÉEL : on ignore les timestamps futurs (prévisions)
+            // qui fausseraient la MAJ (ex: 2026-12-15T00:00:00 -> "00:00").
+            const now = new Date();
             let mx = null;
             for (const e of data) {
-                if (e.timestamp) {
-                    const t = new Date(e.timestamp);
-                    if (!isNaN(t) && (!mx || t > mx)) mx = t;
-                }
+                if (!e.timestamp) continue;
+                if (e.year && e.year > now.getFullYear() + 1) continue; // prévision lointaine
+                const t = new Date(e.timestamp);
+                if (isNaN(t) || t > now) continue;                          // timestamp futur = artefact
+                if (!mx || t > mx) mx = t;
             }
             if (!mx) return '';
             return `${String(mx.getHours()).padStart(2, '0')}:${String(mx.getMinutes()).padStart(2, '0')}`;

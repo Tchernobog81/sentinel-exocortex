@@ -1,4 +1,4 @@
-# DIRECTIVES AGENT LOCAL — Sentinel Exocortex / Cortex Loom (v162)
+# DIRECTIVES AGENT LOCAL — Sentinel Exocortex / Cortex Loom (v173)
 
 Ce fichier est la référence unique pour toute évolution du projet. Toute modification doit le respecter.
 
@@ -63,3 +63,17 @@ Commit + push sur `main` (remote SSH `git@github.com:Tchernobog81/sentinel-exoco
 - Les commits faits avec le GITHUB_TOKEN (bot) ne redéclenchent pas les workflows `on: push` → ne pas compter dessus.
 - Recommandé : workflow de validation JSON (jq + schéma) en amont du deploy. Secrets jamais en clair.
 - Scraping sur le Mac (push SSH), PAS de self-hosted runner GitHub (déconseillé sur repo public, bientôt payant).
+
+## 9. v171-v173 — Courbe Horloge, fictions antiques, liens popup, MAJ
+- **9 courbes** : la 9ème est `⏰ HORLOGE DE L'APOCALYPSE` (catégorie `⏰ HORLOGE`, rouge #ef4444) : tous les
+  réglages officiels du Doomsday Clock avec justification + champ `doomsday_minutes` (modèle backend, front,
+  normalize_values.py, fix_analysis.py). Le sentinel pousse son relevé annuel dans cette catégorie.
+- **Fictions depuis -2100** (Gilgamesh, Lucien de Samosate, Cyrano...) : catégorie `🔮 IMAGINAIRE`,
+  lien `realLabel`/`realYear` vers l'événement réel + `predictedBy` réciproque. **Audit 0 lien mort**
+  (labels cibles doivent exister). Script : `scripts/seed_fictions_liens.py`.
+- **Liens popup** : couleur = couleur de la box (bordure card = `--card-accent` = couleur du groupe),
+  rendus seulement si la cible existe, et à chaque saut le point d'arrivée est surligné (anneau pulsant,
+  plugin `jumpHighlight`).
+- **MAJ du flux** : `lastUpdateText` ignore les timestamps futurs (prévisions) — sinon « 00:00 » artefact.
+- Tests headless obligatoires : `liens.js` (liens popup/couleurs/sauts/MAJ/audit), `doomsday.js` (courbe horloge),
+  `suite.js`, `precision.js` (picking POI au pixel près), `labels.js` (décimation étiquettes). 9 groupes attendus.

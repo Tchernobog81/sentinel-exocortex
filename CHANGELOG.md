@@ -1,5 +1,12 @@
 # CHANGELOG - Cortex Loom
 
+## v173
+- 🕐 **MAJ du flux corrigée** : `lastUpdateText` ignore désormais les timestamps futurs (événements de prévision, ex 2026-12-15T00:00:00) qui faisaient afficher « MAJ 00:00 ». Le titre « Flux entrant · MAJ HH:MM » reflète maintenant l'heure du dernier événement réel (testé : 15:51).
+- 🎨 **Box popup cohérente** : la bordure de la card prend la couleur du groupe de l'événement (`--card-accent`, la règle `!important` générique utilise maintenant la variable) → liens ⇄ et box de la même couleur, comme demandé.
+- 🎯 **Saut ⇄ avec repère visuel** : à chaque saut (lien ⇄ ou clic flux), le point d'arrivée est surligné par un anneau pulsant de la couleur de la courbe (plugin `jumpHighlight`, 3 s) et la vue est centrée exactement dessus (testé : Dune → Deep Blue, centre 1997.3). Plus de lien « dans le vide » : les liens sont filtrés sur les cibles existantes (v172) et chaque saut ouvre la fiche du bon point.
+- 📋 **Agent local aligné** : `AGENT_DIRECTIVES.md` à jour (v173, règles horloge/fictions/liens/MAJ/tests), boucle `run_push_agent.sh` relancée sur le code courant (VERSION v173).
+- 🔖 **Version :** Passage en v173.
+
 ## v172
 - 🎬 **Fictions depuis l'invention de l'écriture** : +14 œuvres/essais antérieurs à Frankenstein (1818) — Épopée de Gilgamesh -2100 (quête d'immortalité → iPS), L'Odyssée (Talos automate → Unimate), Théogonie/Prométhée (feu → Chicago Pile-1), Platon (→ Cybersyn), **Lucien de Samosate, Histoires vraies -170 (1ère SF, voyage Lune → Apollo 11)**, Mille et Une Nuits (tapis volant → Wright), Dante, More (Utopie → revenu universel), Campanella, Bacon (Nouvelle Atlantique → Web), Cyrano (Lune → Apollo 11), Swift (Laputa → Wright), Voltaire (Micromégas → Perseverance), Hobbes. La courbe FICTION démarre à -2100. 130 fictions, 740 events.
 - 🔗 **Liens popup réparés et fiabilisés** : Star Wars pointait sur « Horloge: 3 min » (supprimé en v171) → repointé vers Navette Columbia 1981 ; 11 fictions avec realYear sans realLabel (saut aléatoire) réparées (Dune→Deep Blue, Blade Runner→Atlas, Tron→Métavers, WarGames→Stuxnet, Terminator→AlexNet, Retour vers le futur→DARPA Grand Challenge, Ghost in the Shell→Neuralink, Minority Report→police prédictive, Black Mirror→Big Data). `predictedBy` réciproque posé sur tous les doublons. Audit: 0 lien mort. Les liens de la popup prennent la **couleur de la box** (bordure card = couleur du groupe) et ne sont rendus que si la cible existe.
