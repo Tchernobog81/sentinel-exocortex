@@ -1,5 +1,11 @@
 # CHANGELOG - Cortex Loom
 
+## v174
+- ⏰ **Courbe horloge adoucie** : les zigzags verticaux venaient des valeurs « danger » brutes (sauts 17→2 min…) + tension 0.3. Corrigé : lissage par moyenne mobile (0.25/0.5/0.25) des valeurs dans `normalize_values.py` + `tension: 0.5` pour la courbe HORLOGE. maxDelta 36705 → 15530, le creux de 1991 et le record 2026 restent lisibles. Les libellés/popups conservent les vraies minutes (`doomsday_minutes`).
+- 📍 **Plus de tirets sans icône** : le plugin `connectorPlugin` dessinait un tiret au-dessus de CHAQUE point en vue zoomée, mais l'icône n'était dessinée que pour les points retenus par la décimation. Le connecteur ne suit désormais que les points où datalabels affiche une icône (même fonction `display`). Vérifié en capture : chaque tiret a son icône.
+- 🎨 **Liens popup = couleur de la courbe, garanti** : règle CSS `#detail-card .card-nav-link { color: var(--card-accent-solid) !important; ... }` (la box pose `--card-accent`/`--card-accent-solid` = couleur du groupe) — fini le cyan/jaune résiduel même avec un CSS intermédiaire. `jumpToLabel` prend un indice d'année (realYear) pour viser le bon doublon parmi les labels dupliqués. Audit virtuel : 253 liens testés, 0 dans le vide. Meta no-cache ajoutée.
+- 🔖 **Version :** Passage en v174.
+
 ## v173
 - 🕐 **MAJ du flux corrigée** : `lastUpdateText` ignore désormais les timestamps futurs (événements de prévision, ex 2026-12-15T00:00:00) qui faisaient afficher « MAJ 00:00 ». Le titre « Flux entrant · MAJ HH:MM » reflète maintenant l'heure du dernier événement réel (testé : 15:51).
 - 🎨 **Box popup cohérente** : la bordure de la card prend la couleur du groupe de l'événement (`--card-accent`, la règle `!important` générique utilise maintenant la variable) → liens ⇄ et box de la même couleur, comme demandé.

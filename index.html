@@ -2,11 +2,12 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v173</title>
+    <title>THE LOOM : EXOCORTEX v174</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -186,7 +187,7 @@
             overflow: hidden; background: #000; display: flex; 
             align-items: center; justify-content: center; font-size: 14px; 
         }
-        /* ===== v173 — Thème CYBERPUNK HUD néon ===== */
+        /* ===== v174 — Thème CYBERPUNK HUD néon ===== */
         :root {
             --neon-cyan: #00f0ff;
             --neon-amber: #fbbf24;
@@ -252,6 +253,12 @@
         #doomsday-widget .dd-seconds { color: var(--neon-red); text-shadow: 0 0 10px rgba(255, 56, 96, 0.9), 0 0 30px rgba(255, 56, 96, 0.5); }
         .card-nav-link { border-color: rgba(0, 240, 255, 0.4); color: var(--neon-cyan); text-shadow: 0 0 6px rgba(0, 240, 255, 0.6); }
         .card-nav-link:hover { background: rgba(0, 240, 255, 0.12); box-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
+        /* v174 : les liens ⇄ de la popup = couleur de la box (accent), toujours */
+        #detail-card .card-nav-link {
+            color: var(--card-accent-solid, var(--neon-cyan)) !important;
+            border-color: var(--card-accent, rgba(0, 240, 255, 0.4)) !important;
+            text-shadow: 0 0 6px var(--card-accent, rgba(0, 240, 255, 0.6)) !important;
+        }
         #activity-list li:hover { background: rgba(0, 240, 255, 0.06); }
         #sync-status { color: #22d3ee; text-shadow: 0 0 6px rgba(34, 211, 238, 0.6); }
     </style>
@@ -259,15 +266,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v173</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v173...</div>
-        <div id="debug-log">Init v173...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v174</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v174...</div>
+        <div id="debug-log">Init v174...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v173</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v174</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -467,12 +474,18 @@
             animateZoomTo(target.year - 2, target.year + 2);
             setTimeout(() => { showDetail(target); highlightJump(target); }, 600);
         }
-        function jumpToLabel(label) {
+        function jumpToLabel(label, yearHint) {
             markNavigated();
             const cands = ALL_DATA.filter(e => e.label === label);
-            // préfère l'entrée qui a des liens (realYear/predictedBy) si doublon de label
-            const target = cands.find(e => e.realYear || e.predictedBy) || cands[0];
-            if (!target) return;
+            if (!cands.length) return;
+            let target;
+            if (yearHint != null) {
+                // choisit le candidat le plus proche de l'année attendue, en priorité un événement réel lié
+                target = cands.slice().sort((a, b) =>
+                    (Math.abs((a.year || 0) - yearHint) - Math.abs((b.year || 0) - yearHint)))[0];
+            } else {
+                target = cands.find(e => e.realYear || e.predictedBy) || cands[0];
+            }
             animateZoomTo(target.year - 2, target.year + 2);
             setTimeout(() => { showDetail(target); highlightJump(target); }, 600);
         }
@@ -718,7 +731,8 @@
                     shadowBlur: isFut ? 0 : 8,
                     pointBorderWidth: 1,
                     hitRadius: 30,
-                    tension: 0.3
+                    // courbe horloge : tension plus forte pour adoucir les zigzags verticaux
+                    tension: key.includes('HORLOGE') ? 0.5 : 0.3
                 };
                 strands[key].data.push({ x: d.year, y: d.value, ...d });
             });
@@ -959,18 +973,19 @@
                 }, {
                     id: 'connectorPlugin',
                     afterDatasetsDraw: (chart) => {
+                        // Tiret connecteur UNIQUEMENT là où datalabels dessine une icône
+                        // (sinon on a des tirets nus au-dessus de points sans icône).
                         const ctx = chart.ctx;
-                        const xRange = chart.scales.x.max - chart.scales.x.min;
-                        const isZoomedIn = xRange < 8;
-
+                        const dl = chart.config.options.plugins.datalabels;
+                        const dlDisplay = typeof dl.display === 'function' ? dl.display : () => true;
                         chart.data.datasets.forEach((dataset, i) => {
                             const meta = chart.getDatasetMeta(i);
                             if (meta.hidden) return;
                             meta.data.forEach((element, index) => {
                                 const dataPoint = dataset.data[index];
-                                if (!dataPoint.tipping && !isZoomedIn) return;
                                 if (hiddenCategories.has(GROUP_OF[dataPoint.category] || dataPoint.category)) return;
-
+                                const showLabel = dlDisplay({ dataset, dataIndex: index, chart, dataPoint: { raw: dataPoint } });
+                                if (!showLabel) return;
                                 const model = element.tooltipPosition();
                                 ctx.save();
                                 ctx.beginPath();
@@ -1107,6 +1122,7 @@
             // la box prend la couleur du groupe de l'événement
             const gcol = GROUP_COLORS[GROUP_OF[data.category] || data.category] || COLORS[data.category] || '#22d3ee';
             card.style.setProperty('--card-accent', gcol + 'aa');
+            card.style.setProperty('--card-accent-solid', gcol);
             card.style.boxShadow = `0 0 40px ${gcol}2e, 0 0 120px ${gcol}1a`;
             document.getElementById('card-title').innerText = data.label;
             document.getElementById('card-who').innerText = data.whoWhat || 'N/A';
@@ -1130,7 +1146,7 @@
             };
             if (data.realYear && (!data.realLabel || labelExists(data.realLabel))) {
                 const tgt = data.realLabel ? `${data.realLabel} (${Math.floor(data.realYear)})` : Math.floor(data.realYear);
-                mkLink(`⇄ réalisé : ${tgt}`, () => data.realLabel ? jumpToLabel(data.realLabel) : jumpToYear(data.realYear, data.label));
+                mkLink(`⇄ réalisé : ${tgt}`, () => data.realLabel ? jumpToLabel(data.realLabel, data.realYear) : jumpToYear(data.realYear, data.label));
             }
             if (Array.isArray(data.predictedBy)) {
                 data.predictedBy.filter(labelExists).forEach(t => {

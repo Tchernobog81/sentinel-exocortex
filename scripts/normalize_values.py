@@ -53,6 +53,7 @@ def main():
         groups.setdefault(g, []).append(e)
     changed = 0
     for g, evs in groups.items():
+        vals = {}
         for e in evs:
             # Horloge de l'Apocalypse : valeur = DANGER (montante quand l'aiguille approche minuit)
             if e.get("category") == "⏰ HORLOGE" and e.get("doomsday_minutes") is not None:
@@ -60,9 +61,18 @@ def main():
                 v = int(1000 + 48000 * frac)
             else:
                 v = int(1000 + 48000 * exp_frac(e.get("year") or 0))
+            vals[id(e)] = v
             if e.get("value") != v:
                 e["value"] = v
                 changed += 1
+        # Lissage anti-zigzag pour la courbe horloge (moyenne mobile 0.25/0.5/0.25 sur les voisins chrono)
+        if g == "⏰ HORLOGE DE L'APOCALYPSE":
+            ordered = sorted(evs, key=lambda e: e.get("year") or 0)
+            raw = [vals[id(e)] for e in ordered]
+            for i, e in enumerate(ordered):
+                lo = raw[i - 1] if i > 0 else raw[i]
+                hi = raw[i + 1] if i < len(raw) - 1 else raw[i]
+                e["value"] = int(0.25 * lo + 0.5 * raw[i] + 0.25 * hi)
     tmp = DATA.with_suffix(".tmp")
     tmp.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
     tmp.replace(DATA)
