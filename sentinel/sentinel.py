@@ -42,7 +42,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_DATA_FILE = os.environ.get("LOCAL_DATA_FILE", str(PROJECT_ROOT / "loom_data.json"))
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
 
-VERSION = "v167"
+VERSION = "v168"
 
 # LLM local (Ollama) outillé
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
@@ -793,21 +793,41 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
     if os.environ.get("SIMULATOR", "0") == "1":
         scanners.append(("Simulateur", scan_simulator))
 
-    # --- FACT-CHECK : toute info entrante doit être corroborée par une recherche web ---
-    def factcheck(ev):
-        label = ev.get("label", "")
-        if any(label.startswith(p) for p in ("Horloge de l'Apocalypse", "Stade de Singularité")):
-            ev["verified"] = True
-            return True
-        try:
-            res = web_search(label[:90], max_results=5)
-        except Exception:
-            res = []
-        ok = len(res) >= 2
-        ev["verified"] = ok
-        if not ok:
-            logger.warning(f"[FACTCHECK] non corroboré, ignoré: {label}")
-        return ok
+# --- FACT-CHECK : toute info entrante doit être corroborée ET dans le domaine du projet ---
+# Mots-clés de pertinence (veille singularité / tech / science / risques). Le reste (sport,
+# faits divers, culture pop) est rejeté même si sourcé.
+RELEVANCE_KEYWORDS = [
+    "ia", " ai", "intelligence artificielle", "agi", "llm", "modèle", "benchmark", "arc-agi",
+    "arc prize", "deepmind", "openai", "anthropic", "mistral", "agi", "robot", "androïde",
+    "quantique", "qubit", "compute", "gpu", "puce", "semi-conducteur", "transistor",
+    "espace", "fusée", "starship", "mars", "lunaire", "satellite", "nasa", "esa", "spacex",
+    "biotech", "génétique", "crispr", "adn", "arn", "vaccin", "virus", "pandémie", "médecine",
+    "climat", "climate", "énergie", "fusion", "solaire", "nucléaire", "batterie",
+    "cyber", "hack", "ransomware", "attaque", "sécurité", "cyberattaque", "malware",
+    "régulation", "ai act", "loi", "traité", "gouvernance", "souveraineté", "géopolitique",
+    "physique", "maths", "mathématiques", "théorème", "conjecture", "cern", "boson", "trou noir",
+    "5g", "6g", "réseau", "internet", "web", "donnée", "algorithme", "singularité", "transhumanisme",
+    "neuralink", "interface cerveau", "exosquelette", "drone", "autonome", "véhicule autonome",
+    "fusion nucléaire", "réacteur", "collisionneur", "gravitation",
+]
+
+
+def factcheck(ev):
+    label = ev.get("label", "")
+    if any(label.startswith(p) for p in ("Horloge de l'Apocalypse", "Stade de Singularité")):
+        ev["verified"] = True
+        return True
+    try:
+        res = web_search(label[:90], max_results=5)
+    except Exception:
+        res = []
+    text = (label + " " + " ".join(r.get("title", "") + " " + r.get("snippet", "") for r in res)).lower()
+    relevant = any(k in text for k in RELEVANCE_KEYWORDS)
+    ok = len(res) >= 2 and relevant
+    ev["verified"] = ok
+    if not ok:
+        logger.warning(f"[FACTCHECK] hors sujet ou non corroboré, ignoré: {label}")
+    return ok
 
     new_events = []
     for name, scanner in scanners:

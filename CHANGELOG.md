@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v168
+- 🧹 **Lisibilité des étiquettes** : plus aucun texte persistant sur le graphique — icônes seules (points notables `tipping` toujours visibles, décimation par densité en zoom). Le libellé complet apparaît au **survol** (étiquette flottante #label-float avec icône + « label (année) ») et au clic (popup). Testé en headless (compteur de labels rendus, survol, popup).
+- 🚫 **Filtre de pertinence** : le fact-check du sentinel rejette aussi les sujets hors domaine (sport, faits divers…) via mots-clés de veille (IA, compute, espace, bio, cyber, climat, régulation, physique/maths…) — ex: « Tableau des médailles JO 2026 » supprimé des données et désormais rejeté à l'ingestion.
+- 🔖 **Version :** Passage en v168.
+
 ## v167
 - 📝 **Enrichissement de masse** : 342 événements pauvres enrichis (LLM local par lots + fallback catégorie) ; il reste ~10 stubs sans description. AlphaGo & co restaurés après factcheck.
 - ✅ **Analyses renseignées** : 979 champs placeholder (« simulée »/« N/A ») remplacés par une matrice curatoriale par catégorie, variée par hash (0 placeholder restant).
