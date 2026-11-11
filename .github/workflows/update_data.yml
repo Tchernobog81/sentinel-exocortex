@@ -1,5 +1,9 @@
 name: Update Cortex Loom Data
 
+concurrency:
+  group: "update-data"
+  cancel-in-progress: true
+
 on:
   schedule:
     - cron: '0 */12 * * *'  # Toutes les 12 heures
