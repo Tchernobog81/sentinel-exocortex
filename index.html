@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v170</title>
+    <title>THE LOOM : EXOCORTEX v171</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -186,7 +186,7 @@
             overflow: hidden; background: #000; display: flex; 
             align-items: center; justify-content: center; font-size: 14px; 
         }
-        /* ===== v170 — Thème CYBERPUNK HUD néon ===== */
+        /* ===== v171 — Thème CYBERPUNK HUD néon ===== */
         :root {
             --neon-cyan: #00f0ff;
             --neon-amber: #fbbf24;
@@ -259,15 +259,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v170</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v170...</div>
-        <div id="debug-log">Init v170...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v171</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v171...</div>
+        <div id="debug-log">Init v171...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v170</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v171</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -379,6 +379,7 @@
             "💊 MÉDECINE": "#a3e635", 
             "🤖 ROBOTIQUE": "#2dd4bf", 
             "🏛️ POLITIQUE": "#d946ef",
+            "⏰ HORLOGE": "#ef4444",
             "DEFAUT": "#9ca3af" 
         };
         
@@ -396,6 +397,7 @@
             "💊 MÉDECINE": "💊",
             "🤖 ROBOTIQUE": "🤖",
             "🏛️ POLITIQUE": "⚖️",
+            "⏰ HORLOGE": "⏰",
             "DEFAUT": "📂"
         };
 
@@ -424,13 +426,21 @@
 
         // --- Widget Horloge de l'Apocalypse (dernier réglage officiel connu) ---
         function updateDoomsdayWidget(data) {
-            const clocks = data.filter(e => (e.category || '').includes('ENTROPIE') && (e.label || '').includes('Horloge'))
+            const clocks = data.filter(e => (e.category || '').includes('HORLOGE') || (e.label || '').includes('Horloge'))
                                .sort((a, b) => b.year - a.year);
             const el = document.getElementById('dd-seconds');
             if (!clocks.length) { el.innerText = '--'; return; }
             const c = clocks[0];
-            const m = ((c.label || '') + ' ' + (c.description || '')).match(/(\d+)\s*(?:seconde|second)/i);
-            el.innerText = m ? m[1] + ' s' : '--';
+            let txt = '--';
+            if (typeof c.doomsday_minutes === 'number') {
+                txt = c.doomsday_minutes < 2 ? `${Math.round(c.doomsday_minutes * 60)} s` : `${c.doomsday_minutes % 1 === 0 ? c.doomsday_minutes : c.doomsday_minutes.toFixed(2).replace(/0$/, '')} min`;
+            } else {
+                const hay = (c.label || '') + ' ' + (c.description || '');
+                const m = hay.match(/(\d+)\s*(?:seconde|second|s)\b/i);
+                const mm = hay.match(/(\d+(?:[.,]\d+)?)\s*min\b/i);
+                if (m) txt = m[1] + ' s'; else if (mm) txt = mm[1].replace(',', '.') + ' min';
+            }
+            el.innerText = txt;
             document.getElementById('dd-year').innerText = Math.floor(c.year);
             document.getElementById('dd-sub').innerText = `avant minuit · réglage ${Math.floor(c.year)} · maj quotidienne`;
         }
@@ -658,6 +668,7 @@
             { name: '🏛️ POLITIQUE',           color: '#d946ef', icon: '⚖️', cats: ['🏛️ POLITIQUE'] },
             { name: '☢️ ENTROPIE & CYBER',     color: '#f97316', icon: '☢️', cats: ['☢️ ENTROPIE', '☠️ RISQUES CYBER'] },
             { name: '🎬 FICTION',              color: '#f472b6', icon: '🎬', cats: ['🔮 IMAGINAIRE'] },
+            { name: '⏰ HORLOGE DE L\'APOCALYPSE', color: '#ef4444', icon: '⏰', cats: ['⏰ HORLOGE'] },
         ];
         const GROUP_OF = {};
         GROUPS.forEach(g => g.cats.forEach(c => GROUP_OF[c] = g.name));

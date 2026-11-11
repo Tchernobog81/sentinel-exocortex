@@ -53,6 +53,10 @@ MATRIX = {
         ("Complexité systémique + interdépendance + cascades", "Plus c'est connecté, plus ça casse en cascade.",
          "Tout est relié, donc tout peut tomber."),
     ],
+    "HORLOGE": [
+        ("Nucléaire + climat + IA + bio + désinformation", "Toutes les menaces convergent vers minuit.",
+         "L'aiguille ne ment pas : elle avance quand les dirigeants n'agissent pas."),
+    ],
     "RISQUES CYBER": [
         ("Attaquants + surface d'attaque + IA offensive", "La cyberguerre est permanente et industrialisée.",
          "Le prochain conflit commencera par un écran noir."),

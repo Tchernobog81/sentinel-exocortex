@@ -21,6 +21,7 @@ GROUPS = [
     ('🏛️ POLITIQUE', '🏛️ POLITIQUE'),
     ('☢️ ENTROPIE', '☢️ ENTROPIE & CYBER'), ('☠️ RISQUES CYBER', '☢️ ENTROPIE & CYBER'),
     ('🔮 IMAGINAIRE', '🎬 FICTION'),
+    ('⏰ HORLOGE', '⏰ HORLOGE DE L\'APOCALYPSE'),
 ]
 for cat, grp in GROUPS:
     GROUP_OF[cat] = grp
@@ -53,7 +54,12 @@ def main():
     changed = 0
     for g, evs in groups.items():
         for e in evs:
-            v = int(1000 + 48000 * exp_frac(e.get("year") or 0))
+            # Horloge de l'Apocalypse : valeur = DANGER (montante quand l'aiguille approche minuit)
+            if e.get("category") == "⏰ HORLOGE" and e.get("doomsday_minutes") is not None:
+                frac = 1.0 - min(float(e["doomsday_minutes"]), 17.0) / 17.0
+                v = int(1000 + 48000 * frac)
+            else:
+                v = int(1000 + 48000 * exp_frac(e.get("year") or 0))
             if e.get("value") != v:
                 e["value"] = v
                 changed += 1

@@ -15,7 +15,7 @@ GIT_AUTHOR_NAME="Tchernobog81" GIT_AUTHOR_EMAIL="tcherno@tuta.io" \
 GIT_COMMITTER_NAME="Tchernobog81" GIT_COMMITTER_EMAIL="tcherno@tuta.io" \
 export GIT_AUTHOR_NAME GIT_AUTHOR_EMAIL GIT_COMMITTER_NAME GIT_COMMITTER_EMAIL
 
-echo "[$(date +%H:%M:%S)] Démarrage boucle push agent (sentinel v148, intervalle ~60s)"
+echo "[$(date +%H:%M:%S)] Démarrage boucle push agent (sentinel v171, intervalle ~60s)"
 
 while true; do
   BEFORE=$(git hash-object loom_data.json 2>/dev/null || echo none)
@@ -24,7 +24,7 @@ while true; do
   AFTER=$(git hash-object loom_data.json 2>/dev/null || echo none)
   if [ "$BEFORE" != "$AFTER" ]; then
     git add loom_data.json
-    if git commit -q -m "🤖 Auto-update loom data (sentinel v148, $(date '+%Y-%m-%d %H:%M'))"; then
+    if git commit -q -m "🤖 Auto-update loom data (sentinel v171, $(date '+%Y-%m-%d %H:%M'))"; then
       if git push origin main; then
         echo "[$(date +%H:%M:%S)] ✅ push OK (nouveaux événements publiés)"
       else

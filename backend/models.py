@@ -69,6 +69,7 @@ class Event(BaseModel):
     verified: Optional[bool] = Field(default=None, description="Fact-checké par corroboration web (flux n'affiche que verified != false)")
     predictedBy: Optional[List[str]] = Field(default=None, description="Œuvres de fiction ayant prédit cet événement")
     img: Optional[str] = Field(default=None, description="URL image (optionnel)")
+    doomsday_minutes: Optional[float] = Field(default=None, description="Minutes avant minuit (Horloge de l'Apocalypse)")
     analysis: Optional[PharmakonAnalysis] = Field(default=None, description="Analyse Pharmakon")
 
     @model_validator(mode="before")
