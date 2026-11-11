@@ -1,5 +1,9 @@
 # CHANGELOG - Cortex Loom
 
+## v165
+- 📐 **Axe Y adaptatif** : après zoom/pan/saut/refresh, Y se recadre sur les valeurs visibles (`fitYToView`) — les courbes ne sont plus aplaties après un clic/zoom.
+- 🔖 **Version :** Passage en v165.
+
 ## v164
 - 📈 **Courbes réalistes (anti-aplatissement)** : `value` recalculées par groupe (8 courbes) en S-curve logistique montante (1000→49000 selon le rang temporel) — chaque courbe monte avec le temps, comme les vraies courbes d'adoption. 548 valeurs normalisées.
 - ⇄ **Liens fiction⇄réel cohérents** : nouveau champ `realLabel` ; lien rejoué depuis le côté réel (predictedBy) -> realYear + realLabel côté fiction (109 corrigés ; ex: Gattaca pointait vers 2027/iPhone, maintenant -> 23andMe 2007). La popup affiche « ⇄ réalisé : <label réel> (année) » et le saut cible le BON événement (par label, avec repli année filtré par predictedBy).

@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v164</title>
+    <title>THE LOOM : EXOCORTEX v165</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -185,15 +185,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v164</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v164...</div>
-        <div id="debug-log">Init v164...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v165</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v165...</div>
+        <div id="debug-log">Init v165...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v164</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v165</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -503,11 +503,35 @@
         let userNavigated = false;
         function markNavigated() { userNavigated = true; }
 
+        // Axe Y adaptatif : après zoom/pan, recadre Y sur les valeurs réellement visibles
+        // (sinon les courbes semblent aplaties quand la fenêtre X est étroite)
+        function fitYToView() {
+            if (!loomChart) return;
+            const x = loomChart.scales.x, y = loomChart.scales.y;
+            let mn = Infinity, mx = -Infinity;
+            loomChart.data.datasets.forEach((ds, i) => {
+                if (loomChart.getDatasetMeta(i).hidden) return;
+                for (const p of ds.data) {
+                    if (p.x >= x.min && p.x <= x.max) {
+                        if (p.y < mn) mn = p.y;
+                        if (p.y > mx) mx = p.y;
+                    }
+                }
+            });
+            if (!isFinite(mn)) return;
+            const pad = Math.max(500, (mx - mn) * 0.15);
+            // écrire dans les OPTIONS (l'instance d'échelle est recalculée à l'update)
+            loomChart.options.scales.y.min = Math.max(0, mn - pad);
+            loomChart.options.scales.y.max = mx + pad;
+            loomChart.update('none');
+        }
+
         function animateZoomTo(min, max) {
             // Zoom animé (Chart.js anime les bornes d'échelle via update())
             loomChart.options.scales.x.min = min;
             loomChart.options.scales.x.max = max;
             loomChart.update();
+            fitYToView();
         }
 
         function adaptiveHalfWindow(targetYear, allData) {
@@ -613,8 +637,10 @@
                 });
                 // Transition animée (fluide) lors des rafraîchissements
                 loomChart.update();
+                fitYToView();
             } else {
                 createChart(sortedDatasets);
+                fitYToView();
             }
         }
 
@@ -681,8 +707,8 @@
                             },
                             pan: { enabled: true, mode: 'xy' },
                             limits: { x: { minRange: 0.25 } },  // bloque le zoom à 1 trimestre min
-                            onZoomComplete: () => markNavigated(),
-                            onPanComplete: () => markNavigated()
+                            onZoomComplete: () => { markNavigated(); fitYToView(); },
+                            onPanComplete: () => { markNavigated(); fitYToView(); }
                         }
                     },
                     scales: {
@@ -940,6 +966,7 @@
             loomChart.options.scales.x.min = min;
             loomChart.options.scales.x.max = max;
             loomChart.update();
+            fitYToView();
             closeDetail();
         }
 
