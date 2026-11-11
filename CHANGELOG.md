@@ -1,5 +1,15 @@
 # CHANGELOG - Cortex Loom
 
+## V2.1.3 (dashboard V2)
+- 📥 **Flux rempli et véridique** : les 30 derniers événements antichronologiques de l'année en cours ; dates honnêtes — timestamp réel (« 11/11 15:51 ») sinon mois dérivé de la fraction d'année (« oct. 2026 »), plus aucun « 00:00 » fabriqué.
+- 🎯 **Cause racine des courbes plates** : l'axe Y incluait l'échelle « danger » de l'horloge (45000) qui écrasait les 8 autres courbes. L'horloge a maintenant **son axe Y caché** ; l'axe principal est **ajusté à la fenêtre visible** (hors prévisions, hors horloge) comme en V1 → **le décollage 2025/2026 occupe la hauteur** (Y max ~12400 en vue initiale au lieu de 49000).
+- 🗓️ **Graduations temporelles denses** : fenêtre ≤ 4 ans → **TOUS les mois** (minInterval 1/12) ; ≤ 1,5 an → les jours (7/365) ; re-ajustées à chaque zoom/pan/restore.
+- ⏱️ **Ligne pointillée verticale « MAINTENANT »** à la date du jour (markLine jaune, testée : dashed, xAxis = now).
+- 🏷️ **Étiquettes minimales** : rotation 28° + taille réduite + hideOverlap (recouvrement géré en densité).
+- 🧪 V213 OK (11 checks) + V21/V211/V2/V2DEEP/V2FEED/V2ZOOM/V2FIX OK.
+
+## V2.1.2
+
 ## V2.1.2 (dashboard V2)
 - 🔧 **Bug racine corrigé : le graphique était RECONSTRUIT à chaque tick SSE/poll (8-15 s) → le zoom de l'utilisateur était réinitialisé en permanence**. Le chart s'initialise maintenant une seule fois ; seules les séries sont mises à jour (zoom/pan préservés entre les rafraîchissements).
 - 🗓️ **Axe temporel adaptatif** : années quand la fenêtre > 25 ans, **mois** (« juil. 26 ») entre 25 et 2 ans, **jours** (« 02/juil./26 ») sous 2 ans — testé aux 3 niveaux en virtuel.

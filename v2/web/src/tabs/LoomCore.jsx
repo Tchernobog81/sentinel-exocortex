@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Filter, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.1.2';
+export const LOOM_VERSION = '2.1.3';
 
 // Onglet 1 — LOOM CORE (V2.1.2) : le chart s'initialise UNE fois (le zoom utilisateur est préservé
 // entre les rafraîchissements SSE), les séries sont mises à jour en douceur.
@@ -82,7 +82,11 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
             return `${String(d.getDate()).padStart(2, '0')}/${MOIS[d.getMonth()]}/${String(y).slice(2)}`;
           },
         } },
-      yAxis: { type: 'value', axisLabel: { color: '#6b7280', fontSize: 10 }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
+      yAxis: [
+        { type: 'value', axisLabel: { color: '#6b7280', fontSize: 10 }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
+        // axe caché pour l'horloge de l'apocalypse (échelle "danger" distincte)
+        { type: 'value', show: false, min: 0, max: 50000 },
+      ],
       series: [],
     }, { notMerge: true });
 
@@ -107,6 +111,50 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     });
     chart.on('mouseout', () => setHover(null));
 
+    // fenêtre courante (années) + Y ajusté aux données réelles visibles (comme V1 : le décollage est visible)
+    const winRange = () => {
+      try {
+        const dzs = chart.getOption().dataZoom || [];
+        const dz = dzs.find(d => d.type === 'inside') || dzs[0];
+        if (dz && dz.start != null) return (XMAX - XMIN) * (dz.end - dz.start) / 100;
+      } catch {}
+      return XMAX - XMIN;
+    };
+    const fitYToWindow = () => {
+      try {
+        const dzs = chart.getOption().dataZoom || [];
+        const dz = dzs.find(d => d.type === 'inside') || dzs[0];
+        const x0 = XMIN + ((dz?.start ?? 0) / 100) * (XMAX - XMIN);
+        const x1 = XMIN + ((dz?.end ?? 100) / 100) * (XMAX - XMIN);
+        let hi = 0, lo = Infinity;
+        for (const ev of eventsRef.current) {
+          if ((ev.year || 0) > nowYear + 0.05) continue;            // prévisions hors Y-fit
+          if (/horloge/i.test(ev.group || '')) continue;            // horloge sur son propre axe
+          if (hiddenRef.current[ev.group]) continue;
+          if ((ev.year || 0) >= x0 && (ev.year || 0) <= x1) { hi = Math.max(hi, ev.value || 0); lo = Math.min(lo, ev.value || 0); }
+        }
+        if (hi > 0) chart.setOption({ yAxis: { min: Math.max(0, Math.floor(lo * 0.9)), max: Math.round(hi * 1.05) } });
+      } catch {}
+    };
+    // ticks : toutes les années -> TOUS les mois -> les jours (minInterval selon la fenêtre)
+    const applyTickInterval = () => {
+      const r = winRange();
+      let minInterval;
+      if (r > 24) minInterval = Math.max(1, Math.round(r / 8));
+      else if (r > 4) minInterval = 1;            // une graduation par an
+      else if (r > 1.5) minInterval = 1 / 12;      // TOUS les mois
+      else minInterval = 7 / 365;                 // jour par jour (hebdo minimum)
+      try { chart.setOption({ xAxis: { minInterval } }); } catch {}
+    };
+    let dzT = 0;
+    chart.on('datazoom', () => {
+      clearTimeout(dzT);
+      dzT = setTimeout(() => { applyTickInterval(); fitYToWindow(); }, 120);
+    });
+    window.__fitY = fitYToWindow; // l'update des séries relance le Y-fit (zoom préservé)
+    window.__ticks = applyTickInterval;
+    setTimeout(() => { applyTickInterval(); fitYToWindow(); }, 250);
+
     const ro = new ResizeObserver(() => chart.resize());
     ro.observe(boxRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -126,31 +174,44 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     const series = [];
     for (const [name, g] of Object.entries(byGroup)) {
       const pts = g.data;
+      const yIdx = /horloge/i.test(name) ? 1 : 0; // horloge sur axe caché (le décollage J reste lisible)
       // courbe en J reliée (style V1) : points réels triés par année ; les prévisions restent des points
       const real = pts.filter(e => (e.year || 0) <= nowYear + 0.05).sort((a, b) => a.year - b.year);
       if (real.length > 1) {
         series.push({
-          name, type: 'line', smooth: 0.45, showSymbol: false, z: 1,
+          name, type: 'line', smooth: 0.45, showSymbol: false, z: 1, yAxisIndex: yIdx,
           lineStyle: { color: g.color, width: 2.5, opacity: 0.85, shadowColor: g.color, shadowBlur: 6 },
           areaStyle: { color: g.color, opacity: 0.06 },
           data: real.map(e => [e.year, e.value]),
         });
       }
       series.push({
-        name, type: 'scatter', z: 3,
+        name, type: 'scatter', z: 3, yAxisIndex: yIdx,
         symbolSize: d => (d[3]?.tipping ? 11 : 6),
         itemStyle: { color: g.color, opacity: 0.95, borderColor: '#050508', borderWidth: 1 },
         emphasis: { scale: 1.6 },
         // étiquette MINIMALE sur les POI principaux, anti-recouvrement par hideOverlap
         label: {
           show: true, position: 'top', fontSize: 9, color: '#cbd5e1',
-          formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 22)}…` : ''),
+          formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 18)}…` : ''),
+          rotate: 28, distance: 5,
         },
-        labelLayout: { hideOverlap: true },
+        labelLayout: { hideOverlap: true, moveToEnd: () => {} },
         data: pts.map(e => [e.year, e.value, e.title, e]),
       });
     }
+    if (series.length) {
+      // ligne pointillée verticale à la date du jour (comme V1)
+      series[0].markLine = {
+        silent: true, symbol: 'none', z: 2,
+        lineStyle: { color: '#fbbf24', type: 'dashed', width: 1.5, opacity: 0.85 },
+        label: { color: '#fbbf24', fontSize: 9, position: 'insideEndTop', formatter: 'MAINTENANT' },
+        data: [{ xAxis: nowYear }],
+      };
+    }
     chart.setOption({ series }, { lazyUpdate: true, notMerge: false });
+    setTimeout(() => { try { chart.getOption().onFitY?.(); } catch {} }, 0);
+    window.__fitY && window.__fitY();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [events, hiddenGroups]);
 
@@ -186,12 +247,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       .filter(e => !/fiction|horloge/i.test(e.category) && e.verified !== false && (e.year || 0) >= nowYear - 1 && (e.year || 0) <= nowYear + 0.05)
       .map(e => ({ e, t: effTs(e) }))
       .sort((a, b) => b.t - a.t);
-    // vraie mise à jour = date réelle (pas une pseudo-date "1er janvier" dérivée de l'année)
-    const withRealDate = base.filter(x => {
-      const d = x.t, yy = Math.floor(x.e.year || 0);
-      return !(d.getMonth() === 0 && d.getDate() === 1 && d.getHours() === 0 && Math.abs(d.getFullYear() - yy) <= 1);
-    });
-    return (withRealDate.length >= 1 ? withRealDate : base).slice(0, 30).map(x => x.e);
+    // liste REMPLIE : les 30 derniers événements antichronologiques de l'année en cours
+    return base.slice(0, 30).map(x => x.e);
   }, [events]);
   const lastMaj = useMemo(() => {
     let mx = null;
@@ -203,10 +260,16 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     }
     return mx ? `${String(mx.getHours()).padStart(2, '0')}:${String(mx.getMinutes()).padStart(2, '0')}` : '--:--';
   }, [events]);
+  // date véridique : timestamp réel (avec heure) sinon mois dérivé honnêtement de la fraction d'année
+  const MOIS = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
   const fmtTs = e => {
-    const d = effTs(e);
-    if (d.getMonth() === 0 && d.getDate() === 1 && d.getHours() === 0 && d.getMinutes() === 0 && Math.abs(d.getFullYear() - (e.year || 0)) < 1) return String(Math.floor(e.year));
-    return d.toLocaleString('fr-FR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+    const d = new Date(e.timestamp);
+    if (!isNaN(d.getTime()) && (d.getHours() !== 0 || d.getMinutes() !== 0)) {
+      if (d.getFullYear() === new Date().getFullYear()) return d.toLocaleString('fr-FR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+      return d.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    }
+    const y = Math.floor(e.year || 0), m = Math.max(0, Math.min(11, Math.floor(((e.year || 0) - y) * 12)));
+    return `${MOIS[m]} ${y}`;
   };
 
   // bulle de survol : centrée AU-DESSUS du point, trait vertical court qui la rattache au point
