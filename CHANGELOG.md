@@ -1,5 +1,10 @@
 # CHANGELOG - Cortex Loom
 
+## v164
+- 📈 **Courbes réalistes (anti-aplatissement)** : `value` recalculées par groupe (8 courbes) en S-curve logistique montante (1000→49000 selon le rang temporel) — chaque courbe monte avec le temps, comme les vraies courbes d'adoption. 548 valeurs normalisées.
+- ⇄ **Liens fiction⇄réel cohérents** : nouveau champ `realLabel` ; lien rejoué depuis le côté réel (predictedBy) -> realYear + realLabel côté fiction (109 corrigés ; ex: Gattaca pointait vers 2027/iPhone, maintenant -> 23andMe 2007). La popup affiche « ⇄ réalisé : <label réel> (année) » et le saut cible le BON événement (par label, avec repli année filtré par predictedBy).
+- 🔖 **Version :** Passage en v164.
+
 ## v163
 - 🐛 **Fix « tout aligné à maintenant »** : l'auto-zoom de rafraîchissement ne s'applique que si l'utilisateur n'a pas navigué manuellement (`userNavigated`, levé par wheel/pan/sauts/toggles/reset). Le clic sur FICTION (ou toute courbe) ne fait plus sauter la vue à « maintenant » au prochain refresh.
 - 📜 **AGENT_DIRECTIVES.md** : toutes les directives retranscrites pour l'agent local (règle 0 = tester toutes les interactions en navigateur virtuel avant toute version ; versioning ; données factuelles ; liens ⇄ ; 8 courbes ; popups ; flux ; sentinel LLM ; pipeline).

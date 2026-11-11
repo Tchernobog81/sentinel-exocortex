@@ -65,6 +65,7 @@ class Event(BaseModel):
     timestamp: Optional[str] = Field(default=None, description="Timestamp ISO")
     tipping: bool = Field(default=False, description="Point de bascule")
     realYear: Optional[float] = Field(default=None, description="Année de réalisation (si l'événement prédit un autre événement)")
+    realLabel: Optional[str] = Field(default=None, description="Label de l'événement réel réalisé (cible du lien ⇄)")
     predictedBy: Optional[List[str]] = Field(default=None, description="Œuvres de fiction ayant prédit cet événement")
     img: Optional[str] = Field(default=None, description="URL image (optionnel)")
     analysis: Optional[PharmakonAnalysis] = Field(default=None, description="Analyse Pharmakon")

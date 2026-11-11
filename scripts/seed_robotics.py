@@ -87,6 +87,7 @@ def main():
         real = by_label.get(rl)
         if real is not None:
             fe["realYear"] = real.get("year")
+            fe["realLabel"] = real.get("label")
             pb = real.get("predictedBy") or []
             if work not in pb:
                 pb.append(work)

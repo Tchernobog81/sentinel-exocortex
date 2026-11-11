@@ -2,7 +2,7 @@
   {
     "id": "59d2486709497872",
     "year": -2600.0,
-    "value": 1700,
+    "value": 1582,
     "label": "Irrigation et canaux (Égypte)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Anciens Égyptiens",
@@ -25,7 +25,7 @@
   {
     "id": "d359db153e0049cf",
     "year": -600.0,
-    "value": 1700,
+    "value": 1638,
     "label": "Papyrus et bibliothèque d'Alexandrie",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Égyptiens / Grecs",
@@ -48,7 +48,7 @@
   {
     "id": "c37eac7c914ad5e0",
     "year": -400.0,
-    "value": 500,
+    "value": 1582,
     "label": "Corpus hippocratique (médecine rationnelle)",
     "category": "💊 MÉDECINE",
     "whoWhat": "Hippocrate",
@@ -71,7 +71,7 @@
   {
     "id": "3a6c40735d9c7e8d",
     "year": -100.0,
-    "value": 1700,
+    "value": 1582,
     "label": "Mécanisme d'Anticythère",
     "category": "🟡 HARDWARE",
     "whoWhat": "Grecs (anonyme)",
@@ -94,7 +94,7 @@
   {
     "id": "d84b3cd87505c68f",
     "year": 60.0,
-    "value": 340,
+    "value": 1638,
     "label": "Æolipile (machine à vapeur de Héron)",
     "category": "🟡 HARDWARE",
     "whoWhat": "Héron d'Alexandrie",
@@ -117,7 +117,7 @@
   {
     "id": "f8f05cc839790879",
     "year": 105.0,
-    "value": 520,
+    "value": 1699,
     "label": "Papier (invention chinoise)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Cai Lun (Chine Han)",
@@ -140,7 +140,7 @@
   {
     "id": "9927497c800272e4",
     "year": 170.0,
-    "value": 780,
+    "value": 1699,
     "label": "Galien : circulation et anatomie",
     "category": "💊 MÉDECINE",
     "whoWhat": "Claude Galien",
@@ -163,7 +163,7 @@
   {
     "id": "df323d472b8afb67",
     "year": 850.0,
-    "value": 1500,
+    "value": 1582,
     "label": "Poudre à canon (Chine)",
     "category": "☢️ ENTROPIE",
     "whoWhat": "Alchimistes chinois",
@@ -186,7 +186,7 @@
   {
     "id": "cdf4bc8fd1349f57",
     "year": 1000.0,
-    "value": 100,
+    "value": 1700,
     "label": "Boussole (Chine)",
     "category": "🟡 HARDWARE",
     "whoWhat": "Alchimistes chinois",
@@ -209,7 +209,7 @@
   {
     "id": "4102dc9a8ea87408",
     "year": 1271.0,
-    "value": 1184,
+    "value": 1839,
     "label": "Lunettes (Italie)",
     "category": "💊 MÉDECINE",
     "whoWhat": "Alessandro della Spina",
@@ -232,7 +232,7 @@
   {
     "id": "256cfbc6837740b0",
     "year": 1300.0,
-    "value": 1300,
+    "value": 1769,
     "label": "Horloge mécanique (Europe)",
     "category": "🟡 HARDWARE",
     "whoWhat": "Maîtres horlogers européens",
@@ -255,7 +255,7 @@
   {
     "id": "e5b3d6761dffbeaf",
     "year": 1440.0,
-    "value": 1860,
+    "value": 1766,
     "label": "Imprimerie à caractères mobiles",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Johannes Gutenberg",
@@ -278,7 +278,7 @@
   {
     "id": "e1b207bd3ac13b6b",
     "year": 1440.5,
-    "value": 15,
+    "value": 1839,
     "label": "Imprimerie",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -301,7 +301,7 @@
   {
     "id": "004d95cdbd7a1e1b",
     "year": 1440.5,
-    "value": 15,
+    "value": 1920,
     "label": "Imprimerie",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Johannes Gutenberg",
@@ -324,7 +324,7 @@
   {
     "id": "e0d2b62148c6f4be",
     "year": 1495.0,
-    "value": 2000,
+    "value": 1843,
     "label": "Chevalier mécanique de Léonard",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Léonard de Vinci",
@@ -347,7 +347,7 @@
   {
     "id": "d9d5afd8df537db7",
     "year": 1543.0,
-    "value": 272,
+    "value": 2008,
     "label": "De humani corporis fabrica (anatomie moderne)",
     "category": "💊 MÉDECINE",
     "whoWhat": "André Vésale",
@@ -370,7 +370,7 @@
   {
     "id": "1499eb7bbb3de1e2",
     "year": 1628.0,
-    "value": 612,
+    "value": 2209,
     "label": "Circulation sanguine (Harvey)",
     "category": "💊 MÉDECINE",
     "whoWhat": "William Harvey",
@@ -393,7 +393,7 @@
   {
     "id": "df70d62bba8362ce",
     "year": 1687.0,
-    "value": 10,
+    "value": 1925,
     "label": "Principia Mathematica",
     "category": "🟡 HARDWARE",
     "whoWhat": "Isaac Newton",
@@ -416,7 +416,7 @@
   {
     "id": "794ac79dd98b79b6",
     "year": 1712.0,
-    "value": 15,
+    "value": 2014,
     "label": "Machine à Vapeur",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -439,7 +439,7 @@
   {
     "id": "aa9c4618f5c65bad",
     "year": 1738.0,
-    "value": 2700,
+    "value": 2112,
     "label": "Canard digesteur de Vaucanson",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Jacques de Vaucanson",
@@ -462,7 +462,7 @@
   {
     "id": "8018043a7f2d8fe6",
     "year": 1765.0,
-    "value": 50,
+    "value": 2219,
     "label": "Machine à vapeur (James Watt)",
     "category": "🟡 HARDWARE",
     "whoWhat": "James Watt",
@@ -485,7 +485,7 @@
   {
     "id": "ec3fdb2624ba19b2",
     "year": 1796.0,
-    "value": 1284,
+    "value": 2448,
     "label": "Vaccin contre la variole (Jenner)",
     "category": "💊 MÉDECINE",
     "whoWhat": "Edward Jenner",
@@ -508,7 +508,7 @@
   {
     "id": "7086c608a2219791",
     "year": 1800.0,
-    "value": 12,
+    "value": 2336,
     "label": "Pile Voltaïque",
     "category": "🟡 HARDWARE",
     "whoWhat": "Alessandro Volta",
@@ -531,7 +531,7 @@
   {
     "id": "49ec6e485294f54b",
     "year": 1811.0,
-    "value": 16,
+    "value": 1582,
     "label": "Luddites",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "Artisans anglais",
@@ -554,7 +554,7 @@
   {
     "id": "fd368efea5e06035",
     "year": 1818.0,
-    "value": 15,
+    "value": 1582,
     "label": "Frankenstein",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Mary Shelley",
@@ -572,12 +572,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 49,
-    "pharmakon_poison_percent": 51
+    "pharmakon_poison_percent": 51,
+    "realLabel": "Anesthésie générale (éther)"
   },
   {
     "id": "01103a2c53d16a71",
     "year": 1831.0,
-    "value": 18,
+    "value": 1712,
     "label": "Révolte des Canuts",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "Ouvriers Lyon",
@@ -600,7 +601,7 @@
   {
     "id": "a3dab00412e4b866",
     "year": 1843.0,
-    "value": 20,
+    "value": 1582,
     "label": "Ada Lovelace",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -623,7 +624,7 @@
   {
     "id": "5303a89b3394c837",
     "year": 1846.0,
-    "value": 1484,
+    "value": 2734,
     "label": "Anesthésie générale (éther)",
     "category": "💊 MÉDECINE",
     "whoWhat": "William Morton",
@@ -648,7 +649,7 @@
   {
     "id": "f8771d6a9f391b9d",
     "year": 1859.0,
-    "value": 18,
+    "value": 3073,
     "label": "L'Origine des espèces",
     "category": "🟢 BIOTECH",
     "whoWhat": "Charles Darwin",
@@ -671,7 +672,7 @@
   {
     "id": "e9342011139e37c1",
     "year": 1861.0,
-    "value": 1544,
+    "value": 3475,
     "label": "Théorie microbienne (Pasteur)",
     "category": "💊 MÉDECINE",
     "whoWhat": "Louis Pasteur",
@@ -694,7 +695,7 @@
   {
     "id": "31a2a592d763d0a5",
     "year": 1863,
-    "value": 563,
+    "value": 1623,
     "label": "Paris au XXe siècle",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Jules Verne",
@@ -708,12 +709,13 @@
     "convergences": "Fiction (roman) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2020
+    "realYear": 2020,
+    "realLabel": "Visioconférence de masse (Zoom)"
   },
   {
     "id": "031480bd40094df0",
     "year": 1865.0,
-    "value": 20,
+    "value": 1667,
     "label": "De la Terre à la Lune",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Jules Verne",
@@ -731,12 +733,13 @@
     "grand_filter_analysis": "L'expansion spatiale comme impératif de survie ou fuite en avant ?",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 42,
-    "pharmakon_poison_percent": 58
+    "pharmakon_poison_percent": 58,
+    "realLabel": "Apollo 11"
   },
   {
     "id": "18543610ede87df0",
     "year": 1870,
-    "value": 570,
+    "value": 1715,
     "label": "Vingt mille lieues sous les mers",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Jules Verne",
@@ -755,7 +758,7 @@
   {
     "id": "257843e31dc06410",
     "year": 1876.0,
-    "value": 22,
+    "value": 2008,
     "label": "Téléphone",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Alexander Graham Bell",
@@ -778,7 +781,7 @@
   {
     "id": "2f6f3421bdbec13c",
     "year": 1882.0,
-    "value": 1628,
+    "value": 3951,
     "label": "Bacille de la tuberculose (Koch)",
     "category": "💊 MÉDECINE",
     "whoWhat": "Robert Koch",
@@ -801,7 +804,7 @@
   {
     "id": "4c9c8ea1530e85a8",
     "year": 1889.0,
-    "value": 25,
+    "value": 2464,
     "label": "Exposition Universelle (Tour Eiffel)",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -824,7 +827,7 @@
   {
     "id": "655103acdf596ddd",
     "year": 1895.0,
-    "value": 28,
+    "value": 2604,
     "label": "Rayons X",
     "category": "🟡 HARDWARE",
     "whoWhat": "Wilhelm Röntgen",
@@ -847,7 +850,7 @@
   {
     "id": "639b47575d57463b",
     "year": 1897,
-    "value": 597,
+    "value": 1765,
     "label": "L'Homme invisible",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "H.G. Wells",
@@ -861,12 +864,13 @@
     "convergences": "Fiction (roman) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2006
+    "realYear": 2006,
+    "realLabel": "Camouflage optique (métamatériaux)"
   },
   {
     "id": "c6a75f4193ec6ec4",
     "year": 1900.0,
-    "value": 30,
+    "value": 2756,
     "label": "Théorie des Quanta",
     "category": "🟡 HARDWARE",
     "whoWhat": "Max Planck",
@@ -889,7 +893,7 @@
   {
     "id": "dbf8023e141c2841",
     "year": 1901.0,
-    "value": 35,
+    "value": 2104,
     "label": "Transmission Transatlantique",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Marconi",
@@ -912,7 +916,7 @@
   {
     "id": "c27472c0c8c2c39d",
     "year": 1903.0,
-    "value": 110,
+    "value": 1582,
     "label": "Avion (Wright)",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -935,7 +939,7 @@
   {
     "id": "1c9f0bb77a030e9e",
     "year": 1905.0,
-    "value": 120,
+    "value": 2922,
     "label": "Annus Mirabilis (Einstein)",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -958,7 +962,7 @@
   {
     "id": "a5f455c3ae5a9083",
     "year": 1911.0,
-    "value": 40,
+    "value": 3104,
     "label": "Noyau Atomique",
     "category": "🟡 HARDWARE",
     "whoWhat": "Ernest Rutherford",
@@ -981,7 +985,7 @@
   {
     "id": "995bfe9ceb630796",
     "year": 1915.0,
-    "value": 125,
+    "value": 3302,
     "label": "Relativité Générale",
     "category": "🟡 HARDWARE",
     "whoWhat": "Albert Einstein",
@@ -1004,7 +1008,7 @@
   {
     "id": "6ef3ef773fa2c8ba",
     "year": 1920.0,
-    "value": 50,
+    "value": 1820,
     "label": "R.U.R. (Robot)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Karel Čapek",
@@ -1022,12 +1026,13 @@
     "grand_filter_analysis": "Le remplacement de l'homme par la machine rend l'humanité obsolète et vulnérable à l'extermination.",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 52,
-    "pharmakon_poison_percent": 48
+    "pharmakon_poison_percent": 48,
+    "realLabel": "Unimate, 1er robot industriel"
   },
   {
     "id": "60400fcd2676a907",
     "year": 1920.0,
-    "value": 3400,
+    "value": 3517,
     "label": "Le mot « robot » (R.U.R.)",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Karel Čapek",
@@ -1050,7 +1055,7 @@
   {
     "id": "c96bc109bf0cb14c",
     "year": 1920.0,
-    "value": 1500,
+    "value": 1878,
     "label": "R.U.R. (robots révoltés)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Karel Čapek",
@@ -1068,12 +1073,13 @@
     "grand_filter_analysis": "La fiction comme avertissement.",
     "final_note": "On avait prévenu.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Unimate, 1er robot industriel"
   },
   {
     "id": "b5e09f01d51f4e47",
     "year": 1924.0,
-    "value": 55,
+    "value": 3751,
     "label": "Nature ondulatoire matière",
     "category": "🟡 HARDWARE",
     "whoWhat": "Louis de Broglie",
@@ -1096,7 +1102,7 @@
   {
     "id": "9a4e853ff0a97a4a",
     "year": 1925.0,
-    "value": 60,
+    "value": 2209,
     "label": "Concept de Noosphère",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "Teilhard de Chardin",
@@ -1119,7 +1125,7 @@
   {
     "id": "8fe387a0b0c9bdec",
     "year": 1926.0,
-    "value": 60,
+    "value": 1764,
     "label": "Fusée à ergols liquides",
     "category": "🟣 ESPACE",
     "whoWhat": "Robert Goddard",
@@ -1142,7 +1148,7 @@
   {
     "id": "a567c090c3d10fe8",
     "year": 1927,
-    "value": 627,
+    "value": 1940,
     "label": "Metropolis",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Fritz Lang",
@@ -1160,12 +1166,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Boston Dynamics Atlas"
   },
   {
     "id": "a2541ba556c3192d",
     "year": 1927.0,
-    "value": 130,
+    "value": 4006,
     "label": "Conférence Solvay",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -1188,7 +1195,7 @@
   {
     "id": "82cedee98784d53f",
     "year": 1927.0,
-    "value": 1500,
+    "value": 2006,
     "label": "Metropolis (robot Maria)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Fritz Lang",
@@ -1206,12 +1213,13 @@
     "grand_filter_analysis": "La fiction comme avertissement.",
     "final_note": "On avait prévenu.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Atlas, humanoïde hydraulique"
   },
   {
     "id": "714d62a914571c18",
     "year": 1928.0,
-    "value": 135,
+    "value": 4510,
     "label": "Pénicilline",
     "category": "🟢 BIOTECH",
     "whoWhat": "Alexander Fleming",
@@ -1234,7 +1242,7 @@
   {
     "id": "135d5149c622cec5",
     "year": 1928.0,
-    "value": 65,
+    "value": 4282,
     "label": "Équation de Dirac",
     "category": "🟡 HARDWARE",
     "whoWhat": "Paul Dirac",
@@ -1257,7 +1265,7 @@
   {
     "id": "2bcf0effa5e59950",
     "year": 1928.0,
-    "value": 1812,
+    "value": 5165,
     "label": "Pénicilline (Fleming)",
     "category": "💊 MÉDECINE",
     "whoWhat": "Alexander Fleming",
@@ -1280,7 +1288,7 @@
   {
     "id": "e5b2b504a52a0da6",
     "year": 1929.0,
-    "value": 2100,
+    "value": 2077,
     "label": "Manon des sources (Pagnol)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Marcel Pagnol",
@@ -1298,12 +1306,13 @@
     "grand_filter_analysis": "La fiction préfigure les guerres de ressource (eau) du XXIe siècle.",
     "final_note": "L'eau, prochain or bleu.",
     "pharmakon_remedy_percent": 40,
-    "pharmakon_poison_percent": 60
+    "pharmakon_poison_percent": 60,
+    "realLabel": "Guerres de l'Eau (Climat)"
   },
   {
     "id": "888b01d69a7b17fb",
     "year": 1931.0,
-    "value": 70,
+    "value": 1647,
     "label": "Théorème d'Incomplétude",
     "category": "🔵 COGNITION",
     "whoWhat": "Kurt Gödel",
@@ -1326,7 +1335,7 @@
   {
     "id": "f087eae8f0339388",
     "year": 1931.0,
-    "value": 4310,
+    "value": 2153,
     "label": "Dick Tracy (montre-écran)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Chester Gould",
@@ -1344,12 +1353,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Apple Watch"
   },
   {
     "id": "ad9d0ccc9a8a89d2",
     "year": 1932.0,
-    "value": 70,
+    "value": 2234,
     "label": "Le Meilleur des mondes",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Aldous Huxley",
@@ -1367,12 +1377,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 43,
-    "pharmakon_poison_percent": 57
+    "pharmakon_poison_percent": 57,
+    "realLabel": "Bébés CRISPR"
   },
   {
     "id": "884ed28c4782a326",
     "year": 1932.0,
-    "value": 4320,
+    "value": 2320,
     "label": "Le Meilleur des mondes (eugénisme)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Aldous Huxley",
@@ -1390,12 +1401,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Bébés CRISPR (He Jiankui)"
   },
   {
     "id": "a31cca8665337265",
     "year": 1936.0,
-    "value": 80,
+    "value": 1720,
     "label": "Machine de Turing",
     "category": "🔵 COGNITION",
     "whoWhat": "Alan Turing",
@@ -1418,7 +1430,7 @@
   {
     "id": "2916c8ae51f3d7aa",
     "year": 1938.0,
-    "value": 145,
+    "value": 4582,
     "label": "Fission Nucléaire",
     "category": "🟡 HARDWARE",
     "whoWhat": "Hahn & Strassmann",
@@ -1441,7 +1453,7 @@
   {
     "id": "e19e72d16694e061",
     "year": 1942.0,
-    "value": 110,
+    "value": 2412,
     "label": "Lois de la Robotique",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Isaac Asimov",
@@ -1459,12 +1471,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 51,
-    "pharmakon_poison_percent": 49
+    "pharmakon_poison_percent": 49,
+    "realLabel": "Unimate, 1er robot industriel"
   },
   {
     "id": "607690cdc9acfc79",
     "year": 1942.0,
-    "value": 140,
+    "value": 4907,
     "label": "Chicago Pile-1",
     "category": "🟡 HARDWARE",
     "whoWhat": "Enrico Fermi",
@@ -1487,7 +1500,7 @@
   {
     "id": "3581ccae808a02ba",
     "year": 1943.0,
-    "value": 150,
+    "value": 1652,
     "label": "Ravage",
     "category": "☢️ ENTROPIE",
     "whoWhat": "René Barjavel",
@@ -1510,7 +1523,7 @@
   {
     "id": "c1ce24a74f070863",
     "year": 1944.0,
-    "value": 120,
+    "value": 5930,
     "label": "Schrödinger: What is Life?",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -1533,7 +1546,7 @@
   {
     "id": "d006066008f75b3d",
     "year": 1945.0,
-    "value": 200,
+    "value": 1731,
     "label": "Trinity (Bombe A)",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -1556,7 +1569,7 @@
   {
     "id": "4f909039e2af278f",
     "year": 1945.0,
-    "value": 155,
+    "value": 1872,
     "label": "Création de l'ONU",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -1579,7 +1592,7 @@
   {
     "id": "19f8a6235f03308c",
     "year": 1945.0,
-    "value": 150,
+    "value": 2323,
     "label": "Vannevar Bush: As We May Think",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "",
@@ -1602,7 +1615,7 @@
   {
     "id": "d1c69fee53abc01f",
     "year": 1945.0,
-    "value": 400,
+    "value": 1820,
     "label": "Bombe atomique (Trinity)",
     "category": "☢️ ENTROPIE",
     "whoWhat": "Manhattan Project",
@@ -1625,7 +1638,7 @@
   {
     "id": "a966504889acfeeb",
     "year": 1946.0,
-    "value": 160,
+    "value": 5258,
     "label": "ENIAC",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -1648,7 +1661,7 @@
   {
     "id": "b6318ff20dda2f10",
     "year": 1947.0,
-    "value": 160,
+    "value": 5638,
     "label": "Holographie",
     "category": "🟡 HARDWARE",
     "whoWhat": "Dennis Gabor",
@@ -1671,7 +1684,7 @@
   {
     "id": "796ff81398fe6200",
     "year": 1947.0,
-    "value": 250,
+    "value": 1919,
     "label": "Horloge: 7 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -1694,7 +1707,7 @@
   {
     "id": "0abe2f52c65eebfc",
     "year": 1947.5,
-    "value": 600,
+    "value": 6047,
     "label": "Transistor (Bell Labs)",
     "category": "🟡 HARDWARE",
     "whoWhat": "Bell Labs",
@@ -1717,7 +1730,7 @@
   {
     "id": "0c86cacf54f2b7d5",
     "year": 1947.9,
-    "value": 250,
+    "value": 6488,
     "label": "Transistor",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -1740,7 +1753,7 @@
   {
     "id": "fc11f397c6565984",
     "year": 1948.0,
-    "value": 200,
+    "value": 1801,
     "label": "Cybernétique",
     "category": "🔵 COGNITION",
     "whoWhat": "Norbert Wiener",
@@ -1763,7 +1776,7 @@
   {
     "id": "ea07dc21f9d302a7",
     "year": 1948.0,
-    "value": 170,
+    "value": 2066,
     "label": "Déclaration Droits de l'Homme",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -1786,7 +1799,7 @@
   {
     "id": "8f34d65bf7025e1e",
     "year": 1948.0,
-    "value": 170,
+    "value": 2448,
     "label": "Théorie de l'Information",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Claude Shannon",
@@ -1809,7 +1822,7 @@
   {
     "id": "f50050934c9766e9",
     "year": 1949.0,
-    "value": 150,
+    "value": 2511,
     "label": "1984",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "George Orwell",
@@ -1827,12 +1840,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 54,
-    "pharmakon_poison_percent": 46
+    "pharmakon_poison_percent": 46,
+    "realLabel": "PRISM (surveillance de masse)"
   },
   {
     "id": "8d3aedf35b906a16",
     "year": 1949.0,
-    "value": 300,
+    "value": 2029,
     "label": "Horloge: 3 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -1855,7 +1869,7 @@
   {
     "id": "c9e65357aeaa91f5",
     "year": 1949.0,
-    "value": 4490,
+    "value": 2616,
     "label": "1984 (Orwell, télécrans)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "George Orwell",
@@ -1873,12 +1887,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "PRISM (surveillance de masse)"
   },
   {
     "id": "46d013ee0be3f37c",
     "year": 1950.0,
-    "value": 160,
+    "value": 2729,
     "label": "I, Robot",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Isaac Asimov",
@@ -1901,7 +1916,7 @@
   {
     "id": "8d472722195bd907",
     "year": 1950.0,
-    "value": 220,
+    "value": 1891,
     "label": "Test de Turing",
     "category": "🔵 COGNITION",
     "whoWhat": "Alan Turing",
@@ -1924,7 +1939,7 @@
   {
     "id": "b36a6a7c73fc172d",
     "year": 1950.0,
-    "value": 155,
+    "value": 2848,
     "label": "Lois de la Robotique (I, Robot)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Isaac Asimov",
@@ -1942,12 +1957,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 41,
-    "pharmakon_poison_percent": 59
+    "pharmakon_poison_percent": 59,
+    "realLabel": "Unimate, 1er robot industriel"
   },
   {
     "id": "8d8b630b131cc00b",
     "year": 1950.0,
-    "value": 1500,
+    "value": 2976,
     "label": "I, Robot (lois des robots)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Isaac Asimov",
@@ -1965,12 +1981,13 @@
     "grand_filter_analysis": "La fiction comme avertissement.",
     "final_note": "On avait prévenu.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Unimate, 1er robot industriel"
   },
   {
     "id": "be42ed83ac1e6d55",
     "year": 1950,
-    "value": 650,
+    "value": 3112,
     "label": "Le Secret de l'Espadon (Blake et Mortimer)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Edgar P. Jacobs",
@@ -1984,12 +2001,13 @@
     "convergences": "Fiction (BD) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 1954
+    "realYear": 1954,
+    "realLabel": "USS Nautilus, 1er sous-marin nucléaire"
   },
   {
     "id": "a2ab4e3498932adb",
     "year": 1951.0,
-    "value": 180,
+    "value": 3257,
     "label": "Fondation (Asimov)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "",
@@ -2012,7 +2030,7 @@
   {
     "id": "9f5f97d705c45599",
     "year": 1951.0,
-    "value": 4510,
+    "value": 3412,
     "label": "Fondation (psychohistoire)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Isaac Asimov",
@@ -2030,12 +2048,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Big Data prédictif"
   },
   {
     "id": "547279381733dc7d",
     "year": 1952.0,
-    "value": 350,
+    "value": 2153,
     "label": "Bombe H",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -2058,7 +2077,7 @@
   {
     "id": "c596fae75f9c169d",
     "year": 1952.0,
-    "value": 1500,
+    "value": 3576,
     "label": "Astro Boy",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Osamu Tezuka",
@@ -2076,12 +2095,13 @@
     "grand_filter_analysis": "La fiction comme avertissement.",
     "final_note": "On avait prévenu.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "ASIMO, humanoïde bipède"
   },
   {
     "id": "316e05ac7de24a3d",
     "year": 1953.0,
-    "value": 400,
+    "value": 2291,
     "label": "Horloge: 2 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -2104,7 +2124,7 @@
   {
     "id": "24446f6e0b634583",
     "year": 1953.0,
-    "value": 4530,
+    "value": 3751,
     "label": "Fahrenheit 451 (livre numérique)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Ray Bradbury",
@@ -2122,12 +2142,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Kindle (liseuse e-ink)"
   },
   {
     "id": "7866d684e90c1ba4",
     "year": 1953.0,
-    "value": 1912,
+    "value": 6816,
     "label": "Structure en double hélice de l'ADN",
     "category": "💊 MÉDECINE",
     "whoWhat": "Watson & Crick",
@@ -2150,7 +2171,7 @@
   {
     "id": "5f3ee32ae8b60914",
     "year": 1953.3,
-    "value": 250,
+    "value": 7836,
     "label": "ADN (Watson & Crick)",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -2173,7 +2194,7 @@
   {
     "id": "405925e7b37c609b",
     "year": 1954.0,
-    "value": 210,
+    "value": 6963,
     "label": "Cellule Photovoltaïque",
     "category": "🟡 HARDWARE",
     "whoWhat": "Bell Labs",
@@ -2196,7 +2217,7 @@
   {
     "id": "09b479e23d2b220a",
     "year": 1954.0,
-    "value": 4100,
+    "value": 7472,
     "label": "Unimate, 1er robot industriel",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "George Devol",
@@ -2226,7 +2247,7 @@
   {
     "id": "d2b84cca79fa20d3",
     "year": 1954,
-    "value": 30954,
+    "value": 8017,
     "label": "USS Nautilus, 1er sous-marin nucléaire",
     "category": "🟡 HARDWARE",
     "whoWhat": "Réalité",
@@ -2247,7 +2268,7 @@
   {
     "id": "4039a0992bd1ce5e",
     "year": 1955.0,
-    "value": 250,
+    "value": 2302,
     "label": "Pacte de Varsovie",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -2270,7 +2291,7 @@
   {
     "id": "310bbeb4401126f2",
     "year": 1956.0,
-    "value": 280,
+    "value": 1990,
     "label": "Conférence Dartmouth",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -2293,7 +2314,7 @@
   {
     "id": "30c4bbab9ff42370",
     "year": 1956.0,
-    "value": 230,
+    "value": 8600,
     "label": "Premier Disque Dur",
     "category": "🟡 HARDWARE",
     "whoWhat": "IBM 305 RAMAC",
@@ -2316,7 +2337,7 @@
   {
     "id": "156024e20e3460ca",
     "year": 1956.0,
-    "value": 4560,
+    "value": 3937,
     "label": "Minority Report (précrime)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Philip K. Dick",
@@ -2334,12 +2355,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Police prédictive algorithmique"
   },
   {
     "id": "165853ae89e8d0ce",
     "year": 1957.0,
-    "value": 240,
+    "value": 2101,
     "label": "Perceptron",
     "category": "🔵 COGNITION",
     "whoWhat": "Frank Rosenblatt",
@@ -2362,7 +2384,7 @@
   {
     "id": "b4daccf737f08052",
     "year": 1957.8,
-    "value": 300,
+    "value": 2001,
     "label": "Spoutnik 1",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -2385,7 +2407,7 @@
   {
     "id": "0141946e0c391731",
     "year": 1958.0,
-    "value": 350,
+    "value": 9222,
     "label": "Circuit Intégré",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -2408,7 +2430,7 @@
   {
     "id": "2337196a9ef918e1",
     "year": 1958.0,
-    "value": 260,
+    "value": 2311,
     "label": "NASA Créée",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -2431,7 +2453,7 @@
   {
     "id": "a10b02765d624821",
     "year": 1959.0,
-    "value": 280,
+    "value": 9883,
     "label": "Nanotechnologie (Feynman)",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -2454,7 +2476,7 @@
   {
     "id": "da18110662df8321",
     "year": 1960.0,
-    "value": 300,
+    "value": 10585,
     "label": "Laser",
     "category": "🟡 HARDWARE",
     "whoWhat": "Theodore Maiman",
@@ -2477,7 +2499,7 @@
   {
     "id": "e0b8fcc2296f45f9",
     "year": 1960.0,
-    "value": 290,
+    "value": 9000,
     "label": "Cyborg (Concept)",
     "category": "🟢 BIOTECH",
     "whoWhat": "Clynes & Kline",
@@ -2500,7 +2522,7 @@
   {
     "id": "065a71059624dedc",
     "year": 1960.0,
-    "value": 450,
+    "value": 2445,
     "label": "Horloge: 7 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -2523,7 +2545,7 @@
   {
     "id": "e1bdb0d8ba7c058c",
     "year": 1961.0,
-    "value": 400,
+    "value": 2713,
     "label": "Youri Gagarine",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -2546,7 +2568,7 @@
   {
     "id": "63e636639181df80",
     "year": 1961.0,
-    "value": 310,
+    "value": 2589,
     "label": "Mur de Berlin",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -2569,7 +2591,7 @@
   {
     "id": "c1db68c947ad62c1",
     "year": 1961.0,
-    "value": 4800,
+    "value": 11327,
     "label": "Unimate déployé chez General Motors",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "General Motors",
@@ -2592,7 +2614,7 @@
   {
     "id": "8e616329a355d487",
     "year": 1962.0,
-    "value": 500,
+    "value": 2616,
     "label": "Crise des Missiles",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -2615,7 +2637,7 @@
   {
     "id": "d14457ff7946f8d1",
     "year": 1962.0,
-    "value": 310,
+    "value": 2585,
     "label": "Telstar 1",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -2638,7 +2660,7 @@
   {
     "id": "9e897df0f33bdf5a",
     "year": 1962.0,
-    "value": 250,
+    "value": 2734,
     "label": "La Galaxie Gutenberg",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "Marshall McLuhan",
@@ -2661,7 +2683,7 @@
   {
     "id": "c9073ab51e99519f",
     "year": 1962,
-    "value": 662,
+    "value": 4135,
     "label": "Le Maître du Haut Château",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Philip K. Dick",
@@ -2675,12 +2697,13 @@
     "convergences": "Fiction (roman) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2019.0
+    "realYear": 2019.0,
+    "realLabel": "Suprématie Quantique"
   },
   {
     "id": "05590f0b5b06a907",
     "year": 1963.0,
-    "value": 320,
+    "value": 2936,
     "label": "Téléphone Rouge",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -2703,7 +2726,7 @@
   {
     "id": "6ae79f329409a04e",
     "year": 1963.0,
-    "value": 330,
+    "value": 2224,
     "label": "Souris Informatique",
     "category": "🔵 COGNITION",
     "whoWhat": "Douglas Engelbart",
@@ -2726,7 +2749,7 @@
   {
     "id": "b62211827191e098",
     "year": 1963.0,
-    "value": 550,
+    "value": 2808,
     "label": "Horloge: 12 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -2749,7 +2772,7 @@
   {
     "id": "36531b026d8d2018",
     "year": 1964.0,
-    "value": 320,
+    "value": 2896,
     "label": "Échelle de Kardashev",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "Nikolai Kardashev",
@@ -2772,7 +2795,7 @@
   {
     "id": "96e7f0dbf5ce87a3",
     "year": 1964.0,
-    "value": 340,
+    "value": 3231,
     "label": "Fond diffus cosmologique",
     "category": "🟣 ESPACE",
     "whoWhat": "Penzias & Wilson",
@@ -2795,7 +2818,7 @@
   {
     "id": "84ddb790fa24ea8b",
     "year": 1965.0,
-    "value": 360,
+    "value": 12110,
     "label": "Loi de Moore",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -2818,7 +2841,7 @@
   {
     "id": "3bb40ce96a3f3087",
     "year": 1965.0,
-    "value": 350,
+    "value": 4345,
     "label": "Dune",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Frank Herbert",
@@ -2841,7 +2864,7 @@
   {
     "id": "357010e4598b602a",
     "year": 1965.0,
-    "value": 360,
+    "value": 3073,
     "label": "Hypertexte",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "Ted Nelson",
@@ -2864,7 +2887,7 @@
   {
     "id": "36282248bbe2e81a",
     "year": 1966.0,
-    "value": 320,
+    "value": 2359,
     "label": "ELIZA",
     "category": "🔵 COGNITION",
     "whoWhat": "Joseph Weizenbaum",
@@ -2887,7 +2910,7 @@
   {
     "id": "74003598112f7d5d",
     "year": 1966.0,
-    "value": 370,
+    "value": 4568,
     "label": "Star Trek (Série)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "",
@@ -2905,12 +2928,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 51,
-    "pharmakon_poison_percent": 49
+    "pharmakon_poison_percent": 49,
+    "realLabel": "iPhone (smartphone)"
   },
   {
     "id": "283329ce7418f58a",
     "year": 1966.0,
-    "value": 4660,
+    "value": 4805,
     "label": "Star Trek (communicateur)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Gene Roddenberry",
@@ -2928,12 +2952,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "iPhone (smartphone)"
   },
   {
     "id": "cca60f03a309e07d",
     "year": 1966.0,
-    "value": 5500,
+    "value": 12934,
     "label": "Shakey, 1er robot « intelligent »",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Stanford Research Institute",
@@ -2956,7 +2981,7 @@
   {
     "id": "e8c1a28ffddc4b13",
     "year": 1967.0,
-    "value": 380,
+    "value": 3355,
     "label": "Traité de l'Espace",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -2979,7 +3004,7 @@
   {
     "id": "4ef3181b001da524",
     "year": 1967,
-    "value": 667,
+    "value": 5056,
     "label": "Valérian et Laureline",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Mézières / Christin",
@@ -2993,12 +3018,13 @@
     "convergences": "Fiction (BD) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 1969.5
+    "realYear": 1969.5,
+    "realLabel": "Apollo 11 (Premier pas sur la Lune)"
   },
   {
     "id": "887d298f3124b190",
     "year": 1968.0,
-    "value": 400,
+    "value": 5322,
     "label": "La Nuit des temps",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "René Barjavel",
@@ -3016,12 +3042,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 48,
-    "pharmakon_poison_percent": 52
+    "pharmakon_poison_percent": 52,
+    "realLabel": "Boson de Higgs"
   },
   {
     "id": "3237c7aa01d4a7d3",
     "year": 1968.0,
-    "value": 410,
+    "value": 2510,
     "label": "La Mère de toutes les démos",
     "category": "🔵 COGNITION",
     "whoWhat": "Engelbart",
@@ -3044,7 +3071,7 @@
   {
     "id": "4c4f99f891e775a8",
     "year": 1968.0,
-    "value": 420,
+    "value": 5603,
     "label": "Do Androids Dream? (Blade Runner)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Philip K. Dick",
@@ -3062,12 +3089,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 54,
-    "pharmakon_poison_percent": 46
+    "pharmakon_poison_percent": 46,
+    "realLabel": "Boston Dynamics Atlas"
   },
   {
     "id": "bbff54df21d7de3c",
     "year": 1968.0,
-    "value": 600,
+    "value": 3020,
     "label": "Horloge: 7 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -3090,7 +3118,7 @@
   {
     "id": "9d0bc0a864f5b44c",
     "year": 1968.0,
-    "value": 380,
+    "value": 3266,
     "label": "Whole Earth Catalog",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "Stewart Brand",
@@ -3113,7 +3141,7 @@
   {
     "id": "8f5661cdbb2af56f",
     "year": 1968.0,
-    "value": 4680,
+    "value": 5901,
     "label": "2001, Odyssée de l'espace (HAL)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Arthur C. Clarke",
@@ -3131,12 +3159,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "IBM Watson"
   },
   {
     "id": "63d0ff0b9a1e7197",
     "year": 1968.0,
-    "value": 4680,
+    "value": 6216,
     "label": "Blade Runner (réplicants)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Philip K. Dick",
@@ -3154,12 +3183,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Robots humanoïdes industriels"
   },
   {
     "id": "a692a39491fb32d7",
     "year": 1968.0,
-    "value": 1500,
+    "value": 6548,
     "label": "2001, Odyssée (HAL 9000)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Arthur C. Clarke",
@@ -3177,12 +3207,13 @@
     "grand_filter_analysis": "La fiction comme avertissement.",
     "final_note": "On avait prévenu.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "ASIMO, humanoïde bipède"
   },
   {
     "id": "d77a7641e0f45b6a",
     "year": 1968,
-    "value": 668,
+    "value": 6899,
     "label": "2001, L'Odyssée de l'espace",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Kubrick / Clarke",
@@ -3196,12 +3227,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2011.0
+    "realYear": 2011.0,
+    "realLabel": "IBM Watson"
   },
   {
     "id": "644530ed718b2568",
     "year": 1968.3,
-    "value": 420,
+    "value": 7268,
     "label": "2001 L'Odyssée",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Stanley Kubrick / Arthur C. Clarke",
@@ -3219,12 +3251,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 47,
-    "pharmakon_poison_percent": 53
+    "pharmakon_poison_percent": 53,
+    "realLabel": "IBM Watson"
   },
   {
     "id": "90f7bf0b27a41fef",
     "year": 1969.0,
-    "value": 450,
+    "value": 13798,
     "label": "Unix",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -3247,7 +3280,7 @@
   {
     "id": "c58bc5b9c5d60ab7",
     "year": 1969.0,
-    "value": 420,
+    "value": 3475,
     "label": "RFC 1",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -3270,7 +3303,7 @@
   {
     "id": "811dcf05b477a154",
     "year": 1969.0,
-    "value": 650,
+    "value": 3257,
     "label": "Horloge: 10 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -3293,7 +3326,7 @@
   {
     "id": "6b30bd137992ee04",
     "year": 1969.0,
-    "value": 4690,
+    "value": 7657,
     "label": "Ubik (objets connectés)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Philip K. Dick",
@@ -3311,12 +3344,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Internet des objets (IoT)"
   },
   {
     "id": "460373729317312f",
     "year": 1969,
-    "value": 669,
+    "value": 8066,
     "label": "Doraemon",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Fujiko Fujio",
@@ -3330,12 +3364,13 @@
     "convergences": "Fiction (manga) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2002.0
+    "realYear": 2002.0,
+    "realLabel": "Roomba, robot domestique autonome"
   },
   {
     "id": "71977b21756b9f54",
     "year": 1969.5,
-    "value": 800,
+    "value": 3898,
     "label": "Apollo 11",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -3360,7 +3395,7 @@
   {
     "id": "e10544a7327b9c1e",
     "year": 1969.5,
-    "value": 5000,
+    "value": 4747,
     "label": "Apollo 11 (Premier pas sur la Lune)",
     "category": "🟣 ESPACE",
     "whoWhat": "NASA",
@@ -3385,7 +3420,7 @@
   {
     "id": "b585034124d59653",
     "year": 1969.8,
-    "value": 500,
+    "value": 3703,
     "label": "ARPANET",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -3408,7 +3443,7 @@
   {
     "id": "d6c7b90fae080a25",
     "year": 1969.8,
-    "value": 800,
+    "value": 3951,
     "label": "ARPANET (Ancêtre d'Internet)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "DARPA",
@@ -3431,7 +3466,7 @@
   {
     "id": "fbdc5433e974ab1c",
     "year": 1970.0,
-    "value": 450,
+    "value": 2676,
     "label": "Vallée de l'Étrange",
     "category": "🔵 COGNITION",
     "whoWhat": "Masahiro Mori",
@@ -3454,7 +3489,7 @@
   {
     "id": "dd096984aa0447c6",
     "year": 1970.0,
-    "value": 460,
+    "value": 4219,
     "label": "Fibre Optique (Faible perte)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -3477,7 +3512,7 @@
   {
     "id": "8af8337ebbb90def",
     "year": 1971.0,
-    "value": 800,
+    "value": 14701,
     "label": "Intel 4004",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -3500,7 +3535,7 @@
   {
     "id": "9d921b0742563254",
     "year": 1971.0,
-    "value": 480,
+    "value": 4510,
     "label": "Email",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Ray Tomlinson",
@@ -3523,7 +3558,7 @@
   {
     "id": "0151305aa71a7c26",
     "year": 1972.0,
-    "value": 500,
+    "value": 4825,
     "label": "Pong",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -3546,7 +3581,7 @@
   {
     "id": "fda8c792d6d3bc00",
     "year": 1972.0,
-    "value": 500,
+    "value": 15640,
     "label": "Langage C",
     "category": "🟡 HARDWARE",
     "whoWhat": "Dennis Ritchie",
@@ -3569,7 +3604,7 @@
   {
     "id": "f80e9c90d8e3ad15",
     "year": 1972.0,
-    "value": 510,
+    "value": 5165,
     "label": "Blue Marble (Photo)",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "",
@@ -3592,7 +3627,7 @@
   {
     "id": "42ccacc020230c21",
     "year": 1972.0,
-    "value": 700,
+    "value": 3520,
     "label": "Horloge: 12 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -3615,7 +3650,7 @@
   {
     "id": "8b3e85414841de01",
     "year": 1973.0,
-    "value": 900,
+    "value": 5533,
     "label": "Civilisation Type 0.7",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "Carl Sagan",
@@ -3638,7 +3673,7 @@
   {
     "id": "0fc9755d6ff6251f",
     "year": 1973.0,
-    "value": 600,
+    "value": 3859,
     "label": "Projet Cybersyn",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "Salvador Allende",
@@ -3661,7 +3696,7 @@
   {
     "id": "866fc6e0caa2ae26",
     "year": 1973.0,
-    "value": 520,
+    "value": 5930,
     "label": "Ethernet",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Metcalfe",
@@ -3684,7 +3719,7 @@
   {
     "id": "24a014c9303ec88e",
     "year": 1973.0,
-    "value": 450,
+    "value": 10319,
     "label": "Premier OGM (Bactérie)",
     "category": "🟢 BIOTECH",
     "whoWhat": "Cohen & Boyer",
@@ -3707,7 +3742,7 @@
   {
     "id": "46a0d36cd6439a7c",
     "year": 1974.0,
-    "value": 550,
+    "value": 6357,
     "label": "Protocole TCP",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Vint Cerf & Bob Kahn",
@@ -3730,7 +3765,7 @@
   {
     "id": "d2cd0248065d5d40",
     "year": 1974.0,
-    "value": 540,
+    "value": 5817,
     "label": "Arecibo Message",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -3753,7 +3788,7 @@
   {
     "id": "7ce32759e7600ef8",
     "year": 1974.0,
-    "value": 750,
+    "value": 3812,
     "label": "Horloge: 9 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -3776,7 +3811,7 @@
   {
     "id": "5edf0051461815db",
     "year": 1975.0,
-    "value": 600,
+    "value": 16615,
     "label": "Microsoft Fondé",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -3799,7 +3834,7 @@
   {
     "id": "5bb2233379da6b7f",
     "year": 1975.0,
-    "value": 560,
+    "value": 2860,
     "label": "Fractales",
     "category": "🔵 COGNITION",
     "whoWhat": "Mandelbrot",
@@ -3822,7 +3857,7 @@
   {
     "id": "06acc6239b38d353",
     "year": 1976.0,
-    "value": 610,
+    "value": 17622,
     "label": "Apple I",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -3845,7 +3880,7 @@
   {
     "id": "8cd98b641bee253f",
     "year": 1976.0,
-    "value": 580,
+    "value": 18659,
     "label": "Superordinateur Cray-1",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -3868,7 +3903,7 @@
   {
     "id": "cee1ddaa5fe91838",
     "year": 1977.0,
-    "value": 400,
+    "value": 8496,
     "label": "Star Wars",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "",
@@ -3886,12 +3921,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 47,
-    "pharmakon_poison_percent": 53
+    "pharmakon_poison_percent": 53,
+    "realLabel": "Horloge: 3 min"
   },
   {
     "id": "ffedfb05c20d9373",
     "year": 1977.0,
-    "value": 620,
+    "value": 7152,
     "label": "Voyager 1 & 2",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -3914,7 +3950,7 @@
   {
     "id": "4e2ff952e99034ad",
     "year": 1977.0,
-    "value": 2008,
+    "value": 11796,
     "label": "IRM (imagerie par résonance magnétique)",
     "category": "💊 MÉDECINE",
     "whoWhat": "Raymond Damadian",
@@ -3937,7 +3973,7 @@
   {
     "id": "a45d5076cd195358",
     "year": 1978.0,
-    "value": 650,
+    "value": 4464,
     "label": "Unabomber (Début)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "Kaczynski",
@@ -3960,7 +3996,7 @@
   {
     "id": "85eae1af160f50d3",
     "year": 1978.0,
-    "value": 640,
+    "value": 13432,
     "label": "FIV (Premier bébé)",
     "category": "🟢 BIOTECH",
     "whoWhat": "Louise Brown",
@@ -3983,7 +4019,7 @@
   {
     "id": "28380eb4ece5560c",
     "year": 1979.0,
-    "value": 800,
+    "value": 4135,
     "label": "Three Mile Island",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -4006,7 +4042,7 @@
   {
     "id": "a55a85e378a7fdad",
     "year": 1979.0,
-    "value": 660,
+    "value": 19722,
     "label": "Walkman",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -4029,7 +4065,7 @@
   {
     "id": "0850f1e2d23c97f6",
     "year": 1980.0,
-    "value": 680,
+    "value": 6816,
     "label": "Cosmos (Sagan)",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "",
@@ -4054,7 +4090,7 @@
   {
     "id": "89a539db0ddf5eab",
     "year": 1980.0,
-    "value": 690,
+    "value": 7308,
     "label": "Pac-Man",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -4077,7 +4113,7 @@
   {
     "id": "5a2c6a3e30546ed0",
     "year": 1980.0,
-    "value": 850,
+    "value": 4492,
     "label": "Horloge: 7 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -4100,7 +4136,7 @@
   {
     "id": "c546f8cc01612400",
     "year": 1981.0,
-    "value": 850,
+    "value": 20808,
     "label": "MS-DOS",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -4123,7 +4159,7 @@
   {
     "id": "2fc02442489b0b28",
     "year": 1981.0,
-    "value": 710,
+    "value": 8789,
     "label": "Navette Spatiale",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -4146,7 +4182,7 @@
   {
     "id": "b6fd0520cb8068a2",
     "year": 1981.0,
-    "value": 900,
+    "value": 4887,
     "label": "Horloge: 4 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -4169,7 +4205,7 @@
   {
     "id": "80307dc925bb096a",
     "year": 1982.0,
-    "value": 550,
+    "value": 8947,
     "label": "Blade Runner",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Ridley Scott / Philip K. Dick",
@@ -4192,7 +4228,7 @@
   {
     "id": "2de0b466c9105888",
     "year": 1982.0,
-    "value": 730,
+    "value": 21911,
     "label": "Protocole MIDI",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -4215,7 +4251,7 @@
   {
     "id": "5120b29f47e0544c",
     "year": 1982.0,
-    "value": 720,
+    "value": 9419,
     "label": "Tron",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "",
@@ -4238,7 +4274,7 @@
   {
     "id": "9f18f9d6964b94b1",
     "year": 1982,
-    "value": 682,
+    "value": 9913,
     "label": "Blade Runner",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Ridley Scott",
@@ -4252,12 +4288,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2013.0
+    "realYear": 2013.0,
+    "realLabel": "Boston Dynamics Atlas"
   },
   {
     "id": "1f79f3272a8a198c",
     "year": 1982,
-    "value": 682,
+    "value": 10429,
     "label": "Tron",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Steven Lisberger",
@@ -4271,12 +4308,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2021.0
+    "realYear": 2021.0,
+    "realLabel": "Métavers (Facebook/Meta)"
   },
   {
     "id": "e1f5dff54ce87229",
     "year": 1983.0,
-    "value": 580,
+    "value": 10967,
     "label": "WarGames",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "",
@@ -4299,7 +4337,7 @@
   {
     "id": "0ef1c6e4b675d6a3",
     "year": 1983.0,
-    "value": 740,
+    "value": 7836,
     "label": "DNS",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -4322,7 +4360,7 @@
   {
     "id": "175c4450ee75c1c6",
     "year": 1983.0,
-    "value": 750,
+    "value": 15221,
     "label": "PCR (Amplification ADN)",
     "category": "🟢 BIOTECH",
     "whoWhat": "Kary Mullis",
@@ -4345,7 +4383,7 @@
   {
     "id": "517680108c4923f9",
     "year": 1983.0,
-    "value": 2032,
+    "value": 17150,
     "label": "Virus VIH isolé",
     "category": "💊 MÉDECINE",
     "whoWhat": "Luc Montagnier / Françoise Barré-Sinoussi",
@@ -4368,7 +4406,7 @@
   {
     "id": "55eef561cc5bcbaa",
     "year": 1983,
-    "value": 683,
+    "value": 11527,
     "label": "WarGames",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "John Badham",
@@ -4382,12 +4420,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2009.0
+    "realYear": 2010.5,
+    "realLabel": "Stuxnet"
   },
   {
     "id": "12999cb703ccd2f3",
     "year": 1984.0,
-    "value": 600,
+    "value": 12110,
     "label": "Neuromancien",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "William Gibson",
@@ -4405,12 +4444,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 58,
-    "pharmakon_poison_percent": 42
+    "pharmakon_poison_percent": 42,
+    "realLabel": "World Wide Web public"
   },
   {
     "id": "b6c8de0652bc8ac2",
     "year": 1984.0,
-    "value": 760,
+    "value": 3063,
     "label": "Macintosh",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -4433,7 +4473,7 @@
   {
     "id": "43565c848f870cbf",
     "year": 1984.0,
-    "value": 950,
+    "value": 5322,
     "label": "Horloge: 3 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -4458,7 +4498,7 @@
   {
     "id": "d7d279fc8eec92ad",
     "year": 1984.0,
-    "value": 4840,
+    "value": 12715,
     "label": "Neuromancer (cyberspace)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "William Gibson",
@@ -4476,12 +4516,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "World Wide Web public"
   },
   {
     "id": "875d0079d3c19b9e",
     "year": 1984.0,
-    "value": 4840,
+    "value": 13342,
     "label": "Terminator (robots tueurs)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "James Cameron",
@@ -4499,12 +4540,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Drones militaires armés"
   },
   {
     "id": "aca3324eea57afe2",
     "year": 1984.0,
-    "value": 1500,
+    "value": 13991,
     "label": "Terminator (T-800)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "James Cameron",
@@ -4522,12 +4564,13 @@
     "grand_filter_analysis": "La fiction comme avertissement.",
     "final_note": "On avait prévenu.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Atlas, humanoïde hydraulique"
   },
   {
     "id": "794b7049b62912cf",
     "year": 1984,
-    "value": 684,
+    "value": 14660,
     "label": "Terminator",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "James Cameron",
@@ -4546,7 +4589,7 @@
   {
     "id": "25e28f9075777ce7",
     "year": 1984.5,
-    "value": 620,
+    "value": 15350,
     "label": "Terminator",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "James Cameron",
@@ -4554,7 +4597,7 @@
     "url": "",
     "timestamp": null,
     "tipping": false,
-    "realYear": 2012.0,
+    "realYear": 2013.0,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 2,
@@ -4564,12 +4607,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 45,
-    "pharmakon_poison_percent": 55
+    "pharmakon_poison_percent": 55,
+    "realLabel": "Boston Dynamics Atlas"
   },
   {
     "id": "58f4a530f61b1eba",
     "year": 1985.0,
-    "value": 700,
+    "value": 16060,
     "label": "Retour vers le Futur",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "",
@@ -4592,7 +4636,7 @@
   {
     "id": "a7009c6000955e9a",
     "year": 1985.0,
-    "value": 780,
+    "value": 3288,
     "label": "Windows 1.0",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -4615,7 +4659,7 @@
   {
     "id": "db4845bdcc8d18e1",
     "year": 1985,
-    "value": 685,
+    "value": 16788,
     "label": "Retour vers le futur",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Robert Zemeckis",
@@ -4629,12 +4673,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2018.0
+    "realYear": 2018.0,
+    "realLabel": "Waymo (Taxi autonome)"
   },
   {
     "id": "470431aa94d44b5f",
     "year": 1986.0,
-    "value": 750,
+    "value": 23027,
     "label": "Superconductivité Haute T°",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -4657,7 +4702,7 @@
   {
     "id": "81bba7de8f29860a",
     "year": 1986.0,
-    "value": 810,
+    "value": 10760,
     "label": "Station Mir",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -4680,7 +4725,7 @@
   {
     "id": "f954046843ced683",
     "year": 1986.3,
-    "value": 1000,
+    "value": 5800,
     "label": "Tchernobyl",
     "category": "☢️ ENTROPIE",
     "whoWhat": "URSS",
@@ -4703,7 +4748,7 @@
   {
     "id": "724679442768ec41",
     "year": 1987.0,
-    "value": 700,
+    "value": 17534,
     "label": "Une Forme de Guerre",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Iain M. Banks",
@@ -4721,12 +4766,13 @@
     "grand_filter_analysis": "L'optimisme rare : la singularité comme utopie hédoniste gérée par des machines.",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 54,
-    "pharmakon_poison_percent": 46
+    "pharmakon_poison_percent": 46,
+    "realLabel": "Drones militaires armés"
   },
   {
     "id": "c63dcafe025c63d8",
     "year": 1987.0,
-    "value": 830,
+    "value": 19200,
     "label": "Prozac",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -4749,7 +4795,7 @@
   {
     "id": "ea087d62634451f1",
     "year": 1987.0,
-    "value": 4870,
+    "value": 18296,
     "label": "RoboCop (robots policiers)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Paul Verhoeven",
@@ -4767,12 +4813,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Boston Dynamics Atlas"
   },
   {
     "id": "72d28d36b4d62e0f",
     "year": 1987,
-    "value": 687,
+    "value": 19072,
     "label": "RoboCop",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Paul Verhoeven",
@@ -4790,12 +4837,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Spot, robot quadrupède commercial"
   },
   {
     "id": "764433cad0009b77",
     "year": 1988.0,
-    "value": 850,
+    "value": 8399,
     "label": "Ver Morris",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -4818,7 +4866,7 @@
   {
     "id": "43ef7618a38e76b8",
     "year": 1988.0,
-    "value": 860,
+    "value": 5184,
     "label": "GIEC Créé",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -4841,7 +4889,7 @@
   {
     "id": "be703e57efb5ffa8",
     "year": 1988.0,
-    "value": 1050,
+    "value": 6325,
     "label": "Horloge: 6 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -4864,7 +4912,7 @@
   {
     "id": "9c520a8549a3a4ab",
     "year": 1988,
-    "value": 688,
+    "value": 19863,
     "label": "Akira",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Katsuhiro Otomo",
@@ -4878,12 +4926,13 @@
     "convergences": "Fiction (manga/film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2021
+    "realYear": 2021,
+    "realLabel": "JO de Tokyo (2020, reportés 2021)"
   },
   {
     "id": "e38b97107cd9faeb",
     "year": 1988.9,
-    "value": 1000,
+    "value": 6899,
     "label": "Ver Morris (1ère cyberattaque de masse)",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Robert Tappan Morris",
@@ -4906,7 +4955,7 @@
   {
     "id": "34ca1696fc500464",
     "year": 1989.0,
-    "value": 800,
+    "value": 20665,
     "label": "Retour vers le Futur II",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "",
@@ -4924,12 +4973,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 55,
-    "pharmakon_poison_percent": 45
+    "pharmakon_poison_percent": 45,
+    "realLabel": "Waymo (Taxi autonome)"
   },
   {
     "id": "8353f10d4d781d6e",
     "year": 1989.0,
-    "value": 880,
+    "value": 6036,
     "label": "Chute du Mur de Berlin",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -4952,7 +5002,7 @@
   {
     "id": "c7151ca63575f1e8",
     "year": 1989.0,
-    "value": 890,
+    "value": 24153,
     "label": "Game Boy",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -4975,7 +5025,7 @@
   {
     "id": "38ae9f9b060a474b",
     "year": 1989.2,
-    "value": 1500,
+    "value": 9000,
     "label": "Le Web (WWW)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Tim Berners-Lee (CERN)",
@@ -4998,7 +5048,7 @@
   {
     "id": "58e98a8c00e6ecbe",
     "year": 1989.2,
-    "value": 15000,
+    "value": 9640,
     "label": "World Wide Web",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Tim Berners-Lee (CERN)",
@@ -5021,7 +5071,7 @@
   {
     "id": "94a4e1ae85c0a4e5",
     "year": 1989.9,
-    "value": 900,
+    "value": 21477,
     "label": "Les Simpson",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Matt Groening",
@@ -5039,12 +5089,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 53,
-    "pharmakon_poison_percent": 47
+    "pharmakon_poison_percent": 47,
+    "realLabel": "Boson de Higgs"
   },
   {
     "id": "71e1b2d5a1a5c47a",
     "year": 1990.0,
-    "value": 1000,
+    "value": 13080,
     "label": "Hubble",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -5067,7 +5118,7 @@
   {
     "id": "5beb0b8dc26b680f",
     "year": 1990.0,
-    "value": 1200,
+    "value": 21344,
     "label": "Projet Génome Humain",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -5090,7 +5141,7 @@
   {
     "id": "48b29a9fa7dfaaac",
     "year": 1990.0,
-    "value": 920,
+    "value": 10319,
     "label": "Pale Blue Dot",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "",
@@ -5113,7 +5164,7 @@
   {
     "id": "3582eb31ecfa488d",
     "year": 1990.0,
-    "value": 1100,
+    "value": 7525,
     "label": "Horloge: 10 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -5136,7 +5187,7 @@
   {
     "id": "54daab356b03fae0",
     "year": 1990.0,
-    "value": 4900,
+    "value": 22298,
     "label": "Jurassic Park (désextinction)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Michael Crichton",
@@ -5154,12 +5205,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Colossal : bébé mammouth laineux"
   },
   {
     "id": "b1e6e57ace864cdd",
     "year": 1990,
-    "value": 690,
+    "value": 23125,
     "label": "Total Recall",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Paul Verhoeven",
@@ -5173,12 +5225,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2024.1
+    "realYear": 2024.1,
+    "realLabel": "Neuralink (Humain)"
   },
   {
     "id": "2db998e75a1b165b",
     "year": 1991.0,
-    "value": 950,
+    "value": 25282,
     "label": "Linux (Noyau)",
     "category": "🟡 HARDWARE",
     "whoWhat": "Linus Torvalds",
@@ -5201,7 +5254,7 @@
   {
     "id": "4c8e5779f2047d60",
     "year": 1991.0,
-    "value": 940,
+    "value": 11037,
     "label": "GSM",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -5224,7 +5277,7 @@
   {
     "id": "2e68443f22fea044",
     "year": 1991.0,
-    "value": 1150,
+    "value": 8207,
     "label": "Horloge: 17 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -5247,7 +5300,7 @@
   {
     "id": "77ecb4d62bb3e8e5",
     "year": 1991.1,
-    "value": 950,
+    "value": 3535,
     "label": "Python",
     "category": "🔵 COGNITION",
     "whoWhat": "Guido van Rossum",
@@ -5270,7 +5323,7 @@
   {
     "id": "5fad888674b1e14d",
     "year": 1992.0,
-    "value": 1000,
+    "value": 23957,
     "label": "Le Samouraï Virtuel",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Neal Stephenson",
@@ -5288,12 +5341,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Crise de la Réalité"
   },
   {
     "id": "22f49751edf74e26",
     "year": 1992.0,
-    "value": 960,
+    "value": 7039,
     "label": "Sommet de la Terre (Rio)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -5316,7 +5370,7 @@
   {
     "id": "be0f3817471da4bb",
     "year": 1992.0,
-    "value": 4920,
+    "value": 24791,
     "label": "Snow Crash (mondes virtuels)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Neal Stephenson",
@@ -5334,12 +5388,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Métavers (Facebook/Meta)"
   },
   {
     "id": "38e4785f4d23c3df",
     "year": 1992,
-    "value": 692,
+    "value": 25625,
     "label": "Snow Crash",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Neal Stephenson",
@@ -5353,12 +5408,13 @@
     "convergences": "Fiction (roman) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2021.0
+    "realYear": 2021.0,
+    "realLabel": "Métavers (Facebook/Meta)"
   },
   {
     "id": "f2c84dcdf910f69c",
     "year": 1993.0,
-    "value": 1100,
+    "value": 3808,
     "label": "Vinge & la Singularité",
     "category": "⚪ SINGULARITÉ",
     "whoWhat": "Vernor Vinge",
@@ -5381,7 +5437,7 @@
   {
     "id": "348583822881bc4c",
     "year": 1993.0,
-    "value": 980,
+    "value": 11796,
     "label": "Mosaic (Navigateur)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -5404,7 +5460,7 @@
   {
     "id": "422bf9c382f5ff1f",
     "year": 1993.0,
-    "value": 4930,
+    "value": 12594,
     "label": "World Wide Web public",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Réalité",
@@ -5430,7 +5486,7 @@
   {
     "id": "fdd947d31bd64555",
     "year": 1994.0,
-    "value": 1100,
+    "value": 13432,
     "label": "Navigateur Netscape",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -5453,7 +5509,7 @@
   {
     "id": "2915956d2a86b9a2",
     "year": 1994.0,
-    "value": 1050,
+    "value": 14308,
     "label": "Amazon Fondé",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -5476,7 +5532,7 @@
   {
     "id": "12aefad4ece8a1b6",
     "year": 1994.0,
-    "value": 1300,
+    "value": 15221,
     "label": "L'Intelligence Collective",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "Pierre Lévy",
@@ -5499,7 +5555,7 @@
   {
     "id": "892a4b813fe6103a",
     "year": 1995.0,
-    "value": 1200,
+    "value": 26459,
     "label": "Ghost in the Shell",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Mamoru Oshii / Masamune Shirow",
@@ -5522,7 +5578,7 @@
   {
     "id": "e0f1be151adbd170",
     "year": 1995.0,
-    "value": 1150,
+    "value": 8207,
     "label": "Création de l'OMC",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -5545,7 +5601,7 @@
   {
     "id": "305cae4d4611de1e",
     "year": 1995.0,
-    "value": 1120,
+    "value": 26410,
     "label": "DVD",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -5568,7 +5624,7 @@
   {
     "id": "a6942fd7ea0b4766",
     "year": 1995.0,
-    "value": 1200,
+    "value": 8947,
     "label": "Horloge: 14 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -5591,7 +5647,7 @@
   {
     "id": "b5e3990a2d4ed754",
     "year": 1995,
-    "value": 695,
+    "value": 27288,
     "label": "Le Diamant de l'âge (The Diamond Age)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Neal Stephenson",
@@ -5605,12 +5661,13 @@
     "convergences": "Fiction (roman) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2015
+    "realYear": 2015,
+    "realLabel": "Impression 3D industrielle"
   },
   {
     "id": "40375acba9700bb5",
     "year": 1995,
-    "value": 695,
+    "value": 28112,
     "label": "Ghost in the Shell",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Mamoru Oshii",
@@ -5624,12 +5681,13 @@
     "convergences": "Fiction (manga/film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2013
+    "realYear": 2021.9,
+    "realLabel": "Log4Shell"
   },
   {
     "id": "bc1ea259f68372ab",
     "year": 1995.4,
-    "value": 1100,
+    "value": 16169,
     "label": "Java",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Sun Microsystems",
@@ -5652,7 +5710,7 @@
   {
     "id": "18c5386977ad0daa",
     "year": 1996.0,
-    "value": 1500,
+    "value": 23550,
     "label": "Dolly (Brebis)",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -5675,7 +5733,7 @@
   {
     "id": "3ca0f07476478b4f",
     "year": 1996.0,
-    "value": 1250,
+    "value": 28929,
     "label": "Excession",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Iain M. Banks",
@@ -5693,12 +5751,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 44,
-    "pharmakon_poison_percent": 56
+    "pharmakon_poison_percent": 56,
+    "realLabel": "Bitcoin (Genesis Block)"
   },
   {
     "id": "c986d88bd938a8a9",
     "year": 1996.0,
-    "value": 1180,
+    "value": 29737,
     "label": "Tamagotchi",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "",
@@ -5716,12 +5775,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 51,
-    "pharmakon_poison_percent": 49
+    "pharmakon_poison_percent": 49,
+    "realLabel": "AIBO, robot animal de compagnie"
   },
   {
     "id": "7aa4a24f1fb19493",
     "year": 1996.0,
-    "value": 1400,
+    "value": 25781,
     "label": "Soja Roundup Ready",
     "category": "🟢 BIOTECH",
     "whoWhat": "Monsanto",
@@ -5744,7 +5804,7 @@
   {
     "id": "5075ca848d054a85",
     "year": 1996.0,
-    "value": 1500,
+    "value": 17150,
     "label": "Décl. Indép. Cyberespace",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "John Perry Barlow",
@@ -5767,7 +5827,7 @@
   {
     "id": "5bb92c8dbbaeb58b",
     "year": 1997.0,
-    "value": 1100,
+    "value": 30533,
     "label": "Bienvenue à Gattaca",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "",
@@ -5785,12 +5845,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "23andMe (ADN direct-to-consumer)"
   },
   {
     "id": "6324ea41dcddebb0",
     "year": 1997.0,
-    "value": 1500,
+    "value": 4108,
     "label": "Deep Blue vs Kasparov",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -5813,7 +5874,7 @@
   {
     "id": "04a99f225f6fc3bb",
     "year": 1997.0,
-    "value": 1250,
+    "value": 18162,
     "label": "Wifi (802.11)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -5836,7 +5897,7 @@
   {
     "id": "db45753652abf4a7",
     "year": 1997.0,
-    "value": 4970,
+    "value": 31317,
     "label": "Gattaca (eugénisme génétique)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Andrew Niccol",
@@ -5854,12 +5915,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "23andMe (ADN direct-to-consumer)"
   },
   {
     "id": "31b3805d3c937b40",
     "year": 1997.3,
-    "value": 20000,
+    "value": 4437,
     "label": "Deep Blue bat Kasparov",
     "category": "🔵 COGNITION",
     "whoWhat": "IBM",
@@ -5882,7 +5944,7 @@
   {
     "id": "3bf8e9ca7bdc2466",
     "year": 1998.0,
-    "value": 1800,
+    "value": 19200,
     "label": "Google Fondé",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -5905,7 +5967,7 @@
   {
     "id": "6423369a8d243398",
     "year": 1998.0,
-    "value": 1350,
+    "value": 15739,
     "label": "ISS (Lancement)",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -5928,7 +5990,7 @@
   {
     "id": "32f1f9838d853496",
     "year": 1998.0,
-    "value": 1250,
+    "value": 9746,
     "label": "Horloge: 9 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -5951,7 +6013,7 @@
   {
     "id": "e6c794d83733a679",
     "year": 1999.0,
-    "value": 1200,
+    "value": 32086,
     "label": "Matrix",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Les Wachowski",
@@ -5969,12 +6031,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 41,
-    "pharmakon_poison_percent": 59
+    "pharmakon_poison_percent": 59,
+    "realLabel": "WannaCry"
   },
   {
     "id": "4c6a1abb758eb2a0",
     "year": 1999.0,
-    "value": 1450,
+    "value": 20262,
     "label": "Napster",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -5997,7 +6060,7 @@
   {
     "id": "3635ac4c8019d050",
     "year": 1999.0,
-    "value": 4990,
+    "value": 32840,
     "label": "Matrix (réalité simulée)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Wachowski",
@@ -6015,12 +6078,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Métavers (Facebook/Meta)"
   },
   {
     "id": "05293ffee24669cd",
     "year": 1999.0,
-    "value": 6200,
+    "value": 27531,
     "label": "AIBO, robot animal de compagnie",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Sony",
@@ -6045,7 +6109,7 @@
   {
     "id": "cad8d8b61621b0e3",
     "year": 1999.2,
-    "value": 1800,
+    "value": 10606,
     "label": "Virus Melissa",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "David L. Smith",
@@ -6068,7 +6132,7 @@
   {
     "id": "498345f3485f9228",
     "year": 2000.0,
-    "value": 1300,
+    "value": 11527,
     "label": "Bulle Internet",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -6091,7 +6155,7 @@
   {
     "id": "c8706cbd6b819db3",
     "year": 2000.0,
-    "value": 1600,
+    "value": 28642,
     "label": "Clé USB",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -6114,7 +6178,7 @@
   {
     "id": "a8b0608b36bc0e72",
     "year": 2000.0,
-    "value": 6900,
+    "value": 29737,
     "label": "ASIMO, humanoïde bipède",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Honda",
@@ -6140,7 +6204,7 @@
   {
     "id": "a946f6a0c2a2f41f",
     "year": 2000.4,
-    "value": 2600,
+    "value": 12511,
     "label": "ILOVEYOU",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Onel de Guzman",
@@ -6163,7 +6227,7 @@
   {
     "id": "ce2b7aa3ceb22ea7",
     "year": 2001.0,
-    "value": 2200,
+    "value": 21344,
     "label": "Wikipédia",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "",
@@ -6186,7 +6250,7 @@
   {
     "id": "0006056d2b813642",
     "year": 2001.0,
-    "value": 1700,
+    "value": 30811,
     "label": "iPod",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -6209,7 +6273,7 @@
   {
     "id": "73827809f6234892",
     "year": 2001.0,
-    "value": 1010,
+    "value": 31862,
     "label": "Drones militaires armés",
     "category": "🟡 HARDWARE",
     "whoWhat": "Réalité",
@@ -6236,7 +6300,7 @@
   {
     "id": "5d497d9e66e062f2",
     "year": 2001.0,
-    "value": 1010,
+    "value": 33577,
     "label": "A.I. (enfant robot)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Steven Spielberg",
@@ -6254,12 +6318,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Assistants vocaux"
   },
   {
     "id": "e9062548e5cab78d",
     "year": 2001,
-    "value": 701,
+    "value": 34296,
     "label": "A.I. Intelligence artificielle",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Steven Spielberg",
@@ -6273,12 +6338,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2011.0
+    "realYear": 2011.0,
+    "realLabel": "Alexa / Siri"
   },
   {
     "id": "91f7fbf35527b62e",
     "year": 2001.5,
-    "value": 25000,
+    "value": 22442,
     "label": "Wikipedia",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "Jimmy Wales & Larry Sanger",
@@ -6301,7 +6367,7 @@
   {
     "id": "1adf56af5af1b88d",
     "year": 2001.6,
-    "value": 3400,
+    "value": 13556,
     "label": "Code Red",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Attaquants inconnus",
@@ -6324,7 +6390,7 @@
   {
     "id": "ea5e0b798fd3bf5d",
     "year": 2001.7,
-    "value": 1350,
+    "value": 14660,
     "label": "11 Septembre",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -6347,7 +6413,7 @@
   {
     "id": "c85799c8144f422e",
     "year": 2002.0,
-    "value": 1300,
+    "value": 34996,
     "label": "Minority Report",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Steven Spielberg / Philip K. Dick",
@@ -6370,7 +6436,7 @@
   {
     "id": "31adecffee1d5f80",
     "year": 2002.0,
-    "value": 2500,
+    "value": 9556,
     "label": "Création de l'Euro",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -6393,7 +6459,7 @@
   {
     "id": "736361763db42b06",
     "year": 2002.0,
-    "value": 2600,
+    "value": 18696,
     "label": "SpaceX Fondé",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -6418,7 +6484,7 @@
   {
     "id": "19b0a4d280987e19",
     "year": 2002.0,
-    "value": 1850,
+    "value": 23550,
     "label": "Camera Phone",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -6441,7 +6507,7 @@
   {
     "id": "bfde818c8900f06d",
     "year": 2002.0,
-    "value": 1400,
+    "value": 15821,
     "label": "Horloge: 7 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -6464,7 +6530,7 @@
   {
     "id": "3ecc3a6138058efd",
     "year": 2002.0,
-    "value": 7600,
+    "value": 32884,
     "label": "Roomba, robot domestique autonome",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "iRobot",
@@ -6491,7 +6557,7 @@
   {
     "id": "9704987053edd640",
     "year": 2002,
-    "value": 702,
+    "value": 35676,
     "label": "Minority Report",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Steven Spielberg",
@@ -6505,12 +6571,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2014.0
+    "realYear": 2014.0,
+    "realLabel": "Police prédictive algorithmique"
   },
   {
     "id": "399abbc99e4fb72d",
     "year": 2002,
-    "value": 702,
+    "value": 36335,
     "label": "28 jours plus tard",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Danny Boyle",
@@ -6524,12 +6591,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2020.0
+    "realYear": 2020.0,
+    "realLabel": "COVID-19 (modélisation épidémiologique)"
   },
   {
     "id": "99c0b25da231e51b",
     "year": 2003.0,
-    "value": 2000,
+    "value": 27998,
     "label": "Fin Génome Humain",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -6552,7 +6620,7 @@
   {
     "id": "a4616d2ea6aab594",
     "year": 2003.0,
-    "value": 1950,
+    "value": 24665,
     "label": "Skype",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -6575,7 +6643,7 @@
   {
     "id": "8792cf8ae1c9cd18",
     "year": 2003.1,
-    "value": 4200,
+    "value": 17035,
     "label": "SQL Slammer",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Attaquants inconnus",
@@ -6598,7 +6666,7 @@
   {
     "id": "db8ac9f8ebe9d98e",
     "year": 2004.0,
-    "value": 3000,
+    "value": 25781,
     "label": "Facebook",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -6621,7 +6689,7 @@
   {
     "id": "4ca842883074a613",
     "year": 2004.0,
-    "value": 3200,
+    "value": 33876,
     "label": "Graphène Isolé",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -6644,7 +6712,7 @@
   {
     "id": "809fa90559a3e57d",
     "year": 2004.0,
-    "value": 2100,
+    "value": 26893,
     "label": "Firefox",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -6667,7 +6735,7 @@
   {
     "id": "cdca6e1d4a2ace30",
     "year": 2004,
-    "value": 704,
+    "value": 36973,
     "label": "I, Robot",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Alex Proyas",
@@ -6681,12 +6749,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 1954.0
+    "realYear": 1954.0,
+    "realLabel": "Unimate, 1er robot industriel"
   },
   {
     "id": "9918986782d38322",
     "year": 2004,
-    "value": 704,
+    "value": 37589,
     "label": "L'Effet papillon (The Butterfly Effect)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Eric Bress",
@@ -6700,12 +6769,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2019.0
+    "realYear": 2019.0,
+    "realLabel": "Suprématie Quantique"
   },
   {
     "id": "e2db3d381f6e0732",
     "year": 2005.0,
-    "value": 3200,
+    "value": 4798,
     "label": "Kurzweil : Singularity is Near",
     "category": "⚪ SINGULARITÉ",
     "whoWhat": "",
@@ -6728,7 +6798,7 @@
   {
     "id": "402c15d0552be5e9",
     "year": 2005.0,
-    "value": 2300,
+    "value": 27998,
     "label": "YouTube",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -6751,7 +6821,7 @@
   {
     "id": "91426eb92c5175c9",
     "year": 2005,
-    "value": 705,
+    "value": 38183,
     "label": "V pour Vendetta",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "James McTeigue",
@@ -6765,12 +6835,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2013.0
+    "realYear": 2013.0,
+    "realLabel": "PRISM (surveillance de masse)"
   },
   {
     "id": "4b658868e0365ed6",
     "year": 2006.0,
-    "value": 3500,
+    "value": 29089,
     "label": "Twitter",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -6793,7 +6864,7 @@
   {
     "id": "73f38835fccf7af1",
     "year": 2006.0,
-    "value": 2500,
+    "value": 30164,
     "label": "AWS (Cloud)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -6816,7 +6887,7 @@
   {
     "id": "2d6cb8f76fdda812",
     "year": 2006.0,
-    "value": 2600,
+    "value": 31217,
     "label": "Wikileaks",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "Julian Assange",
@@ -6839,7 +6910,7 @@
   {
     "id": "ec25f2ea831c39d7",
     "year": 2006.0,
-    "value": 2800,
+    "value": 30164,
     "label": "Cellules iPS",
     "category": "🟢 BIOTECH",
     "whoWhat": "Shinya Yamanaka",
@@ -6862,7 +6933,7 @@
   {
     "id": "8c926a7eb092a4b2",
     "year": 2006.0,
-    "value": 1060,
+    "value": 38755,
     "label": "Daemon (botnet autonome)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Daniel Suarez",
@@ -6870,7 +6941,7 @@
     "url": "https://fr.wikipedia.org/wiki/Daemon",
     "timestamp": "2006-06-01T00:00:00",
     "tipping": false,
-    "realYear": 2016.0,
+    "realYear": 2016.8,
     "predictedBy": null,
     "img": null,
     "s_curve_phase": 3,
@@ -6880,12 +6951,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Botnet Mirai"
   },
   {
     "id": "6fb51f4334298f4c",
     "year": 2006,
-    "value": 30006,
+    "value": 34833,
     "label": "Camouflage optique (métamatériaux)",
     "category": "🟡 HARDWARE",
     "whoWhat": "Réalité",
@@ -6906,7 +6978,7 @@
   {
     "id": "8f5ec59c0cf8624b",
     "year": 2007.0,
-    "value": 4000,
+    "value": 35755,
     "label": "iPhone",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -6929,7 +7001,7 @@
   {
     "id": "d4d5ba78f3f2194a",
     "year": 2007.0,
-    "value": 2800,
+    "value": 32246,
     "label": "Kindle",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "",
@@ -6952,7 +7024,7 @@
   {
     "id": "279377b321326672",
     "year": 2007.0,
-    "value": 1450,
+    "value": 18296,
     "label": "Horloge: 5 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -6975,7 +7047,7 @@
   {
     "id": "7a70190f354c8565",
     "year": 2007.0,
-    "value": 1070,
+    "value": 33245,
     "label": "iPhone (smartphone)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Réalité",
@@ -7001,7 +7073,7 @@
   {
     "id": "d8374196f4696fa2",
     "year": 2007.0,
-    "value": 1070,
+    "value": 34214,
     "label": "Kindle (liseuse e-ink)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Réalité",
@@ -7026,7 +7098,7 @@
   {
     "id": "d0cdf98b50ee4e26",
     "year": 2007.0,
-    "value": 1070,
+    "value": 32246,
     "label": "23andMe (ADN direct-to-consumer)",
     "category": "🟢 BIOTECH",
     "whoWhat": "Réalité",
@@ -7052,7 +7124,7 @@
   {
     "id": "1c65f438ee41e0bd",
     "year": 2007.1,
-    "value": 30000,
+    "value": 36638,
     "label": "iPhone (Premier génération)",
     "category": "🟡 HARDWARE",
     "whoWhat": "Apple",
@@ -7075,7 +7147,7 @@
   {
     "id": "d27dcfa7491f6198",
     "year": 2007.4,
-    "value": 5000,
+    "value": 19598,
     "label": "Cyberattaques contre l'Estonie",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Suspects russes",
@@ -7098,7 +7170,7 @@
   {
     "id": "7b35704422e54c46",
     "year": 2008.0,
-    "value": 3100,
+    "value": 35148,
     "label": "App Store",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -7121,7 +7193,7 @@
   {
     "id": "d5c25761dfe68cc4",
     "year": 2008.0,
-    "value": 1500,
+    "value": 39304,
     "label": "Iron Man (exosquelette)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Marvel",
@@ -7139,12 +7211,13 @@
     "grand_filter_analysis": "La fiction comme avertissement.",
     "final_note": "On avait prévenu.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Figure 01, humanoïde industriel"
   },
   {
     "id": "3f00d699664b7f95",
     "year": 2008,
-    "value": 708,
+    "value": 39831,
     "label": "Wall-E",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Andrew Stanton",
@@ -7158,12 +7231,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2002.0
+    "realYear": 2002.0,
+    "realLabel": "Roomba, robot domestique autonome"
   },
   {
     "id": "ba8336e232c0630e",
     "year": 2008.6,
-    "value": 5800,
+    "value": 20935,
     "label": "Cyberattaques pendant la guerre de Géorgie",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Suspects russes",
@@ -7186,7 +7260,7 @@
   {
     "id": "b12a4e9a346a1833",
     "year": 2008.8,
-    "value": 3500,
+    "value": 36046,
     "label": "Bitcoin",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -7209,7 +7283,7 @@
   {
     "id": "381cdf8a740afaa8",
     "year": 2009.0,
-    "value": 1500,
+    "value": 22298,
     "label": "Stuxnet",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -7234,7 +7308,7 @@
   {
     "id": "19afed217763b557",
     "year": 2009.0,
-    "value": 3400,
+    "value": 36907,
     "label": "Uber",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -7257,7 +7331,7 @@
   {
     "id": "61782dc63a6a595f",
     "year": 2009.0,
-    "value": 35000,
+    "value": 37729,
     "label": "Bitcoin (Genesis Block)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Satoshi Nakamoto",
@@ -7282,7 +7356,7 @@
   {
     "id": "7dbbe8a11696c68c",
     "year": 2009,
-    "value": 709,
+    "value": 40336,
     "label": "Avatar",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "James Cameron",
@@ -7296,12 +7370,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2010
+    "realYear": 2010,
+    "realLabel": "Exosquelette militaire (Raytheon XOS 2)"
   },
   {
     "id": "62aadf586af681b8",
     "year": 2009,
-    "value": 709,
+    "value": 40819,
     "label": "Surrogates",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Jonathan Mostow",
@@ -7315,12 +7390,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2013.0
+    "realYear": 2013.0,
+    "realLabel": "Boston Dynamics Atlas"
   },
   {
     "id": "c10b145917e2734f",
     "year": 2009,
-    "value": 709,
+    "value": 41280,
     "label": "Moon",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Duncan Jones",
@@ -7334,12 +7410,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2015
+    "realYear": 2015,
+    "realLabel": "SpaceX : 1er étage de fusée réutilisé"
   },
   {
     "id": "a4630b85682ebcd2",
     "year": 2009,
-    "value": 709,
+    "value": 41720,
     "label": "District 9",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Neill Blomkamp",
@@ -7353,12 +7430,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2001.0
+    "realYear": 2001.0,
+    "realLabel": "Drones militaires armés"
   },
   {
     "id": "b36ef2578bc47745",
     "year": 2010.0,
-    "value": 4500,
+    "value": 11094,
     "label": "Accélérationnisme",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -7381,7 +7459,7 @@
   {
     "id": "13f37d9bf2ab8af9",
     "year": 2010.0,
-    "value": 3700,
+    "value": 38511,
     "label": "Instagram",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -7404,7 +7482,7 @@
   {
     "id": "fa73e001fe7e42eb",
     "year": 2010.0,
-    "value": 1550,
+    "value": 23679,
     "label": "Horloge: 6 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -7427,7 +7505,7 @@
   {
     "id": "2ffb1b3529a3fa07",
     "year": 2010,
-    "value": 30010,
+    "value": 37482,
     "label": "Exosquelette militaire (Raytheon XOS 2)",
     "category": "🟡 HARDWARE",
     "whoWhat": "Réalité",
@@ -7448,7 +7526,7 @@
   {
     "id": "5610043106751241",
     "year": 2010,
-    "value": 30010,
+    "value": 38285,
     "label": "Exosquelette médical (Ekso Bionics)",
     "category": "🟡 HARDWARE",
     "whoWhat": "Réalité",
@@ -7469,7 +7547,7 @@
   {
     "id": "270f919b311fb588",
     "year": 2010.1,
-    "value": 4500,
+    "value": 39254,
     "label": "Big Data",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -7492,7 +7570,7 @@
   {
     "id": "7c1c15af5127c6e6",
     "year": 2010.3,
-    "value": 4600,
+    "value": 39956,
     "label": "iPad",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -7515,7 +7593,7 @@
   {
     "id": "582a56a2b7c2c82c",
     "year": 2010.4,
-    "value": 3500,
+    "value": 34214,
     "label": "Vie Synthétique (Venter)",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -7538,7 +7616,7 @@
   {
     "id": "45b288a34efdae92",
     "year": 2010.5,
-    "value": 6600,
+    "value": 25069,
     "label": "Stuxnet",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "NSA / renseignement israélien (révélé)",
@@ -7563,7 +7641,7 @@
   {
     "id": "ef849268624991cd",
     "year": 2011.0,
-    "value": 4000,
+    "value": 42140,
     "label": "Black Mirror",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "",
@@ -7586,7 +7664,7 @@
   {
     "id": "afe3a564323100d9",
     "year": 2011.0,
-    "value": 4200,
+    "value": 12826,
     "label": "Printemps Arabe",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -7609,7 +7687,7 @@
   {
     "id": "83b861894a89526a",
     "year": 2011.0,
-    "value": 4100,
+    "value": 5194,
     "label": "Siri",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -7632,7 +7710,7 @@
   {
     "id": "d41e520299230995",
     "year": 2011.0,
-    "value": 1110,
+    "value": 5627,
     "label": "IBM Watson",
     "category": "🔵 COGNITION",
     "whoWhat": "Réalité",
@@ -7659,7 +7737,7 @@
   {
     "id": "3efb356361a632f3",
     "year": 2011.0,
-    "value": 1110,
+    "value": 42539,
     "label": "Contagion (pandémie modélisée)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Steven Soderbergh",
@@ -7677,12 +7755,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "COVID-19 (modélisation épidémiologique)"
   },
   {
     "id": "ade5f756720be7a7",
     "year": 2011.0,
-    "value": 1110,
+    "value": 6099,
     "label": "Alexa / Siri",
     "category": "🔵 COGNITION",
     "whoWhat": "Réalité",
@@ -7709,7 +7788,7 @@
   {
     "id": "b7d2082344afeb5c",
     "year": 2011.0,
-    "value": 1110,
+    "value": 6613,
     "label": "Assistants vocaux",
     "category": "🔵 COGNITION",
     "whoWhat": "Réalité",
@@ -7734,7 +7813,7 @@
   {
     "id": "91934e7509c97c0f",
     "year": 2011,
-    "value": 711,
+    "value": 42918,
     "label": "Black Mirror",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Charlie Brooker",
@@ -7748,12 +7827,13 @@
     "convergences": "Fiction (série) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2016.85
+    "realYear": 2016.85,
+    "realLabel": "Piratage du DNC (élection US)"
   },
   {
     "id": "5bd43fcfbcee1b7c",
     "year": 2011,
-    "value": 711,
+    "value": 43278,
     "label": "Contagion",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Steven Soderbergh",
@@ -7767,12 +7847,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2020.0
+    "realYear": 2020.0,
+    "realLabel": "COVID-19 (modélisation épidémiologique)"
   },
   {
     "id": "e5104a3845b68dfb",
     "year": 2011.2,
-    "value": 7400,
+    "value": 26459,
     "label": "Piratage RSA SecurID",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "APT (groupe chinois présumé)",
@@ -7795,7 +7876,7 @@
   {
     "id": "7c4b80de95791649",
     "year": 2012.0,
-    "value": 5000,
+    "value": 39048,
     "label": "Boson de Higgs",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -7821,7 +7902,7 @@
   {
     "id": "b85715995708e250",
     "year": 2012.0,
-    "value": 4400,
+    "value": 21873,
     "label": "Curiosity sur Mars",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -7846,7 +7927,7 @@
   {
     "id": "8e85bdc10817f7c7",
     "year": 2012.0,
-    "value": 1600,
+    "value": 27838,
     "label": "Horloge: 5 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -7871,7 +7952,7 @@
   {
     "id": "11a73c474191c908",
     "year": 2012.0,
-    "value": 148,
+    "value": 36046,
     "label": "CRISPR-Cas9 (édition génomique)",
     "category": "💊 MÉDECINE",
     "whoWhat": "Emmanuelle Charpentier & Jennifer Doudna",
@@ -7894,7 +7975,7 @@
   {
     "id": "f5ca793cec14896b",
     "year": 2012,
-    "value": 712,
+    "value": 43619,
     "label": "Psycho-Pass",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Production I.G",
@@ -7908,12 +7989,13 @@
     "convergences": "Fiction (anime) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2014.0
+    "realYear": 2014.0,
+    "realLabel": "Police prédictive algorithmique"
   },
   {
     "id": "23aea9a96ed988ba",
     "year": 2012.4,
-    "value": 6000,
+    "value": 37729,
     "label": "CRISPR-Cas9",
     "category": "🟢 BIOTECH",
     "whoWhat": "Doudna & Charpentier",
@@ -7936,7 +8018,7 @@
   {
     "id": "7eddd505573958d0",
     "year": 2012.6,
-    "value": 8200,
+    "value": 29199,
     "label": "Shamoon contre Saudi Aramco",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Groupe Cutting Sword of Justice",
@@ -7959,7 +8041,7 @@
   {
     "id": "9329706eabae1ef1",
     "year": 2012.7,
-    "value": 3000,
+    "value": 7172,
     "label": "AlexNet",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -7982,7 +8064,7 @@
   {
     "id": "1d82a9339f35aeb0",
     "year": 2013,
-    "value": 713,
+    "value": 43943,
     "label": "Her",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Spike Jonze",
@@ -8000,12 +8082,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Alexa / Siri"
   },
   {
     "id": "da31e63696e902f6",
     "year": 2013.0,
-    "value": 5500,
+    "value": 14748,
     "label": "Scandale Cambridge Analytica",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -8028,7 +8111,7 @@
   {
     "id": "53c0f08f99efe770",
     "year": 2013.0,
-    "value": 4800,
+    "value": 39770,
     "label": "Atlas (Boston Dynamics)",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -8051,7 +8134,7 @@
   {
     "id": "bc5636d4c5729068",
     "year": 2013.0,
-    "value": 6500,
+    "value": 39254,
     "label": "Premier Burger In Vitro",
     "category": "🟢 BIOTECH",
     "whoWhat": "Mark Post",
@@ -8074,7 +8157,7 @@
   {
     "id": "a582e1fa1a13bb18",
     "year": 2013.0,
-    "value": 1130,
+    "value": 16845,
     "label": "PRISM (surveillance de masse)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "Réalité",
@@ -8101,7 +8184,7 @@
   {
     "id": "ab4745af856677ad",
     "year": 2013.0,
-    "value": 1130,
+    "value": 40452,
     "label": "Boston Dynamics Atlas",
     "category": "🟡 HARDWARE",
     "whoWhat": "Réalité",
@@ -8133,7 +8216,7 @@
   {
     "id": "ffee2464c0966e48",
     "year": 2013.0,
-    "value": 1130,
+    "value": 44249,
     "label": "Her (assistante virtuelle)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Spike Jonze",
@@ -8151,12 +8234,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Alexa / Siri"
   },
   {
     "id": "050acbb40d1ebdd9",
     "year": 2013.0,
-    "value": 8300,
+    "value": 41093,
     "label": "Atlas, humanoïde hydraulique",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Boston Dynamics",
@@ -8182,7 +8266,7 @@
   {
     "id": "1219e97cdb504207",
     "year": 2013,
-    "value": 30013,
+    "value": 40620,
     "label": "Lunettes de réalité augmentée (Google Glass)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Réalité",
@@ -8203,7 +8287,7 @@
   {
     "id": "ad4ea01ef0fed9c7",
     "year": 2013,
-    "value": 713,
+    "value": 44538,
     "label": "Elysium",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Neill Blomkamp",
@@ -8217,12 +8301,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2010
+    "realYear": 2010,
+    "realLabel": "Exosquelette médical (Ekso Bionics)"
   },
   {
     "id": "a7380124db7a3076",
     "year": 2013,
-    "value": 713,
+    "value": 44812,
     "label": "World War Z",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Marc Forster",
@@ -8236,12 +8321,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2020.0
+    "realYear": 2020.0,
+    "realLabel": "COVID-19 (modélisation épidémiologique)"
   },
   {
     "id": "ea536a4a16779a29",
     "year": 2013.4,
-    "value": 6000,
+    "value": 41244,
     "label": "Snowden (NSA)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -8264,7 +8350,7 @@
   {
     "id": "4b5bb009cd7af159",
     "year": 2014,
-    "value": 714,
+    "value": 45070,
     "label": "Ex Machina",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Alex Garland",
@@ -8282,12 +8368,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Grand modèle de langage (LLM)"
   },
   {
     "id": "708bee41b5f701ca",
     "year": 2014.0,
-    "value": 5200,
+    "value": 7777,
     "label": "Alexa",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -8310,7 +8397,7 @@
   {
     "id": "41cac02b11c08c9b",
     "year": 2014.0,
-    "value": 1140,
+    "value": 19093,
     "label": "Police prédictive algorithmique",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "Réalité",
@@ -8337,7 +8424,7 @@
   {
     "id": "7bc45207d689243c",
     "year": 2014.0,
-    "value": 1140,
+    "value": 45314,
     "label": "Ex Machina (IA manipulatrice)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Alex Garland",
@@ -8355,12 +8442,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Grand modèle de langage (LLM)"
   },
   {
     "id": "a65617c065e7b50e",
     "year": 2014.0,
-    "value": 1140,
+    "value": 45544,
     "label": "Interstellar (trou noir)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Christopher Nolan",
@@ -8378,12 +8466,13 @@
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
     "final_note": "La SF avait prévenu. On n'a pas écouté.",
     "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
+    "pharmakon_poison_percent": 50,
+    "realLabel": "Image du trou noir M87*"
   },
   {
     "id": "e05d749cb18b91fa",
     "year": 2014,
-    "value": 714,
+    "value": 45761,
     "label": "Interstellar",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Christopher Nolan",
@@ -8397,12 +8486,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2019.0
+    "realYear": 2019.0,
+    "realLabel": "Image du trou noir M87*"
   },
   {
     "id": "e3e16af5a5044e1e",
     "year": 2014,
-    "value": 714,
+    "value": 45964,
     "label": "Transcendence",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Wally Pfister",
@@ -8416,12 +8506,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2022.0
+    "realYear": 2022.0,
+    "realLabel": "Grand modèle de langage (LLM)"
   },
   {
     "id": "50227fef9ac28deb",
     "year": 2014,
-    "value": 714,
+    "value": 46156,
     "label": "Lucy",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Luc Besson",
@@ -8435,12 +8526,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2024.1
+    "realYear": 2024.1,
+    "realLabel": "Neuralink (Humain)"
   },
   {
     "id": "0712d7e10bff2682",
     "year": 2014.9,
-    "value": 9000,
+    "value": 30533,
     "label": "Piratage Sony Pictures",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Gardes rouges (Lazarus, Corée du Nord présumée)",
@@ -8463,7 +8555,7 @@
   {
     "id": "cafb1b6fdec0d0ff",
     "year": 2015.0,
-    "value": 7500,
+    "value": 8431,
     "label": "Stade Singularité : 0.5",
     "category": "⚪ SINGULARITÉ",
     "whoWhat": "",
@@ -8486,7 +8578,7 @@
   {
     "id": "bdb13921d3d0cf0f",
     "year": 2015.0,
-    "value": 7500,
+    "value": 46337,
     "label": "The Expanse",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "James S.A. Corey",
@@ -8504,12 +8596,13 @@
     "grand_filter_analysis": "Analyse simulée : N/A",
     "final_note": "Note finale simulée.",
     "pharmakon_remedy_percent": 58,
-    "pharmakon_poison_percent": 42
+    "pharmakon_poison_percent": 42,
+    "realLabel": "SpaceX Fondé"
   },
   {
     "id": "56aef148c773cf84",
     "year": 2015.0,
-    "value": 7000,
+    "value": 41695,
     "label": "Ondes Gravitationnelles",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -8532,7 +8625,7 @@
   {
     "id": "cfc0a06a5cba296a",
     "year": 2015.0,
-    "value": 7200,
+    "value": 21456,
     "label": "Accords de Paris (Climat)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -8555,7 +8648,7 @@
   {
     "id": "3e785e663447813b",
     "year": 2015.0,
-    "value": 5600,
+    "value": 9135,
     "label": "OpenAI Fondé",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -8578,7 +8671,7 @@
   {
     "id": "4b168a71717cf578",
     "year": 2015.0,
-    "value": 1650,
+    "value": 31832,
     "label": "Horloge: 3 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -8601,7 +8694,7 @@
   {
     "id": "11ba5dee5ab70f2d",
     "year": 2015.0,
-    "value": 1150,
+    "value": 41830,
     "label": "Apple Watch",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Réalité",
@@ -8626,7 +8719,7 @@
   {
     "id": "dd6d26170d7f986a",
     "year": 2015,
-    "value": 30015,
+    "value": 42259,
     "label": "Impression 3D industrielle",
     "category": "🟡 HARDWARE",
     "whoWhat": "Réalité",
@@ -8647,7 +8740,7 @@
   {
     "id": "930757fdea83c8e1",
     "year": 2015,
-    "value": 715,
+    "value": 46506,
     "label": "Seul sur Mars (The Martian)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Ridley Scott",
@@ -8661,12 +8754,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2012.0
+    "realYear": 2012.0,
+    "realLabel": "Curiosity sur Mars"
   },
   {
     "id": "090667c335459d35",
     "year": 2015,
-    "value": 715,
+    "value": 46666,
     "label": "Chappie",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Neill Blomkamp",
@@ -8680,12 +8774,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2013.0
+    "realYear": 2013.0,
+    "realLabel": "Boston Dynamics Atlas"
   },
   {
     "id": "156168b91ce8bdcd",
     "year": 2015,
-    "value": 30015,
+    "value": 25165,
     "label": "SpaceX : 1er étage de fusée réutilisé",
     "category": "🟣 ESPACE",
     "whoWhat": "Réalité",
@@ -8706,7 +8801,7 @@
   {
     "id": "69615a63ea84ac40",
     "year": 2015.95,
-    "value": 9800,
+    "value": 33088,
     "label": "BlackEnergy : coupure de courant en Ukraine",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Sandworm (GRU russe)",
@@ -8729,7 +8824,7 @@
   {
     "id": "ec5a9d15cc181915",
     "year": 2016.0,
-    "value": 8000,
+    "value": 9892,
     "label": "AlphaGo",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -8752,7 +8847,7 @@
   {
     "id": "4ae839d3652a286c",
     "year": 2016.0,
-    "value": 6200,
+    "value": 42379,
     "label": "TikTok",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -8775,7 +8870,7 @@
   {
     "id": "ac2365952ed824bf",
     "year": 2016.0,
-    "value": 1160,
+    "value": 10702,
     "label": "Big Data prédictif",
     "category": "🔵 COGNITION",
     "whoWhat": "Réalité",
@@ -8800,7 +8895,7 @@
   {
     "id": "627fb4a3bd833643",
     "year": 2016.0,
-    "value": 1160,
+    "value": 42786,
     "label": "Robots humanoïdes industriels",
     "category": "🟡 HARDWARE",
     "whoWhat": "Réalité",
@@ -8825,7 +8920,7 @@
   {
     "id": "223945bd1fba0733",
     "year": 2016.0,
-    "value": 1160,
+    "value": 42892,
     "label": "Internet des objets (IoT)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Réalité",
@@ -8850,7 +8945,7 @@
   {
     "id": "08bbb05637fe90b8",
     "year": 2016.0,
-    "value": 9000,
+    "value": 43278,
     "label": "Sophia, robot « citoyen »",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Hanson Robotics",
@@ -8873,7 +8968,7 @@
   {
     "id": "6ec6e8fb7add2489",
     "year": 2016,
-    "value": 30016,
+    "value": 11566,
     "label": "Traduction automatique neuronale",
     "category": "🔵 COGNITION",
     "whoWhat": "Réalité",
@@ -8894,7 +8989,7 @@
   {
     "id": "817fbfcd040b5c3f",
     "year": 2016,
-    "value": 716,
+    "value": 46816,
     "label": "Premier Contact (Arrival)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Denis Villeneuve",
@@ -8908,12 +9003,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2016
+    "realYear": 2016,
+    "realLabel": "Traduction automatique neuronale"
   },
   {
     "id": "029f2f62b9bcac33",
     "year": 2016,
-    "value": 716,
+    "value": 46956,
     "label": "Westworld",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Jonathan Nolan",
@@ -8927,12 +9023,13 @@
     "convergences": "Fiction (série) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2013.0
+    "realYear": 2013.0,
+    "realLabel": "Boston Dynamics Atlas"
   },
   {
     "id": "88f9c64582a9fa29",
     "year": 2016.8,
-    "value": 10600,
+    "value": 34296,
     "label": "Botnet Mirai",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Paras Jha et al.",
@@ -8957,7 +9054,7 @@
   {
     "id": "56de1a374263e81f",
     "year": 2016.85,
-    "value": 11400,
+    "value": 35452,
     "label": "Piratage du DNC (élection US)",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Fancy Bear / Cozy Bear (GRU russe)",
@@ -8982,7 +9079,7 @@
   {
     "id": "7a829d574127d375",
     "year": 2017.0,
-    "value": 8000,
+    "value": 12484,
     "label": "Attention Is All You Need",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -9005,7 +9102,7 @@
   {
     "id": "f6b591672c4076bd",
     "year": 2017.0,
-    "value": 6800,
+    "value": 43371,
     "label": "Fortnite",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "",
@@ -9028,7 +9125,7 @@
   {
     "id": "b9ac03fe4aa2d9c4",
     "year": 2017.0,
-    "value": 1750,
+    "value": 36550,
     "label": "Horloge: 2.5 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -9051,7 +9148,7 @@
   {
     "id": "018b81b2a3c2c705",
     "year": 2017.4,
-    "value": 12200,
+    "value": 37589,
     "label": "WannaCry",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Lazarus (Corée du Nord)",
@@ -9076,7 +9173,7 @@
   {
     "id": "2b3d30463fa4c689",
     "year": 2017.5,
-    "value": 13000,
+    "value": 38567,
     "label": "NotPetya",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Sandworm (GRU russe)",
@@ -9099,7 +9196,7 @@
   {
     "id": "fc6a2ceda591bcdb",
     "year": 2017.7,
-    "value": 13800,
+    "value": 39482,
     "label": "Fuite Equifax",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Attaquants chinois présumés",
@@ -9122,7 +9219,7 @@
   {
     "id": "4bdb8e93df0e6bfd",
     "year": 2018.0,
-    "value": 8200,
+    "value": 40336,
     "label": "Horloge Apocalypse : 2 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -9145,7 +9242,7 @@
   {
     "id": "dff5cdc118a70efb",
     "year": 2018.0,
-    "value": 7000,
+    "value": 23893,
     "label": "RGPD (GDPR)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -9168,7 +9265,7 @@
   {
     "id": "1d2a578b4a123b64",
     "year": 2018.0,
-    "value": 7400,
+    "value": 13455,
     "label": "Waymo (Taxi autonome)",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -9195,7 +9292,7 @@
   {
     "id": "b651d63d298197e4",
     "year": 2018.0,
-    "value": 1800,
+    "value": 41129,
     "label": "Horloge: 2 min",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -9218,7 +9315,7 @@
   {
     "id": "14cdbbcebd1b11aa",
     "year": 2018.0,
-    "value": 1180,
+    "value": 40620,
     "label": "Bébés CRISPR (He Jiankui)",
     "category": "🟢 BIOTECH",
     "whoWhat": "Réalité",
@@ -9243,7 +9340,7 @@
   {
     "id": "629b68d38f2efbb5",
     "year": 2018.9,
-    "value": 8500,
+    "value": 41830,
     "label": "Bébés CRISPR",
     "category": "🟢 BIOTECH",
     "whoWhat": "He Jiankui",
@@ -9268,7 +9365,7 @@
   {
     "id": "1bfaae2feaee0bfe",
     "year": 2018.9,
-    "value": 14600,
+    "value": 41862,
     "label": "Fuite Marriott (500 M clients)",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Attaquants attribués à la Chine",
@@ -9291,7 +9388,7 @@
   {
     "id": "ac3bf31ae41025d0",
     "year": 2019.0,
-    "value": 9000,
+    "value": 43735,
     "label": "Suprématie Quantique",
     "category": "🟡 HARDWARE",
     "whoWhat": "Google Sycamore",
@@ -9317,7 +9414,7 @@
   {
     "id": "1accba35111a5499",
     "year": 2019.0,
-    "value": 8200,
+    "value": 28451,
     "label": "Première image Trou Noir",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -9340,7 +9437,7 @@
   {
     "id": "a406b9c94918a197",
     "year": 2019.0,
-    "value": 1190,
+    "value": 31610,
     "label": "Image du trou noir M87*",
     "category": "🟣 ESPACE",
     "whoWhat": "Réalité",
@@ -9366,7 +9463,7 @@
   {
     "id": "d1b0777cce85df6a",
     "year": 2019.6,
-    "value": 9000,
+    "value": 14477,
     "label": "Pluribus (Poker)",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -9389,7 +9486,7 @@
   {
     "id": "7acf193a6dc29dcb",
     "year": 2020.0,
-    "value": 10000,
+    "value": 42892,
     "label": "Vaccin ARNm",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -9412,7 +9509,7 @@
   {
     "id": "c0d90e79e1ecfc4a",
     "year": 2020.0,
-    "value": 9000,
+    "value": 15550,
     "label": "GPT-3",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -9435,7 +9532,7 @@
   {
     "id": "1ca23fd563c35c7a",
     "year": 2020.0,
-    "value": 10000,
+    "value": 43817,
     "label": "AlphaFold 2",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -9458,7 +9555,7 @@
   {
     "id": "e74936da484ac562",
     "year": 2020.0,
-    "value": 1850,
+    "value": 42539,
     "label": "Horloge: 100 sec",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -9481,7 +9578,7 @@
   {
     "id": "e309f9a38dc229d9",
     "year": 2020.0,
-    "value": 1200,
+    "value": 44616,
     "label": "COVID-19 (modélisation épidémiologique)",
     "category": "🟢 BIOTECH",
     "whoWhat": "Réalité",
@@ -9510,7 +9607,7 @@
   {
     "id": "15f002d6e1706f5e",
     "year": 2020.0,
-    "value": 180,
+    "value": 45303,
     "label": "Vaccins à ARN messager (COVID-19)",
     "category": "💊 MÉDECINE",
     "whoWhat": "BioNTech/Pfizer, Moderna",
@@ -9533,7 +9630,7 @@
   {
     "id": "28dfeccf8a244994",
     "year": 2020.0,
-    "value": 9700,
+    "value": 44161,
     "label": "Spot, robot quadrupède commercial",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Boston Dynamics",
@@ -9558,7 +9655,7 @@
   {
     "id": "acd160800110c265",
     "year": 2020,
-    "value": 30020,
+    "value": 43817,
     "label": "Visioconférence de masse (Zoom)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Réalité",
@@ -9579,7 +9676,7 @@
   {
     "id": "ef58c859ca99be29",
     "year": 2020,
-    "value": 720,
+    "value": 47088,
     "label": "The Last of Us",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Druckmann / Mazin",
@@ -9593,12 +9690,13 @@
     "convergences": "Fiction (série) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2020.0
+    "realYear": 2020.0,
+    "realLabel": "COVID-19 (modélisation épidémiologique)"
   },
   {
     "id": "6affbbe03b276f0e",
     "year": 2020,
-    "value": 30020,
+    "value": 44231,
     "label": "Paiement biométrique de masse (Amazon One)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Réalité",
@@ -9619,7 +9717,7 @@
   {
     "id": "b1e75efc5e74999d",
     "year": 2020,
-    "value": 720,
+    "value": 47212,
     "label": "Upload",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Greg Berlanti",
@@ -9633,12 +9731,13 @@
     "convergences": "Fiction (série) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2055.0
+    "realYear": 2055.0,
+    "realLabel": "Mind Uploading (Pilote)"
   },
   {
     "id": "b03bd0ff3e3cd3c3",
     "year": 2020.2,
-    "value": 1900,
+    "value": 43160,
     "label": "Covid-19",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -9661,7 +9760,7 @@
   {
     "id": "a0cc460718a05e70",
     "year": 2020.9,
-    "value": 15400,
+    "value": 43729,
     "label": "SolarWinds (compromission de la supply chain)",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Cozy Bear (SVR russe)",
@@ -9684,7 +9783,7 @@
   {
     "id": "2dc68d6e468e13aa",
     "year": 2021.0,
-    "value": 12000,
+    "value": 34540,
     "label": "James Webb Telescope",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -9707,7 +9806,7 @@
   {
     "id": "6e751ba31e233d07",
     "year": 2021.0,
-    "value": 8000,
+    "value": 26352,
     "label": "Assaut du Capitole",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -9730,7 +9829,7 @@
   {
     "id": "e414cb1d03b826fc",
     "year": 2021.0,
-    "value": 11000,
+    "value": 16669,
     "label": "DALL-E",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -9753,7 +9852,7 @@
   {
     "id": "1c5a45880a8d8b48",
     "year": 2021.0,
-    "value": 10500,
+    "value": 44616,
     "label": "NFT Boom",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -9776,7 +9875,7 @@
   {
     "id": "c024d08408041511",
     "year": 2021.0,
-    "value": 1210,
+    "value": 44973,
     "label": "Métavers (Facebook/Meta)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Réalité",
@@ -9804,7 +9903,7 @@
   {
     "id": "c2fd13c292400bb9",
     "year": 2021.0,
-    "value": 10400,
+    "value": 44555,
     "label": "Optimus, robot humanoïde Tesla",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Tesla",
@@ -9827,7 +9926,7 @@
   {
     "id": "6db7d98b85c230d4",
     "year": 2021,
-    "value": 30021,
+    "value": 28783,
     "label": "JO de Tokyo (2020, reportés 2021)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "Réalité",
@@ -9848,7 +9947,7 @@
   {
     "id": "46abc2f4c94917d4",
     "year": 2021,
-    "value": 721,
+    "value": 47328,
     "label": "Don't Look Up",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Adam McKay",
@@ -9862,12 +9961,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2022
+    "realYear": 2022,
+    "realLabel": "DART : déviation d'astéroïde (NASA)"
   },
   {
     "id": "e586a74b5a55fcdf",
     "year": 2021,
-    "value": 721,
+    "value": 47436,
     "label": "Dune",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Denis Villeneuve",
@@ -9881,12 +9981,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2024.0
+    "realYear": 2024.0,
+    "realLabel": "EU AI Act"
   },
   {
     "id": "ea5f3f43f0db61d0",
     "year": 2021.35,
-    "value": 17000,
+    "value": 44249,
     "label": "Colonial Pipeline (ransomware)",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "DarkSide",
@@ -9909,7 +10010,7 @@
   {
     "id": "dddd2091b3decd86",
     "year": 2021.5,
-    "value": 10000,
+    "value": 44920,
     "label": "Ameca / Optimus",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -9932,7 +10033,7 @@
   {
     "id": "ef45747e91c1fa33",
     "year": 2021.9,
-    "value": 16200,
+    "value": 44723,
     "label": "Log4Shell",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Attaquants divers",
@@ -9957,7 +10058,7 @@
   {
     "id": "126c8b5e85c81ead",
     "year": 2022.0,
-    "value": 13000,
+    "value": 45258,
     "label": "Fusion Ignition (NIF)",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -9980,7 +10081,7 @@
   {
     "id": "e1beb4224ff55f8c",
     "year": 2022.0,
-    "value": 11000,
+    "value": 17830,
     "label": "Gato (DeepMind)",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -10003,7 +10104,7 @@
   {
     "id": "6508fca78cab0147",
     "year": 2022.0,
-    "value": 1950,
+    "value": 45153,
     "label": "Guerre en Ukraine",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -10026,7 +10127,7 @@
   {
     "id": "95dc852682fbc7ba",
     "year": 2022.0,
-    "value": 11500,
+    "value": 19030,
     "label": "Midjourney",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -10049,7 +10150,7 @@
   {
     "id": "8e30e9d850f7f0ec",
     "year": 2022.0,
-    "value": 1220,
+    "value": 20262,
     "label": "Grand modèle de langage (LLM)",
     "category": "🔵 COGNITION",
     "whoWhat": "Réalité",
@@ -10076,7 +10177,7 @@
   {
     "id": "f3d57b4fb1a420b2",
     "year": 2022,
-    "value": 722,
+    "value": 47538,
     "label": "Severance",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Ben Stiller",
@@ -10090,12 +10191,13 @@
     "convergences": "Fiction (série) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2020
+    "realYear": 2020,
+    "realLabel": "Paiement biométrique de masse (Amazon One)"
   },
   {
     "id": "7f46a0e1c3155746",
     "year": 2022,
-    "value": 30022,
+    "value": 37166,
     "label": "DART : déviation d'astéroïde (NASA)",
     "category": "🟣 ESPACE",
     "whoWhat": "Réalité",
@@ -10116,7 +10218,7 @@
   {
     "id": "bd2b42b5b3c42eca",
     "year": 2022.4,
-    "value": 17800,
+    "value": 45544,
     "label": "Ransomware contre le Costa Rica",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Conti",
@@ -10139,7 +10241,7 @@
   {
     "id": "f595b181348011cf",
     "year": 2022.8,
-    "value": 150000,
+    "value": 21521,
     "label": "DALL-E 2",
     "category": "🔵 COGNITION",
     "whoWhat": "OpenAI",
@@ -10164,7 +10266,7 @@
   {
     "id": "769001316f67214f",
     "year": 2022.9,
-    "value": 12000,
+    "value": 22800,
     "label": "ChatGPT / GPT-3.5",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -10187,7 +10289,7 @@
   {
     "id": "77376bea05b08c5c",
     "year": 2022.9,
-    "value": 11000,
+    "value": 31137,
     "label": "Licenciements Tech (Vague 1)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -10210,7 +10312,7 @@
   {
     "id": "6b6e9952bdc5979b",
     "year": 2022.9,
-    "value": 180000,
+    "value": 24092,
     "label": "GPT-3",
     "category": "🔵 COGNITION",
     "whoWhat": "OpenAI",
@@ -10233,7 +10335,7 @@
   {
     "id": "44d2a08fb2463ee2",
     "year": 2023.0,
-    "value": 15000,
+    "value": 25389,
     "label": "GPT-4",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -10256,7 +10358,7 @@
   {
     "id": "c25fa0cbb741a0f4",
     "year": 2023.0,
-    "value": 14000,
+    "value": 33371,
     "label": "Grève Hollywood (IA)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -10279,7 +10381,7 @@
   {
     "id": "9d2845f9b3596702",
     "year": 2023.0,
-    "value": 14500,
+    "value": 35452,
     "label": "AI Safety Summit",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "Bletchley Park",
@@ -10302,7 +10404,7 @@
   {
     "id": "dc8430793e358240",
     "year": 2023.0,
-    "value": 14000,
+    "value": 45570,
     "label": "LK-99 (Faux Espoir)",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -10325,7 +10427,7 @@
   {
     "id": "5327a144a7147e3a",
     "year": 2023.0,
-    "value": 13000,
+    "value": 45858,
     "label": "Vision Pro (Annonce)",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -10348,7 +10450,7 @@
   {
     "id": "e9dc9256f27c8f19",
     "year": 2023.0,
-    "value": 2000,
+    "value": 45898,
     "label": "Horloge: 90 sec",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -10371,7 +10473,7 @@
   {
     "id": "5f43d309c9f936ff",
     "year": 2023,
-    "value": 723,
+    "value": 47633,
     "label": "The Creator",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Gareth Edwards",
@@ -10385,12 +10487,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2022.8
+    "realYear": 2022.8,
+    "realLabel": "DALL-E 2"
   },
   {
     "id": "af6dc41f63e732d7",
     "year": 2023,
-    "value": 30023,
+    "value": 26683,
     "label": "Deepfakes vidéo par IA générative",
     "category": "🔵 COGNITION",
     "whoWhat": "Réalité",
@@ -10411,7 +10514,7 @@
   {
     "id": "96f679ce4996c4da",
     "year": 2023,
-    "value": 723,
+    "value": 47723,
     "label": "Mission Impossible : Dead Reckoning",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Christopher McQuarrie",
@@ -10425,12 +10528,13 @@
     "convergences": "Fiction (film) + réalisation technologique",
     "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement.",
     "final_note": "La SF avait prévenu.",
-    "realYear": 2023
+    "realYear": 2023,
+    "realLabel": "Deepfakes vidéo par IA générative"
   },
   {
     "id": "9526dd567e96f1bc",
     "year": 2023.1,
-    "value": 12000,
+    "value": 37355,
     "label": "Licenciements Google/MS (12k+)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -10453,7 +10557,7 @@
   {
     "id": "c47e1264fc0b6a96",
     "year": 2023.3,
-    "value": 12500,
+    "value": 39067,
     "label": "Licenciements Meta (10k)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -10476,7 +10580,7 @@
   {
     "id": "34964d14d80a3de9",
     "year": 2023.4,
-    "value": 18600,
+    "value": 46218,
     "label": "MOVEit (fuite de masse via Cleo)",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Cl0p (groupe russophone)",
@@ -10499,7 +10603,7 @@
   {
     "id": "48d7e1f8cfec558a",
     "year": 2024.0,
-    "value": 16000,
+    "value": 40586,
     "label": "EU AI Act",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -10524,7 +10628,7 @@
   {
     "id": "4ba255312160026a",
     "year": 2024.0,
-    "value": 16200,
+    "value": 41916,
     "label": "NYT vs OpenAI",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -10547,7 +10651,7 @@
   {
     "id": "cd04d18b37ed3458",
     "year": 2024.0,
-    "value": 14500,
+    "value": 27968,
     "label": "Sora (OpenAI)",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -10570,7 +10674,7 @@
   {
     "id": "79dde30bac33d740",
     "year": 2024.0,
-    "value": 11100,
+    "value": 46123,
     "label": "Figure 01, humanoïde industriel",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Figure AI",
@@ -10595,7 +10699,7 @@
   {
     "id": "e104c8901c1384af",
     "year": 2024.1,
-    "value": 10000,
+    "value": 45890,
     "label": "Neuralink (Humain)",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -10621,7 +10725,7 @@
   {
     "id": "684b062618a43cfa",
     "year": 2024.1,
-    "value": 14000,
+    "value": 43068,
     "label": "Licenciements Tech (Vague 2)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -10644,7 +10748,7 @@
   {
     "id": "0b20a8fac0214f64",
     "year": 2024.3,
-    "value": 200000,
+    "value": 29236,
     "label": "Sora (OpenAI)",
     "category": "🔵 COGNITION",
     "whoWhat": "OpenAI",
@@ -10667,7 +10771,7 @@
   {
     "id": "e149b3c4d0556c63",
     "year": 2024.4,
-    "value": 21000,
+    "value": 46389,
     "label": "AlphaFold 3 (Alphagénome)",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -10690,7 +10794,7 @@
   {
     "id": "bcd7aae6a2d86999",
     "year": 2024.5,
-    "value": 20000,
+    "value": 30480,
     "label": "GPT-4o (Omni)",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -10713,7 +10817,7 @@
   {
     "id": "1c71c29625a8a611",
     "year": 2024.5,
-    "value": 15000,
+    "value": 44055,
     "label": "Grèves Jeu Vidéo (IA)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -10736,7 +10840,7 @@
   {
     "id": "16cebb6873fc186d",
     "year": 2024.55,
-    "value": 19400,
+    "value": 46506,
     "label": "Panne mondiale CrowdStrike",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "CrowdStrike (erreur de config)",
@@ -10759,7 +10863,7 @@
   {
     "id": "b0ed7196184fb3f5",
     "year": 2024.8,
-    "value": 18000,
+    "value": 45303,
     "label": "Civilisation Type 0.73",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "",
@@ -10782,7 +10886,7 @@
   {
     "id": "0d6eb0761572b529",
     "year": 2025.0,
-    "value": 17000,
+    "value": 44893,
     "label": "Revenu Universel (Pilotes)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -10805,7 +10909,7 @@
   {
     "id": "5c815f97a04750ee",
     "year": 2025.0,
-    "value": 16500,
+    "value": 39452,
     "label": "Starship Orbital",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -10828,7 +10932,7 @@
   {
     "id": "3a7ccbc7288879eb",
     "year": 2025.0,
-    "value": 1250,
+    "value": 46812,
     "label": "Colossal : bébé mammouth laineux",
     "category": "🟢 BIOTECH",
     "whoWhat": "Réalité",
@@ -10853,7 +10957,7 @@
   {
     "id": "7ec55ab87c7b6224",
     "year": 2025.05,
-    "value": 23000,
+    "value": 31693,
     "label": "DeepSeek-R1 (Open Source)",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -10876,7 +10980,7 @@
   {
     "id": "713629f251bb6b1e",
     "year": 2025.08,
-    "value": 48000,
+    "value": 46767,
     "label": "Horloge de l'Apocalypse : 89 secondes",
     "category": "☢️ ENTROPIE",
     "whoWhat": "Bulletin of the Atomic Scientists",
@@ -10899,7 +11003,7 @@
   {
     "id": "2b0ad6742f1a73a1",
     "year": 2025.15,
-    "value": 20200,
+    "value": 47001,
     "label": "Vol record Bybit (1,5 Md$)",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Lazarus (Corée du Nord)",
@@ -10922,7 +11026,7 @@
   {
     "id": "61ac7e03539043f4",
     "year": 2025.5,
-    "value": 22000,
+    "value": 46367,
     "label": "Tesla Transport Protocol",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -10945,7 +11049,7 @@
   {
     "id": "eec0f623e151991e",
     "year": 2025.5,
-    "value": 13000,
+    "value": 45608,
     "label": "Rupture TCP/IP",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -10968,7 +11072,7 @@
   {
     "id": "14d160643b059f34",
     "year": 2025.8,
-    "value": 20000,
+    "value": 32871,
     "label": "Stade Singularité : 0.75",
     "category": "⚪ SINGULARITÉ",
     "whoWhat": "",
@@ -10991,7 +11095,7 @@
   {
     "id": "904c2fe1cb842848",
     "year": 2026.0,
-    "value": 2100,
+    "value": 47212,
     "label": "Rupture Supply Chain",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -11014,7 +11118,7 @@
   {
     "id": "4d83a6792546bf08",
     "year": 2026.0,
-    "value": 50000,
+    "value": 34007,
     "label": "LE GENOU",
     "category": "⚪ SINGULARITÉ",
     "whoWhat": "",
@@ -11037,7 +11141,7 @@
   {
     "id": "0ffc959681fc048f",
     "year": 2026.0,
-    "value": 19000,
+    "value": 46592,
     "label": "Lunettes AR (Meta/Apple)",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -11060,7 +11164,7 @@
   {
     "id": "e7320fc461da9394",
     "year": 2026.0,
-    "value": 48000,
+    "value": 47401,
     "label": "Horloge de l'Apocalypse 2026",
     "category": "☢️ ENTROPIE",
     "whoWhat": "Bulletin of the Atomic Scientists",
@@ -11083,7 +11187,7 @@
   {
     "id": "a26c8349c0411e6c",
     "year": 2026.04,
-    "value": 24000,
+    "value": 46798,
     "label": "MRAM Neuromorphique",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -11106,7 +11210,7 @@
   {
     "id": "b133d30e5ab278e6",
     "year": 2026.05,
-    "value": 13500,
+    "value": 45890,
     "label": "Audit AI Act",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -11129,7 +11233,7 @@
   {
     "id": "5495b11848396d20",
     "year": 2026.05,
-    "value": 38000,
+    "value": 35098,
     "label": "Quiet-STaR Reasoning",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -11152,7 +11256,7 @@
   {
     "id": "cae8a5736d851308",
     "year": 2026.06,
-    "value": 45000,
+    "value": 36141,
     "label": "Constitution IA",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -11175,7 +11279,7 @@
   {
     "id": "2ab106e672e4d025",
     "year": 2026.06,
-    "value": 42000,
+    "value": 37133,
     "label": "Agentic Distillation",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -11198,7 +11302,7 @@
   {
     "id": "0d68077a56052d69",
     "year": 2026.06,
-    "value": 44000,
+    "value": 38072,
     "label": "Reality Upscaling",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -11221,7 +11325,7 @@
   {
     "id": "e57caa659f436867",
     "year": 2026.06,
-    "value": 26000,
+    "value": 46988,
     "label": "Verticalisation Énergie",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -11244,7 +11348,7 @@
   {
     "id": "4d4ca9ae7acb6a25",
     "year": 2026.06,
-    "value": 27000,
+    "value": 47162,
     "label": "TinyML Inférence",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -11267,7 +11371,7 @@
   {
     "id": "2468a599e53fdcac",
     "year": 2026.06,
-    "value": 17000,
+    "value": 46150,
     "label": "Souveraineté Locale",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -11290,7 +11394,7 @@
   {
     "id": "f3866aafe539d6f9",
     "year": 2026.06,
-    "value": 16500,
+    "value": 41389,
     "label": "Consolidation Spatiale UE",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -11313,7 +11417,7 @@
   {
     "id": "6ee68eefa8a375e7",
     "year": 2026.06,
-    "value": 17500,
+    "value": 46389,
     "label": "Logistique Orbitale",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -11336,7 +11440,7 @@
   {
     "id": "84d1d99c6722848b",
     "year": 2026.06,
-    "value": 18000,
+    "value": 46610,
     "label": "GEOINT Démocratisé",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -11359,7 +11463,7 @@
   {
     "id": "49dacc2e55e2888d",
     "year": 2026.06,
-    "value": 2150,
+    "value": 47571,
     "label": "Brouillage Cognitif",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -11382,7 +11486,7 @@
   {
     "id": "0cdc819ef445967f",
     "year": 2026.1,
-    "value": 18500,
+    "value": 46812,
     "label": "Habeas Data",
     "category": "🔴 RÉSEAU",
     "whoWhat": "",
@@ -11405,7 +11509,7 @@
   {
     "id": "12edab6ee0699d34",
     "year": 2026.1,
-    "value": 48000,
+    "value": 38958,
     "label": "The Blitz (AGI)",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -11428,7 +11532,7 @@
   {
     "id": "528bc2b5217752bd",
     "year": 2026.15,
-    "value": 28000,
+    "value": 47321,
     "label": "Qubit Logique",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -11451,7 +11555,7 @@
   {
     "id": "e33798c4cc1e992c",
     "year": 2026.23,
-    "value": 45000,
+    "value": 39789,
     "label": "Lancement d'ARC-AGI-3 (Y Combinator, 25 mars 2026)",
     "category": "🔵 COGNITION",
     "whoWhat": "ARC Prize Foundation",
@@ -11474,7 +11578,7 @@
   {
     "id": "a92df4342bba35d1",
     "year": 2026.28,
-    "value": 45500,
+    "value": 40567,
     "label": "Une conjecture mathématique de 42 ans résolue en 12 h par IA",
     "category": "🔵 COGNITION",
     "whoWhat": "Quanta Magazine (13 avril 2026)",
@@ -11497,7 +11601,7 @@
   {
     "id": "6298bbc8119fb200",
     "year": 2026.3,
-    "value": 17000,
+    "value": 42994,
     "label": "Starship Mars",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -11520,7 +11624,7 @@
   {
     "id": "07c4aecbc1590fa5",
     "year": 2026.35,
-    "value": 46000,
+    "value": 41293,
     "label": "Réfutation Lean-vérifiée de la conjecture d'Erdős (1946)",
     "category": "🔵 COGNITION",
     "whoWhat": "OpenAI (mai 2026)",
@@ -11543,7 +11647,7 @@
   {
     "id": "59d3789244539c93",
     "year": 2026.5,
-    "value": 46500,
+    "value": 41967,
     "label": "IA : 5 problèmes sur 6 résolus à l'Olympiade internationale de maths",
     "category": "🔵 COGNITION",
     "whoWhat": "IMO 2026",
@@ -11566,7 +11670,7 @@
   {
     "id": "c64e51bdb5136ca3",
     "year": 2026.55,
-    "value": 47000,
+    "value": 42591,
     "label": "Agents IA résolvent des problèmes de maths ouverts (Science 2026)",
     "category": "🔵 COGNITION",
     "whoWhat": "Tsoukalas et al., Science",
@@ -11589,7 +11693,7 @@
   {
     "id": "e055a307e32f2956",
     "year": 2026.79,
-    "value": 47500,
+    "value": 43168,
     "label": "Gemini 4 Argon : 97,5 % vérifiés sur ARC-AGI-3 (16 oct. 2026)",
     "category": "🔵 COGNITION",
     "whoWhat": "Google DeepMind",
@@ -11612,7 +11716,7 @@
   {
     "id": "8086f6181a821923",
     "year": 2026.87,
-    "value": 48000,
+    "value": 43699,
     "label": "Claude Fable 5.2 en tête du leaderboard ARC-AGI-3 (81,2 %)",
     "category": "🔵 COGNITION",
     "whoWhat": "BenchLM.ai (nov. 2026)",
@@ -11635,7 +11739,7 @@
   {
     "id": "1769e885a2a3f50f",
     "year": 2026.917,
-    "value": 24770,
+    "value": 44188,
     "label": "AI2027 : is this? How did we write it? Why is it valuable? Who are we? The CEOs of OpenAI , Google DeepMind , and Anthropic have",
     "category": "🔵 COGNITION",
     "whoWhat": "AI2027.com",
@@ -11658,7 +11762,7 @@
   {
     "id": "b879f13e8451940e",
     "year": 2026.917,
-    "value": 35590,
+    "value": 46998,
     "label": "IA2027 : L'IA pourrait-elle détruire l'humanité ?",
     "category": "🔴 RÉSEAU",
     "whoWhat": "BBC",
@@ -11681,7 +11785,7 @@
   {
     "id": "e6c6a59de1e9cbc2",
     "year": 2026.917,
-    "value": 50000,
+    "value": 44636,
     "label": "Stade de Singularité (estimation courante)",
     "category": "⚪ SINGULARITÉ",
     "whoWhat": "Cortex Loom Analysis",
@@ -11704,7 +11808,7 @@
   {
     "id": "0555be9527b830a2",
     "year": 2026.917,
-    "value": 39448,
+    "value": 45047,
     "label": "Comment deux paramètres ont triplé nos scores au benchmark ARC-AGI-3",
     "category": "🔵 COGNITION",
     "whoWhat": "OpenAI",
@@ -11727,7 +11831,7 @@
   {
     "id": "1977a75ae299cacc",
     "year": 2026.917,
-    "value": 22016,
+    "value": 45421,
     "label": "Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %, mais le test standard raconte une autre histoire",
     "category": "🔵 COGNITION",
     "whoWhat": "remio",
@@ -11750,7 +11854,7 @@
   {
     "id": "429f0b65649725ee",
     "year": 2026.917,
-    "value": 40013,
+    "value": 45763,
     "label": "Comment deux paramètres ont triplé nos scores au benchmark ARC-AGI-3",
     "category": "🔵 COGNITION",
     "whoWhat": "OpenAI",
@@ -11773,7 +11877,7 @@
   {
     "id": "f13e5a361558ccea",
     "year": 2026.917,
-    "value": 45097,
+    "value": 46075,
     "label": "Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %, mais le test standard raconte une autre histoire",
     "category": "🔵 COGNITION",
     "whoWhat": "remio",
@@ -11796,7 +11900,7 @@
   {
     "id": "1b98dd3fcf0f835e",
     "year": 2026.92,
-    "value": 48500,
+    "value": 46358,
     "label": "Résultats officiels ARC Prize 2026 (4 déc. 2026)",
     "category": "🔵 COGNITION",
     "whoWhat": "ARC Prize Foundation",
@@ -11819,7 +11923,7 @@
   {
     "id": "e7e3561b47d5c09a",
     "year": 2027.0,
-    "value": 25000,
+    "value": 45601,
     "label": "Jihad Butlérien (Début)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -11842,7 +11946,7 @@
   {
     "id": "97cf2d815805c029",
     "year": 2027.0,
-    "value": 28000,
+    "value": 46194,
     "label": "Traité de Genève sur l'IA",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -11865,7 +11969,7 @@
   {
     "id": "9cc05b501122153c",
     "year": 2027.0,
-    "value": 22000,
+    "value": 47467,
     "label": "Fusion (Q>1 soutenu)",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -11888,7 +11992,7 @@
   {
     "id": "effa30fa6270bc1e",
     "year": 2028.0,
-    "value": 35000,
+    "value": 46689,
     "label": "IA Juge (Pilote)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -11911,7 +12015,7 @@
   {
     "id": "b472ccf6c77c894a",
     "year": 2028.0,
-    "value": 26000,
+    "value": 44300,
     "label": "Mission Retour Mars",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -11934,7 +12038,7 @@
   {
     "id": "dd31e7a2fddc0549",
     "year": 2029.0,
-    "value": 40000,
+    "value": 45347,
     "label": "Première base lunaire permanente",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -11957,7 +12061,7 @@
   {
     "id": "0246a6d7d7124019",
     "year": 2029.0,
-    "value": 32000,
+    "value": 46615,
     "label": "AGI (Débat)",
     "category": "🔵 COGNITION",
     "whoWhat": "",
@@ -11980,7 +12084,7 @@
   {
     "id": "4998e2ddbbc6979c",
     "year": 2030.0,
-    "value": 45000,
+    "value": 46849,
     "label": "Stade Singularité : 0.8",
     "category": "⚪ SINGULARITÉ",
     "whoWhat": "",
@@ -12003,7 +12107,7 @@
   {
     "id": "6aad19df4c86a83f",
     "year": 2031.0,
-    "value": 42000,
+    "value": 47101,
     "label": "Droits Numériques Constitutionnels",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -12026,7 +12130,7 @@
   {
     "id": "22571030263bcad7",
     "year": 2032.0,
-    "value": 50000,
+    "value": 46176,
     "label": "Première mine sur astéroïde",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -12049,7 +12153,7 @@
   {
     "id": "c2159f28a6e93c75",
     "year": 2033.0,
-    "value": 55000,
+    "value": 46825,
     "label": "Premier humain sur Mars",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -12072,7 +12176,7 @@
   {
     "id": "4134754ae6b9f3f2",
     "year": 2035.0,
-    "value": 60000,
+    "value": 47169,
     "label": "Crise de la Réalité",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "",
@@ -12097,7 +12201,7 @@
   {
     "id": "46884aa730d71294",
     "year": 2036.0,
-    "value": 65000,
+    "value": 47442,
     "label": "Gouvernance par IA (Dubaï)",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -12120,7 +12224,7 @@
   {
     "id": "f61512c0008b8e51",
     "year": 2038.0,
-    "value": 75000,
+    "value": 47169,
     "label": "Interface Cerveau-Cloud",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -12143,7 +12247,7 @@
   {
     "id": "8a889c41c092b07c",
     "year": 2040.0,
-    "value": 80000,
+    "value": 47470,
     "label": "Longevity Escape Velocity",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -12166,7 +12270,7 @@
   {
     "id": "02c5d443de0ae84d",
     "year": 2042.0,
-    "value": 90000,
+    "value": 47060,
     "label": "Stade Singularité : 0.9 (AGI)",
     "category": "⚪ SINGULARITÉ",
     "whoWhat": "",
@@ -12189,7 +12293,7 @@
   {
     "id": "7e067c0057c328e4",
     "year": 2045.0,
-    "value": 150000,
+    "value": 47252,
     "label": "Point Kurzweil",
     "category": "⚪ SINGULARITÉ",
     "whoWhat": "",
@@ -12212,7 +12316,7 @@
   {
     "id": "6acedbccb075923d",
     "year": 2047.0,
-    "value": 160000,
+    "value": 47425,
     "label": "Émergence d'une ASI",
     "category": "⚪ SINGULARITÉ",
     "whoWhat": "",
@@ -12235,7 +12339,7 @@
   {
     "id": "e9df7c8788102548",
     "year": 2048.0,
-    "value": 155000,
+    "value": 47723,
     "label": "Schisme de l'Humanité",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "",
@@ -12258,7 +12362,7 @@
   {
     "id": "e543e2634d7c1507",
     "year": 2050.0,
-    "value": 2200,
+    "value": 47723,
     "label": "Guerres de l'Eau (Climat)",
     "category": "☢️ ENTROPIE",
     "whoWhat": "",
@@ -12283,7 +12387,7 @@
   {
     "id": "3994dae141fd9c12",
     "year": 2051.0,
-    "value": 180000,
+    "value": 47581,
     "label": "Singularité Économique",
     "category": "⚪ SINGULARITÉ",
     "whoWhat": "",
@@ -12306,7 +12410,7 @@
   {
     "id": "c7b86256ffb9a27a",
     "year": 2055.0,
-    "value": 190000,
+    "value": 47723,
     "label": "Mind Uploading (Pilote)",
     "category": "🟢 BIOTECH",
     "whoWhat": "",
@@ -12331,7 +12435,7 @@
   {
     "id": "c8c544634adb1bc5",
     "year": 2060.0,
-    "value": 200000,
+    "value": 47326,
     "label": "Civilisation Type 0.8",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "",
@@ -12354,7 +12458,7 @@
   {
     "id": "ea6bc1cb9c2ccdf4",
     "year": 2065.0,
-    "value": 250000,
+    "value": 47601,
     "label": "Computronium (Prototype)",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -12377,7 +12481,7 @@
   {
     "id": "c6b2c362327c36bd",
     "year": 2070.0,
-    "value": 300000,
+    "value": 47331,
     "label": "Début terraformation Mars",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -12400,7 +12504,7 @@
   {
     "id": "59da09ac6cd81852",
     "year": 2075.0,
-    "value": 350000,
+    "value": 47470,
     "label": "Esprit de Ruche (Noosphère v2)",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "",
@@ -12423,7 +12527,7 @@
   {
     "id": "7735d4a4f6bb5286",
     "year": 2080.0,
-    "value": 400000,
+    "value": 47602,
     "label": "Civilisation Type 0.9",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "",
@@ -12446,7 +12550,7 @@
   {
     "id": "971a907d45da0636",
     "year": 2085.0,
-    "value": 500000,
+    "value": 47723,
     "label": "Sphère de Dyson (Concept Opérationnel)",
     "category": "🟡 HARDWARE",
     "whoWhat": "",
@@ -12469,7 +12573,7 @@
   {
     "id": "e3d7dfece900af30",
     "year": 2090.0,
-    "value": 600000,
+    "value": 47723,
     "label": "Contact (Signal WOW! v2)",
     "category": "🟣 ESPACE",
     "whoWhat": "",
@@ -12492,7 +12596,7 @@
   {
     "id": "55f8c5f798c972cc",
     "year": 2095.0,
-    "value": 800000,
+    "value": 47723,
     "label": "Stade Singularité : 1.0 (ASI)",
     "category": "⚪ SINGULARITÉ",
     "whoWhat": "",
@@ -12515,7 +12619,7 @@
   {
     "id": "3407b7648ef1a5bb",
     "year": 2100.0,
-    "value": 1000000,
+    "value": 47723,
     "label": "Civilisation Type 1 (Seuil)",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "",

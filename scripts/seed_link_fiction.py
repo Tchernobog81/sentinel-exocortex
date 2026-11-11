@@ -105,6 +105,7 @@ def main():
             continue
         if not f.get("realYear"):
             f["realYear"] = r["year"]
+            f["realLabel"] = r["label"]
             manual_linked += 1
         pb = r.get("predictedBy") or []
         if f["label"] not in pb:
@@ -130,6 +131,7 @@ def main():
                 best, bestscore = r, score
         if best and bestscore >= 2:
             f["realYear"] = best["year"]
+            f["realLabel"] = best["label"]
             pb = best.get("predictedBy") or []
             if f["label"] not in pb:
                 pb.append(f["label"])

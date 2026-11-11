@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>THE LOOM : EXOCORTEX v163</title>
+    <title>THE LOOM : EXOCORTEX v164</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -185,15 +185,15 @@
 <body>
 
     <div id="loading-screen">
-        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v163</div>
-        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v163...</div>
-        <div id="debug-log">Init v163...</div>
+        <div class="text-xl font-black text-white mb-2 tracking-widest">SYSTEM BOOT v164</div>
+        <div class="text-xs text-zinc-500 mb-4">Connexion au cortex local v164...</div>
+        <div id="debug-log">Init v164...</div>
     </div>
 
     <div id="viewport">
         <aside>
             <div class="brand-header">
-                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v163</span></div>
+                <div class="brand-title">The Loom <span class="brand-version text-emerald-400" onclick="forceReload()" style="cursor:pointer; text-decoration:underline;" title="Forcer la mise à jour (Cache Buster)">v164</span></div>
                 <div id="timer-badge" class="timer-badge"></div>
             </div>
 
@@ -361,10 +361,15 @@
         }
 
         // --- Navigation Prédit ⇄ Réalisé (inter-pointeurs entre événements liés) ---
-        function jumpToYear(year) {
+        function jumpToYear(year, fromLabel) {
             markNavigated();
-            const cands = ALL_DATA.filter(e => Math.floor(e.year) === Math.floor(year));
-            const target = cands.sort((a, b) => (b.predictedBy ? 1 : 0) - (a.predictedBy ? 1 : 0) || b.year - a.year)[0];
+            let cands = ALL_DATA.filter(e => Math.floor(e.year) === Math.floor(year));
+            // cohérence : depuis une fiction, ne cibler que les réels qui la citent (predictedBy)
+            if (fromLabel) {
+                const linked = cands.filter(e => (e.predictedBy || []).includes(fromLabel));
+                if (linked.length) cands = linked;
+            }
+            const target = cands.sort((a, b) => b.year - a.year)[0];
             if (!target) return;
             animateZoomTo(target.year - 2, target.year + 2);
             setTimeout(() => showDetail(target), 600);
@@ -883,8 +888,9 @@
             if (data.realYear) {
                 const b = document.createElement('span');
                 b.className = 'card-nav-link';
-                b.innerText = `⇄ réalisé en ${Math.floor(data.realYear)}`;
-                b.onclick = () => jumpToYear(data.realYear);
+                const tgt = data.realLabel ? `${data.realLabel} (${Math.floor(data.realYear)})` : Math.floor(data.realYear);
+                b.innerText = `⇄ réalisé : ${tgt}`;
+                b.onclick = () => data.realLabel ? jumpToLabel(data.realLabel) : jumpToYear(data.realYear, data.label);
                 nav.appendChild(b);
             }
             if (Array.isArray(data.predictedBy)) {

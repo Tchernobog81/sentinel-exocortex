@@ -104,6 +104,7 @@ def main():
     for work, author, fyear, real_label, ryear, rcat, pitch, rdesc in PAIRS:
         fe = base_event(work, fyear, author, CAT_FICTION, pitch, "https://fr.wikipedia.org/wiki/" + work.split(" (")[0].replace(" ", "_"))
         fe["realYear"] = ryear
+        fe["realLabel"] = real_label
         # merge : conserve les champs existants (ex: predictedBy côté réel) et pose realYear
         index[fe["id"]] = {**index.get(fe["id"], {}), **fe}
         added += 1
