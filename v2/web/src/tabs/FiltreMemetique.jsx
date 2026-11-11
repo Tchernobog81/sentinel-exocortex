@@ -26,6 +26,40 @@ export default function FiltreMemetique({ memetic, setMemetic, events }) {
                onChange={e => setMemetic(m => ({ ...m, smoothWindow: +e.target.value }))} />
         <div className="text-[10px] text-zinc-600 mt-3">Valeur brute (dernier réglage officiel) : {(events || []).filter(e => e.doomsday_minutes != null).length} points ⏰ — voir LOOM CORE pour le rendu lissé.</div>
       </div>
+
+      {/* Métriques : benchmark d'alignement & vitesse de régression logicielle */}
+      <div className="panel p-4 col-span-2">
+        <div className="flex items-center gap-2 text-[10px] tracking-widest text-neon-cyan mb-3"><Activity size={12} /> MÉTRIQUES DE RÉGRESSION & ALIGNEMENT</div>
+        {(() => {
+          const now = new Date().getFullYear() + new Date().getMonth() / 12;
+          const all = events || [];
+          const recent = all.filter(e => (e.year || 0) >= now - 1 && (e.year || 0) <= now + 0.05);
+          const verified = recent.filter(e => e.verified !== false).length;
+          const aligned = recent.length ? (verified / recent.length) : 0;
+          const last12 = all.filter(e => (e.year || 0) >= now - 1);
+          const velocity = last12.length; // événements/12 mois
+          return (
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <div className="text-[10px] text-zinc-500 uppercase mb-1">Benchmark d'alignement (faits vérifiés)</div>
+                <div className="text-2xl font-black text-neon-cyan">{(aligned * 100).toFixed(1)}%</div>
+                <div className="h-2 rounded-full bg-zinc-800 overflow-hidden mt-1">
+                  <div className="h-full bg-cyan-400" style={{ width: `${aligned * 100}%` }} />
+                </div>
+                <div className="text-[9px] text-zinc-600 mt-1">{verified}/{recent.length} sur 12 mois glissants</div>
+              </div>
+              <div>
+                <div className="text-[10px] text-zinc-500 uppercase mb-1">Vitesse de régression logicielle (événements/12 mois)</div>
+                <div className="text-2xl font-black amber-text">{velocity}</div>
+                <div className="h-2 rounded-full bg-zinc-800 overflow-hidden mt-1">
+                  <div className="h-full bg-amber-400" style={{ width: `${Math.min(100, velocity)}%` }} />
+                </div>
+                <div className="text-[9px] text-zinc-600 mt-1">Signaux intégrés à la courbe sur la dernière année</div>
+              </div>
+            </div>
+          );
+        })()}
+      </div>
     </div>
   );
 }

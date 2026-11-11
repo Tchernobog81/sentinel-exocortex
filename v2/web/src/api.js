@@ -2,6 +2,7 @@
 //  - "server" : serveur Node local (127.0.0.1:8787) -> SSE /api/stream + /api/telemetry/stream
 //  - "static" : GitHub Pages -> polling de loom_data.json / telemetry.json / rag.json (poussés par l'agent local)
 import { useEffect, useRef, useState } from 'react';
+import { FALLBACK_LOOM_DATA } from './fallback_loom_data.js';
 
 const BASE = './'; // base relative : marche à la racine (serveur local) et sous /sentinel-exocortex/ (Pages)
 
@@ -13,6 +14,13 @@ export function detectMode() {
       .catch(() => 'static');
   }
   return modePromise;
+}
+
+// Service Worker PWA : offline-first (cache-first + fallback réseau)
+export function registerSW() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(BASE + 'sw.js', { scope: BASE }).catch(() => {});
+  }
 }
 
 // ---- mapping statique V1 -> enveloppe V2 (miroir de v2/server/lib.mjs) ----
@@ -62,6 +70,8 @@ export function mapEnvelope(events) {
         verified: e.verified !== false, doomsday_minutes: e.doomsday_minutes ?? null,
         realYear: e.realYear ?? null, realLabel: e.realLabel ?? null,
         predictedBy: Array.isArray(e.predictedBy) ? e.predictedBy : [],
+        remedy: e.pharmakon_remedy_percent ?? e.remedy_percent ?? 50, poison: e.pharmakon_poison_percent ?? e.poison_percent ?? 50,
+        sCurve: e.s_curve_phase ?? 3, convergences: e.convergences || '', grandFilter: e.grand_filter_analysis || '',
       };
     }),
   };
@@ -101,14 +111,23 @@ export function useSSE(url, onMessage, pollMs = 5000) {
         try {
           let r = await fetch(BASE + apiPath + '?cb=' + Date.now(), { cache: 'no-store' });
           if (!r.ok) r = await fetch(BASE + staticFile + '?cb=' + Date.now(), { cache: 'no-store' });
-          if (!r.ok) { if (isTelemetry) setConnected(false); return; }
+          if (!r.ok) throw new Error('no-data');
           let j = await r.json();
           if (!isTelemetry && Array.isArray(j)) j = mapEnvelope(j);
           dataRef.current = j;
           setData(j);
           setConnected(true);
           onMessageRef.current?.(j);
-        } catch { if (!dataRef.current) setConnected(false); }
+        } catch {
+          if (isTelemetry || dataRef.current) { setConnected(false); return; }
+          // FALLBACK DÉTERMINISTE : données d'urgence embarquées (jamais bloqué, jamais vide)
+          const fb = mapEnvelope(FALLBACK_LOOM_DATA);
+          fb.fallback = true;
+          dataRef.current = fb;
+          setData(fb);
+          onMessageRef.current?.(fb);
+          setConnected(false);
+        }
       };
       await tick();
       iv = setInterval(tick, m === 'server' ? pollMs : Math.max(pollMs, 8000));

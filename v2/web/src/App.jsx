@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Landmark, Zap, ShieldCheck, BrainCircuit, Radio } from 'lucide-react';
 import { useSSE } from './api.js';
 import LoomCore, { LOOM_VERSION } from './tabs/LoomCore.jsx';
@@ -15,6 +15,16 @@ const TABS = [
 
 export default function App() {
   const [tab, setTab] = useState('core');
+  // Raccourcis clavier : Touch 1-4 pour naviguer entre les onglets (hors champ de saisie)
+  useEffect(() => {
+    const onKey = (ev) => {
+      if (ev.target && /input|textarea|select/i.test(ev.target.tagName)) return;
+      const map = { '1': 'core', '2': 'nela', '3': 'steri', '4': 'filtre' };
+      if (map[ev.key]) setTab(map[ev.key]);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
   const [filters, setFilters] = useState({});            // {cat: bool} — filtres catégories onglet 1
   const [memetic, setMemetic] = useState({ noiseRatio: 30, smoothWindow: 3 }); // onglet 4 -> partagé
   const { data, connected, mode } = useSSE('/api/stream', null, 5000);
@@ -54,6 +64,7 @@ export default function App() {
             <Radio size={12} className={connected ? 'animate-pulse' : ''} /> {mode === 'static' ? 'POLL' : 'SSE'} {connected ? 'LIVE' : 'OFF'}
           </span>
           <span className={telOn ? 'text-neon-cyan' : 'text-zinc-500'}>TEL {telOn ? 'LIVE' : 'OFF'}</span>
+          {envelope.fallback && <span className="red-text">· DONNÉES D'URGENCE</span>}
           <span className="text-zinc-500">AIR-GAP {tel?.airgap === false ? <b className="red-text">OUVERT</b> : <b className="text-neon-green">ON</b>}</span>
         </div>
       </header>

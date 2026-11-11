@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.1.5';
+export const LOOM_VERSION = '2.2.0';
 
 // Onglet 1 — LOOM CORE (V2.1.2) : le chart s'initialise UNE fois (le zoom utilisateur est préservé
 // entre les rafraîchissements SSE), les séries sont mises à jour en douceur.
@@ -15,6 +15,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
   const [selected, setSelected] = useState(null);
   const [hover, setHover] = useState(null);
   const [hiddenGroups, setHiddenGroups] = useState({});
+  const [search, setSearch] = useState('');
+  const [kineticOnly, setKineticOnly] = useState(false);
   window.__selectEvent = (ev) => setSelected(ev); // hook de test
 
   const nowYear = new Date().getFullYear() + new Date().getMonth() / 12;
@@ -260,9 +262,10 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       .filter(e => !/fiction|horloge/i.test(e.category) && e.verified !== false && (e.year || 0) >= nowYear - 1 && (e.year || 0) <= nowYear + 0.05)
       .map(e => ({ e, t: effTs(e) }))
       .sort((a, b) => b.t - a.t);
-    // liste REMPLIE : les 30 derniers événements antichronologiques de l'année en cours
-    return base.slice(0, 30).map(x => x.e);
-  }, [events]);
+    // liste REMPLIE : les 30 derniers, filtrés par recherche texte et gravité (signaux cinétiques)
+    return base.slice(0, 30).map(x => x.e)
+      .filter(e => (!kineticOnly || e.is_kinetic_signal) && (!search || (e.title || '').toLowerCase().includes(search.toLowerCase())));
+  }, [events, search, kineticOnly]);
   const lastMaj = useMemo(() => {
     let mx = null;
     for (const e of events) {
@@ -299,6 +302,15 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         <div className="flex items-center gap-2 text-neon-cyan text-[10px] tracking-widest mb-2">
           <Radio size={12} className="animate-pulse" /> FLUX ENTRANT · MAJ {lastMaj}
         </div>
+        {/* barre de recherche + filtre de gravité */}
+        <div className="flex items-center gap-1.5 mb-2">
+          <input value={search} onChange={ev => setSearch(ev.target.value)} placeholder="Rechercher dans le flux…"
+                 className="flex-1 bg-transparent border border-cyan-500/30 rounded-md px-2 py-1 text-[10px] text-zinc-200 focus:border-cyan-400 focus:outline-none"
+                 style={{ background: 'rgba(0,20,26,0.6)' }} />
+          <span className={`chip ${kineticOnly ? 'on' : 'opacity-50'} shrink-0`} title="Signaux cinétiques uniquement"
+                onClick={() => setKineticOnly(k => !k)}>⚡</span>
+        </div>
+        {feed.length === 0 && <div className="text-[11px] text-zinc-600 italic mb-2">Aucun fait récent — veille en pause.</div>}
         <ul className="space-y-1.5">
           {feed.map(e => (
             <li key={e.id} className="text-[11px] leading-snug cursor-pointer hover:bg-cyan-500/10 rounded px-1 py-0.5"
@@ -361,11 +373,33 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
                onClick={e => e.stopPropagation()}>
             <button onClick={() => setSelected(null)} className="absolute top-3 right-3 text-zinc-500 hover:text-white text-2xl leading-none"><X size={18} /></button>
             <h2 className="text-xl font-black uppercase pr-8" style={{ color: selected.groupColor }}>{selected.title}</h2>
-            <div className="flex gap-4 text-[10px] text-zinc-500 uppercase mt-1 mb-3 border-b border-zinc-800 pb-2 flex-wrap">
+            <div className="flex gap-3 items-center flex-wrap text-[10px] text-zinc-500 uppercase mt-1 mb-2">
               <span>Source: <b className="text-zinc-300">{selected.source || 'N/A'}</b></span>
-              <span>Date: <b className="text-zinc-300">{Math.floor(selected.year)}</b></span>
-              <span>Catégorie: <b className="text-zinc-300">{selected.category}</b></span>
-              <span>Impact: <b className="text-zinc-300">{selected.impact_score}</b></span>
+              <span className="font-mono">ID: <b className="text-zinc-400">{selected.id}</b></span>
+              <span>Timestamp: <b className="text-zinc-400 font-mono">{new Date(selected.timestamp).toLocaleString('fr-FR')} ({new Date(selected.timestamp).toISOString().slice(0, 16)}Z)</b></span>
+              <span className={`px-2 py-0.5 rounded border ${selected.is_kinetic_signal ? 'border-red-500/60 text-red-400' : 'border-zinc-700 text-zinc-500'}`}>
+                {selected.is_kinetic_signal ? '⟡ IMPACT CINÉTIQUE : OUI' : 'IMPACT CINÉTIQUE : NON'}
+              </span>
+            </div>
+            {/* Jauge Pharmakon : Remède | Poison */}
+            <div className="mb-3">
+              <div className="flex justify-between text-[9px] uppercase mb-0.5">
+                <span className="text-emerald-400">Remède {selected.remedy ?? 50}%</span>
+                <span className="text-red-400">Poison {selected.poison ?? 50}%</span>
+              </div>
+              <div className="flex h-3 rounded-full overflow-hidden border border-zinc-800">
+                <div className="h-full bg-emerald-500" style={{ width: `${selected.remedy ?? 50}%` }} />
+                <div className="h-full bg-red-500" style={{ width: `${selected.poison ?? 50}%` }} />
+              </div>
+            </div>
+            {/* Position sur la courbe en S (1-5) */}
+            <div className="flex items-center gap-2 text-[10px] text-zinc-500 uppercase mb-2">
+              <span>Courbe en S :</span>
+              <div className="flex gap-1">
+                {[1, 2, 3, 4, 5].map(n => (
+                  <span key={n} className={`inline-block w-4 h-4 rounded text-center text-[9px] leading-4 border ${n === (selected.sCurve ?? 3) ? 'border-neon-cyan text-neon-cyan bg-cyan-500/20' : 'border-zinc-800 text-zinc-600'}`}>{n}</span>
+                ))}
+              </div>
             </div>
             <div className="flex gap-2 flex-wrap mb-3">
               {selected.realLabel && (
@@ -382,7 +416,13 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
               ))}
             </div>
             <p className="text-sm text-zinc-300 italic leading-relaxed">{selected.description || 'Pas de description.'}</p>
-            <div className="mt-3 text-[9px] text-zinc-700 font-mono">{selected.group} · {selected.id}</div>
+            {/* Convergences & Grand Filtre + recommandation tactique NELA */}
+            {/* Convergences & Grand Filtre + recommandation tactique NELA (toujours renseignés) */}
+            <div className="mt-3 pt-2 border-t border-zinc-800 text-[11px] leading-relaxed">
+              <div><b className="text-neon-cyan uppercase text-[9px]">Convergences :</b> <span className="text-zinc-400">{selected.convergences || `Convergence ${selected.category} — signal intégré à la J-curve (groupe ${selected.group}).`}</span></div>
+              {selected.grandFilter && <div><b className="text-amber-400 uppercase text-[9px]">Grand Filtre :</b> <span className="text-zinc-400">{selected.grandFilter}</span></div>}
+              <div className="mt-1 text-zinc-500"><b className="uppercase text-[9px]">Recommandation tactique NELA :</b> prioriser la veille sur « {selected.title.slice(0, 24)}… », corroboration 2+ sources, impact estimé {(selected.impact_score ?? 0) >= 0.5 ? 'élevé' : 'modéré'}.</div>
+            </div>
           </div>
         </div>
       )}

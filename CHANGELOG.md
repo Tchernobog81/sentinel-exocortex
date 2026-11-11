@@ -1,5 +1,16 @@
 # CHANGELOG - Cortex Loom
 
+## V2.2.0 (dashboard V2) — Refactoring PWA / Offline-First
+- 📴 **PWA Offline-First** : Service Worker natif (`sw.js`, cache-first + fallback réseau + mise à jour en fond), `manifest.webmanifest` valide (icônes PNG 192/512, thème `#090d16`, `standalone`), méta theme-color. **Vérifié en virtuel : rechargement OFFLINE complet fonctionne** (page + canvas + flux servis depuis le cache SW, V220 OK).
+- 🛟 **Hydratation déterministe** : si `loom_data.json`/API indisponibles (404/500/offline strict), bascule instantanée sur `fallback_loom_data.js` (36 jalons embarqués) — badge « DONNÉES D'URGENCE » dans le header, jamais de « Chargement… » ni compteurs à zéro.
+- ⌨️ **Raccourcis clavier Touch 1-4** pour les 4 onglets (hors champ de saisie).
+- 🔎 **Flux** : barre de recherche texte + filtre de gravité « ⚡ signaux cinétiques ».
+- 💊 **Pharmakon Drawer** : Titre + ID + timestamp ISO 8601 converti en heure locale, **badge Impact Cinétique (Oui/Non)**, double barre Remède|Poison (vert/rouge), position **Courbe en S (1-5)**, bloc Convergences & Grand Filtre + recommandation tactique NELA (toujours renseignés).
+- 📊 **Onglet FILTRE MÉMÉTIQUE** : métriques benchmark d'alignement (% faits vérifiés 12 mois glissants) + vitesse de régression logicielle (événements/12 mois).
+- 🔢 V2.2.0 affichée ; **V220 OK (17 checks)** + 9 suites précédentes OK ; build zéro-erreur.
+
+## V2.1.5
+
 ## V2.1.5 (dashboard V2)
 - 🐛 **Cause racine des bulles de survol fantômes** : `chart.on('mousemove'/'click')` (proxy ECharts) ne se déclenche QUE sur un symbole exact — le survol/clic était donc quasi impossible en zone dense. Le picking est désormais branché sur **ZRender** (`getZr().on(...)`) avec distance au pixel (±20 px) : la bulle et la popup apparaissent de façon fiable dès que le curseur approche un point.
 - 🧹 **Une seule légende** (V2.1.4, empaqueté) : les chips de filtres ambre sont supprimés ; seules restent les pastilles couleur des courbes.
