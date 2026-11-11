@@ -62,6 +62,12 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         symbolSize: d => (d[3]?.tipping ? 11 : 6),
         itemStyle: { color: g.color, opacity: 0.95, borderColor: '#050508', borderWidth: 1 },
         emphasis: { scale: 1.6 },
+        // étiquettes : points notables toujours, les autres masquées si chevauchement (zoom = plus de labels)
+        label: {
+          show: true, position: 'top', fontSize: 9, color: '#9ca3af',
+          formatter: d => (d[3]?.tipping ? `${d[2]} (${Math.floor(d[0])})` : ''),
+        },
+        labelLayout: { hideOverlap: true },
         data: pts.map(e => [e.year, e.value, e.title, e]),
       });
     }
@@ -70,7 +76,12 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       backgroundColor: 'transparent',
       animationDuration: 600,
       tooltip: { show: false },   // bulle custom React (couleur courbe + trait vers le point)
-      grid: { left: 50, right: 30, top: 40, bottom: 40 },
+      toolbox: { right: 12, top: 6, itemSize: 16, feature: { dataZoom: { xAxisIndex: 0, yAxisIndex: 'none', title: { zoom: 'Zoom', back: 'Reset zoom' } }, restore: { title: 'Vue complète' } } },
+      dataZoom: [
+        { type: 'inside', xAxisIndex: 0, zoomOnMouseWheel: true, moveOnMouseWheel: false, zoomOnMouseMove: false },
+        { type: 'slider', xAxisIndex: 0, bottom: 2, height: 16, filterMode: 'none', start: 0, end: 100 },
+      ],
+      grid: { left: 50, right: 30, top: 40, bottom: 34 },
       xAxis: { type: 'value', min: -2700, max: 2110, axisLabel: { color: '#6b7280', fontSize: 10 }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } }, name: 'année', nameTextStyle: { color: '#6b7280' } },
       yAxis: { type: 'value', axisLabel: { color: '#6b7280', fontSize: 10 }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
       series,

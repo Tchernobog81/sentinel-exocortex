@@ -12,21 +12,32 @@ export default function NelaSubstrat({ tel }) {
     for (const [k, ref] of Object.entries(refs)) {
       if (ref.current && !charts.current[k]) {
         charts.current[k] = echarts.init(ref.current, null, { renderer: 'canvas' });
-        charts.current[k].setOption(gaugeOption(k === 'temp' ? 'TEMP CPU' : k === 'vram' ? 'VRAM GPU' : 'RAM', 0, k === 'temp' ? 100 : 100, '%'));
+        charts.current[k].setOption(gaugeOption(k === 'temp' ? 'TEMP CPU' : k === 'vram' ? 'VRAM GPU' : 'RAM', 0, 100, k === 'temp' ? '°C' : '%'));
       }
     }
+    window.__gauges = charts.current;
     return () => {};
   }, []);
 
   useEffect(() => {
     if (!tel) return;
-    const set = (k, val, max, unit) => {
+    const set = (k, val, max, unit, display) => {
       const c = charts.current[k]; if (!c) return;
-      c.setOption(gaugeOption(k === 'temp' ? 'TEMP CPU °C' : k === 'vram' ? 'VRAM GPU' : 'RAM', val, max, unit));
+      c.setOption(gaugeOption(k === 'temp' ? 'TEMP CPU' : k === 'vram' ? 'VRAM GPU' : 'RAM', val, max, unit, display));
     };
     set('ram', tel.mem?.pct ?? 0, 100, '%');
-    set('vram', tel.gpu?.vram ? Math.round(((tel.gpu.vramUsed || 0) / tel.gpu.vram) * 100) : 0, 100, '%');
-    set('temp', tel.cpu?.temp ?? 0, 100, '°C');
+    // VRAM : GPU dédié -> % ; Apple Silicon (UMA) -> Go utilisés / total
+    if (tel.gpu?.vram) {
+      if (tel.gpu.uma || tel.gpu.vramUsed == null) {
+        set('vram', tel.gpu.vramUsed ?? Math.round(tel.mem.used / 1e6), tel.gpu.vram, ' Mo',
+            `${((tel.gpu.vramUsed ?? 0) / 1024).toFixed(1)} / ${(tel.gpu.vram / 1024).toFixed(0)} Go UMA`);
+      } else {
+        set('vram', Math.round(((tel.gpu.vramUsed || 0) / tel.gpu.vram) * 100), 100, '%');
+      }
+    } else set('vram', 0, 100, '%', 'n/a (pas de GPU détecté)');
+    // TEMP : pas de capteur SMC (VM) -> n/a au lieu de 0°C
+    if (tel.cpu?.temp == null) set('temp', 0, 100, '', 'n/a (VM sans capteur SMC)');
+    else set('temp', tel.cpu.temp, 100, '°C');
   }, [tel]);
 
   const d = tel?.daemons || {};
@@ -78,7 +89,7 @@ export default function NelaSubstrat({ tel }) {
   );
 }
 
-function gaugeOption(title, value, max, unit) {
+function gaugeOption(title, value, max, unit, display) {
   return {
     backgroundColor: 'transparent',
     series: [{
@@ -90,7 +101,7 @@ function gaugeOption(title, value, max, unit) {
       splitLine: { distance: -10, length: 10, lineStyle: { color: '#666', width: 2 } },
       axisLabel: { color: '#6b7280', fontSize: 9, distance: -22 },
       title: { offsetCenter: [0, '65%'], fontSize: 10, color: '#9ca3af' },
-      detail: { valueAnimation: true, offsetCenter: [0, '38%'], fontSize: 18, color: '#fff', formatter: `{value}${unit}` },
+      detail: { valueAnimation: true, offsetCenter: [0, '38%'], fontSize: display ? 12 : 18, color: '#fff', formatter: display || `{value}${unit}` },
       data: [{ value, name: title }],
     }],
   };

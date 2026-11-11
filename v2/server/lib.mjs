@@ -120,14 +120,33 @@ export async function telemetry() {
   const joulesPerAction = loadedBytes ? Math.round((cpuLoad / 100) * (loadedBytes / 1e9) * 12 * 10) / 10 : 0;
   const score = joulesPerAction === 0 ? 'Optimal' : joulesPerAction < 5 ? 'Élevé' : 'Critique';
   const gpu = (graphics?.controllers || [])[0] || {};
+  // Fallback VRAM (VM / Apple Silicon UMA) : system_profiler SPDisplaysDataType
+  if (!gpu.vram) {
+    const sp = await new Promise(res => exec('system_profiler SPDisplaysDataType 2>/dev/null', { maxBuffer: 1 << 20 }, (e, out) => res(out || '')));
+    const mv = (sp || '').match(/VRAM[^:]*:\s*([\d.]+)\s*(GB|Go|MB|Mo)/i);
+    const mdyn = (sp || '').match(/VRAM \(Dynamic, Max\):\s*([\d.]+)\s*(GB|Go)/i);
+    const chip = (sp || '').match(/Chipset Model:\s*(.+)/i);
+    if (mv) gpu.vram = Math.round(parseFloat(mv[1]) * (mv[2].toUpperCase().startsWith('G') ? 1024 : 1));
+    else if (mdyn) gpu.vram = Math.round(parseFloat(mdyn[1]) * 1024);
+    if (chip) gpu.name = (gpu.name || '') + ' ' + chip[1].trim();
+    // Apple Silicon (M*) : pas de VRAM dédiée -> mémoire unifiée = RAM
+    if (!gpu.vram && /apple m/i.test(gpu.name || '')) {
+      gpu.vram = Math.round(mem.total / 1e6);
+      gpu.vramUsed = Math.round((mem.used || mem.active || 0) / 1e6);
+      gpu.uma = true;
+    }
+    if (gpu.vram && gpu.vramUsed == null) gpu.uma = true; // mémoire unifiée: used non mesurable -> UMA
+  }
+  // Température CPU : si pas de capteur SMC (VM), rester null -> le front affiche "n/a"
+  const cpuTempVal = (cpuTemp && cpuTemp.max != null) ? cpuTemp.max : null;
   return {
     ts: new Date().toISOString(),
     airgap: external.length === 0,
     external_listeners: external.map(c => `${c.localAddress}:${c.localPort} (${c.protocol})`),
     open_ports: listeners.map(c => ({ port: c.localPort, addr: c.localAddress, proto: c.protocol, pid: c.pid })),
     mem: { used: mem.active, total: mem.total, pct: Math.round((mem.active / mem.total) * 100) },
-    cpu: { load: Math.round(cpuLoad * 10) / 10, temp: cpuTemp?.max ?? null, cores: cpu.cpus?.length || null },
-    gpu: { name: gpu.name || null, vram: gpu.vram || null, vramUsed: gpu.memoryUsed || null, temp: gpu.temperatureGpu || null },
+    cpu: { load: Math.round(cpuLoad * 10) / 10, temp: cpuTempVal, cores: cpu.cpus?.length || null },
+    gpu: { name: gpu.name || null, vram: gpu.vram || null, vramUsed: gpu.vramUsed ?? gpu.memoryUsed ?? null, uma: !!gpu.uma, temp: gpu.temperatureGpu || null },
     disk: (fsSize || []).map(d => ({ fs: d.fs, size: d.size, used: d.used, pct: Math.round(d.use) })),
     net: (netStats || [])[0] ? { rx: netStats[0].rx_bytes, tx: netStats[0].tx_bytes } : null,
     daemons: { ollama: { up: ollamaUp, url: OLLAMA_URL, models: ollamaModels }, exo: { up: !!exo, url: EXO_URL } },
