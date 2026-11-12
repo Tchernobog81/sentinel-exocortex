@@ -1,8 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.2.0';
+export const LOOM_VERSION = '2.3.0';
+
+// ordonnée d'un événement : valeur tech (J-curve) ou secondes avant minuit pour l'horloge
+const yOf = e => /horloge/i.test(e.group || '') ? Math.round((e.doomsday_minutes ?? 0) * 60) : (e.value ?? 0);
+const axisOf = e => /horloge/i.test(e.group || '') ? 1 : 0;
 
 // Onglet 1 — LOOM CORE (V2.1.2) : le chart s'initialise UNE fois (le zoom utilisateur est préservé
 // entre les rafraîchissements SSE), les séries sont mises à jour en douceur.
@@ -35,9 +39,9 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
 
   const groups = useMemo(() => {
     const g = {};
-    for (const e of events) g[e.group] = e.groupColor;
+    for (const e of (allEvents || events)) g[e.group] = e.groupColor;
     return g;
-  }, [events]);
+  }, [allEvents, events]);
 
   // ---- INIT du chart : une seule fois (le zoom survit aux rafraîchissements) ----
   useEffect(() => {
@@ -66,6 +70,13 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       ],
       grid: { left: 50, right: 30, top: 40, bottom: 34 },
       xAxis: { type: 'value', min: XMIN, max: XMAX, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } }, name: 'année', nameTextStyle: { color: '#6b7280' },
+        // ligne pointillée verticale à la date du jour (comme V1) — sur l'axe, elle survit aux MAJ de séries
+        markLine: {
+          silent: true, symbol: 'none', z: 2,
+          lineStyle: { color: '#fbbf24', type: 'dashed', width: 1.5, opacity: 0.85 },
+          label: { color: '#fbbf24', fontSize: 9, position: 'insideEndTop', formatter: 'MAINTENANT' },
+          data: [{ xAxis: nowYear }],
+        },
         axisLabel: {
           color: '#6b7280', fontSize: 10, hideOverlap: true,
           // zoom temporel : années -> mois -> jours (fenêtre courante relue à chaque formatage)
@@ -85,8 +96,9 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         } },
       yAxis: [
         { type: 'value', axisLabel: { color: '#6b7280', fontSize: 10 }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
-        // axe caché pour l'horloge de l'apocalypse (échelle "danger" distincte)
-        { type: 'value', show: false, min: 0, max: 50000 },
+        // axe caché pour l'horloge de l'apocalypse : échelle "secondes avant minuit", INVERSÉ
+        // (moins de temps restant = plus haut = plus de danger) ; plage ajustée aux données (V2.3.0)
+        { type: 'value', show: false, min: 0, max: 60 * 60 * 24, inverse: true },
       ],
       series: [],
     }, { notMerge: true });
@@ -94,10 +106,11 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     // clic -> popup détail : même picking au pixel près que le survol (le proxy
     // chart.on('click') ne se déclenche que sur un symbole exact)
     const pickNearest = (zx, zy) => {
-      let best = null, bd = 22 * 22;
+      let best = null, bd = 24 * 24;
       for (const ev of eventsRef.current) {
         if (hiddenRef.current[ev.group]) continue;
-        const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [ev.year, ev.value]);
+        // chaque groupe sur SON axe : l'horloge vit sur l'axe caché 1 (V2.3.0 : ses POI étaient inpiquables)
+        const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: axisOf(ev) }, [ev.year, yOf(ev)]);
         const d = (px[0] - zx) ** 2 + (px[1] - zy) ** 2;
         if (d < bd) { bd = d; best = ev; }
       }
@@ -109,7 +122,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       if (hit) setSelected(hit);
     });
 
-    // survol : picking manuel au pixel près (seuil 20 px), branché sur ZRENDER
+    // survol : picking manuel au pixel près (seuil 24 px), branché sur ZRENDER
     // (chart.on('mousemove') ne se déclenche QUE sur un élément dessiné -> bulle fantôme)
     let raf = 0;
     chart.getZr().on('mousemove', e => {
@@ -118,7 +131,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         const zx = e.zrX ?? e.offsetX ?? (e.event && e.event.offsetX), zy = e.zrY ?? e.offsetY ?? (e.event && e.event.offsetY);
         const hit = pickNearest(zx, zy);
         if (hit) {
-          const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [hit.year, hit.value]);
+          const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: axisOf(hit) }, [hit.year, yOf(hit)]);
           setHover({ x: px[0], y: px[1], ev: hit });
         } else setHover(null);
       });
@@ -188,47 +201,63 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     }
     const series = [];
     for (const [name, g] of Object.entries(byGroup)) {
+      const isClock = /horloge/i.test(name);
+      const yIdx = isClock ? 1 : 0; // horloge sur axe caché inversé (le décollage J reste lisible)
       const pts = g.data;
-      const yIdx = /horloge/i.test(name) ? 1 : 0; // horloge sur axe caché (le décollage J reste lisible)
       // courbe en J reliée (style V1) : points réels triés par année ; les prévisions restent des points
       const real = pts.filter(e => (e.year || 0) <= nowYear + 0.05).sort((a, b) => a.year - b.year);
+      const future = pts.filter(e => (e.year || 0) > nowYear + 0.05).sort((a, b) => a.year - b.year);
+      // V2.3.0 : UNE SEULE série ligne par groupe (points+ligne+étiquettes) + une série scatter
+      // "prédictions" au NOM DISTINCT — avant, line et scatter partageaient le même nom et
+      // ECharts fusionnait par nom : il ne restait qu'une seule ligne (bleue) à l'écran.
       if (real.length > 1) {
         series.push({
-          name, type: 'line', smooth: 0.45, showSymbol: false, z: 5, yAxisIndex: yIdx,
-          lineStyle: { color: g.color, width: 3, opacity: 0.9, shadowColor: g.color, shadowBlur: 8 },
-          areaStyle: { color: g.color, opacity: 0.06 },
-          data: real.map(e => [e.year, e.value]),
+          name, type: 'line', yAxisIndex: yIdx, z: 4,
+          showSymbol: true, symbol: 'circle',
+          symbolSize: d => (d[3]?.tipping ? 11 : 5.5),
+          // segments quasi droits (hockey stick de Kurzweil : l'asymptote vient des données, pas du lissage)
+          smooth: isClock ? 0.4 : 0.12, // l'horloge est adoucie (plus de zigzags verticaux agressifs)
+          lineStyle: { color: g.color, width: 3, opacity: 0.95, shadowColor: g.color, shadowBlur: 6 },
+          itemStyle: { color: g.color, opacity: 0.95, borderColor: '#050508', borderWidth: 1 },
+          areaStyle: { color: g.color, opacity: 0.05 },
+          emphasis: { scale: 1.7 },
+          label: {
+            show: true, position: 'top', fontSize: 9, color: '#cbd5e1',
+            formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 18)}…` : ''),
+            rotate: 28, distance: 6,
+          },
+          labelLayout: { hideOverlap: true },
+          data: real.map(e => [e.year, yOf(e), e.title, e]),
         });
       }
-      series.push({
-        name, type: 'scatter', z: 3, yAxisIndex: yIdx,
-        symbolSize: d => (d[3]?.tipping ? 10 : 5),
-        itemStyle: { color: g.color, opacity: 0.95, borderColor: '#050508', borderWidth: 1 },
-        emphasis: { scale: 1.6 },
-        // étiquette MINIMALE sur les POI principaux, anti-recouvrement par hideOverlap
-        label: {
-          show: true, position: 'top', fontSize: 9, color: '#cbd5e1',
-          formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 18)}…` : ''),
-          rotate: 28, distance: 5,
-        },
-        labelLayout: { hideOverlap: true, moveToEnd: () => {} },
-        data: pts.map(e => [e.year, e.value, e.title, e]),
-      });
+      if (future.length) {
+        series.push({
+          name: name + ' · prédictions', type: 'scatter', yAxisIndex: yIdx, z: 3,
+          symbol: 'diamond', symbolSize: 6,
+          itemStyle: { color: g.color, opacity: 0.55, borderColor: '#050508', borderWidth: 1 },
+          data: future.map(e => [e.year, yOf(e), e.title, e]),
+        });
+      }
+      // points orphelins (groupe à un seul point réel) : scatter de secours, nom distinct
+      if (real.length === 1) {
+        series.push({
+          name: name + ' · points', type: 'scatter', yAxisIndex: yIdx, z: 3,
+          symbolSize: d => (d[3]?.tipping ? 11 : 6),
+          itemStyle: { color: g.color, opacity: 0.95, borderColor: '#050508', borderWidth: 1 },
+          label: { show: true, position: 'top', fontSize: 9, color: '#cbd5e1', formatter: d => (d[3]?.tipping ? String(d[2]).slice(0, 18) : ''), rotate: 28, distance: 6 },
+          labelLayout: { hideOverlap: true },
+          data: real.map(e => [e.year, yOf(e), e.title, e]),
+        });
+      }
     }
-    if (series.length) {
-      // ligne pointillée verticale à la date du jour (comme V1)
-      series[0].markLine = {
-        silent: true, symbol: 'none', z: 2,
-        lineStyle: { color: '#fbbf24', type: 'dashed', width: 1.5, opacity: 0.85 },
-        label: { color: '#fbbf24', fontSize: 9, position: 'insideEndTop', formatter: 'MAINTENANT' },
-        data: [{ xAxis: nowYear }],
-      };
-    }
-    chart.setOption({ series }, { lazyUpdate: true, notMerge: false });
-    setTimeout(() => { try { chart.getOption().onFitY?.(); } catch {} }, 0);
+    // plage de l'axe caché de l'horloge ajustée aux secondes réelles (axe inversé : 0 s = tout en haut)
+    const clockSecs = (allEvents || []).filter(e => /horloge/i.test(e.group || '') && e.doomsday_minutes != null)
+      .map(e => Math.round(e.doomsday_minutes * 60));
+    const clockMax = clockSecs.length ? Math.max(...clockSecs) : 3600;
+    chart.setOption({ series, yAxis: [{}, { min: 0, max: Math.round(clockMax * 1.15) }] }, { lazyUpdate: true, notMerge: false });
     window.__fitY && window.__fitY();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [events, hiddenGroups]);
+  }, [events, hiddenGroups, allEvents]);
 
   // ---- saut vers un événement (lien ⇄ ou flux) ----
   const jumpToEvent = (target) => {
@@ -250,57 +279,86 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     jumpToEvent(target);
   };
 
-  // ---- flux entrant : faits réels vérifiés de l'année en cours, antichrono, sans stamps "année seule" ----
-  const effTs = e => {
-    const y = Math.floor(e.year || 1970);
+  // ---- flux entrant : faits réels vérifiés, ANTICHHRONOLOGIQUE complet, vrais timestamps ----
+  // date effective : timestamp réel s'il est valide, sinon date dérivée honnêtement de la fraction d'année
+  const effDate = e => {
     const d = new Date(e.timestamp);
-    if (!isNaN(d.getTime()) && y >= nowYear - 1) return d;
-    return new Date(y, 0, 1);
+    if (!isNaN(d.getTime())) return d;
+    const y = e.year || 1970, yi = Math.floor(y), frac = y - yi;
+    return new Date(yi, Math.min(11, Math.floor(frac * 12)), 1 + Math.floor((frac * 12 % 1) * 28));
   };
   const feed = useMemo(() => {
-    const base = events
-      .filter(e => !/fiction|horloge/i.test(e.category) && e.verified !== false && (e.year || 0) >= nowYear - 1 && (e.year || 0) <= nowYear + 0.05)
-      .map(e => ({ e, t: effTs(e) }))
-      .sort((a, b) => b.t - a.t);
-    // liste REMPLIE : les 30 derniers, filtrés par recherche texte et gravité (signaux cinétiques)
-    return base.slice(0, 30).map(x => x.e)
+    const now = new Date();
+    const base = (allEvents || events)
+      .filter(e => !/fiction|horloge/i.test(e.category || '') && e.verified !== false)
+      .map(e => ({ e, t: effDate(e) }))
+      .filter(x => !isNaN(x.t) && x.t <= new Date(now.getTime() + 6 * 3600e3)) // on exclut les annonces datées du futur
+      .sort((a, b) => b.t - a.t); // antichronologique strict
+    // liste REMPLIE : les 60 derniers faits réels, filtrés par recherche texte et gravité (signaux cinétiques)
+    return base.slice(0, 60).map(x => x.e)
       .filter(e => (!kineticOnly || e.is_kinetic_signal) && (!search || (e.title || '').toLowerCase().includes(search.toLowerCase())));
-  }, [events, search, kineticOnly]);
+  }, [allEvents, events, search, kineticOnly]);
+  // dernière mise à jour = timestamp le plus récent parmi TOUS les événements (flux non filtré)
   const lastMaj = useMemo(() => {
+    const now = new Date();
     let mx = null;
-    for (const e of events) {
-      if ((e.year || 0) < nowYear - 1 || (e.year || 0) > nowYear + 1) continue;
-      const d = new Date(e.timestamp);
-      if (isNaN(d.getTime()) || d > new Date()) continue;
+    for (const e of (allEvents || events)) {
+      const d = effDate(e);
+      if (isNaN(d) || d > now) continue;
       if (!mx || d > mx) mx = d;
     }
-    return mx ? `${String(mx.getHours()).padStart(2, '0')}:${String(mx.getMinutes()).padStart(2, '0')}` : '--:--';
-  }, [events]);
-  // date véridique : timestamp réel (avec heure) sinon mois dérivé honnêtement de la fraction d'année
-  const MOIS = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+    if (!mx) return { txt: '--:--', full: '' };
+    const dd = String(mx.getDate()).padStart(2, '0'), mm = String(mx.getMonth() + 1).padStart(2, '0');
+    const hh = String(mx.getHours()).padStart(2, '0'), mi = String(mx.getMinutes()).padStart(2, '0');
+    return { txt: `${dd}/${mm} ${hh}:${mi}`, full: `${dd}/${mm}/${mx.getFullYear()} ${hh}:${mi}:${String(mx.getSeconds()).padStart(2, '0')}` };
+  }, [allEvents, events]);
+  // vrai timestamp : JJ/MM/AAAA HH:MM quand l'heure est connue, sinon JJ/MM/AAAA (dérivé de l'année fractionnaire)
   const fmtTs = e => {
-    const d = new Date(e.timestamp);
-    if (!isNaN(d.getTime()) && (d.getHours() !== 0 || d.getMinutes() !== 0)) {
-      if (d.getFullYear() === new Date().getFullYear()) return d.toLocaleString('fr-FR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
-      return d.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
-    }
-    const y = Math.floor(e.year || 0), m = Math.max(0, Math.min(11, Math.floor(((e.year || 0) - y) * 12)));
-    return `${MOIS[m]} ${y}`;
+    const raw = new Date(e.timestamp);
+    const hasTime = !isNaN(raw.getTime()) && (raw.getHours() !== 0 || raw.getMinutes() !== 0 || raw.getSeconds() !== 0);
+    const d = hasTime ? raw : effDate(e);
+    if (isNaN(d.getTime())) return String(Math.floor(e.year || 0));
+    const dd = String(d.getDate()).padStart(2, '0'), mm = String(d.getMonth() + 1).padStart(2, '0'), yy = d.getFullYear();
+    if (hasTime) return `${dd}/${mm}/${yy} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+    return `${dd}/${mm}/${yy}`;
   };
 
-  // bulle de survol : centrée AU-DESSUS du point, trait vertical court qui la rattache au point
-  const bubbleH = 36;
+  // bulle de survol + connecteur ORGANIQUE : la taille réelle de la bulle est mesurée (ref),
+  // et le trait est une courbe de Bézier quadratique du POI vers le bord de la bulle le plus proche
+  const bubbleRef = useRef(null);
+  const [bubbleSize, setBubbleSize] = useState({ w: 240, h: 34 });
+  useLayoutEffect(() => {
+    if (bubbleRef.current) {
+      const r = bubbleRef.current.getBoundingClientRect();
+      setBubbleSize({ w: r.width, h: r.height });
+    }
+  }, [hover]);
   const hb = hover ? (() => {
     const wrapW = wrapRef.current?.clientWidth || 800;
-    return { bx: Math.max(4, Math.min(hover.x - 110, wrapW - 290)), by: Math.max(6, hover.y - bubbleH - 26) };
+    const above = hover.y > bubbleSize.h + 56; // bulle au-dessus, sinon en dessous du POI
+    const by = above ? hover.y - bubbleSize.h - 26 : hover.y + 22;
+    const bx = Math.max(4, Math.min(hover.x - bubbleSize.w / 2, wrapW - bubbleSize.w - 8));
+    return { bx, by, above };
+  })() : null;
+  // ancre = centre du bord de la bulle tourné vers le POI ; la courbe plie latéralement (organique)
+  const connector = hover && hb ? (() => {
+    const ax = hb.bx + bubbleSize.w / 2;
+    const ay = hb.above ? hb.by + bubbleSize.h : hb.by;
+    const mx = (hover.x + ax) / 2, my = (hover.y + ay) / 2;
+    const dx = ax - hover.x, dy = ay - hover.y;
+    const len = Math.hypot(dx, dy) || 1;
+    const bend = Math.min(28, len * 0.28);
+    const cx = mx + (-dy / len) * bend, cy = my + (dx / len) * bend;
+    return `M ${hover.x.toFixed(1)} ${hover.y.toFixed(1)} Q ${cx.toFixed(1)} ${cy.toFixed(1)} ${ax.toFixed(1)} ${ay.toFixed(1)}`;
   })() : null;
 
   return (
     <div className="h-full grid grid-cols-[300px_1fr] gap-3 min-h-0">
       {/* panneau gauche : flux */}
       <aside className="panel p-3 overflow-y-auto min-h-0">
-        <div className="flex items-center gap-2 text-neon-cyan text-[10px] tracking-widest mb-2">
-          <Radio size={12} className="animate-pulse" /> FLUX ENTRANT · MAJ {lastMaj}
+        <div className="flex items-center gap-2 text-neon-cyan text-[10px] tracking-widest mb-2"
+             title={lastMaj.full ? `Dernière mise à jour : ${lastMaj.full}` : 'Aucune donnée datée'}>
+          <Radio size={12} className="animate-pulse" /> FLUX ENTRANT · MAJ {lastMaj.txt}
         </div>
         {/* barre de recherche + filtre de gravité */}
         <div className="flex items-center gap-1.5 mb-2">
@@ -337,10 +395,20 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
 
         </div>
 
-        {/* légende custom : pastilles à la couleur des courbes */}
+        {/* légende custom : pastilles à la couleur des courbes — clic = allumage/extinction de LA courbe */}
         <div className="panel px-3 py-1.5 flex items-center gap-2 flex-wrap shrink-0">
+          <span className="chip flex items-center gap-1.5" title="Tout allumer / tout éteindre (Singularité = toutes les courbes)"
+                style={Object.keys(groups).every(g => !hiddenGroups[g]) ? { borderColor: '#fbbf24', color: '#fbbf24' } : { opacity: 0.4 }}
+                onClick={() => {
+                  const hideAll = Object.keys(groups).some(g => !hiddenGroups[g]);
+                  setHiddenGroups(Object.fromEntries(Object.keys(groups).map(g => [g, hideAll])));
+                }}>
+            <span className="inline-block w-2.5 h-2.5 rounded-full"
+                  style={{ background: 'conic-gradient(#fbbf24,#8b5cf6,#3b82f6,#0ea5e9,#10b981,#d946ef,#f97316,#f472b6,#ef4444,#fbbf24)', boxShadow: '0 0 6px #fbbf24' }} />
+            ✦ SINGULARITÉ
+          </span>
           {Object.entries(groups).map(([g, color]) => (
-            <span key={g} className="chip flex items-center gap-1.5" title={g}
+            <span key={g} className="chip flex items-center gap-1.5" title={`${hiddenGroups[g] ? 'Afficher' : 'Masquer'} la courbe ${g}`}
                   style={hiddenGroups[g] ? { opacity: 0.35 } : { borderColor: color, color }}
                   onClick={() => setHiddenGroups(h => ({ ...h, [g]: !h[g] }))}>
               <span style={{ background: color, boxShadow: `0 0 6px ${color}` }} className="inline-block w-2.5 h-2.5 rounded-full" /> {g}
@@ -348,19 +416,22 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
           ))}
         </div>
 
-        {/* graphique + bulle de survol */}
+        {/* graphique + bulle de survol reliée au POI par une courbe organique */}
         <div ref={wrapRef} className="relative flex-1 min-h-0">
           <div ref={boxRef} className="panel absolute inset-0" />
+          {hover && hb && connector && (
+            <svg className="absolute inset-0 pointer-events-none" style={{ zIndex: 30 }} width="100%" height="100%">
+              <path d={connector} fill="none" stroke={hover.ev.groupColor} strokeWidth={1.6} strokeLinecap="round"
+                    style={{ filter: `drop-shadow(0 0 5px ${hover.ev.groupColor})` }} />
+              <circle cx={hover.x} cy={hover.y} r={3.5} fill={hover.ev.groupColor}
+                      style={{ filter: `drop-shadow(0 0 6px ${hover.ev.groupColor})` }} />
+            </svg>
+          )}
           {hover && hb && (
-            <>
-              <div style={{ position: 'absolute', left: hover.x, top: hb.by + bubbleH - 2, width: 1.5,
-                height: Math.max(6, hover.y - (hb.by + bubbleH)), background: hover.ev.groupColor,
-                boxShadow: `0 0 6px ${hover.ev.groupColor}`, pointerEvents: 'none', zIndex: 30 }} />
-              <div className="bubble absolute px-2.5 py-1.5 text-[10px] font-bold pointer-events-none z-40"
-                   style={{ left: hb.bx, top: hb.by, borderColor: hover.ev.groupColor, color: hover.ev.groupColor, borderRadius: 12 }}>
-                {hover.ev.title} <span className="text-zinc-500">({Math.floor(hover.ev.year)})</span>
-              </div>
-            </>
+            <div ref={bubbleRef} className="bubble absolute px-2.5 py-1.5 text-[10px] font-bold pointer-events-none z-40"
+                 style={{ left: hb.bx, top: hb.by, borderColor: hover.ev.groupColor, color: hover.ev.groupColor, borderRadius: 12 }}>
+              {hover.ev.title} <span className="text-zinc-500">({Math.floor(hover.ev.year)})</span>
+            </div>
           )}
         </div>
       </section>
