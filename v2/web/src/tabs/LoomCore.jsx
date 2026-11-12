@@ -84,7 +84,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       // drag = panoramique X+Y, sliders X (bas) et Y (droite)
       dataZoom: [
         { type: 'inside', xAxisIndex: 0, yAxisIndex: 'none', zoomOnMouseWheel: true, moveOnMouseWheel: false, moveOnMouseMove: true, zoomOnMouseMove: false, start, end },
-        { type: 'inside', xAxisIndex: 'none', yAxisIndex: 0, zoomOnMouseWheel: 'shift', moveOnMouseWheel: false, moveOnMouseMove: 'shift', zoomOnMouseMove: false, start, end },
+        { type: 'inside', xAxisIndex: 'none', yAxisIndex: 0, zoomOnMouseWheel: 'shift', moveOnMouseWheel: false, moveOnMouseMove: false, zoomOnMouseMove: false, start, end },
         { type: 'slider', xAxisIndex: 0, bottom: 2, height: 16, filterMode: 'none', start, end },
         { type: 'slider', yAxisIndex: 0, right: 4, width: 14, filterMode: 'none', start, end },
       ],
