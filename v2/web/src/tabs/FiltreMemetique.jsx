@@ -1,13 +1,53 @@
-import { SlidersHorizontal, Activity } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { SlidersHorizontal, Activity, TerminalSquare, Save } from 'lucide-react';
 
-// Onglet 4 — FILTRE MÉMÉTIQUE : ratio bruit marketing / signal cinétique + lissage horloge apocalypse
+const DEFAULT_PROMPT = [
+  '[PROMPT DE VEILLE — Sentinel Exocortex / The Loom]',
+  'FOCUS STRICT : faits avérés sourcés liés à la singularité / course à l\'AGI (étude AI2027 en priorité),',
+  'compute, autonomie des agents, modèles frontier (ARC-AGI), risques existentiels, cyber, espace, régulation.',
+  'Corroborer 2+ sources. Un événement = une année RÉELLE. Ignorer les faits divers sans lien.',
+  '',
+  '[MOTS-CLÉS À EXCLURE]',
+].join('\n');
+
+// Onglet 4 — FILTRE MÉMÉTIQUE : ratio bruit marketing / signal cinétique + lissage horloge apocalypse + encard prompt agent
 export default function FiltreMemetique({ memetic, setMemetic, events }) {
   const kinetic = (events || []).filter(e => e.is_kinetic_signal).length;
   const total = (events || []).length;
   const ratio = total ? Math.round((kinetic / total) * 100) : 0;
 
+  // encard éditable : prompt de l'agent de veille, renvoyé au serveur local (agent_prompt.txt)
+  const [prompt, setPrompt] = useState('');
+  const [promptStatus, setPromptStatus] = useState('');
+  useEffect(() => {
+    (async () => {
+      try {
+        const r = await fetch('api/prompt?cb=' + Date.now(), { cache: 'no-store' });
+        if (!r.ok) throw new Error('no-server');
+        const j = await r.json();
+        setPrompt(j.prompt || DEFAULT_PROMPT);
+        setPromptStatus(j.custom ? 'prompt actuel (agent_prompt.txt)' : 'prompt par défaut (fichier absent)');
+      } catch {
+        setPrompt(localStorage.getItem('loom_agent_prompt') || DEFAULT_PROMPT);
+        setPromptStatus('mode Pages (serveur local absent) : édition en localStorage');
+      }
+    })();
+  }, []);
+  const savePrompt = async () => {
+    setPromptStatus('envoi…');
+    try {
+      const r = await fetch('api/prompt', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
+      if (!r.ok) throw new Error('http ' + r.status);
+      const j = await r.json();
+      setPromptStatus(j.ok ? `OK — renvoyé à l'agent (${j.path}, ${j.chars} car.) — appliqué au prochain cycle (≤ 5 min)` : 'KO: ' + (j.error || ''));
+    } catch {
+      localStorage.setItem('loom_agent_prompt', prompt);
+      setPromptStatus("mode Pages : sauvegardé en localStorage — à copier dans agent_prompt.txt sur le Mac pour l'appliquer à l'agent");
+    }
+  };
+
   return (
-    <div className="h-full grid grid-cols-2 gap-3 min-h-0">
+    <div className="h-full grid grid-cols-2 grid-rows-[auto_auto_minmax(0,1fr)] gap-3 min-h-0">
       <div className="panel p-4">
         <div className="flex items-center gap-2 text-[10px] tracking-widest text-neon-cyan mb-3"><Activity size={12} /> RATIO BRUIT MARKETING / SIGNAL CINÉTIQUE</div>
         <div className="text-4xl font-black amber-text mb-1">{100 - memetic.noiseRatio}<span className="text-sm text-zinc-500">% signal</span></div>
@@ -59,6 +99,24 @@ export default function FiltreMemetique({ memetic, setMemetic, events }) {
             </div>
           );
         })()}
+      </div>
+
+      {/* encard éditable : prompt utilisé par l'agent local pour ses recherches — modifiable et renvoyé à l'agent */}
+      <div className="panel p-4 col-span-2 flex flex-col min-h-0">
+        <div className="flex items-center gap-2 text-[10px] tracking-widest text-neon-cyan mb-1">
+          <TerminalSquare size={12} /> ENCARD — PROMPT DE L'AGENT DE VEILLE (éditable)
+        </div>
+        <div className="text-[10px] text-zinc-500 mb-2">
+          Ce texte est écrit dans <span className="font-mono text-zinc-400">agent_prompt.txt</span> (racine du dépôt) et relu par le sentinel à chaque cycle (~5 min) :
+          il pilote la pertinence des recherches (focus AI2027 / faits vérifiés) et la section <span className="font-mono text-zinc-400">[MOTS-CLÉS À EXCLURE]</span> filtre le fact-check.
+        </div>
+        <textarea value={prompt} onChange={e => setPrompt(e.target.value)} spellCheck={false}
+                  className="flex-1 min-h-[110px] bg-black/40 border border-cyan-500/30 rounded-md p-2 text-[11px] font-mono text-zinc-200 focus:border-cyan-400 focus:outline-none resize-y" />
+        <div className="flex items-center gap-2 mt-2 shrink-0">
+          <button onClick={savePrompt} className="tab-btn active flex items-center gap-1.5 !text-[10px]"><Save size={12} /> Envoyer à l'agent</button>
+          <span className="text-[10px] text-zinc-500 truncate">{promptStatus}</span>
+          <span className="ml-auto text-[10px] text-zinc-600 shrink-0">{prompt.length} car.</span>
+        </div>
       </div>
     </div>
   );

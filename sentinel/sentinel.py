@@ -241,6 +241,35 @@ Règles :
 - Réponds UNIQUEMENT avec un objet JSON valide (sans markdown, sans explication) contenant exactement les 6 champs ci-dessus.
 """
 
+# --- PROMPT DE VEILLE ÉDITABLE depuis le dashboard (onglet FILTRE MÉMÉTIQUE → encard) ---
+# Écrit dans agent_prompt.txt à la racine du dépôt, relu à CHAQUE cycle (~5 min) :
+#  - il est injecté dans le system prompt de l'analyse LLM (research_and_analyze)
+#  - les lignes sous [MOTS-CLÉS À EXCLURE] alimentent le fact-check (sujets hors projet rejetés)
+PROMPT_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "agent_prompt.txt")
+
+
+def load_custom_prompt() -> Optional[str]:
+    try:
+        with open(PROMPT_FILE, "r", encoding="utf-8") as f:
+            t = f.read().strip()
+        return t or None
+    except Exception:
+        return None
+
+
+def load_exclude_keywords() -> list:
+    """Mots-clés à exclure du fact-check : section [MOTS-CLÉS À EXCLURE] de agent_prompt.txt."""
+    try:
+        with open(PROMPT_FILE, "r", encoding="utf-8") as f:
+            content = f.read()
+        if "[MOTS-CLÉS À EXCLURE]" in content:
+            section = content.split("[MOTS-CLÉS À EXCLURE]", 1)[1]
+            section = section.split("[", 1)[0] if "[" in section else section
+            return [ln.strip().lower().strip("-•* ") for ln in section.splitlines() if ln.strip() and not ln.strip().startswith("[")]
+    except Exception:
+        pass
+    return []
+
 
 def _ollama_chat(model: str, messages: List[Dict[str, Any]], with_tools: bool = True) -> Optional[Dict[str, Any]]:
     import requests
@@ -311,8 +340,10 @@ def research_and_analyze(title: str, summary: str, url: str, source: str) -> Opt
         "Fais 1 à 3 recherches web ciblées (AI2027 en priorité si pertinent), puis réponds UNIQUEMENT "
         "avec le JSON d'analyse v117 (6 champs)."
     )
+    custom = load_custom_prompt()
+    system = SYSTEM_PROMPT + ("\n\n[PROMPT DE VEILLE PERSONNALISÉ — prioritaire, édité depuis le dashboard]\n" + custom if custom else "")
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": system},
         {"role": "user", "content": user_msg},
     ]
     models = [OLLAMA_MODEL] + [m for m in OLLAMA_FALLBACK_MODELS if m != OLLAMA_MODEL]
@@ -867,7 +898,10 @@ def factcheck(ev):
         res = []
     text = (label + " " + " ".join(r.get("title", "") + " " + r.get("snippet", "") for r in res)).lower()
     relevant = any(k in text for k in RELEVANCE_KEYWORDS)
-    ok = len(res) >= 2 and relevant
+    excluded = any(x in text for x in load_exclude_keywords())  # prompt éditable du dashboard
+    if excluded:
+        logger.warning(f"[FACTCHECK] mot-clé exclu (prompt perso), ignoré: {label}")
+    ok = len(res) >= 2 and relevant and not excluded
     ev["verified"] = ok
     if not ok:
         logger.warning(f"[FACTCHECK] hors sujet ou non corroboré, ignoré: {label}")

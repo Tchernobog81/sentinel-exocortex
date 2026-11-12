@@ -1,0 +1,18 @@
+[PROMPT DE VEILLE — Sentinel Exocortex / The Loom]
+Édité depuis le dashboard (onglet FILTRE MÉMÉTIQUE → encard). Relu à chaque cycle (~5 min) par le sentinel.
+
+Règles de pertinence :
+- FOCUS STRICT : faits avérés, sourcés, liés à la singularité / course à l'AGI — étude AI2027 (https://ai2027.com) en priorité, compute, autonomie des agents, modèles frontier (ARC-AGI, benchmarks), risques existentiels, cyber, espace, physique frontier, régulation (AI Act), géopolitique des technologies critiques.
+- 1 à 3 recherches web ciblées par sujet ; corroborer 2+ sources avant d'ajouter un événement.
+- Un événement = une année RÉELLE (pas la date d'ingestion), une catégorie parmi les 14 du Loom, tipping=true si POI majeur.
+- Ignorer les faits divers sans lien avec la singularité, même s'ils sont vrais et sourcés.
+
+[MOTS-CLÉS À EXCLURE]
+mammouth
+laineux
+médailles
+jo 2026
+olympiques
+sport
+boxe
+football

@@ -26,6 +26,26 @@ app.get('/api/telemetry', async () => telemetry());
 app.get('/api/rag', async () => ragStatus());
 app.post('/api/purge', async () => { const r = await purgeVram(); app.log.info({ actions: r.actions }, 'PURGE VRAM'); return r; });
 
+// Prompt de veille éditable depuis le dashboard (onglet FILTRE MÉMÉTIQUE) : le sentinel relit ce fichier à chaque cycle
+const PROMPT_FILE = path.join(ROOT, 'agent_prompt.txt');
+const DEFAULT_PROMPT = [
+  '[PROMPT DE VEILLE — Sentinel Exocortex / The Loom]',
+  'FOCUS STRICT : faits avérés sourcés liés à la singularité / course à l\'AGI (étude AI2027 en priorité),',
+  'compute, autonomie des agents, modèles frontier (ARC-AGI), risques existentiels, cyber, espace, régulation.',
+  'Corroborer 2+ sources. Un événement = une année RÉELLE. Ignorer les faits divers sans lien.',
+  '',
+  '[MOTS-CLÉS À EXCLURE]',
+].join('\n');
+app.get('/api/prompt', async () => {
+  try { return { prompt: fs.readFileSync(PROMPT_FILE, 'utf8'), custom: true, path: 'agent_prompt.txt' }; }
+  catch { return { prompt: DEFAULT_PROMPT, custom: false, path: 'agent_prompt.txt' }; }
+});
+app.post('/api/prompt', async (req) => {
+  const p = (req.body && typeof req.body.prompt === 'string') ? req.body.prompt : '';
+  try { fs.writeFileSync(PROMPT_FILE, p, 'utf8'); return { ok: true, path: 'agent_prompt.txt', chars: p.length }; }
+  catch (e) { return { ok: false, error: String(e) }; }
+});
+
 // SSE — données (push à chaque changement du fichier)
 app.get('/api/stream', async (req, reply) => {
   reply.raw.writeHead(200, { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache', Connection: 'keep-alive' });

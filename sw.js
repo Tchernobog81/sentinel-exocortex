@@ -1,5 +1,5 @@
 // THE LOOM V2 — Service Worker (offline-first : CACHE FIRST + network fallback, mise à jour en fond)
-const CACHE = 'loom-v2-4-0';
+const CACHE = 'loom-v2-5-0';
 const PRECACHE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './loom_data.json', './telemetry.json', './rag.json'];
 
 self.addEventListener('install', (e) => {

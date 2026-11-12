@@ -2,11 +2,28 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.4.0';
+export const LOOM_VERSION = '2.5.0';
 
-// ordonnée d'un événement : valeur tech (J-curve) ou secondes avant minuit pour l'horloge
-const yOf = e => /horloge/i.test(e.group || '') ? Math.round((e.doomsday_minutes ?? 0) * 60) : (e.value ?? 0);
-const axisOf = e => /horloge/i.test(e.group || '') ? 1 : 0;
+// V2.5.0 — LANES : chaque groupe a sa propre bande horizontale, normalisée sur ses propres
+// min/max (les `value` brutes sont corrélées à l'année -> toutes les courbes s'alignaient sinon).
+// La courbe ✦ SINGULARITÉ = synthèse (moyenne globale des valeurs par année), bande du haut.
+const geomRef = { current: { laneOf: {}, normOf: {}, laneNames: [], nLanes: 1 } };
+const rawVal = e => /horloge/i.test(e.group || '') ? Math.round((e.doomsday_minutes ?? 0) * 60) : (e.value ?? 0);
+const yOf = e => {
+  const g = geomRef.current;
+  const lane = g.laneOf[e.group] ?? 0;
+  const n = g.normOf[e.group] || { min: 0, max: 1 };
+  const isClock = /horloge/i.test(e.group || '');
+  let norm = n.max > n.min ? (rawVal(e) - n.min) / (n.max - n.min) : 0.5;
+  if (isClock) norm = 1 - norm; // horloge : moins de secondes avant minuit = plus haut (danger)
+  return lane + 0.08 + 0.84 * Math.max(0, Math.min(1, norm));
+};
+const laneY = (laneName, v, min, max) => {
+  const g = geomRef.current;
+  const lane = g.laneOf[laneName] ?? 0;
+  const norm = max > min ? (v - min) / (max - min) : 0.5;
+  return lane + 0.08 + 0.84 * Math.max(0, Math.min(1, norm));
+};
 
 // Onglet 1 — LOOM CORE (V2.1.2) : le chart s'initialise UNE fois (le zoom utilisateur est préservé
 // entre les rafraîchissements SSE), les séries sont mises à jour en douceur.
@@ -62,23 +79,27 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       animationDuration: 400,
       tooltip: { show: false },
       legend: { show: false },
-      toolbox: { right: 12, top: 6, itemSize: 16, feature: { dataZoom: { xAxisIndex: 0, yAxisIndex: 'none', title: { zoom: 'Zoom', back: 'Reset zoom' } }, restore: { title: "Vue d'ensemble" } } },
+      toolbox: { right: 40, top: 6, itemSize: 16, feature: { dataZoom: { xAxisIndex: 0, yAxisIndex: 'none', title: { zoom: 'Zoom', back: 'Reset zoom' } }, restore: { title: "Vue d'ensemble" } } },
+      // V2.5.0 : manipulable horizontalement ET verticalement — molette = zoom X, Maj+molette = zoom Y,
+      // drag = panoramique X+Y, sliders X (bas) et Y (droite)
       dataZoom: [
-        { type: 'inside', xAxisIndex: 0, zoomOnMouseWheel: true, moveOnMouseWheel: false, zoomOnMouseMove: false, start, end },
+        { type: 'inside', xAxisIndex: 0, yAxisIndex: 'none', zoomOnMouseWheel: true, moveOnMouseWheel: false, moveOnMouseMove: true, zoomOnMouseMove: false, start, end },
+        { type: 'inside', xAxisIndex: 'none', yAxisIndex: 0, zoomOnMouseWheel: 'shift', moveOnMouseWheel: false, moveOnMouseMove: true, zoomOnMouseMove: false, start, end },
         { type: 'slider', xAxisIndex: 0, bottom: 2, height: 16, filterMode: 'none', start, end },
+        { type: 'slider', yAxisIndex: 0, right: 4, width: 14, filterMode: 'none', start, end },
       ],
-      grid: { left: 50, right: 30, top: 40, bottom: 34 },
+      grid: { left: 118, right: 40, top: 40, bottom: 34 },
       xAxis: { type: 'value', min: XMIN, max: XMAX, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } }, name: 'année', nameTextStyle: { color: '#6b7280' },
         // ligne pointillée verticale à la date du jour (comme V1) — sur l'axe, elle survit aux MAJ de séries
         markLine: {
           silent: true, symbol: 'none', z: 2,
-          lineStyle: { color: '#fbbf24', type: 'dashed', width: 1.5, opacity: 0.85 },
-          label: { color: '#fbbf24', fontSize: 9, position: 'insideEndTop', formatter: 'MAINTENANT' },
+          lineStyle: { color: '#fbbf24', type: 'dashed', width: 2, opacity: 0.95 },
+          label: { color: '#fbbf24', fontSize: 9, position: 'insideStartTop', formatter: 'MAINTENANT', backgroundColor: 'rgba(9,13,22,0.85)', padding: [2, 5] },
           data: [{ xAxis: nowYear }],
         },
         axisLabel: {
           color: '#6b7280', fontSize: 10, hideOverlap: true,
-          // zoom temporel : années -> mois -> jours (fenêtre courante relue à chaque formatage)
+          // zoom temporel : TOUTES les années -> TOUS les mois -> TOUS les jours (fenêtre relue à chaque formatage)
           formatter: v => {
             try {
               const dzs = chart.getOption().dataZoom || [];
@@ -87,35 +108,44 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
             } catch {}
             const range = xWin;
             const MOIS = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
-            if (range > 25) return String(Math.floor(v));
+            if (range > 24) return String(Math.floor(v));
             if (range > 2) { const y = Math.floor(v); const m = Math.max(0, Math.min(11, Math.floor((v - y) * 12))); return `${MOIS[m]} ${String(y).slice(2)}`; }
             const y = Math.floor(v), frac = v - y, d = new Date(y, 0, 1 + Math.floor(frac * 365));
             return `${String(d.getDate()).padStart(2, '0')}/${MOIS[d.getMonth()]}/${String(y).slice(2)}`;
           },
         } },
-      yAxis: [
-        { type: 'value', axisLabel: { color: '#6b7280', fontSize: 10 }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
-        // axe caché pour l'horloge de l'apocalypse : échelle "secondes avant minuit", INVERSÉ
-        // (moins de temps restant = plus haut = plus de danger) ; plage ajustée aux données (V2.3.0)
-        { type: 'value', show: false, min: 0, max: 60 * 60 * 24, inverse: true },
-      ],
+      // axe Y unique en LANES : une bande par groupe (noms affichés), synthèse ✦ SINGULARITÉ en haut
+      yAxis: {
+        type: 'value',
+        splitLine: { lineStyle: { color: 'rgba(255,255,255,0.07)', type: 'dashed' } },
+        axisLabel: {
+          color: '#6b7280', fontSize: 8, interval: 1,
+          formatter: v => { const names = geomRef.current.laneNames; const i = Math.round(v); return (i >= 0 && i < names.length) ? names[i] : ''; },
+        },
+      },
       series: [],
     }, { notMerge: true });
 
     // clic -> popup détail : même picking au pixel près que le survol (le proxy
-    // chart.on('click') ne se déclenche que sur un symbole exact)
+    // chart.on('click') ne se déclenche que sur un symbole exact). V2.5.0 : on ignore le clic
+    // si c'était un drag (panoramique), sinon le drawer s'ouvre après chaque déplacement.
     const pickNearest = (zx, zy) => {
       let best = null, bd = 24 * 24;
       for (const ev of eventsRef.current) {
         if (hiddenRef.current[ev.group]) continue;
-        // chaque groupe sur SON axe : l'horloge vit sur l'axe caché 1 (V2.3.0 : ses POI étaient inpiquables)
-        const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: axisOf(ev) }, [ev.year, yOf(ev)]);
+        // axe unique en lanes (V2.5.0) : tous les POI sont projetés avec yOf(ev)
+        const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [ev.year, yOf(ev)]);
         const d = (px[0] - zx) ** 2 + (px[1] - zy) ** 2;
         if (d < bd) { bd = d; best = ev; }
       }
       return best;
     };
+    let downX = 0, downY = 0, dragged = false;
+    chart.getZr().on('mousedown', e => {
+      downX = e.zrX ?? e.offsetX ?? 0; downY = e.zrY ?? e.offsetY ?? 0; dragged = false;
+    });
     chart.getZr().on('click', e => {
+      if (dragged) return; // c'était un panoramique, pas un clic
       const zx = e.zrX ?? e.offsetX ?? (e.event && e.event.offsetX), zy = e.zrY ?? e.offsetY ?? (e.event && e.event.offsetY);
       const hit = pickNearest(zx, zy);
       if (hit) setSelected(hit);
@@ -125,12 +155,13 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     // (chart.on('mousemove') ne se déclenche QUE sur un élément dessiné -> bulle fantôme)
     let raf = 0;
     chart.getZr().on('mousemove', e => {
+      const zx0 = e.zrX ?? e.offsetX ?? (e.event && e.event.offsetX), zy0 = e.zrY ?? e.offsetY ?? (e.event && e.event.offsetY);
+      if (Math.hypot(zx0 - downX, zy0 - downY) > 6) dragged = true;
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
-        const zx = e.zrX ?? e.offsetX ?? (e.event && e.event.offsetX), zy = e.zrY ?? e.offsetY ?? (e.event && e.event.offsetY);
-        const hit = pickNearest(zx, zy);
+        const hit = pickNearest(zx0, zy0);
         if (hit) {
-          const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: axisOf(hit) }, [hit.year, yOf(hit)]);
+          const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [hit.year, yOf(hit)]);
           setHover({ x: px[0], y: px[1], ev: hit });
         } else setHover(null);
       });
@@ -138,49 +169,31 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     chart.getZr().on('globalout', () => setHover(null));
     chart.getDom().addEventListener('mouseleave', () => setHover(null));
 
-    // fenêtre courante (années) + Y ajusté aux données réelles visibles (comme V1 : le décollage est visible)
+    // fenêtre courante (années)
     const winRange = () => {
       try {
         const dzs = chart.getOption().dataZoom || [];
-        const dz = dzs.find(d => d.type === 'inside') || dzs[0];
+        const dz = dzs.find(d => d.type === 'inside' && d.xAxisIndex !== 'none') || dzs[0];
         if (dz && dz.start != null) return (XMAX - XMIN) * (dz.end - dz.start) / 100;
       } catch {}
       return XMAX - XMIN;
     };
-    const fitYToWindow = () => {
-      try {
-        const dzs = chart.getOption().dataZoom || [];
-        const dz = dzs.find(d => d.type === 'inside') || dzs[0];
-        const x0 = XMIN + ((dz?.start ?? 0) / 100) * (XMAX - XMIN);
-        const x1 = XMIN + ((dz?.end ?? 100) / 100) * (XMAX - XMIN);
-        let hi = 0, lo = Infinity;
-        for (const ev of eventsRef.current) {
-          if ((ev.year || 0) > nowYear + 0.05) continue;            // prévisions hors Y-fit
-          if (/horloge/i.test(ev.group || '')) continue;            // horloge sur son propre axe
-          if (hiddenRef.current[ev.group]) continue;
-          if ((ev.year || 0) >= x0 && (ev.year || 0) <= x1) { hi = Math.max(hi, ev.value || 0); lo = Math.min(lo, ev.value || 0); }
-        }
-        if (hi > 0) chart.setOption({ yAxis: { min: Math.max(0, Math.floor(lo * 0.9)), max: Math.round(hi * 1.05) } });
-      } catch {}
-    };
-    // ticks : toutes les années -> TOUS les mois -> les jours (minInterval selon la fenêtre)
+    // ticks au fil du zoom : TOUTES les années -> TOUS les mois -> TOUS les jours
     const applyTickInterval = () => {
       const r = winRange();
       let minInterval;
-      if (r > 24) minInterval = Math.max(1, Math.round(r / 8));
-      else if (r > 4) minInterval = 1;            // une graduation par an
-      else if (r > 1.5) minInterval = 1 / 12;      // TOUS les mois
-      else minInterval = 7 / 365;                 // jour par jour (hebdo minimum)
+      if (r > 24) minInterval = 1;        // toutes les années
+      else if (r > 2) minInterval = 1 / 12; // tous les mois
+      else minInterval = 1 / 365;           // tous les jours
       try { chart.setOption({ xAxis: { minInterval } }); } catch {}
     };
     let dzT = 0;
     chart.on('datazoom', () => {
       clearTimeout(dzT);
-      dzT = setTimeout(() => { applyTickInterval(); fitYToWindow(); }, 120);
+      dzT = setTimeout(() => { applyTickInterval(); }, 120);
     });
-    window.__fitY = fitYToWindow; // l'update des séries relance le Y-fit (zoom préservé)
     window.__ticks = applyTickInterval;
-    setTimeout(() => { applyTickInterval(); fitYToWindow(); }, 250);
+    setTimeout(() => { applyTickInterval(); }, 250);
 
     const ro = new ResizeObserver(() => chart.resize());
     ro.observe(boxRef.current);
@@ -188,6 +201,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
   }, []);
 
   // ---- MISE À JOUR des séries (préserve le zoom/pan utilisateur) ----
+  const lastNLanesRef = useRef(0);
   useEffect(() => {
     eventsRef.current = events;
     hiddenRef.current = hiddenGroups;
@@ -195,51 +209,81 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     if (!chart) return;
     const byGroup = {};
     for (const e of events) (byGroup[e.group] ||= { color: e.groupColor, data: [] }).data.push(e);
+
+    // V2.5.0 — géométrie des LANES : ordre stable des groupes + synthèse ✦ SINGULARITÉ en dernière bande
+    const laneNames = Object.keys(byGroup).sort();
+    laneNames.push('✦ SINGULARITÉ');
+    const laneOf = {}; laneNames.forEach((n, i) => laneOf[n] = i);
+    const normOf = {};
+    for (const [name, g] of Object.entries(byGroup)) {
+      const vals = g.data.map(e => rawVal(e)).filter(Number.isFinite);
+      normOf[name] = vals.length ? { min: Math.min(...vals), max: Math.max(...vals) } : { min: 0, max: 1 };
+    }
+    // synthèse globale : moyenne des valeurs par année sur TOUS les événements
+    const byYear = {};
+    for (const e of events) { const y = Math.floor(e.year || 0); (byYear[y] ||= []).push(e.value ?? 0); }
+    const synPts = Object.entries(byYear).map(([y, vals]) => ({ y: +y, v: vals.reduce((a, b) => a + b, 0) / vals.length })).sort((a, b) => a.y - b.y);
+    const allVals = synPts.map(p => p.v);
+    normOf['✦ SINGULARITÉ'] = allVals.length ? { min: Math.min(...allVals), max: Math.max(...allVals) } : { min: 0, max: 1 };
+    geomRef.current = { laneOf, normOf, laneNames, nLanes: laneNames.length };
+    // fige l'axe Y (0..nLanes) seulement si le nombre de lanes change → le pan/zoom Y de l'utilisateur est préservé
+    if (lastNLanesRef.current !== laneNames.length) {
+      lastNLanesRef.current = laneNames.length;
+      chart.setOption({ yAxis: { min: -0.05, max: laneNames.length + 0.05 } });
+    }
+
     const series = [];
-    // V2.3.0 : 2 séries par groupe, NOMS STABLES (groupe / groupe+' · prédictions') même quand le
-    // groupe est masqué (data vide) — sinon le merge ECharts par nom conserve les anciennes séries
-    // et la courbe reste affichée. Une seule série ligne par groupe (points+ligne+étiquettes) :
-    // avant, line et scatter partageaient le même nom et ECharts fusionnait -> une seule ligne à l'écran.
+    // 2 séries par groupe, NOMS STABLES (même masqué → data vide, sinon le merge ECharts garde l'ancienne courbe)
     for (const [name, g] of Object.entries(byGroup)) {
       const hidden = !!hiddenGroups[name];
       const isClock = /horloge/i.test(name);
-      const yIdx = isClock ? 1 : 0; // horloge sur axe caché inversé (le décollage J reste lisible)
       const pts = hidden ? [] : g.data;
-      // courbe en J reliée (style V1) : points réels triés par année ; les prévisions restent des points
+      // courbe reliée : points réels triés par année ; les prévisions restent des points (losanges)
       const real = pts.filter(e => (e.year || 0) <= nowYear + 0.05).sort((a, b) => a.year - b.year);
       const future = pts.filter(e => (e.year || 0) > nowYear + 0.05).sort((a, b) => a.year - b.year);
       series.push({
-        name, type: 'line', yAxisIndex: yIdx, z: 4,
+        name, type: 'line', z: 4,
         showSymbol: true, symbol: 'circle',
         symbolSize: d => (d[3]?.tipping ? 9 : 4),
-        // segments quasi droits (hockey stick de Kurzweil : l'asymptote vient des données, pas du lissage)
-        smooth: isClock ? 0.4 : 0.12, // l'horloge est adoucie (plus de zigzags verticaux agressifs)
-        // V2.4.0 : un FIL fin semi-transparent (style V1 : width 1.5, alpha 0.7) — lisible en zone dense
+        smooth: isClock ? 0.4 : 0.12, // horloge adoucie ; sinon segments quasi droits (hockey stick des données)
         lineStyle: { color: g.color, width: 1.5, opacity: hidden ? 0 : 0.75, shadowColor: g.color, shadowBlur: 3 },
         itemStyle: { color: g.color, opacity: hidden ? 0 : 0.95, borderColor: '#050508', borderWidth: 1 },
         areaStyle: { color: g.color, opacity: 0.05 },
         emphasis: { scale: 1.7 },
-        label: {
-          show: true, position: 'top', fontSize: 9, color: '#cbd5e1',
-          formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 18)}…` : ''),
-          rotate: 28, distance: 6,
-        },
+        label: { show: true, position: 'top', fontSize: 9, color: '#cbd5e1', formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 18)}…` : ''), rotate: 28, distance: 6 },
         labelLayout: { hideOverlap: true },
         data: real.map(e => [e.year, yOf(e), e.title, e]),
       });
       series.push({
-        name: name + ' · prédictions', type: 'scatter', yAxisIndex: yIdx, z: 3,
+        name: name + ' · prédictions', type: 'scatter', z: 3,
         symbol: 'diamond', symbolSize: 6,
         itemStyle: { color: g.color, opacity: hidden ? 0 : 0.55, borderColor: '#050508', borderWidth: 1 },
         data: future.map(e => [e.year, yOf(e), e.title, e]),
       });
     }
-    // plage de l'axe caché de l'horloge ajustée aux secondes réelles (axe inversé : 0 s = tout en haut)
-    const clockSecs = (allEvents || []).filter(e => /horloge/i.test(e.group || '') && e.doomsday_minutes != null)
-      .map(e => Math.round(e.doomsday_minutes * 60));
-    const clockMax = clockSecs.length ? Math.max(...clockSecs) : 3600;
-    chart.setOption({ series, yAxis: [{}, { min: 0, max: Math.round(clockMax * 1.15) }] }, { lazyUpdate: true, notMerge: false });
-    window.__fitY && window.__fitY();
+    // courbe de SYNTHÈSE ✦ SINGULARITÉ (bande du haut, blanche, plus épaisse) — le vrai hockey stick global
+    const synReal = synPts.filter(p => p.y <= nowYear + 0.05);
+    const synFut = synPts.filter(p => p.y > nowYear + 0.05);
+    const synY = p => laneY('✦ SINGULARITÉ', p.v, normOf['✦ SINGULARITÉ'].min, normOf['✦ SINGULARITÉ'].max);
+    if (synReal.length > 1) {
+      series.push({
+        name: '✦ SINGULARITÉ', type: 'line', z: 6,
+        showSymbol: true, symbol: 'circle', symbolSize: 5, smooth: 0.15,
+        lineStyle: { color: '#f8fafc', width: 2.5, opacity: 0.95, shadowColor: '#f8fafc', shadowBlur: 10 },
+        itemStyle: { color: '#f8fafc', borderColor: '#050508', borderWidth: 1 },
+        areaStyle: { color: '#f8fafc', opacity: 0.08 },
+        data: synReal.map(p => [p.y, synY(p), `Singularité ${p.y}`, null]),
+      });
+    }
+    if (synFut.length) {
+      series.push({
+        name: '✦ SINGULARITÉ · prédictions', type: 'scatter', z: 5,
+        symbol: 'diamond', symbolSize: 6,
+        itemStyle: { color: '#f8fafc', opacity: 0.6, borderColor: '#050508', borderWidth: 1 },
+        data: synFut.map(p => [p.y, synY(p), `Singularité ${p.y}`, null]),
+      });
+    }
+    chart.setOption({ series }, { lazyUpdate: true, notMerge: false });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [events, hiddenGroups, allEvents]);
 
@@ -247,7 +291,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
   const jumpToEvent = (target) => {
     const chart = chartRef.current;
     if (chart && target?.year != null) {
-      const xa = chart.getOption().xAxis[0];
+      const xo = chart.getOption().xAxis;
+      const xa = Array.isArray(xo) ? xo[0] : xo;
       const f = (target.year - xa.min) / (xa.max - xa.min);
       const half = 0.06;
       chart.dispatchAction({ type: 'dataZoom', start: Math.max(0, Math.min(100, (f - half) * 100)), end: Math.max(0, Math.min(100, (f + half) * 100)) });
@@ -365,7 +410,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         <ul className="space-y-1.5">
           {feed.map(e => (
             <li key={e.id} className="text-[11px] leading-snug cursor-pointer hover:bg-cyan-500/10 rounded px-1 py-0.5"
-                onClick={() => jumpToEvent(e)} title={e.title}>
+                onClick={() => jumpToEvent(e)}
+                title={`Événement : ${fmtTs(e)} · ingéré le ${isNaN(new Date(e.timestamp).getTime()) ? '—' : new Date(e.timestamp).toLocaleString('fr-FR')}`}>
               <span style={{ color: e.groupColor }}>●</span>{' '}
               <span className="text-zinc-500">[{fmtTs(e)}]</span>{' '}
               {e.title}
@@ -440,7 +486,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
             <div className="flex gap-3 items-center flex-wrap text-[10px] text-zinc-500 uppercase mt-1 mb-2">
               <span>Source: <b className="text-zinc-300">{selected.source || 'N/A'}</b></span>
               <span className="font-mono">ID: <b className="text-zinc-400">{selected.id}</b></span>
-              <span>Timestamp: <b className="text-zinc-400 font-mono">{new Date(selected.timestamp).toLocaleString('fr-FR')} ({new Date(selected.timestamp).toISOString().slice(0, 16)}Z)</b></span>
+              <span>Événement : <b className="text-zinc-300">{fmtTs(selected)}</b></span>
+              <span>Découvert/ingéré : <b className="text-zinc-400 font-mono">{isNaN(new Date(selected.timestamp).getTime()) ? '—' : new Date(selected.timestamp).toLocaleString('fr-FR')}</b></span>
               <span className={`px-2 py-0.5 rounded border ${selected.is_kinetic_signal ? 'border-red-500/60 text-red-400' : 'border-zinc-700 text-zinc-500'}`}>
                 {selected.is_kinetic_signal ? '⟡ IMPACT CINÉTIQUE : OUI' : 'IMPACT CINÉTIQUE : NON'}
               </span>
