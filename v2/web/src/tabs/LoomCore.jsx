@@ -195,60 +195,44 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     const chart = chartRef.current;
     if (!chart) return;
     const byGroup = {};
-    for (const e of events) {
-      if (hiddenGroups[e.group]) continue;
-      (byGroup[e.group] ||= { color: e.groupColor, data: [] }).data.push(e);
-    }
+    for (const e of events) (byGroup[e.group] ||= { color: e.groupColor, data: [] }).data.push(e);
     const series = [];
+    // V2.3.0 : 2 séries par groupe, NOMS STABLES (groupe / groupe+' · prédictions') même quand le
+    // groupe est masqué (data vide) — sinon le merge ECharts par nom conserve les anciennes séries
+    // et la courbe reste affichée. Une seule série ligne par groupe (points+ligne+étiquettes) :
+    // avant, line et scatter partageaient le même nom et ECharts fusionnait -> une seule ligne à l'écran.
     for (const [name, g] of Object.entries(byGroup)) {
+      const hidden = !!hiddenGroups[name];
       const isClock = /horloge/i.test(name);
       const yIdx = isClock ? 1 : 0; // horloge sur axe caché inversé (le décollage J reste lisible)
-      const pts = g.data;
+      const pts = hidden ? [] : g.data;
       // courbe en J reliée (style V1) : points réels triés par année ; les prévisions restent des points
       const real = pts.filter(e => (e.year || 0) <= nowYear + 0.05).sort((a, b) => a.year - b.year);
       const future = pts.filter(e => (e.year || 0) > nowYear + 0.05).sort((a, b) => a.year - b.year);
-      // V2.3.0 : UNE SEULE série ligne par groupe (points+ligne+étiquettes) + une série scatter
-      // "prédictions" au NOM DISTINCT — avant, line et scatter partageaient le même nom et
-      // ECharts fusionnait par nom : il ne restait qu'une seule ligne (bleue) à l'écran.
-      if (real.length > 1) {
-        series.push({
-          name, type: 'line', yAxisIndex: yIdx, z: 4,
-          showSymbol: true, symbol: 'circle',
-          symbolSize: d => (d[3]?.tipping ? 11 : 5.5),
-          // segments quasi droits (hockey stick de Kurzweil : l'asymptote vient des données, pas du lissage)
-          smooth: isClock ? 0.4 : 0.12, // l'horloge est adoucie (plus de zigzags verticaux agressifs)
-          lineStyle: { color: g.color, width: 3, opacity: 0.95, shadowColor: g.color, shadowBlur: 6 },
-          itemStyle: { color: g.color, opacity: 0.95, borderColor: '#050508', borderWidth: 1 },
-          areaStyle: { color: g.color, opacity: 0.05 },
-          emphasis: { scale: 1.7 },
-          label: {
-            show: true, position: 'top', fontSize: 9, color: '#cbd5e1',
-            formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 18)}…` : ''),
-            rotate: 28, distance: 6,
-          },
-          labelLayout: { hideOverlap: true },
-          data: real.map(e => [e.year, yOf(e), e.title, e]),
-        });
-      }
-      if (future.length) {
-        series.push({
-          name: name + ' · prédictions', type: 'scatter', yAxisIndex: yIdx, z: 3,
-          symbol: 'diamond', symbolSize: 6,
-          itemStyle: { color: g.color, opacity: 0.55, borderColor: '#050508', borderWidth: 1 },
-          data: future.map(e => [e.year, yOf(e), e.title, e]),
-        });
-      }
-      // points orphelins (groupe à un seul point réel) : scatter de secours, nom distinct
-      if (real.length === 1) {
-        series.push({
-          name: name + ' · points', type: 'scatter', yAxisIndex: yIdx, z: 3,
-          symbolSize: d => (d[3]?.tipping ? 11 : 6),
-          itemStyle: { color: g.color, opacity: 0.95, borderColor: '#050508', borderWidth: 1 },
-          label: { show: true, position: 'top', fontSize: 9, color: '#cbd5e1', formatter: d => (d[3]?.tipping ? String(d[2]).slice(0, 18) : ''), rotate: 28, distance: 6 },
-          labelLayout: { hideOverlap: true },
-          data: real.map(e => [e.year, yOf(e), e.title, e]),
-        });
-      }
+      series.push({
+        name, type: 'line', yAxisIndex: yIdx, z: 4,
+        showSymbol: true, symbol: 'circle',
+        symbolSize: d => (d[3]?.tipping ? 11 : 5.5),
+        // segments quasi droits (hockey stick de Kurzweil : l'asymptote vient des données, pas du lissage)
+        smooth: isClock ? 0.4 : 0.12, // l'horloge est adoucie (plus de zigzags verticaux agressifs)
+        lineStyle: { color: g.color, width: 3, opacity: hidden ? 0 : 0.95, shadowColor: g.color, shadowBlur: 6 },
+        itemStyle: { color: g.color, opacity: hidden ? 0 : 0.95, borderColor: '#050508', borderWidth: 1 },
+        areaStyle: { color: g.color, opacity: 0.05 },
+        emphasis: { scale: 1.7 },
+        label: {
+          show: true, position: 'top', fontSize: 9, color: '#cbd5e1',
+          formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 18)}…` : ''),
+          rotate: 28, distance: 6,
+        },
+        labelLayout: { hideOverlap: true },
+        data: real.map(e => [e.year, yOf(e), e.title, e]),
+      });
+      series.push({
+        name: name + ' · prédictions', type: 'scatter', yAxisIndex: yIdx, z: 3,
+        symbol: 'diamond', symbolSize: 6,
+        itemStyle: { color: g.color, opacity: hidden ? 0 : 0.55, borderColor: '#050508', borderWidth: 1 },
+        data: future.map(e => [e.year, yOf(e), e.title, e]),
+      });
     }
     // plage de l'axe caché de l'horloge ajustée aux secondes réelles (axe inversé : 0 s = tout en haut)
     const clockSecs = (allEvents || []).filter(e => /horloge/i.test(e.group || '') && e.doomsday_minutes != null)
@@ -420,7 +404,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         <div ref={wrapRef} className="relative flex-1 min-h-0">
           <div ref={boxRef} className="panel absolute inset-0" />
           {hover && hb && connector && (
-            <svg className="absolute inset-0 pointer-events-none" style={{ zIndex: 30 }} width="100%" height="100%">
+            <svg className="loom-connector absolute inset-0 pointer-events-none" style={{ zIndex: 30 }} width="100%" height="100%">
               <path d={connector} fill="none" stroke={hover.ev.groupColor} strokeWidth={1.6} strokeLinecap="round"
                     style={{ filter: `drop-shadow(0 0 5px ${hover.ev.groupColor})` }} />
               <circle cx={hover.x} cy={hover.y} r={3.5} fill={hover.ev.groupColor}
