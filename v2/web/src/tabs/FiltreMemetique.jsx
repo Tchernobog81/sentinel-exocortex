@@ -28,6 +28,11 @@ export default function FiltreMemetique({ memetic, setMemetic, events }) {
         setPrompt(j.prompt || DEFAULT_PROMPT);
         setPromptStatus(j.custom ? 'prompt actuel (agent_prompt.txt)' : 'prompt par défaut (fichier absent)');
       } catch {
+        // mode Pages (statique) : lire agent_prompt.txt publié, sinon localStorage, sinon défaut
+        try {
+          const r2 = await fetch('agent_prompt.txt?cb=' + Date.now(), { cache: 'no-store' });
+          if (r2.ok) { setPrompt(await r2.text()); setPromptStatus('agent_prompt.txt (dépôt) — à renvoyer via le serveur local pour appliquer à l\'agent'); return; }
+        } catch {}
         setPrompt(localStorage.getItem('loom_agent_prompt') || DEFAULT_PROMPT);
         setPromptStatus('mode Pages (serveur local absent) : édition en localStorage');
       }

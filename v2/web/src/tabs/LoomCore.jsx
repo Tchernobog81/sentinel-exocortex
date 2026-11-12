@@ -119,7 +119,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         type: 'value',
         splitLine: { lineStyle: { color: 'rgba(255,255,255,0.07)', type: 'dashed' } },
         axisLabel: {
-          color: '#6b7280', fontSize: 8, interval: 1,
+          color: '#6b7280', fontSize: 8, interval: 1, hideOverlap: false,
           formatter: v => { const names = geomRef.current.laneNames; const i = Math.round(v); return (i >= 0 && i < names.length) ? names[i] : ''; },
         },
       },
