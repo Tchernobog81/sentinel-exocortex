@@ -2,30 +2,15 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.5.0';
+export const LOOM_VERSION = '2.6.0';
 
-// V2.5.0 — LANES : chaque groupe a sa propre bande horizontale, normalisée sur ses propres
-// min/max (les `value` brutes sont corrélées à l'année -> toutes les courbes s'alignaient sinon).
-// La courbe ✦ SINGULARITÉ = synthèse (moyenne globale des valeurs par année), bande du haut.
-const geomRef = { current: { laneOf: {}, normOf: {}, laneNames: [], nLanes: 1 } };
-const rawVal = e => /horloge/i.test(e.group || '') ? Math.round((e.doomsday_minutes ?? 0) * 60) : (e.value ?? 0);
-const yOf = e => {
-  const g = geomRef.current;
-  const lane = g.laneOf[e.group] ?? 0;
-  const n = g.normOf[e.group] || { min: 0, max: 1 };
-  const isClock = /horloge/i.test(e.group || '');
-  let norm = n.max > n.min ? (rawVal(e) - n.min) / (n.max - n.min) : 0.5;
-  if (isClock) norm = 1 - norm; // horloge : moins de secondes avant minuit = plus haut (danger)
-  return lane + 0.08 + 0.84 * Math.max(0, Math.min(1, norm));
-};
-const laneY = (laneName, v, min, max) => {
-  const g = geomRef.current;
-  const lane = g.laneOf[laneName] ?? 0;
-  const norm = max > min ? (v - min) / (max - min) : 0.5;
-  return lane + 0.08 + 0.84 * Math.max(0, Math.min(1, norm));
-};
+// V2.6.0 — axe Y PARTAGÉ façon V1 : toutes les courbes s'entrelacent autour de la courbe
+// ✦ SINGULARITÉ (synthèse, blanche, plus épaisse). L'horloge reste sur son axe caché inversé.
+const yOf = e => /horloge/i.test(e.group || '') ? Math.round((e.doomsday_minutes ?? 0) * 60) : (e.value ?? 0);
+const axisOf = e => /horloge/i.test(e.group || '') ? 1 : 0;
+const SYN_COLOR = '#f8fafc';
 
-// Onglet 1 — LOOM CORE (V2.1.2) : le chart s'initialise UNE fois (le zoom utilisateur est préservé
+// Onglet 1 — LOOM CORE : le chart s'initialise UNE fois (le zoom utilisateur est préservé
 // entre les rafraîchissements SSE), les séries sont mises à jour en douceur.
 export default function LoomCore({ envelope, events, allEvents, filters, setFilters, clockSmooth }) {
   const chartRef = useRef(null);
@@ -38,6 +23,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
   const [hiddenGroups, setHiddenGroups] = useState({});
   const [search, setSearch] = useState('');
   const [kineticOnly, setKineticOnly] = useState(false);
+  const [nowPx, setNowPx] = useState(null); // position px de la ligne "jour courant" (surcouche HTML)
   window.__selectEvent = (ev) => setSelected(ev); // hook de test
 
   const nowYear = new Date().getFullYear() + new Date().getMonth() / 12;
@@ -67,10 +53,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     chartRef.current = chart;
     window.__loomChart = chart;
 
-    const XMIN = -2700, XMAX = 2110;
-    // V2.4.0 : vue initiale = PLAGE COMPLÈTE (comme V1) — l'asymptote exponentielle est réaliste
-    // (plate pendant des millénaires, verticale à la fin) et les 9 courbes ne se superposent pas.
-    // En ±60 ans autour d'aujourd'hui + Y-fit étiré, tout formait une diagonale régulière superposée.
+    const XMIN = -2700, XMAX = 2110; // le futur (prévisions jusqu'à ~2100) reste navigable
+    // vue initiale = PLAGE COMPLÈTE (comme V1) — hockey stick réaliste
     const start = 0, end = 100;
     let xWin = XMAX - XMIN;
 
@@ -80,30 +64,23 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       tooltip: { show: false },
       legend: { show: false },
       toolbox: { right: 40, top: 6, itemSize: 16, feature: { dataZoom: { xAxisIndex: 0, yAxisIndex: 'none', title: { zoom: 'Zoom', back: 'Reset zoom' } }, restore: { title: "Vue d'ensemble" } } },
-      // V2.5.0 : manipulable horizontalement ET verticalement — molette = zoom X, Maj+molette = zoom Y,
-      // drag = panoramique X+Y, sliders X (bas) et Y (droite)
+      // manipulable horizontalement ET verticalement, et dans le futur :
+      // molette = zoom X, Maj+molette = zoom Y, clic+move (drag) = panoramique X, sliders X (bas) et Y (droite)
       dataZoom: [
         { type: 'inside', xAxisIndex: 0, yAxisIndex: 'none', zoomOnMouseWheel: true, moveOnMouseWheel: false, moveOnMouseMove: true, zoomOnMouseMove: false, start, end },
         { type: 'inside', xAxisIndex: 'none', yAxisIndex: 0, zoomOnMouseWheel: 'shift', moveOnMouseWheel: false, moveOnMouseMove: false, zoomOnMouseMove: false, start, end },
-        { type: 'slider', xAxisIndex: 0, bottom: 2, height: 16, filterMode: 'none', start, end },
-        { type: 'slider', yAxisIndex: 0, right: 4, width: 14, filterMode: 'none', start, end },
+        { type: 'slider', xAxisIndex: 0, yAxisIndex: 'none', bottom: 2, height: 16, filterMode: 'none', start, end },
+        { type: 'slider', xAxisIndex: 'none', yAxisIndex: 0, right: 4, width: 14, filterMode: 'none', start, end },
       ],
-      grid: { left: 118, right: 40, top: 40, bottom: 34 },
+      grid: { left: 50, right: 40, top: 40, bottom: 34 },
       xAxis: { type: 'value', min: XMIN, max: XMAX, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } }, name: 'année', nameTextStyle: { color: '#6b7280' },
-        // ligne pointillée verticale à la date du jour (comme V1) — sur l'axe, elle survit aux MAJ de séries
-        markLine: {
-          silent: true, symbol: 'none', z: 2,
-          lineStyle: { color: '#fbbf24', type: 'dashed', width: 2, opacity: 0.95 },
-          label: { color: '#fbbf24', fontSize: 9, position: 'insideStartTop', formatter: 'MAINTENANT', backgroundColor: 'rgba(9,13,22,0.85)', padding: [2, 5] },
-          data: [{ xAxis: nowYear }],
-        },
         axisLabel: {
           color: '#6b7280', fontSize: 10, hideOverlap: true,
           // zoom temporel : TOUTES les années -> TOUS les mois -> TOUS les jours (fenêtre relue à chaque formatage)
           formatter: v => {
             try {
               const dzs = chart.getOption().dataZoom || [];
-              const dz = dzs.find(d => d.type === 'inside') || dzs[0];
+              const dz = dzs.find(d => d.type === 'inside' && d.xAxisIndex !== 'none') || dzs[0];
               if (dz && dz.start != null) xWin = (XMAX - XMIN) * (dz.end - dz.start) / 100;
             } catch {}
             const range = xWin;
@@ -114,27 +91,20 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
             return `${String(d.getDate()).padStart(2, '0')}/${MOIS[d.getMonth()]}/${String(y).slice(2)}`;
           },
         } },
-      // axe Y unique en LANES : une bande par groupe (noms affichés), synthèse ✦ SINGULARITÉ en haut
-      yAxis: {
-        type: 'value', splitNumber: 10, // un tick par lane -> tous les noms de catégories affichés
-        splitLine: { lineStyle: { color: 'rgba(255,255,255,0.07)', type: 'dashed' } },
-        axisLabel: {
-          color: '#6b7280', fontSize: 8, interval: 0, hideOverlap: false,
-          formatter: v => { const names = geomRef.current.laneNames; const i = Math.round(v); return (i >= 0 && i < names.length) ? names[i] : ''; },
-        },
-      },
+      yAxis: [
+        { type: 'value', axisLabel: { color: '#6b7280', fontSize: 10 }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
+        // axe caché de l'horloge : secondes avant minuit, INVERSÉ (moins = plus haut = danger)
+        { type: 'value', show: false, min: 0, max: 60 * 60 * 24, inverse: true },
+      ],
       series: [],
     }, { notMerge: true });
 
-    // clic -> popup détail : même picking au pixel près que le survol (le proxy
-    // chart.on('click') ne se déclenche que sur un symbole exact). V2.5.0 : on ignore le clic
-    // si c'était un drag (panoramique), sinon le drawer s'ouvre après chaque déplacement.
+    // clic -> popup détail : picking au pixel près. On ignore le clic si c'était un drag (panoramique).
     const pickNearest = (zx, zy) => {
       let best = null, bd = 24 * 24;
       for (const ev of eventsRef.current) {
         if (hiddenRef.current[ev.group]) continue;
-        // axe unique en lanes (V2.5.0) : tous les POI sont projetés avec yOf(ev)
-        const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [ev.year, yOf(ev)]);
+        const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: axisOf(ev) }, [ev.year, yOf(ev)]);
         const d = (px[0] - zx) ** 2 + (px[1] - zy) ** 2;
         if (d < bd) { bd = d; best = ev; }
       }
@@ -145,14 +115,13 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       downX = e.zrX ?? e.offsetX ?? 0; downY = e.zrY ?? e.offsetY ?? 0; dragged = false;
     });
     chart.getZr().on('click', e => {
-      if (dragged) return; // c'était un panoramique, pas un clic
+      if (dragged) return; // c'était un panoramique (clic+move), pas un clic
       const zx = e.zrX ?? e.offsetX ?? (e.event && e.event.offsetX), zy = e.zrY ?? e.offsetY ?? (e.event && e.event.offsetY);
       const hit = pickNearest(zx, zy);
       if (hit) setSelected(hit);
     });
 
     // survol : picking manuel au pixel près (seuil 24 px), branché sur ZRENDER
-    // (chart.on('mousemove') ne se déclenche QUE sur un élément dessiné -> bulle fantôme)
     let raf = 0;
     chart.getZr().on('mousemove', e => {
       const zx0 = e.zrX ?? e.offsetX ?? (e.event && e.event.offsetX), zy0 = e.zrY ?? e.offsetY ?? (e.event && e.event.offsetY);
@@ -161,7 +130,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       raf = requestAnimationFrame(() => {
         const hit = pickNearest(zx0, zy0);
         if (hit) {
-          const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [hit.year, yOf(hit)]);
+          const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: axisOf(hit) }, [hit.year, yOf(hit)]);
           setHover({ x: px[0], y: px[1], ev: hit });
         } else setHover(null);
       });
@@ -170,38 +139,78 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     chart.getDom().addEventListener('mouseleave', () => setHover(null));
 
     // fenêtre courante (années)
+    const xZoom = () => {
+      const dzs = chart.getOption().dataZoom || [];
+      return dzs.find(d => d.type === 'inside' && d.xAxisIndex !== 'none') || dzs[0];
+    };
     const winRange = () => {
       try {
-        const dzs = chart.getOption().dataZoom || [];
-        const dz = dzs.find(d => d.type === 'inside' && d.xAxisIndex !== 'none') || dzs[0];
+        const dz = xZoom();
         if (dz && dz.start != null) return (XMAX - XMIN) * (dz.end - dz.start) / 100;
       } catch {}
       return XMAX - XMIN;
+    };
+    // Y ajusté aux données réelles visibles dans la fenêtre X (comme V1 : le décollage reste visible)
+    const fitYToWindow = () => {
+      try {
+        const dz = xZoom();
+        const xa = chart.getOption().xAxis; const x = Array.isArray(xa) ? xa[0] : xa;
+        const x0 = x.min + ((dz?.start ?? 0) / 100) * (x.max - x.min);
+        const x1 = x.min + ((dz?.end ?? 100) / 100) * (x.max - x.min);
+        let hi = 0, lo = Infinity;
+        for (const ev of eventsRef.current) {
+          if ((ev.year || 0) > nowYear + 0.05) continue;   // prévisions hors Y-fit
+          if (/horloge/i.test(ev.group || '')) continue;   // horloge sur son propre axe
+          if (hiddenRef.current[ev.group]) continue;
+          if ((ev.year || 0) >= x0 && (ev.year || 0) <= x1) { hi = Math.max(hi, ev.value || 0); lo = Math.min(lo, ev.value || 0); }
+        }
+        if (hi > 0) chart.setOption({ yAxis: [{ min: Math.max(0, Math.floor(lo * 0.9)), max: Math.round(hi * 1.05) }, {}] });
+      } catch {}
     };
     // ticks au fil du zoom : TOUTES les années -> TOUS les mois -> TOUS les jours
     const applyTickInterval = () => {
       const r = winRange();
       let minInterval;
-      if (r > 24) minInterval = 1;        // toutes les années
+      if (r > 24) minInterval = 1;         // toutes les années
       else if (r > 2) minInterval = 1 / 12; // tous les mois
       else minInterval = 1 / 365;           // tous les jours
       try { chart.setOption({ xAxis: { minInterval } }); } catch {}
     };
-    let dzT = 0;
+    // surcouche HTML "MAINTENANT" : position px du jour courant, recalculée à chaque zoom/resize
+    // (une markLine ECharts pouvait sembler "à 0" quand la fenêtre ne la contenait pas)
+    const updateNowPx = () => {
+      try {
+        const dz = xZoom();
+        const xa = chart.getOption().xAxis; const x = Array.isArray(xa) ? xa[0] : xa;
+        const x0 = x.min + ((dz?.start ?? 0) / 100) * (x.max - x.min);
+        const x1 = x.min + ((dz?.end ?? 100) / 100) * (x.max - x.min);
+        if (nowYear < x0 || nowYear > x1) { setNowPx(null); return; }
+        const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [nowYear, 0])[0];
+        setNowPx(px);
+      } catch { setNowPx(null); }
+    };
+    let dzT = 0, lastXKey = null;
     chart.on('datazoom', () => {
       clearTimeout(dzT);
-      dzT = setTimeout(() => { applyTickInterval(); }, 120);
+      dzT = setTimeout(() => {
+        applyTickInterval();
+        const dz = xZoom();
+        const key = dz ? dz.start + '-' + dz.end : '';
+        if (key !== lastXKey) { lastXKey = key; fitYToWindow(); } // Y-fit seulement si le zoom X a changé
+        updateNowPx();
+      }, 120);
     });
+    window.__fitY = fitYToWindow;
+    window.__updateNow = updateNowPx;
     window.__ticks = applyTickInterval;
-    setTimeout(() => { applyTickInterval(); }, 250);
+    setTimeout(() => { applyTickInterval(); fitYToWindow(); updateNowPx(); }, 250);
 
-    const ro = new ResizeObserver(() => chart.resize());
+    const ro = new ResizeObserver(() => { chart.resize(); updateNowPx(); });
     ro.observe(boxRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // ---- MISE À JOUR des séries (préserve le zoom/pan utilisateur) ----
-  const lastNLanesRef = useRef(0);
   useEffect(() => {
     eventsRef.current = events;
     hiddenRef.current = hiddenGroups;
@@ -210,42 +219,20 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     const byGroup = {};
     for (const e of events) (byGroup[e.group] ||= { color: e.groupColor, data: [] }).data.push(e);
 
-    // V2.5.0 — géométrie des LANES : ordre stable des groupes + synthèse ✦ SINGULARITÉ en dernière bande
-    const laneNames = Object.keys(byGroup).sort();
-    laneNames.push('✦ SINGULARITÉ');
-    const laneOf = {}; laneNames.forEach((n, i) => laneOf[n] = i);
-    const normOf = {};
-    for (const [name, g] of Object.entries(byGroup)) {
-      const vals = g.data.map(e => rawVal(e)).filter(Number.isFinite);
-      normOf[name] = vals.length ? { min: Math.min(...vals), max: Math.max(...vals) } : { min: 0, max: 1 };
-    }
-    // synthèse globale : moyenne des valeurs par année sur TOUS les événements
-    const byYear = {};
-    for (const e of events) { const y = Math.floor(e.year || 0); (byYear[y] ||= []).push(e.value ?? 0); }
-    const synPts = Object.entries(byYear).map(([y, vals]) => ({ y: +y, v: vals.reduce((a, b) => a + b, 0) / vals.length })).sort((a, b) => a.y - b.y);
-    // normalisation de la synthèse sur les années RÉELLES : la courbe occupe toute sa lane (vrai hockey stick)
-    const synRealVals = synPts.filter(p => p.y <= nowYear + 0.05).map(p => p.v);
-    const allVals = synRealVals.length ? synRealVals : synPts.map(p => p.v);
-    normOf['✦ SINGULARITÉ'] = allVals.length ? { min: Math.min(...allVals), max: Math.max(...allVals) } : { min: 0, max: 1 };
-    geomRef.current = { laneOf, normOf, laneNames, nLanes: laneNames.length };
-    window.__geom = geomRef.current; // hook de test
-    // fige l'axe Y (0..nLanes) seulement si le nombre de lanes change → le pan/zoom Y de l'utilisateur est préservé
-    if (lastNLanesRef.current !== laneNames.length) {
-      lastNLanesRef.current = laneNames.length;
-      chart.setOption({ yAxis: { min: -0.05, max: laneNames.length + 0.05 } });
-    }
-
+    // V2.6.0 : noms de séries STABLES issus de allEvents (même si le filtre mémétique vide un groupe,
+    // la série existe -> le clic sur sa pastille allume/éteint toujours quelque chose)
     const series = [];
-    // 2 séries par groupe, NOMS STABLES (même masqué → data vide, sinon le merge ECharts garde l'ancienne courbe)
-    for (const [name, g] of Object.entries(byGroup)) {
+    for (const name of Object.keys(groups)) {
+      const g = byGroup[name] || { color: groups[name], data: [] };
       const hidden = !!hiddenGroups[name];
       const isClock = /horloge/i.test(name);
+      const yIdx = isClock ? 1 : 0;
       const pts = hidden ? [] : g.data;
-      // courbe reliée : points réels triés par année ; les prévisions restent des points (losanges)
+      // courbe reliée : points réels triés par année ; les prévisions restent des points (losanges), futur navigable
       const real = pts.filter(e => (e.year || 0) <= nowYear + 0.05).sort((a, b) => a.year - b.year);
       const future = pts.filter(e => (e.year || 0) > nowYear + 0.05).sort((a, b) => a.year - b.year);
       series.push({
-        name, type: 'line', z: 4,
+        name, type: 'line', yAxisIndex: yIdx, z: 4,
         showSymbol: true, symbol: 'circle',
         symbolSize: d => (d[3]?.tipping ? 9 : 4),
         smooth: isClock ? 0.4 : 0.12, // horloge adoucie ; sinon segments quasi droits (hockey stick des données)
@@ -258,37 +245,49 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         data: real.map(e => [e.year, yOf(e), e.title, e]),
       });
       series.push({
-        name: name + ' · prédictions', type: 'scatter', z: 3,
+        name: name + ' · prédictions', type: 'scatter', yAxisIndex: yIdx, z: 3,
         symbol: 'diamond', symbolSize: 6,
         itemStyle: { color: g.color, opacity: hidden ? 0 : 0.55, borderColor: '#050508', borderWidth: 1 },
         data: future.map(e => [e.year, yOf(e), e.title, e]),
       });
     }
-    // courbe de SYNTHÈSE ✦ SINGULARITÉ (bande du haut, blanche, plus épaisse) — le vrai hockey stick global
+    // courbe de SYNTHÈSE ✦ SINGULARITÉ : moyenne globale des valeurs par année (hors horloge,
+    // qui a sa propre échelle), axe partagé, blanche et plus épaisse — les courbes s'entrelacent autour (style V1)
+    const byYear = {};
+    for (const e of (allEvents || events)) {
+      if (/horloge/i.test(e.group || '')) continue; // l'horloge n'entre pas dans la synthèse
+      const y = Math.floor(e.year || 0); (byYear[y] ||= []).push(e.value ?? 0);
+    }
+    const synPts = Object.entries(byYear).map(([y, vals]) => ({ y: +y, v: vals.reduce((a, b) => a + b, 0) / vals.length })).sort((a, b) => a.y - b.y);
     const synReal = synPts.filter(p => p.y <= nowYear + 0.05);
     const synFut = synPts.filter(p => p.y > nowYear + 0.05);
-    const synY = p => laneY('✦ SINGULARITÉ', p.v, normOf['✦ SINGULARITÉ'].min, normOf['✦ SINGULARITÉ'].max);
     if (synReal.length > 1) {
       series.push({
         name: '✦ SINGULARITÉ', type: 'line', z: 6,
         showSymbol: true, symbol: 'circle', symbolSize: 5, smooth: 0.15,
-        lineStyle: { color: '#f8fafc', width: 2.5, opacity: 0.95, shadowColor: '#f8fafc', shadowBlur: 10 },
-        itemStyle: { color: '#f8fafc', borderColor: '#050508', borderWidth: 1 },
-        areaStyle: { color: '#f8fafc', opacity: 0.08 },
-        data: synReal.map(p => [p.y, synY(p), `Singularité ${p.y}`, null]),
+        lineStyle: { color: SYN_COLOR, width: 2.5, opacity: 0.95, shadowColor: SYN_COLOR, shadowBlur: 10 },
+        itemStyle: { color: SYN_COLOR, borderColor: '#050508', borderWidth: 1 },
+        areaStyle: { color: SYN_COLOR, opacity: 0.08 },
+        data: synReal.map(p => [p.y, p.v, `Singularité ${p.y}`, null]),
       });
     }
     if (synFut.length) {
       series.push({
         name: '✦ SINGULARITÉ · prédictions', type: 'scatter', z: 5,
         symbol: 'diamond', symbolSize: 6,
-        itemStyle: { color: '#f8fafc', opacity: 0.6, borderColor: '#050508', borderWidth: 1 },
-        data: synFut.map(p => [p.y, synY(p), `Singularité ${p.y}`, null]),
+        itemStyle: { color: SYN_COLOR, opacity: 0.6, borderColor: '#050508', borderWidth: 1 },
+        data: synFut.map(p => [p.y, p.v, `Singularité ${p.y}`, null]),
       });
     }
-    chart.setOption({ series }, { lazyUpdate: true, notMerge: false });
+    // plage de l'axe caché de l'horloge ajustée aux secondes réelles
+    const clockSecs = (allEvents || []).filter(e => /horloge/i.test(e.group || '') && e.doomsday_minutes != null)
+      .map(e => Math.round(e.doomsday_minutes * 60));
+    const clockMax = clockSecs.length ? Math.max(...clockSecs) : 3600;
+    chart.setOption({ series, yAxis: [{}, { min: 0, max: Math.round(clockMax * 1.15) }] }, { lazyUpdate: true, notMerge: false });
+    window.__fitY && window.__fitY();
+    window.__updateNow && window.__updateNow();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [events, hiddenGroups, allEvents]);
+  }, [events, hiddenGroups, allEvents, groups]);
 
   // ---- saut vers un événement (lien ⇄ ou flux) ----
   const jumpToEvent = (target) => {
@@ -312,9 +311,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
   };
 
   // ---- flux entrant : NOUVEAUTÉS récentes uniquement, antichronologique, DATES RÉELLES ----
-  // V2.4.0 : le timestamp brut n'est fiable que s'il est cohérent avec l'année de l'événement ;
-  // sinon c'est un horodatage d'INGESTION (ex: CPI 2002 stampé 11/11/2026) -> on dérive la date
-  // honnêtement de l'année fractionnaire. Le flux n'affiche que les faits RÉCENTS (45 jours).
+  // le timestamp brut n'est fiable que s'il est cohérent avec l'année de l'événement ;
+  // sinon c'est un horodatage d'INGESTION -> on dérive la date de l'année fractionnaire.
   const realDate = e => {
     const raw = new Date(e.timestamp);
     const y = e.year || 0, yi = Math.floor(y);
@@ -381,7 +379,6 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     const bx = Math.max(4, Math.min(hover.x - bubbleSize.w / 2, wrapW - bubbleSize.w - 8));
     return { bx, by, above };
   })() : null;
-  // ancre = centre du bord de la bulle tourné vers le POI ; la courbe plie latéralement (organique)
   const connector = hover && hb ? (() => {
     const ax = hb.bx + bubbleSize.w / 2;
     const ay = hb.above ? hb.by + bubbleSize.h : hb.by;
@@ -393,6 +390,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     return `M ${hover.x.toFixed(1)} ${hover.y.toFixed(1)} Q ${cx.toFixed(1)} ${cy.toFixed(1)} ${ax.toFixed(1)} ${ay.toFixed(1)}`;
   })() : null;
 
+  const allVisible = Object.keys(groups).every(g => !hiddenGroups[g]);
+
   return (
     <div className="h-full grid grid-cols-[300px_1fr] gap-3 min-h-0">
       {/* panneau gauche : flux */}
@@ -401,7 +400,6 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
              title={lastMaj.full ? `Dernière mise à jour : ${lastMaj.full}` : 'Aucune donnée datée'}>
           <Radio size={12} className="animate-pulse" /> FLUX ENTRANT · MAJ {lastMaj.txt}
         </div>
-        {/* barre de recherche + filtre de gravité */}
         <div className="flex items-center gap-1.5 mb-2">
           <input value={search} onChange={ev => setSearch(ev.target.value)} placeholder="Rechercher dans le flux…"
                  className="flex-1 bg-transparent border border-cyan-500/30 rounded-md px-2 py-1 text-[10px] text-zinc-200 focus:border-cyan-400 focus:outline-none"
@@ -434,19 +432,18 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
             </div>
           </div>
           <div className="text-[10px] text-zinc-400">Singularité: <b className="amber-text">{(envelope.singularity_index ?? 0).toFixed(3)}</b></div>
-
         </div>
 
-        {/* légende custom : pastilles à la couleur des courbes — clic = allumage/extinction de LA courbe */}
+        {/* légende : pastilles à la couleur des courbes (Singularité = blanche comme sa courbe) — clic = on/off */}
         <div className="panel px-3 py-1.5 flex items-center gap-2 flex-wrap shrink-0">
           <span className="chip flex items-center gap-1.5" title="Tout allumer / tout éteindre (Singularité = toutes les courbes)"
-                style={Object.keys(groups).every(g => !hiddenGroups[g]) ? { borderColor: '#fbbf24', color: '#fbbf24' } : { opacity: 0.4 }}
+                style={allVisible ? { borderColor: SYN_COLOR, color: SYN_COLOR } : { opacity: 0.4, borderColor: SYN_COLOR, color: SYN_COLOR }}
                 onClick={() => {
                   const hideAll = Object.keys(groups).some(g => !hiddenGroups[g]);
                   setHiddenGroups(Object.fromEntries(Object.keys(groups).map(g => [g, hideAll])));
                 }}>
             <span className="inline-block w-2.5 h-2.5 rounded-full"
-                  style={{ background: 'conic-gradient(#fbbf24,#8b5cf6,#3b82f6,#0ea5e9,#10b981,#d946ef,#f97316,#f472b6,#ef4444,#fbbf24)', boxShadow: '0 0 6px #fbbf24' }} />
+                  style={{ background: SYN_COLOR, boxShadow: `0 0 6px ${SYN_COLOR}` }} />
             ✦ SINGULARITÉ
           </span>
           {Object.entries(groups).map(([g, color]) => (
@@ -458,9 +455,15 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
           ))}
         </div>
 
-        {/* graphique + bulle de survol reliée au POI par une courbe organique */}
+        {/* graphique + ligne "jour courant" + bulle de survol reliée au POI par une courbe organique */}
         <div ref={wrapRef} className="relative flex-1 min-h-0">
           <div ref={boxRef} className="panel absolute inset-0" />
+          {nowPx != null && (
+            <div className="loom-nowline absolute top-0 bottom-0 pointer-events-none" style={{ left: nowPx, zIndex: 20, borderLeft: '2px dashed #fbbf24', opacity: 0.9 }}>
+              <span className="absolute top-1 left-0 -translate-x-1/2 text-[9px] font-bold px-1 rounded whitespace-nowrap"
+                    style={{ color: '#fbbf24', background: 'rgba(9,13,22,0.85)' }}>MAINTENANT</span>
+            </div>
+          )}
           {hover && hb && connector && (
             <svg className="loom-connector absolute inset-0 pointer-events-none" style={{ zIndex: 30 }} width="100%" height="100%">
               <path d={connector} fill="none" stroke={hover.ev.groupColor} strokeWidth={1.6} strokeLinecap="round"
@@ -530,8 +533,6 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
               ))}
             </div>
             <p className="text-sm text-zinc-300 italic leading-relaxed">{selected.description || 'Pas de description.'}</p>
-            {/* Convergences & Grand Filtre + recommandation tactique NELA */}
-            {/* Convergences & Grand Filtre + recommandation tactique NELA (toujours renseignés) */}
             <div className="mt-3 pt-2 border-t border-zinc-800 text-[11px] leading-relaxed">
               <div><b className="text-neon-cyan uppercase text-[9px]">Convergences :</b> <span className="text-zinc-400">{selected.convergences || `Convergence ${selected.category} — signal intégré à la J-curve (groupe ${selected.group}).`}</span></div>
               {selected.grandFilter && <div><b className="text-amber-400 uppercase text-[9px]">Grand Filtre :</b> <span className="text-zinc-400">{selected.grandFilter}</span></div>}

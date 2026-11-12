@@ -313,6 +313,13 @@ def _parse_analysis_json(content: str) -> Optional[Dict[str, Any]]:
     except json.JSONDecodeError:
         return None
     try:
+        # Compatibilité directive "RÔLE ET MISSION" : objets imbriqués pharmakon / s_curve / nela_action
+        if "s_curve_phase" not in data and isinstance(data.get("s_curve"), dict):
+            data["s_curve_phase"] = data["s_curve"].get("stage", 3)
+        if "pharmakon_remedy_percent" not in data and isinstance(data.get("pharmakon"), dict):
+            data["pharmakon_remedy_percent"] = data["pharmakon"].get("remedy_pct", 50)
+        if not data.get("grand_filter_analysis") and data.get("nela_action"):
+            data["grand_filter_analysis"] = data["nela_action"]
         phase = int(data.get("s_curve_phase", 3))
         phase = max(1, min(5, phase))
         remedy = int(data.get("pharmakon_remedy_percent", 50))
