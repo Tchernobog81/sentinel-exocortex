@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.3.0';
+export const LOOM_VERSION = '2.4.0';
 
 // ordonnée d'un événement : valeur tech (J-curve) ou secondes avant minuit pour l'horloge
 const yOf = e => /horloge/i.test(e.group || '') ? Math.round((e.doomsday_minutes ?? 0) * 60) : (e.value ?? 0);
@@ -51,19 +51,18 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     window.__loomChart = chart;
 
     const XMIN = -2700, XMAX = 2110;
-    // vue initiale centrée sur aujourd'hui (±60 ans)
-    const nowFrac = (nowYear - XMIN) / (XMAX - XMIN);
-    const half = 60 / (XMAX - XMIN);
-    const start = Math.max(0, Math.min(100, (nowFrac - half) * 100));
-    const end = Math.max(0, Math.min(100, (nowFrac + half) * 100));
-    let xWin = (XMAX - XMIN) * (end - start) / 100;
+    // V2.4.0 : vue initiale = PLAGE COMPLÈTE (comme V1) — l'asymptote exponentielle est réaliste
+    // (plate pendant des millénaires, verticale à la fin) et les 9 courbes ne se superposent pas.
+    // En ±60 ans autour d'aujourd'hui + Y-fit étiré, tout formait une diagonale régulière superposée.
+    const start = 0, end = 100;
+    let xWin = XMAX - XMIN;
 
     chart.setOption({
       backgroundColor: 'transparent',
       animationDuration: 400,
       tooltip: { show: false },
       legend: { show: false },
-      toolbox: { right: 12, top: 6, itemSize: 16, feature: { dataZoom: { xAxisIndex: 0, yAxisIndex: 'none', title: { zoom: 'Zoom', back: 'Reset zoom' } }, restore: { title: "Vue d'aujourd'hui" } } },
+      toolbox: { right: 12, top: 6, itemSize: 16, feature: { dataZoom: { xAxisIndex: 0, yAxisIndex: 'none', title: { zoom: 'Zoom', back: 'Reset zoom' } }, restore: { title: "Vue d'ensemble" } } },
       dataZoom: [
         { type: 'inside', xAxisIndex: 0, zoomOnMouseWheel: true, moveOnMouseWheel: false, zoomOnMouseMove: false, start, end },
         { type: 'slider', xAxisIndex: 0, bottom: 2, height: 16, filterMode: 'none', start, end },
@@ -212,10 +211,11 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       series.push({
         name, type: 'line', yAxisIndex: yIdx, z: 4,
         showSymbol: true, symbol: 'circle',
-        symbolSize: d => (d[3]?.tipping ? 11 : 5.5),
+        symbolSize: d => (d[3]?.tipping ? 9 : 4),
         // segments quasi droits (hockey stick de Kurzweil : l'asymptote vient des données, pas du lissage)
         smooth: isClock ? 0.4 : 0.12, // l'horloge est adoucie (plus de zigzags verticaux agressifs)
-        lineStyle: { color: g.color, width: 3, opacity: hidden ? 0 : 0.95, shadowColor: g.color, shadowBlur: 6 },
+        // V2.4.0 : un FIL fin semi-transparent (style V1 : width 1.5, alpha 0.7) — lisible en zone dense
+        lineStyle: { color: g.color, width: 1.5, opacity: hidden ? 0 : 0.75, shadowColor: g.color, shadowBlur: 3 },
         itemStyle: { color: g.color, opacity: hidden ? 0 : 0.95, borderColor: '#050508', borderWidth: 1 },
         areaStyle: { color: g.color, opacity: 0.05 },
         emphasis: { scale: 1.7 },
@@ -263,32 +263,39 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     jumpToEvent(target);
   };
 
-  // ---- flux entrant : faits réels vérifiés, ANTICHHRONOLOGIQUE complet, vrais timestamps ----
-  // date effective : timestamp réel s'il est valide, sinon date dérivée honnêtement de la fraction d'année
-  const effDate = e => {
-    const d = new Date(e.timestamp);
-    if (!isNaN(d.getTime())) return d;
-    const y = e.year || 1970, yi = Math.floor(y), frac = y - yi;
+  // ---- flux entrant : NOUVEAUTÉS récentes uniquement, antichronologique, DATES RÉELLES ----
+  // V2.4.0 : le timestamp brut n'est fiable que s'il est cohérent avec l'année de l'événement ;
+  // sinon c'est un horodatage d'INGESTION (ex: CPI 2002 stampé 11/11/2026) -> on dérive la date
+  // honnêtement de l'année fractionnaire. Le flux n'affiche que les faits RÉCENTS (45 jours).
+  const realDate = e => {
+    const raw = new Date(e.timestamp);
+    const y = e.year || 0, yi = Math.floor(y);
+    if (!isNaN(raw.getTime()) && raw.getFullYear() > 0 && Math.abs(raw.getFullYear() - yi) <= 1) return raw;
+    const frac = y - yi;
     return new Date(yi, Math.min(11, Math.floor(frac * 12)), 1 + Math.floor((frac * 12 % 1) * 28));
+  };
+  const tsCoherent = e => {
+    const raw = new Date(e.timestamp);
+    return !isNaN(raw.getTime()) && raw.getFullYear() > 0 && Math.abs(raw.getFullYear() - Math.floor(e.year || 0)) <= 1;
   };
   const feed = useMemo(() => {
     const now = new Date();
+    const from = new Date(now.getTime() - 45 * 24 * 3600e3); // 45 derniers jours = vraies nouveautés
     const base = (allEvents || events)
       .filter(e => !/fiction|horloge/i.test(e.category || '') && e.verified !== false)
-      .map(e => ({ e, t: effDate(e) }))
-      .filter(x => !isNaN(x.t) && x.t <= new Date(now.getTime() + 6 * 3600e3)) // on exclut les annonces datées du futur
+      .map(e => ({ e, t: realDate(e) }))
+      .filter(x => !isNaN(x.t) && x.t >= from && x.t <= new Date(now.getTime() + 6 * 3600e3)) // pas d'annonces du futur
       .sort((a, b) => b.t - a.t); // antichronologique strict
-    // liste REMPLIE : les 60 derniers faits réels, filtrés par recherche texte et gravité (signaux cinétiques)
     return base.slice(0, 60).map(x => x.e)
       .filter(e => (!kineticOnly || e.is_kinetic_signal) && (!search || (e.title || '').toLowerCase().includes(search.toLowerCase())));
   }, [allEvents, events, search, kineticOnly]);
-  // dernière mise à jour = timestamp le plus récent parmi TOUS les événements (flux non filtré)
+  // dernière mise à jour = horodatage d'ingestion le plus récent parmi TOUS les événements (flux non filtré)
   const lastMaj = useMemo(() => {
     const now = new Date();
     let mx = null;
     for (const e of (allEvents || events)) {
-      const d = effDate(e);
-      if (isNaN(d) || d > now) continue;
+      const d = new Date(e.timestamp);
+      if (isNaN(d.getTime()) || d > now) continue;
       if (!mx || d > mx) mx = d;
     }
     if (!mx) return { txt: '--:--', full: '' };
@@ -296,14 +303,16 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     const hh = String(mx.getHours()).padStart(2, '0'), mi = String(mx.getMinutes()).padStart(2, '0');
     return { txt: `${dd}/${mm} ${hh}:${mi}`, full: `${dd}/${mm}/${mx.getFullYear()} ${hh}:${mi}:${String(mx.getSeconds()).padStart(2, '0')}` };
   }, [allEvents, events]);
-  // vrai timestamp : JJ/MM/AAAA HH:MM quand l'heure est connue, sinon JJ/MM/AAAA (dérivé de l'année fractionnaire)
+  // date affichée = date RÉELLE de l'événement : JJ/MM/AAAA HH:MM si timestamp cohérent, sinon JJ/MM/AAAA dérivé
   const fmtTs = e => {
-    const raw = new Date(e.timestamp);
-    const hasTime = !isNaN(raw.getTime()) && (raw.getHours() !== 0 || raw.getMinutes() !== 0 || raw.getSeconds() !== 0);
-    const d = hasTime ? raw : effDate(e);
+    const d = realDate(e);
     if (isNaN(d.getTime())) return String(Math.floor(e.year || 0));
     const dd = String(d.getDate()).padStart(2, '0'), mm = String(d.getMonth() + 1).padStart(2, '0'), yy = d.getFullYear();
-    if (hasTime) return `${dd}/${mm}/${yy} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+    if (tsCoherent(e)) {
+      const raw = new Date(e.timestamp);
+      if (raw.getHours() !== 0 || raw.getMinutes() !== 0 || raw.getSeconds() !== 0)
+        return `${dd}/${mm}/${yy} ${String(raw.getHours()).padStart(2, '0')}:${String(raw.getMinutes()).padStart(2, '0')}`;
+    }
     return `${dd}/${mm}/${yy}`;
   };
 

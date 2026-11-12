@@ -36,5 +36,5 @@ while true; do
   else
     echo "[$(date +%H:%M:%S)] Aucun nouvel événement."
   fi
-  sleep 60
+  sleep 300
 done
