@@ -2,11 +2,28 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.6.0';
+export const LOOM_VERSION = '2.7.0';
 
-// V2.6.0 — axe Y PARTAGÉ façon V1 : toutes les courbes s'entrelacent autour de la courbe
-// ✦ SINGULARITÉ (synthèse, blanche, plus épaisse). L'horloge reste sur son axe caché inversé.
-const yOf = e => /horloge/i.test(e.group || '') ? Math.round((e.doomsday_minutes ?? 0) * 60) : (e.value ?? 0);
+// V2.7.0 — axe Y partagé, mais chaque catégorie a SA PROPRE COURBE : la donnée `value` étant
+// corrélée à l'année (tous les POI s'alignaient strictement sur la synthèse), chaque catégorie
+// est tracée en COURBE INDEXÉE : synthèse(year) × (part cumulée de la catégorie / part cumulée
+// globale à cette année). Les catégories ont des formes réellement différentes (ex: FICTION
+// ancienne -> au-dessus, IA récente -> en-dessous puis rattrape), enlacées autour de ✦ SINGULARITÉ
+// avec laquelle elles convergent aujourd'hui (ratio = 1). L'horloge reste sur son axe caché
+// inversé, lissée par moyenne mobile (plus de zigzags verticaux).
+const synRef = { current: {} };   // année -> valeur moyenne globale (synthèse)
+const clockRef = { current: {} }; // année -> secondes lissées (moyenne mobile) de l'horloge
+const rRef = { current: {} };     // groupe -> { année -> ratio vs tendance globale }
+const yOf = e => {
+  if (/horloge/i.test(e.group || '')) {
+    return clockRef.current[Math.floor(e.year || 0)] ?? Math.round((e.doomsday_minutes ?? 0) * 60);
+  }
+  const yy = Math.floor(e.year || 0);
+  const s = synRef.current[yy];
+  if (s == null) return e.value ?? 0;
+  const r = rRef.current[e.group]?.[yy] ?? 1;
+  return s * r;
+};
 const axisOf = e => /horloge/i.test(e.group || '') ? 1 : 0;
 const SYN_COLOR = '#f8fafc';
 
@@ -67,8 +84,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       // manipulable horizontalement ET verticalement, et dans le futur :
       // molette = zoom X, Maj+molette = zoom Y, clic+move (drag) = panoramique X, sliders X (bas) et Y (droite)
       dataZoom: [
-        { type: 'inside', xAxisIndex: 0, yAxisIndex: 'none', zoomOnMouseWheel: true, moveOnMouseWheel: false, moveOnMouseMove: true, zoomOnMouseMove: false, start, end },
-        { type: 'inside', xAxisIndex: 'none', yAxisIndex: 0, zoomOnMouseWheel: 'shift', moveOnMouseWheel: false, moveOnMouseMove: false, zoomOnMouseMove: false, start, end },
+        { type: 'inside', xAxisIndex: 0, yAxisIndex: 'none', zoomOnMouseWheel: true, moveOnMouseWheel: false, moveOnMouseMove: true, zoomOnMouseMove: false, filterMode: 'none', start, end },
+        { type: 'inside', xAxisIndex: 'none', yAxisIndex: 0, zoomOnMouseWheel: 'shift', moveOnMouseWheel: false, moveOnMouseMove: false, zoomOnMouseMove: false, filterMode: 'none', start, end },
         { type: 'slider', xAxisIndex: 0, yAxisIndex: 'none', bottom: 2, height: 16, filterMode: 'none', start, end },
         { type: 'slider', xAxisIndex: 'none', yAxisIndex: 0, right: 4, width: 14, filterMode: 'none', start, end },
       ],
@@ -162,7 +179,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
           if ((ev.year || 0) > nowYear + 0.05) continue;   // prévisions hors Y-fit
           if (/horloge/i.test(ev.group || '')) continue;   // horloge sur son propre axe
           if (hiddenRef.current[ev.group]) continue;
-          if ((ev.year || 0) >= x0 && (ev.year || 0) <= x1) { hi = Math.max(hi, ev.value || 0); lo = Math.min(lo, ev.value || 0); }
+          if ((ev.year || 0) >= x0 && (ev.year || 0) <= x1) { const yy = yOf(ev); hi = Math.max(hi, yy); lo = Math.min(lo, yy); }
         }
         if (hi > 0) chart.setOption({ yAxis: [{ min: Math.max(0, Math.floor(lo * 0.9)), max: Math.round(hi * 1.05) }, {}] });
       } catch {}
@@ -207,6 +224,32 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
 
     const ro = new ResizeObserver(() => { chart.resize(); updateNowPx(); });
     ro.observe(boxRef.current);
+
+    // navigation clavier (accessibilité) : flèches = panoramique X (Maj = Y), +/- = zoom X
+    const dom = chart.getDom();
+    dom.tabIndex = 0;
+    dom.addEventListener('keydown', ev => {
+      const dzs = chart.getOption().dataZoom;
+      const ix = dzs.findIndex(d => d.type === 'inside' && d.xAxisIndex !== 'none');
+      const iy = dzs.findIndex(d => d.type === 'inside' && d.yAxisIndex !== 'none');
+      if (ix < 0) return;
+      const step = ev.shiftKey ? 10 : 3;
+      const pan = (idx, dir) => {
+        const d = dzs[idx]; const w = d.end - d.start;
+        const s = Math.max(0, Math.min(100 - w, d.start + dir * step));
+        chart.dispatchAction({ type: 'dataZoom', dataZoomIndex: idx, start: s, end: s + w });
+      };
+      const zoom = (dir) => {
+        const d = dzs[ix]; const mid = (d.start + d.end) / 2; const half = Math.max(1, (d.end - d.start) / 2 * (dir > 0 ? 1 / 1.25 : 1.25));
+        chart.dispatchAction({ type: 'dataZoom', dataZoomIndex: ix, start: Math.max(0, Math.min(100, mid - half)), end: Math.max(0, Math.min(100, mid + half)) });
+      };
+      if (ev.key === 'ArrowLeft') { pan(ix, -1); ev.preventDefault(); }
+      else if (ev.key === 'ArrowRight') { pan(ix, 1); ev.preventDefault(); }
+      else if (ev.key === 'ArrowUp') { if (iy >= 0) { pan(iy, 1); ev.preventDefault(); } }
+      else if (ev.key === 'ArrowDown') { if (iy >= 0) { pan(iy, -1); ev.preventDefault(); } }
+      else if (ev.key === '+' || ev.key === '=') { zoom(1); ev.preventDefault(); }
+      else if (ev.key === '-') { zoom(-1); ev.preventDefault(); }
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -218,6 +261,49 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     if (!chart) return;
     const byGroup = {};
     for (const e of events) (byGroup[e.group] ||= { color: e.groupColor, data: [] }).data.push(e);
+
+    // V2.7.0 : carte de la synthèse (moyenne par année, hors horloge) -> synRef, utilisée par yOf
+    const byYear = {};
+    for (const e of (allEvents || events)) {
+      if (/horloge/i.test(e.group || '')) continue;
+      const y = Math.floor(e.year || 0); (byYear[y] ||= []).push(e.value ?? 0);
+    }
+    const synMap = {}; const synPts = [];
+    for (const [y, vals] of Object.entries(byYear)) {
+      const v = vals.reduce((a, b) => a + b, 0) / vals.length;
+      synMap[y] = v; synPts.push({ y: +y, v });
+    }
+    synPts.sort((a, b) => a.y - b.y);
+    synRef.current = synMap;
+    // courbes indexées par catégorie : ratio = (part cumulée cat / total cat) / (part cumulée globale / total global)
+    const nonClock = (allEvents || events).filter(e => !/horloge/i.test(e.group || '')).sort((a, b) => (a.year || 0) - (b.year || 0));
+    const totalAll = nonClock.length || 1;
+    const cumAll = {}; const totG = {}; const cumG = {};
+    let acc = 0;
+    for (const e of nonClock) {
+      acc++;
+      const y = Math.floor(e.year || 0);
+      cumAll[y] = acc;
+      totG[e.group] = (totG[e.group] || 0) + 1;
+      (cumG[e.group] ||= {})[y] = (cumG[e.group][y] || 0) + 1;
+    }
+    // cumuls "jusqu'à l'année y" (reconstruction par balayage des années présentes)
+    const rMap = {};
+    for (const g of Object.keys(totG)) {
+      rMap[g] = {};
+      let cg = 0; const keys = Object.keys(byYear).map(Number).sort((a, b) => a - b);
+      for (const y of keys) { cg += (cumG[g][y] || 0); const ca = cumAll[y] || 0; const denom = ca / totalAll; rMap[g][y] = denom > 0 ? Math.max(0.55, Math.min(1.8, (cg / totG[g]) / denom)) : 1; }
+    }
+    rRef.current = rMap;
+    // horloge : moyenne mobile (fenêtre 5) des secondes avant minuit -> plus de zigzags verticaux
+    const clockEv = (allEvents || events).filter(e => /horloge/i.test(e.group || '') && e.doomsday_minutes != null).sort((a, b) => a.year - b.year);
+    const secs = clockEv.map(e => Math.round(e.doomsday_minutes * 60));
+    const clockMap = {};
+    clockEv.forEach((e, i) => {
+      const w = secs.slice(Math.max(0, i - 4), i + 1);
+      clockMap[Math.floor(e.year || 0)] = Math.round(w.reduce((a, b) => a + b, 0) / w.length);
+    });
+    clockRef.current = clockMap;
 
     // V2.6.0 : noms de séries STABLES issus de allEvents (même si le filtre mémétique vide un groupe,
     // la série existe -> le clic sur sa pastille allume/éteint toujours quelque chose)
@@ -235,7 +321,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         name, type: 'line', yAxisIndex: yIdx, z: 4,
         showSymbol: true, symbol: 'circle',
         symbolSize: d => (d[3]?.tipping ? 9 : 4),
-        smooth: isClock ? 0.4 : 0.12, // horloge adoucie ; sinon segments quasi droits (hockey stick des données)
+        smooth: isClock ? 0.35 : 0.12, // horloge lissée (moyenne mobile + smooth) ; sinon segments quasi droits (hockey stick)
         lineStyle: { color: g.color, width: 1.5, opacity: hidden ? 0 : 0.75, shadowColor: g.color, shadowBlur: 3 },
         itemStyle: { color: g.color, opacity: hidden ? 0 : 0.95, borderColor: '#050508', borderWidth: 1 },
         areaStyle: { color: g.color, opacity: 0.05 },
@@ -251,14 +337,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         data: future.map(e => [e.year, yOf(e), e.title, e]),
       });
     }
-    // courbe de SYNTHÈSE ✦ SINGULARITÉ : moyenne globale des valeurs par année (hors horloge,
-    // qui a sa propre échelle), axe partagé, blanche et plus épaisse — les courbes s'entrelacent autour (style V1)
-    const byYear = {};
-    for (const e of (allEvents || events)) {
-      if (/horloge/i.test(e.group || '')) continue; // l'horloge n'entre pas dans la synthèse
-      const y = Math.floor(e.year || 0); (byYear[y] ||= []).push(e.value ?? 0);
-    }
-    const synPts = Object.entries(byYear).map(([y, vals]) => ({ y: +y, v: vals.reduce((a, b) => a + b, 0) / vals.length })).sort((a, b) => a.y - b.y);
+    // courbe de SYNTHÈSE ✦ SINGULARITÉ : moyenne globale par année (synPts calculé ci-dessus),
+    // axe partagé, blanche et plus épaisse — les courbes de catégories s'enlacent autour en la croisant
     const synReal = synPts.filter(p => p.y <= nowYear + 0.05);
     const synFut = synPts.filter(p => p.y > nowYear + 0.05);
     if (synReal.length > 1) {
