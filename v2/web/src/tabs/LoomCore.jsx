@@ -116,10 +116,10 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         } },
       // axe Y unique en LANES : une bande par groupe (noms affichés), synthèse ✦ SINGULARITÉ en haut
       yAxis: {
-        type: 'value',
+        type: 'value', splitNumber: 10, // un tick par lane -> tous les noms de catégories affichés
         splitLine: { lineStyle: { color: 'rgba(255,255,255,0.07)', type: 'dashed' } },
         axisLabel: {
-          color: '#6b7280', fontSize: 8, interval: 1, hideOverlap: false,
+          color: '#6b7280', fontSize: 8, interval: 0, hideOverlap: false,
           formatter: v => { const names = geomRef.current.laneNames; const i = Math.round(v); return (i >= 0 && i < names.length) ? names[i] : ''; },
         },
       },
