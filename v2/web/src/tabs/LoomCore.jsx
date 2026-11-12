@@ -84,7 +84,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       // drag = panoramique X+Y, sliders X (bas) et Y (droite)
       dataZoom: [
         { type: 'inside', xAxisIndex: 0, yAxisIndex: 'none', zoomOnMouseWheel: true, moveOnMouseWheel: false, moveOnMouseMove: true, zoomOnMouseMove: false, start, end },
-        { type: 'inside', xAxisIndex: 'none', yAxisIndex: 0, zoomOnMouseWheel: 'shift', moveOnMouseWheel: false, moveOnMouseMove: true, zoomOnMouseMove: false, start, end },
+        { type: 'inside', xAxisIndex: 'none', yAxisIndex: 0, zoomOnMouseWheel: 'shift', moveOnMouseWheel: false, moveOnMouseMove: 'shift', zoomOnMouseMove: false, start, end },
         { type: 'slider', xAxisIndex: 0, bottom: 2, height: 16, filterMode: 'none', start, end },
         { type: 'slider', yAxisIndex: 0, right: 4, width: 14, filterMode: 'none', start, end },
       ],
@@ -223,9 +223,12 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     const byYear = {};
     for (const e of events) { const y = Math.floor(e.year || 0); (byYear[y] ||= []).push(e.value ?? 0); }
     const synPts = Object.entries(byYear).map(([y, vals]) => ({ y: +y, v: vals.reduce((a, b) => a + b, 0) / vals.length })).sort((a, b) => a.y - b.y);
-    const allVals = synPts.map(p => p.v);
+    // normalisation de la synthèse sur les années RÉELLES : la courbe occupe toute sa lane (vrai hockey stick)
+    const synRealVals = synPts.filter(p => p.y <= nowYear + 0.05).map(p => p.v);
+    const allVals = synRealVals.length ? synRealVals : synPts.map(p => p.v);
     normOf['✦ SINGULARITÉ'] = allVals.length ? { min: Math.min(...allVals), max: Math.max(...allVals) } : { min: 0, max: 1 };
     geomRef.current = { laneOf, normOf, laneNames, nLanes: laneNames.length };
+    window.__geom = geomRef.current; // hook de test
     // fige l'axe Y (0..nLanes) seulement si le nombre de lanes change → le pan/zoom Y de l'utilisateur est préservé
     if (lastNLanesRef.current !== laneNames.length) {
       lastNLanesRef.current = laneNames.length;

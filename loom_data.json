@@ -16017,32 +16017,6 @@
     "pharmakon_poison_percent": 41
   },
   {
-    "id": "3a7ccbc7288879eb",
-    "year": 2025.0,
-    "value": 11428,
-    "label": "Colossal : bébé mammouth laineux",
-    "category": "🟢 BIOTECH",
-    "whoWhat": "🟢 BIOTECH",
-    "description": "Colossal Biosciences annonce la naissance de souris/mammouths désextinctés.",
-    "url": "#",
-    "timestamp": "2026-11-10T22:12:43.165900",
-    "tipping": true,
-    "realYear": null,
-    "realLabel": null,
-    "predictedBy": [
-      "Jurassic Park (désextinction)"
-    ],
-    "img": null,
-    "s_curve_phase": 3,
-    "remedy_percent": 50,
-    "poison_percent": 50,
-    "convergences": "Fiction + anticipation + réalisation technologique",
-    "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
-    "final_note": "La SF avait prévenu. On n'a pas écouté.",
-    "pharmakon_remedy_percent": 50,
-    "pharmakon_poison_percent": 50
-  },
-  {
     "id": "533a14289a145318",
     "year": 2025.0,
     "value": 44831,
