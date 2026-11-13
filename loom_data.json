@@ -22249,9 +22249,14 @@
         "source": "Libération",
         "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPVFJlbFRPRHNrSnFIMU85SHFrTU5aMk5DUzg4MkNsc1lFV2lrVHRpZ2NoQi1ZTkROa3NHVGFadjhjT2lXc3BUT0tMZkVlR3FnMnRZc3VTSW52bEh4LWNUNmxjT0ZBVVBIRUZoSW9KTE9xblItVFAtUTM4R25FS3kwU1UtLUEwb3hCR3dpQjF2ZmFRMHZJNVFTV3BJMEFBX0VVX2s2Ti1yTF80RkRmb3RFMWJVMHE1TVRFZDlRanNNWFFfcm8?oc=5",
         "title": "Panne d’Outlook : Microsoft annonce une reprise partielle"
+      },
+      {
+        "source": "franceinfo",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPQmhpbGZPS2JzLUh6UTZDeUp4RzJXaWpQQXBQcG9rR3FSYVlHRG5PMm04T0hDNTAzbWkwVmtSVnFUNi0yVmM1eFVVSDJ4Mi1ucHBzaUc1Z1NMbkE4Rk01NUtiTFJ1RlFrOXhocUVfb0lGYmxJZXJzYVp6NkJtWWRLT08zd1NEdm10bzUzdjZTdS1Zckk3YXJmamlKYVNkODRUVDZsY2locDIxMWFo?oc=5",
+        "title": "Une panne mondiale touche la messagerie Outlook de Microsoft"
       }
     ],
-    "occurrences": 6,
+    "occurrences": 7,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
