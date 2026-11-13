@@ -447,7 +447,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     lastLabelW.current = wpx;
     const totalCap = Math.max(8, Math.min(48, Math.floor(wpx / 70))); // ~1 étiquette / 70 px de large
     const gNames = Object.keys(groups).filter(g => !hiddenGroups[g] && !/horloge/i.test(g));
-    const perGroupCap = Math.max(2, Math.ceil(totalCap / Math.max(1, gNames.length)));
+    const perGroupCap = Math.max(3, Math.ceil(totalCap / Math.max(1, gNames.length)) + 2); // lâche : anti-dominance d'un seul groupe, sans vider les petites fenêtres
     // candidats : POI principaux (tipping ou impact >= 0.85), réels (pas les prédictions), visibles
     const cand = evts.filter(e => gNames.includes(e.group) && (e.tipping || (e.impact_score ?? 0) >= 0.85)
       && (e.year || 0) >= vpWin.x0 && (e.year || 0) <= vpWin.x1 && (e.year || 0) <= nowYear + 0.05);
@@ -521,14 +521,18 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         areaStyle: { color: g.color, opacity: 0.05 },
         emphasis: { scale: 1.7 },
         // V2.9.3 : étiquette permanente JOINDTE au POI principal (position top, distance 5),
-        // à la couleur de la courbe, lisible grâce au bord sombre ; show au niveau item.
-        label: { show: false, position: 'top', distance: 5, fontSize: 9, fontWeight: 'bold', color: g.color,
+        // à la couleur de la courbe, lisible grâce au bord sombre ; le formatter ne rend
+        // le libellé que pour les POI sélectionnés (labeled) -> densité maîtrisée.
+        label: { show: true, position: 'top', distance: 5, fontSize: 9, fontWeight: 'bold', color: g.color,
                  textBorderColor: 'rgba(9,13,22,0.95)', textBorderWidth: 3,
-                 formatter: d => { const t = String(d[2] || ''); return t.length > 24 ? t.slice(0, 24) + '…' : t; } },
+                 formatter: d => {
+                   const ev = d[3];
+                   if (!ev || !labeled.has(ev.id)) return '';
+                   const t = String(d[2] || '');
+                   return t.length > 24 ? t.slice(0, 24) + '…' : t;
+                 } },
         labelLayout: { hideOverlap: true },
-        data: real.map(e => labeled.has(e.id)
-          ? { value: [e.year, yOf(e), e.title, e], label: { show: true } }
-          : [e.year, yOf(e), e.title, e]),
+        data: real.map(e => [e.year, yOf(e), e.title, e]),
       });
       series.push({
         name: name + ' · prédictions', type: 'scatter', yAxisIndex: yIdx, z: 3,
