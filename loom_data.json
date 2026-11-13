@@ -31312,9 +31312,14 @@
         "source": "franceinfo",
         "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxQQXlGVUF6akVzUTU2M05UWmx1OVhGLWNfMFRRM1QyN2J1VEVLa0I1MnBhNzR3akRtRDJXbGtZd1B5Z09qTWFJdXVCbHJFZlNvdzROdEROa2NGa1E1VTJyWFlDb3JoX2t2NTQ2WUpGeWxUdXVKbndjRUhpcVFnUWRGWnVnSnlGcTdpR0c2eGRCQ2I3ZnJWZ1hNckdIRXFTbmFvWEdZTWoyYnV5aV9UOXlGNzBuTGJCZVhpSENWd1R0Nlp3ek5vNzgyWUdKcXVxd1pCNFdWNUNOWUVvbVBkcE1DdkRyTEFjZTBXT0tPOGYxSWNhTGtpWlo5ZmNlVVJ6UXFWQW5qUm5nUlZSQ3c?oc=5",
         "title": "Une panne mondiale touche la messagerie Outlook de Microsoft, \"aucun signe d'action malveillante ou de cyberattaque\" n'a été détecté à ce stade"
+      },
+      {
+        "source": "Euronews.com",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPaTJ0SC1JakZuLTFhaGN1SHdVREpBclQyUUFYRzlHbGd3d09Ed0ZDWjNDNDV6TTNROFpiUTZleTJuQmJ3TU1Cc0hjdVRBemtlbXRBaEtWTkYwRS13SHJrYkpPM0JsN2dmMGhLanFid0ZVT3N0N0dLYUN3Ny1aNGJIX2pCa1RTMUoxYzN3VFpqYkFoRnZCb3UtbDJ4SVduQTVHSFlyNldNb2xQUQ?oc=5",
+        "title": "Panne mondiale de Microsoft: Outlook et Teams inaccessibles dans 74 pays"
       }
     ],
-    "occurrences": 12,
+    "occurrences": 13,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
