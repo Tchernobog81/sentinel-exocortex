@@ -31240,7 +31240,7 @@
     "label": "Microsoft: Une panne mondiale affecte Outlook, Teams et Copilot",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Boursorama",
-    "description": "Panne Outlook, Teams, Microsoft 365 : ce que l’on sait de la panne mondiale de Microsoft, toujours pas réglée Journal du Geek",
+    "description": "Une panne mondiale touche la messagerie Outlook de Microsoft, \"aucun signe d'action malveillante ou de cyberattaque\" n'a été détecté à ce stade franceinfo",
     "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQTUZSdVhTN0dCUkxsT2RkQkRQSVZhcVV3alRSX0pWNjhzRjBGcmV2Z2tTaTdBZVZ3Q0ZrRzMtZWd3SG84Y0VkYl9KZzM1NkhZaFBXbHdYekU5ZFU1SlE0Rko5VWF0Sk5yOGduSkpEclMzSGNvaEFQcVlNcUZGV0tmazUyVjg3eXFaRC0wVmZaVk5IcXp6MFY2SDZxLXZDUlNpQk1WMXVOSlhXWXF2eGIzZTJQYlZJMnFNUlR0T1dVUzBMMzN2OGpFeTJScVMzVWFSNndmMHRR0gHbAUFVX3lxTFByZWNYQm1iX3ZVQ3gwTjhiTFhsOTBFQlBkbkFjSWtkbm4zWW12bVktTjAxcEd3WEozOGJOazhfOGtjYmxnSXZiLXdfanhZanNTQ0MySXJzQUd3UjdMLTFGdjVKZUlZSzZCcjBlMmd3aU5lNlJHVl9TMkgydFJuaE1hRnpJQW5OMU9SYURNb0tvUkZlR250Q19PZjRmSm0wQjhVeExEUGd0amVkT2k1b0UwVDB4Nk9jSHpQNFd5VW1GYldDLTgtQmlheEpCSjJGa0ZfN2NBSjR2ZTktVQ?oc=5",
     "timestamp": "2026-11-13T13:24:28.974919",
     "tipping": false,
@@ -31307,9 +31307,14 @@
         "source": "Boursorama",
         "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNOTU0ZUo5eV95Uk5tUmlvTGExNlMxUm1CWklPcFBHYms2SWFkSUZTdXdMamwzc1ZBN3ZYcGdYMnQyb3NnaFVFRjlCWDRMOHlXWDBudGsxTElmRWtPSzlTQzIzTHFaYmhwTEczTzRzdkJveFM4VHo5bk1BSXlwYTlyanZQbVBENl9JT290MHdhcUVjS2dmUWZ2OXU1ekxHUE12VHJONktnT3pYTXRyakZVeV9NNkZtUV9tamdCNmt1MFZPbndqQXhwZ3UyN3RnU3JwdXc0azAyeWvSAd4BQVVfeXFMTXlSQnZqSThKcVZ1Z013bE1ndGdkNjl0bFVkVTR2Qlh4elhKNXFoQjNUNUotUXh0d2RRQUUtZmh4TnNWd04tR2pIU0JLMEUtWVdlS1N6NThUbFJkNEVPd21nSUxVd21TN25oaUh4NDNxYjVwdHgzRnZCRFY3RGxIdWUxS1JZRmFjYjhFRWd4TFQxQjN3MDVzZ1NIcXFjNE9oUWp4LVh0RFdDaTYxTk00OEwybmZOa2dtR3RKYmNpTjdoWnJ2T3JjblVsZ2dKS29fVHIxWGFEaVpFcDVDaGl3?oc=5",
         "title": "La panne mondiale de Microsoft perturbe entreprises et services"
+      },
+      {
+        "source": "franceinfo",
+        "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxQQXlGVUF6akVzUTU2M05UWmx1OVhGLWNfMFRRM1QyN2J1VEVLa0I1MnBhNzR3akRtRDJXbGtZd1B5Z09qTWFJdXVCbHJFZlNvdzROdEROa2NGa1E1VTJyWFlDb3JoX2t2NTQ2WUpGeWxUdXVKbndjRUhpcVFnUWRGWnVnSnlGcTdpR0c2eGRCQ2I3ZnJWZ1hNckdIRXFTbmFvWEdZTWoyYnV5aV9UOXlGNzBuTGJCZVhpSENWd1R0Nlp3ek5vNzgyWUdKcXVxd1pCNFdWNUNOWUVvbVBkcE1DdkRyTEFjZTBXT0tPOGYxSWNhTGtpWlo5ZmNlVVJ6UXFWQW5qUm5nUlZSQ3c?oc=5",
+        "title": "Une panne mondiale touche la messagerie Outlook de Microsoft, \"aucun signe d'action malveillante ou de cyberattaque\" n'a été détecté à ce stade"
       }
     ],
-    "occurrences": 11,
+    "occurrences": 12,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
