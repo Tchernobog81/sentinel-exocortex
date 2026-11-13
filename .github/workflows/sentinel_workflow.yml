@@ -1,37 +1,16 @@
-name: Sentinel Data Injection
+name: Disabled — ingestion locale
+# V2.9.1 DÉSACTIVÉ : l'agent de veille tourne UNIQUEMENT en local sur le Mac
+# (scripts/run_push_agent.sh : scan -> loom.db -> export lissé -> git push).
+# Lancer le sentinel depuis GitHub Actions plantait (chemin sentinel.py invalide,
+# secrets CLOUD_URL/OLLAMA locaux absents, push en conflit non-fast-forward avec
+# la boucle locale) et envoyait un mail "All jobs have failed" à chaque exécution.
+# Conservé en workflow_dispatch uniquement pour lecture/debug manuel.
 
 on:
-  push:
-    branches:
-      - main # ou la branche principale de votre projet
-  workflow_dispatch: # Permet de lancer manuellement
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  workflow_dispatch:
 
 jobs:
-  run-sentinel:
-    name: Run Sentinel Agent on ${{ github.ref_name }} - ${{ github.run_id }}
+  noop:
     runs-on: ubuntu-latest
-    timeout-minutes: 5 # Sécurité anti-blocage
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Run Sentinel Agent
-        env:
-          CLOUD_URL: ${{ secrets.CLOUD_URL }}
-          SINGLE_RUN: "true"
-          SCAN_MODE: "RSS_NEWS"
-        run: python sentinel.py
+      - run: echo "Ingestion gérée en local (run_push_agent.sh -> loom.db -> export -> push). Rien à faire ici."

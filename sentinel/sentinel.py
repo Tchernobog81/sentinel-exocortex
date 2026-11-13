@@ -40,7 +40,8 @@ load_dotenv()
 BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:8000/api/data")
 # V2.9 : ingestion DELTA vers le serveur Node (loom.db SQLite+vecteurs) en priorité, fallback backend Python
 EVENTS_URL = os.environ.get("EVENTS_URL", "http://127.0.0.1:8787/api/events")
-DATA_V2_URL = os.environ.get("DATA_V2_URL", "http://127.0.0.1:8787/api/data")
+# /api/events (et PAS /api/data) : renvoie les événements BRUTS (catégories emoji), pas l'enveloppe mappée
+DATA_V2_URL = os.environ.get("DATA_V2_URL", "http://127.0.0.1:8787/api/events")
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_DATA_FILE = os.environ.get("LOCAL_DATA_FILE", str(PROJECT_ROOT / "loom_data.json"))
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
@@ -381,6 +382,28 @@ def normalize_category(cat: Any) -> str:
         return NORMAL_CAT_TO_EMOJI[cat]
     # déjà une catégorie emoji (ou inconnue) : on garde tel quel si préfixe emoji, sinon défaut
     return cat if any(ord(ch) > 0x2190 for ch in cat[:4]) else "🔴 RÉSEAU"
+
+
+# Clé canonique de catégorie : ramène emoji ("☠️ RISQUES CYBER") et plain ("Cyber") à la même forme,
+# pour que events_similar compare correctement quelle que soit la source (API V2 mappée ou brute).
+EMOJI_TO_PLAIN = {
+    "🔵 COGNITION": "cognition", "⚪ SINGULARITÉ": "cognition", "☠️ RISQUES CYBER": "cyber", "☢️ ENTROPIE": "cyber",
+    "🟢 BIOTECH": "vivant", "💊 MÉDECINE": "vivant", "🟣 ESPACE": "espace", "🟡 HARDWARE": "physique",
+    "🤖 ROBOTIQUE": "physique", "🏛️ POLITIQUE": "politique", "⏰ HORLOGE": "horloge", "🔮 IMAGINAIRE": "fiction",
+    "✨ NOOSPHÈRE": "réseau", "🔴 RÉSEAU": "réseau", "🌡️ CLIMAT": "climat",
+}
+
+
+def cat_key(cat: Any) -> str:
+    c = str(cat or "").strip().lower()
+    if c in EMOJI_TO_PLAIN:
+        return EMOJI_TO_PLAIN[c]
+    for plain in set(NORMAL_CAT_TO_EMOJI.values()):
+        pass
+    for norm, emoji in NORMAL_CAT_TO_EMOJI.items():
+        if c == norm.lower():
+            return EMOJI_TO_PLAIN.get(emoji, norm.lower())
+    return c
 
 
 def research_and_analyze(title: str, summary: str, url: str, source: str) -> Optional[Dict[str, Any]]:
@@ -1066,14 +1089,19 @@ def events_similar(e1: Dict[str, Any], e2: Dict[str, Any]) -> bool:
     L'horloge est exclue (chaque réglage officiel est un point distinct)."""
     if e1.get("doomsday_minutes") is not None or e2.get("doomsday_minutes") is not None:
         return False
-    if (e1.get("category") or "") != (e2.get("category") or ""):
+    # catégorie comparée en forme canonique (emoji ou plain selon la source de l'événement)
+    if cat_key(e1.get("category")) != cat_key(e2.get("category")):
         return False
     dy = abs((e1.get("year") or 0) - (e2.get("year") or 0))
     if dy > 1.5:
         return False
-    A, B = norm_tokens(e1.get("label", "")), norm_tokens(e2.get("label", ""))
+    l1, l2 = e1.get("label", ""), e2.get("label", "")
+    A, B = norm_tokens(l1), norm_tokens(l2)
     if not A or not B:
         return False
+    # titre identique après normalisation (même mois) -> même occurrence, sans discuter
+    if dy <= 0.1 and " ".join(sorted(A)) == " ".join(sorted(B)):
+        return True
     inter = A & B
     j = len(inter) / len(A | B)
     if j >= 0.5 and len(inter) >= 3:

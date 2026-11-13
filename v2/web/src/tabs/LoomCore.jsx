@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.9.0';
+export const LOOM_VERSION = '2.9.1';
 
 // V2.8.0 — HORLOGE DE L'APOCALYPSE : time-bucketing X (1 pt/jour sur les 10 dernières années,
 // 1 pt/mois depuis 1900, 1 pt/an avant, moyenne par bucket, tri strict) + EMA (alpha réglable,

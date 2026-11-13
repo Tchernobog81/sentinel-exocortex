@@ -1,32 +1,16 @@
-name: Sentinel Daily Scan
+name: Disabled — ingestion locale
+# V2.9.1 DÉSACTIVÉ : l'agent de veille tourne UNIQUEMENT en local sur le Mac
+# (scripts/run_push_agent.sh : scan -> loom.db -> export lissé -> git push).
+# Lancer le sentinel depuis GitHub Actions plantait (chemin sentinel.py invalide,
+# secrets CLOUD_URL/OLLAMA locaux absents, push en conflit non-fast-forward avec
+# la boucle locale) et envoyait un mail "All jobs have failed" à chaque exécution.
+# Conservé en workflow_dispatch uniquement pour lecture/debug manuel.
 
 on:
-  schedule:
-    # Horaires UTC : 8h00 et 20h00
-    - cron: '0 8,20 * * *'
-  workflow_dispatch: # Pour lancer à la main si besoin
+  workflow_dispatch:
 
 jobs:
-  run-sentinel:
+  noop:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-          cache: 'pip'
-
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          pip install requests
-
-      - name: Run Sentinel Script
-        run: python sentinel.py
-        env:
-          CLOUD_URL: ${{ secrets.CLOUD_URL }}
+      - run: echo "Ingestion gérée en local (run_push_agent.sh -> loom.db -> export -> push). Rien à faire ici."

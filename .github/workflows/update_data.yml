@@ -1,48 +1,46 @@
-name: Update Cortex Loom Data
-
-concurrency:
-  group: "update-data"
-  cancel-in-progress: true
+name: Validate Loom Data
+# V2.9.1 — Ce workflow NE LANCE PLUS le sentinel et NE POUSSE PLUS rien :
+# l'agent de veille tourne en local sur le Mac (boucle run_push_agent.sh -> loom.db -> export -> push),
+# un push depuis GitHub Actions entrait en conflit (non-fast-forward) avec la boucle locale et
+# faisait échouer le job à chaque exécution (flood de mails "All jobs have failed").
+# Ici : CI de validation uniquement — toujours vert si les données sont saines.
 
 on:
-  schedule:
-    - cron: '0 */12 * * *'  # Toutes les 12 heures
-  workflow_dispatch:         # Permet de lancer manuellement
   push:
+    branches: [main]
     paths:
-      - 'sentinel/sentinel.py'
-      - 'scripts/update_data.py'
+      - 'loom_data.json'
+      - 'telemetry.json'
+      - 'scan_heartbeat.json'
+      - 'db/**'
+      - '.github/workflows/update_data.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: "validate-loom-data"
+  cancel-in-progress: true
 
 jobs:
-  update:
+  validate:
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      
-      - name: Install dependencies
+      - name: Valide les snapshots JSON (loom_data / telemetry / heartbeat)
         run: |
-          pip install requests feedparser python-dotenv
-      
-      - name: Run sentinel to update data
+          node -e '
+          const fs = require("fs");
+          const load = (f) => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch (e) { console.error("JSON invalide:", f, e.message); process.exit(1); } };
+          const events = load("loom_data.json");
+          if (!Array.isArray(events) || !events.length) { console.error("loom_data.json vide ou pas un tableau"); process.exit(1); }
+          let bad = 0;
+          for (const e of events) { if (!e.id || e.year == null || !e.label || !e.category) { bad++; if (bad < 5) console.error("événement incomplet:", JSON.stringify(e).slice(0,120)); } }
+          if (bad) { console.error(bad + " événements incomplets"); process.exit(1); }
+          const tel = load("telemetry.json"); const hb = load("scan_heartbeat.json");
+          const clock = events.filter(e => /HORLOGE/i.test(e.category||"") && e.doomsday_minutes != null);
+          console.log(`OK: ${events.length} événements (${clock.length} horloge), last_scan=${hb.last_scan||"?"}, airgap=${tel.airgap}`);
+          '
+      - name: Valide les scripts DB (syntaxe)
         run: |
-          cd sentinel
-          python sentinel.py
-      
-      - name: Commit and push if changed
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add loom_data.json
-          # Vérifie s'il y a des changements
-          if git diff --quiet && git diff --staged --quiet; then
-            echo "Aucun changement"
-          else
-            git commit -m "🤖 Auto-update loom data (GitHub Actions)"
-            git push
-          fi
+          npm install --no-audit --no-fund better-sqlite3 sqlite-vec >/dev/null 2>&1 || true
+          node --check db/database.js && node --check db/export_snapshot.js && node --check db/migrate_from_json.js && echo "DB scripts OK"

@@ -69,6 +69,23 @@ export function readEvents() {
 // Ingestion DELTA avec déduplication stricte (id / source_url) + sémantique (vec_events, 7 jours,
 // similarité cosinus > 0.88 -> occurrence multi-source : on ajoute la source, pas de doublon) +
 // related_ids (2 plus proches sémantiquement) + embedding Ollama local (fallback gracieux sans vecteur).
+// Durci V2.9.1 : un candidat récent est aussi un doublon si (a) titre identique après normalisation,
+// ou (b) similarité > 0.75 ET même catégorie ET au moins 1 token significatif partagé (entité/chiffre).
+function normTitleTokens(s) {
+  return String(s || '').toLowerCase().replace(/[^a-z0-9àâäéèêëîïôöùûüç]+/g, ' ').trim().split(/\s+/)
+    .filter(w => w.length >= 4).sort();
+}
+function sigTokens(s) {
+  return new Set(String(s || '').toLowerCase().replace(/[^a-z0-9àâäéèêëîïôöùûüç\s-]+/g, ' ').split(/\s+/)
+    .filter(w => w.length >= 7 || /\d/.test(w)));
+}
+function catKey(c) {
+  const m = { '🔵 cognition': 'cognition', '⚪ singularité': 'cognition', '☠️ risques cyber': 'cyber', '☢️ entropie': 'cyber',
+    '🟢 biotech': 'vivant', '💊 médecine': 'vivant', '🟣 espace': 'espace', '🟡 hardware': 'physique', '🤖 robotique': 'physique',
+    '🏛️ politique': 'politique', '⏰ horloge': 'horloge', '🔮 imaginaire': 'fiction', '✨ noosphère': 'réseau', '🔴 réseau': 'réseau', '🌡️ climat': 'climat' };
+  const k = String(c || '').trim().toLowerCase();
+  return m[k] || k;
+}
 export async function ingestEvents(events) {
   const d = getDb();
   if (!d) return { ok: false, reason: 'no-db', added: 0, updated: 0, duplicates: [] };
@@ -91,16 +108,34 @@ export async function ingestEvents(events) {
       out.updated++;
       continue;
     }
-    // dédup sémantique : vecteur local, fenêtre 7 jours, similarité > 0.88
+    // dédup sémantique : vecteur local, fenêtre 7 jours, similarité > 0.88 (seuil strict),
+    // + règles durcies V2.9.1 : titre identique normalisé, ou sim > 0.75 + même catégorie + token significatif partagé
     const vec = await d.embed(`${e.title || e.label || ''}\n${e.summary || e.description || ''}`);
     if (vec) {
-      const near = d.semanticSearch(vec, { limit: 5, sinceDays: 7, excludeId: e.id });
-      if (near.length && near[0].similarity > 0.88) {
-        const target = near[0].event_id;
-        d.addSource(target, { source: e.source || e.whoWhat || '', url: e.source_url || e.url || '', title: e.title || e.label || '', verified: e.verified });
-        e.merged_into = target;
+      const near = d.semanticSearch(vec, { limit: 20, sinceDays: 7, excludeId: e.id });
+      const candTitle = e.title || e.label || '';
+      const candNorm = normTitleTokens(candTitle).join(' ');
+      const candSig = sigTokens(candTitle);
+      let dup = null;
+      for (const n of near) {
+        const ev = d.getEvent(n.event_id);
+        if (!ev) continue;
+        if (n.similarity > 0.88) { dup = { of: n.event_id, reason: 'semantic', similarity: n.similarity }; break; }
+        const evNorm = normTitleTokens(ev.title || ev.label || '').join(' ');
+        if (candNorm && candNorm === evNorm && catKey(ev.category) === catKey(e.category)) {
+          dup = { of: n.event_id, reason: 'title', similarity: n.similarity }; break;
+        }
+        if (n.similarity > 0.75 && catKey(ev.category) === catKey(e.category)) {
+          const evSig = sigTokens(ev.title || ev.label || '');
+          const shared = [...candSig].filter(w => evSig.has(w));
+          if (shared.length >= 1) { dup = { of: n.event_id, reason: 'semantic+entity', similarity: n.similarity, token: shared[0] }; break; }
+        }
+      }
+      if (dup) {
+        d.addSource(dup.of, { source: e.source || e.whoWhat || '', url: e.source_url || e.url || '', title: candTitle, verified: e.verified });
+        e.merged_into = dup.of;
         await d.upsertEvent(e, { embedIt: false });
-        out.duplicates.push({ id: e.id, of: target, reason: 'semantic', similarity: +near[0].similarity.toFixed(3) });
+        out.duplicates.push({ id: e.id, of: dup.of, reason: dup.reason, similarity: +(dup.similarity || 0).toFixed(3), token: dup.token });
         continue;
       }
       // related_ids : 2 plus proches sémantiquement (toute la base)
