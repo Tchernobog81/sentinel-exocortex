@@ -31240,7 +31240,7 @@
     "label": "Microsoft: Une panne mondiale affecte Outlook, Teams et Copilot",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Boursorama",
-    "description": "Une panne mondiale touche la messagerie Outlook de Microsoft, \"aucun signe d'action malveillante ou de cyberattaque\" n'a été détecté à ce stade franceinfo",
+    "description": "Des améliorations constatées, pas de cyberattaque d'après Microsoft… Ce que l'on sait de la panne mondiale qui touche le géant américain depuis jeudi Franceinfo",
     "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQTUZSdVhTN0dCUkxsT2RkQkRQSVZhcVV3alRSX0pWNjhzRjBGcmV2Z2tTaTdBZVZ3Q0ZrRzMtZWd3SG84Y0VkYl9KZzM1NkhZaFBXbHdYekU5ZFU1SlE0Rko5VWF0Sk5yOGduSkpEclMzSGNvaEFQcVlNcUZGV0tmazUyVjg3eXFaRC0wVmZaVk5IcXp6MFY2SDZxLXZDUlNpQk1WMXVOSlhXWXF2eGIzZTJQYlZJMnFNUlR0T1dVUzBMMzN2OGpFeTJScVMzVWFSNndmMHRR0gHbAUFVX3lxTFByZWNYQm1iX3ZVQ3gwTjhiTFhsOTBFQlBkbkFjSWtkbm4zWW12bVktTjAxcEd3WEozOGJOazhfOGtjYmxnSXZiLXdfanhZanNTQ0MySXJzQUd3UjdMLTFGdjVKZUlZSzZCcjBlMmd3aU5lNlJHVl9TMkgydFJuaE1hRnpJQW5OMU9SYURNb0tvUkZlR250Q19PZjRmSm0wQjhVeExEUGd0amVkT2k1b0UwVDB4Nk9jSHpQNFd5VW1GYldDLTgtQmlheEpCSjJGa0ZfN2NBSjR2ZTktVQ?oc=5",
     "timestamp": "2026-11-13T13:24:28.974919",
     "tipping": false,
@@ -31317,9 +31317,14 @@
         "source": "Euronews.com",
         "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPaTJ0SC1JakZuLTFhaGN1SHdVREpBclQyUUFYRzlHbGd3d09Ed0ZDWjNDNDV6TTNROFpiUTZleTJuQmJ3TU1Cc0hjdVRBemtlbXRBaEtWTkYwRS13SHJrYkpPM0JsN2dmMGhLanFid0ZVT3N0N0dLYUN3Ny1aNGJIX2pCa1RTMUoxYzN3VFpqYkFoRnZCb3UtbDJ4SVduQTVHSFlyNldNb2xQUQ?oc=5",
         "title": "Panne mondiale de Microsoft: Outlook et Teams inaccessibles dans 74 pays"
+      },
+      {
+        "source": "Franceinfo",
+        "url": "https://news.google.com/rss/articles/CBMiwwJBVV95cUxNMkhYLVJQNS1jcUxGWGNNYi1qa19BVmlPVldtM2xnTFdOQ3ZHU29md2RDRFVpenZrU2gyMTRXRkhQdlotV0YtNzFodlhpSi0xaHFZN2NDZ2twdjBQbjNRYl9ZYmVNNnllbWtDcmZSOFM2dTMwYXVqWmtGWmhEVVBiM05hVEpQeHJ4ZGp3RE9vR3VlRUh1RDFVVy1QRng3eXB6eUJtSWlXanJNMmxLQmoxOFB4eEY2bUhzVkNxRjNDcWI4dDFKMjhYSGNfSkZUdEt1cjBLQkVZemdYX0xoOWo5dHBCWGJKa0ZfaV90RVlPMmlfc3dWSm9mQzNXM1ZuTS1tNDBZVko4WVVwZ1oxVVUtd3hYWkVwVjNkX0FtanowYUU2TklZQ3A4d3BMdGl5V0VLMm85X2NZT0FfU1E5cTR0cnJmSQ?oc=5",
+        "title": "Des améliorations constatées, pas de cyberattaque d'après Microsoft… Ce que l'on sait de la panne mondiale qui touche le géant américain depuis jeudi"
       }
     ],
-    "occurrences": 13,
+    "occurrences": 14,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
