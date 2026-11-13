@@ -445,19 +445,30 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     const winYears = Math.max(0.01, vpWin.x1 - vpWin.x0);
     const wpx = boxRef.current?.clientWidth || 1200;
     lastLabelW.current = wpx;
-    const pxPerYear = wpx / winYears;
-    const minGapYears = 70 / Math.max(1e-6, pxPerYear);          // ~70 px entre deux étiquettes
-    const totalCap = Math.max(8, Math.min(48, Math.floor(wpx / 70)));
+    const totalCap = Math.max(8, Math.min(48, Math.floor(wpx / 70))); // ~1 étiquette / 70 px de large
     const gNames = Object.keys(groups).filter(g => !hiddenGroups[g] && !/horloge/i.test(g));
     const perGroupCap = Math.max(2, Math.ceil(totalCap / Math.max(1, gNames.length)));
-    const cand = evts
-      .filter(e => gNames.includes(e.group) && (e.tipping || (e.impact_score ?? 0) >= 0.85) && (e.year || 0) >= vpWin.x0 && (e.year || 0) <= vpWin.x1)
-      .sort((a, b) => ((b.impact_score ?? 0) - (a.impact_score ?? 0)) || ((b.year || 0) - (a.year || 0)));
-    const picked = []; const perG = {};
+    // candidats : POI principaux (tipping ou impact >= 0.85), réels (pas les prédictions), visibles
+    const cand = evts.filter(e => gNames.includes(e.group) && (e.tipping || (e.impact_score ?? 0) >= 0.85)
+      && (e.year || 0) >= vpWin.x0 && (e.year || 0) <= vpWin.x1 && (e.year || 0) <= nowYear + 0.05);
+    // sélection par buckets : la fenêtre est découpée en totalCap tranches égales (espacement
+    // garanti, ~70 px chacune) et chaque tranche garde son meilleur candidat par impact.
+    const nB = totalCap;
+    const bW = winYears / nB;
+    const best = new Array(nB).fill(null);
     for (const e of cand) {
-      if (picked.length >= totalCap) break;
-      if ((perG[e.group] || 0) >= perGroupCap) continue;
-      if (picked.every(p => Math.abs((p.year || 0) - (e.year || 0)) >= minGapYears)) { picked.push(e); perG[e.group] = (perG[e.group] || 0) + 1; }
+      const bi = Math.min(nB - 1, Math.max(0, Math.floor(((e.year || 0) - vpWin.x0) / bW)));
+      if (!best[bi] || (e.impact_score ?? 0) > (best[bi].impact_score ?? 0)) best[bi] = e;
+    }
+    let picked = best.filter(Boolean);
+    // plafond par groupe : on retire les moins impactants des groupes sur-représentés
+    const cnt = {};
+    for (const e of picked) cnt[e.group] = (cnt[e.group] || 0) + 1;
+    for (const g of Object.keys(cnt)) {
+      if (cnt[g] <= perGroupCap) continue;
+      const drop = picked.filter(e => e.group === g).sort((a, b) => (a.impact_score ?? 0) - (b.impact_score ?? 0)).slice(0, cnt[g] - perGroupCap).map(e => e.id);
+      const dropSet = new Set(drop);
+      picked = picked.filter(e => !dropSet.has(e.id));
     }
     const labeled = new Set(picked.map(e => e.id));
     window.__labeled = labeled; // hook de test headless
