@@ -394,15 +394,16 @@ EMOJI_TO_PLAIN = {
 }
 
 
+_EMOJI_TO_PLAIN_LC = {k.lower(): v for k, v in EMOJI_TO_PLAIN.items()}
+
+
 def cat_key(cat: Any) -> str:
     c = str(cat or "").strip().lower()
-    if c in EMOJI_TO_PLAIN:
-        return EMOJI_TO_PLAIN[c]
-    for plain in set(NORMAL_CAT_TO_EMOJI.values()):
-        pass
+    if c in _EMOJI_TO_PLAIN_LC:
+        return _EMOJI_TO_PLAIN_LC[c]
     for norm, emoji in NORMAL_CAT_TO_EMOJI.items():
         if c == norm.lower():
-            return EMOJI_TO_PLAIN.get(emoji, norm.lower())
+            return _EMOJI_TO_PLAIN_LC.get(emoji.lower(), norm.lower())
     return c
 
 
