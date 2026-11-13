@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.9.2';
+export const LOOM_VERSION = '2.9.3';
 
 // V2.8.0 — HORLOGE DE L'APOCALYPSE : time-bucketing X (1 pt/jour sur les 10 dernières années,
 // 1 pt/mois depuis 1900, 1 pt/an avant, moyenne par bucket, tri strict) + EMA (alpha réglable,
@@ -32,6 +32,7 @@ const yOf = e => {
 };
 const axisOf = e => /horloge/i.test(e.group || '') ? 1 : 0;
 const SYN_COLOR = '#f8fafc';
+const XMIN = -2700, XMAX = 2110; // bornes de l'axe année (le futur, prévisions ~2100, reste navigable)
 
 // Onglet 1 — LOOM CORE : le chart s'initialise UNE fois (le zoom utilisateur est préservé
 // entre les rafraîchissements SSE), les séries sont mises à jour en douceur.
@@ -47,6 +48,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
   const [search, setSearch] = useState('');
   const [kineticOnly, setKineticOnly] = useState(false);
   const [nowPx, setNowPx] = useState(null); // position px de la ligne "jour courant" (surcouche HTML)
+  const [vpWin, setVpWin] = useState({ x0: XMIN, x1: XMAX }); // fenêtre X visible (années) — pilote la densité des étiquettes (V2.9.3)
+  const lastLabelW = useRef(0);
   window.__selectEvent = (ev) => setSelected(ev); // hook de test
 
   // V2.9.2 — viewport utilisateur persistant (indépendant des re-rendus / màj SSE / resize) :
@@ -104,7 +107,6 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     chartRef.current = chart;
     window.__loomChart = chart;
 
-    const XMIN = -2700, XMAX = 2110; // le futur (prévisions jusqu'à ~2100) reste navigable
     // vue initiale = PLAGE COMPLÈTE (comme V1) — hockey stick réaliste
     const start = 0, end = 100;
     let xWin = XMAX - XMIN;
@@ -301,6 +303,13 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         const key = d2 ? d2.start + '-' + d2.end : '';
         if (key !== lastXKey) { lastXKey = key; fitYToWindow(); } // Y-fit seulement si le zoom X a changé
         updateNowPx();
+        // V2.9.3 : la fenêtre visible pilote la densité des étiquettes permanentes
+        try {
+          const xa = chart.getOption().xAxis; const x = Array.isArray(xa) ? xa[0] : xa;
+          const n0 = x.min + ((d2?.start ?? 0) / 100) * (x.max - x.min);
+          const n1 = x.min + ((d2?.end ?? 100) / 100) * (x.max - x.min);
+          setVpWin(prev => (Math.abs(prev.x0 - n0) < 0.05 && Math.abs(prev.x1 - n1) < 0.05) ? prev : { x0: n0, x1: n1 });
+        } catch {}
       }, 120);
     });
     window.__fitY = fitYToWindow;
@@ -312,6 +321,9 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       chart.resize();
       applyUserViewport(); // resize : on ré-applique le viewport utilisateur, jamais de reset
       updateNowPx();
+      // V2.9.3 : la largeur change -> la densité des étiquettes (budget en px) est recalculée
+      const w = boxRef.current ? boxRef.current.clientWidth : 0;
+      if (Math.abs(w - lastLabelW.current) > 2) setVpWin(v => ({ x0: v.x0, x1: v.x1 }));
     });
     ro.observe(boxRef.current);
 
@@ -425,6 +437,31 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     clockEmaRef.current = { pts: emaPts, at: emaAt };
     window.__clockDebug = { raw: rawPts, ema: emaPts, alpha }; // hook de test headless
 
+    // V2.9.3 — étiquettes permanentes des POI principaux, densité intelligente :
+    // sélection gloutonne par impact décroissant avec un écart minimal exprimé en PIXELS
+    // (donc adapté au zoom courant et à la largeur réelle du canvas), plafond global + par
+    // groupe ; labelLayout.hideOverlap reste en garde-fou final. Recalculé à chaque
+    // changement de fenêtre visible (zoom/pan via vpWin) ou de largeur (resize).
+    const winYears = Math.max(0.01, vpWin.x1 - vpWin.x0);
+    const wpx = boxRef.current?.clientWidth || 1200;
+    lastLabelW.current = wpx;
+    const pxPerYear = wpx / winYears;
+    const minGapYears = 70 / Math.max(1e-6, pxPerYear);          // ~70 px entre deux étiquettes
+    const totalCap = Math.max(8, Math.min(48, Math.floor(wpx / 70)));
+    const gNames = Object.keys(groups).filter(g => !hiddenGroups[g] && !/horloge/i.test(g));
+    const perGroupCap = Math.max(2, Math.ceil(totalCap / Math.max(1, gNames.length)));
+    const cand = evts
+      .filter(e => gNames.includes(e.group) && (e.tipping || (e.impact_score ?? 0) >= 0.85) && (e.year || 0) >= vpWin.x0 && (e.year || 0) <= vpWin.x1)
+      .sort((a, b) => ((b.impact_score ?? 0) - (a.impact_score ?? 0)) || ((b.year || 0) - (a.year || 0)));
+    const picked = []; const perG = {};
+    for (const e of cand) {
+      if (picked.length >= totalCap) break;
+      if ((perG[e.group] || 0) >= perGroupCap) continue;
+      if (picked.every(p => Math.abs((p.year || 0) - (e.year || 0)) >= minGapYears)) { picked.push(e); perG[e.group] = (perG[e.group] || 0) + 1; }
+    }
+    const labeled = new Set(picked.map(e => e.id));
+    window.__labeled = labeled; // hook de test headless
+
     // V2.6.0 : noms de séries STABLES issus de allEvents (même si le filtre mémétique vide un groupe,
     // la série existe -> le clic sur sa pastille allume/éteint toujours quelque chose)
     const series = [];
@@ -452,7 +489,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
           symbolSize: d => (d[3]?.tipping ? 9 : 5),
           itemStyle: { color: g.color, opacity: hidden ? 0 : 0.95, borderColor: '#050508', borderWidth: 1 },
           emphasis: { scale: 1.7 },
-          label: { show: true, position: 'top', fontSize: 9, color: '#cbd5e1', formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 18)}…` : ''), rotate: 28, distance: 6 },
+          // V2.9.3 : étiquette à la couleur de la courbe, lisible (bord sombre) — réglages officiels
+          label: { show: true, position: 'top', distance: 5, fontSize: 9, fontWeight: 'bold', color: g.color, textBorderColor: 'rgba(9,13,22,0.95)', textBorderWidth: 3, formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 20)}…` : '') },
           labelLayout: { hideOverlap: true },
           data: hidden ? [] : clockEv.map(e => [e.year, emaAt(e.year), e.title, e]),
         });
@@ -465,15 +503,21 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       series.push({
         name, type: 'line', yAxisIndex: yIdx, z: 4,
         showSymbol: true, symbol: 'circle',
-        symbolSize: d => (d[3]?.tipping ? 9 : 4),
+        symbolSize: d => { const ev = d[3]; if (!ev) return 4; if (labeled.has(ev.id)) return 9; return ev.tipping ? 7 : 4; },
         smooth: isClock ? 0.35 : 0.12, // horloge lissée (moyenne mobile + smooth) ; sinon segments quasi droits (hockey stick)
         lineStyle: { color: g.color, width: 1.5, opacity: hidden ? 0 : 0.75, shadowColor: g.color, shadowBlur: 3 },
         itemStyle: { color: g.color, opacity: hidden ? 0 : 0.95, borderColor: '#050508', borderWidth: 1 },
         areaStyle: { color: g.color, opacity: 0.05 },
         emphasis: { scale: 1.7 },
-        label: { show: true, position: 'top', fontSize: 9, color: '#cbd5e1', formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 18)}…` : ''), rotate: 28, distance: 6 },
+        // V2.9.3 : étiquette permanente JOINDTE au POI principal (position top, distance 5),
+        // à la couleur de la courbe, lisible grâce au bord sombre ; show au niveau item.
+        label: { show: false, position: 'top', distance: 5, fontSize: 9, fontWeight: 'bold', color: g.color,
+                 textBorderColor: 'rgba(9,13,22,0.95)', textBorderWidth: 3,
+                 formatter: d => { const t = String(d[2] || ''); return t.length > 24 ? t.slice(0, 24) + '…' : t; } },
         labelLayout: { hideOverlap: true },
-        data: real.map(e => [e.year, yOf(e), e.title, e]),
+        data: real.map(e => labeled.has(e.id)
+          ? { value: [e.year, yOf(e), e.title, e], label: { show: true } }
+          : [e.year, yOf(e), e.title, e]),
       });
       series.push({
         name: name + ' · prédictions', type: 'scatter', yAxisIndex: yIdx, z: 3,
@@ -515,7 +559,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     window.__fitY && window.__fitY();
     window.__updateNow && window.__updateNow();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [evts, hiddenGroups, allEvts, groups, clockAlpha]);
+  }, [evts, hiddenGroups, allEvts, groups, clockAlpha, vpWin]);
 
   // ---- saut vers un événement (lien ⇄ ou flux) ----
   const jumpToEvent = (target) => {
