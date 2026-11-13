@@ -978,7 +978,14 @@ def factcheck(ev):
     # Une URL seulement joignable ne suffit plus.
     def is_trusted(u, s=""):
         d = _domain_of(u)
-        return any(t in d or t in (s or "").lower() or t in (u or "").lower() for t in TRUSTED_SOURCES)
+        sl = (s or "").lower()
+        for t in TRUSTED_SOURCES:
+            if t in d or t in (u or "").lower() or t in sl:
+                return True
+            base = t.split(".")[0]
+            if len(base) >= 5 and base in sl:  # "franceinfo" -> franceinfo.fr
+                return True
+        return False
     trusted_event = is_trusted(url, source)
     trusted_domains = { _domain_of(r.get("url", "")) for r in res if is_trusted(r.get("url", "")) }
     trusted_domains.discard("")
