@@ -806,6 +806,50 @@ class APIClient:
             logger.error(f"[API] Erreur envoi : {e}")
             return False
 
+    def heartbeat(self, payload: Dict[str, Any]) -> bool:
+        """POST /api/heartbeat : stamp du cycle de veille (fait avancer la MAJ du dashboard)."""
+        try:
+            import requests
+            url = self.base_url.rsplit("/data", 1)[0] + "/heartbeat"
+            r = requests.post(url, json=payload, timeout=15)
+            r.raise_for_status()
+            return True
+        except Exception as e:
+            logger.warning(f"[API] heartbeat en échec: {e}")
+            return False
+
+
+def stamp_heartbeat(total: int = 0, new: int = 0, merged: int = 0, api_client: "APIClient" = None) -> str:
+    """Heartbeat de l'agent, appelé à CHAQUE cycle de recherche/analyse (même sans nouvel événement) :
+    1) POST /api/heartbeat vers le backend (patch telemetry.json côté serveur),
+    2) écrit scan_heartbeat.json à la racine (lu par le serveur V2 et export-static),
+    3) fallback si l'API est down : patch local de telemetry.json (last_scan)."""
+    now = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    payload = {"last_scan": now, "events_total": total, "new_events": new,
+               "occurrences_merged": merged, "agent": f"sentinel {VERSION}"}
+    api_ok = api_client.heartbeat(payload) if api_client is not None else False
+    try:
+        hb = PROJECT_ROOT / "scan_heartbeat.json"
+        tmp = hb.with_suffix(".tmp")
+        tmp.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+        os.replace(tmp, hb)
+    except Exception as e:
+        logger.warning(f"[HEARTBEAT] scan_heartbeat.json: {e}")
+    if not api_ok:
+        try:
+            tel_path = PROJECT_ROOT / "telemetry.json"
+            tel = {}
+            if tel_path.exists():
+                tel = json.loads(tel_path.read_text(encoding="utf-8"))
+            tel["last_scan"] = now
+            tmp = tel_path.with_suffix(".tmp")
+            tmp.write_text(json.dumps(tel, ensure_ascii=False), encoding="utf-8")
+            os.replace(tmp, tel_path)
+        except Exception as e:
+            logger.warning(f"[HEARTBEAT] patch telemetry.json: {e}")
+    logger.info(f"[HEARTBEAT] ⏱ last_scan={now} total={total} new={new} merged={merged} (api={'ok' if api_ok else 'fallback local'})")
+    return now
+
 
 # --- DÉDUPLICATION ---
 
@@ -818,6 +862,80 @@ def is_duplicate(new_event: Dict[str, Any], existing_events: List[Dict[str, Any]
         if new_id == ev_id:
             return True
     return False
+
+
+# --- REGROUPEMENT DES OCCURRENCES MÉDIAS ---
+# Un même fait relaté par 10 médias = UN événement, citant ses sources (pas 10 événements).
+FR_STOP = {"le", "la", "les", "de", "des", "du", "et", "en", "un", "une", "au", "aux", "ce", "cet", "cette",
+           "ces", "pour", "par", "sur", "dans", "que", "qui", "est", "sont", "a", "été", "plus", "pas", "avec",
+           "sans", "tout", "tous", "leur", "leurs", "son", "sa", "ses", "il", "elle", "ils", "on", "se", "si",
+           "or", "mais", "donc", "car", "ni", "où", "y", "aussi", "très", "comme", "depuis", "entre", "sous", "vers"}
+
+
+def norm_tokens(text: str) -> set:
+    t = re.sub(r"[^a-z0-9àâäéèêëîïôöùûüç\s]", " ", (text or "").lower())
+    return {w for w in t.split() if len(w) >= 4 and w not in FR_STOP}
+
+
+def label_similarity(a: str, b: str) -> float:
+    A, B = norm_tokens(a), norm_tokens(b)
+    if not A or not B:
+        return 0.0
+    inter = len(A & B)
+    return inter / len(A | B) if inter >= 3 else 0.0  # au moins 3 tokens communs exigés
+
+
+def events_similar(e1: Dict[str, Any], e2: Dict[str, Any]) -> bool:
+    """Deux événements sont la même occurrence si : même catégorie, années proches (<= 1,5 an),
+    labels sémantiquement proches (Jaccard >= 0,5 sur les tokens pleins). L'horloge est exclue
+    (chaque réglage officiel est un point distinct)."""
+    if e1.get("doomsday_minutes") is not None or e2.get("doomsday_minutes") is not None:
+        return False
+    if (e1.get("category") or "") != (e2.get("category") or ""):
+        return False
+    if abs((e1.get("year") or 0) - (e2.get("year") or 0)) > 1.5:
+        return False
+    return label_similarity(e1.get("label", ""), e2.get("label", "")) >= 0.5
+
+
+def merge_occurrence(base: Dict[str, Any], occ: Dict[str, Any]) -> Dict[str, Any]:
+    """Fusionne l'occurrence `occ` dans l'événement maître `base` : sources cumulées, verified propagé."""
+    srcs = base.setdefault("sources", [])
+    if base.get("whoWhat") and not any(s.get("source") == base.get("whoWhat") for s in srcs):
+        srcs.insert(0, {"source": base.get("whoWhat", ""), "url": base.get("url", ""), "title": base.get("label", "")})
+    entry = {"source": occ.get("whoWhat") or occ.get("source") or "", "url": occ.get("url", ""), "title": occ.get("label", "")}
+    if entry["source"] or entry["url"]:
+        if not any(s.get("url") == entry["url"] and entry["url"] for s in srcs) and \
+           not any(s.get("title") == entry["title"] and not entry["url"] for s in srcs):
+            srcs.append(entry)
+    base["occurrences"] = len(srcs)
+    if occ.get("verified"):
+        base["verified"] = True
+    if len(occ.get("description") or "") > len(base.get("description") or ""):
+        base["description"] = occ["description"]
+    return base
+
+
+def merge_occurrences(events: List[Dict[str, Any]]) -> tuple:
+    """Regroupe les occurrences d'un même événement. Retourne (kept, updates) :
+    kept = événements maîtres (occurrences retirées), updates = maîtres modifiés + occurrences
+    marquées merged_into (à persister par upsert pour être masquées côté dashboard)."""
+    kept, updates = [], []
+    for ev in events:
+        target = None
+        for k in kept:
+            if events_similar(k, ev):
+                target = k
+                break
+        if target is not None:
+            merge_occurrence(target, ev)
+            ev["merged_into"] = target.get("id")
+            updates.append(ev)
+            if target not in updates:
+                updates.append(target)
+        else:
+            kept.append(ev)
+    return kept, updates
 
 
 def remove_duplicates(events: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -852,6 +970,9 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
     else:
         logger.info(f"[CYCLE] {len(existing_data)} événements chargés via API")
     existing_data = remove_duplicates(existing_data)
+    # V2.8.2 : regroupe les occurrences médias d'un même fait en UN événement (sources cumulées) ;
+    # les occurrences écartées sont marquées merged_into et persistées via l'upsert ci-dessous.
+    existing_data, merged_updates = merge_occurrences(existing_data)
 
     # 2. Scanners — le simulateur n'est actif que si SIMULATOR=1 (le flux doit rester factuel)
     scanners = [
@@ -864,6 +985,7 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
         scanners.append(("Simulateur", scan_simulator))
 
     new_events = []
+    updates = list(merged_updates)
     for name, scanner in scanners:
         try:
             result = scanner()
@@ -871,23 +993,43 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
             for event in events:
                 event = enrich_event_if_needed(event)
                 event["id"] = compute_event_id(event.get("label", ""), event.get("year", 0), event.get("whoWhat"))
-                if not is_duplicate(event, existing_data) and factcheck(event):
-                    new_events.append(event)
-                    logger.info(f"[CYCLE] ✅ {name}: {event['label']}")
-                else:
-                    logger.info(f"[CYCLE] ⏭️ {name}: doublon ou non vérifié, ignoré")
+                if is_duplicate(event, existing_data):
+                    # occurrence exacte déjà connue : on cumule juste la source si nouvelle
+                    base = next((x for x in existing_data if x.get("id") == event.get("id")), None)
+                    if base is not None and event.get("whoWhat"):
+                        before = base.get("occurrences") or 1
+                        merge_occurrence(base, event)
+                        if (base.get("occurrences") or 1) > before and base not in updates:
+                            updates.append(base)
+                    logger.info(f"[CYCLE] ⏭️ {name}: doublon exact, ignoré")
+                    continue
+                if not factcheck(event):
+                    logger.info(f"[CYCLE] ⏭️ {name}: non vérifié, ignoré")
+                    continue
+                # occurrence sémantique d'un fait déjà connu ? -> regroupée, pas un nouvel événement
+                base = next((x for x in existing_data if events_similar(x, event)), None) \
+                    or next((x for x in new_events if events_similar(x, event)), None)
+                if base is not None:
+                    merge_occurrence(base, event)
+                    if base in existing_data and base not in updates:
+                        updates.append(base)
+                    logger.info(f"[CYCLE] 🔗 {name}: occurrence regroupée dans « {str(base.get('label'))[:60]} » ({base.get('occurrences')} sources)")
+                    continue
+                new_events.append(event)
+                logger.info(f"[CYCLE] ✅ {name}: {event['label']}")
         except Exception as e:
             logger.error(f"[CYCLE] ❌ {name}: {e}")
 
     # 3. Envoi (upsert idempotent) : API d'abord, fallback local
+    payload = new_events + updates
     api_ok = False
-    if new_events:
-        logger.info(f"[CYCLE] {len(new_events)} nouveaux événements à envoyer")
-        if api_client.add_events(new_events):
+    if payload:
+        logger.info(f"[CYCLE] {len(new_events)} nouveaux événements + {len(updates)} mises à jour (occurrences) à envoyer")
+        if api_client.add_events(payload):
             logger.info("[CYCLE] ✅ Événements envoyés à l'API (upsert)")
             api_ok = True
         else:
-            added, updated = storage.upsert_events(new_events)
+            added, updated = storage.upsert_events(payload)
             logger.info(f"[CYCLE] 💾 Fallback local: +{added} / ~{updated} événements")
     else:
         logger.info("[CYCLE] Aucun nouvel événement trouvé")
@@ -895,11 +1037,14 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
     # 4. Miroir local UNIQUEMENT si l'API était indisponible (même fichier que le backend sinon) :
     #    on n'upsert que les nouveaux événements pour ne jamais écraser des champs enrichis
     #    (realYear/predictedBy...) par un snapshot périmé.
-    if new_events and not api_ok:
-        storage.upsert_events(new_events)
+    if payload and not api_ok:
+        storage.upsert_events(payload)
 
     all_data = existing_data + new_events
     all_data = remove_duplicates(all_data)
+    # 5. HEARTBEAT : la métrique MAJ du flux avance à CHAQUE cycle (POST /api/heartbeat),
+    #    même quand aucun nouvel événement n'a été trouvé.
+    stamp_heartbeat(total=len(all_data), new=len(new_events), merged=len(updates), api_client=api_client)
     all_data.sort(key=lambda x: x.get("year", 0))
 
     logger.info(f"[CYCLE] Total: {len(all_data)} événements")

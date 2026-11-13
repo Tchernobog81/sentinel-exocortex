@@ -78,6 +78,9 @@ export function buildEnvelope() {
       doomsday_minutes: e.doomsday_minutes ?? null,
       realYear: e.realYear ?? null, realLabel: e.realLabel ?? null,
       predictedBy: Array.isArray(e.predictedBy) ? e.predictedBy : [],
+      sources: Array.isArray(e.sources) ? e.sources : null,
+      occurrences: e.occurrences ?? null,
+      mergedInto: e.merged_into || null,
       remedy: e.pharmakon_remedy_percent ?? e.remedy_percent ?? 50, poison: e.pharmakon_poison_percent ?? e.poison_percent ?? 50,
       sCurve: e.s_curve_phase ?? 3, convergences: e.convergences || '', grandFilter: e.grand_filter_analysis || '',
     };
@@ -95,12 +98,20 @@ async function probe(url, ms = 1200) {
   } catch { return null; }
 }
 
-// Dernier scan de la boucle agent (lu depuis telemetry.json exporté par export-static.mjs à chaque cycle)
+// Dernier scan de la boucle agent : max(telemetry.json, scan_heartbeat.json) —
+// le heartbeat est POSTé par l'agent (sentinel) à CHAQUE cycle de recherche/analyse.
 export function readLastScan() {
+  let best = null;
+  const consider = (v) => { if (v && (!best || v > best)) best = v; };
   try {
     const j = JSON.parse(fs.readFileSync(path.join(ROOT, 'telemetry.json'), 'utf8'));
-    return j.last_scan || j.ts || null;
-  } catch { return null; }
+    consider(j.last_scan || null); consider(j.ts || null);
+  } catch {}
+  try {
+    const h = JSON.parse(fs.readFileSync(path.join(ROOT, 'scan_heartbeat.json'), 'utf8'));
+    consider(h.last_scan || null);
+  } catch {}
+  return best;
 }
 
 export async function telemetry() {

@@ -83,6 +83,39 @@ async def add_data(
         raise HTTPException(status_code=400, detail=str(e))
 
 
+@router.post("/heartbeat", response_model=dict)
+async def heartbeat(payload: Dict[str, Any]):
+    """Stamp du dernier cycle de veille envoyé par l'agent (POST à chaque cycle) :
+    met à jour telemetry.json (last_scan) -> le dashboard affiche une MAJ fraîche
+    même quand aucun nouvel événement n'a été trouvé."""
+    import json
+    import tempfile
+    from pathlib import Path
+    from .storage import file_lock
+    root = Path(__file__).resolve().parent.parent
+    tel_path = root / "telemetry.json"
+    try:
+        with file_lock(tel_path, exclusive=True):
+            try:
+                tel = json.loads(tel_path.read_text(encoding="utf-8"))
+            except Exception:
+                tel = {}
+            tel["last_scan"] = payload.get("last_scan") or datetime.now().isoformat()
+            tel["agent_cycle"] = {k: payload.get(k) for k in ("events_total", "new_events", "occurrences_merged", "agent")}
+            fd, tmp = tempfile.mkstemp(dir=str(root), prefix=".tel_", suffix=".tmp")
+            try:
+                with os.fdopen(fd, "w", encoding="utf-8") as f:
+                    json.dump(tel, f, ensure_ascii=False)
+                os.replace(tmp, tel_path)
+            except Exception:
+                try: os.unlink(tmp)
+                except Exception: pass
+                raise
+        return {"status": "ok", "last_scan": tel["last_scan"]}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @router.get("/data/stats", response_model=dict)
 async def get_stats(storage: BaseStorage = Depends(get_storage_dependency)):
     """Get statistics about the data"""

@@ -70,6 +70,9 @@ class Event(BaseModel):
     predictedBy: Optional[List[str]] = Field(default=None, description="Œuvres de fiction ayant prédit cet événement")
     img: Optional[str] = Field(default=None, description="URL image (optionnel)")
     doomsday_minutes: Optional[float] = Field(default=None, description="Minutes avant minuit (Horloge de l'Apocalypse)")
+    sources: Optional[List[Dict[str, str]]] = Field(default=None, description="Occurrences médias regroupées : [{source, url, title}]")
+    occurrences: Optional[int] = Field(default=None, description="Nombre d'occurrences médias regroupées dans cet événement")
+    merged_into: Optional[str] = Field(default=None, description="id de l'événement maître si cette occurrence a été regroupée (masquée côté dashboard)")
     analysis: Optional[PharmakonAnalysis] = Field(default=None, description="Analyse Pharmakon")
 
     @model_validator(mode="before")

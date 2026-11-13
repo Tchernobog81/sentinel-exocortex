@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.8.1';
+export const LOOM_VERSION = '2.8.2';
 
 // V2.8.0 — HORLOGE DE L'APOCALYPSE : time-bucketing X (1 pt/jour sur les 10 dernières années,
 // 1 pt/mois depuis 1900, 1 pt/an avant, moyenne par bucket, tri strict) + EMA (alpha réglable,
@@ -51,11 +51,15 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
 
   const nowYear = new Date().getFullYear() + new Date().getMonth() / 12;
 
+  // V2.8.2 : les occurrences médias regroupées dans un événement maître (mergedInto) sont masquées
+  const allEvts = useMemo(() => (allEvents || events).filter(e => !e.mergedInto), [allEvents, events]);
+  const evts = useMemo(() => events.filter(e => !e.mergedInto), [events]);
+
   // ---- horloge de l'apocalypse : lissage glissant (paramètre onglet 4) ----
   const clockSeries = useMemo(() => {
-    return (allEvents || []).filter(e => e.doomsday_minutes != null).sort((a, b) => a.year - b.year)
+    return allEvts.filter(e => e.doomsday_minutes != null).sort((a, b) => a.year - b.year)
       .map(e => ({ year: e.year, seconds: Math.round(e.doomsday_minutes * 60) }));
-  }, [allEvents]);
+  }, [allEvts]);
   const smoothed = useMemo(() => {
     if (!clockSeries.length) return envelope.apocalypse_clock_seconds ?? 85;
     const w = Math.max(1, clockSmooth | 0);
@@ -65,9 +69,9 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
 
   const groups = useMemo(() => {
     const g = {};
-    for (const e of (allEvents || events)) g[e.group] = e.groupColor;
+    for (const e of allEvts) g[e.group] = e.groupColor;
     return g;
-  }, [allEvents, events]);
+  }, [allEvts]);
 
   // ---- INIT du chart : une seule fois (le zoom survit aux rafraîchissements) ----
   useEffect(() => {
@@ -261,16 +265,16 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
 
   // ---- MISE À JOUR des séries (préserve le zoom/pan utilisateur) ----
   useEffect(() => {
-    eventsRef.current = events;
+    eventsRef.current = evts;
     hiddenRef.current = hiddenGroups;
     const chart = chartRef.current;
     if (!chart) return;
     const byGroup = {};
-    for (const e of events) (byGroup[e.group] ||= { color: e.groupColor, data: [] }).data.push(e);
+    for (const e of evts) (byGroup[e.group] ||= { color: e.groupColor, data: [] }).data.push(e);
 
     // V2.7.0 : carte de la synthèse (moyenne par année, hors horloge) -> synRef, utilisée par yOf
     const byYear = {};
-    for (const e of (allEvents || events)) {
+    for (const e of allEvts) {
       if (/horloge/i.test(e.group || '')) continue;
       const y = Math.floor(e.year || 0); (byYear[y] ||= []).push(e.value ?? 0);
     }
@@ -282,7 +286,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     synPts.sort((a, b) => a.y - b.y);
     synRef.current = synMap;
     // courbes indexées par catégorie : ratio = (part cumulée cat / total cat) / (part cumulée globale / total global)
-    const nonClock = (allEvents || events).filter(e => !/horloge/i.test(e.group || '')).sort((a, b) => (a.year || 0) - (b.year || 0));
+    const nonClock = allEvts.filter(e => !/horloge/i.test(e.group || '')).sort((a, b) => (a.year || 0) - (b.year || 0));
     const totalAll = nonClock.length || 1;
     const cumAll = {}; const totG = {}; const cumG = {};
     let acc = 0;
@@ -305,7 +309,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     // 1 pt/an sinon ; moyenne des secondes par bucket ; tri strict croissant) puis EMA
     // ema[i] = alpha*y[i] + (1-alpha)*ema[i-1] — la ligne tracée = EMA, les valeurs brutes
     // restent dans les POI/tooltip. Aucun pixel X ne contient plusieurs Y empilés.
-    const clockEv = (allEvents || events).filter(e => /horloge/i.test(e.group || '') && e.doomsday_minutes != null).sort((a, b) => (a.year || 0) - (b.year || 0));
+    const clockEv = allEvts.filter(e => /horloge/i.test(e.group || '') && e.doomsday_minutes != null).sort((a, b) => (a.year || 0) - (b.year || 0));
     const buckets = new Map();
     for (const e of clockEv) {
       const y = e.year || 0;
@@ -420,14 +424,14 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       });
     }
     // plage de l'axe caché de l'horloge ajustée aux secondes réelles
-    const clockSecs = (allEvents || []).filter(e => /horloge/i.test(e.group || '') && e.doomsday_minutes != null)
+    const clockSecs = allEvts.filter(e => /horloge/i.test(e.group || '') && e.doomsday_minutes != null)
       .map(e => Math.round(e.doomsday_minutes * 60));
     const clockMax = clockSecs.length ? Math.max(...clockSecs) : 3600;
     chart.setOption({ series, yAxis: [{}, { min: 0, max: Math.round(clockMax * 1.15) }] }, { lazyUpdate: true, notMerge: false });
     window.__fitY && window.__fitY();
     window.__updateNow && window.__updateNow();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [events, hiddenGroups, allEvents, groups, clockAlpha]);
+  }, [evts, hiddenGroups, allEvts, groups, clockAlpha]);
 
   // ---- saut vers un événement (lien ⇄ ou flux) ----
   const jumpToEvent = (target) => {
@@ -442,7 +446,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     setSelected(target);
   };
   const jumpToLabel = (label, yearHint) => {
-    const cands = (allEvents || []).filter(e => e.title === label);
+    const cands = allEvts.filter(e => e.title === label);
     if (!cands.length) return;
     const target = yearHint != null
       ? cands.slice().sort((a, b) => Math.abs((a.year || 0) - yearHint) - Math.abs((b.year || 0) - yearHint))[0]
@@ -467,20 +471,20 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
   const feed = useMemo(() => {
     const now = new Date();
     const from = new Date(now.getTime() - 45 * 24 * 3600e3); // 45 derniers jours = vraies nouveautés
-    const base = (allEvents || events)
+    const base = allEvts
       .filter(e => !/fiction|horloge/i.test(e.category || '') && e.verified !== false)
       .map(e => ({ e, t: realDate(e) }))
       .filter(x => !isNaN(x.t) && x.t >= from && x.t <= new Date(now.getTime() + 6 * 3600e3)) // pas d'annonces du futur
       .sort((a, b) => b.t - a.t); // antichronologique strict
     return base.slice(0, 60).map(x => x.e)
       .filter(e => (!kineticOnly || e.is_kinetic_signal) && (!search || (e.title || '').toLowerCase().includes(search.toLowerCase())));
-  }, [allEvents, events, search, kineticOnly]);
+  }, [allEvts, search, kineticOnly]);
   // dernière mise à jour = max(horodatage d'ingestion le plus récent parmi TOUS les événements,
   // last_scan de la boucle de veille ~5 min) — le flux avance à chaque cycle même sans nouvel événement
   const lastMaj = useMemo(() => {
     const now = new Date();
     let mx = null;
-    for (const e of (allEvents || events)) {
+    for (const e of allEvts) {
       const d = new Date(e.timestamp);
       if (isNaN(d.getTime()) || d > now) continue;
       if (!mx || d > mx) mx = d;
@@ -493,7 +497,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     const dd = String(mx.getDate()).padStart(2, '0'), mm = String(mx.getMonth() + 1).padStart(2, '0');
     const hh = String(mx.getHours()).padStart(2, '0'), mi = String(mx.getMinutes()).padStart(2, '0');
     return { txt: `${dd}/${mm} ${hh}:${mi}`, full: `${dd}/${mm}/${mx.getFullYear()} ${hh}:${mi}:${String(mx.getSeconds()).padStart(2, '0')}` };
-  }, [allEvents, events, lastScan]);
+  }, [allEvts, lastScan]);
   // date affichée = date RÉELLE de l'événement : JJ/MM/AAAA HH:MM si timestamp cohérent, sinon JJ/MM/AAAA dérivé
   const fmtTs = e => {
     const d = realDate(e);
@@ -561,6 +565,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
               <span style={{ color: e.groupColor }}>●</span>{' '}
               <span className="text-zinc-500">[{fmtTs(e)}]</span>{' '}
               {e.title}
+              {e.occurrences > 1 && <span className="text-zinc-600"> · {e.occurrences} sources</span>}
             </li>
           ))}
         </ul>
@@ -643,6 +648,22 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
                 {selected.is_kinetic_signal ? '⟡ IMPACT CINÉTIQUE : OUI' : 'IMPACT CINÉTIQUE : NON'}
               </span>
             </div>
+            {/* Occurrences médias regroupées dans cet événement (V2.8.2) */}
+            {Array.isArray(selected.sources) && selected.sources.length > 1 && (
+              <div className="mb-3">
+                <div className="text-[9px] uppercase text-zinc-500 mb-1">Occurrences médias regroupées ({selected.sources.length})</div>
+                <ul className="text-[10px] space-y-0.5 max-h-28 overflow-y-auto">
+                  {selected.sources.map((s, i) => (
+                    <li key={i} className="truncate">
+                      {s.url
+                        ? <a href={s.url} target="_blank" rel="noreferrer" className="text-neon-cyan hover:underline">{s.source || s.url}</a>
+                        : <span className="text-zinc-400">{s.source || '—'}</span>}
+                      {s.title && <span className="text-zinc-600"> — {s.title.slice(0, 90)}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             {/* Jauge Pharmakon : Remède | Poison */}
             <div className="mb-3">
               <div className="flex justify-between text-[9px] uppercase mb-0.5">
