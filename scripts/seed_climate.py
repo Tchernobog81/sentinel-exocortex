@@ -90,7 +90,6 @@ def main():
     from sentinel import compute_event_id  # id stable identique au sentinel
     data = json.loads(DATA_FILE.read_text(encoding="utf-8"))
     existing_ids = {e.get("id") for e in data}
-    now = datetime.datetime.now().isoformat()
     events = []
     for year, label, src, url, desc, tipping in EVENTS:
         eid = compute_event_id(label, year, src)
@@ -98,9 +97,12 @@ def main():
             print(f"déjà présent: {label[:60]}")
             continue
         y = float(year)
+        # timestamp = date de l'événement (milieu d'année) et PAS la date d'ingestion :
+        # le flux n'affiche que les 45 derniers jours, le drawer distingue événement/ingestion.
+        ts = f"{int(year)}-07-01T00:00:00" if year >= 1 else f"{int(year)}-01-01T00:00:00"
         events.append({
             "id": eid, "year": y, "value": trend_value(y, data), "label": label, "category": CAT,
-            "whoWhat": src, "description": desc, "url": url, "timestamp": now,
+            "whoWhat": src, "description": desc, "url": url, "timestamp": ts,
             "tipping": tipping, "verified": True,
             "s_curve_phase": 1 if year < 1940 else 2 if year < 1990 else 3 if year < 2015 else 4,
             "pharmakon_remedy_percent": 30, "pharmakon_poison_percent": 70,
