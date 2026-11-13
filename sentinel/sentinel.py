@@ -396,7 +396,7 @@ def analyze_event(entry_title: str, entry_summary: str, entry_url: str, entry_so
     if entry_source and entry_title.endswith(" - " + entry_source):
         entry_title = entry_title[: -(len(entry_source) + 3)]
     today = datetime.date.today()
-    event_year = round(today.year + (today.month / 12), 3)
+    event_year = round(today.year + ((today.month - 1) / 12), 3)  # convention 0-based = JS getMonth() côté dashboard
     category = categorize_text(entry_title + " " + entry_summary)
 
     analysis = None
@@ -687,7 +687,7 @@ def scan_singularity_stage() -> Optional[Dict[str, Any]]:
     logger.info("[SCAN] Évaluation du stade de la Singularité...")
     stage = round(random.uniform(0.7, 0.8), 3)
     today = datetime.date.today()
-    event_year = round(today.year + (today.month / 12), 3)
+    event_year = round(today.year + ((today.month - 1) / 12), 3)  # convention 0-based = JS getMonth() côté dashboard
     return {
         "year": event_year,
         "value": 50000,

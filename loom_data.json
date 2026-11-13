@@ -11302,7 +11302,7 @@
   },
   {
     "id": "a946f6a0c2a2f41f",
-    "year": 2000.4,
+    "year": 2000.417,
     "value": 7521,
     "label": "ILOVEYOU",
     "category": "☠️ RISQUES CYBER",
@@ -11488,7 +11488,7 @@
   },
   {
     "id": "1adf56af5af1b88d",
-    "year": 2001.6,
+    "year": 2001.417,
     "value": 7672,
     "label": "Code Red",
     "category": "☠️ RISQUES CYBER",
@@ -12600,7 +12600,7 @@
   },
   {
     "id": "d27dcfa7491f6198",
-    "year": 2007.4,
+    "year": 2007.417,
     "value": 8453,
     "label": "Cyberattaques contre l'Estonie",
     "category": "☠️ RISQUES CYBER",
@@ -12704,7 +12704,7 @@
   },
   {
     "id": "ba8336e232c0630e",
-    "year": 2008.6,
+    "year": 2008.417,
     "value": 8626,
     "label": "Cyberattaques pendant la guerre de Géorgie",
     "category": "☠️ RISQUES CYBER",
@@ -13232,7 +13232,7 @@
   },
   {
     "id": "45b288a34efdae92",
-    "year": 2010.5,
+    "year": 2010.417,
     "value": 8907,
     "label": "Stuxnet",
     "category": "☠️ RISQUES CYBER",
@@ -13743,7 +13743,7 @@
   },
   {
     "id": "7eddd505573958d0",
-    "year": 2012.6,
+    "year": 2012.417,
     "value": 9231,
     "label": "Shamoon contre Saudi Aramco",
     "category": "☠️ RISQUES CYBER",
@@ -15270,7 +15270,7 @@
   },
   {
     "id": "018b81b2a3c2c705",
-    "year": 2017.4,
+    "year": 2017.417,
     "value": 10020,
     "label": "WannaCry",
     "category": "☠️ RISQUES CYBER",
@@ -15298,7 +15298,7 @@
   },
   {
     "id": "2b3d30463fa4c689",
-    "year": 2017.5,
+    "year": 2017.417,
     "value": 10037,
     "label": "NotPetya",
     "category": "☠️ RISQUES CYBER",
@@ -16451,7 +16451,7 @@
   },
   {
     "id": "ea5f3f43f0db61d0",
-    "year": 2021.35,
+    "year": 2021.417,
     "value": 10726,
     "label": "Colonial Pipeline (ransomware)",
     "category": "☠️ RISQUES CYBER",
@@ -16797,7 +16797,7 @@
   },
   {
     "id": "bd2b42b5b3c42eca",
-    "year": 2022.4,
+    "year": 2022.417,
     "value": 10923,
     "label": "Ransomware contre le Costa Rica",
     "category": "☠️ RISQUES CYBER",
@@ -17217,7 +17217,7 @@
   },
   {
     "id": "34964d14d80a3de9",
-    "year": 2023.4,
+    "year": 2023.417,
     "value": 11115,
     "label": "MOVEit (fuite de masse via Cleo)",
     "category": "☠️ RISQUES CYBER",
@@ -17563,7 +17563,7 @@
   },
   {
     "id": "16cebb6873fc186d",
-    "year": 2024.55,
+    "year": 2024.417,
     "value": 11339,
     "label": "Panne mondiale CrowdStrike",
     "category": "☠️ RISQUES CYBER",
@@ -18371,7 +18371,7 @@
   },
   {
     "id": "e33798c4cc1e992c",
-    "year": 2026.23,
+    "year": 2026.167,
     "value": 11676,
     "label": "Lancement d'ARC-AGI-3 (Y Combinator, 25 mars 2026)",
     "category": "🔵 COGNITION",
@@ -18397,7 +18397,7 @@
   },
   {
     "id": "a92df4342bba35d1",
-    "year": 2026.28,
+    "year": 2026.25,
     "value": 11686,
     "label": "Une conjecture mathématique de 42 ans résolue en 12 h par IA",
     "category": "🔵 COGNITION",
@@ -18423,7 +18423,7 @@
   },
   {
     "id": "07c4aecbc1590fa5",
-    "year": 2026.35,
+    "year": 2026.333,
     "value": 11700,
     "label": "Réfutation Lean-vérifiée de la conjecture d'Erdős (1946)",
     "category": "🔵 COGNITION",
@@ -18475,7 +18475,7 @@
   },
   {
     "id": "c64e51bdb5136ca3",
-    "year": 2026.55,
+    "year": 2026.5,
     "value": 11741,
     "label": "Agents IA résolvent des problèmes de maths ouverts (Science 2026)",
     "category": "🔵 COGNITION",
@@ -18501,7 +18501,7 @@
   },
   {
     "id": "e055a307e32f2956",
-    "year": 2026.79,
+    "year": 2026.75,
     "value": 11791,
     "label": "Gemini 4 Argon : 97,5 % vérifiés sur ARC-AGI-3 (16 oct. 2026)",
     "category": "🔵 COGNITION",
@@ -18527,7 +18527,7 @@
   },
   {
     "id": "8086f6181a821923",
-    "year": 2026.87,
+    "year": 2026.833,
     "value": 11807,
     "label": "Claude Fable 5.2 en tête du leaderboard ARC-AGI-3 (81,2 %)",
     "category": "🔵 COGNITION",
@@ -18553,7 +18553,7 @@
   },
   {
     "id": "1769e885a2a3f50f",
-    "year": 2026.917,
+    "year": 2026.833,
     "value": 11817,
     "label": "AI2027 : is this? How did we write it? Why is it valuable? Who are we? The CEOs of OpenAI , Google DeepMind , and Anthropic have",
     "category": "🔵 COGNITION",
@@ -18579,7 +18579,7 @@
   },
   {
     "id": "b879f13e8451940e",
-    "year": 2026.917,
+    "year": 2026.833,
     "value": 11817,
     "label": "IA2027 : L'IA pourrait-elle détruire l'humanité ?",
     "category": "🔴 RÉSEAU",
@@ -18605,7 +18605,7 @@
   },
   {
     "id": "e6c6a59de1e9cbc2",
-    "year": 2026.917,
+    "year": 2026.833,
     "value": 11817,
     "label": "Stade de Singularité (estimation courante)",
     "category": "⚪ SINGULARITÉ",
@@ -18631,7 +18631,7 @@
   },
   {
     "id": "0555be9527b830a2",
-    "year": 2026.917,
+    "year": 2026.833,
     "value": 11817,
     "label": "Comment deux paramètres ont triplé nos scores au benchmark ARC-AGI-3",
     "category": "🔵 COGNITION",
@@ -18657,7 +18657,7 @@
   },
   {
     "id": "1977a75ae299cacc",
-    "year": 2026.917,
+    "year": 2026.833,
     "value": 11817,
     "label": "Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %, mais le test standard raconte une autre histoire",
     "category": "🔵 COGNITION",
@@ -18683,7 +18683,7 @@
   },
   {
     "id": "429f0b65649725ee",
-    "year": 2026.917,
+    "year": 2026.833,
     "value": 11817,
     "label": "Comment deux paramètres ont triplé nos scores au benchmark ARC-AGI-3",
     "category": "🔵 COGNITION",
@@ -18709,7 +18709,7 @@
   },
   {
     "id": "f13e5a361558ccea",
-    "year": 2026.917,
+    "year": 2026.833,
     "value": 11817,
     "label": "Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %, mais le test standard raconte une autre histoire",
     "category": "🔵 COGNITION",
@@ -18735,7 +18735,7 @@
   },
   {
     "id": "9950d020e5214d00",
-    "year": 2026.917,
+    "year": 2026.833,
     "value": 11817,
     "label": "GPT-6 Astra : le vrai visage du score record de 99,9 % en IA",
     "category": "🔵 COGNITION",
@@ -18761,7 +18761,7 @@
   },
   {
     "id": "ae10ae912242604a",
-    "year": 2026.917,
+    "year": 2026.833,
     "value": 25141,
     "label": "ARC-AGI-3 : le Test qu aucune IA ne Réussit (Humains 100%, IA 0,37%)",
     "category": "🔵 COGNITION",
@@ -18787,7 +18787,7 @@
   },
   {
     "id": "87ffcb6b0c2b2e1f",
-    "year": 2026.917,
+    "year": 2026.833,
     "value": 26441,
     "label": "NVIDIA AVO atteint 100% sur ARC-AGI-3 avec le même Claude Opus 5 qui plafonne à 30%",
     "category": "🟡 HARDWARE",
@@ -18813,7 +18813,7 @@
   },
   {
     "id": "6a50e71e939a4b32",
-    "year": 2026.917,
+    "year": 2026.833,
     "value": 41147,
     "label": "Microsoft: Une panne mondiale affecte Outlook, Teams et Copilot",
     "category": "☠️ RISQUES CYBER",
@@ -18839,7 +18839,7 @@
   },
   {
     "id": "a041bd013624ea24",
-    "year": 2026.917,
+    "year": 2026.833,
     "value": 43096,
     "label": "Microsoft victime d'une panne mondiale : Outlook, Teams et Copilot perturbés dans 74 pays",
     "category": "☠️ RISQUES CYBER",
@@ -18865,7 +18865,7 @@
   },
   {
     "id": "1b98dd3fcf0f835e",
-    "year": 2026.92,
+    "year": 2026.917,
     "value": 11817,
     "label": "Résultats officiels ARC Prize 2026 (4 déc. 2026)",
     "category": "🔵 COGNITION",
