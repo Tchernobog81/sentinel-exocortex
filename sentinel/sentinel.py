@@ -122,6 +122,10 @@ def categorize_text(text: str) -> str:
     text = text.lower()
     if "noosphere" in text or "teilhard" in text or "kardashev" in text:
         return "✨ NOOSPHÈRE"
+    if any(k in text for k in ["cve", "zero-day", "0-day", "faille", "ransomware", "cyberattaque", "malware",
+                               "hack", "ddos", "panne", "outage", "indisponible", "incident majeur",
+                               "microsoft", "azure", "microsoft 365", "windows", "datacenter", "cloud majeur"]):
+        return "☠️ RISQUES CYBER"
     if any(k in text for k in ["quantum", "chip", "gpu", "hardware", "moore", "nvidia"]):
         return "🟡 HARDWARE"
     if any(k in text for k in ["gpt", "model", "reasoning", "agi", "cognitive", "openai", "anthropic", "ai2027"]):
@@ -244,7 +248,8 @@ Règles :
 # --- PROMPT DE VEILLE ÉDITABLE depuis le dashboard (onglet FILTRE MÉMÉTIQUE → encard) ---
 # Écrit dans agent_prompt.txt à la racine du dépôt, relu à CHAQUE cycle (~5 min) :
 #  - il est injecté dans le system prompt de l'analyse LLM (research_and_analyze)
-#  - les lignes sous [MOTS-CLÉS À EXCLURE] alimentent le fact-check (sujets hors projet rejetés)
+#  - la section optionnelle [MOTS-CLÉS À EXCLURE] (si présente) alimenterait le fact-check ;
+#    le filtrage hors-sujet repose surtout sur la corroboration par sources de confiance (TRUSTED_SOURCES)
 PROMPT_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "agent_prompt.txt")
 
 
@@ -515,6 +520,9 @@ RSS_QUERIES = [
     # 2. Entropie & Cyber
     'CVE critique OR faille zero-day OR cyberattaque OR ransomware 2026',
     'post-quantique OR cryptographie OR attaque infrastructure OR panne cloud majeure 2026',
+    'panne Microsoft mondiale OR outage OR indisponible M365 Azure Windows 2026',
+    '"Microsoft 365" OR Azure OR Windows OR Outlook OR Teams panne OR down OR "status page" 2026',
+    'panne géante OR indisponibilité mondiale OR incident cloud OR datacenter 2026',
     # 3. Industrie & Robots
     'robot humanoïde OR robotique autonome OR "embodied AI" OR puce IA 2026',
     'semi-conducteur OR lithographie OR terres rares OR supply chain puces 2026',
@@ -536,6 +544,7 @@ SIGNAL_KEYWORDS = [
     "imo", "olympiad", "theorem", "théorème", "conjecture", "physics", "physique",
     "mathematics", "maths", "breakthrough", "percée", "nature", "science",
     "deepmind", "openai", "anthropic", "agi", "nobel", "published", "preprint",
+    "panne", "outage", "down", "indisponible", "indisponibilité", "incident", "ddos",
 ]
 
 
@@ -907,16 +916,30 @@ RELEVANCE_KEYWORDS = [
     "5g", "6g", "réseau", "internet", "web", "donnée", "algorithme", "singularité", "transhumanisme",
     "neuralink", "interface cerveau", "exosquelette", "drone", "autonome", "véhicule autonome",
     "fusion nucléaire", "réacteur", "collisionneur", "gravitation",
+    "panne", "outage", "indisponible", "indisponibilité", "microsoft", "azure", "microsoft 365",
+    "windows", "datacenter", "ddos", "incident majeur", "cloud",
 ]
 
 
-# Sources primaires de confiance : un événement sourcé là est corroboré d'office
+def _domain_of(url: str) -> str:
+    m = re.sub(r"^https?://(www\.)?", "", (url or "").strip().lower())
+    return m.split("/")[0]
+
+
+# Sources primaires de confiance : un événement sourcé là est corroboré d'office.
+# Le fact-check compte les DOMAINES DE CONFIANCE DISTINCTS (une URL joignable ne suffit pas).
 TRUSTED_SOURCES = [
     "ai2027.com", "thebulletin.org", "arxiv.org", "nature.com", "science.org",
-    "cve.org", "nvd.nist.gov", "cert.europa.eu", "cisa.gov", "anssi.gouv.fr",
+    "cve.org", "nvd.nist.gov", "cert.europa.eu", "cisa.gov", "anssi.gouv.fr", "cert.ssi.gouv.fr",
     "esa.int", "nasa.gov", "reuters.com", "afp.com", "bbc.com", "lemonde.fr",
     "franceinfo.fr", "lesechos.fr", "spectrum.ieee.org", "technologyreview.com",
-    "github.blog", "openai.com", "deepmind.google", "anthropic.com",
+    "github.blog", "openai.com", "deepmind.google", "anthropic.com", "mistral.ai",
+    # statut/infrastructure & presse tech (pannes, incidents cloud, outages)
+    "downdetector.com", "downdetector.fr", "status.azure.com", "azure.status.microsoft.com",
+    "status.microsoft.com", "learn.microsoft.com", "microsoft.com",
+    "bleepingcomputer.com", "theregister.com", "techcrunch.com", "theverge.com",
+    "arstechnica.com", "zdnet.com", "nextinpact.com", "01net.com", "anandtech.com",
+    "status.aws.amazon.com", "status.cloud.google.com", "cloudflare.com/status",
 ]
 
 
@@ -935,15 +958,24 @@ def factcheck(ev):
     text = (label + " " + (ev.get("description", "") or "") + " " + url + " " + source + " " +
             " ".join(r.get("title", "") + " " + r.get("snippet", "") for r in res)).lower()
     relevant = any(k in text for k in RELEVANCE_KEYWORDS)
-    excluded = any(x in text for x in load_exclude_keywords())  # prompt éditable du dashboard
+    excluded = any(x in text for x in load_exclude_keywords())  # section optionnelle du prompt (désormais vide)
     if excluded:
         logger.warning(f"[FACTCHECK] mot-clé exclu (prompt perso), ignoré: {label}")
-    # corroboration : 2+ résultats de recherche, OU source primaire de confiance, OU URL joignable
-    trusted = any(t in url.lower() or t in source for t in TRUSTED_SOURCES)
-    corroborated = len(res) >= 2 or trusted
+    # CORROBORATION DURcie : on ne compte que les sources de confiance —
+    # (a) la source/URL de l'événement elle-même est un domaine de confiance, OU
+    # (b) 2+ domaines de confiance DISTINCTS dans les résultats de recherche, OU
+    # (c) URL de l'événement joignable ET au moins 1 domaine de confiance dans les résultats.
+    # Une URL seulement joignable ne suffit plus.
+    def is_trusted(u, s=""):
+        d = _domain_of(u)
+        return any(t in d or t in (s or "").lower() or t in (u or "").lower() for t in TRUSTED_SOURCES)
+    trusted_event = is_trusted(url, source)
+    trusted_domains = { _domain_of(r.get("url", "")) for r in res if is_trusted(r.get("url", "")) }
+    trusted_domains.discard("")
+    corroborated = trusted_event or len(trusted_domains) >= 2
     if not corroborated and url.startswith("http"):
         page = fetch_url(url, max_chars=800)
-        corroborated = not page.startswith("ERREUR")
+        corroborated = (not page.startswith("ERREUR")) and len(trusted_domains) >= 1
     ok = corroborated and relevant and not excluded
     ev["verified"] = ok
     if not ok:

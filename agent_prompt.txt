@@ -31,12 +31,7 @@ Interroge tes sources (flux RSS, dépôts arXiv, bulletins CERT/CVE, rapports de
 ## 4. FORMAT DE SORTIE (compatibilité parser Loom)
 Réponds UNIQUEMENT en JSON. Le parser attend les champs plats : `s_curve_phase`, `pharmakon_remedy_percent`, `pharmakon_poison_percent`, `convergences`, `grand_filter_analysis`, `final_note` — les objets imbriqués `pharmakon`/`s_curve`/`nela_action` sont aussi acceptés et aplatis automatiquement. Conserve l'historique de `loom_data.json`, déduplique par `id`/URL, année RÉELLE de l'événement (pas la date d'ingestion).
 
-[MOTS-CLÉS À EXCLURE]
-mammouth
-laineux
-médailles
-jo 2026
-olympiques
-sport
-boxe
-football
+## 5. SOURCES DURCIES (le fact-check ne s'appuie plus sur des mots-clés à exclure)
+- Corroboration obligatoire par SOURCES PRIMAIRES FIABLES uniquement : 2+ domaines de confiance distincts (presse tech reconnue, bulletins officiels CERT/CVE, status pages des fournisseurs, arXiv/Nature/Science, communiqués des labs), ou la source de l'événement elle-même est un domaine de confiance.
+- Une URL seulement joignable ne suffit PAS : le contenu doit être atteignable ET le sujet corroboré par une source de confiance.
+- Hors périmètre strict : sport, faits divers, culture pop, marketing produit, rumeurs non sourcées — rejetés même si le site répond.

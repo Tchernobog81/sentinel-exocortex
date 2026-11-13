@@ -5,9 +5,7 @@ const DEFAULT_PROMPT = [
   '[PROMPT DE VEILLE — Sentinel Exocortex / The Loom]',
   'FOCUS STRICT : faits avérés sourcés liés à la singularité / course à l\'AGI (étude AI2027 en priorité),',
   'compute, autonomie des agents, modèles frontier (ARC-AGI), risques existentiels, cyber, espace, régulation.',
-  'Corroborer 2+ sources. Un événement = une année RÉELLE. Ignorer les faits divers sans lien.',
-  '',
-  '[MOTS-CLÉS À EXCLURE]',
+  'Corroborer 2+ sources de confiance (domaines primaires fiables). Un événement = une année RÉELLE. Ignorer les faits divers sans lien.',
 ].join('\n');
 
 // Onglet 4 — FILTRE MÉMÉTIQUE : ratio bruit marketing / signal cinétique + lissage horloge apocalypse + encard prompt agent
@@ -116,7 +114,7 @@ export default function FiltreMemetique({ memetic, setMemetic, events }) {
         </div>
         <div className="text-[10px] text-zinc-500 mb-2">
           Ce texte est écrit dans <span className="font-mono text-zinc-400">agent_prompt.txt</span> (racine du dépôt) et relu par le sentinel à chaque cycle (~5 min) :
-          il pilote la pertinence des recherches (focus AI2027 / faits vérifiés) et la section <span className="font-mono text-zinc-400">[MOTS-CLÉS À EXCLURE]</span> filtre le fact-check.
+          il pilote la pertinence des recherches (focus AI2027 / faits vérifiés) ; le fact-check est durci côté sources : corroboration par 2+ domaines de confiance distincts (presse tech reconnue, CERT/CVE, status pages fournisseurs, arXiv/Nature…), une URL seulement joignable ne suffit pas.
         </div>
         <textarea value={prompt} onChange={e => setPrompt(e.target.value)} spellCheck={false}
                   className="flex-1 min-h-[110px] bg-black/40 border border-cyan-500/30 rounded-md p-2 text-[11px] font-mono text-zinc-200 focus:border-cyan-400 focus:outline-none resize-y" />
