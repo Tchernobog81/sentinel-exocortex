@@ -95,6 +95,14 @@ async function probe(url, ms = 1200) {
   } catch { return null; }
 }
 
+// Dernier scan de la boucle agent (lu depuis telemetry.json exporté par export-static.mjs à chaque cycle)
+export function readLastScan() {
+  try {
+    const j = JSON.parse(fs.readFileSync(path.join(ROOT, 'telemetry.json'), 'utf8'));
+    return j.last_scan || j.ts || null;
+  } catch { return null; }
+}
+
 export async function telemetry() {
   const [mem, cpu, cpuTemp, graphics, fsSize, netConnsRaw, netStats] = await Promise.all([
     si.mem(), si.currentLoad(), si.cpuTemperature(), si.graphics(), si.fsSize(), si.networkConnections(), si.networkStats(),
@@ -145,6 +153,7 @@ export async function telemetry() {
   const cpuTempVal = (cpuTemp && cpuTemp.max != null) ? cpuTemp.max : null;
   return {
     ts: new Date().toISOString(),
+    last_scan: readLastScan(), // stamp du dernier cycle de l'agent de veille (boucle ~5 min)
     airgap: external.length === 0,
     external_listeners: external.map(c => `${c.localAddress}:${c.localPort} (${c.protocol})`),
     open_ports: listeners.map(c => ({ port: c.localPort, addr: c.localAddress, proto: c.protocol, pid: c.pid })),

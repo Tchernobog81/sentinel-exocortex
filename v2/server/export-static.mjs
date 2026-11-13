@@ -6,6 +6,8 @@ import path from 'node:path';
 import { ROOT, telemetry, ragStatus } from './lib.mjs';
 
 const tel = await telemetry();
+// stamp du dernier cycle de veille : la MAJ du flux côté front = max(dernier événement, last_scan)
+tel.last_scan = new Date().toISOString();
 const rag = ragStatus();
 fs.writeFileSync(path.join(ROOT, 'telemetry.json'), JSON.stringify(tel));
 fs.writeFileSync(path.join(ROOT, 'rag.json'), JSON.stringify(rag));

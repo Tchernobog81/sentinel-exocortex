@@ -507,11 +507,27 @@ def enrich_event_if_needed(event: Dict[str, Any]) -> Dict[str, Any]:
 
 # Requêtes RSS ciblées "haut signal" : benchmarks, preuves, records, découvertes scientifiques
 RSS_QUERIES = [
-    '"ARC-AGI" OR "ARC Prize" benchmark',
-    'IA record benchmark "ARC-AGI-3" OR FrontierMath OR olympiade OR IMO 2026',
-    'intelligence artificielle a prouvé OR a résolu conjecture OR problème maths OR physique 2026',
-    'DeepMind OR OpenAI OR Anthropic percée OR découverte OR record 2026 science',
-    '"grand challenge" OR "open problem" solved by AI Nature Science 2026',
+    # 1. IA & Cognition
+    '"ARC-AGI" OR "ARC Prize" benchmark OR record 2026',
+    'IA a prouvé OR a résolu conjecture OR "open problem" OR FrontierMath OR IMO 2026',
+    'DeepMind OR OpenAI OR Anthropic OR Mistral percée OR découverte OR record 2026',
+    '"modèle de monde" OR JEPA OR "test-time compute" OR agent autonome IA 2026',
+    # 2. Entropie & Cyber
+    'CVE critique OR faille zero-day OR cyberattaque OR ransomware 2026',
+    'post-quantique OR cryptographie OR attaque infrastructure OR panne cloud majeure 2026',
+    # 3. Industrie & Robots
+    'robot humanoïde OR robotique autonome OR "embodied AI" OR puce IA 2026',
+    'semi-conducteur OR lithographie OR terres rares OR supply chain puces 2026',
+    # 4. Vivant & Santé
+    'CRISPR OR thérapie génique OR biotech percée OR interface cerveau 2026',
+    'organoïde OR génomique prédictive OR neurotechnologie 2026',
+    # 5. Espace
+    'Starship OR lanceur réutilisable OR satellite OR constellation OR Lune OR Mars 2026',
+    # 6. Politique / géopolitique du silicium
+    'AI Act OR régulation IA OR souveraineté numérique OR "puces" OR export controls 2026',
+    'traité OR gouvernance OR militaro-numérique 2026',
+    # 7. Noosphère & réseaux
+    'censure internet OR coupure réseau OR mesh OR protocole décentralisé 2026',
 ]
 # Filtre anti-hype : un article n'entre dans le flux que s'il contient un de ces signaux factuels
 SIGNAL_KEYWORDS = [
@@ -523,7 +539,7 @@ SIGNAL_KEYWORDS = [
 ]
 
 
-def scan_google_news_rss(max_events: int = 2) -> List[Dict[str, Any]]:
+def scan_google_news_rss(max_events: int = 4) -> List[Dict[str, Any]]:
     """Scanne plusieurs flux Google News ciblés et ne retient que les articles à haut signal
     factuel (benchmark/record/preuve/découverte), dédoublonnés par titre."""
     logger.info("[SCAN] Scan RSS multi-requêtes (haut signal factuel)...")
@@ -894,21 +910,41 @@ RELEVANCE_KEYWORDS = [
 ]
 
 
+# Sources primaires de confiance : un événement sourcé là est corroboré d'office
+TRUSTED_SOURCES = [
+    "ai2027.com", "thebulletin.org", "arxiv.org", "nature.com", "science.org",
+    "cve.org", "nvd.nist.gov", "cert.europa.eu", "cisa.gov", "anssi.gouv.fr",
+    "esa.int", "nasa.gov", "reuters.com", "afp.com", "bbc.com", "lemonde.fr",
+    "franceinfo.fr", "lesechos.fr", "spectrum.ieee.org", "technologyreview.com",
+    "github.blog", "openai.com", "deepmind.google", "anthropic.com",
+]
+
+
 def factcheck(ev):
     label = ev.get("label", "")
     if any(label.startswith(p) for p in ("Horloge de l'Apocalypse", "⏰ Horloge", "Stade de Singularité")):
         ev["verified"] = True
         return True
+    url = ev.get("url", "") or ""
+    source = (ev.get("whoWhat", "") or "").lower()
     try:
         res = web_search(label[:90], max_results=5)
     except Exception:
         res = []
-    text = (label + " " + " ".join(r.get("title", "") + " " + r.get("snippet", "") for r in res)).lower()
+    # texte de pertinence : label + résumé + url + source + résultats de recherche
+    text = (label + " " + (ev.get("description", "") or "") + " " + url + " " + source + " " +
+            " ".join(r.get("title", "") + " " + r.get("snippet", "") for r in res)).lower()
     relevant = any(k in text for k in RELEVANCE_KEYWORDS)
     excluded = any(x in text for x in load_exclude_keywords())  # prompt éditable du dashboard
     if excluded:
         logger.warning(f"[FACTCHECK] mot-clé exclu (prompt perso), ignoré: {label}")
-    ok = len(res) >= 2 and relevant and not excluded
+    # corroboration : 2+ résultats de recherche, OU source primaire de confiance, OU URL joignable
+    trusted = any(t in url.lower() or t in source for t in TRUSTED_SOURCES)
+    corroborated = len(res) >= 2 or trusted
+    if not corroborated and url.startswith("http"):
+        page = fetch_url(url, max_chars=800)
+        corroborated = not page.startswith("ERREUR")
+    ok = corroborated and relevant and not excluded
     ev["verified"] = ok
     if not ok:
         logger.warning(f"[FACTCHECK] hors sujet ou non corroboré, ignoré: {label}")

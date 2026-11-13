@@ -69,7 +69,10 @@ export default function FiltreMemetique({ memetic, setMemetic, events }) {
         <label className="text-[10px] text-zinc-500 flex justify-between"><span>fenêtre de lissage</span><span>{memetic.smoothWindow} réglages</span></label>
         <input type="range" min="1" max="10" value={memetic.smoothWindow} className="w-full"
                onChange={e => setMemetic(m => ({ ...m, smoothWindow: +e.target.value }))} />
-        <div className="text-[10px] text-zinc-600 mt-3">Valeur brute (dernier réglage officiel) : {(events || []).filter(e => e.doomsday_minutes != null).length} points ⏰ — voir LOOM CORE pour le rendu lissé.</div>
+        <label className="text-[10px] text-zinc-500 flex justify-between mt-2"><span>EMA de la courbe (alpha)</span><span>{Number(memetic.clockAlpha ?? 0.22).toFixed(2)}</span></label>
+        <input type="range" min="0.05" max="0.6" step="0.01" value={memetic.clockAlpha ?? 0.22} className="w-full"
+               onChange={e => setMemetic(m => ({ ...m, clockAlpha: +e.target.value }))} />
+        <div className="text-[10px] text-zinc-600 mt-3">V2.8.0 : la courbe ⏰ tracée = buckets (1 pt/jour récent, 1 pt/mois, 1 pt/an) + EMA(alpha) + interpolation monotone — plus de dents de scie. {(events || []).filter(e => e.doomsday_minutes != null).length} réglages officiels → marqueurs alignés sur la courbe lissée, valeurs brutes dans le détail.</div>
       </div>
 
       {/* Métriques : benchmark d'alignement & vitesse de régression logicielle */}

@@ -26,7 +26,7 @@ export default function App() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
   const [filters, setFilters] = useState({});            // {cat: bool} — filtres catégories onglet 1
-  const [memetic, setMemetic] = useState({ noiseRatio: 30, smoothWindow: 3 }); // onglet 4 -> partagé
+  const [memetic, setMemetic] = useState({ noiseRatio: 30, smoothWindow: 3, clockAlpha: 0.22 }); // onglet 4 -> partagé
   const { data, connected, mode } = useSSE('/api/stream', null, 5000);
   const { data: tel, connected: telOn } = useSSE('/api/telemetry/stream', null, 4000);
 
@@ -71,7 +71,7 @@ export default function App() {
 
       {/* contenu */}
       <main className="flex-1 min-h-0">
-        {tab === 'core' && <LoomCore envelope={envelope} events={filtered} allEvents={events} filters={filters} setFilters={setFilters} clockSmooth={memetic.smoothWindow} />}
+        {tab === 'core' && <LoomCore envelope={envelope} events={filtered} allEvents={events} filters={filters} setFilters={setFilters} clockSmooth={memetic.smoothWindow} clockAlpha={memetic.clockAlpha} lastScan={tel?.last_scan || tel?.ts} />}
         {tab === 'nela' && <NelaSubstrat tel={tel} />}
         {tab === 'steri' && <SteriNet />}
         {tab === 'filtre' && <FiltreMemetique memetic={memetic} setMemetic={setMemetic} events={events} />}

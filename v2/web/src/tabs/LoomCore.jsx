@@ -2,21 +2,27 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.7.0';
+export const LOOM_VERSION = '2.8.0';
 
+// V2.8.0 — HORLOGE DE L'APOCALYPSE : time-bucketing X (1 pt/jour sur les 10 dernières années,
+// 1 pt/mois depuis 1900, 1 pt/an avant, moyenne par bucket, tri strict) + EMA (alpha réglable,
+// défaut 0.22) pour la ligne tracée (smooth 0.45 + smoothMonotone 'x') ; les marqueurs des
+// réglages officiels sont projetés SUR la courbe lissée (alignés), les valeurs brutes restent
+// dans le détail. Plus de dents de scie verticales.
 // V2.7.0 — axe Y partagé, mais chaque catégorie a SA PROPRE COURBE : la donnée `value` étant
 // corrélée à l'année (tous les POI s'alignaient strictement sur la synthèse), chaque catégorie
 // est tracée en COURBE INDEXÉE : synthèse(year) × (part cumulée de la catégorie / part cumulée
 // globale à cette année). Les catégories ont des formes réellement différentes (ex: FICTION
 // ancienne -> au-dessus, IA récente -> en-dessous puis rattrape), enlacées autour de ✦ SINGULARITÉ
-// avec laquelle elles convergent aujourd'hui (ratio = 1). L'horloge reste sur son axe caché
-// inversé, lissée par moyenne mobile (plus de zigzags verticaux).
+// avec laquelle elles convergent aujourd'hui (ratio = 1). L'horloge reste sur son axe caché inversé.
 const synRef = { current: {} };   // année -> valeur moyenne globale (synthèse)
-const clockRef = { current: {} }; // année -> secondes lissées (moyenne mobile) de l'horloge
+const clockEmaRef = { current: { pts: [], at: () => null } }; // courbe horloge EMA : pts [[x,y]...] + interpolation
 const rRef = { current: {} };     // groupe -> { année -> ratio vs tendance globale }
 const yOf = e => {
   if (/horloge/i.test(e.group || '')) {
-    return clockRef.current[Math.floor(e.year || 0)] ?? Math.round((e.doomsday_minutes ?? 0) * 60);
+    const at = clockEmaRef.current.at;
+    const v = at ? at(e.year || 0) : null;
+    return v ?? Math.round((e.doomsday_minutes ?? 0) * 60);
   }
   const yy = Math.floor(e.year || 0);
   const s = synRef.current[yy];
@@ -29,7 +35,7 @@ const SYN_COLOR = '#f8fafc';
 
 // Onglet 1 — LOOM CORE : le chart s'initialise UNE fois (le zoom utilisateur est préservé
 // entre les rafraîchissements SSE), les séries sont mises à jour en douceur.
-export default function LoomCore({ envelope, events, allEvents, filters, setFilters, clockSmooth }) {
+export default function LoomCore({ envelope, events, allEvents, filters, setFilters, clockSmooth, clockAlpha = 0.22, lastScan }) {
   const chartRef = useRef(null);
   const wrapRef = useRef(null);
   const boxRef = useRef(null);
@@ -295,15 +301,44 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       for (const y of keys) { cg += (cumG[g][y] || 0); const ca = cumAll[y] || 0; const denom = ca / totalAll; rMap[g][y] = denom > 0 ? Math.max(0.55, Math.min(1.8, (cg / totG[g]) / denom)) : 1; }
     }
     rRef.current = rMap;
-    // horloge : moyenne mobile (fenêtre 5) des secondes avant minuit -> plus de zigzags verticaux
-    const clockEv = (allEvents || events).filter(e => /horloge/i.test(e.group || '') && e.doomsday_minutes != null).sort((a, b) => a.year - b.year);
-    const secs = clockEv.map(e => Math.round(e.doomsday_minutes * 60));
-    const clockMap = {};
-    clockEv.forEach((e, i) => {
-      const w = secs.slice(Math.max(0, i - 4), i + 1);
-      clockMap[Math.floor(e.year || 0)] = Math.round(w.reduce((a, b) => a + b, 0) / w.length);
-    });
-    clockRef.current = clockMap;
+    // V2.8.0 — horloge : time-bucketing X (1 pt/jour si année >= now-10, 1 pt/mois si >= 1900,
+    // 1 pt/an sinon ; moyenne des secondes par bucket ; tri strict croissant) puis EMA
+    // ema[i] = alpha*y[i] + (1-alpha)*ema[i-1] — la ligne tracée = EMA, les valeurs brutes
+    // restent dans les POI/tooltip. Aucun pixel X ne contient plusieurs Y empilés.
+    const clockEv = (allEvents || events).filter(e => /horloge/i.test(e.group || '') && e.doomsday_minutes != null).sort((a, b) => (a.year || 0) - (b.year || 0));
+    const buckets = new Map();
+    for (const e of clockEv) {
+      const y = e.year || 0;
+      const key = y >= nowYear - 10 ? 'd' + Math.floor(y * 365.25)
+                : y >= 1900 ? 'm' + Math.floor(y * 12)
+                : 'y' + Math.floor(y);
+      const b = buckets.get(key) || { sx: 0, sy: 0, n: 0 };
+      b.sx += y; b.sy += Math.round(e.doomsday_minutes * 60); b.n++;
+      buckets.set(key, b);
+    }
+    const rawPts = [...buckets.values()].map(b => ({ x: b.sx / b.n, y: b.sy / b.n })).sort((a, b) => a.x - b.x);
+    const alpha = Math.min(0.95, Math.max(0.05, Number(clockAlpha) || 0.22));
+    const emaPts = [];
+    for (let i = 0; i < rawPts.length; i++) {
+      const y = i === 0 ? rawPts[i].y : alpha * rawPts[i].y + (1 - alpha) * emaPts[i - 1].y;
+      emaPts.push({ x: rawPts[i].x, y });
+    }
+    const emaAt = (x) => {
+      const pts = emaPts;
+      if (!pts.length) return null;
+      if (x <= pts[0].x) return pts[0].y;
+      const last = pts[pts.length - 1];
+      if (x >= last.x) return last.y;
+      for (let i = 1; i < pts.length; i++) {
+        if (x <= pts[i].x) {
+          const t = (x - pts[i - 1].x) / ((pts[i].x - pts[i - 1].x) || 1);
+          return pts[i - 1].y + t * (pts[i].y - pts[i - 1].y);
+        }
+      }
+      return last.y;
+    };
+    clockEmaRef.current = { pts: emaPts, at: emaAt };
+    window.__clockDebug = { raw: rawPts, ema: emaPts, alpha }; // hook de test headless
 
     // V2.6.0 : noms de séries STABLES issus de allEvents (même si le filtre mémétique vide un groupe,
     // la série existe -> le clic sur sa pastille allume/éteint toujours quelque chose)
@@ -313,6 +348,31 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       const hidden = !!hiddenGroups[name];
       const isClock = /horloge/i.test(name);
       const yIdx = isClock ? 1 : 0;
+      if (isClock) {
+        // V2.8.0 : la ligne = courbe EMA bucketée avec interpolation monotone (smooth 0.45 +
+        // smoothMonotone 'x', aucun dépassement) ; les marqueurs des réglages officiels sont
+        // projetés SUR la courbe lissée via emaAt -> alignés, plus de zigzags verticaux.
+        series.push({
+          name, type: 'line', yAxisIndex: 1, z: 4,
+          showSymbol: false,
+          smooth: 0.45, smoothMonotone: 'x',
+          lineStyle: { color: g.color, width: 2, opacity: hidden ? 0 : 0.9, shadowColor: g.color, shadowBlur: 4 },
+          itemStyle: { color: g.color },
+          areaStyle: { color: g.color, opacity: 0.06 },
+          data: hidden ? [] : emaPts.map(p => [p.x, p.y, `⏰ ${Math.floor(p.x)} (lissé)`, null]),
+        });
+        series.push({
+          name: name + ' · réglages', type: 'scatter', yAxisIndex: 1, z: 5,
+          showSymbol: true, symbol: 'circle',
+          symbolSize: d => (d[3]?.tipping ? 9 : 5),
+          itemStyle: { color: g.color, opacity: hidden ? 0 : 0.95, borderColor: '#050508', borderWidth: 1 },
+          emphasis: { scale: 1.7 },
+          label: { show: true, position: 'top', fontSize: 9, color: '#cbd5e1', formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 18)}…` : ''), rotate: 28, distance: 6 },
+          labelLayout: { hideOverlap: true },
+          data: hidden ? [] : clockEv.map(e => [e.year, emaAt(e.year), e.title, e]),
+        });
+        continue;
+      }
       const pts = hidden ? [] : g.data;
       // courbe reliée : points réels triés par année ; les prévisions restent des points (losanges), futur navigable
       const real = pts.filter(e => (e.year || 0) <= nowYear + 0.05).sort((a, b) => a.year - b.year);
@@ -367,7 +427,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     window.__fitY && window.__fitY();
     window.__updateNow && window.__updateNow();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [events, hiddenGroups, allEvents, groups]);
+  }, [events, hiddenGroups, allEvents, groups, clockAlpha]);
 
   // ---- saut vers un événement (lien ⇄ ou flux) ----
   const jumpToEvent = (target) => {
@@ -415,7 +475,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     return base.slice(0, 60).map(x => x.e)
       .filter(e => (!kineticOnly || e.is_kinetic_signal) && (!search || (e.title || '').toLowerCase().includes(search.toLowerCase())));
   }, [allEvents, events, search, kineticOnly]);
-  // dernière mise à jour = horodatage d'ingestion le plus récent parmi TOUS les événements (flux non filtré)
+  // dernière mise à jour = max(horodatage d'ingestion le plus récent parmi TOUS les événements,
+  // last_scan de la boucle de veille ~5 min) — le flux avance à chaque cycle même sans nouvel événement
   const lastMaj = useMemo(() => {
     const now = new Date();
     let mx = null;
@@ -424,11 +485,15 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       if (isNaN(d.getTime()) || d > now) continue;
       if (!mx || d > mx) mx = d;
     }
+    if (lastScan) {
+      const d = new Date(lastScan);
+      if (!isNaN(d.getTime()) && d <= new Date(now.getTime() + 6 * 3600e3) && (!mx || d > mx)) mx = d;
+    }
     if (!mx) return { txt: '--:--', full: '' };
     const dd = String(mx.getDate()).padStart(2, '0'), mm = String(mx.getMonth() + 1).padStart(2, '0');
     const hh = String(mx.getHours()).padStart(2, '0'), mi = String(mx.getMinutes()).padStart(2, '0');
     return { txt: `${dd}/${mm} ${hh}:${mi}`, full: `${dd}/${mm}/${mx.getFullYear()} ${hh}:${mi}:${String(mx.getSeconds()).padStart(2, '0')}` };
-  }, [allEvents, events]);
+  }, [allEvents, events, lastScan]);
   // date affichée = date RÉELLE de l'événement : JJ/MM/AAAA HH:MM si timestamp cohérent, sinon JJ/MM/AAAA dérivé
   const fmtTs = e => {
     const d = realDate(e);
