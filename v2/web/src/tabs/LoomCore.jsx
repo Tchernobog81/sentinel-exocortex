@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.9.1';
+export const LOOM_VERSION = '2.9.2';
 
 // V2.8.0 — HORLOGE DE L'APOCALYPSE : time-bucketing X (1 pt/jour sur les 10 dernières années,
 // 1 pt/mois depuis 1900, 1 pt/an avant, moyenne par bucket, tri strict) + EMA (alpha réglable,
@@ -48,6 +48,30 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
   const [kineticOnly, setKineticOnly] = useState(false);
   const [nowPx, setNowPx] = useState(null); // position px de la ligne "jour courant" (surcouche HTML)
   window.__selectEvent = (ev) => setSelected(ev); // hook de test
+
+  // V2.9.2 — viewport utilisateur persistant (indépendant des re-rendus / màj SSE / resize) :
+  // { start, end } en % de l'axe X + hasUserInteracted. Tant que l'utilisateur n'a pas
+  // zoomé/panné, la vue par défaut (0-100, "Aujourd'hui" visible) s'applique ; ensuite le
+  // viewport est ré-appliqué après chaque setOption pour contrer tout reset interne d'ECharts.
+  const userVpRef = useRef({ start: 0, end: 100, hasUserInteracted: false });
+  const vpGuardRef = useRef(false); // true pendant un dispatch programmatique (évite de poser hasUserInteracted)
+  const dragRef = useRef({ downX: 0, downY: 0, dragging: false, suppressClick: false });
+  window.__userVp = userVpRef; // hook de test
+
+  // V2.9.2 — reset UNIQUEMENT explicite (bouton "Aujourd'hui" ou double-clic dédié) :
+  // retour à la vue par défaut zoom 1x (start 0, end 100).
+  const resetViewport = () => {
+    userVpRef.current = { start: 0, end: 100, hasUserInteracted: false };
+    const chart = chartRef.current;
+    if (!chart) return;
+    vpGuardRef.current = true;
+    chart.dispatchAction({ type: 'dataZoom', dataZoomIndex: 0, start: 0, end: 100 });
+    chart.dispatchAction({ type: 'dataZoom', dataZoomIndex: 2, start: 0, end: 100 });
+    setTimeout(() => { vpGuardRef.current = false; }, 60);
+    window.__fitY && window.__fitY();
+    window.__updateNow && window.__updateNow();
+  };
+  window.__resetVp = resetViewport; // hook de test
 
   const nowYear = new Date().getFullYear() + new Date().getMonth() / 12;
 
@@ -137,22 +161,20 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       }
       return best;
     };
-    let downX = 0, downY = 0, dragged = false;
+    // V2.9.2 — distinction stricte drag/clic : seuil 4 px entre mousedown et mouseup.
+    // Un mouseleave/globalout pendant le drag termine proprement le glissement en CONSERVANT
+    // la position courante (aucun reset du viewport).
     chart.getZr().on('mousedown', e => {
-      downX = e.zrX ?? e.offsetX ?? 0; downY = e.zrY ?? e.offsetY ?? 0; dragged = false;
+      dragRef.current = { downX: e.zrX ?? e.offsetX ?? 0, downY: e.zrY ?? e.offsetY ?? 0, dragging: false, suppressClick: false };
     });
-    chart.getZr().on('click', e => {
-      if (dragged) return; // c'était un panoramique (clic+move), pas un clic
-      const zx = e.zrX ?? e.offsetX ?? (e.event && e.event.offsetX), zy = e.zrY ?? e.offsetY ?? (e.event && e.event.offsetY);
-      const hit = pickNearest(zx, zy);
-      if (hit) setSelected(hit);
-    });
-
-    // survol : picking manuel au pixel près (seuil 24 px), branché sur ZRENDER
-    let raf = 0;
     chart.getZr().on('mousemove', e => {
       const zx0 = e.zrX ?? e.offsetX ?? (e.event && e.event.offsetX), zy0 = e.zrY ?? e.offsetY ?? (e.event && e.event.offsetY);
-      if (Math.hypot(zx0 - downX, zy0 - downY) > 6) dragged = true;
+      if (Math.hypot(zx0 - dragRef.current.downX, zy0 - dragRef.current.downY) > 4) {
+        dragRef.current.dragging = true; // > 4 px : c'est un pan, pas un clic
+      }
+      const { downX, downY } = dragRef.current;
+      void downX; void downY;
+      let raf = 0;
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
         const hit = pickNearest(zx0, zy0);
@@ -162,8 +184,29 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         } else setHover(null);
       });
     });
-    chart.getZr().on('globalout', () => setHover(null));
-    chart.getDom().addEventListener('mouseleave', () => setHover(null));
+    chart.getZr().on('mouseup', e => {
+      const zx = e.zrX ?? e.offsetX ?? 0, zy = e.zrY ?? e.offsetY ?? 0;
+      if (Math.hypot(zx - dragRef.current.downX, zy - dragRef.current.downY) > 4) {
+        dragRef.current.suppressClick = true; // drag > 4 px : le click suivant est ignoré
+      }
+    });
+    chart.getZr().on('click', e => {
+      if (dragRef.current.dragging || dragRef.current.suppressClick) {
+        dragRef.current.suppressClick = false;
+        return; // c'était un panoramique (drag > 4 px), pas un clic
+      }
+      if ((e.event?.detail ?? 1) > 1) return; // 2e clic d'un double-clic : réservé au reset de la vue
+      const zx = e.zrX ?? e.offsetX ?? (e.event && e.event.offsetX), zy = e.zrY ?? e.offsetY ?? (e.event && e.event.offsetY);
+      const hit = pickNearest(zx, zy);
+      if (hit) setSelected(hit);
+    });
+    const endDragClean = () => {
+      // mouseleave / globalout pendant un drag : on garde la position courante, on ne reset rien
+      dragRef.current.dragging = false;
+      setHover(null);
+    };
+    chart.getZr().on('globalout', endDragClean);
+    chart.getDom().addEventListener('mouseleave', endDragClean);
 
     // fenêtre courante (années)
     const xZoom = () => {
@@ -216,13 +259,46 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         setNowPx(px);
       } catch { setNowPx(null); }
     };
+    // V2.9.2 — persistance du viewport utilisateur : chaque datazoom met à jour userVpRef
+    // (start/end en %) et pose hasUserInteracted. Clamping doux : on borne `start` dans
+    // [0, 100 - w] sans jamais toucher à la largeur w (le niveau de zoom).
+    const clampStart = (s, w) => Math.max(0, Math.min(100 - w, s));
+    const applyUserViewport = () => {
+      const vp = userVpRef.current;
+      if (!vp.hasUserInteracted) return; // vue par défaut : on ne force rien
+      const w = vp.end - vp.start;
+      const s = clampStart(vp.start, w);
+      const dz = xZoom();
+      if (dz && (Math.abs(dz.start - s) > 0.01 || Math.abs(dz.end - (s + w)) > 0.01)) {
+        vpGuardRef.current = true;
+        chart.dispatchAction({ type: 'dataZoom', dataZoomIndex: 0, start: s, end: s + w });
+        chart.dispatchAction({ type: 'dataZoom', dataZoomIndex: 2, start: s, end: s + w });
+        setTimeout(() => { vpGuardRef.current = false; }, 60);
+      }
+    };
+    window.__applyUserVp = applyUserViewport;
     let dzT = 0, lastXKey = null;
     chart.on('datazoom', () => {
+      const dz = xZoom();
+      if (dz && dz.start != null) {
+        const w = dz.end - dz.start;
+        const s = clampStart(dz.start, w);
+        if (Math.abs(s - dz.start) > 1e-6) {
+          // pan au-delà de la butée : on clamp sans toucher au zoom, puis on sort (pas de boucle)
+          vpGuardRef.current = true;
+          chart.dispatchAction({ type: 'dataZoom', dataZoomIndex: 0, start: s, end: s + w });
+          chart.dispatchAction({ type: 'dataZoom', dataZoomIndex: 2, start: s, end: s + w });
+          setTimeout(() => { vpGuardRef.current = false; }, 60);
+        }
+        userVpRef.current.start = s;
+        userVpRef.current.end = s + w;
+        if (!vpGuardRef.current) userVpRef.current.hasUserInteracted = true; // 1er zoom/pan manuel
+      }
       clearTimeout(dzT);
       dzT = setTimeout(() => {
         applyTickInterval();
-        const dz = xZoom();
-        const key = dz ? dz.start + '-' + dz.end : '';
+        const d2 = xZoom();
+        const key = d2 ? d2.start + '-' + d2.end : '';
         if (key !== lastXKey) { lastXKey = key; fitYToWindow(); } // Y-fit seulement si le zoom X a changé
         updateNowPx();
       }, 120);
@@ -232,7 +308,11 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
     window.__ticks = applyTickInterval;
     setTimeout(() => { applyTickInterval(); fitYToWindow(); updateNowPx(); }, 250);
 
-    const ro = new ResizeObserver(() => { chart.resize(); updateNowPx(); });
+    const ro = new ResizeObserver(() => {
+      chart.resize();
+      applyUserViewport(); // resize : on ré-applique le viewport utilisateur, jamais de reset
+      updateNowPx();
+    });
     ro.observe(boxRef.current);
 
     // navigation clavier (accessibilité) : flèches = panoramique X (Maj = Y), +/- = zoom X
@@ -260,6 +340,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       else if (ev.key === '+' || ev.key === '=') { zoom(1); ev.preventDefault(); }
       else if (ev.key === '-') { zoom(-1); ev.preventDefault(); }
     });
+    dom.addEventListener('dblclick', resetViewport); // V2.9.2 : double-clic dédié = reset de la vue (zoom 1x)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -428,6 +509,9 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       .map(e => Math.round(e.doomsday_minutes * 60));
     const clockMax = clockSecs.length ? Math.max(...clockSecs) : 3600;
     chart.setOption({ series, yAxis: [{}, { min: 0, max: Math.round(clockMax * 1.15) }] }, { lazyUpdate: true, notMerge: false });
+    // V2.9.2 : après une màj des séries (SSE/refresh), on ré-applique le viewport utilisateur
+    // au lieu de laisser la vue se réinitialiser sur "Aujourd'hui".
+    window.__applyUserVp && window.__applyUserVp();
     window.__fitY && window.__fitY();
     window.__updateNow && window.__updateNow();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -582,6 +666,11 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
             </div>
           </div>
           <div className="text-[10px] text-zinc-400">Singularité: <b className="amber-text">{(envelope.singularity_index ?? 0).toFixed(3)}</b></div>
+          <button className="chip flex items-center gap-1 ml-auto" style={{ cursor: 'pointer' }}
+                  title="Réinitialiser la vue : plage complète, zoom 1x (double-clic sur le graphique aussi)"
+                  onClick={resetViewport}>
+            <ArrowLeftRight size={11} /> ⟲ Aujourd'hui
+          </button>
         </div>
 
         {/* légende : pastilles à la couleur des courbes (Singularité = blanche comme sa courbe) — clic = on/off */}
