@@ -1953,8 +1953,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Richard Trevithick",
+        "url": "#",
+        "title": "Locomotive à vapeur (Trevithick)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 60,
@@ -1984,7 +1990,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "58af458369ee2eba",
     "s_curve_phase": 2,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -6194,9 +6200,9 @@
     "label": "Conférence Dartmouth",
     "category": "🔵 COGNITION",
     "whoWhat": "🔵 COGNITION",
-    "description": "Naissance officielle du terme 'Intelligence Artificielle'.",
+    "description": "Acte de naissance du domaine « intelligence artificielle ».",
     "url": "",
-    "timestamp": null,
+    "timestamp": "2026-11-13T15:57:06.034638",
     "tipping": true,
     "realYear": null,
     "realLabel": null,
@@ -6204,8 +6210,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "🔵 COGNITION",
+        "url": "",
+        "title": "Conférence Dartmouth"
+      },
+      {
+        "source": "John McCarthy et al.",
+        "url": "#",
+        "title": "Conférence de Dartmouth (l'IA est nommée)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 64,
@@ -6293,7 +6310,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "310bbeb4401126f2",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -6322,7 +6339,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "310bbeb4401126f2",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -6457,7 +6474,7 @@
     "whoWhat": "🟡 HARDWARE",
     "description": "Le premier circuit intégré, ou puce électronique, est développé.",
     "url": "https://fr.wikipedia.org/wiki/Circuit_int%C3%A9gr%C3%A9",
-    "timestamp": null,
+    "timestamp": "2026-11-13T15:57:06.034675",
     "tipping": false,
     "realYear": null,
     "realLabel": null,
@@ -6465,8 +6482,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "🟡 HARDWARE",
+        "url": "https://fr.wikipedia.org/wiki/Circuit_int%C3%A9gr%C3%A9",
+        "title": "Circuit Intégré"
+      },
+      {
+        "source": "Jack Kilby / Robert Noyce",
+        "url": "#",
+        "title": "Circuit intégré (Kilby/Noyce)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 64,
@@ -6525,7 +6553,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "0141946e0c391731",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -7676,9 +7704,14 @@
         "source": "Kubrick / Clarke",
         "url": "https://fr.wikipedia.org/wiki/2001,_L'Odyssée_de_l'espace",
         "title": "2001, L'Odyssée de l'espace"
+      },
+      {
+        "source": "Arthur C. Clarke",
+        "url": "https://fr.wikipedia.org/wiki/2001,_Odyssée",
+        "title": "2001, Odyssée (HAL 9000)"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 50,
@@ -7737,7 +7770,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "8f5661cdbb2af56f",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -9339,7 +9372,7 @@
     "whoWhat": "NASA (1981)",
     "description": "Premier véhicule orbital réutilisable.",
     "url": "",
-    "timestamp": null,
+    "timestamp": "2026-11-13T15:57:06.034682",
     "tipping": false,
     "realYear": null,
     "realLabel": null,
@@ -9347,8 +9380,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "NASA (1981)",
+        "url": "",
+        "title": "Navette Spatiale"
+      },
+      {
+        "source": "NASA",
+        "url": "#",
+        "title": "Navette spatiale Columbia (1er vol)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 54,
@@ -9409,7 +9453,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "2fc02442489b0b28",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -21173,9 +21217,24 @@
         "source": "Journal du Geek",
         "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQTFdRX2l5QTZoRjlOcFk2TjVId2h5ajNGVjd2VXlWbXlsSkFRNUJ4VTlqbU9RZE5zRG40ZEhVSU5pY2UxcFpERVlSN1pIVzdKYnFnYkZKNVdiUzRxd2c0VHlEa1FnSVVwbTVQM0gyVkp5b05FYmpuMzBfb3pJWW1mZjVmRmhwVzk3U2VVOU9fUndBbnJLcHd3d1RveTdKUE1pcHE1YU0tazhNbmxkUlAzQzZOclNYQWxjWGQxdFUzWjRwREdscTNLUXVOMTE4VE9BMjNabi1nVW55X3BGZ0E?oc=5",
         "title": "Panne Outlook, Teams, Microsoft 365 : ce que l’on sait de la panne mondiale de Microsoft, toujours pas réglée"
+      },
+      {
+        "source": "Le Monde Informatique",
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOU2J1ckJfWGNEREctbWdLQzctZXV4TWlfQkJuOG1Yd2t5UWdsdjRjQ0pyN3NPWnAya2pfallabEwxZ3o3MTNoYjBRajhhbmZkV0NQYndYWjhWUnFyNTJDSDZrempJYngyZjdLTnVvc1diUEx3YmtMMk03ZnJpRWVRNS16c05Hc1ZyZnZjT1JaWFRBd2htU3haSHNOM1plQ0RoSWNlWnBoZ21naFJ5b0VpQ2dn?oc=5",
+        "title": "Panne Microsoft 365 : Outlook et les services cloud se rétablissent progressivement"
+      },
+      {
+        "source": "Euronews.com",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQVG9JeGxNYWtEdFBMUjlxS3l1c3JoYUoyejVPeUM0NnFUSHBpU1BfbG9HY2RPSEJJM3hrYU04RGdYSU9peVNYN285d0RMN0doM0tJcXdaSzcyM3lHMmpIN0xMZzFmY25Dd2d4X0U5N21uMU1udG9mbVI0Yy1JNE1ZdV9Ld2tXenFRRnJIQ1VPV1FraWphZkZpWFM4elE3TWltOC12R1pB?oc=5",
+        "title": "Panne chez Microsoft : Outlook, Teams et 365 inaccessibles dans 74 pays"
+      },
+      {
+        "source": "Libération",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPVFJlbFRPRHNrSnFIMU85SHFrTU5aMk5DUzg4MkNsc1lFV2lrVHRpZ2NoQi1ZTkROa3NHVGFadjhjT2lXc3BUT0tMZkVlR3FnMnRZc3VTSW52bEh4LWNUNmxjT0ZBVVBIRUZoSW9KTE9xblItVFAtUTM4R25FS3kwU1UtLUEwb3hCR3dpQjF2ZmFRMHZJNVFTV3BJMEFBX0VVX2s2Ti1yTF80RkRmb3RFMWJVMHE1TVRFZDlRanNNWFFfcm8?oc=5",
+        "title": "Panne d’Outlook : Microsoft annonce une reprise partielle"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 6,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
@@ -21263,7 +21322,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "6a50e71e939a4b32",
     "s_curve_phase": 3,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -21437,7 +21496,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "6a50e71e939a4b32",
     "s_curve_phase": 2,
     "remedy_percent": 63,
     "poison_percent": 37,
@@ -21466,7 +21525,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "6a50e71e939a4b32",
     "s_curve_phase": 3,
     "remedy_percent": 58,
     "poison_percent": 42,
@@ -21495,7 +21554,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "6a50e71e939a4b32",
     "s_curve_phase": 1,
     "remedy_percent": 73,
     "poison_percent": 27,
