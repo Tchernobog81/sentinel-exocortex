@@ -1,0 +1,14 @@
+{
+  "name": "sentinel-exocortex-db",
+  "version": "2.9.0",
+  "private": true,
+  "description": "THE LOOM — base hybride locale SQLite + vecteurs (better-sqlite3 + sqlite-vec) : source de vérité historique, export lissé loom_data.json pour le PWA/Pages",
+  "scripts": {
+    "migrate": "node db/migrate_from_json.js",
+    "export": "node db/export_snapshot.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "sqlite-vec": "^0.1.7"
+  }
+}

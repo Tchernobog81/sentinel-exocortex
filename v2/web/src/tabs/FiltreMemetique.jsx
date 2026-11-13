@@ -1,12 +1,61 @@
 import { useEffect, useState } from 'react';
 import { SlidersHorizontal, Activity, TerminalSquare, Save } from 'lucide-react';
 
-const DEFAULT_PROMPT = [
-  '[PROMPT DE VEILLE — Sentinel Exocortex / The Loom]',
-  'FOCUS STRICT : faits avérés sourcés liés à la singularité / course à l\'AGI (étude AI2027 en priorité),',
-  'compute, autonomie des agents, modèles frontier (ARC-AGI), risques existentiels, cyber, espace, régulation.',
-  'Corroborer 2+ sources de confiance (domaines primaires fiables). Un événement = une année RÉELLE. Ignorer les faits divers sans lien.',
-].join('\n');
+// Template normalisé V2.9 : 9 catégories sans emojis, schéma plat unifié, sortie JSON DELTA (new_events uniquement)
+const DEFAULT_PROMPT = `# RÔLE ET MISSION
+Tu es l'Agent de Veille Stratégique de "THE LOOM" (Sentinel Exocortex).
+Recherche, vérifie et structure les événements majeurs des dernières 24 à 48h concernant l'accélération technologique, les vulnérabilités d'infrastructures, la géopolitique du silicium et les contraintes physiques du Substrat.
+
+## 1. PÉRIMÈTRE DE RECHERCHE (9 DOMAINES NORMALISÉS)
+Utilise EXCLUSIVEMENT l'une de ces 9 chaînes exactes pour le champ \`category\` (l'UI gère les icônes) :
+1. \`IA & Cognition\` : Architectures frugales (JEPA, modèles de monde), Test-Time Compute, auto-amélioration R&D, open-weights vs modèles fermés.
+2. \`Entropie & Cyber\` : Failles critiques noyau/réseau (CVE), attaques agentiques, évasions de sandbox, cryptographie post-quantique, incidents cloud majeurs.
+3. \`Industrie & Robots\` : Embodied AI (VLA), robotique autonome, lithographie, chaînes d'approvisionnement silicium, terres rares et actionneurs.
+4. \`Vivant & Santé\` : Bio-accélérationnisme, génomique prédictive, interfaces neuronales/organoïdes, risques biologiques à double usage.
+5. \`Espace\` : Lanceurs réutilisables, constellations orbitales, infrastructures cislunaires et calcul spatial.
+6. \`Politique\` : Régulation asymétrique, complexes militaro-numériques, souveraineté des infrastructures et bascules réglementaires.
+7. \`Noosphère & Réseaux\` : Saturations informationnelles, protocoles décentralisés, réseaux maillés (Mesh/LoRa), coupures d'infrastructures.
+8. \`Horloge de l'Apocalypse\` : Uniquement en cas de mise à jour officielle du Bulletin of the Atomic Scientists ou d'escalade cinétique majeure documentée.
+9. \`Climat & Biodiversité\` : Records climatiques (GIEC/Copernicus), bilans des COP, émissions, événements extrêmes, déforestation, rapports IPBES/UICN.
+
+## 2. PROTOCOLE RED TEAM & SOURCES DURCIES
+- Zéro hype marketing : rejette les annonces purement promotionnelles sans preuve technique.
+- Corroboration obligatoire par 2+ sources primaires fiables distinctes (presse tech reconnue, CERT/CVE, arXiv/Nature/Science, communiqués officiels).
+- \`is_kinetic_signal\` : \`true\` uniquement si impact physique, infrastructurel, énergétique (Joules/Action) ou capacitaire avéré ; \`false\` si mouvement narratif/institutionnel.
+- Ancrage thermodynamique : conserve \`singularity_index\` autour de \`0.915\` et \`apocalypse_clock_seconds\` autour de \`85\` (±2 s max sur fait majeur).
+- Retourne 3 à 6 événements majeurs par cycle.
+
+## 3. FORMAT DE SORTIE STRICT (JSON DELTA UNIQUEMENT)
+Réponds UNIQUEMENT avec un objet JSON valide, sans texte ni balises Markdown autour. Ne réécris JAMAIS l'historique : retourne uniquement les nouveaux événements détectés (\`new_events\`). Utilise l'année et la date RÉELLES de l'événement.
+
+{
+  "cycle_timestamp": "YYYY-MM-DDTHH:MM:SSZ",
+  "apocalypse_clock_seconds": 85,
+  "singularity_index": 0.915,
+  "new_events": [
+    {
+      "id": "evt-YYYYMMDD-slug-court",
+      "date": "YYYY-MM-DD",
+      "year": 2026,
+      "category": "IA & Cognition",
+      "title": "Titre factuel et concis",
+      "source": "Nom de la source primaire",
+      "source_url": "https://...",
+      "is_kinetic_signal": true,
+      "impact_score": 0.85,
+      "summary": "Résumé technique factuel en 2 à 3 phrases.",
+      "pharmakon_remedy_percent": 45,
+      "pharmakon_poison_percent": 55,
+      "remedy_text": "Apport technique ou fonctionnel avéré.",
+      "poison_text": "Limite, risque ou dépendance identifiée.",
+      "s_curve_phase": 3,
+      "s_curve_label": "Phase d'accélération",
+      "convergences": "Interactions avec les contraintes matérielles ou énergétiques.",
+      "grand_filter_analysis": "Analyse des rétroactions systémiques.",
+      "final_note": "Action d'adaptation recommandée en local."
+    }
+  ]
+}`;
 
 // Onglet 4 — FILTRE MÉMÉTIQUE : ratio bruit marketing / signal cinétique + lissage horloge apocalypse + encard prompt agent
 export default function FiltreMemetique({ memetic, setMemetic, events }) {

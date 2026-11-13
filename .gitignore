@@ -60,3 +60,8 @@ loom_backups/
 *.lock
 *.tmp
 .push_agent.lockdir/
+
+# Base hybride locale (binaire, non versionnée)
+data/
+node_modules/
+package-lock.json

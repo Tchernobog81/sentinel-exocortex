@@ -4,7 +4,7 @@ import fastifyStatic from '@fastify/static';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { ROOT, DATA_FILE, buildEnvelope, readEvents, telemetry, ragStatus, purgeVram } from './lib.mjs';
+import { ROOT, DATA_FILE, buildEnvelope, readEvents, telemetry, ragStatus, purgeVram, ingestEvents } from './lib.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const WEB_DIST = path.resolve(__dirname, '..', 'web', 'dist');
@@ -22,6 +22,13 @@ app.addHook('onRequest', (req, reply, done) => {
 
 app.get('/api/data', async () => buildEnvelope());
 app.get('/api/events', async () => readEvents());
+// Ingestion DELTA (sentinel) : dédup stricte id/source_url + sémantique (vecteurs, 7j, sim>0.88) -> loom.db
+app.post('/api/events', async (req) => {
+  const events = Array.isArray(req.body) ? req.body : (req.body?.new_events || []);
+  const r = await ingestEvents(events);
+  app.log.info({ added: r.added, updated: r.updated, duplicates: r.duplicates?.length }, 'INGEST delta');
+  return r;
+});
 app.get('/api/telemetry', async () => telemetry());
 app.get('/api/rag', async () => ragStatus());
 app.post('/api/purge', async () => { const r = await purgeVram(); app.log.info({ actions: r.actions }, 'PURGE VRAM'); return r; });

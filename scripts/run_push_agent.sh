@@ -23,6 +23,8 @@ while true; do
   BEFORE=$(cat loom_data.json telemetry.json rag.json scan_heartbeat.json 2>/dev/null | git hash-object --stdin 2>/dev/null || echo none)
   echo "[$(date +%H:%M:%S)] Cycle sentinel..."
   (cd sentinel && BACKEND_URL="${BACKEND_URL:-http://127.0.0.1:8000/api/data}" ANALYSIS_MODE=llm "$PY" sentinel.py >> "$ROOT/sentinel_push.log" 2>&1)
+  # V2.9 : régénère l'export lissé loom_data.json depuis loom.db (bucketing horloge 1/jour + EMA + raw)
+  node db/export_snapshot.js >> "$ROOT/sentinel_push.log" 2>&1 || true
   AFTER=$(cat loom_data.json telemetry.json rag.json scan_heartbeat.json 2>/dev/null | git hash-object --stdin 2>/dev/null || echo none)
   if [ "$BEFORE" != "$AFTER" ]; then
     git add loom_data.json telemetry.json rag.json scan_heartbeat.json

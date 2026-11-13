@@ -38,6 +38,9 @@ load_dotenv()
 
 # --- Configuration ---
 BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:8000/api/data")
+# V2.9 : ingestion DELTA vers le serveur Node (loom.db SQLite+vecteurs) en priorité, fallback backend Python
+EVENTS_URL = os.environ.get("EVENTS_URL", "http://127.0.0.1:8787/api/events")
+DATA_V2_URL = os.environ.get("DATA_V2_URL", "http://127.0.0.1:8787/api/data")
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_DATA_FILE = os.environ.get("LOCAL_DATA_FILE", str(PROJECT_ROOT / "loom_data.json"))
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", 3600))
@@ -339,7 +342,7 @@ def _parse_analysis_json(content: str) -> Optional[Dict[str, Any]]:
         phase = max(1, min(5, phase))
         remedy = int(data.get("pharmakon_remedy_percent", 50))
         remedy = max(0, min(100, remedy))
-        return {
+        out = {
             "s_curve_phase": phase,
             "pharmakon_remedy_percent": remedy,
             "pharmakon_poison_percent": 100 - remedy,  # un seul tirage : somme = 100
@@ -347,8 +350,37 @@ def _parse_analysis_json(content: str) -> Optional[Dict[str, Any]]:
             "grand_filter_analysis": str(data.get("grand_filter_analysis", "")) or "Impact systémique à surveiller.",
             "final_note": str(data.get("final_note", "")) or "Le futur est décidément mal écrit.",
         }
+        # Schéma delta normalisé (prompt V2.9) : champs plats enrichis transmis tels quels
+        for k in ("title", "source", "source_url", "date", "summary", "category",
+                  "is_kinetic_signal", "impact_score", "remedy_text", "poison_text", "s_curve_label"):
+            if data.get(k) is not None:
+                out[k] = data[k]
+        return out
     except Exception:
         return None
+
+
+# Prompt V2.9 : 9 catégories normalisées sans emojis (l'UI gère les icônes) -> catégories internes emoji
+NORMAL_CAT_TO_EMOJI = {
+    "IA & Cognition": "🔵 COGNITION",
+    "Entropie & Cyber": "☢️ ENTROPIE",
+    "Industrie & Robots": "🤖 ROBOTIQUE",
+    "Vivant & Santé": "🟢 BIOTECH",
+    "Espace": "🟣 ESPACE",
+    "Politique": "🏛️ POLITIQUE",
+    "Noosphère & Réseaux": "✨ NOOSPHÈRE",
+    "Horloge de l'Apocalypse": "⏰ HORLOGE",
+    "Climat & Biodiversité": "🌡️ CLIMAT",
+}
+
+
+def normalize_category(cat: Any) -> str:
+    if not isinstance(cat, str) or not cat:
+        return "🔴 RÉSEAU"
+    if cat in NORMAL_CAT_TO_EMOJI:
+        return NORMAL_CAT_TO_EMOJI[cat]
+    # déjà une catégorie emoji (ou inconnue) : on garde tel quel si préfixe emoji, sinon défaut
+    return cat if any(ord(ch) > 0x2190 for ch in cat[:4]) else "🔴 RÉSEAU"
 
 
 def research_and_analyze(title: str, summary: str, url: str, source: str) -> Optional[Dict[str, Any]]:
@@ -617,6 +649,104 @@ def scan_google_news_rss(max_events: int = 6) -> List[Dict[str, Any]]:
     return events
 
 
+def delta_item_to_event(item: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    """Convertit un item du JSON delta normalisé (prompt V2.9) en événement interne Loom."""
+    title = clean_text(str(item.get("title", "")))
+    if not title:
+        return None
+    url = str(item.get("source_url") or "") or "#"
+    source = clean_text(str(item.get("source") or "")) or "Veille LLM"
+    date_str = str(item.get("date") or "") or datetime.date.today().isoformat()
+    year = item.get("year")
+    if year is None:
+        try:
+            year = float(date_str[:4]) + (int(date_str[5:7]) - 1) / 12
+        except Exception:
+            year = float(datetime.date.today().year)
+    year = round(float(year), 3)
+    analysis = _parse_analysis_json(json.dumps(item)) or {}
+    passthrough = ("title", "source", "source_url", "date", "summary", "category",
+                   "is_kinetic_signal", "impact_score", "remedy_text", "poison_text", "s_curve_label")
+    seed_val = zlib.crc32(title.encode("utf-8"))
+    random.seed(seed_val)
+    value = random.randint(20000, 50000)
+    random.seed()
+    ev = {
+        "year": year,
+        "value": value,
+        "label": title,
+        "category": normalize_category(item.get("category")),
+        "whoWhat": source,
+        "description": clean_text(str(item.get("summary") or "")),
+        "url": url,
+        "timestamp": date_str + "T12:00:00",
+        "tipping": bool(item.get("is_kinetic_signal")),
+        "verified": True,
+        "date": date_str,
+        "source_url": url,
+        "impact_score": float(item.get("impact_score") or 0.5),
+        "remedy_text": item.get("remedy_text") or analysis.get("remedy_text"),
+        "poison_text": item.get("poison_text") or analysis.get("poison_text"),
+        "s_curve_label": item.get("s_curve_label") or analysis.get("s_curve_label"),
+        **{k: v for k, v in analysis.items() if k not in passthrough},
+    }
+    return ev
+
+
+def scan_cycle_delta(max_events: int = 6) -> List[Dict[str, Any]]:
+    """V2.9 — Veille LLM en mode DELTA : un seul appel retourne UNIQUEMENT new_events
+    (jamais l'historique, évite toute troncature JSON)."""
+    if ANALYSIS_MODE != "llm":
+        return []
+    logger.info("[SCAN] Veille LLM delta (new_events uniquement)...")
+    today = datetime.date.today()
+    user_msg = (
+        f"Cycle de veille du {today.isoformat()} (fenêtre 24-48h). Retourne UNIQUEMENT l'objet JSON delta : "
+        '{"cycle_timestamp": "...", "apocalypse_clock_seconds": 85, "singularity_index": 0.915, '
+        '"new_events": [ ... ]} — 3 à 6 événements majeurs, 2+ sources primaires fiables, '
+        'catégories parmi les 9 normalisées, date/année RÉELLES de chaque fait.'
+    )
+    custom = load_custom_prompt()
+    system = (custom or SYSTEM_PROMPT) + "\n\nRéponds UNIQUEMENT avec l'objet JSON delta (new_events), sans texte ni balise autour."
+    messages = [{"role": "system", "content": system}, {"role": "user", "content": user_msg}]
+    models = [OLLAMA_MODEL] + [m for m in OLLAMA_FALLBACK_MODELS if m != OLLAMA_MODEL]
+    for model in models:
+        try:
+            for _ in range(MAX_TOOL_ITERATIONS):
+                resp = _ollama_chat(model, messages, with_tools=True)
+                msg = resp.get("message", {})
+                tool_calls = msg.get("tool_calls") or []
+                if tool_calls:
+                    messages.append({"role": "assistant", "content": msg.get("content") or "", "tool_calls": tool_calls})
+                    for call in tool_calls:
+                        result = _execute_tool_call(call)
+                        tm = {"role": "tool", "name": call.get("function", {}).get("name"), "content": result}
+                        if call.get("id"):
+                            tm["tool_call_id"] = call["id"]
+                        messages.append(tm)
+                    continue
+                content = msg.get("content", "")
+                m = re.search(r"\{.*\}", content, re.S)
+                if not m:
+                    return []
+                try:
+                    data = json.loads(m.group(0))
+                except json.JSONDecodeError:
+                    return []
+                new_events = data.get("new_events") or []
+                out = []
+                for item in new_events[:max_events]:
+                    ev = delta_item_to_event(item)
+                    if ev:
+                        out.append(ev)
+                logger.info(f"[LLM Δ] {len(out)} nouveaux événements proposés par {model}")
+                return out
+            logger.warning(f"[LLM Δ] {model}: nombre max d'itérations d'outils atteint, abandon")
+        except Exception as e:
+            logger.warning(f"[LLM Δ] {model} indisponible/erreur: {e}")
+    return []
+
+
 def scan_ai2027() -> Optional[Dict[str, Any]]:
     """Scrutine AI2027 (étude de référence) : récupère le dernier jalon publié et l'analyse."""
     logger.info("[SCAN] Scrutin de AI2027 (ai2027.com)...")
@@ -837,6 +967,30 @@ class APIClient:
             logger.warning(f"[API] heartbeat en échec: {e}")
             return False
 
+    def get_data_v2(self) -> List[Dict[str, Any]]:
+        """GET /api/data du serveur Node V2 (loom.db) : source de vérité hybride."""
+        try:
+            import requests
+            r = requests.get(DATA_V2_URL, timeout=20)
+            r.raise_for_status()
+            j = r.json()
+            return j.get("events", []) if isinstance(j, dict) else j
+        except Exception as e:
+            logger.warning(f"[API] data V2 (loom.db) indisponible: {e}")
+            return []
+
+    def post_delta(self, events: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+        """POST /api/events (Node, loom.db) : ingestion DELTA avec dédup stricte + sémantique (vecteurs).
+        Retourne {added, updated, duplicates} ou None si indisponible (fallback backend Python)."""
+        try:
+            import requests
+            r = requests.post(EVENTS_URL, json=events, timeout=90)
+            r.raise_for_status()
+            return r.json()
+        except Exception as e:
+            logger.warning(f"[API] POST delta V2 en échec: {e}")
+            return None
+
 
 def stamp_heartbeat(total: int = 0, new: int = 0, merged: int = 0, api_client: "APIClient" = None) -> str:
     """Heartbeat de l'agent, appelé à CHAQUE cycle de recherche/analyse (même sans nouvel événement) :
@@ -1002,7 +1156,9 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
     logger.info("=" * 60)
 
     # 1. Récupère les données existantes
-    existing_data = api_client.get_data()
+    existing_data = api_client.get_data_v2()  # V2.9 : loom.db (SQLite+vecteurs) d'abord
+    if not existing_data:
+        existing_data = api_client.get_data()
     if not existing_data:
         existing_data = storage.load()
         logger.info(f"[CYCLE] Fallback stockage local: {len(existing_data)} événements")
@@ -1015,6 +1171,7 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
 
     # 2. Scanners — le simulateur n'est actif que si SIMULATOR=1 (le flux doit rester factuel)
     scanners = [
+        ("Veille LLM Δ", scan_cycle_delta),  # V2.9 : delta new_events uniquement
         ("AI2027", scan_ai2027),
         ("Doomsday Clock", scan_doomsday_clock),
         ("Google News RSS", scan_google_news_rss),
@@ -1059,13 +1216,20 @@ def run_sentinel_cycle(api_client: APIClient = None, storage: LocalStorage = Non
         except Exception as e:
             logger.error(f"[CYCLE] ❌ {name}: {e}")
 
-    # 3. Envoi (upsert idempotent) : API d'abord, fallback local
+    # 3. Envoi DELTA : serveur Node V2 (loom.db, dédup stricte + sémantique vecteurs) d'abord,
+    #    fallback backend Python (upsert idempotent par id), puis stockage local
     payload = new_events + updates
     api_ok = False
     if payload:
         logger.info(f"[CYCLE] {len(new_events)} nouveaux événements + {len(updates)} mises à jour (occurrences) à envoyer")
-        if api_client.add_events(payload):
-            logger.info("[CYCLE] ✅ Événements envoyés à l'API (upsert)")
+        delta = api_client.post_delta(payload)
+        if delta is not None:
+            api_ok = True
+            logger.info(f"[CYCLE] ✅ Delta ingéré dans loom.db: +{delta.get('added', 0)} / ~{delta.get('updated', 0)} / {len(delta.get('duplicates') or [])} doublons")
+            for d in (delta.get("duplicates") or [])[:6]:
+                logger.info(f"[CYCLE] 🔗 doublon {d.get('reason')}: {str(d.get('id'))[:10]} -> {str(d.get('of'))[:10]} (sim={d.get('similarity')})")
+        elif api_client.add_events(payload):
+            logger.info("[CYCLE] ✅ Événements envoyés à l'API Python (upsert)")
             api_ok = True
         else:
             added, updated = storage.upsert_events(payload)

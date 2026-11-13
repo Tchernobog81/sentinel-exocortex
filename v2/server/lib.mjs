@@ -46,8 +46,71 @@ export const GROUP_OF = {};
   for (const [c, g] of G) GROUP_OF[c] = g;
 }
 
+// Base hybride locale (SQLite + vecteurs) : source de vérité si data/loom.db existe et est peuplée,
+// sinon fallback sur le fichier loom_data.json (export lissé).
+import { createRequire } from 'node:module';
+const require2 = createRequire(import.meta.url);
+let _db = null;
+function getDb() {
+  if (_db !== null) return _db;
+  try {
+    const mod = require2('../../db/database.js');
+    const c = mod.counts();
+    _db = c.events > 0 ? mod : false;
+  } catch { _db = false; }
+  return _db || null;
+}
 export function readEvents() {
+  const d = getDb();
+  if (d) { try { return d.allEvents(); } catch {} }
   try { return JSON.parse(fs.readFileSync(DATA_FILE, 'utf8')); } catch { return []; }
+}
+
+// Ingestion DELTA avec déduplication stricte (id / source_url) + sémantique (vec_events, 7 jours,
+// similarité cosinus > 0.88 -> occurrence multi-source : on ajoute la source, pas de doublon) +
+// related_ids (2 plus proches sémantiquement) + embedding Ollama local (fallback gracieux sans vecteur).
+export async function ingestEvents(events) {
+  const d = getDb();
+  if (!d) return { ok: false, reason: 'no-db', added: 0, updated: 0, duplicates: [] };
+  const out = { ok: true, added: 0, updated: 0, duplicates: [], related: 0 };
+  for (const e of events || []) {
+    if (!e.id) continue;
+    const byUrl = (e.source_url || e.url) ? d.findBySourceUrl(e.source_url || e.url) : null;
+    const byId = d.getEvent(e.id);
+    if (byUrl && byUrl.id !== e.id) {
+      // doublon strict d'URL -> occurrence de l'existant
+      d.addSource(byUrl.id, { source: e.source || e.whoWhat || '', url: e.source_url || e.url || '', title: e.title || e.label || '', verified: e.verified });
+      e.merged_into = byUrl.id;
+      await d.upsertEvent(e, { embedIt: false });
+      out.duplicates.push({ id: e.id, of: byUrl.id, reason: 'source_url' });
+      continue;
+    }
+    if (byId) {
+      const merged = { ...byId, ...e, id: byId.id };
+      await d.upsertEvent(merged, { embedIt: true });
+      out.updated++;
+      continue;
+    }
+    // dédup sémantique : vecteur local, fenêtre 7 jours, similarité > 0.88
+    const vec = await d.embed(`${e.title || e.label || ''}\n${e.summary || e.description || ''}`);
+    if (vec) {
+      const near = d.semanticSearch(vec, { limit: 5, sinceDays: 7, excludeId: e.id });
+      if (near.length && near[0].similarity > 0.88) {
+        const target = near[0].event_id;
+        d.addSource(target, { source: e.source || e.whoWhat || '', url: e.source_url || e.url || '', title: e.title || e.label || '', verified: e.verified });
+        e.merged_into = target;
+        await d.upsertEvent(e, { embedIt: false });
+        out.duplicates.push({ id: e.id, of: target, reason: 'semantic', similarity: +near[0].similarity.toFixed(3) });
+        continue;
+      }
+      // related_ids : 2 plus proches sémantiquement (toute la base)
+      const rel = d.semanticSearch(vec, { limit: 3, excludeId: e.id }).slice(0, 2).map(r => r.event_id);
+      if (rel.length) { e.related_ids = rel; out.related++; }
+    }
+    await d.upsertEvent(e, { embedIt: true });
+    out.added++;
+  }
+  return out;
 }
 
 export function buildEnvelope() {
@@ -82,6 +145,7 @@ export function buildEnvelope() {
       sources: Array.isArray(e.sources) ? e.sources : null,
       occurrences: e.occurrences ?? null,
       mergedInto: e.merged_into || null,
+      relatedIds: Array.isArray(e.related_ids) ? e.related_ids : null,
       remedy: e.pharmakon_remedy_percent ?? e.remedy_percent ?? 50, poison: e.pharmakon_poison_percent ?? e.poison_percent ?? 50,
       sCurve: e.s_curve_phase ?? 3, convergences: e.convergences || '', grandFilter: e.grand_filter_analysis || '',
     };

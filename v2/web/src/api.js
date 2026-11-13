@@ -76,6 +76,7 @@ export function mapEnvelope(events) {
         sources: Array.isArray(e.sources) ? e.sources : null,
         occurrences: e.occurrences ?? null,
         mergedInto: e.merged_into || null,
+        relatedIds: Array.isArray(e.related_ids) ? e.related_ids : null,
         remedy: e.pharmakon_remedy_percent ?? e.remedy_percent ?? 50, poison: e.pharmakon_poison_percent ?? e.poison_percent ?? 50,
         sCurve: e.s_curve_phase ?? 3, convergences: e.convergences || '', grandFilter: e.grand_filter_analysis || '',
       };
