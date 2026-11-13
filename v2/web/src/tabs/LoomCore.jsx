@@ -501,7 +501,9 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
           itemStyle: { color: g.color, opacity: hidden ? 0 : 0.95, borderColor: '#050508', borderWidth: 1 },
           emphasis: { scale: 1.7 },
           // V2.9.3 : étiquette à la couleur de la courbe, lisible (bord sombre) — réglages officiels
-          label: { show: true, position: 'top', distance: 5, fontSize: 9, fontWeight: 'bold', color: g.color, textBorderColor: 'rgba(9,13,22,0.95)', textBorderWidth: 3, formatter: d => (d[3]?.tipping ? `${String(d[2]).slice(0, 20)}…` : '') },
+          // NB : le formatter ECharts reçoit un objet params, le tableau brut est dans p.data
+          label: { show: true, position: 'top', distance: 5, fontSize: 9, fontWeight: 'bold', color: g.color, textBorderColor: 'rgba(9,13,22,0.95)', textBorderWidth: 3,
+                   formatter: p => { const it = p && Array.isArray(p.data) ? p.data : p; return (it && it[3] && it[3].tipping) ? `${String(it[2]).slice(0, 20)}…` : ''; } },
           labelLayout: { hideOverlap: true },
           data: hidden ? [] : clockEv.map(e => [e.year, emaAt(e.year), e.title, e]),
         });
@@ -525,10 +527,12 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         // le libellé que pour les POI sélectionnés (labeled) -> densité maîtrisée.
         label: { show: true, position: 'top', distance: 5, fontSize: 9, fontWeight: 'bold', color: g.color,
                  textBorderColor: 'rgba(9,13,22,0.95)', textBorderWidth: 3,
-                 formatter: d => {
-                   const ev = d[3];
+                 // NB : le formatter ECharts reçoit un objet params, le tableau brut est dans p.data
+                 formatter: p => {
+                   const it = p && Array.isArray(p.data) ? p.data : p;
+                   const ev = it && it[3];
                    if (!ev || !labeled.has(ev.id)) return '';
-                   const t = String(d[2] || '');
+                   const t = String(it[2] || '');
                    return t.length > 24 ? t.slice(0, 24) + '…' : t;
                  } },
         labelLayout: { hideOverlap: true },
