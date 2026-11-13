@@ -56,8 +56,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Sumer (anonyme)",
+        "url": "#",
+        "title": "Épopée de Gilgamesh"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 50,
@@ -68,10 +74,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "-2100-06-0",
-    "title": "Épopée de Gilgamesh",
-    "source": "Sumer (anonyme)",
-    "source_url": "#",
-    "summary": "Premier récit écrit connu : Gilgamesh cherche la vie éternelle et échoue — la quête d'immortalité hante l'humanité depuis l'écriture.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -79,7 +81,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Épopée de Gilgamesh",
+    "source": "Sumer (anonyme)",
+    "source_url": "#",
+    "summary": "Premier récit écrit connu : Gilgamesh cherche la vie éternelle et échoue — la quête d'immortalité hante l'humanité depuis l'écriture."
   },
   {
     "id": "d236d705422c87da",
@@ -655,10 +661,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "60-06-01T0",
-    "title": "Æolipile (machine à vapeur de Héron)",
-    "source": "Héron d'Alexandrie",
-    "source_url": "https://fr.wikipedia.org/wiki/Æolipile",
-    "summary": "Première machine à vapeur documentée, restée sans application industrielle.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -666,7 +668,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Æolipile (machine à vapeur de Héron)",
+    "source": "Héron d'Alexandrie",
+    "source_url": "https://fr.wikipedia.org/wiki/Æolipile",
+    "summary": "Première machine à vapeur documentée, restée sans application industrielle."
   },
   {
     "id": "22cad31b90a64f3f",
@@ -686,7 +692,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "d84b3cd87505c68f",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 1,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -696,10 +702,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "60-06-01T0",
-    "title": "Æolipile (Héron d'Alexandrie)",
-    "source": "Héron d'Alexandrie",
-    "source_url": null,
-    "summary": "Première machine à vapeur documentée.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -707,7 +709,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Æolipile (Héron d'Alexandrie)",
+    "source": "Héron d'Alexandrie",
+    "source_url": null,
+    "summary": "Première machine à vapeur documentée."
   },
   {
     "id": "f8f05cc839790879",
@@ -1035,10 +1041,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1000-06-01",
-    "title": "Boussole (Chine)",
-    "source": "Alchimistes chinois",
-    "source_url": "https://fr.wikipedia.org/wiki/Boussole",
-    "summary": "Aiguille aimantée : navigation maritime et exploration mondiale.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -1046,7 +1048,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Boussole (Chine)",
+    "source": "Alchimistes chinois",
+    "source_url": "https://fr.wikipedia.org/wiki/Boussole",
+    "summary": "Aiguille aimantée : navigation maritime et exploration mondiale."
   },
   {
     "id": "769fa7908d499b64",
@@ -1066,7 +1072,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "cdf4bc8fd1349f57",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 1,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -1076,10 +1082,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1000-06-01",
-    "title": "Boussole magnétique (Chine)",
-    "source": "Alchimistes chinois",
-    "source_url": null,
-    "summary": "Navigation de précision.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -1087,7 +1089,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Boussole magnétique (Chine)",
+    "source": "Alchimistes chinois",
+    "source_url": null,
+    "summary": "Navigation de précision."
   },
   {
     "id": "fde99673f9ce4af7",
@@ -1154,7 +1160,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 1,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -1164,10 +1170,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1180-06-01",
-    "title": "Moulin à vent (Europe)",
-    "source": "Croisés / ingénieurs européens",
-    "source_url": null,
-    "summary": "Moulin à vent à axe horizontal : mécanisation de la mouture.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -1175,7 +1177,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Moulin à vent (Europe)",
+    "source": "Croisés / ingénieurs européens",
+    "source_url": null,
+    "summary": "Moulin à vent à axe horizontal : mécanisation de la mouture."
   },
   {
     "id": "301bed09e6ef1d17",
@@ -1195,7 +1201,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "3663a618b9373b51",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 1,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -1205,10 +1211,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1180-06-01",
-    "title": "Moulin à vent horizontal (Europe)",
-    "source": "Croisés",
-    "source_url": null,
-    "summary": "Mécanisation agricole européenne.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -1216,7 +1218,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Moulin à vent horizontal (Europe)",
+    "source": "Croisés",
+    "source_url": null,
+    "summary": "Mécanisation agricole européenne."
   },
   {
     "id": "34000a3bd094d342",
@@ -1439,8 +1445,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Johannes Gutenberg",
+        "url": "https://fr.wikipedia.org/wiki/Imprimerie",
+        "title": "Imprimerie à caractères mobiles"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 60,
@@ -1451,10 +1463,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1440-06-01",
-    "title": "Imprimerie à caractères mobiles",
-    "source": "Johannes Gutenberg",
-    "source_url": "https://fr.wikipedia.org/wiki/Imprimerie",
-    "summary": "Diffusion de masse du savoir écrit en Europe.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -1462,7 +1470,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Imprimerie à caractères mobiles",
+    "source": "Johannes Gutenberg",
+    "source_url": "https://fr.wikipedia.org/wiki/Imprimerie",
+    "summary": "Diffusion de masse du savoir écrit en Europe."
   },
   {
     "id": "4a3f5a16ca675a9d",
@@ -1529,7 +1541,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "e5b3d6761dffbeaf",
     "s_curve_phase": 1,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -1539,10 +1551,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2026-11-13",
-    "title": "Imprimerie",
-    "source": "Industrie / institutions",
-    "source_url": null,
-    "summary": "Invention de l'imprimerie à caractères mobiles, révolutionnant la diffusion du savoir.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -1550,7 +1558,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Imprimerie",
+    "source": "Industrie / institutions",
+    "source_url": null,
+    "summary": "Invention de l'imprimerie à caractères mobiles, révolutionnant la diffusion du savoir."
   },
   {
     "id": "004d95cdbd7a1e1b",
@@ -1570,7 +1582,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "e1b207bd3ac13b6b",
+    "merged_into": "e5b3d6761dffbeaf",
     "s_curve_phase": 1,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -1580,10 +1592,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2025-01-01",
-    "title": "Imprimerie",
-    "source": "Johannes Gutenberg",
-    "source_url": null,
-    "summary": "Invention de l'imprimerie à caractères mobiles, révolutionnant la diffusion du savoir.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -1591,7 +1599,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Imprimerie",
+    "source": "Johannes Gutenberg",
+    "source_url": null,
+    "summary": "Invention de l'imprimerie à caractères mobiles, révolutionnant la diffusion du savoir."
   },
   {
     "id": "f1b1fb522398e111",
@@ -1796,10 +1808,6 @@
     "pharmakon_remedy_percent": 80,
     "pharmakon_poison_percent": 20,
     "date": "1543-06-01",
-    "title": "De humani corporis fabrica (anatomie moderne)",
-    "source": "André Vésale",
-    "source_url": "https://fr.wikipedia.org/wiki/André_Vésale",
-    "summary": "Réfutation des erreurs de Galien par dissection : naissance de l'anatomie moderne.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -1807,7 +1815,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "De humani corporis fabrica (anatomie moderne)",
+    "source": "André Vésale",
+    "source_url": "https://fr.wikipedia.org/wiki/André_Vésale",
+    "summary": "Réfutation des erreurs de Galien par dissection : naissance de l'anatomie moderne."
   },
   {
     "id": "64b2d5a144eeef2a",
@@ -1827,7 +1839,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "d9d5afd8df537db7",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 1,
     "remedy_percent": 30,
     "poison_percent": 70,
@@ -1837,10 +1849,6 @@
     "pharmakon_remedy_percent": 30,
     "pharmakon_poison_percent": 70,
     "date": "1543-06-01",
-    "title": "De humani corporis fabrica (Vésale)",
-    "source": "André Vésale",
-    "source_url": null,
-    "summary": "Anatomie moderne par dissection : réfutation de Galien.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -1848,7 +1856,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "De humani corporis fabrica (Vésale)",
+    "source": "André Vésale",
+    "source_url": null,
+    "summary": "Anatomie moderne par dissection : réfutation de Galien."
   },
   {
     "id": "a2197af42181c013",
@@ -2258,10 +2270,6 @@
     "pharmakon_remedy_percent": 59,
     "pharmakon_poison_percent": 41,
     "date": "2026-11-13",
-    "title": "Machine à Vapeur",
-    "source": "Industrie / laboratoires",
-    "source_url": "https://fr.wikipedia.org/wiki/Machine_%C3%A0_vapeur",
-    "summary": "Invention par laquelle James Watt améliore la précision et l'efficacité des machines à feu, rendant possible la révolution industrielle.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -2269,7 +2277,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Machine à Vapeur",
+    "source": "Industrie / laboratoires",
+    "source_url": "https://fr.wikipedia.org/wiki/Machine_%C3%A0_vapeur",
+    "summary": "Invention par laquelle James Watt améliore la précision et l'efficacité des machines à feu, rendant possible la révolution industrielle."
   },
   {
     "id": "b8e3ffeb130b6321",
@@ -2289,7 +2301,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "794ac79dd98b79b6",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 1,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -2299,10 +2311,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1712-06-01",
-    "title": "Machine à vapeur atmosphérique (Newcomen)",
-    "source": "Thomas Newcomen",
-    "source_url": null,
-    "summary": "Première machine à vapeur industrielle (pompage des mines).",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -2310,7 +2318,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Machine à vapeur atmosphérique (Newcomen)",
+    "source": "Thomas Newcomen",
+    "source_url": null,
+    "summary": "Première machine à vapeur industrielle (pompage des mines)."
   },
   {
     "id": "9f3f9743ff0abc1f",
@@ -2541,7 +2553,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 1,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -2551,10 +2563,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1769-06-01",
-    "title": "Machine à vapeur (Watt)",
-    "source": "James Watt",
-    "source_url": null,
-    "summary": "Condenseur séparé : la vapeur devient moteur universel.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -2562,7 +2570,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Machine à vapeur (Watt)",
+    "source": "James Watt",
+    "source_url": null,
+    "summary": "Condenseur séparé : la vapeur devient moteur universel."
   },
   {
     "id": "e69029b3518e1e51",
@@ -2582,7 +2594,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "71ffd2d7ad8a4ddc",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -2592,10 +2604,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1769-06-01",
-    "title": "Machine à vapeur à condenseur (Watt)",
-    "source": "James Watt",
-    "source_url": null,
-    "summary": "Rendement x3 : moteur universel.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -2603,7 +2611,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Machine à vapeur à condenseur (Watt)",
+    "source": "James Watt",
+    "source_url": null,
+    "summary": "Rendement x3 : moteur universel."
   },
   {
     "id": "ed9472582325b3b4",
@@ -2875,7 +2887,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 1,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -2885,10 +2897,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1804-06-01",
-    "title": "Locomotive à vapeur (Trevithick)",
-    "source": "Richard Trevithick",
-    "source_url": null,
-    "summary": "Première locomotive ferroviaire.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -2896,7 +2904,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Locomotive à vapeur (Trevithick)",
+    "source": "Richard Trevithick",
+    "source_url": null,
+    "summary": "Première locomotive ferroviaire."
   },
   {
     "id": "955cd30771a47ec2",
@@ -2916,7 +2928,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "58af458369ee2eba",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -2926,10 +2938,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1804-06-01",
-    "title": "Locomotive (Trevithick)",
-    "source": "Richard Trevithick",
-    "source_url": null,
-    "summary": "Chemin de fer naissant.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -2937,7 +2945,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Locomotive (Trevithick)",
+    "source": "Richard Trevithick",
+    "source_url": null,
+    "summary": "Chemin de fer naissant."
   },
   {
     "id": "49ec6e485294f54b",
@@ -3374,7 +3386,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 1,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -3384,10 +3396,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1839-06-01",
-    "title": "Photographie (daguerréotype)",
-    "source": "Louis Daguerre",
-    "source_url": null,
-    "summary": "Première image photographique fixée.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -3395,7 +3403,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Photographie (daguerréotype)",
+    "source": "Louis Daguerre",
+    "source_url": null,
+    "summary": "Première image photographique fixée."
   },
   {
     "id": "d0e6aa972fb513e6",
@@ -3415,7 +3427,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "38a2ad6e7f1df213",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -3425,10 +3437,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1839-06-01",
-    "title": "Daguerréotype",
-    "source": "Louis Daguerre",
-    "source_url": null,
-    "summary": "Image fixe.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -3436,7 +3444,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Daguerréotype",
+    "source": "Louis Daguerre",
+    "source_url": null,
+    "summary": "Image fixe."
   },
   {
     "id": "a3dab00412e4b866",
@@ -3503,7 +3515,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 1,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -3513,10 +3525,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1844-06-01",
-    "title": "Télégraphe électrique (Morse)",
-    "source": "Samuel Morse",
-    "source_url": null,
-    "summary": "Première ligne longue distance : « What hath God wrought ».",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -3524,7 +3532,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Télégraphe électrique (Morse)",
+    "source": "Samuel Morse",
+    "source_url": null,
+    "summary": "Première ligne longue distance : « What hath God wrought »."
   },
   {
     "id": "e74878a055de41da",
@@ -3585,7 +3597,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "8c91e0898f57cf89",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -3595,10 +3607,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1844-06-01",
-    "title": "Moteur électrique (Jacobi)",
-    "source": "Moritz von Jacobi",
-    "source_url": null,
-    "summary": "Moteur électrique alimenté par piles.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -3606,7 +3614,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Moteur électrique (Jacobi)",
+    "source": "Moritz von Jacobi",
+    "source_url": null,
+    "summary": "Moteur électrique alimenté par piles."
   },
   {
     "id": "5303a89b3394c837",
@@ -3649,10 +3661,6 @@
     "pharmakon_remedy_percent": 80,
     "pharmakon_poison_percent": 20,
     "date": "1846-06-01",
-    "title": "Anesthésie générale (éther)",
-    "source": "William Morton",
-    "source_url": "https://fr.wikipedia.org/wiki/Anesthésie",
-    "summary": "Première chirurgie sans douleur : la douleur n'est plus une fatalité opératoire.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -3660,7 +3668,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Anesthésie générale (éther)",
+    "source": "William Morton",
+    "source_url": "https://fr.wikipedia.org/wiki/Anesthésie",
+    "summary": "Première chirurgie sans douleur : la douleur n'est plus une fatalité opératoire."
   },
   {
     "id": "c274571f065728a2",
@@ -3680,7 +3692,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "5303a89b3394c837",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -3690,10 +3702,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1846-06-01",
-    "title": "Anesthésie générale (Morton, éther)",
-    "source": "William Morton",
-    "source_url": null,
-    "summary": "Chirurgie sans douleur.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -3701,7 +3709,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Anesthésie générale (Morton, éther)",
+    "source": "William Morton",
+    "source_url": null,
+    "summary": "Chirurgie sans douleur."
   },
   {
     "id": "16b0762f43fdd449",
@@ -4343,7 +4355,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 1,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -4353,10 +4365,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1879-06-01",
-    "title": "Ampoule à incandescence (Edison)",
-    "source": "Thomas Edison",
-    "source_url": null,
-    "summary": "Éclairage électrique domestique.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -4364,7 +4372,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Ampoule à incandescence (Edison)",
+    "source": "Thomas Edison",
+    "source_url": null,
+    "summary": "Éclairage électrique domestique."
   },
   {
     "id": "d4f95d2bed4d5caf",
@@ -4384,7 +4396,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "062ef45dc006bfcb",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -4394,10 +4406,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1879-06-01",
-    "title": "Ampoule à filament de carbone (Edison/Swan)",
-    "source": "Edison / Swan",
-    "source_url": null,
-    "summary": "Éclairage électrique durable.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -4405,7 +4413,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Ampoule à filament de carbone (Edison/Swan)",
+    "source": "Edison / Swan",
+    "source_url": null,
+    "summary": "Éclairage électrique durable."
   },
   {
     "id": "2f6f3421bdbec13c",
@@ -4513,7 +4525,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 1,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -4523,10 +4535,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1886-06-01",
-    "title": "Automobile (Benz Patent-Motorwagen)",
-    "source": "Karl Benz",
-    "source_url": null,
-    "summary": "Premier véhicule à moteur à combustion.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -4534,7 +4542,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Automobile (Benz Patent-Motorwagen)",
+    "source": "Karl Benz",
+    "source_url": null,
+    "summary": "Premier véhicule à moteur à combustion."
   },
   {
     "id": "22900917851508fb",
@@ -4554,7 +4566,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "7666fea8de0682aa",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -4564,10 +4576,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1886-06-01",
-    "title": "Automobile (Benz)",
-    "source": "Karl Benz",
-    "source_url": null,
-    "summary": "Moteur à combustion mobile.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -4575,7 +4583,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Automobile (Benz)",
+    "source": "Karl Benz",
+    "source_url": null,
+    "summary": "Moteur à combustion mobile."
   },
   {
     "id": "4ba6c0f3b3805745",
@@ -5531,7 +5543,7 @@
     "label": "Première radio commerciale (KDKA)",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Westinghouse",
-    "description": "Médias de masse.",
+    "description": "Un média de masse dans chaque foyer.",
     "url": "#",
     "timestamp": "1920-06-01T00:00:00",
     "tipping": false,
@@ -5540,9 +5552,15 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
-    "merged_into": null,
+    "sources": [
+      {
+        "source": "Westinghouse",
+        "url": "#",
+        "title": "Première radio commerciale (KDKA)"
+      }
+    ],
+    "occurrences": 1,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -5552,10 +5570,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1920-06-01",
-    "title": "Première radio commerciale (KDKA)",
-    "source": "Westinghouse",
-    "source_url": null,
-    "summary": "Médias de masse.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -5563,7 +5577,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Première radio commerciale (KDKA)",
+    "source": "Westinghouse",
+    "source_url": null,
+    "summary": "Médias de masse."
   },
   {
     "id": "683126aa278b84ca",
@@ -5583,7 +5601,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -5593,10 +5611,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1920-06-01",
-    "title": "Radio commerciale",
-    "source": "KDKA Pittsburgh",
-    "source_url": null,
-    "summary": "Un média de masse dans chaque foyer.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -5604,7 +5618,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Radio commerciale",
+    "source": "KDKA Pittsburgh",
+    "source_url": null,
+    "summary": "Un média de masse dans chaque foyer."
   },
   {
     "id": "b41bc2376691ceae",
@@ -5624,7 +5642,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -5634,10 +5652,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1920-06-01",
-    "title": "Première émission radio régulière (KDKA)",
-    "source": "Westinghouse",
-    "source_url": null,
-    "summary": "Média de masse en temps réel.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -5645,7 +5659,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Première émission radio régulière (KDKA)",
+    "source": "Westinghouse",
+    "source_url": null,
+    "summary": "Média de masse en temps réel."
   },
   {
     "id": "03a27afa91f585fd",
@@ -5886,10 +5904,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1927-06-01",
-    "title": "Metropolis",
-    "source": "Fritz Lang",
-    "source_url": "https://fr.wikipedia.org/wiki/Metropolis",
-    "summary": "Film de science-fiction allemand réalisé par Fritz Lang, explorant les thèmes de la technologie et de la dystopie urbaine.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -5897,7 +5911,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Metropolis",
+    "source": "Fritz Lang",
+    "source_url": "https://fr.wikipedia.org/wiki/Metropolis",
+    "summary": "Film de science-fiction allemand réalisé par Fritz Lang, explorant les thèmes de la technologie et de la dystopie urbaine."
   },
   {
     "id": "a2541ba556c3192d",
@@ -5968,10 +5986,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1927-06-01",
-    "title": "Metropolis (robot Maria)",
-    "source": "Fritz Lang",
-    "source_url": null,
-    "summary": "Le robot humanoïde de Metropolis préfigure les androïdes modernes.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -5979,7 +5993,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Metropolis (robot Maria)",
+    "source": "Fritz Lang",
+    "source_url": null,
+    "summary": "Le robot humanoïde de Metropolis préfigure les androïdes modernes."
   },
   {
     "id": "a28f5453b2d75190",
@@ -6070,7 +6088,7 @@
     "label": "Pénicilline",
     "category": "🟢 BIOTECH",
     "whoWhat": "Alexander Fleming",
-    "description": "Découverte du premier antibiotique, révolutionnant la médecine.",
+    "description": "Premier antibiotique : l'ère des infections bactériennes traitables s'ouvre.",
     "url": "",
     "timestamp": null,
     "tipping": false,
@@ -6079,8 +6097,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Alexander Fleming",
+        "url": "",
+        "title": "Pénicilline"
+      },
+      {
+        "source": "Alexander Fleming",
+        "url": "https://fr.wikipedia.org/wiki/Pénicilline",
+        "title": "Pénicilline (Fleming)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 77,
@@ -6091,10 +6120,6 @@
     "pharmakon_remedy_percent": 77,
     "pharmakon_poison_percent": 23,
     "date": null,
-    "title": "Pénicilline",
-    "source": "Alexander Fleming",
-    "source_url": null,
-    "summary": "Découverte du premier antibiotique, révolutionnant la médecine.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -6102,7 +6127,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Pénicilline",
+    "source": "Alexander Fleming",
+    "source_url": null,
+    "summary": "Découverte du premier antibiotique, révolutionnant la médecine."
   },
   {
     "id": "135d5149c622cec5",
@@ -6163,7 +6192,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "714d62a914571c18",
     "s_curve_phase": 3,
     "remedy_percent": 80,
     "poison_percent": 20,
@@ -6173,10 +6202,6 @@
     "pharmakon_remedy_percent": 80,
     "pharmakon_poison_percent": 20,
     "date": "1928-06-01",
-    "title": "Pénicilline (Fleming)",
-    "source": "Alexander Fleming",
-    "source_url": "https://fr.wikipedia.org/wiki/Pénicilline",
-    "summary": "Premier antibiotique : l'ère des infections bactériennes traitables s'ouvre.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -6184,7 +6209,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Pénicilline (Fleming)",
+    "source": "Alexander Fleming",
+    "source_url": "https://fr.wikipedia.org/wiki/Pénicilline",
+    "summary": "Premier antibiotique : l'ère des infections bactériennes traitables s'ouvre."
   },
   {
     "id": "e5b2b504a52a0da6",
@@ -6389,10 +6418,6 @@
     "pharmakon_remedy_percent": 43,
     "pharmakon_poison_percent": 57,
     "date": "2026-11-13",
-    "title": "Le Meilleur des mondes",
-    "source": "Aldous Huxley",
-    "source_url": null,
-    "summary": "Roman de science-fiction d'Aldous Huxley, suggérant un avenir dystopique avec la standardisation de la société.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -6400,7 +6425,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Le Meilleur des mondes",
+    "source": "Aldous Huxley",
+    "source_url": null,
+    "summary": "Roman de science-fiction d'Aldous Huxley, suggérant un avenir dystopique avec la standardisation de la société."
   },
   {
     "id": "884ed28c4782a326",
@@ -6430,10 +6459,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1932-06-01",
-    "title": "Le Meilleur des mondes (eugénisme)",
-    "source": "Aldous Huxley",
-    "source_url": "https://fr.wikipedia.org/wiki/Le_Meilleur_des_mondes",
-    "summary": "Les castes créées en laboratoire préfigurent l'édition génétique.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -6441,7 +6466,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Le Meilleur des mondes (eugénisme)",
+    "source": "Aldous Huxley",
+    "source_url": "https://fr.wikipedia.org/wiki/Le_Meilleur_des_mondes",
+    "summary": "Les castes créées en laboratoire préfigurent l'édition génétique."
   },
   {
     "id": "a31cca8665337265",
@@ -6508,7 +6537,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -6518,10 +6547,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1936-06-01",
-    "title": "BBC (1re TV régulière)",
-    "source": "BBC",
-    "source_url": null,
-    "summary": "Télévision électronique de masse.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -6529,7 +6554,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "BBC (1re TV régulière)",
+    "source": "BBC",
+    "source_url": null,
+    "summary": "Télévision électronique de masse."
   },
   {
     "id": "64608619f1f0ff43",
@@ -6549,7 +6578,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "8d2f564b99afe6fd",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -6559,10 +6588,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1936-06-01",
-    "title": "TV électronique régulière (BBC)",
-    "source": "BBC / EMI",
-    "source_url": null,
-    "summary": "Télévision électronique de masse.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -6570,7 +6595,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "TV électronique régulière (BBC)",
+    "source": "BBC / EMI",
+    "source_url": null,
+    "summary": "Télévision électronique de masse."
   },
   {
     "id": "2916c8ae51f3d7aa",
@@ -6845,7 +6874,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -6855,10 +6884,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1943-06-01",
-    "title": "Perceptron (McCulloch & Pitts)",
-    "source": "McCulloch & Pitts",
-    "source_url": null,
-    "summary": "Premier modèle mathématique du neurone artificiel.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -6866,7 +6891,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Perceptron (McCulloch & Pitts)",
+    "source": "McCulloch & Pitts",
+    "source_url": null,
+    "summary": "Premier modèle mathématique du neurone artificiel."
   },
   {
     "id": "2ff5f2386d0f4b9c",
@@ -6886,7 +6915,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "bed348eae2e9b6a0",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -6896,10 +6925,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1943-06-01",
-    "title": "Neurone formel (McCulloch & Pitts)",
-    "source": "McCulloch & Pitts",
-    "source_url": null,
-    "summary": "Modèle mathématique du neurone.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -6907,7 +6932,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Neurone formel (McCulloch & Pitts)",
+    "source": "McCulloch & Pitts",
+    "source_url": null,
+    "summary": "Modèle mathématique du neurone."
   },
   {
     "id": "c1ce24a74f070863",
@@ -7015,7 +7044,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -7025,10 +7054,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1944-06-01",
-    "title": "Premier rein artificiel (Kolf)",
-    "source": "Willem Kolf",
-    "source_url": null,
-    "summary": "Dialyse : sauver l'insuffisance rénale.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -7036,7 +7061,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Premier rein artificiel (Kolf)",
+    "source": "Willem Kolf",
+    "source_url": null,
+    "summary": "Dialyse : sauver l'insuffisance rénale."
   },
   {
     "id": "7f684cd122502691",
@@ -7097,7 +7126,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "6b6e76a6da90fe8f",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -7107,10 +7136,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1944-06-01",
-    "title": "Dialyse (rein artificiel, Kolf)",
-    "source": "Willem Kolf",
-    "source_url": null,
-    "summary": "Survie de l'insuffisance rénale.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -7118,7 +7143,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Dialyse (rein artificiel, Kolf)",
+    "source": "Willem Kolf",
+    "source_url": null,
+    "summary": "Survie de l'insuffisance rénale."
   },
   {
     "id": "d006066008f75b3d",
@@ -7159,10 +7188,6 @@
     "pharmakon_remedy_percent": 5,
     "pharmakon_poison_percent": 95,
     "date": "2026-11-13",
-    "title": "Trinity (Bombe A)",
-    "source": "Manhattan Project (1945, entropy, radioactivity)",
-    "source_url": "https://fr.wikipedia.org/wiki/Trinity_(essai_atomique)",
-    "summary": "Première explosion nucléaire réalisée avec succès par les États-Unis durant la Seconde Guerre mondiale.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -7170,7 +7195,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Trinity (Bombe A)",
+    "source": "Manhattan Project (1945, entropy, radioactivity)",
+    "source_url": "https://fr.wikipedia.org/wiki/Trinity_(essai_atomique)",
+    "summary": "Première explosion nucléaire réalisée avec succès par les États-Unis durant la Seconde Guerre mondiale."
   },
   {
     "id": "4f909039e2af278f",
@@ -7282,10 +7311,6 @@
     "pharmakon_remedy_percent": 5,
     "pharmakon_poison_percent": 95,
     "date": "2025-01-01",
-    "title": "Bombe atomique (Trinity)",
-    "source": "Manhattan Project",
-    "source_url": "https://fr.wikipedia.org/wiki/Essai_Trinity",
-    "summary": "Premier test nucléaire réussi, marquant l'entrée dans l'ère atomique.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -7293,7 +7318,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Bombe atomique (Trinity)",
+    "source": "Manhattan Project",
+    "source_url": "https://fr.wikipedia.org/wiki/Essai_Trinity",
+    "summary": "Premier test nucléaire réussi, marquant l'entrée dans l'ère atomique."
   },
   {
     "id": "a99b894fb52f3a98",
@@ -7747,10 +7776,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "2026-11-13",
-    "title": "Cybernétique",
-    "source": "Norbert Wiener",
-    "source_url": null,
-    "summary": "Théorie du contrôle et de la communication.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -7758,7 +7783,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Cybernétique",
+    "source": "Norbert Wiener",
+    "source_url": null,
+    "summary": "Théorie du contrôle et de la communication."
   },
   {
     "id": "ea07dc21f9d302a7",
@@ -7799,10 +7828,6 @@
     "pharmakon_remedy_percent": 27,
     "pharmakon_poison_percent": 73,
     "date": "2026-11-13",
-    "title": "Déclaration Droits de l'Homme",
-    "source": "Organisation des Nations Unies",
-    "source_url": null,
-    "summary": "Standard mondial post-guerre pour les droits fondamentaux.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -7810,7 +7835,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Déclaration Droits de l'Homme",
+    "source": "Organisation des Nations Unies",
+    "source_url": null,
+    "summary": "Standard mondial post-guerre pour les droits fondamentaux."
   },
   {
     "id": "8f34d65bf7025e1e",
@@ -7871,7 +7900,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "ea07dc21f9d302a7",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -7881,10 +7910,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1948-06-01",
-    "title": "Déclaration universelle des droits de l'homme",
-    "source": "ONU",
-    "source_url": null,
-    "summary": "Droits fondamentaux universels.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -7892,7 +7917,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Déclaration universelle des droits de l'homme",
+    "source": "ONU",
+    "source_url": null,
+    "summary": "Droits fondamentaux universels."
   },
   {
     "id": "49240df5b778c340",
@@ -7912,7 +7941,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "fc11f397c6565984",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -7922,10 +7951,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1948-06-01",
-    "title": "Cybernétique (Wiener)",
-    "source": "Norbert Wiener",
-    "source_url": null,
-    "summary": "Science du contrôle et de la communication.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -7933,7 +7958,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Cybernétique (Wiener)",
+    "source": "Norbert Wiener",
+    "source_url": null,
+    "summary": "Science du contrôle et de la communication."
   },
   {
     "id": "71664f17a949c81b",
@@ -8056,10 +8085,6 @@
     "pharmakon_remedy_percent": 54,
     "pharmakon_poison_percent": 46,
     "date": "2026-11-13",
-    "title": "1984",
-    "source": "George Orwell",
-    "source_url": null,
-    "summary": "Big Brother vous regarde. La technologie (télécrans) au service du contrôle totalitaire de la pensée et de l'histoire.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -8067,7 +8092,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "1984",
+    "source": "George Orwell",
+    "source_url": null,
+    "summary": "Big Brother vous regarde. La technologie (télécrans) au service du contrôle totalitaire de la pensée et de l'histoire."
   },
   {
     "id": "c9e65357aeaa91f5",
@@ -8097,10 +8126,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1949-06-01",
-    "title": "1984 (Orwell, télécrans)",
-    "source": "George Orwell",
-    "source_url": "https://fr.wikipedia.org/wiki/1984",
-    "summary": "Le télécran qui surveille préfigure la surveillance d'État massive.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -8108,7 +8133,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "1984 (Orwell, télécrans)",
+    "source": "George Orwell",
+    "source_url": "https://fr.wikipedia.org/wiki/1984",
+    "summary": "Le télécran qui surveille préfigure la surveillance d'État massive."
   },
   {
     "id": "29635287c9436ff6",
@@ -8439,10 +8468,6 @@
     "pharmakon_remedy_percent": 53,
     "pharmakon_poison_percent": 47,
     "date": "2026-11-13",
-    "title": "Fondation (Asimov)",
-    "source": "🔮 IMAGINAIRE",
-    "source_url": null,
-    "summary": "Concept de psychohistoire, la prédiction mathématique de l'avenir des sociétés.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -8450,7 +8475,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Fondation (Asimov)",
+    "source": "🔮 IMAGINAIRE",
+    "source_url": null,
+    "summary": "Concept de psychohistoire, la prédiction mathématique de l'avenir des sociétés."
   },
   {
     "id": "9f5f97d705c45599",
@@ -8480,10 +8509,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1951-06-01",
-    "title": "Fondation (psychohistoire)",
-    "source": "Isaac Asimov",
-    "source_url": "https://fr.wikipedia.org/wiki/Fondation",
-    "summary": "La psychohistoire prédit les grandes tendances sociales par les maths.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -8491,7 +8516,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Fondation (psychohistoire)",
+    "source": "Isaac Asimov",
+    "source_url": "https://fr.wikipedia.org/wiki/Fondation",
+    "summary": "La psychohistoire prédit les grandes tendances sociales par les maths."
   },
   {
     "id": "547279381733dc7d",
@@ -9161,10 +9190,6 @@
     "pharmakon_remedy_percent": 64,
     "pharmakon_poison_percent": 36,
     "date": "2026-11-13",
-    "title": "Conférence Dartmouth",
-    "source": "🔵 COGNITION",
-    "source_url": null,
-    "summary": "Acte de naissance du domaine « intelligence artificielle ».",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -9172,7 +9197,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Conférence Dartmouth",
+    "source": "🔵 COGNITION",
+    "source_url": null,
+    "summary": "Acte de naissance du domaine « intelligence artificielle »."
   },
   {
     "id": "30c4bbab9ff42370",
@@ -9231,8 +9260,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Philip K. Dick",
+        "url": "https://fr.wikipedia.org/wiki/Minority_Report",
+        "title": "Minority Report (précrime)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 50,
@@ -9243,10 +9278,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1956-06-01",
-    "title": "Minority Report (précrime)",
-    "source": "Philip K. Dick",
-    "source_url": "https://fr.wikipedia.org/wiki/Minority_Report",
-    "summary": "Arrêter les criminels avant le crime : la police prédictive.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -9254,7 +9285,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Minority Report (précrime)",
+    "source": "Philip K. Dick",
+    "source_url": "https://fr.wikipedia.org/wiki/Minority_Report",
+    "summary": "Arrêter les criminels avant le crime : la police prédictive."
   },
   {
     "id": "e579cf46c5b817d6",
@@ -9274,7 +9309,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "310bbeb4401126f2",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -9284,10 +9319,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1956-06-01",
-    "title": "Conférence de Dartmouth (l'IA est nommée)",
-    "source": "John McCarthy et al.",
-    "source_url": null,
-    "summary": "Acte de naissance du domaine « intelligence artificielle ».",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -9295,7 +9326,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Conférence de Dartmouth (l'IA est nommée)",
+    "source": "John McCarthy et al.",
+    "source_url": null,
+    "summary": "Acte de naissance du domaine « intelligence artificielle »."
   },
   {
     "id": "d9712971b4ad89a6",
@@ -9315,7 +9350,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "310bbeb4401126f2",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -9325,10 +9360,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1956-06-01",
-    "title": "Conférence de Dartmouth",
-    "source": "McCarthy et al.",
-    "source_url": null,
-    "summary": "Naissance du terme « intelligence artificielle ».",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -9336,7 +9367,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Conférence de Dartmouth",
+    "source": "McCarthy et al.",
+    "source_url": null,
+    "summary": "Naissance du terme « intelligence artificielle »."
   },
   {
     "id": "165853ae89e8d0ce",
@@ -9377,10 +9412,6 @@
     "pharmakon_remedy_percent": 69,
     "pharmakon_poison_percent": 31,
     "date": "2026-11-13",
-    "title": "Perceptron",
-    "source": "Frank Rosenblatt",
-    "source_url": null,
-    "summary": "Premier réseau de neurones artificiel.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -9388,7 +9419,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Perceptron",
+    "source": "Frank Rosenblatt",
+    "source_url": null,
+    "summary": "Premier réseau de neurones artificiel."
   },
   {
     "id": "5d649e9c5f083859",
@@ -9408,7 +9443,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "165853ae89e8d0ce",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -9418,10 +9453,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1957-06-01",
-    "title": "Perceptron (Rosenblatt)",
-    "source": "Frank Rosenblatt",
-    "source_url": null,
-    "summary": "Premier réseau de neurones apprenant.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -9429,7 +9460,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Perceptron (Rosenblatt)",
+    "source": "Frank Rosenblatt",
+    "source_url": null,
+    "summary": "Premier réseau de neurones apprenant."
   },
   {
     "id": "1ab5dc5499c0ad1b",
@@ -9552,10 +9587,6 @@
     "pharmakon_remedy_percent": 64,
     "pharmakon_poison_percent": 36,
     "date": "2026-11-13",
-    "title": "Circuit Intégré",
-    "source": "🟡 HARDWARE",
-    "source_url": "https://fr.wikipedia.org/wiki/Circuit_int%C3%A9gr%C3%A9",
-    "summary": "Le premier circuit intégré, ou puce électronique, est développé.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -9563,7 +9594,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Circuit Intégré",
+    "source": "🟡 HARDWARE",
+    "source_url": "https://fr.wikipedia.org/wiki/Circuit_int%C3%A9gr%C3%A9",
+    "summary": "Le premier circuit intégré, ou puce électronique, est développé."
   },
   {
     "id": "2337196a9ef918e1",
@@ -9624,7 +9659,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "0141946e0c391731",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -9634,10 +9669,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1958-06-01",
-    "title": "Circuit intégré (Kilby/Noyce)",
-    "source": "Jack Kilby / Robert Noyce",
-    "source_url": null,
-    "summary": "Plusieurs transistors sur une seule puce.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -9645,7 +9676,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Circuit intégré (Kilby/Noyce)",
+    "source": "Jack Kilby / Robert Noyce",
+    "source_url": null,
+    "summary": "Plusieurs transistors sur une seule puce."
   },
   {
     "id": "fb7eb43449f0c425",
@@ -10018,10 +10053,6 @@
     "pharmakon_remedy_percent": 59,
     "pharmakon_poison_percent": 41,
     "date": "2026-11-13",
-    "title": "Youri Gagarine",
-    "source": "1961, Youri Gagarine",
-    "source_url": null,
-    "summary": "Premier homme dans l'espace, dans l'Union Soviétique Vostok 1.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -10029,7 +10060,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Youri Gagarine",
+    "source": "1961, Youri Gagarine",
+    "source_url": null,
+    "summary": "Premier homme dans l'espace, dans l'Union Soviétique Vostok 1."
   },
   {
     "id": "63e636639181df80",
@@ -10137,7 +10172,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": "e1bdb0d8ba7c058c",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -10147,10 +10182,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1961-06-01",
-    "title": "Premier homme dans l'espace (Gagarine)",
-    "source": "Youri Gagarine",
-    "source_url": null,
-    "summary": "Vostok 1 : 108 minutes en orbite.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -10158,7 +10189,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Premier homme dans l'espace (Gagarine)",
+    "source": "Youri Gagarine",
+    "source_url": null,
+    "summary": "Vostok 1 : 108 minutes en orbite."
   },
   {
     "id": "e11bea4165b0408f",
@@ -10178,7 +10213,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "e1bdb0d8ba7c058c",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -10188,10 +10223,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1961-06-01",
-    "title": "Gagarine (1er homme dans l'espace)",
-    "source": "Youri Gagarine",
-    "source_url": null,
-    "summary": "Vostok 1.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -10199,7 +10230,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Gagarine (1er homme dans l'espace)",
+    "source": "Youri Gagarine",
+    "source_url": null,
+    "summary": "Vostok 1."
   },
   {
     "id": "8e616329a355d487",
@@ -11048,7 +11083,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -11058,10 +11093,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1967-06-01",
-    "title": "Première transplantation cardiaque (Barnard)",
-    "source": "Christiaan Barnard",
-    "source_url": null,
-    "summary": "Le cœur humain transplanté pour la première fois.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -11069,7 +11100,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Première transplantation cardiaque (Barnard)",
+    "source": "Christiaan Barnard",
+    "source_url": null,
+    "summary": "Le cœur humain transplanté pour la première fois."
   },
   {
     "id": "2bf2387f3c8e4e88",
@@ -11089,7 +11124,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "08fce4b8a8e73b68",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -11099,10 +11134,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1967-06-01",
-    "title": "1re transplantation cardiaque (Barnard)",
-    "source": "Christiaan Barnard",
-    "source_url": null,
-    "summary": "Cœur humain transplanté.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -11110,7 +11141,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "1re transplantation cardiaque (Barnard)",
+    "source": "Christiaan Barnard",
+    "source_url": null,
+    "summary": "Cœur humain transplanté."
   },
   {
     "id": "887d298f3124b190",
@@ -11320,10 +11355,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1968-06-01",
-    "title": "2001, Odyssée de l'espace (HAL)",
-    "source": "Arthur C. Clarke",
-    "source_url": "https://fr.wikipedia.org/wiki/2001,_Odyssée_de_l'espace",
-    "summary": "HAL, l'ordinateur omniscient et tueur, préfigure l'IA générale.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -11331,7 +11362,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "2001, Odyssée de l'espace (HAL)",
+    "source": "Arthur C. Clarke",
+    "source_url": "https://fr.wikipedia.org/wiki/2001,_Odyssée_de_l'espace",
+    "summary": "HAL, l'ordinateur omniscient et tueur, préfigure l'IA générale."
   },
   {
     "id": "63d0ff0b9a1e7197",
@@ -11349,8 +11384,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Philip K. Dick",
+        "url": "https://fr.wikipedia.org/wiki/Blade_Runner",
+        "title": "Blade Runner (réplicants)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 50,
@@ -11361,10 +11402,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1968-06-01",
-    "title": "Blade Runner (réplicants)",
-    "source": "Philip K. Dick",
-    "source_url": "https://fr.wikipedia.org/wiki/Blade_Runner",
-    "summary": "Les réplicants, esclaves androïdes, préfigurent les robots humanoïdes.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -11372,7 +11409,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Blade Runner (réplicants)",
+    "source": "Philip K. Dick",
+    "source_url": "https://fr.wikipedia.org/wiki/Blade_Runner",
+    "summary": "Les réplicants, esclaves androïdes, préfigurent les robots humanoïdes."
   },
   {
     "id": "a692a39491fb32d7",
@@ -11402,10 +11443,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1968-06-01",
-    "title": "2001, Odyssée (HAL 9000)",
-    "source": "Arthur C. Clarke",
-    "source_url": "https://fr.wikipedia.org/wiki/2001,_Odyssée",
-    "summary": "HAL préfigure l'automate doté d'intelligence embarquée.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -11413,7 +11450,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "2001, Odyssée (HAL 9000)",
+    "source": "Arthur C. Clarke",
+    "source_url": "https://fr.wikipedia.org/wiki/2001,_Odyssée",
+    "summary": "HAL préfigure l'automate doté d'intelligence embarquée."
   },
   {
     "id": "d77a7641e0f45b6a",
@@ -11443,10 +11484,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1968-06-01",
-    "title": "2001, L'Odyssée de l'espace",
-    "source": "Kubrick / Clarke",
-    "source_url": "https://fr.wikipedia.org/wiki/2001,_L'Odyssée_de_l'espace",
-    "summary": "Film (1968) — Kubrick / Clarke.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -11454,7 +11491,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "2001, L'Odyssée de l'espace",
+    "source": "Kubrick / Clarke",
+    "source_url": "https://fr.wikipedia.org/wiki/2001,_L'Odyssée_de_l'espace",
+    "summary": "Film (1968) — Kubrick / Clarke."
   },
   {
     "id": "adc7f5f12c465149",
@@ -11729,7 +11770,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -11739,10 +11780,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1969-06-01",
-    "title": "ARPANET (1er nœud UCLA)",
-    "source": "ARPA / UCLA",
-    "source_url": null,
-    "summary": "Premier réseau informatique à commutation de paquets.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -11750,7 +11787,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "ARPANET (1er nœud UCLA)",
+    "source": "ARPA / UCLA",
+    "source_url": null,
+    "summary": "Premier réseau informatique à commutation de paquets."
   },
   {
     "id": "0a4a2c278fcabfce",
@@ -11814,7 +11855,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "de3171e54a51bcff",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -11824,10 +11865,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1969-06-01",
-    "title": "ARPANET (4 nœuds)",
-    "source": "ARPA",
-    "source_url": null,
-    "summary": "Internet naît.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -11835,7 +11872,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "ARPANET (4 nœuds)",
+    "source": "ARPA",
+    "source_url": null,
+    "summary": "Internet naît."
   },
   {
     "id": "3590604b98644953",
@@ -12006,10 +12047,6 @@
     "pharmakon_remedy_percent": 44,
     "pharmakon_poison_percent": 56,
     "date": "2026-11-13",
-    "title": "ARPANET",
-    "source": "Cité dans l'article Histoire de l'Internet sur le site de l'INRIA",
-    "source_url": null,
-    "summary": "Premier réseau informatique interconnectant des ordinateurs à travers des lignes téléphoniques.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -12017,7 +12054,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "ARPANET",
+    "source": "Cité dans l'article Histoire de l'Internet sur le site de l'INRIA",
+    "source_url": null,
+    "summary": "Premier réseau informatique interconnectant des ordinateurs à travers des lignes téléphoniques."
   },
   {
     "id": "d6c7b90fae080a25",
@@ -12047,10 +12088,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "2025-01-01",
-    "title": "ARPANET (Ancêtre d'Internet)",
-    "source": "DARPA",
-    "source_url": "https://fr.wikipedia.org/wiki/ARPANET",
-    "summary": "Premier réseau à commutation de paquets, fondement d'Internet.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -12058,7 +12095,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "ARPANET (Ancêtre d'Internet)",
+    "source": "DARPA",
+    "source_url": "https://fr.wikipedia.org/wiki/ARPANET",
+    "summary": "Premier réseau à commutation de paquets, fondement d'Internet."
   },
   {
     "id": "fbdc5433e974ab1c",
@@ -12181,10 +12222,6 @@
     "pharmakon_remedy_percent": 58,
     "pharmakon_poison_percent": 42,
     "date": "2026-11-13",
-    "title": "Intel 4004",
-    "source": "Cité dans l'article L'histoire du microprocesseur sur le site de l'Atelier du net",
-    "source_url": null,
-    "summary": "Toute la puissance d'un ordinateur sur une puce.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -12192,7 +12229,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Intel 4004",
+    "source": "Cité dans l'article L'histoire du microprocesseur sur le site de l'Atelier du net",
+    "source_url": null,
+    "summary": "Toute la puissance d'un ordinateur sur une puce."
   },
   {
     "id": "9d921b0742563254",
@@ -12253,7 +12294,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "8af8337ebbb90def",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -12263,10 +12304,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1971-06-01",
-    "title": "Microprocesseur (Intel 4004)",
-    "source": "Intel",
-    "source_url": null,
-    "summary": "Toute la puissance d'un ordinateur sur une puce.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -12274,7 +12311,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Microprocesseur (Intel 4004)",
+    "source": "Intel",
+    "source_url": null,
+    "summary": "Toute la puissance d'un ordinateur sur une puce."
   },
   {
     "id": "6a77e93000a4b020",
@@ -13432,10 +13473,6 @@
     "pharmakon_remedy_percent": 73,
     "pharmakon_poison_percent": 27,
     "date": "2026-11-13",
-    "title": "FIV (Premier bébé)",
-    "source": "Louise Brown",
-    "source_url": null,
-    "summary": "Premier enfant conçu par fécondation in vitro, né en 1978 aux États-Unis.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -13443,7 +13480,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "FIV (Premier bébé)",
+    "source": "Louise Brown",
+    "source_url": null,
+    "summary": "Premier enfant conçu par fécondation in vitro, né en 1978 aux États-Unis."
   },
   {
     "id": "ad99e935dee6b501",
@@ -13469,7 +13510,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": "85eae1af160f50d3",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -13479,10 +13520,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1978-06-01",
-    "title": "Premier bébé né de FIV (Louise Brown)",
-    "source": "Edwards & Steptoe",
-    "source_url": null,
-    "summary": "Fécondation in vitro : la reproduction médicalisée.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -13490,7 +13527,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Premier bébé né de FIV (Louise Brown)",
+    "source": "Edwards & Steptoe",
+    "source_url": null,
+    "summary": "Fécondation in vitro : la reproduction médicalisée."
   },
   {
     "id": "2d245848ebf08960",
@@ -13865,10 +13906,6 @@
     "pharmakon_remedy_percent": 54,
     "pharmakon_poison_percent": 46,
     "date": "2026-11-13",
-    "title": "Navette Spatiale",
-    "source": "NASA (1981)",
-    "source_url": null,
-    "summary": "Premier véhicule orbital réutilisable.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -13876,7 +13913,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Navette Spatiale",
+    "source": "NASA (1981)",
+    "source_url": null,
+    "summary": "Premier véhicule orbital réutilisable."
   },
   {
     "id": "d8b47e4fd6da0ce4",
@@ -13939,7 +13980,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "2fc02442489b0b28",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -13949,10 +13990,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1981-06-01",
-    "title": "Navette spatiale Columbia (1er vol)",
-    "source": "NASA",
-    "source_url": null,
-    "summary": "Premier vaisseau spatial réutilisable.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -13960,7 +13997,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Navette spatiale Columbia (1er vol)",
+    "source": "NASA",
+    "source_url": null,
+    "summary": "Premier vaisseau spatial réutilisable."
   },
   {
     "id": "5c9b4b1185f66055",
@@ -14022,8 +14063,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Ridley Scott / Philip K. Dick",
+        "url": "",
+        "title": "Blade Runner"
+      },
+      {
+        "source": "Ridley Scott",
+        "url": "https://fr.wikipedia.org/wiki/Blade_Runner",
+        "title": "Blade Runner"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 51,
@@ -14034,10 +14086,6 @@
     "pharmakon_remedy_percent": 51,
     "pharmakon_poison_percent": 49,
     "date": null,
-    "title": "Blade Runner",
-    "source": "Ridley Scott / Philip K. Dick",
-    "source_url": null,
-    "summary": "Rick Deckard traque des réplicants rebelles dans un Los Angeles dystopique. Une méditation sur l'âme artificielle et l'esclavage technologique.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -14045,7 +14093,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Blade Runner",
+    "source": "Ridley Scott / Philip K. Dick",
+    "source_url": null,
+    "summary": "Rick Deckard traque des réplicants rebelles dans un Los Angeles dystopique. Une méditation sur l'âme artificielle et l'esclavage technologique."
   },
   {
     "id": "2de0b466c9105888",
@@ -14104,8 +14156,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Buena Vista Distribution (1982)",
+        "url": "",
+        "title": "Tron"
+      },
+      {
+        "source": "Steven Lisberger",
+        "url": "https://fr.wikipedia.org/wiki/Tron",
+        "title": "Tron"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 57,
@@ -14116,10 +14179,6 @@
     "pharmakon_remedy_percent": 57,
     "pharmakon_poison_percent": 43,
     "date": null,
-    "title": "Tron",
-    "source": "Buena Vista Distribution (1982)",
-    "source_url": null,
-    "summary": "Immersion dans le monde numérique.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -14127,7 +14186,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Tron",
+    "source": "Buena Vista Distribution (1982)",
+    "source_url": null,
+    "summary": "Immersion dans le monde numérique."
   },
   {
     "id": "9f18f9d6964b94b1",
@@ -14147,7 +14210,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "63d0ff0b9a1e7197",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -14157,10 +14220,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1982-06-01",
-    "title": "Blade Runner",
-    "source": "Ridley Scott",
-    "source_url": null,
-    "summary": "Sortie du film de science-fiction dystopique Blade Runner réalisé par Ridley Scott.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -14168,7 +14227,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Blade Runner",
+    "source": "Ridley Scott",
+    "source_url": null,
+    "summary": "Sortie du film de science-fiction dystopique Blade Runner réalisé par Ridley Scott."
   },
   {
     "id": "1f79f3272a8a198c",
@@ -14188,7 +14251,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "5120b29f47e0544c",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -14198,10 +14261,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1982-06-01",
-    "title": "Tron",
-    "source": "Steven Lisberger",
-    "source_url": "https://fr.wikipedia.org/wiki/Tron",
-    "summary": "Film (1982) — Steven Lisberger.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -14209,7 +14268,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Tron",
+    "source": "Steven Lisberger",
+    "source_url": "https://fr.wikipedia.org/wiki/Tron",
+    "summary": "Film (1982) — Steven Lisberger."
   },
   {
     "id": "e1f5dff54ce87229",
@@ -14250,10 +14313,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "2026-11-13",
-    "title": "WarGames",
-    "source": "Universal Pictures (1983)",
-    "source_url": null,
-    "summary": "Film de science-fiction mettant en scène un jeune hacker qui joue avec un programme simulant un jeu de guerre.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -14261,7 +14320,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "WarGames",
+    "source": "Universal Pictures (1983)",
+    "source_url": null,
+    "summary": "Film de science-fiction mettant en scène un jeune hacker qui joue avec un programme simulant un jeu de guerre."
   },
   {
     "id": "0ef1c6e4b675d6a3",
@@ -14414,10 +14477,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1983-06-01",
-    "title": "WarGames",
-    "source": "John Badham",
-    "source_url": "https://fr.wikipedia.org/wiki/WarGames",
-    "summary": "Film de science-fiction mettant en scène un jeune hacker qui joue avec un programme simulant un jeu de guerre.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -14425,7 +14484,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "WarGames",
+    "source": "John Badham",
+    "source_url": "https://fr.wikipedia.org/wiki/WarGames",
+    "summary": "Film de science-fiction mettant en scène un jeune hacker qui joue avec un programme simulant un jeu de guerre."
   },
   {
     "id": "a54a9eceb213377c",
@@ -14748,10 +14811,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1984-06-01",
-    "title": "Terminator (robots tueurs)",
-    "source": "James Cameron",
-    "source_url": "https://fr.wikipedia.org/wiki/Terminator",
-    "summary": "Film de science-fiction mettant en scène un robot tueur du futur.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -14759,7 +14818,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Terminator (robots tueurs)",
+    "source": "James Cameron",
+    "source_url": "https://fr.wikipedia.org/wiki/Terminator",
+    "summary": "Film de science-fiction mettant en scène un robot tueur du futur."
   },
   {
     "id": "aca3324eea57afe2",
@@ -14789,10 +14852,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1984-06-01",
-    "title": "Terminator (T-800)",
-    "source": "James Cameron",
-    "source_url": null,
-    "summary": "Le T-800 préfigure les machines autonomes mobiles.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -14800,7 +14859,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Terminator (T-800)",
+    "source": "James Cameron",
+    "source_url": null,
+    "summary": "Le T-800 préfigure les machines autonomes mobiles."
   },
   {
     "id": "794b7049b62912cf",
@@ -14830,10 +14893,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1984-06-01",
-    "title": "Terminator",
-    "source": "James Cameron",
-    "source_url": null,
-    "summary": "Film de science-fiction mettant en scène un robot tueur du futur.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -14841,7 +14900,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Terminator",
+    "source": "James Cameron",
+    "source_url": null,
+    "summary": "Film de science-fiction mettant en scène un robot tueur du futur."
   },
   {
     "id": "1b6cc70510661de0",
@@ -14944,8 +15007,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "1985.0 | 🔮 IMAGINAIRE",
+        "url": "",
+        "title": "Retour vers le Futur"
+      },
+      {
+        "source": "Robert Zemeckis",
+        "url": "https://fr.wikipedia.org/wiki/Retour_vers_le_futur",
+        "title": "Retour vers le futur"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 57,
@@ -14956,10 +15030,6 @@
     "pharmakon_remedy_percent": 57,
     "pharmakon_poison_percent": 43,
     "date": null,
-    "title": "Retour vers le Futur",
-    "source": "1985.0 | 🔮 IMAGINAIRE",
-    "source_url": null,
-    "summary": "Film de science-fiction mettant en scène un adolescent revenu dans le passé pour sauver sa mère.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -14967,7 +15037,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Retour vers le Futur",
+    "source": "1985.0 | 🔮 IMAGINAIRE",
+    "source_url": null,
+    "summary": "Film de science-fiction mettant en scène un adolescent revenu dans le passé pour sauver sa mère."
   },
   {
     "id": "a7009c6000955e9a",
@@ -15028,7 +15102,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "58f4a530f61b1eba",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -15038,10 +15112,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1985-06-01",
-    "title": "Retour vers le futur",
-    "source": "Robert Zemeckis",
-    "source_url": "https://fr.wikipedia.org/wiki/Retour_vers_le_futur",
-    "summary": "Film (1985) — Robert Zemeckis.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -15049,7 +15119,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Retour vers le futur",
+    "source": "Robert Zemeckis",
+    "source_url": "https://fr.wikipedia.org/wiki/Retour_vers_le_futur",
+    "summary": "Film (1985) — Robert Zemeckis."
   },
   {
     "id": "470431aa94d44b5f",
@@ -15331,10 +15405,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1987-06-01",
-    "title": "RoboCop (robots policiers)",
-    "source": "Paul Verhoeven",
-    "source_url": "https://fr.wikipedia.org/wiki/RoboCop",
-    "summary": "Film de science-fiction réalisé par Paul Verhoeven, sorti en 1987. Le film raconte l'histoire d'un policier cyborg qui combat la criminalité dans une ville déchirée par la corruption.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -15342,7 +15412,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "RoboCop (robots policiers)",
+    "source": "Paul Verhoeven",
+    "source_url": "https://fr.wikipedia.org/wiki/RoboCop",
+    "summary": "Film de science-fiction réalisé par Paul Verhoeven, sorti en 1987. Le film raconte l'histoire d'un policier cyborg qui combat la criminalité dans une ville déchirée par la corruption."
   },
   {
     "id": "72d28d36b4d62e0f",
@@ -15372,10 +15446,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1987-06-01",
-    "title": "RoboCop",
-    "source": "Paul Verhoeven",
-    "source_url": null,
-    "summary": "Film de science-fiction réalisé par Paul Verhoeven, sorti en 1987. Le film raconte l'histoire d'un policier cyborg qui combat la criminalité dans une ville déchirée par la corruption.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -15383,7 +15453,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "RoboCop",
+    "source": "Paul Verhoeven",
+    "source_url": null,
+    "summary": "Film de science-fiction réalisé par Paul Verhoeven, sorti en 1987. Le film raconte l'histoire d'un policier cyborg qui combat la criminalité dans une ville déchirée par la corruption."
   },
   {
     "id": "145ffe1485ff7339",
@@ -15865,7 +15939,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -15875,10 +15949,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1989-06-01",
-    "title": "World Wide Web (Tim Berners-Lee)",
-    "source": "Tim Berners-Lee (CERN)",
-    "source_url": null,
-    "summary": "HTTP/HTML/URL : le Web devient public.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -15886,7 +15956,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "World Wide Web (Tim Berners-Lee)",
+    "source": "Tim Berners-Lee (CERN)",
+    "source_url": null,
+    "summary": "HTTP/HTML/URL : le Web devient public."
   },
   {
     "id": "6709ed7ae20e533e",
@@ -15949,7 +16023,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "16d9102c07c3c4b8",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -15959,10 +16033,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1989-06-01",
-    "title": "World Wide Web (Berners-Lee, CERN)",
-    "source": "Tim Berners-Lee",
-    "source_url": null,
-    "summary": "Le Web public.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -15970,7 +16040,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "World Wide Web (Berners-Lee, CERN)",
+    "source": "Tim Berners-Lee",
+    "source_url": null,
+    "summary": "Le Web public."
   },
   {
     "id": "38ae9f9b060a474b",
@@ -16175,10 +16249,6 @@
     "pharmakon_remedy_percent": 75,
     "pharmakon_poison_percent": 25,
     "date": "2026-11-13",
-    "title": "Projet Génome Humain",
-    "source": "🟢 BIOTECH",
-    "source_url": null,
-    "summary": "Lire les 3 milliards de lettres de l'ADN humain.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -16186,7 +16256,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Projet Génome Humain",
+    "source": "🟢 BIOTECH",
+    "source_url": null,
+    "summary": "Lire les 3 milliards de lettres de l'ADN humain."
   },
   {
     "id": "48b29a9fa7dfaaac",
@@ -16370,7 +16444,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "5beb0b8dc26b680f",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -16380,10 +16454,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1990-06-01",
-    "title": "Projet Génome humain lancé",
-    "source": "NIH/DOE",
-    "source_url": null,
-    "summary": "Lire les 3 milliards de lettres de l'ADN humain.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -16391,7 +16461,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Projet Génome humain lancé",
+    "source": "NIH/DOE",
+    "source_url": null,
+    "summary": "Lire les 3 milliards de lettres de l'ADN humain."
   },
   {
     "id": "a66184800cda430f",
@@ -17280,8 +17354,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Mamoru Oshii / Masamune Shirow",
+        "url": "",
+        "title": "Ghost in the Shell"
+      },
+      {
+        "source": "Mamoru Oshii",
+        "url": "https://fr.wikipedia.org/wiki/Ghost_in_the_Shell",
+        "title": "Ghost in the Shell"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 54,
@@ -17292,10 +17377,6 @@
     "pharmakon_remedy_percent": 54,
     "pharmakon_poison_percent": 46,
     "date": null,
-    "title": "Ghost in the Shell",
-    "source": "Mamoru Oshii / Masamune Shirow",
-    "source_url": null,
-    "summary": "Dans un monde de cyborgs, le Major Kusanagi traque un hacker légendaire, le Puppet Master, qui se révèle être une IA née dans le réseau.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -17303,7 +17384,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Ghost in the Shell",
+    "source": "Mamoru Oshii / Masamune Shirow",
+    "source_url": null,
+    "summary": "Dans un monde de cyborgs, le Major Kusanagi traque un hacker légendaire, le Puppet Master, qui se révèle être une IA née dans le réseau."
   },
   {
     "id": "e0f1be151adbd170",
@@ -17446,7 +17531,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "892a4b813fe6103a",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -17456,10 +17541,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1995-06-01",
-    "title": "Ghost in the Shell",
-    "source": "Mamoru Oshii",
-    "source_url": "https://fr.wikipedia.org/wiki/Ghost_in_the_Shell",
-    "summary": "Manga/film (1995) — Mamoru Oshii.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -17467,7 +17548,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Ghost in the Shell",
+    "source": "Mamoru Oshii",
+    "source_url": "https://fr.wikipedia.org/wiki/Ghost_in_the_Shell",
+    "summary": "Manga/film (1995) — Mamoru Oshii."
   },
   {
     "id": "4319fc83880264e1",
@@ -17493,7 +17578,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -17503,10 +17588,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "1995-06-01",
-    "title": "Java / JavaScript",
-    "source": "Sun / Netscape",
-    "source_url": null,
-    "summary": "Le Web devient programmable et interactif.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -17514,7 +17595,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Java / JavaScript",
+    "source": "Sun / Netscape",
+    "source_url": null,
+    "summary": "Le Web devient programmable et interactif."
   },
   {
     "id": "d91e38febc9d2467",
@@ -17534,7 +17619,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "4319fc83880264e1",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -17544,10 +17629,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "1995-06-01",
-    "title": "JavaScript (Netscape)",
-    "source": "Brendan Eich",
-    "source_url": null,
-    "summary": "Le Web devient applicatif.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -17555,7 +17636,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "JavaScript (Netscape)",
+    "source": "Brendan Eich",
+    "source_url": null,
+    "summary": "Le Web devient applicatif."
   },
   {
     "id": "da5ba94dfb0d5d13",
@@ -17968,10 +18053,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2026-11-13",
-    "title": "Bienvenue à Gattaca",
-    "source": "Wikipedia, page sur le film",
-    "source_url": null,
-    "summary": "Film de science-fiction mettant en scène un système de sélection génétique sévère.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -17979,7 +18060,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Bienvenue à Gattaca",
+    "source": "Wikipedia, page sur le film",
+    "source_url": null,
+    "summary": "Film de science-fiction mettant en scène un système de sélection génétique sévère."
   },
   {
     "id": "6324ea41dcddebb0",
@@ -18020,10 +18105,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2026-11-13",
-    "title": "Deep Blue vs Kasparov",
-    "source": "Wikipedia, page sur Deep Blue",
-    "source_url": null,
-    "summary": "Premier ordinateur à battre un champion du monde d'échecs.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -18031,7 +18112,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Deep Blue vs Kasparov",
+    "source": "Wikipedia, page sur Deep Blue",
+    "source_url": null,
+    "summary": "Premier ordinateur à battre un champion du monde d'échecs."
   },
   {
     "id": "04a99f225f6fc3bb",
@@ -18102,10 +18187,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1997-06-01",
-    "title": "Gattaca (eugénisme génétique)",
-    "source": "Andrew Niccol",
-    "source_url": "https://fr.wikipedia.org/wiki/Gattaca",
-    "summary": "La société triée par l'ADN préfigure le génotypage grand public.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -18113,7 +18194,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Gattaca (eugénisme génétique)",
+    "source": "Andrew Niccol",
+    "source_url": "https://fr.wikipedia.org/wiki/Gattaca",
+    "summary": "La société triée par l'ADN préfigure le génotypage grand public."
   },
   {
     "id": "aa9659cb880ca37f",
@@ -18228,10 +18313,6 @@
     "pharmakon_remedy_percent": 40,
     "pharmakon_poison_percent": 60,
     "date": "2025-01-01",
-    "title": "Deep Blue bat Kasparov",
-    "source": "IBM",
-    "source_url": "https://fr.wikipedia.org/wiki/Deep_Blue_(ordinateur)",
-    "summary": "Premier ordinateur à battre un champion du monde d'échecs.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -18239,7 +18320,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Deep Blue bat Kasparov",
+    "source": "IBM",
+    "source_url": "https://fr.wikipedia.org/wiki/Deep_Blue_(ordinateur)",
+    "summary": "Premier ordinateur à battre un champion du monde d'échecs."
   },
   {
     "id": "3bf8e9ca7bdc2466",
@@ -19235,10 +19320,6 @@
     "pharmakon_remedy_percent": 53,
     "pharmakon_poison_percent": 47,
     "date": "2026-11-13",
-    "title": "Minority Report",
-    "source": "Steven Spielberg / Philip K. Dick",
-    "source_url": null,
-    "summary": "La police Précrime arrête les meurtriers avant qu'ils ne passent à l'acte grâce à des précognitifs. Pose la question du libre arbitre face à l'algorithme.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -19246,7 +19327,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Minority Report",
+    "source": "Steven Spielberg / Philip K. Dick",
+    "source_url": null,
+    "summary": "La police Précrime arrête les meurtriers avant qu'ils ne passent à l'acte grâce à des précognitifs. Pose la question du libre arbitre face à l'algorithme."
   },
   {
     "id": "31adecffee1d5f80",
@@ -19436,7 +19521,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "c85799c8144f422e",
+    "merged_into": "156024e20e3460ca",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -19446,10 +19531,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2002-06-01",
-    "title": "Minority Report",
-    "source": "Steven Spielberg",
-    "source_url": null,
-    "summary": "Film (2002) — Steven Spielberg.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -19457,7 +19538,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Minority Report",
+    "source": "Steven Spielberg",
+    "source_url": null,
+    "summary": "Film (2002) — Steven Spielberg."
   },
   {
     "id": "399abbc99e4fb72d",
@@ -19788,10 +19873,6 @@
     "pharmakon_remedy_percent": 56,
     "pharmakon_poison_percent": 44,
     "date": "2026-11-13",
-    "title": "Facebook",
-    "source": "RÉSEAU",
-    "source_url": null,
-    "summary": "Lancement de TheFacebook. Le graphe social numérique commence à cartographier les relations humaines réelles.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -19799,7 +19880,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Facebook",
+    "source": "RÉSEAU",
+    "source_url": null,
+    "summary": "Lancement de TheFacebook. Le graphe social numérique commence à cartographier les relations humaines réelles."
   },
   {
     "id": "4ca842883074a613",
@@ -19983,7 +20068,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "db8ac9f8ebe9d98e",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -19993,10 +20078,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2004-06-01",
-    "title": "Facebook (réseau social de masse)",
-    "source": "Mark Zuckerberg",
-    "source_url": null,
-    "summary": "800 millions d'utilisateurs en 8 ans.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -20004,7 +20085,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Facebook (réseau social de masse)",
+    "source": "Mark Zuckerberg",
+    "source_url": null,
+    "summary": "800 millions d'utilisateurs en 8 ans."
   },
   {
     "id": "e2db3d381f6e0732",
@@ -20188,8 +20273,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "RÉSEAU - Jack Dorsey",
+        "url": "",
+        "title": "Twitter"
+      },
+      {
+        "source": "Jack Dorsey",
+        "url": "#",
+        "title": "Twitter (microblogging)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 50,
@@ -20200,10 +20296,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": null,
-    "title": "Twitter",
-    "source": "RÉSEAU - Jack Dorsey",
-    "source_url": null,
-    "summary": "Micro-blogging et accélération du cycle de l'information.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -20211,7 +20303,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Twitter",
+    "source": "RÉSEAU - Jack Dorsey",
+    "source_url": null,
+    "summary": "Micro-blogging et accélération du cycle de l'information."
   },
   {
     "id": "73f38835fccf7af1",
@@ -20438,7 +20534,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -20448,10 +20544,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2006-06-01",
-    "title": "Twitter (microblogging)",
-    "source": "Jack Dorsey",
-    "source_url": null,
-    "summary": "Le temps réel mondial en 140 caractères.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -20459,7 +20551,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Twitter (microblogging)",
+    "source": "Jack Dorsey",
+    "source_url": null,
+    "summary": "Le temps réel mondial en 140 caractères."
   },
   {
     "id": "8f5ec59c0cf8624b",
@@ -20570,7 +20666,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -20580,10 +20676,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2007-06-01",
-    "title": "iPhone (smartphone)",
-    "source": "Industrie / institutions",
-    "source_url": null,
-    "summary": "Apple lance l'iPhone, premier smartphone grand public.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -20591,7 +20683,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "iPhone (smartphone)",
+    "source": "Industrie / institutions",
+    "source_url": null,
+    "summary": "Apple lance l'iPhone, premier smartphone grand public."
   },
   {
     "id": "d8374196f4696fa2",
@@ -20739,7 +20835,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "7a70190f354c8565",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -20749,10 +20845,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2007-06-01",
-    "title": "iPhone (smartphone tactile)",
-    "source": "Apple",
-    "source_url": null,
-    "summary": "Internet dans la poche de tout le monde.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -20760,7 +20852,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "iPhone (smartphone tactile)",
+    "source": "Apple",
+    "source_url": null,
+    "summary": "Internet dans la poche de tout le monde."
   },
   {
     "id": "0247b29cc4dc2b33",
@@ -21526,8 +21622,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Source: Wikipedia",
+        "url": "",
+        "title": "Instagram"
+      },
+      {
+        "source": "Kevin Systrom",
+        "url": "#",
+        "title": "Instagram (photo mobile)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 54,
@@ -21538,10 +21645,6 @@
     "pharmakon_remedy_percent": 54,
     "pharmakon_poison_percent": 46,
     "date": null,
-    "title": "Instagram",
-    "source": "Source: Wikipedia",
-    "source_url": null,
-    "summary": "Photography-based social networking service launched in 2010.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -21549,7 +21652,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Instagram",
+    "source": "Source: Wikipedia",
+    "source_url": null,
+    "summary": "Photography-based social networking service launched in 2010."
   },
   {
     "id": "2ffb1b3529a3fa07",
@@ -21577,7 +21684,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 4,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -21587,10 +21694,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2010-06-01",
-    "title": "Exosquelette militaire (Raytheon XOS 2)",
-    "source": "🟡 HARDWARE",
-    "source_url": null,
-    "summary": "Exosquelette motorisé pour soldats, testé par l'US Army.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -21598,7 +21701,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Exosquelette militaire (Raytheon XOS 2)",
+    "source": "🟡 HARDWARE",
+    "source_url": null,
+    "summary": "Exosquelette motorisé pour soldats, testé par l'US Army."
   },
   {
     "id": "5610043106751241",
@@ -21620,7 +21727,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "2ffb1b3529a3fa07",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 4,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -21630,10 +21737,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2010-06-01",
-    "title": "Exosquelette médical (Ekso Bionics)",
-    "source": "Ekso Bionics, 2010",
-    "source_url": null,
-    "summary": "Exosquelettes médicaux pour la rééducation motrice.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -21641,7 +21744,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Exosquelette médical (Ekso Bionics)",
+    "source": "Ekso Bionics, 2010",
+    "source_url": null,
+    "summary": "Exosquelettes médicaux pour la rééducation motrice."
   },
   {
     "id": "e4fdf54748490949",
@@ -21667,7 +21774,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -21677,10 +21784,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2010-06-01",
-    "title": "4G (déploiement mondial)",
-    "source": "Opérateurs",
-    "source_url": null,
-    "summary": "Internet mobile haut débit.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -21688,7 +21791,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "4G (déploiement mondial)",
+    "source": "Opérateurs",
+    "source_url": null,
+    "summary": "Internet mobile haut débit."
   },
   {
     "id": "7508bc4b063a794e",
@@ -21708,7 +21815,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -21718,10 +21825,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2010-06-01",
-    "title": "Instagram (photo mobile)",
-    "source": "Kevin Systrom",
-    "source_url": null,
-    "summary": "L'image totale.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -21729,7 +21832,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Instagram (photo mobile)",
+    "source": "Kevin Systrom",
+    "source_url": null,
+    "summary": "L'image totale."
   },
   {
     "id": "e1334be76591044d",
@@ -21749,7 +21856,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "e4fdf54748490949",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -21759,10 +21866,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "2026-11-11",
-    "title": "4G (déploiement)",
-    "source": "Opérateurs",
-    "source_url": null,
-    "summary": "Internet mobile haut débit.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -21770,7 +21873,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "4G (déploiement)",
+    "source": "Opérateurs",
+    "source_url": null,
+    "summary": "Internet mobile haut débit."
   },
   {
     "id": "1f34da759598603c",
@@ -21998,8 +22105,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Charlie Brooker, 2011",
+        "url": "",
+        "title": "Black Mirror"
+      },
+      {
+        "source": "Charlie Brooker",
+        "url": "https://fr.wikipedia.org/wiki/Black_Mirror",
+        "title": "Black Mirror"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 52,
@@ -22010,10 +22128,6 @@
     "pharmakon_remedy_percent": 52,
     "pharmakon_poison_percent": 48,
     "date": null,
-    "title": "Black Mirror",
-    "source": "Charlie Brooker, 2011",
-    "source_url": null,
-    "summary": "Série explorant les dystopies technologiques proches.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -22021,7 +22135,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Black Mirror",
+    "source": "Charlie Brooker, 2011",
+    "source_url": null,
+    "summary": "Série explorant les dystopies technologiques proches."
   },
   {
     "id": "afe3a564323100d9",
@@ -22184,10 +22302,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2011-06-01",
-    "title": "Contagion (pandémie modélisée)",
-    "source": "Steven Soderbergh",
-    "source_url": "https://fr.wikipedia.org/wiki/Contagion",
-    "summary": "Un thriller réaliste sur une pandémie, tourné avant la pandémie.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -22195,7 +22309,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Contagion (pandémie modélisée)",
+    "source": "Steven Soderbergh",
+    "source_url": "https://fr.wikipedia.org/wiki/Contagion",
+    "summary": "Un thriller réaliste sur une pandémie, tourné avant la pandémie."
   },
   {
     "id": "ade5f756720be7a7",
@@ -22303,7 +22421,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "ef849268624991cd",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -22313,10 +22431,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2011-06-01",
-    "title": "Black Mirror",
-    "source": "Charlie Brooker",
-    "source_url": "https://fr.wikipedia.org/wiki/Black_Mirror",
-    "summary": "Série (2011) — Charlie Brooker.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -22324,7 +22438,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Black Mirror",
+    "source": "Charlie Brooker",
+    "source_url": "https://fr.wikipedia.org/wiki/Black_Mirror",
+    "summary": "Série (2011) — Charlie Brooker."
   },
   {
     "id": "5bd43fcfbcee1b7c",
@@ -22354,10 +22472,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2011-06-01",
-    "title": "Contagion",
-    "source": "Steven Soderbergh",
-    "source_url": null,
-    "summary": "Film (2011) — Steven Soderbergh.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -22365,7 +22479,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Contagion",
+    "source": "Steven Soderbergh",
+    "source_url": null,
+    "summary": "Film (2011) — Steven Soderbergh."
   },
   {
     "id": "3bd265277d53df01",
@@ -22391,7 +22509,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -22401,10 +22519,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2011-06-01",
-    "title": "IBM Watson gagne Jeopardy",
-    "source": "IBM",
-    "source_url": null,
-    "summary": "Compréhension du langage naturel en quiz.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -22412,7 +22526,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "IBM Watson gagne Jeopardy",
+    "source": "IBM",
+    "source_url": null,
+    "summary": "Compréhension du langage naturel en quiz."
   },
   {
     "id": "c4097497f569f754",
@@ -22432,7 +22550,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "3bd265277d53df01",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -22442,10 +22560,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "2026-11-11",
-    "title": "Watson gagne Jeopardy",
-    "source": "IBM",
-    "source_url": null,
-    "summary": "Compréhension du langage naturel.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -22453,7 +22567,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Watson gagne Jeopardy",
+    "source": "IBM",
+    "source_url": null,
+    "summary": "Compréhension du langage naturel."
   },
   {
     "id": "e5104a3845b68dfb",
@@ -22957,10 +23075,6 @@
     "pharmakon_remedy_percent": 69,
     "pharmakon_poison_percent": 31,
     "date": "2026-11-13",
-    "title": "Atlas (Boston Dynamics)",
-    "source": "🟡 HARDWARE",
-    "source_url": null,
-    "summary": "Exosquelette humanoïde développé par la société Boston Dynamics, présenté en 2013. Atlas est capable de marcher, se tenir debout, et effectuer des tâches manuelles.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -22968,7 +23082,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Atlas (Boston Dynamics)",
+    "source": "🟡 HARDWARE",
+    "source_url": null,
+    "summary": "Exosquelette humanoïde développé par la société Boston Dynamics, présenté en 2013. Atlas est capable de marcher, se tenir debout, et effectuer des tâches manuelles."
   },
   {
     "id": "bc5636d4c5729068",
@@ -23083,7 +23201,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "53c0f08f99efe770",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -23093,10 +23211,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2013-06-01",
-    "title": "Boston Dynamics Atlas",
-    "source": "🟡 HARDWARE",
-    "source_url": null,
-    "summary": "Boston Dynamics dévoile Atlas, robot humanoïde agile.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -23104,7 +23218,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Boston Dynamics Atlas",
+    "source": "🟡 HARDWARE",
+    "source_url": null,
+    "summary": "Boston Dynamics dévoile Atlas, robot humanoïde agile."
   },
   {
     "id": "ffee2464c0966e48",
@@ -23391,10 +23509,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2014-06-01",
-    "title": "Ex Machina",
-    "source": "Alex Garland",
-    "source_url": "https://fr.wikipedia.org/wiki/Ex_Machina",
-    "summary": "Film de science-fiction sorti en 2014, mettant en scène un entrepreneur qui teste l'intelligence artificielle.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -23402,7 +23516,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Ex Machina",
+    "source": "Alex Garland",
+    "source_url": "https://fr.wikipedia.org/wiki/Ex_Machina",
+    "summary": "Film de science-fiction sorti en 2014, mettant en scène un entrepreneur qui teste l'intelligence artificielle."
   },
   {
     "id": "708bee41b5f701ca",
@@ -23518,10 +23636,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2014-06-01",
-    "title": "Ex Machina (IA manipulatrice)",
-    "source": "Alex Garland",
-    "source_url": null,
-    "summary": "Une IA qui simule l'amour pour s'échapper préfigure les LLM persuasifs.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -23529,7 +23643,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Ex Machina (IA manipulatrice)",
+    "source": "Alex Garland",
+    "source_url": null,
+    "summary": "Une IA qui simule l'amour pour s'échapper préfigure les LLM persuasifs."
   },
   {
     "id": "a65617c065e7b50e",
@@ -23565,10 +23683,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2014-06-01",
-    "title": "Interstellar (trou noir)",
-    "source": "Christopher Nolan",
-    "source_url": "https://fr.wikipedia.org/wiki/Interstellar",
-    "summary": "Le trou noir Gargantua, visualisé avec rigueur scientifique.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -23576,7 +23690,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Interstellar (trou noir)",
+    "source": "Christopher Nolan",
+    "source_url": "https://fr.wikipedia.org/wiki/Interstellar",
+    "summary": "Le trou noir Gargantua, visualisé avec rigueur scientifique."
   },
   {
     "id": "e05d749cb18b91fa",
@@ -23606,10 +23724,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2014-06-01",
-    "title": "Interstellar",
-    "source": "Christopher Nolan",
-    "source_url": null,
-    "summary": "Film (2014) — Christopher Nolan.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -23617,7 +23731,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Interstellar",
+    "source": "Christopher Nolan",
+    "source_url": null,
+    "summary": "Film (2014) — Christopher Nolan."
   },
   {
     "id": "e3e16af5a5044e1e",
@@ -24156,10 +24274,6 @@
     "pharmakon_remedy_percent": 54,
     "pharmakon_poison_percent": 46,
     "date": "2026-11-13",
-    "title": "Stade Singularité : 0.5",
-    "source": "Sorti en 2015, développé par Zynga.",
-    "source_url": null,
-    "summary": "Un jeu vidéo sur la course au développement d'IA.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -24167,7 +24281,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Stade Singularité : 0.5",
+    "source": "Sorti en 2015, développé par Zynga.",
+    "source_url": null,
+    "summary": "Un jeu vidéo sur la course au développement d'IA."
   },
   {
     "id": "7c2c9796cfb3cf9d",
@@ -24269,7 +24387,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "cafb1b6fdec0d0ff",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -24279,10 +24397,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2015-06-01",
-    "title": "Stade Singularité estimé 0.5",
-    "source": "Cortex Loom Analysis",
-    "source_url": null,
-    "summary": "Début de la phase d'accélération.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -24290,7 +24404,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Stade Singularité estimé 0.5",
+    "source": "Cortex Loom Analysis",
+    "source_url": null,
+    "summary": "Début de la phase d'accélération."
   },
   {
     "id": "de2866dd94666f8b",
@@ -24795,10 +24913,6 @@
     "pharmakon_remedy_percent": 57,
     "pharmakon_poison_percent": 43,
     "date": "2026-11-13",
-    "title": "AlphaGo",
-    "source": "Développée par DeepMind en 2016.",
-    "source_url": null,
-    "summary": "Le Go tombe à son tour : intuition machine au plus haut niveau.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -24806,7 +24920,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "AlphaGo",
+    "source": "Développée par DeepMind en 2016.",
+    "source_url": null,
+    "summary": "Le Go tombe à son tour : intuition machine au plus haut niveau."
   },
   {
     "id": "8c7f8a7b8af493e7",
@@ -24826,7 +24944,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "ec5a9d15cc181915",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -24836,10 +24954,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2016-06-01",
-    "title": "AlphaGo bat Lee Sedol",
-    "source": "DeepMind",
-    "source_url": null,
-    "summary": "Le Go tombe à son tour : intuition machine au plus haut niveau.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -24847,7 +24961,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "AlphaGo bat Lee Sedol",
+    "source": "DeepMind",
+    "source_url": null,
+    "summary": "Le Go tombe à son tour : intuition machine au plus haut niveau."
   },
   {
     "id": "f1e948b03831bddc",
@@ -25097,10 +25215,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "2026-11-13",
-    "title": "Attention Is All You Need",
-    "source": "Source : Google, article 'Attention Is All You Need' 🔵 COGNITION",
-    "source_url": null,
-    "summary": "Publication de l'architecture Transformer, base des LLMs modernes.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -25108,7 +25222,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Attention Is All You Need",
+    "source": "Source : Google, article 'Attention Is All You Need' 🔵 COGNITION",
+    "source_url": null,
+    "summary": "Publication de l'architecture Transformer, base des LLMs modernes."
   },
   {
     "id": "f6b591672c4076bd",
@@ -25169,7 +25287,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "7a829d574127d375",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -25179,10 +25297,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2017-06-01",
-    "title": "Transformer (Attention is all you need)",
-    "source": "Vaswani et al. (Google)",
-    "source_url": null,
-    "summary": "Architecture qui fonde tous les LLM modernes.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -25190,7 +25304,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Transformer (Attention is all you need)",
+    "source": "Vaswani et al. (Google)",
+    "source_url": null,
+    "summary": "Architecture qui fonde tous les LLM modernes."
   },
   {
     "id": "018b81b2a3c2c705",
@@ -25740,10 +25858,6 @@
     "pharmakon_remedy_percent": 40,
     "pharmakon_poison_percent": 60,
     "date": "2026-11-13",
-    "title": "Première image Trou Noir",
-    "source": "Source: https://www.eso.org/public/fr/2019/rdn/",
-    "source_url": null,
-    "summary": "La première image d'un trou noir a été prise avec le télescope Event Horizon.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -25751,7 +25865,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Première image Trou Noir",
+    "source": "Source: https://www.eso.org/public/fr/2019/rdn/",
+    "source_url": null,
+    "summary": "La première image d'un trou noir a été prise avec le télescope Event Horizon."
   },
   {
     "id": "a406b9c94918a197",
@@ -25774,7 +25892,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "1accba35111a5499",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -25784,10 +25902,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2019-06-01",
-    "title": "Image du trou noir M87*",
-    "source": "Source: https://www.eso.org/public/fr/2019/rdn/",
-    "source_url": null,
-    "summary": "L'Event Horizon Telescope publie la première image d'un trou noir (M87*).",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -25795,7 +25909,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Image du trou noir M87*",
+    "source": "Source: https://www.eso.org/public/fr/2019/rdn/",
+    "source_url": null,
+    "summary": "L'Event Horizon Telescope publie la première image d'un trou noir (M87*)."
   },
   {
     "id": "dbe46cbeaa245836",
@@ -26133,10 +26251,6 @@
     "pharmakon_remedy_percent": 80,
     "pharmakon_poison_percent": 20,
     "date": "2020-06-01",
-    "title": "Vaccins à ARN messager (COVID-19)",
-    "source": "BioNTech/Pfizer, Moderna",
-    "source_url": "https://fr.wikipedia.org/wiki/Vaccin_à_ARN",
-    "summary": "Premiers vaccins ARNm autorisés à grande échelle : plateforme vaccinale de nouvelle génération.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -26144,7 +26258,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Vaccins à ARN messager (COVID-19)",
+    "source": "BioNTech/Pfizer, Moderna",
+    "source_url": "https://fr.wikipedia.org/wiki/Vaccin_à_ARN",
+    "summary": "Premiers vaccins ARNm autorisés à grande échelle : plateforme vaccinale de nouvelle génération."
   },
   {
     "id": "28dfeccf8a244994",
@@ -26416,7 +26534,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "15f002d6e1706f5e",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -26426,10 +26544,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2020-06-01",
-    "title": "Vaccins ARNm (COVID-19)",
-    "source": "BioNTech/Pfizer, Moderna",
-    "source_url": null,
-    "summary": "Plateforme ARNm déployée à l'échelle mondiale en mois.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -26437,7 +26551,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Vaccins ARNm (COVID-19)",
+    "source": "BioNTech/Pfizer, Moderna",
+    "source_url": null,
+    "summary": "Plateforme ARNm déployée à l'échelle mondiale en mois."
   },
   {
     "id": "7af26b644238988b",
@@ -26468,7 +26586,7 @@
       }
     ],
     "occurrences": 2,
-    "merged_into": null,
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -26478,10 +26596,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2020-06-01",
-    "title": "SolarWinds (supply chain)",
-    "source": "Cozy Bear (SVR)",
-    "source_url": null,
-    "summary": "Compromission de la plateforme Orion : 18 000 organisations infectées dont ministères US et Microsoft.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -26489,7 +26603,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "SolarWinds (supply chain)",
+    "source": "Cozy Bear (SVR)",
+    "source_url": null,
+    "summary": "Compromission de la plateforme Orion : 18 000 organisations infectées dont ministères US et Microsoft."
   },
   {
     "id": "8736a69f2118b4c2",
@@ -26550,7 +26668,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "7af26b644238988b",
+    "merged_into": "3e15609a42be2b1e",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -26560,10 +26678,6 @@
     "pharmakon_remedy_percent": 55,
     "pharmakon_poison_percent": 45,
     "date": "2026-11-11",
-    "title": "SolarWinds",
-    "source": "Cozy Bear",
-    "source_url": null,
-    "summary": "Supply chain compromise.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -26571,7 +26685,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "SolarWinds",
+    "source": "Cozy Bear",
+    "source_url": null,
+    "summary": "Supply chain compromise."
   },
   {
     "id": "3285a9ab1770a96f",
@@ -26686,10 +26804,6 @@
     "pharmakon_remedy_percent": 5,
     "pharmakon_poison_percent": 95,
     "date": "2020-06-01",
-    "title": "SolarWinds (compromission de la supply chain)",
-    "source": "Cozy Bear (SVR russe)",
-    "source_url": "https://fr.wikipedia.org/wiki/Piratage_de_SolarWinds",
-    "summary": "Compromission de la plateforme Orion : 18 000 organisations infectées dont ministères US et Microsoft.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -26697,7 +26811,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "SolarWinds (compromission de la supply chain)",
+    "source": "Cozy Bear (SVR russe)",
+    "source_url": "https://fr.wikipedia.org/wiki/Piratage_de_SolarWinds",
+    "summary": "Compromission de la plateforme Orion : 18 000 organisations infectées dont ministères US et Microsoft."
   },
   {
     "id": "6e751ba31e233d07",
@@ -27954,10 +28072,6 @@
     "pharmakon_remedy_percent": 44,
     "pharmakon_poison_percent": 56,
     "date": "2026-11-13",
-    "title": "Licenciements Tech (Vague 1)",
-    "source": "Source: CNBC (Tech companies)",
-    "source_url": null,
-    "summary": "Poursuite de l'automatisation et de la réduction des coûts.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -27965,7 +28079,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Licenciements Tech (Vague 1)",
+    "source": "Source: CNBC (Tech companies)",
+    "source_url": null,
+    "summary": "Poursuite de l'automatisation et de la réduction des coûts."
   },
   {
     "id": "6b6e9952bdc5979b",
@@ -28915,10 +29033,6 @@
     "pharmakon_remedy_percent": 31,
     "pharmakon_poison_percent": 69,
     "date": "2026-11-13",
-    "title": "Licenciements Tech (Vague 2)",
-    "source": "🏛️ POLITIQUE",
-    "source_url": null,
-    "summary": "Poursuite de l'automatisation et de la réduction des coûts.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -28926,7 +29040,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Licenciements Tech (Vague 2)",
+    "source": "🏛️ POLITIQUE",
+    "source_url": null,
+    "summary": "Poursuite de l'automatisation et de la réduction des coûts."
   },
   {
     "id": "0b20a8fac0214f64",
@@ -30541,10 +30659,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2026-07-15",
-    "title": "IA : 5 problèmes sur 6 résolus à l'Olympiade internationale de maths",
-    "source": "IMO 2026",
-    "source_url": "https://www.nature.com/",
-    "summary": "Des agents autonomes résolvent des problèmes ouverts de niveau recherche (article Science, 2026).",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -30552,7 +30666,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "IA : 5 problèmes sur 6 résolus à l'Olympiade internationale de maths",
+    "source": "IMO 2026",
+    "source_url": "https://www.nature.com/",
+    "summary": "Des agents autonomes résolvent des problèmes ouverts de niveau recherche (article Science, 2026)."
   },
   {
     "id": "c64e51bdb5136ca3",
@@ -30582,10 +30700,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "2026-07-15",
-    "title": "Agents IA résolvent des problèmes de maths ouverts (Science 2026)",
-    "source": "Tsoukalas et al., Science",
-    "source_url": "https://www.science.org/",
-    "summary": "Des agents autonomes résolvent des problèmes ouverts de niveau recherche (article Science, 2026).",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -30593,7 +30707,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Agents IA résolvent des problèmes de maths ouverts (Science 2026)",
+    "source": "Tsoukalas et al., Science",
+    "source_url": "https://www.science.org/",
+    "summary": "Des agents autonomes résolvent des problèmes ouverts de niveau recherche (article Science, 2026)."
   },
   {
     "id": "e055a307e32f2956",
@@ -30712,10 +30830,6 @@
     "pharmakon_remedy_percent": 57,
     "pharmakon_poison_percent": 43,
     "date": "2026-11-10",
-    "title": "AI2027 : is this? How did we write it? Why is it valuable? Who are we? The CEOs of OpenAI , Google DeepMind , and Anthropic have",
-    "source": "AI2027.com",
-    "source_url": "https://ai2027.com/",
-    "summary": "Extrait de ai2027.com : is this? How did we write it? Why is it valuable? Who are we? The CEOs of OpenAI , Google DeepMind , and Anthropic have all predicted that AGI will arrive within the next 5 years",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -30723,7 +30837,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "AI2027 : is this? How did we write it? Why is it valuable? Who are we? The CEOs of OpenAI , Google DeepMind , and Anthropic have",
+    "source": "AI2027.com",
+    "source_url": "https://ai2027.com/",
+    "summary": "Extrait de ai2027.com : is this? How did we write it? Why is it valuable? Who are we? The CEOs of OpenAI , Google DeepMind , and Anthropic have all predicted that AGI will arrive within the next 5 years"
   },
   {
     "id": "b879f13e8451940e",
@@ -30791,7 +30909,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "1769e885a2a3f50f",
     "s_curve_phase": 4,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -30801,10 +30919,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2026-11-10",
-    "title": "Stade de Singularité (estimation courante)",
-    "source": "Cortex Loom Analysis",
-    "source_url": null,
-    "summary": "Évaluation du niveau de proximité global avec une singularité technologique : stade estimé à 0.782 (phase d'accélération avancée, signaux faibles devenant tendances lourdes).",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -30812,7 +30926,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Stade de Singularité (estimation courante)",
+    "source": "Cortex Loom Analysis",
+    "source_url": null,
+    "summary": "Évaluation du niveau de proximité global avec une singularité technologique : stade estimé à 0.782 (phase d'accélération avancée, signaux faibles devenant tendances lourdes)."
   },
   {
     "id": "0555be9527b830a2",
@@ -30848,10 +30966,6 @@
     "pharmakon_remedy_percent": 85,
     "pharmakon_poison_percent": 15,
     "date": "2026-11-10",
-    "title": "Comment deux paramètres ont triplé nos scores au benchmark ARC-AGI-3",
-    "source": "OpenAI",
-    "source_url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQQ0k3QTgzVnpwSkpYSlJiVjZTeFNQWlhLZVc2eGVKSXFoM25tMWhTcFdpR0hHSi04cGgyU1BzRm9qV1otamkycG00WnFnMzlINnBHOGJyYV96SUlQUlJIWVdXMlBBbGZYR3oyUDF4VkFOWVdmYlh5LWpCR0hKZlRGZW5JTQ?oc=5",
-    "summary": "Comment deux paramètres ont triplé nos scores au benchmark ARC-AGI-3 OpenAI",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -30859,7 +30973,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Comment deux paramètres ont triplé nos scores au benchmark ARC-AGI-3",
+    "source": "OpenAI",
+    "source_url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQQ0k3QTgzVnpwSkpYSlJiVjZTeFNQWlhLZVc2eGVKSXFoM25tMWhTcFdpR0hHSi04cGgyU1BzRm9qV1otamkycG00WnFnMzlINnBHOGJyYV96SUlQUlJIWVdXMlBBbGZYR3oyUDF4VkFOWVdmYlh5LWpCR0hKZlRGZW5JTQ?oc=5",
+    "summary": "Comment deux paramètres ont triplé nos scores au benchmark ARC-AGI-3 OpenAI"
   },
   {
     "id": "1977a75ae299cacc",
@@ -30895,10 +31013,6 @@
     "pharmakon_remedy_percent": 65,
     "pharmakon_poison_percent": 35,
     "date": "2026-11-10",
-    "title": "Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %, mais le test standard raconte une autre histoire",
-    "source": "remio",
-    "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOSFlNOWIxTTlHWVI4MlpuTVVfQ0FFbEdYejNVSS1XMmhFQjdHNjBwUEl0SW5vYTlveEZRSmJxRFJzRVNlRjFkaFlRdmRDT3ZuMmljbWlDYnBBWG9xeTBua3pHSjNzcHRmRmhaSFFXWEQ4YjNqVDA4VWlFekVLT3ZxcDg3RmpjNThuZ2Z5N3BBeEdMVTNNZkVQU3VCRHBUam1HQTFOSTd3SlB0cWc1Snc?oc=5",
-    "summary": "Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %, mais le test standard raconte une autre histoire remio",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -30906,7 +31020,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %, mais le test standard raconte une autre histoire",
+    "source": "remio",
+    "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOSFlNOWIxTTlHWVI4MlpuTVVfQ0FFbEdYejNVSS1XMmhFQjdHNjBwUEl0SW5vYTlveEZRSmJxRFJzRVNlRjFkaFlRdmRDT3ZuMmljbWlDYnBBWG9xeTBua3pHSjNzcHRmRmhaSFFXWEQ4YjNqVDA4VWlFekVLT3ZxcDg3RmpjNThuZ2Z5N3BBeEdMVTNNZkVQU3VCRHBUam1HQTFOSTd3SlB0cWc1Snc?oc=5",
+    "summary": "Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %, mais le test standard raconte une autre histoire remio"
   },
   {
     "id": "429f0b65649725ee",
@@ -30936,10 +31054,6 @@
     "pharmakon_remedy_percent": 51,
     "pharmakon_poison_percent": 49,
     "date": "2026-11-11",
-    "title": "Comment deux paramètres ont triplé nos scores au benchmark ARC-AGI-3",
-    "source": "OpenAI",
-    "source_url": null,
-    "summary": "Comment deux paramètres ont triplé nos scores au benchmark ARC-AGI-3 OpenAI",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -30947,7 +31061,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Comment deux paramètres ont triplé nos scores au benchmark ARC-AGI-3",
+    "source": "OpenAI",
+    "source_url": null,
+    "summary": "Comment deux paramètres ont triplé nos scores au benchmark ARC-AGI-3 OpenAI"
   },
   {
     "id": "f13e5a361558ccea",
@@ -30977,10 +31095,6 @@
     "pharmakon_remedy_percent": 42,
     "pharmakon_poison_percent": 58,
     "date": "2026-11-11",
-    "title": "Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %, mais le test standard raconte une autre histoire",
-    "source": "remio",
-    "source_url": null,
-    "summary": "Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %, mais le test standard raconte une autre histoire remio",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -30988,7 +31102,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %, mais le test standard raconte une autre histoire",
+    "source": "remio",
+    "source_url": null,
+    "summary": "Le score ARC-AGI-3 de Gemini 4 Argon atteint 97,5 %, mais le test standard raconte une autre histoire remio"
   },
   {
     "id": "9950d020e5214d00",
@@ -31179,9 +31297,14 @@
         "url": "https://example.com/01net-outlook",
         "title": "Panne Outlook ce vendredi 13 novembre : Microsoft dit que tout est rentré dans l'ordre, les mails sont de retour",
         "verified": true
+      },
+      {
+        "source": "Le Monde Informatique",
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPREtna2p3LThuQ0loTXJvbHhfS3N0ZnpzcFFGZ0NMQ2FEejU4cF9zd3hRZ05oTXVpc3dyX1lOYm9DR0w4RjVFREs3U09qaGZZVG5NN0M3TWRKVklLc0tHZ3drZFZYWjlYbUhoYTBVMUNONWpma2lzbWlVc1Z0ZFc4S1hYQUVRUzRuZWpWWWozSGFESzFSVWVjamh5YUc4dVIzQUM0d05nY0s3MXFhTkE2bWx3?oc=5",
+        "title": "Panne Microsoft 365 : 5 mesures concrètes pour maintenir l’activité et rétablir les services"
       }
     ],
-    "occurrences": 9,
+    "occurrences": 10,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
@@ -31222,8 +31345,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Le Revenu",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNbnRaTnVnTUpxdVRJQ3IwYlAwNUZlNmF5YVRQRHFENS00cGJYR3BKTmVDQ3g2cUdhYlpGTmg5UTNiM21lQ2lKT2h2bVN0QU1VSFZBLTlTWE9fdzd2a3hsODRXLXRlUWU1QzFSbzJZaHRmZjJwcEdaZ0hmVVVSeER5c1cxS2ppSXN4U3NuWXFjakgzUXJJY1loelBSNlo3WDd6UFFncGRhLS1wLUtlYmc?oc=5",
+        "title": "Microsoft victime d'une panne mondiale : Outlook, Teams et Copilot perturbés dans 74 pays"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": "6a50e71e939a4b32",
     "s_curve_phase": 2,
     "remedy_percent": 52,
@@ -31234,10 +31363,6 @@
     "pharmakon_remedy_percent": 52,
     "pharmakon_poison_percent": 48,
     "date": "2026-11-13",
-    "title": "Microsoft victime d'une panne mondiale : Outlook, Teams et Copilot perturbés dans 74 pays",
-    "source": "Le Revenu",
-    "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNbnRaTnVnTUpxdVRJQ3IwYlAwNUZlNmF5YVRQRHFENS00cGJYR3BKTmVDQ3g2cUdhYlpGTmg5UTNiM21lQ2lKT2h2bVN0QU1VSFZBLTlTWE9fdzd2a3hsODRXLXRlUWU1QzFSbzJZaHRmZjJwcEdaZ0hmVVVSeER5c1cxS2ppSXN4U3NuWXFjakgzUXJJY1loelBSNlo3WDd6UFFncGRhLS1wLUtlYmc?oc=5",
-    "summary": "Microsoft victime d'une panne mondiale : Outlook, Teams et Copilot perturbés dans 74 pays Le Revenu",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -31245,7 +31370,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Microsoft victime d'une panne mondiale : Outlook, Teams et Copilot perturbés dans 74 pays",
+    "source": "Le Revenu",
+    "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNbnRaTnVnTUpxdVRJQ3IwYlAwNUZlNmF5YVRQRHFENS00cGJYR3BKTmVDQ3g2cUdhYlpGTmg5UTNiM21lQ2lKT2h2bVN0QU1VSFZBLTlTWE9fdzd2a3hsODRXLXRlUWU1QzFSbzJZaHRmZjJwcEdaZ0hmVVVSeER5c1cxS2ppSXN4U3NuWXFjakgzUXJJY1loelBSNlo3WDd6UFFncGRhLS1wLUtlYmc?oc=5",
+    "summary": "Microsoft victime d'une panne mondiale : Outlook, Teams et Copilot perturbés dans 74 pays Le Revenu"
   },
   {
     "id": "a0766bfabe6d0d7e",
@@ -31276,10 +31405,6 @@
     "pharmakon_remedy_percent": 64,
     "pharmakon_poison_percent": 36,
     "date": "2026-11-13",
-    "title": "AI2027 : is this? How did we write it? Why is it valuable? Who are we? The CEOs of OpenAI , Google DeepMind , and Anthropic have",
-    "source": "AI2027.com",
-    "source_url": null,
-    "summary": "Extrait de ai2027.com : is this? How did we write it? Why is it valuable? Who are we? The CEOs of OpenAI , Google DeepMind , and Anthropic have all predicted that AGI will arrive within the next 5 years",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -31287,7 +31412,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "AI2027 : is this? How did we write it? Why is it valuable? Who are we? The CEOs of OpenAI , Google DeepMind , and Anthropic have",
+    "source": "AI2027.com",
+    "source_url": null,
+    "summary": "Extrait de ai2027.com : is this? How did we write it? Why is it valuable? Who are we? The CEOs of OpenAI , Google DeepMind , and Anthropic have all predicted that AGI will arrive within the next 5 years"
   },
   {
     "id": "3cf63a95ca2b7b4e",
@@ -31318,10 +31447,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2026-11-13",
-    "title": "Panne Microsoft 365 : Outlook et les services cloud se rétablissent progressivement",
-    "source": "Le Monde Informatique",
-    "source_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOU2J1ckJfWGNEREctbWdLQzctZXV4TWlfQkJuOG1Yd2t5UWdsdjRjQ0pyN3NPWnAya2pfallabEwxZ3o3MTNoYjBRajhhbmZkV0NQYndYWjhWUnFyNTJDSDZrempJYngyZjdLTnVvc1diUEx3YmtMMk03ZnJpRWVRNS16c05Hc1ZyZnZjT1JaWFRBd2htU3haSHNOM1plQ0RoSWNlWnBoZ21naFJ5b0VpQ2dn?oc=5",
-    "summary": "Panne Microsoft 365 : Outlook et les services cloud se rétablissent progressivement Le Monde Informatique",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -31329,7 +31454,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Panne Microsoft 365 : Outlook et les services cloud se rétablissent progressivement",
+    "source": "Le Monde Informatique",
+    "source_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOU2J1ckJfWGNEREctbWdLQzctZXV4TWlfQkJuOG1Yd2t5UWdsdjRjQ0pyN3NPWnAya2pfallabEwxZ3o3MTNoYjBRajhhbmZkV0NQYndYWjhWUnFyNTJDSDZrempJYngyZjdLTnVvc1diUEx3YmtMMk03ZnJpRWVRNS16c05Hc1ZyZnZjT1JaWFRBd2htU3haSHNOM1plQ0RoSWNlWnBoZ21naFJ5b0VpQ2dn?oc=5",
+    "summary": "Panne Microsoft 365 : Outlook et les services cloud se rétablissent progressivement Le Monde Informatique"
   },
   {
     "id": "39834fc74529fa05",
@@ -31360,10 +31489,6 @@
     "pharmakon_remedy_percent": 30,
     "pharmakon_poison_percent": 70,
     "date": "2026-11-13",
-    "title": "Microsoft: Une panne mondiale affecte Outlook, Teams et Copilot",
-    "source": "Boursorama",
-    "source_url": null,
-    "summary": "Microsoft: Une panne mondiale affecte Outlook, Teams et Copilot Boursorama",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -31371,7 +31496,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Microsoft: Une panne mondiale affecte Outlook, Teams et Copilot",
+    "source": "Boursorama",
+    "source_url": null,
+    "summary": "Microsoft: Une panne mondiale affecte Outlook, Teams et Copilot Boursorama"
   },
   {
     "id": "ef7450d5ce26a211",
@@ -31402,10 +31531,6 @@
     "pharmakon_remedy_percent": 76,
     "pharmakon_poison_percent": 24,
     "date": "2026-11-13",
-    "title": "Panne Outlook, Teams, Microsoft 365 : ce que l’on sait de la panne mondiale de Microsoft, toujours pas réglée",
-    "source": "Journal du Geek",
-    "source_url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQTFdRX2l5QTZoRjlOcFk2TjVId2h5ajNGVjd2VXlWbXlsSkFRNUJ4VTlqbU9RZE5zRG40ZEhVSU5pY2UxcFpERVlSN1pIVzdKYnFnYkZKNVdiUzRxd2c0VHlEa1FnSVVwbTVQM0gyVkp5b05FYmpuMzBfb3pJWW1mZjVmRmhwVzk3U2VVOU9fUndBbnJLcHd3d1RveTdKUE1pcHE1YU0tazhNbmxkUlAzQzZOclNYQWxjWGQxdFUzWjRwREdscTNLUXVOMTE4VE9BMjNabi1nVW55X3BGZ0E?oc=5",
-    "summary": "Panne Outlook, Teams, Microsoft 365 : ce que l’on sait de la panne mondiale de Microsoft, toujours pas réglée Journal du Geek",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -31413,7 +31538,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Panne Outlook, Teams, Microsoft 365 : ce que l’on sait de la panne mondiale de Microsoft, toujours pas réglée",
+    "source": "Journal du Geek",
+    "source_url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQTFdRX2l5QTZoRjlOcFk2TjVId2h5ajNGVjd2VXlWbXlsSkFRNUJ4VTlqbU9RZE5zRG40ZEhVSU5pY2UxcFpERVlSN1pIVzdKYnFnYkZKNVdiUzRxd2c0VHlEa1FnSVVwbTVQM0gyVkp5b05FYmpuMzBfb3pJWW1mZjVmRmhwVzk3U2VVOU9fUndBbnJLcHd3d1RveTdKUE1pcHE1YU0tazhNbmxkUlAzQzZOclNYQWxjWGQxdFUzWjRwREdscTNLUXVOMTE4VE9BMjNabi1nVW55X3BGZ0E?oc=5",
+    "summary": "Panne Outlook, Teams, Microsoft 365 : ce que l’on sait de la panne mondiale de Microsoft, toujours pas réglée Journal du Geek"
   },
   {
     "id": "8d21bf4b0c01d587",
@@ -31434,7 +31563,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "6a50e71e939a4b32",
+    "merged_into": "a041bd013624ea24",
     "s_curve_phase": 2,
     "remedy_percent": 52,
     "poison_percent": 48,
@@ -31444,10 +31573,6 @@
     "pharmakon_remedy_percent": 52,
     "pharmakon_poison_percent": 48,
     "date": "2026-11-13",
-    "title": "Microsoft victime d'une panne mondiale : Outlook, Teams et Copilot perturbés dans 74 pays",
-    "source": "Le Revenu",
-    "source_url": null,
-    "summary": "Microsoft victime d'une panne mondiale : Outlook, Teams et Copilot perturbés dans 74 pays Le Revenu",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -31455,7 +31580,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Microsoft victime d'une panne mondiale : Outlook, Teams et Copilot perturbés dans 74 pays",
+    "source": "Le Revenu",
+    "source_url": null,
+    "summary": "Microsoft victime d'une panne mondiale : Outlook, Teams et Copilot perturbés dans 74 pays Le Revenu"
   },
   {
     "id": "b6979f1db1481538",
@@ -31476,7 +31605,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "e6c6a59de1e9cbc2",
+    "merged_into": "1769e885a2a3f50f",
     "s_curve_phase": 4,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -31486,10 +31615,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2026-11-13",
-    "title": "Stade de Singularité (estimation courante)",
-    "source": "Cortex Loom Analysis",
-    "source_url": null,
-    "summary": "Évaluation du niveau de proximité global avec une singularité technologique : stade estimé à 0.743 (phase d'accélération avancée, signaux faibles devenant tendances lourdes).",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -31497,7 +31622,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Stade de Singularité (estimation courante)",
+    "source": "Cortex Loom Analysis",
+    "source_url": null,
+    "summary": "Évaluation du niveau de proximité global avec une singularité technologique : stade estimé à 0.743 (phase d'accélération avancée, signaux faibles devenant tendances lourdes)."
   },
   {
     "id": "4f9b1980c1c7d514",
@@ -31516,8 +31645,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Libération",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPVFJlbFRPRHNrSnFIMU85SHFrTU5aMk5DUzg4MkNsc1lFV2lrVHRpZ2NoQi1ZTkROa3NHVGFadjhjT2lXc3BUT0tMZkVlR3FnMnRZc3VTSW52bEh4LWNUNmxjT0ZBVVBIRUZoSW9KTE9xblItVFAtUTM4R25FS3kwU1UtLUEwb3hCR3dpQjF2ZmFRMHZJNVFTV3BJMEFBX0VVX2s2Ti1yTF80RkRmb3RFMWJVMHE1TVRFZDlRanNNWFFfcm8?oc=5",
+        "title": "Panne d’Outlook : vous n’avez plus de message"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": "6a50e71e939a4b32",
     "s_curve_phase": 5,
     "remedy_percent": 21,
@@ -31528,10 +31663,6 @@
     "pharmakon_remedy_percent": 21,
     "pharmakon_poison_percent": 79,
     "date": "2026-11-13",
-    "title": "Panne d’Outlook : vous n’avez plus de message",
-    "source": "Libération",
-    "source_url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPVFJlbFRPRHNrSnFIMU85SHFrTU5aMk5DUzg4MkNsc1lFV2lrVHRpZ2NoQi1ZTkROa3NHVGFadjhjT2lXc3BUT0tMZkVlR3FnMnRZc3VTSW52bEh4LWNUNmxjT0ZBVVBIRUZoSW9KTE9xblItVFAtUTM4R25FS3kwU1UtLUEwb3hCR3dpQjF2ZmFRMHZJNVFTV3BJMEFBX0VVX2s2Ti1yTF80RkRmb3RFMWJVMHE1TVRFZDlRanNNWFFfcm8?oc=5",
-    "summary": "Panne d’Outlook : vous n’avez plus de message Libération",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -31539,7 +31670,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Panne d’Outlook : vous n’avez plus de message",
+    "source": "Libération",
+    "source_url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPVFJlbFRPRHNrSnFIMU85SHFrTU5aMk5DUzg4MkNsc1lFV2lrVHRpZ2NoQi1ZTkROa3NHVGFadjhjT2lXc3BUT0tMZkVlR3FnMnRZc3VTSW52bEh4LWNUNmxjT0ZBVVBIRUZoSW9KTE9xblItVFAtUTM4R25FS3kwU1UtLUEwb3hCR3dpQjF2ZmFRMHZJNVFTV3BJMEFBX0VVX2s2Ti1yTF80RkRmb3RFMWJVMHE1TVRFZDlRanNNWFFfcm8?oc=5",
+    "summary": "Panne d’Outlook : vous n’avez plus de message Libération"
   },
   {
     "id": "4e36a57d5ff17a5c",
@@ -31570,10 +31705,6 @@
     "pharmakon_remedy_percent": 63,
     "pharmakon_poison_percent": 37,
     "date": "2026-11-13",
-    "title": "Panne chez Microsoft : Outlook, Teams et 365 inaccessibles dans 74 pays",
-    "source": "Euronews.com",
-    "source_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQVG9JeGxNYWtEdFBMUjlxS3l1c3JoYUoyejVPeUM0NnFUSHBpU1BfbG9HY2RPSEJJM3hrYU04RGdYSU9peVNYN285d0RMN0doM0tJcXdaSzcyM3lHMmpIN0xMZzFmY25Dd2d4X0U5N21uMU1udG9mbVI0Yy1JNE1ZdV9Ld2tXenFRRnJIQ1VPV1FraWphZkZpWFM4elE3TWltOC12R1pB?oc=5",
-    "summary": "Panne chez Microsoft : Outlook, Teams et 365 inaccessibles dans 74 pays Euronews.com",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -31581,7 +31712,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Panne chez Microsoft : Outlook, Teams et 365 inaccessibles dans 74 pays",
+    "source": "Euronews.com",
+    "source_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQVG9JeGxNYWtEdFBMUjlxS3l1c3JoYUoyejVPeUM0NnFUSHBpU1BfbG9HY2RPSEJJM3hrYU04RGdYSU9peVNYN285d0RMN0doM0tJcXdaSzcyM3lHMmpIN0xMZzFmY25Dd2d4X0U5N21uMU1udG9mbVI0Yy1JNE1ZdV9Ld2tXenFRRnJIQ1VPV1FraWphZkZpWFM4elE3TWltOC12R1pB?oc=5",
+    "summary": "Panne chez Microsoft : Outlook, Teams et 365 inaccessibles dans 74 pays Euronews.com"
   },
   {
     "id": "4a5286ada4e431a4",
@@ -31602,7 +31737,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "6a50e71e939a4b32",
+    "merged_into": "4f9b1980c1c7d514",
     "s_curve_phase": 3,
     "remedy_percent": 58,
     "poison_percent": 42,
@@ -31612,10 +31747,6 @@
     "pharmakon_remedy_percent": 58,
     "pharmakon_poison_percent": 42,
     "date": "2026-11-13",
-    "title": "Panne d’Outlook : Microsoft annonce une reprise partielle",
-    "source": "Libération",
-    "source_url": null,
-    "summary": "Panne d’Outlook : Microsoft annonce une reprise partielle Libération",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -31623,7 +31754,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Panne d’Outlook : Microsoft annonce une reprise partielle",
+    "source": "Libération",
+    "source_url": null,
+    "summary": "Panne d’Outlook : Microsoft annonce une reprise partielle Libération"
   },
   {
     "id": "d8bc5e10f0b1e20d",
@@ -31644,7 +31779,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "6a50e71e939a4b32",
+    "merged_into": "4f9b1980c1c7d514",
     "s_curve_phase": 1,
     "remedy_percent": 73,
     "poison_percent": 27,
@@ -31654,10 +31789,6 @@
     "pharmakon_remedy_percent": 73,
     "pharmakon_poison_percent": 27,
     "date": "2026-11-13",
-    "title": "Outlook et Teams en berne : ce que l’on sait de la panne qui touche Microsoft",
-    "source": "Libération",
-    "source_url": null,
-    "summary": "Outlook et Teams en berne : ce que l’on sait de la panne qui touche Microsoft Libération",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -31665,7 +31796,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Outlook et Teams en berne : ce que l’on sait de la panne qui touche Microsoft",
+    "source": "Libération",
+    "source_url": null,
+    "summary": "Outlook et Teams en berne : ce que l’on sait de la panne qui touche Microsoft Libération"
   },
   {
     "year": 2026.833,
