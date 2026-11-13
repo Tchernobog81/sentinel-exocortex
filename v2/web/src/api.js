@@ -98,7 +98,7 @@ export function useSSE(url, onMessage, pollMs = 5000) {
 
       if (m === 'server') {
         try {
-          es = new EventSource(BASE + url);
+          es = new EventSource(BASE + url.replace(/^\//, '')); // './' + 'api/stream' (pas de //)
           es.onopen = () => setConnected(true);
           es.onmessage = ev => {
             try { const j = JSON.parse(ev.data); dataRef.current = j; setData(j); setConnected(true); onMessageRef.current?.(j); } catch {}
