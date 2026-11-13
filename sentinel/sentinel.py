@@ -886,16 +886,30 @@ def label_similarity(a: str, b: str) -> float:
 
 
 def events_similar(e1: Dict[str, Any], e2: Dict[str, Any]) -> bool:
-    """Deux événements sont la même occurrence si : même catégorie, années proches (<= 1,5 an),
-    labels sémantiquement proches (Jaccard >= 0,5 sur les tokens pleins). L'horloge est exclue
-    (chaque réglage officiel est un point distinct)."""
+    """Deux événements sont la même occurrence si : même catégorie, années proches (<= 1,5 an) et
+    labels sémantiquement proches (Jaccard >= 0,5, 3+ tokens communs). Pour les faits RÉCENTS
+    (même mois, |Δyear| <= 0,1) : 2+ tokens significatifs partagés (entité, len>=7 ou chiffre)
+    + Jaccard >= 0,15 -> occurrences d'un même fait relatées différemment par les médias.
+    L'horloge est exclue (chaque réglage officiel est un point distinct)."""
     if e1.get("doomsday_minutes") is not None or e2.get("doomsday_minutes") is not None:
         return False
     if (e1.get("category") or "") != (e2.get("category") or ""):
         return False
-    if abs((e1.get("year") or 0) - (e2.get("year") or 0)) > 1.5:
+    dy = abs((e1.get("year") or 0) - (e2.get("year") or 0))
+    if dy > 1.5:
         return False
-    return label_similarity(e1.get("label", ""), e2.get("label", "")) >= 0.5
+    A, B = norm_tokens(e1.get("label", "")), norm_tokens(e2.get("label", ""))
+    if not A or not B:
+        return False
+    inter = A & B
+    j = len(inter) / len(A | B)
+    if j >= 0.5 and len(inter) >= 3:
+        return True
+    if dy <= 0.1:
+        sig = [w for w in inter if len(w) >= 7 or any(c.isdigit() for c in w)]
+        if len(sig) >= 2 and j >= 0.15:
+            return True
+    return False
 
 
 def merge_occurrence(base: Dict[str, Any], occ: Dict[str, Any]) -> Dict[str, Any]:
@@ -909,6 +923,11 @@ def merge_occurrence(base: Dict[str, Any], occ: Dict[str, Any]) -> Dict[str, Any
         if not any(s.get("url") == entry["url"] and entry["url"] for s in srcs) and \
            not any(s.get("title") == entry["title"] and not entry["url"] for s in srcs):
             srcs.append(entry)
+    # absorber les sources déjà accumulées sur l'occurrence (si elle avait elle-même des occurrences)
+    for s in (occ.get("sources") or []):
+        if not any(x.get("url") == s.get("url") and s.get("url") for x in srcs) and \
+           not any(x.get("title") == s.get("title") and not s.get("url") for x in srcs):
+            srcs.append(s)
     base["occurrences"] = len(srcs)
     if occ.get("verified"):
         base["verified"] = True
