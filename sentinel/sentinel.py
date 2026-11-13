@@ -907,7 +907,7 @@ def events_similar(e1: Dict[str, Any], e2: Dict[str, Any]) -> bool:
         return True
     if dy <= 0.1:
         sig = [w for w in inter if len(w) >= 7 or any(c.isdigit() for c in w)]
-        if len(sig) >= 2 and j >= 0.15:
+        if len(sig) >= 1 and j >= 0.15:
             return True
     return False
 

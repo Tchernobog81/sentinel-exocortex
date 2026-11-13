@@ -393,8 +393,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Héron d'Alexandrie",
+        "url": "https://fr.wikipedia.org/wiki/Æolipile",
+        "title": "Æolipile (machine à vapeur de Héron)"
+      },
+      {
+        "source": "Héron d'Alexandrie",
+        "url": "#",
+        "title": "Æolipile (Héron d'Alexandrie)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 60,
@@ -424,7 +435,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "d84b3cd87505c68f",
     "s_curve_phase": 1,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -654,8 +665,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Alchimistes chinois",
+        "url": "https://fr.wikipedia.org/wiki/Boussole",
+        "title": "Boussole (Chine)"
+      },
+      {
+        "source": "Alchimistes chinois",
+        "url": "#",
+        "title": "Boussole magnétique (Chine)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 60,
@@ -685,7 +707,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "cdf4bc8fd1349f57",
     "s_curve_phase": 1,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -998,7 +1020,7 @@
     "label": "Imprimerie",
     "category": "🔴 RÉSEAU",
     "whoWhat": "Industrie / institutions",
-    "description": "Étape clé des réseaux et de la communication.",
+    "description": "Invention de l'imprimerie à caractères mobiles, révolutionnant la diffusion du savoir.",
     "url": "https://fr.wikipedia.org/wiki/Imprimerie",
     "timestamp": null,
     "tipping": true,
@@ -1008,8 +1030,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Industrie / institutions",
+        "url": "https://fr.wikipedia.org/wiki/Imprimerie",
+        "title": "Imprimerie"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 60,
@@ -1039,7 +1067,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "e1b207bd3ac13b6b",
     "s_curve_phase": 1,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -1512,8 +1540,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Industrie / laboratoires",
+        "url": "https://fr.wikipedia.org/wiki/Machine_%C3%A0_vapeur",
+        "title": "Machine à Vapeur"
+      },
+      {
+        "source": "Thomas Newcomen",
+        "url": "#",
+        "title": "Machine à vapeur atmosphérique (Newcomen)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 59,
@@ -1543,7 +1582,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "794ac79dd98b79b6",
     "s_curve_phase": 1,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -2278,8 +2317,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Louis Daguerre",
+        "url": "#",
+        "title": "Photographie (daguerréotype)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 60,
@@ -2309,7 +2354,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "38a2ad6e7f1df213",
     "s_curve_phase": 2,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -2365,8 +2410,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Samuel Morse",
+        "url": "#",
+        "title": "Télégraphe électrique (Morse)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 60,
@@ -2425,7 +2476,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "8c91e0898f57cf89",
     "s_curve_phase": 2,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -2929,8 +2980,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Thomas Edison",
+        "url": "#",
+        "title": "Ampoule à incandescence (Edison)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 60,
@@ -2960,7 +3017,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "062ef45dc006bfcb",
     "s_curve_phase": 2,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -3045,8 +3102,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Karl Benz",
+        "url": "#",
+        "title": "Automobile (Benz Patent-Motorwagen)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 60,
@@ -3076,7 +3139,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "7666fea8de0682aa",
     "s_curve_phase": 2,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -3976,8 +4039,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Fritz Lang",
+        "url": "https://fr.wikipedia.org/wiki/Metropolis",
+        "title": "Metropolis"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 50,
@@ -4036,7 +4105,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "a567c090c3d10fe8",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -4324,8 +4393,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Aldous Huxley",
+        "url": "",
+        "title": "Le Meilleur des mondes"
+      },
+      {
+        "source": "Aldous Huxley",
+        "url": "https://fr.wikipedia.org/wiki/Le_Meilleur_des_mondes",
+        "title": "Le Meilleur des mondes (eugénisme)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 43,
@@ -4355,7 +4435,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "ad9d0ccc9a8a89d2",
     "s_curve_phase": 3,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -4401,7 +4481,7 @@
     "label": "BBC (1re TV régulière)",
     "category": "✨ NOOSPHÈRE",
     "whoWhat": "BBC",
-    "description": "Télévision de masse.",
+    "description": "Télévision électronique de masse.",
     "url": "#",
     "timestamp": "1936-06-01T00:00:00",
     "tipping": false,
@@ -4411,8 +4491,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "BBC",
+        "url": "#",
+        "title": "BBC (1re TV régulière)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 60,
@@ -4442,7 +4528,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "8d2f564b99afe6fd",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -4616,8 +4702,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "McCulloch & Pitts",
+        "url": "#",
+        "title": "Perceptron (McCulloch & Pitts)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 60,
@@ -4647,7 +4739,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "bed348eae2e9b6a0",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -4825,8 +4917,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Manhattan Project (1945, entropy, radioactivity)",
+        "url": "https://fr.wikipedia.org/wiki/Trinity_(essai_atomique)",
+        "title": "Trinity (Bombe A)"
+      },
+      {
+        "source": "Manhattan Project",
+        "url": "https://fr.wikipedia.org/wiki/Essai_Trinity",
+        "title": "Bombe atomique (Trinity)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 5,
@@ -4914,7 +5017,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "d006066008f75b3d",
     "s_curve_phase": 3,
     "remedy_percent": 5,
     "poison_percent": 95,
@@ -5231,8 +5334,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Norbert Wiener",
+        "url": "",
+        "title": "Cybernétique"
+      },
+      {
+        "source": "Norbert Wiener",
+        "url": "#",
+        "title": "Cybernétique (Wiener)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 55,
@@ -5360,7 +5474,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "fc11f397c6565984",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -5445,8 +5559,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "George Orwell",
+        "url": "",
+        "title": "1984"
+      },
+      {
+        "source": "George Orwell",
+        "url": "https://fr.wikipedia.org/wiki/1984",
+        "title": "1984 (Orwell, télécrans)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 54,
@@ -5476,7 +5601,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "f50050934c9766e9",
     "s_curve_phase": 3,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -5706,8 +5831,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "🔮 IMAGINAIRE",
+        "url": "",
+        "title": "Fondation (Asimov)"
+      },
+      {
+        "source": "Isaac Asimov",
+        "url": "https://fr.wikipedia.org/wiki/Fondation",
+        "title": "Fondation (psychohistoire)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 53,
@@ -5737,7 +5873,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "a2ab4e3498932adb",
     "s_curve_phase": 3,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -6366,8 +6502,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Frank Rosenblatt",
+        "url": "",
+        "title": "Perceptron"
+      },
+      {
+        "source": "Frank Rosenblatt",
+        "url": "#",
+        "title": "Perceptron (Rosenblatt)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 69,
@@ -6397,7 +6544,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "165853ae89e8d0ce",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -6783,8 +6930,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "1961, Youri Gagarine",
+        "url": "",
+        "title": "Youri Gagarine"
+      },
+      {
+        "source": "Youri Gagarine",
+        "url": "#",
+        "title": "Premier homme dans l'espace (Gagarine)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 59,
@@ -6878,7 +7036,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "e1bdb0d8ba7c058c",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -6907,7 +7065,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": "b99dbeefb29979f9",
+    "merged_into": "e1bdb0d8ba7c058c",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -8000,8 +8158,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "ARPA / UCLA",
+        "url": "#",
+        "title": "ARPANET (1er nœud UCLA)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 60,
@@ -8063,7 +8227,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "de3171e54a51bcff",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -8181,8 +8345,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Cité dans l'article Histoire de l'Internet sur le site de l'INRIA",
+        "url": "",
+        "title": "ARPANET"
+      },
+      {
+        "source": "DARPA",
+        "url": "https://fr.wikipedia.org/wiki/ARPANET",
+        "title": "ARPANET (Ancêtre d'Internet)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 44,
@@ -8212,7 +8387,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "b585034124d59653",
     "s_curve_phase": 2,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -8287,7 +8462,7 @@
     "label": "Intel 4004",
     "category": "🟡 HARDWARE",
     "whoWhat": "Cité dans l'article L'histoire du microprocesseur sur le site de l'Atelier du net",
-    "description": "Premier microprocesseur commercial.",
+    "description": "Toute la puissance d'un ordinateur sur une puce.",
     "url": "",
     "timestamp": null,
     "tipping": false,
@@ -8297,8 +8472,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Cité dans l'article L'histoire du microprocesseur sur le site de l'Atelier du net",
+        "url": "",
+        "title": "Intel 4004"
+      },
+      {
+        "source": "Intel",
+        "url": "#",
+        "title": "Microprocesseur (Intel 4004)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 58,
@@ -8357,7 +8543,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "8af8337ebbb90def",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -9111,8 +9297,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Louise Brown",
+        "url": "",
+        "title": "FIV (Premier bébé)"
+      },
+      {
+        "source": "Edwards & Steptoe",
+        "url": "#",
+        "title": "Premier bébé né de FIV (Louise Brown)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 73,
@@ -9148,7 +9345,7 @@
       }
     ],
     "occurrences": 1,
-    "merged_into": null,
+    "merged_into": "85eae1af160f50d3",
     "s_curve_phase": 2,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -9644,7 +9841,7 @@
     "label": "WarGames",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Universal Pictures (1983)",
-    "description": "Film popularisant le risque de guerre nucléaire par IA.",
+    "description": "Film de science-fiction mettant en scène un jeune hacker qui joue avec un programme simulant un jeu de guerre.",
     "url": "",
     "timestamp": null,
     "tipping": false,
@@ -9654,8 +9851,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Universal Pictures (1983)",
+        "url": "",
+        "title": "WarGames"
+      },
+      {
+        "source": "John Badham",
+        "url": "https://fr.wikipedia.org/wiki/WarGames",
+        "title": "WarGames"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 55,
@@ -9772,7 +9980,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "e1f5dff54ce87229",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -9992,7 +10200,7 @@
     "label": "Terminator (robots tueurs)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "James Cameron",
-    "description": "Skynet et les Terminators préfigurent la guerre autonome.",
+    "description": "Film de science-fiction mettant en scène un robot tueur du futur.",
     "url": "https://fr.wikipedia.org/wiki/Terminator",
     "timestamp": "1984-06-01T00:00:00",
     "tipping": false,
@@ -10002,8 +10210,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "James Cameron",
+        "url": "https://fr.wikipedia.org/wiki/Terminator",
+        "title": "Terminator (robots tueurs)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 50,
@@ -10033,7 +10247,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "875d0079d3c19b9e",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -10062,7 +10276,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "875d0079d3c19b9e",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -10398,7 +10612,7 @@
     "label": "RoboCop (robots policiers)",
     "category": "🔮 IMAGINAIRE",
     "whoWhat": "Paul Verhoeven",
-    "description": "La police robotisée d'OCP préfigure les robots humanoïdes.",
+    "description": "Film de science-fiction réalisé par Paul Verhoeven, sorti en 1987. Le film raconte l'histoire d'un policier cyborg qui combat la criminalité dans une ville déchirée par la corruption.",
     "url": "https://fr.wikipedia.org/wiki/RoboCop",
     "timestamp": "1987-06-01T00:00:00",
     "tipping": false,
@@ -10408,8 +10622,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Paul Verhoeven",
+        "url": "https://fr.wikipedia.org/wiki/RoboCop",
+        "title": "RoboCop (robots policiers)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 50,
@@ -10439,7 +10659,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "ea087d62634451f1",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -11851,8 +12071,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Sun / Netscape",
+        "url": "#",
+        "title": "Java / JavaScript"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 60,
@@ -11882,7 +12108,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "4319fc83880264e1",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -12170,8 +12396,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Wikipedia, page sur le film",
+        "url": "",
+        "title": "Bienvenue à Gattaca"
+      },
+      {
+        "source": "Andrew Niccol",
+        "url": "https://fr.wikipedia.org/wiki/Gattaca",
+        "title": "Gattaca (eugénisme génétique)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 50,
@@ -12270,7 +12507,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "5bb92c8dbbaeb58b",
     "s_curve_phase": 3,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -13033,8 +13270,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Steven Spielberg / Philip K. Dick",
+        "url": "",
+        "title": "Minority Report"
+      },
+      {
+        "source": "Steven Spielberg",
+        "url": "https://fr.wikipedia.org/wiki/Minority_Report",
+        "title": "Minority Report"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 53,
@@ -13186,7 +13434,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "c85799c8144f422e",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -13416,8 +13664,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "RÉSEAU",
+        "url": "",
+        "title": "Facebook"
+      },
+      {
+        "source": "Mark Zuckerberg",
+        "url": "#",
+        "title": "Facebook (réseau social de masse)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 56,
@@ -13563,7 +13822,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "db8ac9f8ebe9d98e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -13974,8 +14233,14 @@
     ],
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Industrie / institutions",
+        "url": "#",
+        "title": "iPhone (smartphone)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 50,
@@ -14097,7 +14362,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "7a70190f354c8565",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -14654,8 +14919,14 @@
     ],
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "🟡 HARDWARE",
+        "url": "#",
+        "title": "Exosquelette militaire (Raytheon XOS 2)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 4,
     "remedy_percent": 60,
@@ -14687,7 +14958,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "2ffb1b3529a3fa07",
     "s_curve_phase": 4,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -14714,8 +14985,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Opérateurs",
+        "url": "#",
+        "title": "4G (déploiement mondial)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 60,
@@ -14774,7 +15051,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "e4fdf54748490949",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -15068,8 +15345,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Steven Soderbergh",
+        "url": "https://fr.wikipedia.org/wiki/Contagion",
+        "title": "Contagion (pandémie modélisée)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 50,
@@ -15192,7 +15475,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "3efb356361a632f3",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -15930,8 +16213,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Alex Garland",
+        "url": "https://fr.wikipedia.org/wiki/Ex_Machina",
+        "title": "Ex Machina"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 50,
@@ -16023,7 +16312,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "4b5bb009cd7af159",
     "s_curve_phase": 3,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -16050,8 +16339,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Christopher Nolan",
+        "url": "https://fr.wikipedia.org/wiki/Interstellar",
+        "title": "Interstellar (trou noir)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 50,
@@ -16081,7 +16376,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "a65617c065e7b50e",
     "s_curve_phase": 2,
     "remedy_percent": 50,
     "poison_percent": 50,
@@ -16462,8 +16757,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Sorti en 2015, développé par Zynga.",
+        "url": "",
+        "title": "Stade Singularité : 0.5"
+      },
+      {
+        "source": "Cortex Loom Analysis",
+        "url": "#",
+        "title": "Stade Singularité estimé 0.5"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 4,
     "remedy_percent": 54,
@@ -16551,7 +16857,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "cafb1b6fdec0d0ff",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -16867,7 +17173,7 @@
     "label": "AlphaGo",
     "category": "🔵 COGNITION",
     "whoWhat": "Développée par DeepMind en 2016.",
-    "description": "IA capables de jouer au go sans aucun coup manqué.",
+    "description": "Le Go tombe à son tour : intuition machine au plus haut niveau.",
     "url": "",
     "timestamp": null,
     "tipping": true,
@@ -16877,8 +17183,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Développée par DeepMind en 2016.",
+        "url": "",
+        "title": "AlphaGo"
+      },
+      {
+        "source": "DeepMind",
+        "url": "#",
+        "title": "AlphaGo bat Lee Sedol"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 4,
     "remedy_percent": 57,
@@ -16908,7 +17225,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "ec5a9d15cc181915",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -17084,8 +17401,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Source : Google, article 'Attention Is All You Need' 🔵 COGNITION",
+        "url": "",
+        "title": "Attention Is All You Need"
+      },
+      {
+        "source": "Vaswani et al. (Google)",
+        "url": "#",
+        "title": "Transformer (Attention is all you need)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 4,
     "remedy_percent": 55,
@@ -17144,7 +17472,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "7a829d574127d375",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -17784,8 +18112,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "BioNTech/Pfizer, Moderna",
+        "url": "https://fr.wikipedia.org/wiki/Vaccin_à_ARN",
+        "title": "Vaccins à ARN messager (COVID-19)"
+      },
+      {
+        "source": "BioNTech/Pfizer, Moderna",
+        "url": "#",
+        "title": "Vaccins ARNm (COVID-19)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 80,
@@ -17995,7 +18334,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "15f002d6e1706f5e",
     "s_curve_phase": 3,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -18093,7 +18432,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "7af26b644238988b",
     "s_curve_phase": 3,
     "remedy_percent": 55,
     "poison_percent": 45,
@@ -20762,7 +21101,7 @@
     "label": "IA : 5 problèmes sur 6 résolus à l'Olympiade internationale de maths",
     "category": "🔵 COGNITION",
     "whoWhat": "IMO 2026",
-    "description": "Performance niveau or olympique en raisonnement formel (suite d'AlphaProof, Nature 2024).",
+    "description": "Des agents autonomes résolvent des problèmes ouverts de niveau recherche (article Science, 2026).",
     "url": "https://www.nature.com/",
     "timestamp": "2026-07-15T00:00:00",
     "tipping": true,
@@ -20772,8 +21111,19 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "IMO 2026",
+        "url": "https://www.nature.com/",
+        "title": "IA : 5 problèmes sur 6 résolus à l'Olympiade internationale de maths"
+      },
+      {
+        "source": "Tsoukalas et al., Science",
+        "url": "https://www.science.org/",
+        "title": "Agents IA résolvent des problèmes de maths ouverts (Science 2026)"
+      }
+    ],
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 4,
     "remedy_percent": 60,
@@ -20803,7 +21153,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "59d3789244539c93",
     "s_curve_phase": 4,
     "remedy_percent": 60,
     "poison_percent": 40,
@@ -21467,7 +21817,7 @@
     "doomsday_minutes": null,
     "sources": null,
     "occurrences": null,
-    "merged_into": null,
+    "merged_into": "6a50e71e939a4b32",
     "s_curve_phase": 5,
     "remedy_percent": 21,
     "poison_percent": 79,
