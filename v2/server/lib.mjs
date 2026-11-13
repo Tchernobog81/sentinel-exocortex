@@ -20,14 +20,14 @@ export const CAT_FILTER = {
   '🟣 ESPACE': 'Espace',
   '🟡 HARDWARE': 'Physique', '🤖 ROBOTIQUE': 'Physique',
   '🏛️ POLITIQUE': 'Politique',
-  '⏰ HORLOGE': 'Horloge',
+  '⏰ HORLOGE': 'Horloge', '🌡️ CLIMAT': 'Climat',
   '🔮 IMAGINAIRE': 'Fiction',
   '✨ NOOSPHÈRE': 'Réseau', '🔴 RÉSEAU': 'Réseau',
 };
 export const GROUP_COLOR = {
   '⚙️ INDUSTRIE & ROBOTS': '#fbbf24', '🚀 ESPACE': '#8b5cf6', '🧠 IA & COGNITION': '#3b82f6',
   '🌍 NOOSPHÈRE & RÉSEAUX': '#0ea5e9', '🧬 VIVANT & SANTÉ': '#10b981', '🏛️ POLITIQUE': '#d946ef',
-  '☢️ ENTROPIE & CYBER': '#f97316', '🎬 FICTION': '#f472b6', "⏰ HORLOGE DE L'APOCALYPSE": '#ef4444',
+  '☢️ ENTROPIE & CYBER': '#f97316', '🎬 FICTION': '#f472b6', "⏰ HORLOGE DE L'APOCALYPSE": '#ef4444', '🌡️ CLIMAT & BIODIVERSITÉ': '#a3e635',
 };
 export const GROUP_OF = {};
 {
@@ -41,6 +41,7 @@ export const GROUP_OF = {};
     ['☢️ ENTROPIE', '☢️ ENTROPIE & CYBER'], ['☠️ RISQUES CYBER', '☢️ ENTROPIE & CYBER'],
     ['🔮 IMAGINAIRE', '🎬 FICTION'],
     ['⏰ HORLOGE', "⏰ HORLOGE DE L'APOCALYPSE"],
+    ['🌡️ CLIMAT', '🌡️ CLIMAT & BIODIVERSITÉ'],
   ];
   for (const [c, g] of G) GROUP_OF[c] = g;
 }

@@ -126,6 +126,16 @@ def categorize_text(text: str) -> str:
                                "hack", "ddos", "panne", "outage", "indisponible", "incident majeur",
                                "microsoft", "azure", "microsoft 365", "windows", "datacenter", "cloud majeur"]):
         return "☠️ RISQUES CYBER"
+    if any(k in text for k in ["climat", "réchauffement", "changement climatique", "biodiversité", "biodiversity",
+                               "extinction", "giec", "ipcc", "ipbes", "copernicus", "température", "degrés", "anomalie thermique", "iucn", "liste rouge", "carbone", "émissions",
+                               "co2", "méthane", "methane", "effet de serre", "serre", "glacier", "banquise",
+                               "antark", "antarctique", "groenland", "corail", "coraux", "blanchissement",
+                               "déforestation", "forêt", "amazonie", "amazon", "sécheresse", "inondation",
+                               "canicule", "séisme", "tsunami", "ouragan", "cyclone", "tempête", "montée des eaux",
+                               "niveau de la mer", "permafrost", "pergélisol", "couche d'ozone", "protole de montréal",
+                               "protocole de montréal", "accord de paris", "cop21", "cop26", "cop27", "cop28", "cop29", "cop30",
+                               "greehouse", "global warming", "climate change", "espèces menacées", "extinction de masse"]):
+        return "🌡️ CLIMAT"
     if any(k in text for k in ["quantum", "chip", "gpu", "hardware", "moore", "nvidia"]):
         return "🟡 HARDWARE"
     if any(k in text for k in ["gpt", "model", "reasoning", "agi", "cognitive", "openai", "anthropic", "ai2027"]):
@@ -536,6 +546,13 @@ RSS_QUERIES = [
     'traité OR gouvernance OR militaro-numérique 2026',
     # 7. Noosphère & réseaux
     'censure internet OR coupure réseau OR mesh OR protocole décentralisé 2026',
+    # 9. Climat & biodiversité
+    'réchauffement climatique record 2026 GIEC température degrés',
+    'COP climat 2026 négociations bilan émissions CO2 COP30',
+    'biodiversité extinction espèces menacées IPBES UICN 2026',
+    'canicule inondation sécheresse record 2026 climat extrême',
+    'fonte banquise Antarctique Groenland glacier 2026',
+    'blanchissement corail déforestation Amazonie 2026',
 ]
 # Filtre anti-hype : un article n'entre dans le flux que s'il contient un de ces signaux factuels
 SIGNAL_KEYWORDS = [
@@ -545,6 +562,8 @@ SIGNAL_KEYWORDS = [
     "mathematics", "maths", "breakthrough", "percée", "nature", "science",
     "deepmind", "openai", "anthropic", "agi", "nobel", "published", "preprint",
     "panne", "outage", "down", "indisponible", "indisponibilité", "incident", "ddos",
+    "climat", "réchauffement", "biodiversité", "giiec", "canicule", "inondation", "sécheresse",
+    "extinction", "corail", "banquise", "record", "température",
 ]
 
 
@@ -1089,6 +1108,8 @@ RELEVANCE_KEYWORDS = [
     "fusion nucléaire", "réacteur", "collisionneur", "gravitation",
     "panne", "outage", "indisponible", "indisponibilité", "microsoft", "azure", "microsoft 365",
     "windows", "datacenter", "ddos", "incident majeur", "cloud",
+    "climat", "réchauffement", "biodiversité", "giec", "record température", "degrés", "canicule",
+    "inondation", "sécheresse", "extinction", "espèces menacées", "émissions", "corail", "banquise",
 ]
 
 

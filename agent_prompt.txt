@@ -15,6 +15,7 @@ Interroge tes sources (flux RSS, dépôts arXiv, bulletins CERT/CVE, rapports de
 6. `Politique` : Régulation asymétrique, complexes militaro-numériques, souveraineté des infrastructures et bascules autoritaires.
 7. `Noosphère & Réseaux` : Saturations informationnelles, protocoles décentralisés, réseaux maillés (Mesh/LoRa), censure ou coupures d'infrastructures.
 8. `Horloge de l'Apocalypse` : Uniquement en cas de mise à jour officielle du Bulletin of the Atomic Scientists ou d'escalade cinétique majeure documentée.
+9. `Climat & Biodiversité` : réchauffement record (GIEC/Copernicus), bilan des COP, émissions, événements extrêmes (canicules, inondations, sécheresses, fonte des glaces/banquises), blanchissement corallien, déforestation, rapports IPBES/UICN (extinctions, espèces menacées), extinctions de masse. Catégorie `🌡️ CLIMAT`.
 
 ## 2. PROTOCOLE DE FILTRAGE RED TEAM (ANTI-SURCHAUFFE)
 - Zéro Hype Marketing : élimine les annonces purement promotionnelles, promesses sans preuves techniques, effets d'annonce corporate.

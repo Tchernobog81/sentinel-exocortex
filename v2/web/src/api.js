@@ -29,11 +29,13 @@ const CAT_FILTER = {
   '🟢 BIOTECH': 'Vivant', '💊 MÉDECINE': 'Vivant', '🟣 ESPACE': 'Espace',
   '🟡 HARDWARE': 'Physique', '🤖 ROBOTIQUE': 'Physique', '🏛️ POLITIQUE': 'Politique',
   '⏰ HORLOGE': 'Horloge', '🔮 IMAGINAIRE': 'Fiction', '✨ NOOSPHÈRE': 'Réseau', '🔴 RÉSEAU': 'Réseau',
+  '🌡️ CLIMAT': 'Climat',
 };
 const GROUP_COLOR = {
   '⚙️ INDUSTRIE & ROBOTS': '#fbbf24', '🚀 ESPACE': '#8b5cf6', '🧠 IA & COGNITION': '#3b82f6',
   '🌍 NOOSPHÈRE & RÉSEAUX': '#0ea5e9', '🧬 VIVANT & SANTÉ': '#10b981', '🏛️ POLITIQUE': '#d946ef',
   '☢️ ENTROPIE & CYBER': '#f97316', '🎬 FICTION': '#f472b6', "⏰ HORLOGE DE L'APOCALYPSE": '#ef4444',
+  '🌡️ CLIMAT & BIODIVERSITÉ': '#a3e635',
 };
 const GROUP_OF = {};
 for (const [c, g] of Object.entries({
@@ -42,6 +44,7 @@ for (const [c, g] of Object.entries({
   '✨ NOOSPHÈRE': '🌍 NOOSPHÈRE & RÉSEAUX', '🔴 RÉSEAU': '🌍 NOOSPHÈRE & RÉSEAUX',
   '🟢 BIOTECH': '🧬 VIVANT & SANTÉ', '💊 MÉDECINE': '🧬 VIVANT & SANTÉ', '🏛️ POLITIQUE': '🏛️ POLITIQUE',
   '☢️ ENTROPIE': '☢️ ENTROPIE & CYBER', '☠️ RISQUES CYBER': '☢️ ENTROPIE & CYBER',
+  '🌡️ CLIMAT': '🌡️ CLIMAT & BIODIVERSITÉ',
   '🔮 IMAGINAIRE': '🎬 FICTION', '⏰ HORLOGE': "⏰ HORLOGE DE L'APOCALYPSE",
 })) GROUP_OF[c] = g;
 
