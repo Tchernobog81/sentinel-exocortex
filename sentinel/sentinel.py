@@ -548,12 +548,14 @@ SIGNAL_KEYWORDS = [
 ]
 
 
-def scan_google_news_rss(max_events: int = 4) -> List[Dict[str, Any]]:
+def scan_google_news_rss(max_events: int = 6) -> List[Dict[str, Any]]:
     """Scanne plusieurs flux Google News ciblés et ne retient que les articles à haut signal
-    factuel (benchmark/record/preuve/découverte), dédoublonnés par titre."""
+    factuel (benchmark/record/preuve/découverte/panne), dédoublonnés par titre, TRIÉS PAR RÉCENCE
+    (les plus récents d'abord, quelle que soit la requête d'origine)."""
     logger.info("[SCAN] Scan RSS multi-requêtes (haut signal factuel)...")
     import requests
     import feedparser
+    import time as _time
 
     seen_titles = set()
     candidates = []
@@ -574,15 +576,19 @@ def scan_google_news_rss(max_events: int = 4) -> List[Dict[str, Any]]:
             if not any(k in text for k in SIGNAL_KEYWORDS):
                 continue  # hype/pop filtré
             seen_titles.add(title)
-            candidates.append(entry)
+            pp = getattr(entry, "published_parsed", None) or getattr(entry, "updated_parsed", None)
+            ts = _time.mktime(pp) if pp else 0
+            candidates.append((ts, entry))
 
     if not candidates:
         logger.info("... Aucun article à haut signal trouvé.")
         return []
 
-    # Les plus récents d'abord (feedparser: entries déjà triées par date desc par flux)
+    # les plus récents d'abord, parmi TOUTES les requêtes (une panne mondiale ne doit pas
+    # être noyée par les doublons ARC-AGI des requêtes précédentes)
+    candidates.sort(key=lambda c: c[0], reverse=True)
     events = []
-    for entry in candidates[:max_events]:
+    for _, entry in candidates[:max_events]:
         events.append(analyze_event(
             entry_title=entry.title,
             entry_summary=getattr(entry, "summary", ""),
@@ -940,6 +946,10 @@ TRUSTED_SOURCES = [
     "bleepingcomputer.com", "theregister.com", "techcrunch.com", "theverge.com",
     "arstechnica.com", "zdnet.com", "nextinpact.com", "01net.com", "anandtech.com",
     "status.aws.amazon.com", "status.cloud.google.com", "cloudflare.com/status",
+    # presse FR généraliste/tech reconnue (pannes, incidents, géopolitique tech)
+    "bfmtv.com", "tf1info.fr", "boursorama.com", "20minutes.fr", "clubic.com",
+    "journaldugeek.com", "numerama.com", "futura-sciences.com", "lesnumeriques.com",
+    "phonandroid.com", "pressecitron.net", "korben.info", "siecledigital.fr", "latribune.fr",
 ]
 
 
