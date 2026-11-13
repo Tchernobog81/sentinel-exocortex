@@ -900,7 +900,8 @@ def events_similar(e1: Dict[str, Any], e2: Dict[str, Any]) -> bool:
 
 def merge_occurrence(base: Dict[str, Any], occ: Dict[str, Any]) -> Dict[str, Any]:
     """Fusionne l'occurrence `occ` dans l'événement maître `base` : sources cumulées, verified propagé."""
-    srcs = base.setdefault("sources", [])
+    srcs = base.get("sources") or []  # le champ peut arriver à None depuis l'API (pydantic)
+    base["sources"] = srcs
     if base.get("whoWhat") and not any(s.get("source") == base.get("whoWhat") for s in srcs):
         srcs.insert(0, {"source": base.get("whoWhat", ""), "url": base.get("url", ""), "title": base.get("label", "")})
     entry = {"source": occ.get("whoWhat") or occ.get("source") or "", "url": occ.get("url", ""), "title": occ.get("label", "")}
