@@ -31343,9 +31343,14 @@
         "source": "TF1 Info",
         "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNaUpQLUY2LVhsVGpiWEItNksweW94UHF4dnNkM0hRNDdrdWVGd0xpSDU2alcxLVowdG91aEhNNWY3QU1mQWhoaUthd24wdGNlOHRDeU5mNUM0cFRjTFdMRG9ORUlyc3oweHN0dGhTTjVtTXZHTGFXaS1xdUxQVXR1MEl4S2VhTW1FZ1ZwVVhjR2VoeGF4NFJObWItU00xSGFRcUdMNC1zaDZJQmVaUHlJQVVEMlBBRGF6X2hZQWFvR1JrYl91eThjLTlDQQ?oc=5",
         "title": "Panne mondiale d'Outlook : ce que l'on sait de l'incident qui touche le géant Microsoft"
+      },
+      {
+        "source": "Franceinfo",
+        "url": "https://news.google.com/rss/articles/CBMiggJBVV95cUxNeC1OZENQLXFyaHpFX2FnaGNPY1RlVTFxYXltcU9Eam9WMDAyQWx1Vlh3OU93Mm9TQnhHY2MxYzNyeWhUM1phZXk0bTVrX19ONV9FcUxSYk81WEZMYWF1dmxYQ0I3LUZ6YklrdjZEeld1SjVVVzlvdmFIMDZPcGhKNndVVGkxTjJ3UFlEZ3NPT2d1MDBvZVhHXzN4WFNmaWV2dlFkUjdva1FWZHhGLUxBemZNOHJfTnpNazIyWmtqMEkwZWlpaWJHbUVNM2lBdTRvLThzekp0V0tIOTM3bjRlWlNiRkt4cWxyNVMyNWJoRFRlV19hVTlMNHJVMl9qNW9HcGc?oc=5",
+        "title": "Microsoft annonce le rétablissement total de ses services après la panne mondiale survenue jeudi"
       }
     ],
-    "occurrences": 17,
+    "occurrences": 18,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
