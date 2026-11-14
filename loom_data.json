@@ -15,8 +15,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Anciens Égyptiens",
+        "url": "https://fr.wikipedia.org/wiki/Irrigation_de_l'Égypte_antique",
+        "title": "Irrigation et canaux (Égypte)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 60,
@@ -27,10 +33,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "-2600-06-0",
-    "title": "Irrigation et canaux (Égypte)",
-    "source": "Anciens Égyptiens",
-    "source_url": "https://fr.wikipedia.org/wiki/Irrigation_de_l'Égypte_antique",
-    "summary": "Systèmes d'irrigation à grande échelle fondant l'agriculture et l'État pharaonique.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -38,7 +40,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Irrigation et canaux (Égypte)",
+    "source": "Anciens Égyptiens",
+    "source_url": "https://fr.wikipedia.org/wiki/Irrigation_de_l'Égypte_antique",
+    "summary": "Systèmes d'irrigation à grande échelle fondant l'agriculture et l'État pharaonique."
   },
   {
     "id": "3e15609a42be2b1e",
@@ -31322,9 +31328,24 @@
         "source": "Franceinfo",
         "url": "https://news.google.com/rss/articles/CBMiwwJBVV95cUxNMkhYLVJQNS1jcUxGWGNNYi1qa19BVmlPVldtM2xnTFdOQ3ZHU29md2RDRFVpenZrU2gyMTRXRkhQdlotV0YtNzFodlhpSi0xaHFZN2NDZ2twdjBQbjNRYl9ZYmVNNnllbWtDcmZSOFM2dTMwYXVqWmtGWmhEVVBiM05hVEpQeHJ4ZGp3RE9vR3VlRUh1RDFVVy1QRng3eXB6eUJtSWlXanJNMmxLQmoxOFB4eEY2bUhzVkNxRjNDcWI4dDFKMjhYSGNfSkZUdEt1cjBLQkVZemdYX0xoOWo5dHBCWGJKa0ZfaV90RVlPMmlfc3dWSm9mQzNXM1ZuTS1tNDBZVko4WVVwZ1oxVVUtd3hYWkVwVjNkX0FtanowYUU2TklZQ3A4d3BMdGl5V0VLMm85X2NZT0FfU1E5cTR0cnJmSQ?oc=5",
         "title": "Des améliorations constatées, pas de cyberattaque d'après Microsoft… Ce que l'on sait de la panne mondiale qui touche le géant américain depuis jeudi"
+      },
+      {
+        "source": "Le Temps",
+        "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQamQxX2F5SEdabXRsVlFTckRHOWRPc3ZXTTBKenZmdkJTVzUyd2l3YjRvOGNFSEV6YmdUWkp6YVdSTWRXMEIyWFRWU3dGT0ZhVzY1ZmUzbmRBTmt2MkFvSmpNX3JQZ0RIUDd5MXBSLWZCSmFheHNveDRSZDFkWUhYUTM3OFFQQVBtN2JaRDdpVE4yRzhiSlJvZlZOWHk3S3VVa2lqcExPbmdoVVp6VXZ2cHF1SVZVZXJsYWFJU0FRZUgzdXlkWWNqZHB6Yl8?oc=5",
+        "title": "La panne mondiale de Microsoft et Outlook, miroir de nos dépendances et de la concentration de la tech"
+      },
+      {
+        "source": "France 24",
+        "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxOZ01yVDlQd1VDZHNObG1oeVFQUk9GLWRJUHkwSk1ZM1NYSlhpbG1ZclQ1Zi14OHhpNF9xbEJ3Z3ZpX1BzNlpNOVhhWTJESjF4ZEppY2puclJ4M0VXaV9rQmlJdWh3UUxuQkNXd045aTc2YnpSb1o4T0xmbEdhV05ERGppblJJYWdPeUtScUtDR2NyQklSVDNteU9hWkNSaklHUGlQZ0dRVmtxSFdFa2FRYk9UZnE1cG80Y2R6VjN1aG9lczh0aVZCSGk2V2NRU1Q2eEFTMjNvLXVyYzZUSjlYVUhwSjV5WmhucThTbkxNUkVEc28?oc=5",
+        "title": "Panne de Microsoft : le géant américain affirme que ses services sont entièrement rétablis"
+      },
+      {
+        "source": "TF1 Info",
+        "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNaUpQLUY2LVhsVGpiWEItNksweW94UHF4dnNkM0hRNDdrdWVGd0xpSDU2alcxLVowdG91aEhNNWY3QU1mQWhoaUthd24wdGNlOHRDeU5mNUM0cFRjTFdMRG9ORUlyc3oweHN0dGhTTjVtTXZHTGFXaS1xdUxQVXR1MEl4S2VhTW1FZ1ZwVVhjR2VoeGF4NFJObWItU00xSGFRcUdMNC1zaDZJQmVaUHlJQVVEMlBBRGF6X2hZQWFvR1JrYl91eThjLTlDQQ?oc=5",
+        "title": "Panne mondiale d'Outlook : ce que l'on sait de l'incident qui touche le géant Microsoft"
       }
     ],
-    "occurrences": 14,
+    "occurrences": 17,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
