@@ -23,11 +23,16 @@ app.addHook('onRequest', (req, reply, done) => {
 app.get('/api/data', async () => buildEnvelope());
 app.get('/api/events', async () => readEvents());
 // Ingestion DELTA (sentinel) : dédup stricte id/source_url + sémantique (vecteurs, 7j, sim>0.88) -> loom.db
-app.post('/api/events', async (req) => {
-  const events = Array.isArray(req.body) ? req.body : (req.body?.new_events || []);
-  const r = await ingestEvents(events);
-  app.log.info({ added: r.added, updated: r.updated, duplicates: r.duplicates?.length }, 'INGEST delta');
-  return r;
+app.post('/api/events', async (req, reply) => {
+  try {
+    const events = Array.isArray(req.body) ? req.body : (req.body?.new_events || []);
+    const r = await ingestEvents(events);
+    app.log.info({ added: r.added, updated: r.updated, duplicates: r.duplicates?.length, errors: r.errors?.length }, 'INGEST delta');
+    return r;
+  } catch (e) { // V2.9.4 : jamais de 500 HTML — erreur JSON propre + log
+    app.log.error(e, 'INGEST delta failed');
+    return reply.code(500).send({ ok: false, error: String((e && e.message) || e) });
+  }
 });
 app.get('/api/telemetry', async () => telemetry());
 app.get('/api/rag', async () => ragStatus());

@@ -89,9 +89,10 @@ function catKey(c) {
 export async function ingestEvents(events) {
   const d = getDb();
   if (!d) return { ok: false, reason: 'no-db', added: 0, updated: 0, duplicates: [] };
-  const out = { ok: true, added: 0, updated: 0, duplicates: [], related: 0 };
+  const out = { ok: true, added: 0, updated: 0, duplicates: [], related: 0, errors: [] };
   for (const e of events || []) {
     if (!e.id) continue;
+    try { // V2.9.4 : un événement en erreur ne doit jamais faire échouer tout le delta (500)
     const byUrl = (e.source_url || e.url) ? d.findBySourceUrl(e.source_url || e.url) : null;
     const byId = d.getEvent(e.id);
     if (byUrl && byUrl.id !== e.id) {
@@ -144,6 +145,9 @@ export async function ingestEvents(events) {
     }
     await d.upsertEvent(e, { embedIt: true });
     out.added++;
+    } catch (err) {
+      out.errors.push({ id: e.id, error: String((err && err.message) || err) });
+    }
   }
   return out;
 }

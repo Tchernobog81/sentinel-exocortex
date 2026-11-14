@@ -23,6 +23,7 @@ function open() {
   const db = new Database(DB_PATH);
   db.pragma('journal_mode = WAL');
   db.pragma('foreign_keys = ON');
+  db.pragma('busy_timeout = 8000'); // attendre plutôt que planter si un autre processus écrit (évite les 500 SQLITE_BUSY)
   sqliteVec.load(db);
   db.exec(`
     CREATE TABLE IF NOT EXISTS events (
@@ -240,17 +241,20 @@ async function upsertEvent(e, { embedIt = true } = {}) {
     : db.prepare('SELECT id FROM events WHERE id = ?').get(row.id);
   const strictDup = existing ? existing.id : null;
   if (strictDup && row.source_url) row.source_url = null; // garde l'unicité par id ; l'URL d'origine reste dans raw
+  // V2.9.4 : l'embedding (appel réseau Ollama, jusqu'à ~60 s) est calculé AVANT d'ouvrir la
+  // transaction d'écriture — la transaction ne doit contenir aucun await, sinon le verrou
+  // SQLite est détenu pendant l'appel réseau et tout écrivain concurrent plante (500).
+  const vec = embedIt ? await embed(`${row.title}\n${row.summary || ''}`) : null;
   db.prepare('BEGIN').run();
   try {
     insertStmt().run(row);
     if (embedIt) {
-      const vec = await embed(`${row.title}\n${row.summary || ''}`);
       db.prepare('DELETE FROM vec_events WHERE event_id = ?').run(row.id);
       if (vec) db.prepare('INSERT INTO vec_events(event_id, embedding) VALUES (?, ?)').run(row.id, vecToJson(vec));
     }
     db.prepare('COMMIT').run();
   } catch (err) {
-    db.prepare('ROLLBACK').run();
+    try { db.prepare('ROLLBACK').run(); } catch {}
     throw err;
   }
   return { id: row.id, strictDup };
