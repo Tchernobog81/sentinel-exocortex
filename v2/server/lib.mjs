@@ -247,6 +247,8 @@ export async function telemetry() {
   const joulesPerAction = loadedBytes ? Math.round((cpuLoad / 100) * (loadedBytes / 1e9) * 12 * 10) / 10 : 0;
   const score = joulesPerAction === 0 ? 'Optimal' : joulesPerAction < 5 ? 'Élevé' : 'Critique';
   const gpu = (graphics?.controllers || [])[0] || {};
+  // systeminformation renvoie le modèle GPU dans `model`, pas `name` (Apple Silicon)
+  if (!gpu.name && gpu.model) gpu.name = gpu.model;
   // Fallback VRAM (VM / Apple Silicon UMA) : system_profiler SPDisplaysDataType
   if (!gpu.vram) {
     const sp = await new Promise(res => exec('system_profiler SPDisplaysDataType 2>/dev/null', { maxBuffer: 1 << 20 }, (e, out) => res(out || '')));
@@ -255,9 +257,11 @@ export async function telemetry() {
     const chip = (sp || '').match(/Chipset Model:\s*(.+)/i);
     if (mv) gpu.vram = Math.round(parseFloat(mv[1]) * (mv[2].toUpperCase().startsWith('G') ? 1024 : 1));
     else if (mdyn) gpu.vram = Math.round(parseFloat(mdyn[1]) * 1024);
-    if (chip) gpu.name = (gpu.name || '') + ' ' + chip[1].trim();
-    // Apple Silicon (M*) : pas de VRAM dédiée -> mémoire unifiée = RAM
-    if (!gpu.vram && /apple m/i.test(gpu.name || '')) {
+    if (chip && !(gpu.name || '').includes(chip[1].trim())) gpu.name = ((gpu.name || '') + ' ' + chip[1].trim()).trim();
+    // Apple Silicon (M*) : pas de VRAM dédiée -> mémoire unifiée = RAM.
+    // vramDynamic=true (remonté par systeminformation même sans system_profiler,
+    // ex. PATH launchd sans /usr/sbin) suffit à conclure UMA.
+    if (!gpu.vram && (/apple m/i.test(gpu.name || '') || gpu.vramDynamic)) {
       gpu.vram = Math.round(mem.total / 1e6);
       gpu.vramUsed = Math.round((mem.used || mem.active || 0) / 1e6);
       gpu.uma = true;
