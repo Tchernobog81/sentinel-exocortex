@@ -70,3 +70,19 @@ input[type='range'] { accent-color: var(--neon-cyan); }
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.25); border-radius: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
+
+/* --- UI smartphone --- */
+/* pas de flash bleu au tap */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* iOS zoome automatiquement à la focus si un champ fait moins de 16px :
+   on force 16px sur pointeur tactile + petit écran pour éviter ce zoom */
+@media (pointer: coarse) and (max-width: 640px) {
+  input, textarea, select { font-size: 16px !important; }
+}
+
+/* cibles tactiles confortables sur mobile */
+@media (pointer: coarse) {
+  .tab-btn { padding: 10px 12px; }
+  .chip { padding: 6px 12px; }
+}

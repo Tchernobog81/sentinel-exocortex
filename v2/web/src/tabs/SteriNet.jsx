@@ -18,7 +18,7 @@ export default function SteriNet() {
   };
 
   return (
-    <div className="h-full grid grid-cols-2 gap-3 min-h-0">
+    <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-3 min-h-0 overflow-y-auto">
       {/* RAG */}
       <div className="panel p-3 overflow-y-auto min-h-0">
         <div className="flex items-center gap-2 text-[10px] tracking-widest text-neon-cyan mb-2">

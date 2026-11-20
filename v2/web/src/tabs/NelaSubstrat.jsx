@@ -42,7 +42,7 @@ export default function NelaSubstrat({ tel }) {
 
   const d = tel?.daemons || {};
   return (
-    <div className="h-full grid grid-cols-3 grid-rows-2 gap-3 min-h-0 overflow-y-auto">
+    <div className="h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-2 sm:gap-3 min-h-0 overflow-y-auto">
       {/* jauges */}
       {['ram', 'vram', 'temp'].map(k => (
         <div key={k} className="panel p-3 flex flex-col">

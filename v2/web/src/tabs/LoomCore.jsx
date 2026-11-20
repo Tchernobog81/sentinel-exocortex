@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 import { Clock3, Radio, X, ArrowLeftRight } from 'lucide-react';
 
-export const LOOM_VERSION = '2.9.3';
+export const LOOM_VERSION = '2.9.4';
 
 // V2.8.0 — HORLOGE DE L'APOCALYPSE : time-bucketing X (1 pt/jour sur les 10 dernières années,
 // 1 pt/mois depuis 1900, 1 pt/an avant, moyenne par bucket, tri strict) + EMA (alpha réglable,
@@ -116,7 +116,7 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       animationDuration: 400,
       tooltip: { show: false },
       legend: { show: false },
-      toolbox: { right: 40, top: 6, itemSize: 16, feature: { dataZoom: { xAxisIndex: 0, yAxisIndex: 'none', title: { zoom: 'Zoom', back: 'Reset zoom' } }, restore: { title: "Vue d'ensemble" } } },
+      toolbox: { right: (boxRef.current && boxRef.current.clientWidth < 640) ? 28 : 40, top: 6, itemSize: 16, feature: { dataZoom: { xAxisIndex: 0, yAxisIndex: 'none', title: { zoom: 'Zoom', back: 'Reset zoom' } }, restore: { title: "Vue d'ensemble" } } },
       // manipulable horizontalement ET verticalement, et dans le futur :
       // molette = zoom X, Maj+molette = zoom Y, clic+move (drag) = panoramique X, sliders X (bas) et Y (droite)
       dataZoom: [
@@ -125,7 +125,8 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
         { type: 'slider', xAxisIndex: 0, yAxisIndex: 'none', bottom: 2, height: 16, filterMode: 'none', start, end },
         { type: 'slider', xAxisIndex: 'none', yAxisIndex: 0, right: 4, width: 14, filterMode: 'none', start, end },
       ],
-      grid: { left: 50, right: 40, top: 40, bottom: 34 },
+      // marges adaptatives : resserrées sur smartphone (< 640 px) pour garder un graphique lisible
+      grid: (boxRef.current && boxRef.current.clientWidth < 640) ? { left: 34, right: 26, top: 34, bottom: 32 } : { left: 50, right: 40, top: 40, bottom: 34 },
       xAxis: { type: 'value', min: XMIN, max: XMAX, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } }, name: 'année', nameTextStyle: { color: '#6b7280' },
         axisLabel: {
           color: '#6b7280', fontSize: 10, hideOverlap: true,
@@ -319,6 +320,12 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
 
     const ro = new ResizeObserver(() => {
       chart.resize();
+      // franchissement du seuil mobile <-> desktop : marges du graphique réajustées
+      const rw = boxRef.current ? boxRef.current.clientWidth : 0;
+      chart.setOption({
+        grid: rw < 640 ? { left: 34, right: 26, top: 34, bottom: 32 } : { left: 50, right: 40, top: 40, bottom: 34 },
+        toolbox: { right: rw < 640 ? 28 : 40 },
+      });
       applyUserViewport(); // resize : on ré-applique le viewport utilisateur, jamais de reset
       updateNowPx();
       // V2.9.3 : la largeur change -> la densité des étiquettes (budget en px) est recalculée
@@ -689,9 +696,9 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
   const allVisible = Object.keys(groups).every(g => !hiddenGroups[g]);
 
   return (
-    <div className="h-full grid grid-cols-[300px_1fr] gap-3 min-h-0">
-      {/* panneau gauche : flux */}
-      <aside className="panel p-3 overflow-y-auto min-h-0">
+    <div className="h-full flex flex-col gap-2 sm:gap-3 min-h-0 lg:grid lg:grid-cols-[300px_1fr]">
+      {/* panneau gauche : flux — en colonne sous le graphique sur mobile */}
+      <aside className="panel p-3 overflow-y-auto min-h-0 order-2 lg:order-1 max-h-[42vh] lg:max-h-none shrink-0">
         <div className="flex items-center gap-2 text-neon-cyan text-[10px] tracking-widest mb-2"
              title={lastMaj.full ? `Dernière mise à jour : ${lastMaj.full}` : 'Aucune donnée datée'}>
           <Radio size={12} className="animate-pulse" /> FLUX ENTRANT · MAJ {lastMaj.txt}
@@ -719,12 +726,12 @@ export default function LoomCore({ envelope, events, allEvents, filters, setFilt
       </aside>
 
       {/* zone centrale */}
-      <section className="flex flex-col gap-3 min-h-0">
+      <section className="flex flex-col gap-2 sm:gap-3 min-h-0 flex-1 order-1 lg:order-2">
         <div className="panel px-4 py-2 flex items-center gap-4 shrink-0 flex-wrap">
           <div className="flex items-center gap-2">
             <Clock3 size={16} className="red-text" />
             <div>
-              <div className="red-text font-black text-2xl leading-none">{smoothed}<span className="text-xs ml-1">s</span></div>
+              <div className="red-text font-black text-xl sm:text-2xl leading-none">{smoothed}<span className="text-xs ml-1">s</span></div>
               <div className="text-[9px] text-zinc-500 uppercase tracking-widest">avant minuit · lissage {clockSmooth}</div>
             </div>
           </div>

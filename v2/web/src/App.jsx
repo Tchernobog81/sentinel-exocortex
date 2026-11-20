@@ -47,25 +47,25 @@ export default function App() {
   }, [events, filters, memetic.noiseRatio]);
 
   return (
-    <div className="h-full flex flex-col p-3 gap-3">
-      {/* barre d'onglets */}
-      <header className="panel flex items-center gap-2 px-3 py-2 shrink-0">
-        <div className="amber-text font-black tracking-widest text-sm mr-2">THE LOOM <span className="text-neon-cyan">V{LOOM_VERSION}</span></div>
+    <div className="h-full flex flex-col p-2 sm:p-3 gap-2 sm:gap-3 pb-[calc(0.5rem+env(safe-area-inset-bottom))] sm:pb-[calc(0.75rem+env(safe-area-inset-bottom))]">
+      {/* barre d'onglets : repliable, icônes seules sur mobile */}
+      <header className="panel flex items-center gap-2 px-3 py-2 shrink-0 flex-wrap">
+        <div className="amber-text font-black tracking-widest text-xs sm:text-sm mr-1 sm:mr-2 whitespace-nowrap">THE LOOM <span className="text-neon-cyan">V{LOOM_VERSION}</span></div>
         {TABS.map(t => {
           const Icon = t.icon;
           return (
-            <button key={t.id} className={`tab-btn flex items-center gap-2 ${tab === t.id ? 'active' : ''}`} onClick={() => setTab(t.id)}>
-              <Icon size={14} /> {t.label}
+            <button key={t.id} className={`tab-btn flex items-center gap-1.5 sm:gap-2 shrink-0 ${tab === t.id ? 'active' : ''}`} onClick={() => setTab(t.id)} title={t.label}>
+              <Icon size={14} /> <span className="hidden sm:inline">{t.label}</span>
             </button>
           );
         })}
-        <div className="ml-auto flex items-center gap-3 text-[10px]">
+        <div className="ml-auto flex items-center gap-2 sm:gap-3 text-[10px]">
           <span className={`flex items-center gap-1 ${connected ? 'text-neon-green' : 'text-neon-red'}`}>
             <Radio size={12} className={connected ? 'animate-pulse' : ''} /> {mode === 'static' ? 'POLL' : 'SSE'} {connected ? 'LIVE' : 'OFF'}
           </span>
-          <span className={telOn ? 'text-neon-cyan' : 'text-zinc-500'}>TEL {telOn ? 'LIVE' : 'OFF'}</span>
+          <span className={`hidden sm:inline ${telOn ? 'text-neon-cyan' : 'text-zinc-500'}`}>TEL {telOn ? 'LIVE' : 'OFF'}</span>
           {envelope.fallback && <span className="red-text">· DONNÉES D'URGENCE</span>}
-          <span className="text-zinc-500">AIR-GAP {tel?.airgap === false ? <b className="red-text">OUVERT</b> : <b className="text-neon-green">ON</b>}</span>
+          <span className="hidden md:inline text-zinc-500">AIR-GAP {tel?.airgap === false ? <b className="red-text">OUVERT</b> : <b className="text-neon-green">ON</b>}</span>
         </div>
       </header>
 

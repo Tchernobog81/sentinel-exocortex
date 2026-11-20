@@ -99,7 +99,7 @@ export default function FiltreMemetique({ memetic, setMemetic, events }) {
   };
 
   return (
-    <div className="h-full grid grid-cols-2 grid-rows-[auto_auto_minmax(0,1fr)] gap-3 min-h-0">
+    <div className="h-full grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[auto_auto_minmax(0,1fr)] gap-2 sm:gap-3 min-h-0 overflow-y-auto">
       <div className="panel p-4">
         <div className="flex items-center gap-2 text-[10px] tracking-widest text-neon-cyan mb-3"><Activity size={12} /> RATIO BRUIT MARKETING / SIGNAL CINÉTIQUE</div>
         <div className="text-4xl font-black amber-text mb-1">{100 - memetic.noiseRatio}<span className="text-sm text-zinc-500">% signal</span></div>
@@ -123,7 +123,7 @@ export default function FiltreMemetique({ memetic, setMemetic, events }) {
       </div>
 
       {/* Métriques : benchmark d'alignement & vitesse de régression logicielle */}
-      <div className="panel p-4 col-span-2">
+      <div className="panel p-3 sm:p-4 lg:col-span-2">
         <div className="flex items-center gap-2 text-[10px] tracking-widest text-neon-cyan mb-3"><Activity size={12} /> MÉTRIQUES DE RÉGRESSION & ALIGNEMENT</div>
         {(() => {
           const now = new Date().getFullYear() + new Date().getMonth() / 12;
@@ -134,7 +134,7 @@ export default function FiltreMemetique({ memetic, setMemetic, events }) {
           const last12 = all.filter(e => (e.year || 0) >= now - 1);
           const velocity = last12.length; // événements/12 mois
           return (
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <div className="text-[10px] text-zinc-500 uppercase mb-1">Benchmark d'alignement (faits vérifiés)</div>
                 <div className="text-2xl font-black text-neon-cyan">{(aligned * 100).toFixed(1)}%</div>
@@ -157,7 +157,7 @@ export default function FiltreMemetique({ memetic, setMemetic, events }) {
       </div>
 
       {/* encard éditable : prompt utilisé par l'agent local pour ses recherches — modifiable et renvoyé à l'agent */}
-      <div className="panel p-4 col-span-2 flex flex-col min-h-0">
+      <div className="panel p-3 sm:p-4 lg:col-span-2 flex flex-col min-h-0">
         <div className="flex items-center gap-2 text-[10px] tracking-widest text-neon-cyan mb-1">
           <TerminalSquare size={12} /> ENCARD — PROMPT DE L'AGENT DE VEILLE (éditable)
         </div>
