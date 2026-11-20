@@ -6,8 +6,12 @@ POST /api/data est idempotent : upsert par id stable (pas d'insert aveugle).
 from fastapi import APIRouter, HTTPException, Depends
 from typing import List, Optional, Dict, Any
 from datetime import datetime
-from .models import Event, EventList
-from .storage import get_storage, BaseStorage
+try:
+    from .models import Event, EventList
+    from .storage import get_storage, BaseStorage
+except ImportError:  # mode script (uvicorn main:app depuis backend/) : imports absolus
+    from models import Event, EventList
+    from storage import get_storage, BaseStorage
 import os
 
 router = APIRouter()

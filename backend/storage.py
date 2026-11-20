@@ -18,7 +18,10 @@ from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional, Tuple
-from .models import Event, compute_event_id
+try:
+    from .models import Event, compute_event_id
+except ImportError:  # mode script (uvicorn main:app depuis backend/) : import absolu
+    from models import Event, compute_event_id
 
 BACKUP_DIR_NAME = "loom_backups"
 MAX_BACKUPS = 10
