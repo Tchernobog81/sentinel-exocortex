@@ -31957,10 +31957,6 @@
       "8d21bf4b0c01d587"
     ],
     "date": "2026-11-20",
-    "title": "Bourses asiatiques en forte baisse, l'IPO record d'Anthropic ne rassure pas",
-    "source": "Euronews.com",
-    "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNUDEwLWZBTzhUeGYzclNUMWxmOFNZQ0F3TFMxdXJocFpxRnBWWVVEYUlGdVg1b2R5SkYtLWlyaUhrMkxmUHBFczY4dk5ZWlpIbjlhMm13emV1czVDNDFiSTc1LWtDYm81RlU1bl9WazRJLWhVZWp4NC02clZLRV84X1lkNHB1a0lJXzBqelhIX18xUXhDWWxER013YUMzdFFsMUc0UVBLSUpjT28?oc=5",
-    "summary": "Bourses asiatiques en forte baisse, l'IPO record d'Anthropic ne rassure pas Euronews.com",
     "is_kinetic_signal": false,
     "impact_score": null,
     "doomsday_minutes": null,
@@ -31971,7 +31967,24 @@
     "s_curve_label": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Euronews.com",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNUDEwLWZBTzhUeGYzclNUMWxmOFNZQ0F3TFMxdXJocFpxRnBWWVVEYUlGdVg1b2R5SkYtLWlyaUhrMkxmUHBFczY4dk5ZWlpIbjlhMm13emV1czVDNDFiSTc1LWtDYm81RlU1bl9WazRJLWhVZWp4NC02clZLRV84X1lkNHB1a0lJXzBqelhIX18xUXhDWWxER013YUMzdFFsMUc0UVBLSUpjT28?oc=5",
+        "title": "Bourses asiatiques en forte baisse, l'IPO record d'Anthropic ne rassure pas"
+      },
+      {
+        "source": "Option Finance",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQY1dXRFU0VmJnMjZtUl9UWkZ2RlVROVBnSVdxUkxkYjF6VVNRZmZpZzVzT2VOeVBRenlaRTZOYVp2czlPR0JIZTE4LVJ5US12N01zRnRHTmNhZlh4QWZmNl9QQ2hEWTg0OXRCelZPQTJKSG9ZTkRQOTlwMjd6Y096X1FBa3o5Q0diaUJ1b0pWYTM0YXV0N1U2OGlJTUZkeHN3aGN2Yi1pWHFYb2lwdXZNYWtoaldxN3pjYjc2YTRQOXRHQQ?oc=5",
+        "title": "Le Nasdaq prêt à vibrer pour l'IPO record Anthropic"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Bourses asiatiques en forte baisse, l'IPO record d'Anthropic ne rassure pas",
+    "source": "Euronews.com",
+    "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNUDEwLWZBTzhUeGYzclNUMWxmOFNZQ0F3TFMxdXJocFpxRnBWWVVEYUlGdVg1b2R5SkYtLWlyaUhrMkxmUHBFczY4dk5ZWlpIbjlhMm13emV1czVDNDFiSTc1LWtDYm81RlU1bl9WazRJLWhVZWp4NC02clZLRV84X1lkNHB1a0lJXzBqelhIX18xUXhDWWxER013YUMzdFFsMUc0UVBLSUpjT28?oc=5",
+    "summary": "Bourses asiatiques en forte baisse, l'IPO record d'Anthropic ne rassure pas Euronews.com"
   },
   {
     "id": "1b98dd3fcf0f835e",
