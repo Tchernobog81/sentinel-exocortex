@@ -31358,9 +31358,24 @@
         "source": "ZDNET",
         "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxQWVBmZHZnRmVWMkYwX3ppVzN4Rmp5MlRma1M2UHVxcndmb0phdW1sdkVBNktSQmVCbl9WN1o5N05NMzRhYUVzbG15X3pkbnRZcWZFS2hDUXVmdVR0MGQzV3NoaUNTeWJoQkJsUmF2T3F5QkxWMXNvRjRWa3lqWG9kcnJzc1JiTjZsTjZYQ3B4SHd3OVpmWi1NOWh5ZmJsdTlQeUNxQ3NaRnlFcEt2X3VHVVVidDkxdUZpNW1tdlNMb3VPTmotQkk5WFN4T0hJbi1kSXp4S3IwRXByRHIzSXptYlBqN3VKQWVpaE9KNHhlcDVBSzVkVVRJWmJBMHl0SDVmdC03ejRyZXI?oc=5",
         "title": "ZDNET Morning 20/11/2026 : Retex panne Outlook, IA et tests logic ..."
+      },
+      {
+        "source": "Le Monde.fr",
+        "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNRVY2a1NCcXYyS3NiLUZ4cEFJaDRqNm9RMlYzOVFvUy10RHpTODByMmRKTjhRbVBzcTg4Nk5maFlpLXZIOVVhb0hicGgtNmRGMTN2a2NXQTJpSVZJeFhZS1l3REhVX01ZQi1ZeVhydXpSdGk2LVljMmRKSW13TXdYQkhtYmdUWjFlWjduMnVxOGtrYUkwQ3JkVDAxMnR3c1FPNDVJSGVEdGlHMVd0alVzT2Y2R1k2LS03Rm9QMUFKc3Q3b19kRWRtVC01eGNOYW1tOEFralR4ZWZ6QQ?oc=5",
+        "title": "Outlook : après la panne géante, Microsoft avance de premières explications"
+      },
+      {
+        "source": "Le Parisien",
+        "url": "https://news.google.com/rss/articles/CBMirwJBVV95cUxNYkE0VlptWWJLX2RqSmdaeF9sT2xua0tXd0Y3QlpKcUZLVkY1TUVhNjF5OHJfdFIxdzVSTjY4c1hxVW96OFFlWWRtal9YaDRmVElLNmNhZlQ5T0t1enpFUnhkLUJJTEg3cXl6dkNScmdLR2hrOG5uZzFtamd6aVZ0UDV2QXJqRy14eExIenZFMlVrX0R0TUZPdklRaGw2N0V6eFp6OHczbUlDZEZSNFVndzNaWkwyT2lBeXlPNURwOTZoUWRJRU1iX3FNNDJjT3RsNUxPQUxhQWRKd0pOTl9ETzdWTmxCazg2NVFscTVnSkJ1eDRIcGYwWFJoOHBxUXQyTDJ6SUhMUkRuaU9UTXdfM0RfaWt5UDY0Nlh1aS10VXVlOF93R3RxYlZVenM2ZTA?oc=5",
+        "title": "Panne géante d’Outlook et Teams : le premier rapport d’enquête de Microsoft révèle qu’un bug vieux de juillet est à l’origine du chaos"
+      },
+      {
+        "source": "ChannelNews",
+        "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQMHFVeWZ1UF9NQm5PcUZMWHA5T2R5U2ZCV2N1U21scGtBSnQ1aGdnaTc5SmVndjRvVjJLRUdKRWhxZExZNVlQNldwZWdmNVhuYWpkeDBTWlllNjZ6S05CY0dodjJiUTVEOFhzM0o0cXRJMWNsdlpaUEFpazFxc1lyem4tdE0wQQ?oc=5",
+        "title": "Microsoft 365 : après la panne, les réclamations"
       }
     ],
-    "occurrences": 20,
+    "occurrences": 23,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
