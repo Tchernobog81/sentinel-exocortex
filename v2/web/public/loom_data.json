@@ -15,8 +15,14 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
-    "occurrences": null,
+    "sources": [
+      {
+        "source": "Anciens Égyptiens",
+        "url": "https://fr.wikipedia.org/wiki/Irrigation_de_l'Égypte_antique",
+        "title": "Irrigation et canaux (Égypte)"
+      }
+    ],
+    "occurrences": 1,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 60,
@@ -27,10 +33,6 @@
     "pharmakon_remedy_percent": 60,
     "pharmakon_poison_percent": 40,
     "date": "-2600-06-0",
-    "title": "Irrigation et canaux (Égypte)",
-    "source": "Anciens Égyptiens",
-    "source_url": "https://fr.wikipedia.org/wiki/Irrigation_de_l'Égypte_antique",
-    "summary": "Systèmes d'irrigation à grande échelle fondant l'agriculture et l'État pharaonique.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -38,7 +40,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Irrigation et canaux (Égypte)",
+    "source": "Anciens Égyptiens",
+    "source_url": "https://fr.wikipedia.org/wiki/Irrigation_de_l'Égypte_antique",
+    "summary": "Systèmes d'irrigation à grande échelle fondant l'agriculture et l'État pharaonique."
   },
   {
     "id": "3e15609a42be2b1e",
@@ -31240,7 +31246,7 @@
     "label": "Microsoft: Une panne mondiale affecte Outlook, Teams et Copilot",
     "category": "☠️ RISQUES CYBER",
     "whoWhat": "Boursorama",
-    "description": "Panne Outlook, Teams, Microsoft 365 : ce que l’on sait de la panne mondiale de Microsoft, toujours pas réglée Journal du Geek",
+    "description": "Des améliorations constatées, pas de cyberattaque d'après Microsoft… Ce que l'on sait de la panne mondiale qui touche le géant américain depuis jeudi Franceinfo",
     "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQTUZSdVhTN0dCUkxsT2RkQkRQSVZhcVV3alRSX0pWNjhzRjBGcmV2Z2tTaTdBZVZ3Q0ZrRzMtZWd3SG84Y0VkYl9KZzM1NkhZaFBXbHdYekU5ZFU1SlE0Rko5VWF0Sk5yOGduSkpEclMzSGNvaEFQcVlNcUZGV0tmazUyVjg3eXFaRC0wVmZaVk5IcXp6MFY2SDZxLXZDUlNpQk1WMXVOSlhXWXF2eGIzZTJQYlZJMnFNUlR0T1dVUzBMMzN2OGpFeTJScVMzVWFSNndmMHRR0gHbAUFVX3lxTFByZWNYQm1iX3ZVQ3gwTjhiTFhsOTBFQlBkbkFjSWtkbm4zWW12bVktTjAxcEd3WEozOGJOazhfOGtjYmxnSXZiLXdfanhZanNTQ0MySXJzQUd3UjdMLTFGdjVKZUlZSzZCcjBlMmd3aU5lNlJHVl9TMkgydFJuaE1hRnpJQW5OMU9SYURNb0tvUkZlR250Q19PZjRmSm0wQjhVeExEUGd0amVkT2k1b0UwVDB4Nk9jSHpQNFd5VW1GYldDLTgtQmlheEpCSjJGa0ZfN2NBSjR2ZTktVQ?oc=5",
     "timestamp": "2026-11-13T13:24:28.974919",
     "tipping": false,
@@ -31307,9 +31313,49 @@
         "source": "Boursorama",
         "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNOTU0ZUo5eV95Uk5tUmlvTGExNlMxUm1CWklPcFBHYms2SWFkSUZTdXdMamwzc1ZBN3ZYcGdYMnQyb3NnaFVFRjlCWDRMOHlXWDBudGsxTElmRWtPSzlTQzIzTHFaYmhwTEczTzRzdkJveFM4VHo5bk1BSXlwYTlyanZQbVBENl9JT290MHdhcUVjS2dmUWZ2OXU1ekxHUE12VHJONktnT3pYTXRyakZVeV9NNkZtUV9tamdCNmt1MFZPbndqQXhwZ3UyN3RnU3JwdXc0azAyeWvSAd4BQVVfeXFMTXlSQnZqSThKcVZ1Z013bE1ndGdkNjl0bFVkVTR2Qlh4elhKNXFoQjNUNUotUXh0d2RRQUUtZmh4TnNWd04tR2pIU0JLMEUtWVdlS1N6NThUbFJkNEVPd21nSUxVd21TN25oaUh4NDNxYjVwdHgzRnZCRFY3RGxIdWUxS1JZRmFjYjhFRWd4TFQxQjN3MDVzZ1NIcXFjNE9oUWp4LVh0RFdDaTYxTk00OEwybmZOa2dtR3RKYmNpTjdoWnJ2T3JjblVsZ2dKS29fVHIxWGFEaVpFcDVDaGl3?oc=5",
         "title": "La panne mondiale de Microsoft perturbe entreprises et services"
+      },
+      {
+        "source": "franceinfo",
+        "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxQQXlGVUF6akVzUTU2M05UWmx1OVhGLWNfMFRRM1QyN2J1VEVLa0I1MnBhNzR3akRtRDJXbGtZd1B5Z09qTWFJdXVCbHJFZlNvdzROdEROa2NGa1E1VTJyWFlDb3JoX2t2NTQ2WUpGeWxUdXVKbndjRUhpcVFnUWRGWnVnSnlGcTdpR0c2eGRCQ2I3ZnJWZ1hNckdIRXFTbmFvWEdZTWoyYnV5aV9UOXlGNzBuTGJCZVhpSENWd1R0Nlp3ek5vNzgyWUdKcXVxd1pCNFdWNUNOWUVvbVBkcE1DdkRyTEFjZTBXT0tPOGYxSWNhTGtpWlo5ZmNlVVJ6UXFWQW5qUm5nUlZSQ3c?oc=5",
+        "title": "Une panne mondiale touche la messagerie Outlook de Microsoft, \"aucun signe d'action malveillante ou de cyberattaque\" n'a été détecté à ce stade"
+      },
+      {
+        "source": "Euronews.com",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPaTJ0SC1JakZuLTFhaGN1SHdVREpBclQyUUFYRzlHbGd3d09Ed0ZDWjNDNDV6TTNROFpiUTZleTJuQmJ3TU1Cc0hjdVRBemtlbXRBaEtWTkYwRS13SHJrYkpPM0JsN2dmMGhLanFid0ZVT3N0N0dLYUN3Ny1aNGJIX2pCa1RTMUoxYzN3VFpqYkFoRnZCb3UtbDJ4SVduQTVHSFlyNldNb2xQUQ?oc=5",
+        "title": "Panne mondiale de Microsoft: Outlook et Teams inaccessibles dans 74 pays"
+      },
+      {
+        "source": "Franceinfo",
+        "url": "https://news.google.com/rss/articles/CBMiwwJBVV95cUxNMkhYLVJQNS1jcUxGWGNNYi1qa19BVmlPVldtM2xnTFdOQ3ZHU29md2RDRFVpenZrU2gyMTRXRkhQdlotV0YtNzFodlhpSi0xaHFZN2NDZ2twdjBQbjNRYl9ZYmVNNnllbWtDcmZSOFM2dTMwYXVqWmtGWmhEVVBiM05hVEpQeHJ4ZGp3RE9vR3VlRUh1RDFVVy1QRng3eXB6eUJtSWlXanJNMmxLQmoxOFB4eEY2bUhzVkNxRjNDcWI4dDFKMjhYSGNfSkZUdEt1cjBLQkVZemdYX0xoOWo5dHBCWGJKa0ZfaV90RVlPMmlfc3dWSm9mQzNXM1ZuTS1tNDBZVko4WVVwZ1oxVVUtd3hYWkVwVjNkX0FtanowYUU2TklZQ3A4d3BMdGl5V0VLMm85X2NZT0FfU1E5cTR0cnJmSQ?oc=5",
+        "title": "Des améliorations constatées, pas de cyberattaque d'après Microsoft… Ce que l'on sait de la panne mondiale qui touche le géant américain depuis jeudi"
+      },
+      {
+        "source": "Le Temps",
+        "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQamQxX2F5SEdabXRsVlFTckRHOWRPc3ZXTTBKenZmdkJTVzUyd2l3YjRvOGNFSEV6YmdUWkp6YVdSTWRXMEIyWFRWU3dGT0ZhVzY1ZmUzbmRBTmt2MkFvSmpNX3JQZ0RIUDd5MXBSLWZCSmFheHNveDRSZDFkWUhYUTM3OFFQQVBtN2JaRDdpVE4yRzhiSlJvZlZOWHk3S3VVa2lqcExPbmdoVVp6VXZ2cHF1SVZVZXJsYWFJU0FRZUgzdXlkWWNqZHB6Yl8?oc=5",
+        "title": "La panne mondiale de Microsoft et Outlook, miroir de nos dépendances et de la concentration de la tech"
+      },
+      {
+        "source": "France 24",
+        "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxOZ01yVDlQd1VDZHNObG1oeVFQUk9GLWRJUHkwSk1ZM1NYSlhpbG1ZclQ1Zi14OHhpNF9xbEJ3Z3ZpX1BzNlpNOVhhWTJESjF4ZEppY2puclJ4M0VXaV9rQmlJdWh3UUxuQkNXd045aTc2YnpSb1o4T0xmbEdhV05ERGppblJJYWdPeUtScUtDR2NyQklSVDNteU9hWkNSaklHUGlQZ0dRVmtxSFdFa2FRYk9UZnE1cG80Y2R6VjN1aG9lczh0aVZCSGk2V2NRU1Q2eEFTMjNvLXVyYzZUSjlYVUhwSjV5WmhucThTbkxNUkVEc28?oc=5",
+        "title": "Panne de Microsoft : le géant américain affirme que ses services sont entièrement rétablis"
+      },
+      {
+        "source": "TF1 Info",
+        "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNaUpQLUY2LVhsVGpiWEItNksweW94UHF4dnNkM0hRNDdrdWVGd0xpSDU2alcxLVowdG91aEhNNWY3QU1mQWhoaUthd24wdGNlOHRDeU5mNUM0cFRjTFdMRG9ORUlyc3oweHN0dGhTTjVtTXZHTGFXaS1xdUxQVXR1MEl4S2VhTW1FZ1ZwVVhjR2VoeGF4NFJObWItU00xSGFRcUdMNC1zaDZJQmVaUHlJQVVEMlBBRGF6X2hZQWFvR1JrYl91eThjLTlDQQ?oc=5",
+        "title": "Panne mondiale d'Outlook : ce que l'on sait de l'incident qui touche le géant Microsoft"
+      },
+      {
+        "source": "Franceinfo",
+        "url": "https://news.google.com/rss/articles/CBMiggJBVV95cUxNeC1OZENQLXFyaHpFX2FnaGNPY1RlVTFxYXltcU9Eam9WMDAyQWx1Vlh3OU93Mm9TQnhHY2MxYzNyeWhUM1phZXk0bTVrX19ONV9FcUxSYk81WEZMYWF1dmxYQ0I3LUZ6YklrdjZEeld1SjVVVzlvdmFIMDZPcGhKNndVVGkxTjJ3UFlEZ3NPT2d1MDBvZVhHXzN4WFNmaWV2dlFkUjdva1FWZHhGLUxBemZNOHJfTnpNazIyWmtqMEkwZWlpaWJHbUVNM2lBdTRvLThzekp0V0tIOTM3bjRlWlNiRkt4cWxyNVMyNWJoRFRlV19hVTlMNHJVMl9qNW9HcGc?oc=5",
+        "title": "Microsoft annonce le rétablissement total de ses services après la panne mondiale survenue jeudi"
+      },
+      {
+        "source": "La Crème Du Gaming",
+        "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPTXJPNnpSelM5Z0gxWHpFb0dKR1VzbVFiOGZZQS0zTGZIOGJDdGV1aTlaN2dqcFc2OGJfcDdJZldSVlFqZ1hGYkNLTG9MVkNHSmlUSXNrM3VYckNEOGtuQ0w5Qnl6d0I0cU9zeFVlRWtaNG9IWk5YLVQ0X2RvOGVDVUxXOU1HWWVDWXJlNGtWNDg4dk5VVmVmUXY3bHBFR3BheTAzVWVpejZOUklOaWh6bi1KaXFtOEJNZHRpb1J2dW1DelYySGNfdmktX19nenU3eVk5T190SkFyT2ZYQkNxSzRGR2lpbzA?oc=5",
+        "title": "Xbox touché par la panne mondiale de Microsoft, des joueurs ne peuvent plus accéder à leurs jeux"
       }
     ],
-    "occurrences": 11,
+    "occurrences": 19,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
@@ -31846,6 +31892,42 @@
     "source": "Le Point",
     "source_url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNUmZXVDhucExKWFVxc2Q4RGFiNzgzTUw3Z2xPNENtU3ctcllYNUc3cjlSUzd4eVBRalFDY0Nvem9oT2R4cUFPRzlKWVVjTU1TanJxN2tKZ0N3VG1Mc29GRi1yblFOLXcwS2VsQ2NJdEtiSGJCMzFsOUlEV3BQYlNoa3VpcEJTdmFhMEJSNWpUeW1mUmdEcjhTZnFjVDdOZFQwN3hJSnlCZzRkLVpqUkFRWWJTZGFTT3dEdDN6dDBYUHZhY0M5TGd4ZWRwVTd1QjRFOEkwLWxqWWVjWW1fQW1ib1JsMXZ0NUE?oc=5",
     "summary": "Panne Outlook : impossible d’accéder à vos mails ce vendredi 13 novembre, que se passe-t-il chez Microsoft ? Le Point"
+  },
+  {
+    "year": 2026.833,
+    "value": 40570,
+    "label": "Outlook et Teams touchés, pas encore de retour à la normale : ce que l’on sait de la panne qui touche Microsoft",
+    "category": "Panne de service",
+    "whoWhat": "Libération",
+    "description": "Outlook et Teams touchés, pas encore de retour à la normale : ce que l’on sait de la panne qui touche Microsoft Libération",
+    "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPVFJlbFRPRHNrSnFIMU85SHFrTU5aMk5DUzg4MkNsc1lFV2lrVHRpZ2NoQi1ZTkROa3NHVGFadjhjT2lXc3BUT0tMZkVlR3FnMnRZc3VTSW52bEh4LWNUNmxjT0ZBVVBIRUZoSW9KTE9xblItVFAtUTM4R25FS3kwU1UtLUEwb3hCR3dpQjF2ZmFRMHZJNVFTV3BJMEFBX0VVX2s2Ti1yTF80RkRmb3RFMWJVMHE1TVRFZDlRanNNWFFfcm8?oc=5",
+    "timestamp": "2026-11-13T22:47:31.916846",
+    "tipping": false,
+    "s_curve_phase": 3,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50,
+    "convergences": "Aucune convergence majeure détectée.",
+    "grand_filter_analysis": "Impact systémique à surveiller.",
+    "final_note": "Le futur est décidément mal écrit.",
+    "impact_score": 9,
+    "id": "4e68ac55aa139d32",
+    "verified": true,
+    "merged_into": "4f9b1980c1c7d514",
+    "date": "2026-11-13",
+    "title": "Outlook et Teams touchés, pas encore de retour à la normale : ce que l’on sait de la panne qui touche Microsoft",
+    "source": "Libération",
+    "source_url": null,
+    "summary": "Outlook et Teams touchés, pas encore de retour à la normale : ce que l’on sait de la panne qui touche Microsoft Libération",
+    "is_kinetic_signal": false,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "remedy_text": null,
+    "poison_text": null,
+    "s_curve_label": null,
+    "realYear": null,
+    "realLabel": null,
+    "ema_clock_minutes": null
   },
   {
     "id": "1b98dd3fcf0f835e",
