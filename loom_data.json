@@ -31373,9 +31373,14 @@
         "source": "ChannelNews",
         "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQMHFVeWZ1UF9NQm5PcUZMWHA5T2R5U2ZCV2N1U21scGtBSnQ1aGdnaTc5SmVndjRvVjJLRUdKRWhxZExZNVlQNldwZWdmNVhuYWpkeDBTWlllNjZ6S05CY0dodjJiUTVEOFhzM0o0cXRJMWNsdlpaUEFpazFxc1lyem4tdE0wQQ?oc=5",
         "title": "Microsoft 365 : après la panne, les réclamations"
+      },
+      {
+        "source": "Le Monde Informatique",
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQOWJNR2RWT0I1Z29ENDVJdDEtdmxsQWNZWEg4a0o1WlZieXZYUUNqb09KZ1dNMjIyYUdKUEFjSkktclpzNm9rMEE1VE9iajZGcWJjNXFQUTJBajVnenVoTEVYU0pMdDRhYmVhUEJ3Tm1ucGs4VW9DMnNsbGdwY3owWXZYaWw2LWJfeW5RRWNuOUE2Z0c5cUt6SmZRQ3VncjV0MEZhQW9STVVBRFJCM092ZUZn?oc=5",
+        "title": "Panne mondiale de Microsoft 365 : Outlook perturbé pendant des heures"
       }
     ],
-    "occurrences": 23,
+    "occurrences": 24,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
