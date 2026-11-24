@@ -1,23 +1,33 @@
 name: Deploy to GitHub Pages
 run-name: The Loom v179 🚀
 
-# V2.9.3 — Correctif "tâche qui plante systématiquement" :
-# la boucle locale pousse toutes les ~10 min (24/7, ~144 déploiements/jour) et
-# chaque push déclenche ici un déploiement GitHub Pages complet. À cette cadence,
-# le service de promotion Pages échoue régulièrement côté serveur
-# (statut "deployment_failed" -> "Deployment failed, try again later."),
-# ce qui faisait échouer le run ~1 fois sur 2 (101 failures / 810 runs).
-# Correctifs :
-#   1. cancel-in-progress: false — annuler un run en cours laissait un déploiement
-#      Pages encore actif côté serveur ; le run suivant échouait alors à coup sûr.
-#      On laisse les déploiements se sérialiser (l'ancien passe "inactive").
-#   2. retry du déploiement jusqu'à 5 tentatives avec backoff (30s/60s/120s/180s)
-#      entre les tentatives : un retry immédiat en rafale se fait refuser par le
-#      rate-limiting de Pages (échec en ~1s), il faut laisser le service respirer.
+# V2.9.4 — Le déploiement Pages ne se déclenche QUE sur les mises à jour du code
+# de la page (paths-ignore sur les fichiers de données poussés par la boucle
+# sentinel toutes les ~10 min). Auparavant, chaque push de données lançait un
+# déploiement complet (~144/jour) et le service de promotion Pages échouait
+# par intermittence à cette cadence ("deployment_failed" -> run en failure).
+# Les données fraîches (loom_data.json / telemetry.json / rag.json) sont lues par
+# le front via raw.githubusercontent.com (CDN, à jour à chaque push, zéro déploiement).
+#
+# Robustesse conservée :
+#   1. cancel-in-progress: false — on laisse les déploiements se sérialiser.
+#   2. retry du déploiement jusqu'à 5 tentatives avec backoff (30/60/120/180s).
 
 on:
   push:
     branches: ["main", "master"]
+    paths-ignore:
+      # données poussées par la boucle sentinel (push d'événements toujours actif,
+      # mais sans déclencher de déploiement Pages)
+      - 'loom_data.json'
+      - 'telemetry.json'
+      - 'scan_heartbeat.json'
+      - 'rag.json'
+      - 'input.json'
+      - 'loom_consolidated_v102.json'
+      - 'loom_data_Gork.json'
+      - 'loom_master_2026-01-22.json'
+      - 'v2/web/public/loom_data.json'
   workflow_dispatch:
 
 permissions:

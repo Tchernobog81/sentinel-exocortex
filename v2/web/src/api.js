@@ -6,6 +6,11 @@ import { FALLBACK_LOOM_DATA } from './fallback_loom_data.js';
 
 const BASE = './'; // base relative : marche à la racine (serveur local) et sous /sentinel-exocortex/ (Pages)
 
+// GitHub Pages : source de fraîcheur des données = raw.githubusercontent (CDN), servi à chaque
+// push de l'agent local sans attendre un redéploiement Pages du site (le déploiement
+// ne se déclenche plus que sur les mises à jour du code de la page).
+const RAW_BASE = 'https://raw.githubusercontent.com/Tchernobog81/sentinel-exocortex/main/';
+
 let modePromise = null;
 export function detectMode() {
   if (!modePromise) {
@@ -116,9 +121,17 @@ export function useSSE(url, onMessage, pollMs = 5000) {
 
       const tick = async () => {
         try {
-          let r = await fetch(BASE + apiPath + '?cb=' + Date.now(), { cache: 'no-store' });
-          if (!r.ok) r = await fetch(BASE + staticFile + '?cb=' + Date.now(), { cache: 'no-store' });
-          if (!r.ok) throw new Error('no-data');
+          const cb = '?cb=' + Date.now();
+          let r = null;
+          if (m === 'static') {
+            // Pages : d'abord le CDN raw (toujours à jour), puis les fichiers servis par Pages en secours
+            r = await fetch(RAW_BASE + staticFile + cb, { cache: 'no-store' }).catch(() => null);
+            if (!r || !r.ok) r = await fetch(BASE + staticFile + cb, { cache: 'no-store' }).catch(() => null);
+          } else {
+            r = await fetch(BASE + apiPath + cb, { cache: 'no-store' }).catch(() => null);
+            if (!r || !r.ok) r = await fetch(BASE + staticFile + cb, { cache: 'no-store' }).catch(() => null);
+          }
+          if (!r || !r.ok) throw new Error('no-data');
           let j = await r.json();
           if (!isTelemetry && Array.isArray(j)) j = mapEnvelope(j);
           dataRef.current = j;
@@ -146,13 +159,20 @@ export function useSSE(url, onMessage, pollMs = 5000) {
   return { data, connected, mode };
 }
 
-// RAG : server -> /api/rag, static -> rag.json
+// RAG : server -> /api/rag, static -> raw.githubusercontent (frais) puis rag.json (Pages)
 export async function fetchRag() {
   const m = await detectMode();
   try {
-    let r = await fetch(BASE + 'api/rag?cb=' + Date.now(), { cache: 'no-store' });
-    if (!r.ok) r = await fetch(BASE + 'rag.json?cb=' + Date.now(), { cache: 'no-store' });
-    if (r.ok) return await r.json();
+    const cb = '?cb=' + Date.now();
+    let r = null;
+    if (m === 'static') {
+      r = await fetch(RAW_BASE + 'rag.json' + cb, { cache: 'no-store' }).catch(() => null);
+      if (!r || !r.ok) r = await fetch(BASE + 'rag.json' + cb, { cache: 'no-store' }).catch(() => null);
+    } else {
+      r = await fetch(BASE + 'api/rag' + cb, { cache: 'no-store' }).catch(() => null);
+      if (!r || !r.ok) r = await fetch(BASE + 'rag.json' + cb, { cache: 'no-store' }).catch(() => null);
+    }
+    if (r && r.ok) return await r.json();
   } catch {}
   return null;
 }
