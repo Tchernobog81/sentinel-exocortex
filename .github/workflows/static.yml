@@ -1,7 +1,7 @@
 name: Deploy to GitHub Pages
 run-name: The Loom v179 🚀
 
-# V2.9.2 — Correctif "tâche qui plante systématiquement" :
+# V2.9.3 — Correctif "tâche qui plante systématiquement" :
 # la boucle locale pousse toutes les ~10 min (24/7, ~144 déploiements/jour) et
 # chaque push déclenche ici un déploiement GitHub Pages complet. À cette cadence,
 # le service de promotion Pages échoue régulièrement côté serveur
@@ -11,8 +11,9 @@ run-name: The Loom v179 🚀
 #   1. cancel-in-progress: false — annuler un run en cours laissait un déploiement
 #      Pages encore actif côté serveur ; le run suivant échouait alors à coup sûr.
 #      On laisse les déploiements se sérialiser (l'ancien passe "inactive").
-#   2. retry du déploiement jusqu'à 5 tentatives (chaque tentative crée un
-#      nouveau déploiement Pages) pour absorber les échecs transitoires du service.
+#   2. retry du déploiement jusqu'à 5 tentatives avec backoff (30s/60s/120s/180s)
+#      entre les tentatives : un retry immédiat en rafale se fait refuser par le
+#      rate-limiting de Pages (échec en ~1s), il faut laisser le service respirer.
 
 on:
   push:
@@ -34,7 +35,7 @@ jobs:
       name: github-pages
       url: ${{ steps.d1.outputs.page_url || steps.d2.outputs.page_url || steps.d3.outputs.page_url || steps.d4.outputs.page_url || steps.d5.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -48,21 +49,33 @@ jobs:
         id: d1
         continue-on-error: true
         uses: actions/deploy-pages@v4
+      - name: Attente avant tentative 2
+        if: steps.d1.outcome == 'failure'
+        run: sleep 30
       - name: Deploy to GitHub Pages (tentative 2)
         id: d2
         if: steps.d1.outcome == 'failure'
         continue-on-error: true
         uses: actions/deploy-pages@v4
+      - name: Attente avant tentative 3
+        if: steps.d2.outcome == 'failure'
+        run: sleep 60
       - name: Deploy to GitHub Pages (tentative 3)
         id: d3
         if: steps.d2.outcome == 'failure'
         continue-on-error: true
         uses: actions/deploy-pages@v4
+      - name: Attente avant tentative 4
+        if: steps.d3.outcome == 'failure'
+        run: sleep 120
       - name: Deploy to GitHub Pages (tentative 4)
         id: d4
         if: steps.d3.outcome == 'failure'
         continue-on-error: true
         uses: actions/deploy-pages@v4
+      - name: Attente avant tentative 5
+        if: steps.d4.outcome == 'failure'
+        run: sleep 180
       - name: Deploy to GitHub Pages (tentative 5)
         id: d5
         if: steps.d4.outcome == 'failure'
