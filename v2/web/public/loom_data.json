@@ -32187,10 +32187,6 @@
       "60400fcd2676a907"
     ],
     "date": "2026-11-23",
-    "title": "Elon Musk va perdre son record : Anthropic prépare la plus grande introduction en Bourse de tous les temps",
-    "source": "Journal du Geek",
-    "source_url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOekRLMjF5c3dBc3RDRlFhdGhBbU1ZVXhtQzBTQmNkZUxGSmdnZ3dZX3NicDRDODhkcU5YaUdpUGgzOWJURk9GcXVPZXJRUEROQTlTU1pRUmNTa1I0WjZqNGJrMHJiSm8yMHZrVnRYUWhxU3BLMDVsZUhXcVJqRjdOc1k1cWJfS2g2TjZCSXp1LWFyM2tHenZ5aGhlWnQwZ0FLajdmNTluN0tIbHY5R0gzc00zaDZxYkR0aHRYRXE2cjVMZmZJYVF2TEU4cG9wSUJxNkVJYjRPVmg0Z1pDS3VV?oc=5",
-    "summary": "Elon Musk va perdre son record : Anthropic prépare la plus grande introduction en Bourse de tous les temps Journal du Geek",
     "is_kinetic_signal": false,
     "impact_score": null,
     "doomsday_minutes": null,
@@ -32201,7 +32197,24 @@
     "s_curve_label": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Journal du Geek",
+        "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOekRLMjF5c3dBc3RDRlFhdGhBbU1ZVXhtQzBTQmNkZUxGSmdnZ3dZX3NicDRDODhkcU5YaUdpUGgzOWJURk9GcXVPZXJRUEROQTlTU1pRUmNTa1I0WjZqNGJrMHJiSm8yMHZrVnRYUWhxU3BLMDVsZUhXcVJqRjdOc1k1cWJfS2g2TjZCSXp1LWFyM2tHenZ5aGhlWnQwZ0FLajdmNTluN0tIbHY5R0gzc00zaDZxYkR0aHRYRXE2cjVMZmZJYVF2TEU4cG9wSUJxNkVJYjRPVmg0Z1pDS3VV?oc=5",
+        "title": "Elon Musk va perdre son record : Anthropic prépare la plus grande introduction en Bourse de tous les temps"
+      },
+      {
+        "source": "Siècle Digital",
+        "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOSVNvUEZsazA1dllxQzZQandtVkczZDFsTk92aEhTaXFJcF9VZm02dmZqY0lkZ2FnaWNMOU54R1otMnJBZHpVZF9sc0E1VUMzYXptZkpYMXhDc2EtODN1dnd4NlZVVEY2VVRsWUw0eVY4S0hjOWNaeGUtcEYycnNrejR1WEVJMFl6dW14QUlnMVdpR0hfTlppOUpxYnA5cVg5d1FreHdpMElsTnllY003eVNFbHpZdXFFSm91NnFKQ0VWN19Cby03OC1kdklVR0JYSFQwMQ?oc=5",
+        "title": "Anthropic réalise la plus grosse introduction en Bourse de l'histoire et pulvérise le record de SpaceX"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Elon Musk va perdre son record : Anthropic prépare la plus grande introduction en Bourse de tous les temps",
+    "source": "Journal du Geek",
+    "source_url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOekRLMjF5c3dBc3RDRlFhdGhBbU1ZVXhtQzBTQmNkZUxGSmdnZ3dZX3NicDRDODhkcU5YaUdpUGgzOWJURk9GcXVPZXJRUEROQTlTU1pRUmNTa1I0WjZqNGJrMHJiSm8yMHZrVnRYUWhxU3BLMDVsZUhXcVJqRjdOc1k1cWJfS2g2TjZCSXp1LWFyM2tHenZ5aGhlWnQwZ0FLajdmNTluN0tIbHY5R0gzc00zaDZxYkR0aHRYRXE2cjVMZmZJYVF2TEU4cG9wSUJxNkVJYjRPVmg0Z1pDS3VV?oc=5",
+    "summary": "Elon Musk va perdre son record : Anthropic prépare la plus grande introduction en Bourse de tous les temps Journal du Geek"
   },
   {
     "year": 2026.833,
