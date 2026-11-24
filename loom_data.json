@@ -31383,9 +31383,14 @@
         "source": "Clubic.com",
         "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQZ1l3Z2xfODd3RzdlMFQwRm1iajZLUVpGZS1YUWFzQzBSMExVNjJRSUdSUHE3b3dSdWNGN0FSSnZueUpYa0hxLXF0OGswN24tb19FTkpWR1ZPT2Y4cmlrdHR1MFVkVEhxUjFKZW1qTlB5WlF1eDhiU3ZoTVBtY2J0T3VrY1Q5emRJWklrbk5LZ281QVQtNk45bkFfcEZWajYyYlJFZXVmVXpZcUV5eHBBSUxFUXVTa2FlQXFJV3N0czUtWEdOd24wY19hVTQ?oc=5",
         "title": "Après la panne d’Outlook Microsoft confirme que certains e-mails ne sont jamais arrivés"
+      },
+      {
+        "source": "PC Astuces",
+        "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQZjNCRzRaZWJmNF9ieURSV1VqdUxCUmdrZnp6c2ZPOHU5OEphSnpUdmp0OGFUVHNqdVZDd21hblMydGpTNzR1VWxnNW0yTHRrdFktTWVTMmMzMHZjcmpGVGJzTU5fbHNXZlh3Q3VvVVJ4ZUJrOU5wN3hJdUpUenc1dkNkNmEzeVZFS1B1RVBnMG82aHpZNkRGUklkZkRBYndTSFEzZzJnRFBwdHczdnU4YlY0T0EyRlByMGlWZzluN0ZVZkItVkNGckllYw?oc=5",
+        "title": "Panne Outlook : des campagnes d'hameçonnage exploitent l'incident pour dérober des identifiants"
       }
     ],
-    "occurrences": 25,
+    "occurrences": 26,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
