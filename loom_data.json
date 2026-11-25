@@ -30942,7 +30942,7 @@
     "label": "Lancement d'un nouvel algorithme d'apprentissage automatique pour l'accélération technologique",
     "category": "🔵 COGNITION",
     "whoWhat": "MIT Technology Review",
-    "description": "Les scientifiques ont développé un nouveau modèle de réseaux neuronaux qui permet d'accélérer les processus de calcul et de traitement de données.",
+    "description": "Des chercheurs de l'Université de Cambridge ont développé de nouveaux algorithmes pour accélérer les performances technologiques, avec des applications potentielles dans le domaine de l'intelligence artificielle.",
     "url": "https://www.technologyreview.com/",
     "timestamp": "2026-11-23T12:00:00",
     "tipping": false,
@@ -30984,9 +30984,14 @@
         "source": "MIT Technology Review",
         "url": "https://www.technologyreview.com/2026/11/25/1104411/new-algorithm-educational-ai/",
         "title": "Léquipe de chercheurs développe un nouvel algorithme pour léducation"
+      },
+      {
+        "source": "MIT Technology Review",
+        "url": "https://www.technologyreview.com/2026/11/25/1111459/new-algorithms-optimize-technological-performance/",
+        "title": "Progrès dans l'accélération technologique : nouveaux algorithmes pour optimiser les performances"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Lancement d'un nouvel algorithme d'apprentissage automatique pour l'accélération technologique",
     "source": "MIT Technology Review",
