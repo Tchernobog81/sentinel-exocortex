@@ -3096,7 +3096,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/frankenstein",
+        "title": "Frankenstein"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 1,
@@ -3108,10 +3114,6 @@
     "pharmakon_remedy_percent": 49,
     "pharmakon_poison_percent": 51,
     "date": null,
-    "title": "Frankenstein",
-    "source": "Mary Shelley",
-    "source_url": null,
-    "summary": "Le Dr Frankenstein crée la vie à partir de matière inerte. Le monstre, rejeté, se retourne contre son créateur. Première critique de la science sans conscience.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -3119,7 +3121,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Frankenstein",
+    "source": "Mary Shelley",
+    "source_url": null,
+    "summary": "Le Dr Frankenstein crée la vie à partir de matière inerte. Le monstre, rejeté, se retourne contre son créateur. Première critique de la science sans conscience."
   },
   {
     "id": "2531d377c31b29f8",
@@ -5897,9 +5903,14 @@
         "source": "Fritz Lang",
         "url": "https://fr.wikipedia.org/wiki/Metropolis",
         "title": "Metropolis"
+      },
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/metropolis",
+        "title": "Metropolis"
       }
     ],
-    "occurrences": 1,
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 50,
@@ -8078,9 +8089,14 @@
         "source": "George Orwell",
         "url": "https://fr.wikipedia.org/wiki/1984",
         "title": "1984 (Orwell, télécrans)"
+      },
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/1984",
+        "title": "1984"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 54,
@@ -8246,7 +8262,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/ai",
+        "title": "AI"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -8258,10 +8280,6 @@
     "pharmakon_remedy_percent": 56,
     "pharmakon_poison_percent": 44,
     "date": null,
-    "title": "I, Robot",
-    "source": "Isaac Asimov",
-    "source_url": null,
-    "summary": "Recueil de nouvelles posant les bases de l'éthique robotique (3 lois) et explorant leurs failles logiques.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -8269,7 +8287,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "I, Robot",
+    "source": "Isaac Asimov",
+    "source_url": null,
+    "summary": "Recueil de nouvelles posant les bases de l'éthique robotique (3 lois) et explorant leurs failles logiques."
   },
   {
     "id": "8d472722195bd907",
@@ -8585,7 +8607,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/aliens",
+        "title": "Aliens"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -8597,10 +8625,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1952-06-01",
-    "title": "Astro Boy",
-    "source": "Osamu Tezuka",
-    "source_url": "https://fr.wikipedia.org/wiki/Astro_Boy",
-    "summary": "Astro Boy préfigure le robot humanoïde gentil et agile.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -8608,7 +8632,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Astro Boy",
+    "source": "Osamu Tezuka",
+    "source_url": "https://fr.wikipedia.org/wiki/Astro_Boy",
+    "summary": "Astro Boy préfigure le robot humanoïde gentil et agile."
   },
   {
     "id": "65984bf3ff94e50c",
@@ -10671,7 +10699,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/dune",
+        "title": "Dune"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -10683,10 +10717,6 @@
     "pharmakon_remedy_percent": 43,
     "pharmakon_poison_percent": 57,
     "date": null,
-    "title": "Dune",
-    "source": "Frank Herbert",
-    "source_url": null,
-    "summary": "Dans un futur lointain, l'humanité a banni les ordinateurs ('Tu ne feras point de machine à l'esprit de l'homme') après une guerre contre les IA.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -10694,7 +10724,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Dune",
+    "source": "Frank Herbert",
+    "source_url": null,
+    "summary": "Dans un futur lointain, l'humanité a banni les ordinateurs ('Tu ne feras point de machine à l'esprit de l'homme') après une guerre contre les IA."
   },
   {
     "id": "357010e4598b602a",
@@ -13251,7 +13285,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/star_wars",
+        "title": "Star Wars"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -13263,10 +13303,6 @@
     "pharmakon_remedy_percent": 47,
     "pharmakon_poison_percent": 53,
     "date": null,
-    "title": "Star Wars",
-    "source": "🔮 IMAGINAIRE",
-    "source_url": null,
-    "summary": "Série de films de science-fiction créée par George Lucas, commencant avec le film original sorti en 1977.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -13274,7 +13310,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Star Wars",
+    "source": "🔮 IMAGINAIRE",
+    "source_url": null,
+    "summary": "Série de films de science-fiction créée par George Lucas, commencant avec le film original sorti en 1977."
   },
   {
     "id": "ffedfb05c20d9373",
@@ -13702,6 +13742,52 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
+    "ema_clock_minutes": null
+  },
+  {
+    "id": "99f0a0d02b9461f2",
+    "year": 1979,
+    "value": 4790,
+    "label": "Le Guide du voyageur galactique",
+    "category": "🔮 IMAGINAIRE",
+    "whoWhat": "Radio",
+    "description": "Œuvre de science-fiction référencée par The Encyclopedia of Science Fiction (entrée « Hitch Hiker's Guide to the Galaxy, The », première publication ~1978).",
+    "url": "https://sf-encyclopedia.com/entry/hitch_hikers_guide_to_the_galaxy_the",
+    "timestamp": "1979-06-01T00:00:00",
+    "tipping": false,
+    "verified": true,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/hitch_hikers_guide_to_the_galaxy_the",
+        "title": "Le Guide du voyageur galactique"
+      }
+    ],
+    "s_curve_phase": 3,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50,
+    "convergences": "Fiction + Réalité + Anticipation",
+    "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
+    "final_note": "La SF avait prévenu. On n'a pas écouté.",
+    "related_ids": [
+      "cee1ddaa5fe91838",
+      "8ac92adeeb09ee7d"
+    ],
+    "date": "1979-06-01",
+    "title": "Le Guide du voyageur galactique",
+    "source": "Radio",
+    "source_url": "https://sf-encyclopedia.com/entry/hitch_hikers_guide_to_the_galaxy_the",
+    "summary": "Œuvre de science-fiction référencée par The Encyclopedia of Science Fiction (entrée « Hitch Hiker's Guide to the Galaxy, The », première publication ~1978).",
+    "is_kinetic_signal": false,
+    "impact_score": null,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "remedy_text": null,
+    "poison_text": null,
+    "s_curve_label": null,
+    "realYear": null,
+    "realLabel": null,
     "ema_clock_minutes": null
   },
   {
@@ -14172,9 +14258,14 @@
         "source": "Steven Lisberger",
         "url": "https://fr.wikipedia.org/wiki/Tron",
         "title": "Tron"
+      },
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/tron",
+        "title": "Tron"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 57,
@@ -14306,9 +14397,14 @@
         "source": "John Badham",
         "url": "https://fr.wikipedia.org/wiki/WarGames",
         "title": "WarGames"
+      },
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/badham_john",
+        "title": "Badham, John"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 55,
@@ -15132,6 +15228,52 @@
     "summary": "Film (1985) — Robert Zemeckis."
   },
   {
+    "id": "b082728844f0012f",
+    "year": 1985,
+    "value": 4850,
+    "label": "La Stratégie Ender (Ender's Game)",
+    "category": "🔮 IMAGINAIRE",
+    "whoWhat": "Videogame",
+    "description": "Œuvre de science-fiction référencée par The Encyclopedia of Science Fiction (entrée « Adventure », première publication ~1984).",
+    "url": "https://sf-encyclopedia.com/entry/adventure",
+    "timestamp": "1985-06-01T00:00:00",
+    "tipping": false,
+    "verified": true,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/adventure",
+        "title": "La Stratégie Ender (Ender's Game)"
+      }
+    ],
+    "s_curve_phase": 3,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50,
+    "convergences": "Fiction + Réalité + Anticipation",
+    "grand_filter_analysis": "La fiction comme prophétie auto-réalisatrice ou avertissement ignoré.",
+    "final_note": "La SF avait prévenu. On n'a pas écouté.",
+    "related_ids": [
+      "99f0a0d02b9461f2",
+      "8ac92adeeb09ee7d"
+    ],
+    "date": "1985-06-01",
+    "title": "La Stratégie Ender (Ender's Game)",
+    "source": "Videogame",
+    "source_url": "https://sf-encyclopedia.com/entry/adventure",
+    "summary": "Œuvre de science-fiction référencée par The Encyclopedia of Science Fiction (entrée « Adventure », première publication ~1984).",
+    "is_kinetic_signal": false,
+    "impact_score": null,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "remedy_text": null,
+    "poison_text": null,
+    "s_curve_label": null,
+    "realYear": null,
+    "realLabel": null,
+    "ema_clock_minutes": null
+  },
+  {
     "id": "470431aa94d44b5f",
     "year": 1986,
     "value": 5954,
@@ -15605,7 +15747,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/akira",
+        "title": "Akira"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -15617,10 +15765,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1988-06-01",
-    "title": "Akira",
-    "source": "Katsuhiro Otomo",
-    "source_url": "https://fr.wikipedia.org/wiki/Akira",
-    "summary": "Manga/film (1988) — Katsuhiro Otomo.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -15628,7 +15772,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Akira",
+    "source": "Katsuhiro Otomo",
+    "source_url": "https://fr.wikipedia.org/wiki/Akira",
+    "summary": "Manga/film (1988) — Katsuhiro Otomo."
   },
   {
     "id": "00142905979efc06",
@@ -16366,7 +16514,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/amnesia",
+        "title": "Amnesia"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -16378,10 +16532,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "1990-06-01",
-    "title": "Total Recall",
-    "source": "Paul Verhoeven",
-    "source_url": "https://fr.wikipedia.org/wiki/Total_Recall",
-    "summary": "Film (1990) — Paul Verhoeven.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -16389,7 +16539,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Total Recall",
+    "source": "Paul Verhoeven",
+    "source_url": "https://fr.wikipedia.org/wiki/Total_Recall",
+    "summary": "Film (1990) — Paul Verhoeven."
   },
   {
     "id": "d5df586370b666e7",
@@ -17370,9 +17524,14 @@
         "source": "Mamoru Oshii",
         "url": "https://fr.wikipedia.org/wiki/Ghost_in_the_Shell",
         "title": "Ghost in the Shell"
+      },
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/ghost_in_the_shell",
+        "title": "Ghost in the Shell"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 54,
@@ -18556,7 +18715,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/matrix",
+        "title": "Matrix"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 3,
@@ -18568,10 +18733,6 @@
     "pharmakon_remedy_percent": 41,
     "pharmakon_poison_percent": 59,
     "date": null,
-    "title": "Matrix",
-    "source": "Les Wachowski",
-    "source_url": null,
-    "summary": "L'humanité vit dans une simulation créée par des machines qui cultivent les corps humains pour leur énergie.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -18579,7 +18740,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Matrix",
+    "source": "Les Wachowski",
+    "source_url": null,
+    "summary": "L'humanité vit dans une simulation créée par des machines qui cultivent les corps humains pour leur énergie."
   },
   {
     "id": "4c6a1abb758eb2a0",
@@ -21173,7 +21338,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/adam_and_eve",
+        "title": "Adam and Eve"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -21185,10 +21356,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2008-06-01",
-    "title": "Wall-E",
-    "source": "Andrew Stanton",
-    "source_url": "https://fr.wikipedia.org/wiki/Wall-E",
-    "summary": "Film d'animation science-fiction réalisé par Andrew Stanton, sorti en 2008. Le film suit les aventures de Wall-E, une petite machine robotisée qui explore l'espace et rencontre une femme humaine.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -21196,7 +21363,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Wall-E",
+    "source": "Andrew Stanton",
+    "source_url": "https://fr.wikipedia.org/wiki/Wall-E",
+    "summary": "Film d'animation science-fiction réalisé par Andrew Stanton, sorti en 2008. Le film suit les aventures de Wall-E, une petite machine robotisée qui explore l'espace et rencontre une femme humaine."
   },
   {
     "id": "ba8336e232c0630e",
@@ -21423,7 +21594,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/avatar",
+        "title": "Avatar"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -21435,10 +21612,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2009-06-01",
-    "title": "Avatar",
-    "source": "James Cameron",
-    "source_url": "https://fr.wikipedia.org/wiki/Avatar",
-    "summary": "2009 science fiction film directed by James Cameron.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -21446,7 +21619,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Avatar",
+    "source": "James Cameron",
+    "source_url": "https://fr.wikipedia.org/wiki/Avatar",
+    "summary": "2009 science fiction film directed by James Cameron."
   },
   {
     "id": "62aadf586af681b8",
@@ -21464,7 +21641,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/androids",
+        "title": "Androids"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -21476,10 +21659,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2009-06-01",
-    "title": "Surrogates",
-    "source": "Jonathan Mostow",
-    "source_url": "https://fr.wikipedia.org/wiki/Surrogates",
-    "summary": "Film (2009) — Jonathan Mostow.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -21487,7 +21666,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Surrogates",
+    "source": "Jonathan Mostow",
+    "source_url": "https://fr.wikipedia.org/wiki/Surrogates",
+    "summary": "Film (2009) — Jonathan Mostow."
   },
   {
     "id": "c10b145917e2734f",
@@ -21505,7 +21688,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/moon",
+        "title": "Moon"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -21517,10 +21706,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2009-06-01",
-    "title": "Moon",
-    "source": "Duncan Jones",
-    "source_url": "https://fr.wikipedia.org/wiki/Moon",
-    "summary": "2009 South Korean science fiction film directed by Dun Joon Ho.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -21528,7 +21713,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Moon",
+    "source": "Duncan Jones",
+    "source_url": "https://fr.wikipedia.org/wiki/Moon",
+    "summary": "2009 South Korean science fiction film directed by Dun Joon Ho."
   },
   {
     "id": "a4630b85682ebcd2",
@@ -21546,7 +21735,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/aliens",
+        "title": "Aliens"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -21558,10 +21753,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2009-06-01",
-    "title": "District 9",
-    "source": "Neill Blomkamp",
-    "source_url": "https://fr.wikipedia.org/wiki/District_9",
-    "summary": "2009 science fiction film directed by Neill Blomkamp.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -21569,7 +21760,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "District 9",
+    "source": "Neill Blomkamp",
+    "source_url": "https://fr.wikipedia.org/wiki/District_9",
+    "summary": "2009 science fiction film directed by Neill Blomkamp."
   },
   {
     "id": "b36ef2578bc47745",
@@ -22121,9 +22316,14 @@
         "source": "Charlie Brooker",
         "url": "https://fr.wikipedia.org/wiki/Black_Mirror",
         "title": "Black Mirror"
+      },
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/ai",
+        "title": "AI"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 52,
@@ -22764,7 +22964,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/anime",
+        "title": "Anime"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -22776,10 +22982,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2012-06-01",
-    "title": "Psycho-Pass",
-    "source": "Production I.G",
-    "source_url": "https://fr.wikipedia.org/wiki/Psycho-Pass",
-    "summary": "Anime (2012) — Production I.G.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -22787,7 +22989,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Psycho-Pass",
+    "source": "Production I.G",
+    "source_url": "https://fr.wikipedia.org/wiki/Psycho-Pass",
+    "summary": "Anime (2012) — Production I.G."
   },
   {
     "id": "7d1ebe51d3be3495",
@@ -22974,7 +23180,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/her",
+        "title": "Her"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -22986,10 +23198,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2013-06-01",
-    "title": "Her",
-    "source": "Spike Jonze",
-    "source_url": "https://fr.wikipedia.org/wiki/Her",
-    "summary": "Film dramatique américain écrit et réalisé par Spike Jonze, mettant en scène une femme qui tombe amoureuse d'un programme de logiciel de voix féminine.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -22997,7 +23205,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Her",
+    "source": "Spike Jonze",
+    "source_url": "https://fr.wikipedia.org/wiki/Her",
+    "summary": "Film dramatique américain écrit et réalisé par Spike Jonze, mettant en scène une femme qui tombe amoureuse d'un programme de logiciel de voix féminine."
   },
   {
     "id": "da31e63696e902f6",
@@ -23374,7 +23586,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/elysium",
+        "title": "Elysium"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -23386,10 +23604,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2013-06-01",
-    "title": "Elysium",
-    "source": "Neill Blomkamp",
-    "source_url": "https://fr.wikipedia.org/wiki/Elysium",
-    "summary": "Film de science-fiction sorti en 2013, mettant en scène un monde où les ressources sont inégalement réparties.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -23397,7 +23611,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Elysium",
+    "source": "Neill Blomkamp",
+    "source_url": "https://fr.wikipedia.org/wiki/Elysium",
+    "summary": "Film de science-fiction sorti en 2013, mettant en scène un monde où les ressources sont inégalement réparties."
   },
   {
     "id": "a7380124db7a3076",
@@ -23415,7 +23633,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/brooks_max",
+        "title": "Brooks, Max"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -23427,10 +23651,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2013-06-01",
-    "title": "World War Z",
-    "source": "Marc Forster",
-    "source_url": "https://fr.wikipedia.org/wiki/World_War_Z",
-    "summary": "Film de science-fiction basé sur le roman de Max Brooks, sorti en 2013.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -23438,7 +23658,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "World War Z",
+    "source": "Marc Forster",
+    "source_url": "https://fr.wikipedia.org/wiki/World_War_Z",
+    "summary": "Film de science-fiction basé sur le roman de Max Brooks, sorti en 2013."
   },
   {
     "id": "ea536a4a16779a29",
@@ -23502,9 +23726,14 @@
         "source": "Alex Garland",
         "url": "https://fr.wikipedia.org/wiki/Ex_Machina",
         "title": "Ex Machina"
+      },
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/ex_machina",
+        "title": "Ex Machina"
       }
     ],
-    "occurrences": 1,
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 50,
@@ -23759,7 +23988,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/transcendence",
+        "title": "Transcendence"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -23771,10 +24006,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2014-06-01",
-    "title": "Transcendence",
-    "source": "Wally Pfister",
-    "source_url": "https://fr.wikipedia.org/wiki/Transcendence",
-    "summary": "Film de science-fiction sorti en 2014, mettant en scène une connexion neuronale mondiale.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -23782,7 +24013,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Transcendence",
+    "source": "Wally Pfister",
+    "source_url": "https://fr.wikipedia.org/wiki/Transcendence",
+    "summary": "Film de science-fiction sorti en 2014, mettant en scène une connexion neuronale mondiale."
   },
   {
     "id": "50227fef9ac28deb",
@@ -23800,7 +24035,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/lucy",
+        "title": "Lucy"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -23812,10 +24053,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2014-06-01",
-    "title": "Lucy",
-    "source": "Luc Besson",
-    "source_url": "https://fr.wikipedia.org/wiki/Lucy",
-    "summary": "Ardvark animatronique de Pixar qui explore l'univers en quête de l'existence de la vie extraterrestre.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -23823,7 +24060,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Lucy",
+    "source": "Luc Besson",
+    "source_url": "https://fr.wikipedia.org/wiki/Lucy",
+    "summary": "Ardvark animatronique de Pixar qui explore l'univers en quête de l'existence de la vie extraterrestre."
   },
   {
     "id": "0712d7e10bff2682",
@@ -23882,7 +24123,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/abraham_daniel",
+        "title": "Abraham, Daniel"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 4,
@@ -23894,10 +24141,6 @@
     "pharmakon_remedy_percent": 58,
     "pharmakon_poison_percent": 42,
     "date": null,
-    "title": "The Expanse",
-    "source": "James S.A. Corey",
-    "source_url": null,
-    "summary": "Géopolitique réaliste du système solaire colonisé (Terre vs Mars vs Ceinture).",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -23905,7 +24148,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "The Expanse",
+    "source": "James S.A. Corey",
+    "source_url": null,
+    "summary": "Géopolitique réaliste du système solaire colonisé (Terre vs Mars vs Ceinture)."
   },
   {
     "id": "56aef148c773cf84",
@@ -24173,7 +24420,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/ai",
+        "title": "AI"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -24185,10 +24438,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2015-06-01",
-    "title": "Chappie",
-    "source": "Neill Blomkamp",
-    "source_url": "https://fr.wikipedia.org/wiki/Chappie",
-    "summary": "Une société privée crée des robots intelligents comme police.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -24196,7 +24445,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Chappie",
+    "source": "Neill Blomkamp",
+    "source_url": "https://fr.wikipedia.org/wiki/Chappie",
+    "summary": "Une société privée crée des robots intelligents comme police."
   },
   {
     "id": "156168b91ce8bdcd",
@@ -24855,7 +25108,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/westworld",
+        "title": "Westworld"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -24867,10 +25126,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2016-06-01",
-    "title": "Westworld",
-    "source": "Jonathan Nolan",
-    "source_url": "https://fr.wikipedia.org/wiki/Westworld",
-    "summary": "Série (2016) — Jonathan Nolan.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -24878,7 +25133,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Westworld",
+    "source": "Jonathan Nolan",
+    "source_url": "https://fr.wikipedia.org/wiki/Westworld",
+    "summary": "Série (2016) — Jonathan Nolan."
   },
   {
     "id": "ec5a9d15cc181915",
@@ -26372,7 +26631,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/last_of_us_the",
+        "title": "Last of Us, The"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -26384,10 +26649,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2020-06-01",
-    "title": "The Last of Us",
-    "source": "Druckmann / Mazin",
-    "source_url": "https://fr.wikipedia.org/wiki/The_Last_of_Us",
-    "summary": "Série (2020) — Druckmann / Mazin.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -26395,7 +26656,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "The Last of Us",
+    "source": "Druckmann / Mazin",
+    "source_url": "https://fr.wikipedia.org/wiki/The_Last_of_Us",
+    "summary": "Série (2020) — Druckmann / Mazin."
   },
   {
     "id": "6affbbe03b276f0e",
@@ -26456,7 +26721,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/amazing_digital_circus_the",
+        "title": "Amazing Digital Circus, The"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -26468,10 +26739,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2020-06-01",
-    "title": "Upload",
-    "source": "Greg Berlanti",
-    "source_url": "https://fr.wikipedia.org/wiki/Upload",
-    "summary": "Concept d'upload ou de téléchargement d'une conscience humaine vers un espace numérique ou posthumain.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -26479,7 +26746,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Upload",
+    "source": "Greg Berlanti",
+    "source_url": "https://fr.wikipedia.org/wiki/Upload",
+    "summary": "Concept d'upload ou de téléchargement d'une conscience humaine vers un espace numérique ou posthumain."
   },
   {
     "id": "9da4d80be11df604",
@@ -27092,7 +27363,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/advertising",
+        "title": "Advertising"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -27104,10 +27381,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2021-06-01",
-    "title": "Don't Look Up",
-    "source": "Adam McKay",
-    "source_url": "https://fr.wikipedia.org/wiki/Don't_Look_Up",
-    "summary": "Film (2021) — Adam McKay.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -27115,7 +27388,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Don't Look Up",
+    "source": "Adam McKay",
+    "source_url": "https://fr.wikipedia.org/wiki/Don't_Look_Up",
+    "summary": "Film (2021) — Adam McKay."
   },
   {
     "id": "e586a74b5a55fcdf",
@@ -27678,7 +27955,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/severance",
+        "title": "Severance"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -27690,10 +27973,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2022-06-01",
-    "title": "Severance",
-    "source": "Ben Stiller",
-    "source_url": "https://fr.wikipedia.org/wiki/Severance",
-    "summary": "Severance, une série télévisée créée par Ben Stiller, a été diffusée sur Apple TV+ en 2022.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -27701,7 +27980,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Severance",
+    "source": "Ben Stiller",
+    "source_url": "https://fr.wikipedia.org/wiki/Severance",
+    "summary": "Severance, une série télévisée créée par Ben Stiller, a été diffusée sur Apple TV+ en 2022."
   },
   {
     "id": "7f46a0e1c3155746",
@@ -28312,7 +28595,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/computers",
+        "title": "Computers"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -28324,10 +28613,6 @@
     "pharmakon_remedy_percent": 50,
     "pharmakon_poison_percent": 50,
     "date": "2023-06-01",
-    "title": "The Creator",
-    "source": "Gareth Edwards",
-    "source_url": "https://fr.wikipedia.org/wiki/The_Creator",
-    "summary": "La société de production de cinéma Wavelengths a annoncé The Creator, un film de science-fiction réalisé par Gareth Edwards.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -28335,7 +28620,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "The Creator",
+    "source": "Gareth Edwards",
+    "source_url": "https://fr.wikipedia.org/wiki/The_Creator",
+    "summary": "La société de production de cinéma Wavelengths a annoncé The Creator, un film de science-fiction réalisé par Gareth Edwards."
   },
   {
     "id": "af6dc41f63e732d7",
@@ -30050,6 +30339,84 @@
     "ema_clock_minutes": null
   },
   {
+    "year": 2026,
+    "value": 25897,
+    "label": "Réforme des retraites: les députés se réunissent en comité secret",
+    "category": "🏛️ POLITIQUE",
+    "whoWhat": "Le Monde",
+    "description": "Les députés se réunissent en comité secret pour débattre de la réforme des retraites. La réforme est un sujet de controverse en France.",
+    "url": "https://www.lemonde.fr/politique/article/2026/11/25/reforme-des-retraites-les-deputes-se-reunissent-en-comite-secret_6113016_816199_2.html",
+    "timestamp": "2026-11-25T12:00:00",
+    "tipping": false,
+    "verified": true,
+    "date": "2026-11-25",
+    "impact_score": 0.7,
+    "remedy_text": "La réforme des retraites pourrait apporter des solutions à la crise financière du système",
+    "poison_text": "La réforme des retraites pourrait également entraîner des réactions négatives de la population",
+    "s_curve_label": "Phase d'accélération",
+    "s_curve_phase": 2,
+    "pharmakon_remedy_percent": 40,
+    "pharmakon_poison_percent": 60,
+    "convergences": "La réforme des retraites converge avec les préoccupations des électeurs.",
+    "grand_filter_analysis": "L'analyse des rétroactions système suggère que la réforme des retraites pourrait avoir un impact important sur la politique française.",
+    "final_note": "Il est difficile de prédire l'issue de la réforme des retraites, mais il est important de suivre les événements.",
+    "id": "7d93ce80acc28d43",
+    "related_ids": [
+      "0b80c5d0b124f553",
+      "2d6cb8f76fdda812"
+    ],
+    "title": "Réforme des retraites: les députés se réunissent en comité secret",
+    "source": "Le Monde",
+    "source_url": "https://www.lemonde.fr/politique/article/2026/11/25/reforme-des-retraites-les-deputes-se-reunissent-en-comite-secret_6113016_816199_2.html",
+    "summary": "Les députés se réunissent en comité secret pour débattre de la réforme des retraites. La réforme est un sujet de controverse en France.",
+    "is_kinetic_signal": false,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "realYear": null,
+    "realLabel": null,
+    "ema_clock_minutes": null
+  },
+  {
+    "year": 2026,
+    "value": 30992,
+    "label": "Plus de 1 million de comptes Instagram compromis dans une attaque de phishing",
+    "category": "☢️ ENTROPIE",
+    "whoWhat": "BBC News",
+    "description": "Une attaque de phishing a compromis plus de 1 million de comptes Instagram. Les utilisateurs sont invités à vérifier leur compte et à modifier leur mot de passe.",
+    "url": "https://www.bbc.com/news/technology-63831958",
+    "timestamp": "2026-11-25T12:00:00",
+    "tipping": true,
+    "verified": true,
+    "date": "2026-11-25",
+    "impact_score": 0.9,
+    "remedy_text": "Les utilisateurs doivent immédiatement vérifier leur compte et modifier leur mot de passe.",
+    "poison_text": "L'attaque de phishing pourrait également entraîner des réactions négatives de la part des utilisateurs.",
+    "s_curve_label": "Phase d'accélération",
+    "s_curve_phase": 4,
+    "pharmakon_remedy_percent": 60,
+    "pharmakon_poison_percent": 40,
+    "convergences": "L'attaque de phishing converge avec les préoccupations des utilisateurs en matière de sécurité.",
+    "grand_filter_analysis": "L'analyse des rétroactions système suggère que l'attaque de phishing pourrait avoir un impact important sur la sécurité en ligne.",
+    "final_note": "Il est important de prendre des mesures de sécurité pour protéger ses comptes en ligne.",
+    "id": "c2657cd1d432c605",
+    "related_ids": [
+      "e38b97107cd9faeb",
+      "ba8336e232c0630e"
+    ],
+    "title": "Plus de 1 million de comptes Instagram compromis dans une attaque de phishing",
+    "source": "BBC News",
+    "source_url": "https://www.bbc.com/news/technology-63831958",
+    "summary": "Une attaque de phishing a compromis plus de 1 million de comptes Instagram. Les utilisateurs sont invités à vérifier leur compte et à modifier leur mot de passe.",
+    "is_kinetic_signal": false,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "realYear": null,
+    "realLabel": null,
+    "ema_clock_minutes": null
+  },
+  {
     "id": "cc2a6a48f7af7026",
     "year": 2026,
     "value": 44944,
@@ -31655,9 +32022,14 @@
         "source": "NeoTeo",
         "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNS1h0ZlZvWnhob1phX2U1NWZjUk1ZTFVVZi1uRE9SMlBvOGppR0hPOXc0X2Z1RXJMQlVHeEpqOHYxbVduOHRKNW9xcXJaWFVOaFRMTTJtdmhtYVJTY0dsSU5LQjVfanRhYm1McC1jbUpRcXlUU0NOOTljQy14WmNvX2lKQndOVGs?oc=5",
         "title": "Panne Microsoft 365 : l’explication de Brad Smith"
+      },
+      {
+        "source": "Le Monde Informatique",
+        "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOZGJBUjFLOVpuX0tYZG8ya2xvTi1iMlp0Vmh3bDZFbUZCcG42enhLZmszenJoYXVNa1RQM0QzQjhSeTJ2ZElLT2ZZeG1objVlMzl3Ym9hb1BQZHlia2swTDBGTmdiOXdjSWJvZVhlU2pPbkdwWjJTamhXY3hBZEc5eEFFZGRWLW5hbDM4SGwwcHhyc01DOWRnRV93SWtCS29QemlPQTAzVkF6VFl2dUtJVlZwY2hYOVZqMGtXcll6LVpNVVJnellpd093Skc4QXc?oc=5",
+        "title": "Microsoft déclenche un « Code Red » après une panne majeure de Microsoft 365"
       }
     ],
-    "occurrences": 30,
+    "occurrences": 31,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
