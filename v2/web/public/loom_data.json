@@ -31150,7 +31150,7 @@
     "label": "Cyberattaque contre une grande entreprise de technologie",
     "category": "☢️ ENTROPIE",
     "whoWhat": "Le Monde",
-    "description": "Une grande entreprise de technologie a été victime d'une cyberattaque, les données de l'entreprise ont été compromises.",
+    "description": "Une cyberattaque massive a été déclarée contre le fournisseur de services de cloud de la ville de Paris, entraînant la perturbation de nombreux services publics.",
     "url": "https://www.lemonde.fr/",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": false,
@@ -31168,17 +31168,25 @@
     "final_note": "L'entreprise doit s'assurer de mettre en place des mesures de sécurité suffisantes pour éviter de futures cyberattaques.",
     "id": "cd4b6b58f5a18973",
     "merged_into": "4fb52d41540ab4af",
-    "title": "Cyberattaque contre une grande entreprise de technologie",
-    "source": "Le Monde",
-    "source_url": null,
-    "summary": "Une grande entreprise de technologie a été victime d'une cyberattaque, les données de l'entreprise ont été compromises.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "sources": [
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/",
+        "title": "Cyberattaque contre une grande entreprise de technologie"
+      }
+    ],
+    "occurrences": 1,
+    "title": "Cyberattaque contre une grande entreprise de technologie",
+    "source": "Le Monde",
+    "source_url": null,
+    "summary": "Une grande entreprise de technologie a été victime d'une cyberattaque, les données de l'entreprise ont été compromises."
   },
   {
     "year": 2026,
