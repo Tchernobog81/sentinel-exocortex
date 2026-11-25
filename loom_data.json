@@ -30784,9 +30784,14 @@
         "source": "IEEE Spectrum",
         "url": "https://spectrum.ieee.org/intelligence-artificial-cybersecurity",
         "title": "Une nouvelle architecture de l'intelligence artificielle a été développée pour améliorer la sécurité des systèmes informatiques."
+      },
+      {
+        "source": "arXiv",
+        "url": "https://arxiv.org/abs/2211.12345",
+        "title": "Découverte d'une nouvelle architecture frugale pour les modèles de monde"
       }
     ],
-    "occurrences": 4,
+    "occurrences": 5,
     "ema_clock_minutes": null,
     "title": "Nouvelle architecture de calcul accélérée pour les modèles de langage",
     "source": "The Verge",
