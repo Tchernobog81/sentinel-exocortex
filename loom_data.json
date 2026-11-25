@@ -30919,7 +30919,7 @@
     "label": "Lancement d'un nouvel algorithme d'apprentissage automatique pour l'accélération technologique",
     "category": "🔵 COGNITION",
     "whoWhat": "MIT Technology Review",
-    "description": "Un nouvel algorithme a été développé pour accélérer les processus de recherche et d'innovation dans le domaine de l'intelligence artificielle.",
+    "description": "Les scientifiques ont développé un nouveau modèle de réseaux neuronaux qui permet d'accélérer les processus de calcul et de traitement de données.",
     "url": "https://www.technologyreview.com/",
     "timestamp": "2026-11-23T12:00:00",
     "tipping": false,
@@ -30940,17 +30940,30 @@
       "6acedbccb075923d",
       "a31cca8665337265"
     ],
-    "title": "Lancement d'un nouvel algorithme d'apprentissage automatique pour l'accélération technologique",
-    "source": "MIT Technology Review",
-    "source_url": "https://www.technologyreview.com/",
-    "summary": "Un nouvel algorithme a été développé pour accélérer les processus de recherche et d'innovation dans le domaine de l'intelligence artificielle.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "MIT Technology Review",
+        "url": "https://www.technologyreview.com/",
+        "title": "Lancement d'un nouvel algorithme d'apprentissage automatique pour l'accélération technologique"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/25/acceleration-technologie-recherche-neurones",
+        "title": "Accélération technologique : les chercheurs dévoilent un nouveau modèle de réseaux neuronaux"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Lancement d'un nouvel algorithme d'apprentissage automatique pour l'accélération technologique",
+    "source": "MIT Technology Review",
+    "source_url": "https://www.technologyreview.com/",
+    "summary": "Un nouvel algorithme a été développé pour accélérer les processus de recherche et d'innovation dans le domaine de l'intelligence artificielle."
   },
   {
     "year": 2026,
