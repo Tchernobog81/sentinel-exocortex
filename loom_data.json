@@ -31494,9 +31494,14 @@
         "source": "NeoTeo",
         "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOWFlaQ1pOTWJWYkkwMEozSTFJaFc5UjNsYjNjc1gyZ2p2NTJGOWEyUURTYWswclhzNFNuU2pPMC1PSWluRGgxVG5rV0ZiajNwR0ZBRjlVeFJfWDNldVdhQnREVmpnVlc3cnF5UXlCR1RfQWtLZTJ1aVV2cTh5czVxZ3NKbDd5NjMt?oc=5",
         "title": "Panne Microsoft Outlook : le sort des e-mails retardés"
+      },
+      {
+        "source": "NeoTeo",
+        "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNS1h0ZlZvWnhob1phX2U1NWZjUk1ZTFVVZi1uRE9SMlBvOGppR0hPOXc0X2Z1RXJMQlVHeEpqOHYxbVduOHRKNW9xcXJaWFVOaFRMTTJtdmhtYVJTY0dsSU5LQjVfanRhYm1McC1jbUpRcXlUU0NOOTljQy14WmNvX2lKQndOVGs?oc=5",
+        "title": "Panne Microsoft 365 : l’explication de Brad Smith"
       }
     ],
-    "occurrences": 29,
+    "occurrences": 30,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
