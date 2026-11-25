@@ -31423,17 +31423,30 @@
       "c2657cd1d432c605",
       "146bbead51756365"
     ],
-    "title": "Le groupe de hacking «L¬» revendique une attaque sur un grand fournisseur dé défense",
-    "source": "Le Monde",
-    "source_url": "https://www.lemonde.fr/pixels/article/2026/11/25/le-groupe-de-hacking-l¬-revendique-une-attaque-sur-un-grand-fournisseur-de-défense_6213873_4356986.html",
-    "summary": "Le groupe de hacking «L¬» revendique une attaque sur un grand fournisseur dé défense. L¬ attaque a entraéné des pertes importants pour le fournisseur.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/pixels/article/2026/11/25/le-groupe-de-hacking-l¬-revendique-une-attaque-sur-un-grand-fournisseur-de-défense_6213873_4356986.html",
+        "title": "Le groupe de hacking «L¬» revendique une attaque sur un grand fournisseur dé défense"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/24/15954260/cloud-provider-hacked-security-breach",
+        "title": "Attaque ciblée contre un fournisseur de services cloud"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Le groupe de hacking «L¬» revendique une attaque sur un grand fournisseur dé défense",
+    "source": "Le Monde",
+    "source_url": "https://www.lemonde.fr/pixels/article/2026/11/25/le-groupe-de-hacking-l¬-revendique-une-attaque-sur-un-grand-fournisseur-de-défense_6213873_4356986.html",
+    "summary": "Le groupe de hacking «L¬» revendique une attaque sur un grand fournisseur dé défense. L¬ attaque a entraéné des pertes importants pour le fournisseur."
   },
   {
     "year": 2026,
@@ -31749,6 +31762,45 @@
     "source": "Agence spatiale européenne",
     "source_url": null,
     "summary": "Un problème technique a été détecté dans le réseau de communication de la base spatiale de Guiana, ce qui a causé une perturbation dans les opérations.",
+    "is_kinetic_signal": false,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "realYear": null,
+    "realLabel": null,
+    "ema_clock_minutes": null
+  },
+  {
+    "year": 2026,
+    "value": 26876,
+    "label": "Développement d'un robot capable de se déplacer dans des environnements complexes",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "MIT Technology Review",
+    "description": "Un équipe de chercheurs a développé un robot capable de se déplacer dans des environnements complexes.",
+    "url": "https://www.technologyreview.com/2026/11/23/1075511/new-robot-capable-of-navigating-complex-environments/",
+    "timestamp": "2026-11-23T12:00:00",
+    "tipping": false,
+    "verified": true,
+    "date": "2026-11-23",
+    "impact_score": 0.7,
+    "remedy_text": "L'amélioration de la mobilité des robots pourrait améliorer leur utilisation dans des environnements complexes.",
+    "poison_text": "La dépendance à l'énergie pourrait accroître la vulnérabilité aux attaques ciblées.",
+    "s_curve_label": "Phase d'accélération",
+    "s_curve_phase": 1,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50,
+    "convergences": "L'intégration de robots dans les environnements complexes pourrait conduire à une augmentation de l'activité dans les réseaux de communication.",
+    "grand_filter_analysis": "L'analyse des rétroactions système de l'robot pourrait révéler des vulnérabilités dans les architectures de base.",
+    "final_note": "Il est recommandé de surveiller de près les progrès des robots dans les environnements complexes.",
+    "id": "91becabd4eb99552",
+    "related_ids": [
+      "627fb4a3bd833643",
+      "28dfeccf8a244994"
+    ],
+    "title": "Développement d'un robot capable de se déplacer dans des environnements complexes",
+    "source": "MIT Technology Review",
+    "source_url": "https://www.technologyreview.com/2026/11/23/1075511/new-robot-capable-of-navigating-complex-environments/",
+    "summary": "Un équipe de chercheurs a développé un robot capable de se déplacer dans des environnements complexes.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
