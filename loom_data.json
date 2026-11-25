@@ -31334,7 +31334,7 @@
     "label": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "category": "☢️ ENTROPIE",
     "whoWhat": "Microsoft",
-    "description": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows qui permet à un attaquant de prendre le contrôle du système.",
+    "description": "Une faille critique a été découverte dans le noyau Linux, ce qui pourrait permettre aux attaquants d'accéder à tous les systèmes qui utilisent ce noyau.",
     "url": "https://support.microsoft.com/en-us/topic/kb5008382",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": true,
@@ -31355,17 +31355,30 @@
       "a7009c6000955e9a",
       "be682c9be008261e"
     ],
-    "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
-    "source": "Microsoft",
-    "source_url": "https://support.microsoft.com/en-us/topic/kb5008382",
-    "summary": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows qui permet à un attaquant de prendre le contrôle du système.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Microsoft",
+        "url": "https://support.microsoft.com/en-us/topic/kb5008382",
+        "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/24/linux-kernel-vulnerability-critical",
+        "title": "Une faille critique dans le noyau Linux pourrait donner accès à tous les systèmes"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
+    "source": "Microsoft",
+    "source_url": "https://support.microsoft.com/en-us/topic/kb5008382",
+    "summary": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows qui permet à un attaquant de prendre le contrôle du système."
   },
   {
     "year": 2026,
