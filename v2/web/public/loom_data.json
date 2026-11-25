@@ -31493,17 +31493,25 @@
       "3e785e663447813b",
       "4ba255312160026a"
     ],
-    "title": "OpenAI : Recherche et déploiement",
-    "source": "OpenAI",
-    "source_url": "https://openai.com/fr-FR/",
-    "summary": "OpenAI est une entreprise qui se concentre sur la recherche et le déploiement de l'intelligence artificielle.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "OpenAI",
+        "url": "https://openai.com/fr-FR/",
+        "title": "OpenAI : Recherche et déploiement"
+      }
+    ],
+    "occurrences": 1,
+    "ema_clock_minutes": null,
+    "title": "OpenAI : Recherche et déploiement",
+    "source": "OpenAI",
+    "source_url": "https://openai.com/fr-FR/",
+    "summary": "OpenAI est une entreprise qui se concentre sur la recherche et le déploiement de l'intelligence artificielle."
   },
   {
     "year": 2026,
