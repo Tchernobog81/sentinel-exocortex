@@ -30901,17 +30901,30 @@
       "6b6e9952bdc5979b",
       "8e30e9d850f7f0ec"
     ],
-    "title": "Google a annoncé la mise en ligne de son modèle de langage 'LaMDA 3', qui est capable de comprendre et de répondre à des questions plus complexes que ses prédécesseurs.",
-    "source": "Source 1: The Verge",
-    "source_url": "https://www.theverge.com/",
-    "summary": "Le modèle de langage de Google est capable de comprendre et de répondre à des questions plus complexes que ses prédécesseurs, ce qui pourrait avoir un impact sur la manière dont les gens recherchent et comprennent des informations.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Source 1: The Verge",
+        "url": "https://www.theverge.com/",
+        "title": "Google a annoncé la mise en ligne de son modèle de langage 'LaMDA 3', qui est capable de comprendre et de répondre à des questions plus complexes que ses prédécesseurs."
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/25/google-palm-7-language-model",
+        "title": "Google annonce le lancement de son nouveau modèle de langage, le 7e générateur de la série PaLM"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Google a annoncé la mise en ligne de son modèle de langage 'LaMDA 3', qui est capable de comprendre et de répondre à des questions plus complexes que ses prédécesseurs.",
+    "source": "Source 1: The Verge",
+    "source_url": "https://www.theverge.com/",
+    "summary": "Le modèle de langage de Google est capable de comprendre et de répondre à des questions plus complexes que ses prédécesseurs, ce qui pourrait avoir un impact sur la manière dont les gens recherchent et comprennent des informations."
   },
   {
     "year": 2026,
@@ -31246,7 +31259,7 @@
     "label": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
     "category": "🔵 COGNITION",
     "whoWhat": "The Verge",
-    "description": "Google a présenté un nouveau modèle de reconnaissance de voix basé sur l'IA qui est censé être plus performant que les modèles existants.",
+    "description": "Microsoft a présenté son nouveau système d'intelligence artificielle, Azure AI. Ce système est capable de traiter des quantités massives de données et de fournir des résultats précis.",
     "url": "https://www.theverge.com/2026/11/25/google-ai-voice-recognition-model",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": false,
@@ -31267,17 +31280,30 @@
       "db2d10060a5e114e",
       "9526dd567e96f1bc"
     ],
-    "title": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
-    "source": "The Verge",
-    "source_url": "https://www.theverge.com/2026/11/25/google-ai-voice-recognition-model",
-    "summary": "Google a présenté un nouveau modèle de reconnaissance de voix basé sur l'IA qui est censé être plus performant que les modèles existants.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/25/google-ai-voice-recognition-model",
+        "title": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA"
+      },
+      {
+        "source": "Microsoft",
+        "url": "https://www.microsoft.com/en-us/ai",
+        "title": "Microsoft présente son nouveau système d'intelligence artificielle, Azure AI"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
+    "source": "The Verge",
+    "source_url": "https://www.theverge.com/2026/11/25/google-ai-voice-recognition-model",
+    "summary": "Google a présenté un nouveau modèle de reconnaissance de voix basé sur l'IA qui est censé être plus performant que les modèles existants."
   },
   {
     "year": 2026,
@@ -31388,6 +31414,45 @@
     "source": "Le Monde",
     "source_url": "https://www.lemonde.fr/pixels/article/2026/11/25/le-groupe-de-hacking-l¬-revendique-une-attaque-sur-un-grand-fournisseur-de-défense_6213873_4356986.html",
     "summary": "Le groupe de hacking «L¬» revendique une attaque sur un grand fournisseur dé défense. L¬ attaque a entraéné des pertes importants pour le fournisseur.",
+    "is_kinetic_signal": false,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "realYear": null,
+    "realLabel": null,
+    "ema_clock_minutes": null
+  },
+  {
+    "year": 2026,
+    "value": 32319,
+    "label": "La sécurité de la plateforme de paiement PayPal a été compromis",
+    "category": "☢️ ENTROPIE",
+    "whoWhat": "BBC News",
+    "description": "La plateforme de paiement PayPal a été victime d'une cyberattaque, compromettant les informations personnelles de milliers d'utilisateurs.",
+    "url": "https://www.bbc.com/news",
+    "timestamp": "2026-11-25T12:00:00",
+    "tipping": true,
+    "verified": true,
+    "date": "2026-11-25",
+    "impact_score": 0.85,
+    "remedy_text": "PayPal a pris des mesures pour sécuriser les données des utilisateurs.",
+    "poison_text": "La cyberattaque a également soulevé des préoccupations concernant la sécurité des données en ligne.",
+    "s_curve_label": "Phase de décélération",
+    "s_curve_phase": 1,
+    "pharmakon_remedy_percent": 50,
+    "pharmakon_poison_percent": 50,
+    "convergences": "Cette cyberattaque converge avec les contraintes matérielles et énergétiques de la sécurité en ligne.",
+    "grand_filter_analysis": "Elle est également analysée en termes de ses rétroactions système.",
+    "final_note": "Cette cyberattaque met en évidence l'importance de la sécurité en ligne.",
+    "id": "956fd2bc90e51e72",
+    "related_ids": [
+      "8d21bf4b0c01d587",
+      "a041bd013624ea24"
+    ],
+    "title": "La sécurité de la plateforme de paiement PayPal a été compromis",
+    "source": "BBC News",
+    "source_url": "https://www.bbc.com/news",
+    "summary": "La plateforme de paiement PayPal a été victime d'une cyberattaque, compromettant les informations personnelles de milliers d'utilisateurs.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
