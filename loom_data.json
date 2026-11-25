@@ -13774,10 +13774,6 @@
       "8ac92adeeb09ee7d"
     ],
     "date": "1979-06-01",
-    "title": "Le Guide du voyageur galactique",
-    "source": "Radio",
-    "source_url": "https://sf-encyclopedia.com/entry/hitch_hikers_guide_to_the_galaxy_the",
-    "summary": "Œuvre de science-fiction référencée par The Encyclopedia of Science Fiction (entrée « Hitch Hiker's Guide to the Galaxy, The », première publication ~1978).",
     "is_kinetic_signal": false,
     "impact_score": null,
     "doomsday_minutes": null,
@@ -13788,7 +13784,11 @@
     "s_curve_label": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Le Guide du voyageur galactique",
+    "source": "Radio",
+    "source_url": "https://sf-encyclopedia.com/entry/hitch_hikers_guide_to_the_galaxy_the",
+    "summary": "Œuvre de science-fiction référencée par The Encyclopedia of Science Fiction (entrée « Hitch Hiker's Guide to the Galaxy, The », première publication ~1978)."
   },
   {
     "id": "0850f1e2d23c97f6",
@@ -14397,14 +14397,9 @@
         "source": "John Badham",
         "url": "https://fr.wikipedia.org/wiki/WarGames",
         "title": "WarGames"
-      },
-      {
-        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
-        "url": "https://sf-encyclopedia.com/entry/badham_john",
-        "title": "Badham, John"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 2,
     "remedy_percent": 55,
@@ -15257,10 +15252,6 @@
       "8ac92adeeb09ee7d"
     ],
     "date": "1985-06-01",
-    "title": "La Stratégie Ender (Ender's Game)",
-    "source": "Videogame",
-    "source_url": "https://sf-encyclopedia.com/entry/adventure",
-    "summary": "Œuvre de science-fiction référencée par The Encyclopedia of Science Fiction (entrée « Adventure », première publication ~1984).",
     "is_kinetic_signal": false,
     "impact_score": null,
     "doomsday_minutes": null,
@@ -15271,7 +15262,11 @@
     "s_curve_label": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "La Stratégie Ender (Ender's Game)",
+    "source": "Videogame",
+    "source_url": "https://sf-encyclopedia.com/entry/adventure",
+    "summary": "Œuvre de science-fiction référencée par The Encyclopedia of Science Fiction (entrée « Adventure », première publication ~1984)."
   },
   {
     "id": "470431aa94d44b5f",
@@ -16298,7 +16293,13 @@
     "predictedBy": null,
     "img": null,
     "doomsday_minutes": null,
-    "sources": null,
+    "sources": [
+      {
+        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
+        "url": "https://sf-encyclopedia.com/entry/simpson_d_g_b",
+        "title": "Simpson, D G B"
+      }
+    ],
     "occurrences": null,
     "merged_into": null,
     "s_curve_phase": 2,
@@ -16310,10 +16311,6 @@
     "pharmakon_remedy_percent": 53,
     "pharmakon_poison_percent": 47,
     "date": null,
-    "title": "Les Simpson",
-    "source": "Matt Groening",
-    "source_url": null,
-    "summary": "Série télévisée d'animation américaine créée par Matt Groening et diffusée depuis 1989.",
     "is_kinetic_signal": false,
     "impact_score": null,
     "apocalypse_clock_seconds": null,
@@ -16321,7 +16318,11 @@
     "remedy_text": null,
     "poison_text": null,
     "s_curve_label": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "title": "Les Simpson",
+    "source": "Matt Groening",
+    "source_url": null,
+    "summary": "Série télévisée d'animation américaine créée par Matt Groening et diffusée depuis 1989."
   },
   {
     "id": "71e1b2d5a1a5c47a",
@@ -21691,8 +21692,8 @@
     "sources": [
       {
         "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
-        "url": "https://sf-encyclopedia.com/entry/moon",
-        "title": "Moon"
+        "url": "https://sf-encyclopedia.com/entry/12_to_the_moon",
+        "title": "12 to the Moon"
       }
     ],
     "occurrences": null,
@@ -22316,14 +22317,9 @@
         "source": "Charlie Brooker",
         "url": "https://fr.wikipedia.org/wiki/Black_Mirror",
         "title": "Black Mirror"
-      },
-      {
-        "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
-        "url": "https://sf-encyclopedia.com/entry/ai",
-        "title": "AI"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 2,
     "merged_into": null,
     "s_curve_phase": 3,
     "remedy_percent": 52,
@@ -24126,8 +24122,8 @@
     "sources": [
       {
         "source": "The Encyclopedia of Science Fiction (sf-encyclopedia.com)",
-        "url": "https://sf-encyclopedia.com/entry/abraham_daniel",
-        "title": "Abraham, Daniel"
+        "url": "https://sf-encyclopedia.com/entry/expanse",
+        "title": "Expanse"
       }
     ],
     "occurrences": null,
