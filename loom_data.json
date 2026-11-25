@@ -31108,17 +31108,30 @@
       "e38b97107cd9faeb",
       "ba8336e232c0630e"
     ],
-    "title": "Plus de 1 million de comptes Instagram compromis dans une attaque de phishing",
-    "source": "BBC News",
-    "source_url": "https://www.bbc.com/news/technology-63831958",
-    "summary": "Une attaque de phishing a compromis plus de 1 million de comptes Instagram. Les utilisateurs sont invités à vérifier leur compte et à modifier leur mot de passe.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news/technology-63831958",
+        "title": "Plus de 1 million de comptes Instagram compromis dans une attaque de phishing"
+      },
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news/technology-63811940",
+        "title": "Attaque de phishing ciblée contre les employés de la NASA"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Plus de 1 million de comptes Instagram compromis dans une attaque de phishing",
+    "source": "BBC News",
+    "source_url": "https://www.bbc.com/news/technology-63831958",
+    "summary": "Une attaque de phishing a compromis plus de 1 million de comptes Instagram. Les utilisateurs sont invités à vérifier leur compte et à modifier leur mot de passe."
   },
   {
     "year": 2026,
@@ -32003,6 +32016,45 @@
     "source": "Robotics Business Review",
     "source_url": "https://www.roboticsbusinessreview.com/article/new-advances-in-robotics/",
     "summary": "Des chercheurs ont développé de nouveaux algorithmes et systèmes pour améliorer les performances des robots.",
+    "is_kinetic_signal": false,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "realYear": null,
+    "realLabel": null,
+    "ema_clock_minutes": null
+  },
+  {
+    "year": 2026,
+    "value": 23791,
+    "label": "Une nouvelle équipe de robots a été créé pour aider les équipes de secours en cas de catastrophe",
+    "category": "🤖 ROBOTIQUE",
+    "whoWhat": "Le Monde",
+    "description": "Une nouvelle équipe de robots a été créé pour aider les équipes de secours en cas de catastrophe.",
+    "url": "https://www.lemonde.fr/sciencetechno/article/2026/11/25/une-nouvelle-equipe-de-robots-creat pour-aider-les-equipes-de-secours-en-cas-de-catastrophe_6211712_1651325.html",
+    "timestamp": "2026-11-25T12:00:00",
+    "tipping": true,
+    "verified": true,
+    "date": "2026-11-25",
+    "impact_score": 0.7,
+    "remedy_text": "Cette nouvelle technologie pourrait-elle améliorer la réponse aux catastrophes ?",
+    "poison_text": "Risque de dépendance à la technologie.",
+    "s_curve_label": "Phase d’accélération",
+    "s_curve_phase": 1,
+    "pharmakon_remedy_percent": 70,
+    "pharmakon_poison_percent": 30,
+    "convergences": "Cette nouvelle équipe de robots pourrait-elle évoluer la réponse aux catastrophes ?",
+    "grand_filter_analysis": "Analyse des effets sur la réponse aux catastrophes.",
+    "final_note": "Les équipes de secours devraient considérer l’adoption de cette technologie pour améliorer leur efficacité.",
+    "id": "76499031daeb0988",
+    "related_ids": [
+      "7ef0424b56e65781",
+      "46d013ee0be3f37c"
+    ],
+    "title": "Une nouvelle équipe de robots a été créé pour aider les équipes de secours en cas de catastrophe",
+    "source": "Le Monde",
+    "source_url": "https://www.lemonde.fr/sciencetechno/article/2026/11/25/une-nouvelle-equipe-de-robots-creat pour-aider-les-equipes-de-secours-en-cas-de-catastrophe_6211712_1651325.html",
+    "summary": "Une nouvelle équipe de robots a été créé pour aider les équipes de secours en cas de catastrophe.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
