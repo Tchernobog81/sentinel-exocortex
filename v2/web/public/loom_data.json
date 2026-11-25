@@ -30737,7 +30737,7 @@
     "label": "Nouvelle architecture de calcul accélérée pour les modèles de langage",
     "category": "🔵 COGNITION",
     "whoWhat": "The Verge",
-    "description": "Google a annoncé le déploiement d'une nouvelle architecture pour son modèle de langage, destinée à améliorer les performances et la précision de la reconnaissance de langues.",
+    "description": "Une nouvelle architecture de l'intelligence artificielle a été développée pour améliorer la sécurité des systèmes informatiques. Cette nouvelle architecture utilise une approche de l'apprentissage par renforcement pour détecter les attaques informatiques.",
     "url": "https://www.theverge.com/2026/11/24/new-architecture-calcul-ai-language-models",
     "timestamp": "2026-11-24T12:00:00",
     "tipping": false,
@@ -30779,9 +30779,14 @@
         "source": "Science Magazine",
         "url": "https://www.sciencemag.org/",
         "title": "Une nouvelle architecture de Ìtalonnage artificiel a été développée pour accélerer les calculs de deep learning"
+      },
+      {
+        "source": "IEEE Spectrum",
+        "url": "https://spectrum.ieee.org/intelligence-artificial-cybersecurity",
+        "title": "Une nouvelle architecture de l'intelligence artificielle a été développée pour améliorer la sécurité des systèmes informatiques."
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Nouvelle architecture de calcul accélérée pour les modèles de langage",
     "source": "The Verge",
@@ -33152,9 +33157,14 @@
         "source": "Le Monde Informatique",
         "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOZGJBUjFLOVpuX0tYZG8ya2xvTi1iMlp0Vmh3bDZFbUZCcG42enhLZmszenJoYXVNa1RQM0QzQjhSeTJ2ZElLT2ZZeG1objVlMzl3Ym9hb1BQZHlia2swTDBGTmdiOXdjSWJvZVhlU2pPbkdwWjJTamhXY3hBZEc5eEFFZGRWLW5hbDM4SGwwcHhyc01DOWRnRV93SWtCS29QemlPQTAzVkF6VFl2dUtJVlZwY2hYOVZqMGtXcll6LVpNVVJnellpd093Skc4QXc?oc=5",
         "title": "Microsoft déclenche un « Code Red » après une panne majeure de Microsoft 365"
+      },
+      {
+        "source": "NeoTeo",
+        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOSzJrMDVzYnpwd2E1Wmh6SDdfMXhDa0trSzhrX1g1UklJVENoRUIxSzQySFdBdjVCUTU3OXhHdlZaU2p1WjhzVExpOGdLdUFESFlGeUlycmMzVHI4a05LSU4yek1LbVFPdXN1YWVGV2NMcFZKRzFfUTBRbXJ1cTZ4R0czV05UOE5DYVJKWVk1ZG4?oc=5",
+        "title": "Panne de Microsoft 365 : un défaut logiciel a échappé aux tests"
       }
     ],
-    "occurrences": 31,
+    "occurrences": 32,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
