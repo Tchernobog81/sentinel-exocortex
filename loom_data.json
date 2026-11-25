@@ -29808,7 +29808,7 @@
     "label": "Nouvelle architecture de calcul accélérée pour les modèles de langage",
     "category": "🔵 COGNITION",
     "whoWhat": "The Verge",
-    "description": "Une équipe de chercheurs a développé une nouvelle architecture de calcul pour les modèles de langage qui accélèrent de manière significative leurs performances.",
+    "description": "Google a annoncé le déploiement d'une nouvelle architecture pour son modèle de langage, destinée à améliorer les performances et la précision de la reconnaissance de langues.",
     "url": "https://www.theverge.com/2026/11/24/new-architecture-calcul-ai-language-models",
     "timestamp": "2026-11-24T12:00:00",
     "tipping": false,
@@ -29829,17 +29829,30 @@
       "3a6c40735d9c7e8d",
       "a31cca8665337265"
     ],
-    "title": "Nouvelle architecture de calcul accélérée pour les modèles de langage",
-    "source": "The Verge",
-    "source_url": "https://www.theverge.com/2026/11/24/new-architecture-calcul-ai-language-models",
-    "summary": "Une équipe de chercheurs a développé une nouvelle architecture de calcul pour les modèles de langage qui accélèrent de manière significative leurs performances.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/24/new-architecture-calcul-ai-language-models",
+        "title": "Nouvelle architecture de calcul accélérée pour les modèles de langage"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/24/google-new-architecture-language-model",
+        "title": "Google déploie une nouvelle architecture pour son modèle de langage"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Nouvelle architecture de calcul accélérée pour les modèles de langage",
+    "source": "The Verge",
+    "source_url": "https://www.theverge.com/2026/11/24/new-architecture-calcul-ai-language-models",
+    "summary": "Une équipe de chercheurs a développé une nouvelle architecture de calcul pour les modèles de langage qui accélèrent de manière significative leurs performances."
   },
   {
     "id": "cc2a6a48f7af7026",
