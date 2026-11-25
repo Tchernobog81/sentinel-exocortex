@@ -31368,7 +31368,7 @@
     "label": "Résolution d'un problème critique d'intelligence artificielle",
     "category": "🔵 COGNITION",
     "whoWhat": "Nature",
-    "description": "Une équipe de chercheurs a résolu un problème critique dans l'intelligence artificielle en utilisant une approche innovante",
+    "description": "Le centre de recherche sur l'intelligence artificielle ouvre ses portes à Nantes. L'inauguration a eu lieu jeudi dernier. Le centre de recherche sur l'intelligence artificielle ouvre ses portes à Nantes. L'inauguration a eu lieu jeudi dernier.",
     "url": "https://www.nature.com/articles/s41586-023-06421-4",
     "timestamp": "2026-11-24T12:00:00",
     "tipping": false,
@@ -31389,17 +31389,30 @@
       "c64e51bdb5136ca3",
       "3d52bd3ffffb3b12"
     ],
-    "title": "Résolution d'un problème critique d'intelligence artificielle",
-    "source": "Nature",
-    "source_url": "https://www.nature.com/articles/s41586-023-06421-4",
-    "summary": "Une équipe de chercheurs a résolu un problème critique dans l'intelligence artificielle en utilisant une approche innovante",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Nature",
+        "url": "https://www.nature.com/articles/s41586-023-06421-4",
+        "title": "Résolution d'un problème critique d'intelligence artificielle"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/regions/bretagne/article/2026/11/25/nantes-le-nouveau-centre-de-recherche-sur-l-intelligence-artificielle-ouvre-ses-portes_6151293_3289.html",
+        "title": "Nantes : le nouveau centre de recherche sur l'intelligence artificielle ouvre ses portes"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Résolution d'un problème critique d'intelligence artificielle",
+    "source": "Nature",
+    "source_url": "https://www.nature.com/articles/s41586-023-06421-4",
+    "summary": "Une équipe de chercheurs a résolu un problème critique dans l'intelligence artificielle en utilisant une approche innovante"
   },
   {
     "year": 2026,
@@ -33479,9 +33492,14 @@
         "source": "Selectra",
         "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNMnROT19lTDJRdVRXQVNNcW8tcDEyeFVlNHNOTnpmNVBxR2xZcS02R1FBeHJTcEFucHBlM1VyVUJuWHZPckIzSXMzX2xPa2xMMFVLMUFqcnpkWGE4ek9hOG91eENyMFhPMVRILWRFYnY3MU1qa3c0WS1Va1hPcGlJVmZlcWlRdFdIZHNfSHFB?oc=5",
         "title": "Panne d'Outlook pendant 24 heures : Microsoft avoue ses failles et déclenche l'alerte « Code Red »"
+      },
+      {
+        "source": "NeoTeo",
+        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNemtrRlZkd1BjR1hwR2hGbjk2VlktMTF1dUdqS09rd1FrQlg4REVySi02dXo5WlpmUHA4bnpiLVhGTEZsQkpMTjgyTGtBc0JpQkRxWWwwRW1ZcDdmSHFXQ0tNMkliQTRsVm1Ga0JQeVJmYWE0Vkk5Rmg3Mk4wWkd4ZlNOR1NYNXBOVFQxRGFiS0xESktEWjdEclJB?oc=5",
+        "title": "Panne Microsoft 365 et Outlook : bilan et mesures"
       }
     ],
-    "occurrences": 33,
+    "occurrences": 34,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
