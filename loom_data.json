@@ -33430,9 +33430,14 @@
         "source": "NeoTeo",
         "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOSzJrMDVzYnpwd2E1Wmh6SDdfMXhDa0trSzhrX1g1UklJVENoRUIxSzQySFdBdjVCUTU3OXhHdlZaU2p1WjhzVExpOGdLdUFESFlGeUlycmMzVHI4a05LSU4yek1LbVFPdXN1YWVGV2NMcFZKRzFfUTBRbXJ1cTZ4R0czV05UOE5DYVJKWVk1ZG4?oc=5",
         "title": "Panne de Microsoft 365 : un défaut logiciel a échappé aux tests"
+      },
+      {
+        "source": "Selectra",
+        "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNMnROT19lTDJRdVRXQVNNcW8tcDEyeFVlNHNOTnpmNVBxR2xZcS02R1FBeHJTcEFucHBlM1VyVUJuWHZPckIzSXMzX2xPa2xMMFVLMUFqcnpkWGE4ek9hOG91eENyMFhPMVRILWRFYnY3MU1qa3c0WS1Va1hPcGlJVmZlcWlRdFdIZHNfSHFB?oc=5",
+        "title": "Panne d'Outlook pendant 24 heures : Microsoft avoue ses failles et déclenche l'alerte « Code Red »"
       }
     ],
-    "occurrences": 32,
+    "occurrences": 33,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
