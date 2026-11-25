@@ -30789,9 +30789,14 @@
         "source": "arXiv",
         "url": "https://arxiv.org/abs/2211.12345",
         "title": "Découverte d'une nouvelle architecture frugale pour les modèles de monde"
+      },
+      {
+        "source": "Les Échos",
+        "url": "https://www.lesechos.fr/tech-mobilité/lancement-de-la-nouvelle-architecture-de-calcul-accela-pour-l-ia-1104958.php",
+        "title": "Lancement de la nouvelle architecture de calcul \"Accelera\" pour l'IA"
       }
     ],
-    "occurrences": 5,
+    "occurrences": 6,
     "ema_clock_minutes": null,
     "title": "Nouvelle architecture de calcul accélérée pour les modèles de langage",
     "source": "The Verge",
@@ -33554,9 +33559,14 @@
         "source": "NeoTeo",
         "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNemtrRlZkd1BjR1hwR2hGbjk2VlktMTF1dUdqS09rd1FrQlg4REVySi02dXo5WlpmUHA4bnpiLVhGTEZsQkpMTjgyTGtBc0JpQkRxWWwwRW1ZcDdmSHFXQ0tNMkliQTRsVm1Ga0JQeVJmYWE0Vkk5Rmg3Mk4wWkd4ZlNOR1NYNXBOVFQxRGFiS0xESktEWjdEclJB?oc=5",
         "title": "Panne Microsoft 365 et Outlook : bilan et mesures"
+      },
+      {
+        "source": "KultureGeek",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQc2JNcmY2cWxOb09weUY4OU5YN1ZnN3RaVTQ1a3AtMS1Da21KdHExazVMbGFKQVE2cmNkTkMxbXVrOTA0S3c2VDFseld4eGhsWGFjYnhLMlYyT010ejRnMXAzWUJOYUNvVVhLbHZhMHJnYWhqRkNKd0hIYjBkT1RvX3JlUjFpdUVrV29EQ2R0N29JeW5OYkhTN1BPZUo2ZzZ4YjZibGxlSlhWQQ?oc=5",
+        "title": "Microsoft se met en alerte « Code Red » après sa grosse panne d’Outlook et Microsoft 365"
       }
     ],
-    "occurrences": 34,
+    "occurrences": 35,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
