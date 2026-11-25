@@ -31394,9 +31394,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/24/linux-kernel-vulnerability-critical",
         "title": "Une faille critique dans le noyau Linux pourrait donner accès à tous les systèmes"
+      },
+      {
+        "source": "CVE",
+        "url": "https://www.cve.org/CVE-2026-1234",
+        "title": "Vulnérabilité critique découverte dans le noyau Linux"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
