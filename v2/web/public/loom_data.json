@@ -31377,7 +31377,7 @@
     "label": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "category": "☢️ ENTROPIE",
     "whoWhat": "Microsoft",
-    "description": "Une faille de sécurité a été découverte dans un logiciel de sécurité populaire, permettant à des attaquants potentiels de réaliser des attaques de grande envergure",
+    "description": "Une nouvelle vulnérabilité critique a été découverte dans les systèmes d'exploitation Linux, ce qui pourrait permettre aux attaquants d'obtenir un accès root sur les systèmes affectés.",
     "url": "https://support.microsoft.com/en-us/topic/kb5008382",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": true,
@@ -31429,9 +31429,14 @@
         "source": "Ars Technica",
         "url": "https://arstechnica.com/2026/11/critical-flaw-discovered-in-linux-kernel/",
         "title": "Une faille critique a été découverte dans le noyau Linux"
+      },
+      {
+        "source": "Ars Technica",
+        "url": "https://arstechnica.com/cybersecurity/2026/11/linux-exploit-vulnerability-discovered/",
+        "title": "Une nouvelle vulnérabilité critique a été découverte dans les systèmes d'exploitation Linux"
       }
     ],
-    "occurrences": 5,
+    "occurrences": 6,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
@@ -33171,17 +33176,30 @@
       "551735b2c17a916b",
       "db2d10060a5e114e"
     ],
-    "title": "Google annonce un progrès dans le domaine des architectures frugales",
-    "source": "The Verge",
-    "source_url": "https://www.theverge.com/2026/11/26/google-architecture-frugale-ia",
-    "summary": "Google a annoncé une avance dans le domaine des architectures frugales pour l'intelligence artificielle. Cette innovation pourrait permettre aux modèles d'IA de fonctionner plus efficacement sur des appareils moins puissants.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/26/google-architecture-frugale-ia",
+        "title": "Google annonce un progrès dans le domaine des architectures frugales"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/26/google-neuromorphic-processor-ai-research",
+        "title": "Google annonce un avancement significatif dans le développement d'un processeur neuromorphe"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Google annonce un progrès dans le domaine des architectures frugales",
+    "source": "The Verge",
+    "source_url": "https://www.theverge.com/2026/11/26/google-architecture-frugale-ia",
+    "summary": "Google a annoncé une avance dans le domaine des architectures frugales pour l'intelligence artificielle. Cette innovation pourrait permettre aux modèles d'IA de fonctionner plus efficacement sur des appareils moins puissants."
   },
   {
     "year": 2026,
