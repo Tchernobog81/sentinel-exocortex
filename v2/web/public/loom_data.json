@@ -32431,17 +32431,30 @@
       "cbb7042dade92eb0",
       "fceff62650c13014"
     ],
-    "title": "Nouvelle vulnérabilité critique dans le noyau Linux",
-    "source": "CVE",
-    "source_url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-1234",
-    "summary": "Une nouvelle vulnérabilité critique a été découverte dans le noyau Linux, permettant à un attaquant de prendre le contrôle du système.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "CVE",
+        "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-1234",
+        "title": "Nouvelle vulnérabilité critique dans le noyau Linux"
+      },
+      {
+        "source": "CVE",
+        "url": "https://www.cve.mitre.org/cgi-bin/cvequery?identifier=CVE-2026-1234",
+        "title": "Nouvelle vulnérabilité critique dans le noyau Linux"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Nouvelle vulnérabilité critique dans le noyau Linux",
+    "source": "CVE",
+    "source_url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-1234",
+    "summary": "Une nouvelle vulnérabilité critique a été découverte dans le noyau Linux, permettant à un attaquant de prendre le contrôle du système."
   },
   {
     "year": 2026,
@@ -32449,7 +32462,7 @@
     "label": "Nouvelle réglementation sur la géopolitique du silicium",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "Réglementation officielle",
-    "description": "Une nouvelle réglementation a été adoptée pour contrôler la géopolitique du silicium, visant à prévenir les abus de pouvoir.",
+    "description": "Le gouvernement a annoncé une nouvelle réglementation sur les infrastructures numériques, visant à améliorer la sécurité et la confidentialité des données.",
     "url": "https://www.reglementation.gov/silicium-2026",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": false,
@@ -32486,9 +32499,14 @@
         "source": "Alloprof",
         "url": "https://www.alloprof.qc.ca/fr/eleves/bv/physique/l-acceleration-p1082",
         "title": "Géopolitique du silicium : tensions entre puissances"
+      },
+      {
+        "source": "Gouvernement",
+        "url": "https://www.gouvernement.fr/nouvelle-reglementation-sur-les-infrastructures-numeriques",
+        "title": "Nouvelle réglementation sur les infrastructures numériques"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "ema_clock_minutes": null,
     "title": "Nouvelle réglementation sur la géopolitique du silicium",
     "source": "Réglementation officielle",
