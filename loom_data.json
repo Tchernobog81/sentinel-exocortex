@@ -31776,9 +31776,14 @@
         "source": "OpenAI",
         "url": "https://openai.com/",
         "title": "OpenAI : Recherche et déploiement"
+      },
+      {
+        "source": "Nature",
+        "url": "https://www.nature.com/articles/d41586-026-03285-9",
+        "title": "Avancement de la recherche sur l'IA"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "ema_clock_minutes": null,
     "title": "OpenAI : Recherche et déploiement",
     "source": "OpenAI",
