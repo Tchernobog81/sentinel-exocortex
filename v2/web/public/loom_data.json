@@ -30794,9 +30794,14 @@
         "source": "Les Échos",
         "url": "https://www.lesechos.fr/tech-mobilité/lancement-de-la-nouvelle-architecture-de-calcul-accela-pour-l-ia-1104958.php",
         "title": "Lancement de la nouvelle architecture de calcul \"Accelera\" pour l'IA"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/24/google-architecture-processeur-memoire",
+        "title": "Google dévoile une nouvelle architecture de processeur destinée à accélérer l'exécution de la mémoire"
       }
     ],
-    "occurrences": 6,
+    "occurrences": 7,
     "ema_clock_minutes": null,
     "title": "Nouvelle architecture de calcul accélérée pour les modèles de langage",
     "source": "The Verge",
@@ -31574,17 +31579,31 @@
       "8d21bf4b0c01d587",
       "a041bd013624ea24"
     ],
-    "title": "La sécurité de la plateforme de paiement PayPal a été compromis",
-    "source": "BBC News",
-    "source_url": "https://www.bbc.com/news",
-    "summary": "La plateforme de paiement PayPal a été victime d'une cyberattaque, compromettant les informations personnelles de milliers d'utilisateurs.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news",
+        "title": "La sécurité de la plateforme de paiement PayPal a été compromis"
+      },
+      {
+        "source": "BleepingComputer",
+        "url": "https://www.bleepingcomputer.com/news/security/cyber-attack-on-software-firm-exposes-sensitive-data/",
+        "title": "Incident de sécurité : des pirates ont violé les systèmes de sécurité d'une entreprise de logiciels",
+        "verified": true
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "La sécurité de la plateforme de paiement PayPal a été compromis",
+    "source": "BBC News",
+    "source_url": "https://www.bbc.com/news",
+    "summary": "La plateforme de paiement PayPal a été victime d'une cyberattaque, compromettant les informations personnelles de milliers d'utilisateurs."
   },
   {
     "year": 2026,
@@ -33061,6 +33080,42 @@
     "source": "Le Monde",
     "source_url": null,
     "summary": "Le rapport du GIEC a souligné l'importance de la réduction des émissions de gaz à effet de serre pour lutter contre le changement climatique.",
+    "is_kinetic_signal": false,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "realYear": null,
+    "realLabel": null,
+    "ema_clock_minutes": null
+  },
+  {
+    "year": 2026,
+    "value": 28967,
+    "label": "Incident de sécurité : des pirates ont violé les systèmes de sécurité d'une entreprise de logiciels",
+    "category": "☢️ ENTROPIE",
+    "whoWhat": "BleepingComputer",
+    "description": "Une attaque de piratage a permis aux hackers d'accéder à des données sensibles d'une entreprise de logiciels",
+    "url": "https://www.bleepingcomputer.com/news/security/cyber-attack-on-software-firm-exposes-sensitive-data/",
+    "timestamp": "2026-11-25T12:00:00",
+    "tipping": false,
+    "verified": true,
+    "date": "2026-11-25",
+    "impact_score": 0.5,
+    "remedy_text": "L'entreprise a immédiatement fermé les failles de sécurité et a commencé à enquêter sur l'origine de l'attaque",
+    "poison_text": "Les experts craignent que cette attaque ne soit qu'un prélude à d'autres, car les hackers ont pu se faire passer pour des employés de l'entreprise",
+    "s_curve_label": "Phase d'accélération",
+    "s_curve_phase": 3,
+    "pharmakon_remedy_percent": 35,
+    "pharmakon_poison_percent": 65,
+    "convergences": "Cette attaque soulève des préoccupations quant à la sécurité des données sensibles et les implications potentielles pour les entreprises",
+    "grand_filter_analysis": "Cela soulève des préoccupations quant à la capacité des systèmes de sécurité à suivre la croissance exponentielle des menaces",
+    "final_note": "Les entreprises devront réviser leurs stratégies de sécurité pour se protéger contre ces types d’attaques",
+    "id": "a696fb83c149c4f2",
+    "merged_into": "956fd2bc90e51e72",
+    "title": "Incident de sécurité : des pirates ont violé les systèmes de sécurité d'une entreprise de logiciels",
+    "source": "BleepingComputer",
+    "source_url": "https://www.bleepingcomputer.com/news/security/cyber-attack-on-software-firm-exposes-sensitive-data/",
+    "summary": "Une attaque de piratage a permis aux hackers d'accéder à des données sensibles d'une entreprise de logiciels",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
