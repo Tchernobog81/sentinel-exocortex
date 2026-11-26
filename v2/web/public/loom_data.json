@@ -30947,9 +30947,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/25/google-palm-7-language-model",
         "title": "Google annonce le lancement de son nouveau modèle de langage, le 7e générateur de la série PaLM"
+      },
+      {
+        "source": "MIT Technology Review",
+        "url": "https://www.technologyreview.com/2026/11/24/1116517/new-ai-model-capable-of-solving-complex-problems/",
+        "title": "Nouveau modèle d'intelligence artificielle capable de résoudre des problèmes complexes"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "ema_clock_minutes": null,
     "title": "Google a annoncé la mise en ligne de son modèle de langage 'LaMDA 3', qui est capable de comprendre et de répondre à des questions plus complexes que ses prédécesseurs.",
     "source": "Source 1: The Verge",
@@ -33453,6 +33458,45 @@
     "source": "Le Monde",
     "source_url": "https://www.lemonde.fr/actualite-internationale/article/2026/11/25/la-chine-lance-un-projet-de-construction-d-un-pont-transcontinental_6115119_1819230.html",
     "summary": "La Chine a lancé un projet de construction d'un pont transcontinental qui reliera la Chine au Vietnam",
+    "is_kinetic_signal": false,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "realYear": null,
+    "realLabel": null,
+    "ema_clock_minutes": null
+  },
+  {
+    "year": 2026,
+    "value": 33275,
+    "label": "Réformes législatives visant à renforcer la sécurité des données",
+    "category": "🏛️ POLITIQUE",
+    "whoWhat": "Le Monde",
+    "description": "Le gouvernement a annoncé une série de réformes législatives visant à renforcer la sécurité des données et à protéger les droits des utilisateurs.",
+    "url": "https://www.lemonde.fr/pixels/article/2026/11/23/reformes-legislatives-visit-renforcer-la-securite-des-donnees_6051456_4254213.html",
+    "timestamp": "2026-11-23T12:00:00",
+    "tipping": false,
+    "verified": true,
+    "date": "2026-11-23",
+    "impact_score": 0.75,
+    "remedy_text": "Ces réformes devraient améliorer la protection des données personnelles et renforcer la responsabilité des entreprises.",
+    "poison_text": "Ces réformes pourraient également entraîner une augmentation des coûts pour les entreprises.",
+    "s_curve_label": null,
+    "s_curve_phase": 3,
+    "pharmakon_remedy_percent": 70,
+    "pharmakon_poison_percent": 30,
+    "convergences": "Aucune convergence majeure détectée.",
+    "grand_filter_analysis": "Impact systémique à surveiller.",
+    "final_note": "Le futur est décidément mal écrit.",
+    "id": "72f1c5187a9fc014",
+    "related_ids": [
+      "7d93ce80acc28d43",
+      "6aad19df4c86a83f"
+    ],
+    "title": "Réformes législatives visant à renforcer la sécurité des données",
+    "source": "Le Monde",
+    "source_url": "https://www.lemonde.fr/pixels/article/2026/11/23/reformes-legislatives-visit-renforcer-la-securite-des-donnees_6051456_4254213.html",
+    "summary": "Le gouvernement a annoncé une série de réformes législatives visant à renforcer la sécurité des données et à protéger les droits des utilisateurs.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
@@ -36269,10 +36313,6 @@
     "verified": true,
     "merged_into": "676b68fe1aad8153",
     "date": "2026-11-26",
-    "title": "Panne géante de Microsoft 365 : Redmond déclenche l'alerte rouge et vise le retour à la normale en une heure",
-    "source": "MacGeneration",
-    "source_url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQYlNsQ1JSa0hLb3VIOHg3Z0ZHZjc1YVEzNWF6UmkzWXVMSUtjOW5qOEJwOUwxaGFNNWRyamJnR3d1WEZOcWZxTDhZY25lc0M2UWtNNFhNTmxWR3R2VG8yZHFGeDJnbVhfb0xubzVUcFpvMHJCMnpmRDRqMTRudEZYNENFSHBsQlh3YW96SjRBUk1XYnRUQl9RdEJmendGTm1yWHNHV2g3WDQ4cVdsMUI0T2xBRGpKWmxtNkxYaHU3YU01eVVpVERBZWhvSVFfN3FqWmNPWEcxcEg2ZkZac3R2aUoyNkNhQQ?oc=5",
-    "summary": "Panne géante de Microsoft 365 : Redmond déclenche l'alerte rouge et vise le retour à la normale en une heure MacGeneration",
     "is_kinetic_signal": false,
     "impact_score": null,
     "doomsday_minutes": null,
@@ -36283,7 +36323,24 @@
     "s_curve_label": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "MacGeneration",
+        "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQYlNsQ1JSa0hLb3VIOHg3Z0ZHZjc1YVEzNWF6UmkzWXVMSUtjOW5qOEJwOUwxaGFNNWRyamJnR3d1WEZOcWZxTDhZY25lc0M2UWtNNFhNTmxWR3R2VG8yZHFGeDJnbVhfb0xubzVUcFpvMHJCMnpmRDRqMTRudEZYNENFSHBsQlh3YW96SjRBUk1XYnRUQl9RdEJmendGTm1yWHNHV2g3WDQ4cVdsMUI0T2xBRGpKWmxtNkxYaHU3YU01eVVpVERBZWhvSVFfN3FqWmNPWEcxcEg2ZkZac3R2aUoyNkNhQQ?oc=5",
+        "title": "Panne géante de Microsoft 365 : Redmond déclenche l'alerte rouge et vise le retour à la normale en une heure"
+      },
+      {
+        "source": "MacGeneration",
+        "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNdS1KY2FaRUk4cnpNcktaaDZwRDhCT0pia0duWHRuSHlTajVkRGNpalU5VWE5VEp3OTVqQk5MNU9XSHBMMEFLaW5pZFVvVFF1bWFyU0duSjlEUm14c1dSUEVrXzQ0bm5hbzd3bU1qTTEyYjNhbDZDOVRjUUJTM29sX0RZU2NGSXJ1aFZhT0k3eTJSNDVFMGY0V2ttS1NDS2E1REgzdG9XYW5KaFhEc0pSU2V2QWQ3MjJDZnQ5QmM1WTVkUXNOTVljeFVGQWVYeHV2YkNiTGtNV08wdWg5YlRyVg?oc=5",
+        "title": "Panne géante de Microsoft 365 : Redmond déclenche l'alerte rouge et vise le retour à la normale en une heure"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Panne géante de Microsoft 365 : Redmond déclenche l'alerte rouge et vise le retour à la normale en une heure",
+    "source": "MacGeneration",
+    "source_url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQYlNsQ1JSa0hLb3VIOHg3Z0ZHZjc1YVEzNWF6UmkzWXVMSUtjOW5qOEJwOUwxaGFNNWRyamJnR3d1WEZOcWZxTDhZY25lc0M2UWtNNFhNTmxWR3R2VG8yZHFGeDJnbVhfb0xubzVUcFpvMHJCMnpmRDRqMTRudEZYNENFSHBsQlh3YW96SjRBUk1XYnRUQl9RdEJmendGTm1yWHNHV2g3WDQ4cVdsMUI0T2xBRGpKWmxtNkxYaHU3YU01eVVpVERBZWhvSVFfN3FqWmNPWEcxcEg2ZkZac3R2aUoyNkNhQQ?oc=5",
+    "summary": "Panne géante de Microsoft 365 : Redmond déclenche l'alerte rouge et vise le retour à la normale en une heure MacGeneration"
   },
   {
     "id": "1b98dd3fcf0f835e",
