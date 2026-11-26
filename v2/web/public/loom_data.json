@@ -31579,9 +31579,14 @@
         "source": "Le Monde",
         "url": "https://www.lemonde.fr/technologie/article/2026/11/25/silicium-les-nouvelles-frontieres-de-l-intelligence-artificielle_6233901_1653213.html",
         "title": "Silicium: les nouvelles frontières de l'intelligence artificielle"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/planete/article/2026/11/26/cyclops-l-intelligence-artificielle-qui-cartographie-le-monde_6221434_1610268.html",
+        "title": "Cyclops, l'intelligence artificielle qui cartographie le monde"
       }
     ],
-    "occurrences": 8,
+    "occurrences": 9,
     "ema_clock_minutes": null,
     "title": "Résolution d'un problème critique d'intelligence artificielle",
     "source": "Nature",
