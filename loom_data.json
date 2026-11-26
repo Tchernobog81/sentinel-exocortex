@@ -31554,9 +31554,14 @@
         "source": "Mistral.ai",
         "url": "https://mistral.ai/fr/",
         "title": "Mistral lance le premier modèle d'intelligence artificielle souveraine ouverte"
+      },
+      {
+        "source": "MIT Technology Review",
+        "url": "https://www.technologyreview.com/2026/11/26/progess-in-development-of-artificial-intelligence-that-can-humans-reasoning/",
+        "title": "Progrès dans le développement d'un intelligence artificielle capable de raisonnement humain"
       }
     ],
-    "occurrences": 6,
+    "occurrences": 7,
     "ema_clock_minutes": null,
     "title": "Résolution d'un problème critique d'intelligence artificielle",
     "source": "Nature",
@@ -31931,9 +31936,14 @@
         "source": "NASA",
         "url": "https://www.nasa.gov/mission_pages/mars2026/index.html",
         "title": "Lancement de la mission spatiale pour l'exploration de Mars"
+      },
+      {
+        "source": "NASA",
+        "url": "https://www.nasa.gov/mission_pages/spacecraft/2026/lancement_sondes_spaciales",
+        "title": "Lancement réussi d'une sonde spatiale pour étudier les étoiles"
       }
     ],
-    "occurrences": 4,
+    "occurrences": 5,
     "ema_clock_minutes": null,
     "title": "Lancement de la sonde spatiale pour l'exploration de la planète Mars",
     "source": "Agence spatiale européenne",
