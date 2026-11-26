@@ -32575,17 +32575,30 @@
     "final_note": "Les utilisateurs doivent évaluer les risques et les avantages de l'utilisation de Gemini.",
     "id": "4cae126793258339",
     "merged_into": "b5109b89b2b4426f",
-    "title": "Lancement de Gemini, l'assistant IA de Google",
-    "source": "Google",
-    "source_url": null,
-    "summary": "Google lance Gemini, un assistant IA capable de résoudre des problèmes humains.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "sources": [
+      {
+        "source": "Google",
+        "url": "https://gemini.google.com/",
+        "title": "Lancement de Gemini, l'assistant IA de Google"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/actualite-internationale/article/2026-11-24/lancement-de-l-ia-du-futur_6023641_3210.html",
+        "title": "Lancement de l'IA du futur"
+      }
+    ],
+    "occurrences": 2,
+    "title": "Lancement de Gemini, l'assistant IA de Google",
+    "source": "Google",
+    "source_url": null,
+    "summary": "Google lance Gemini, un assistant IA capable de résoudre des problèmes humains."
   },
   {
     "year": 2026,
