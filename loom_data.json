@@ -33532,17 +33532,30 @@
       "2de0b466c9105888",
       "146bbead51756365"
     ],
-    "title": "Nouvelle technologie de protocole décentralisé",
-    "source": "Réseau Magazine",
-    "source_url": "https://réseau.fr",
-    "summary": "Une nouvelle technologie de protocole décentralisé a été développée, permettant une amélioration de 40 % de la sécurité des réseaux.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Réseau Magazine",
+        "url": "https://réseau.fr",
+        "title": "Nouvelle technologie de protocole décentralisé"
+      },
+      {
+        "source": "Le Figaro",
+        "url": "https://www.lefigaro.fr/actualite/2026/11/27/nouvelle-technologie-de-stockage-de-donnees-les-avantages-et-les-inconvenients_6011109_1551764.html",
+        "title": "Nouvelle technologie de stockage de données : les avantages et les inconvénients"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Nouvelle technologie de protocole décentralisé",
+    "source": "Réseau Magazine",
+    "source_url": "https://réseau.fr",
+    "summary": "Une nouvelle technologie de protocole décentralisé a été développée, permettant une amélioration de 40 % de la sécurité des réseaux."
   },
   {
     "year": 2026,
@@ -34396,6 +34409,45 @@
     "source": "Nature",
     "source_url": "https://www.nature.com/articles/s41586-022-05220-2",
     "summary": "Un nouveau traitement contre le cancer a été développé par une équipe de chercheurs. Ce traitement est capable de tuer les cellules cancéreuses tout en laissant les cellules saines intactes.",
+    "is_kinetic_signal": false,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "realYear": null,
+    "realLabel": null,
+    "ema_clock_minutes": null
+  },
+  {
+    "year": 2026,
+    "value": 31803,
+    "label": "Le Tour de France 2026 : les favoris pour la victoire",
+    "category": "🔴 RÉSEAU",
+    "whoWhat": "Le Monde",
+    "description": "Le Tour de France 2026 : les favoris pour la victoire sont annoncés",
+    "url": "https://www.lemonde.fr/les-debats/article/2026/11/27/le-tour-de-france-2026-les-favoris-pour-la-victoire_6011110_4495740.html",
+    "timestamp": "2026-11-27T12:00:00",
+    "tipping": false,
+    "verified": true,
+    "date": "2026-11-27",
+    "impact_score": 0.8,
+    "remedy_text": "Les favoris pour la victoire sont bien définis et les concurrents sont prêts à se battre",
+    "poison_text": "La course est prévue être très compétitive et les favoris risquent de se faire concurrencer",
+    "s_curve_label": "Accélération",
+    "s_curve_phase": 2,
+    "pharmakon_remedy_percent": 60,
+    "pharmakon_poison_percent": 40,
+    "convergences": "La course est prévue être très compétitive et les favoris risquent de se faire concurrencer",
+    "grand_filter_analysis": "Les favoris pour la victoire sont bien définis et les concurrents sont prêts à se battre",
+    "final_note": "La course sera à suivre de près et les résultats seront serrés",
+    "id": "fa6eb837ca378183",
+    "related_ids": [
+      "2468a599e53fdcac",
+      "8d21bf4b0c01d587"
+    ],
+    "title": "Le Tour de France 2026 : les favoris pour la victoire",
+    "source": "Le Monde",
+    "source_url": "https://www.lemonde.fr/les-debats/article/2026/11/27/le-tour-de-france-2026-les-favoris-pour-la-victoire_6011110_4495740.html",
+    "summary": "Le Tour de France 2026 : les favoris pour la victoire sont annoncés",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
