@@ -30824,7 +30824,7 @@
     "label": "La NASA a lancé un nouveau satellite pour étudier la Terre",
     "category": "🟣 ESPACE",
     "whoWhat": "NASA",
-    "description": "La NASA a lancé un nouveau satellite pour étudier la Terre et les changements climatiques.",
+    "description": "La NASA a lancé un nouveau projet pour explorer l'univers, affirmant que cela pourrait conduire à des découvertes majeures.",
     "url": "https://www.nasa.gov/",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": true,
@@ -30845,17 +30845,30 @@
       "2337196a9ef918e1",
       "fb7eb43449f0c425"
     ],
-    "title": "La NASA a lancé un nouveau satellite pour étudier la Terre",
-    "source": "NASA",
-    "source_url": "https://www.nasa.gov/",
-    "summary": "La NASA a lancé un nouveau satellite pour étudier la Terre et les changements climatiques.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "NASA",
+        "url": "https://www.nasa.gov/",
+        "title": "La NASA a lancé un nouveau satellite pour étudier la Terre"
+      },
+      {
+        "source": "NASA",
+        "url": "https://www.nasa.gov/project-universe",
+        "title": "La NASA lance un nouveau projet pour explorer l'univers"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "La NASA a lancé un nouveau satellite pour étudier la Terre",
+    "source": "NASA",
+    "source_url": "https://www.nasa.gov/",
+    "summary": "La NASA a lancé un nouveau satellite pour étudier la Terre et les changements climatiques."
   },
   {
     "year": 2026,
