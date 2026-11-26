@@ -31454,9 +31454,14 @@
         "source": "Ars Technica",
         "url": "https://arstechnica.com/cybersecurity/2026/11/linux-exploit-vulnerability-discovered/",
         "title": "Une nouvelle vulnérabilité critique a été découverte dans les systèmes d'exploitation Linux"
+      },
+      {
+        "source": "The Register",
+        "url": "https://theregister.com/2026/11/26/cve_2026_1234/",
+        "title": "faille critique CVE-2026-1234 affecte millions de serveurs Linux"
       }
     ],
-    "occurrences": 6,
+    "occurrences": 7,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
@@ -32166,7 +32171,7 @@
     "label": "Une nouvelle équipe de robots a été créé pour aider les équipes de secours en cas de catastrophe",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Le Monde",
-    "description": "Une nouvelle génération de robots autonomes a été présentée, capable de fonctionner sans surveillance humaine.",
+    "description": "Une nouvelle génération de robots industriels a été dévoilée, offrant une amélioration significative de la productivité et de l'efficacité.",
     "url": "https://www.lemonde.fr/sciencetechno/article/2026/11/25/une-nouvelle-equipe-de-robots-creat pour-aider-les-equipes-de-secours-en-cas-de-catastrophe_6211712_1651325.html",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": true,
@@ -32203,9 +32208,14 @@
         "source": "Robotique Magazine",
         "url": "https://robotique.fr",
         "title": "Nouvelle génération de robots autonomes"
+      },
+      {
+        "source": "IndustryWeek",
+        "url": "https://www.industryweek.com/nouvelle-generation-de-robots-industriels-devoilee",
+        "title": "Nouvelle génération de robots industriels dévoilée"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "ema_clock_minutes": null,
     "title": "Une nouvelle équipe de robots a été créé pour aider les équipes de secours en cas de catastrophe",
     "source": "Le Monde",
