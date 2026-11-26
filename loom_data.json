@@ -31372,9 +31372,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/25/meta-llama-2-ai-model",
         "title": "Meta présente Llama 2, un modèle d'intelligence artificielle avancé"
+      },
+      {
+        "source": "MIT Technology Review",
+        "url": "https://www.technologyreview.com/2026/11/25/1065519/new-ai-model-developed/",
+        "title": "Développement d'un nouveau modèle d'intelligence artificielle"
       }
     ],
-    "occurrences": 4,
+    "occurrences": 5,
     "ema_clock_minutes": null,
     "title": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
     "source": "The Verge",
