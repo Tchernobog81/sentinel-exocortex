@@ -31471,9 +31471,14 @@
         "source": "OpenAI",
         "url": "https://openai.com/",
         "title": "OpenAI annonce une nouvelle étape dans la recherche sur l’intelligence artificielle"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/25/google-ai-breakthrough",
+        "title": "Google annonce une avancée dans le domaine de l'intelligence artificielle"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Résolution d'un problème critique d'intelligence artificielle",
     "source": "Nature",
