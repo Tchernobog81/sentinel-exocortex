@@ -32304,7 +32304,7 @@
     "label": "Une nouvelle équipe de robots a été créé pour aider les équipes de secours en cas de catastrophe",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Le Monde",
-    "description": "Une nouvelle génération de robots autonomes a été développée pour l'industrie, capables de réaliser des tâches complexes et de s'adapter à des environnements changeants.",
+    "description": "Une nouvelle génération de robots industriels a été présentée, qui offre des améliorations significatives en termes de productivité et de précision. Ces robots peuvent être utilisés dans divers secteurs, notamment lindustrie automobile et les fournisseurs de services de sécurité en ligne.",
     "url": "https://www.lemonde.fr/sciencetechno/article/2026/11/25/une-nouvelle-equipe-de-robots-creat pour-aider-les-equipes-de-secours-en-cas-de-catastrophe_6211712_1651325.html",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": true,
@@ -32351,9 +32351,14 @@
         "source": "Forbes",
         "url": "https://www.forbes.com/sites/forbestechcouncil/2026/11/26/new-generation-of-autonomous-robots-for-industry/",
         "title": "Nouvelle génération de robots autonomes pour l'industrie"
+      },
+      {
+        "source": "Robotics Today",
+        "url": "https://www.roboticstoday.com/",
+        "title": "Nouvelle génération de robots industriels : amélioration de la productivité et de la précision"
       }
     ],
-    "occurrences": 4,
+    "occurrences": 5,
     "ema_clock_minutes": null,
     "title": "Une nouvelle équipe de robots a été créé pour aider les équipes de secours en cas de catastrophe",
     "source": "Le Monde",
