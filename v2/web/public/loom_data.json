@@ -31228,9 +31228,14 @@
         "source": "Le Monde",
         "url": "https://www.lemonde.fr/",
         "title": "Cyberattaque contre une grande entreprise de technologie"
+      },
+      {
+        "source": "Reuters",
+        "url": "https://www.reuters.com/business/cyber-attack-grande-entreprise-logistique-2026-11-26",
+        "title": "Cyberattaque sur une grande entreprise de logistique"
       }
     ],
-    "occurrences": 1,
+    "occurrences": 2,
     "title": "Cyberattaque contre une grande entreprise de technologie",
     "source": "Le Monde",
     "source_url": null,
@@ -32479,17 +32484,31 @@
       "8d21bf4b0c01d587",
       "a041bd013624ea24"
     ],
-    "title": "Panne de l'orage de Microsoft affectant 1 million d'utilisateurs",
-    "source": "Bloomberg",
-    "source_url": "https://www.bloomberg.com/news/articles/2026-11-26/microsoft-s-azure-weather-service-faces- outage-affecting-1-million-users",
-    "summary": "Une panne de l'orage de Microsoft a affecté 1 million d'utilisateurs, entraînant des interruptions de service dans plusieurs régions.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Bloomberg",
+        "url": "https://www.bloomberg.com/news/articles/2026-11-26/microsoft-s-azure-weather-service-faces- outage-affecting-1-million-users",
+        "title": "Panne de l'orage de Microsoft affectant 1 million d'utilisateurs"
+      },
+      {
+        "source": "MacGeneration",
+        "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQYlNsQ1JSa0hLb3VIOHg3Z0ZHZjc1YVEzNWF6UmkzWXVMSUtjOW5qOEJwOUwxaGFNNWRyamJnR3d1WEZOcWZxTDhZY25lc0M2UWtNNFhNTmxWR3R2VG8yZHFGeDJnbVhfb0xubzVUcFpvMHJCMnpmRDRqMTRudEZYNENFSHBsQlh3YW96SjRBUk1XYnRUQl9RdEJmendGTm1yWHNHV2g3WDQ4cVdsMUI0T2xBRGpKWmxtNkxYaHU3YU01eVVpVERBZWhvSVFfN3FqWmNPWEcxcEg2ZkZac3R2aUoyNkNhQQ?oc=5",
+        "title": "Panne géante de Microsoft 365 : Redmond déclenche l'alerte rouge et vise le retour à la normale en une heure",
+        "verified": true
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Panne de l'orage de Microsoft affectant 1 million d'utilisateurs",
+    "source": "Bloomberg",
+    "source_url": "https://www.bloomberg.com/news/articles/2026-11-26/microsoft-s-azure-weather-service-faces- outage-affecting-1-million-users",
+    "summary": "Une panne de l'orage de Microsoft a affecté 1 million d'utilisateurs, entraînant des interruptions de service dans plusieurs régions."
   },
   {
     "year": 2026,
@@ -36174,6 +36193,42 @@
     "source": "Le Quotidien de La Réunion",
     "source_url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxORkFUSUhOc3BUaHlXZ1Q2X2dwS3NsVlIzemR6SlYwUVhDaUpPTmFKVTBvSjBzVE9UZUxfazFmdl9pOXh5LWxBMXRsWURHRjJ4NGM5VVExeDh1d0pzeTkxbGlWTS15cjF3WkNqazhBMXdneWd1SFVnUF9MX0dnQmp2bUhVU09LWk5QdFI3M1FyTTJIRmJlNmdKYnhFVW9xR1k0Y0xUTUVucw?oc=5",
     "summary": "Corail à La Réunion : pourquoi les récifs sont aujourd’hui sous pression Le Quotidien de La Réunion",
+    "is_kinetic_signal": false,
+    "impact_score": null,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "remedy_text": null,
+    "poison_text": null,
+    "s_curve_label": null,
+    "realYear": null,
+    "realLabel": null,
+    "ema_clock_minutes": null
+  },
+  {
+    "year": 2026.833,
+    "value": 22325,
+    "label": "Panne géante de Microsoft 365 : Redmond déclenche l'alerte rouge et vise le retour à la normale en une heure",
+    "category": "☠️ RISQUES CYBER",
+    "whoWhat": "MacGeneration",
+    "description": "Panne géante de Microsoft 365 : Redmond déclenche l'alerte rouge et vise le retour à la normale en une heure MacGeneration",
+    "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQYlNsQ1JSa0hLb3VIOHg3Z0ZHZjc1YVEzNWF6UmkzWXVMSUtjOW5qOEJwOUwxaGFNNWRyamJnR3d1WEZOcWZxTDhZY25lc0M2UWtNNFhNTmxWR3R2VG8yZHFGeDJnbVhfb0xubzVUcFpvMHJCMnpmRDRqMTRudEZYNENFSHBsQlh3YW96SjRBUk1XYnRUQl9RdEJmendGTm1yWHNHV2g3WDQ4cVdsMUI0T2xBRGpKWmxtNkxYaHU3YU01eVVpVERBZWhvSVFfN3FqWmNPWEcxcEg2ZkZac3R2aUoyNkNhQQ?oc=5",
+    "timestamp": "2026-11-26T10:06:43.319834",
+    "tipping": false,
+    "s_curve_phase": 3,
+    "pharmakon_remedy_percent": 20,
+    "pharmakon_poison_percent": 80,
+    "convergences": "Dépendance accrue aux services de cloud de Microsoft",
+    "grand_filter_analysis": "Incidence sur la sécurité et la confidentialité des données",
+    "final_note": "Toujours plus dangereux : nous sommes en phase d'accélération",
+    "id": "1e6826a9a83db872",
+    "verified": true,
+    "merged_into": "676b68fe1aad8153",
+    "date": "2026-11-26",
+    "title": "Panne géante de Microsoft 365 : Redmond déclenche l'alerte rouge et vise le retour à la normale en une heure",
+    "source": "MacGeneration",
+    "source_url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQYlNsQ1JSa0hLb3VIOHg3Z0ZHZjc1YVEzNWF6UmkzWXVMSUtjOW5qOEJwOUwxaGFNNWRyamJnR3d1WEZOcWZxTDhZY25lc0M2UWtNNFhNTmxWR3R2VG8yZHFGeDJnbVhfb0xubzVUcFpvMHJCMnpmRDRqMTRudEZYNENFSHBsQlh3YW96SjRBUk1XYnRUQl9RdEJmendGTm1yWHNHV2g3WDQ4cVdsMUI0T2xBRGpKWmxtNkxYaHU3YU01eVVpVERBZWhvSVFfN3FqWmNPWEcxcEg2ZkZac3R2aUoyNkNhQQ?oc=5",
+    "summary": "Panne géante de Microsoft 365 : Redmond déclenche l'alerte rouge et vise le retour à la normale en une heure MacGeneration",
     "is_kinetic_signal": false,
     "impact_score": null,
     "doomsday_minutes": null,
