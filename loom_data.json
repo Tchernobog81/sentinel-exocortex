@@ -31357,9 +31357,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/25/google-new-ai-tool-data-analysis",
         "title": "Google présente son nouvel outil d'intelligence artificielle pour l'analyse de données"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/25/meta-llama-2-ai-model",
+        "title": "Meta présente Llama 2, un modèle d'intelligence artificielle avancé"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
     "source": "The Verge",
@@ -31848,9 +31853,14 @@
         "source": "Space.com",
         "url": "https://www.space.com/new-mars-mission",
         "title": "Nouvelle mission spatiale pour explorer la planète Mars"
+      },
+      {
+        "source": "NASA",
+        "url": "https://www.nasa.gov/subject/12647/nasa-artemis",
+        "title": "Lancement réussi de la mission spatiale NASA Artemis"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "ema_clock_minutes": null,
     "title": "Lancement de la sonde spatiale pour l'exploration de la planète Mars",
     "source": "Agence spatiale européenne",
