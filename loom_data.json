@@ -31502,9 +31502,14 @@
         "source": "Bleeping Computer",
         "url": "https://www.bleepingcomputer.com/2026/11/24/critical-vulnerability-discovered-in-cloud-service-provider-security-system/",
         "title": "Une faille critique est découverte dans le système de sécurité d'un fournisseur de services cloud"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/25/security-flaw-discovered-data-management-system",
+        "title": "Une faille de sécurité a été découverte dans un système de gestion de données"
       }
     ],
-    "occurrences": 9,
+    "occurrences": 10,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
@@ -31656,9 +31661,14 @@
         "source": "BBC News",
         "url": "https://www.bbc.com/news/2026/11/25/tech/online-service-provider-attack",
         "title": "Une attaque de grande envergure a été réalisée contre un fournisseur de services en ligne"
+      },
+      {
+        "source": "Reuters",
+        "url": "https://www.reuters.com/article/us-hacking-cyberattack-idUSKBN2XQ2R3",
+        "title": "Un groupe de hackers a revendiqué une attaque contre un fournisseur de services en ligne"
       }
     ],
-    "occurrences": 4,
+    "occurrences": 5,
     "ema_clock_minutes": null,
     "title": "Le groupe de hacking «L¬» revendique une attaque sur un grand fournisseur dé défense",
     "source": "Le Monde",
