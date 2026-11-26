@@ -30737,7 +30737,7 @@
     "label": "Nouvelle architecture de calcul accélérée pour les modèles de langage",
     "category": "🔵 COGNITION",
     "whoWhat": "The Verge",
-    "description": "Une nouvelle architecture de l'intelligence artificielle a été développée pour améliorer la sécurité des systèmes informatiques. Cette nouvelle architecture utilise une approche de l'apprentissage par renforcement pour détecter les attaques informatiques.",
+    "description": "Google a révélé une nouvelle architecture frugale pour les modèles de langage, conçue pour réduire la consommation d'énergie des superordinateurs. Cette innovation pourrait conduire à une augmentation significative de la capacité de calcul des modèles de langage.",
     "url": "https://www.theverge.com/2026/11/24/new-architecture-calcul-ai-language-models",
     "timestamp": "2026-11-24T12:00:00",
     "tipping": false,
@@ -30804,9 +30804,14 @@
         "source": "IEEE",
         "url": "https://ieee.org",
         "title": "Nouvelle architecture de processeur neuromorphe"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/24/jeff-dean-new-architecture-frugale-langs-age",
+        "title": "Jeff Dean présente une nouvelle architecture frugale pour les modèles de langage"
       }
     ],
-    "occurrences": 8,
+    "occurrences": 9,
     "ema_clock_minutes": null,
     "title": "Nouvelle architecture de calcul accélérée pour les modèles de langage",
     "source": "The Verge",
