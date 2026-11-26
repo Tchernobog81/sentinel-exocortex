@@ -31491,9 +31491,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/25/google-ai-breakthrough",
         "title": "Google annonce une avancée dans le domaine de l'intelligence artificielle"
+      },
+      {
+        "source": "MIT Technology Review",
+        "url": "https://www.technologyreview.com/2026/11/25/1094441/new-ai-model-can-learn-in-real-time/",
+        "title": "Développement d'un modèle d'intelligence artificielle capable d'apprendre en temps réel"
       }
     ],
-    "occurrences": 4,
+    "occurrences": 5,
     "ema_clock_minutes": null,
     "title": "Résolution d'un problème critique d'intelligence artificielle",
     "source": "Nature",
