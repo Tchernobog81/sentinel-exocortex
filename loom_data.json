@@ -31741,9 +31741,14 @@
         "source": "OpenAI",
         "url": "https://openai.com/fr-FR/",
         "title": "OpenAI : Recherche et déploiement"
+      },
+      {
+        "source": "OpenAI",
+        "url": "https://openai.com/",
+        "title": "OpenAI : Recherche et déploiement"
       }
     ],
-    "occurrences": 1,
+    "occurrences": 2,
     "ema_clock_minutes": null,
     "title": "OpenAI : Recherche et déploiement",
     "source": "OpenAI",
