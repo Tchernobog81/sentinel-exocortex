@@ -31482,9 +31482,14 @@
         "source": "The Register",
         "url": "https://theregister.com/2026/11/26/cve_2026_1234/",
         "title": "faille critique CVE-2026-1234 affecte millions de serveurs Linux"
+      },
+      {
+        "source": "The Register",
+        "url": "https://www.theregister.com/2026/11/24/cve_2026_1111/",
+        "title": "CVE-2026-1111: faille critique noyau du processeur Intel"
       }
     ],
-    "occurrences": 7,
+    "occurrences": 8,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
@@ -31941,9 +31946,14 @@
         "source": "NASA",
         "url": "https://www.nasa.gov/mission_pages/spacecraft/2026/lancement_sondes_spaciales",
         "title": "Lancement réussi d'une sonde spatiale pour étudier les étoiles"
+      },
+      {
+        "source": "NASA",
+        "url": "https://www.nasa.gov/mission_pages/station/index.html",
+        "title": "Lancement réussi de la station spatiale internationale"
       }
     ],
-    "occurrences": 5,
+    "occurrences": 6,
     "ema_clock_minutes": null,
     "title": "Lancement de la sonde spatiale pour l'exploration de la planète Mars",
     "source": "Agence spatiale européenne",
@@ -35388,9 +35398,14 @@
         "source": "01net.com",
         "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQSTY2VEZJYUJWY3V0SmNxenlLTWZCQzI3U2tVbmVjV3dDbUMtckVmb0hfMGhwb01vZFVqU0M2bmIzQzNLbVN2Wjh6SjNyVk9UZ3VRa2h5RWoyT2ZuVHZqRWtaMFdyWHQ4ZHM0dHlRUjZOVktMek5kTUhNT2pLS0NHVU52d25uTW1UWFkzbU1sd0ZZNk1iZ09STk1jSC1Iek14cnZ2b29jZ2V4azhqY2Q2bVBzUUhyZw?oc=5",
         "title": "« Code rouge » : après la panne historique d’Outlook, Microsoft déclenche l’alerte maximale"
+      },
+      {
+        "source": "NeoTeo",
+        "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9McUFyckI1ckZxOGFZN1RSQnpiRU1VR05XTlNtak9QVEo1YTBSTXNaMjd5NkhfVmlPOHBud094dVAzb2tRVGhKeS05OXZfMVozWnA0Qjc4N2dFRnBpcmV0TGFUUDRIQnp0SDRhUXhpY3JhczJRXzlMMUtRTDAwUDA?oc=5",
+        "title": "Microsoft Code Red : deux objectifs après la panne"
       }
     ],
-    "occurrences": 36,
+    "occurrences": 37,
     "merged_into": null,
     "s_curve_phase": 1,
     "remedy_percent": 45,
