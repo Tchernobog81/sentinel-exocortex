@@ -31271,9 +31271,14 @@
         "source": "Le Monde",
         "url": "https://www.lemonde.fr/pixels/article/2026/11/25/cyberark-victime-d-une-cyberattaque_6153219_4349283.html",
         "title": "L'entreprise de sécurité en ligne Cyberark a été victime d'une cyberattaque"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/pixels/article/2026/11/25/cyberattaque-ciblant-une-entreprise-de-technologies-de-l-informatique_6018556_4407421.html",
+        "title": "Cyberattaque ciblant une entreprise de technologies de l'information"
       }
     ],
-    "occurrences": 4,
+    "occurrences": 5,
     "title": "Cyberattaque contre une grande entreprise de technologie",
     "source": "Le Monde",
     "source_url": null,
@@ -33862,17 +33867,30 @@
       "3d52bd3ffffb3b12",
       "551735b2c17a916b"
     ],
-    "title": "Meta lance un module de reconnaissance vocale pour ses assistants virtuels",
-    "source": "The Verge",
-    "source_url": "https://www.theverge.com/2026/11/24/meta-virtual-assistants-voice-recognition",
-    "summary": "Meta a annoncé la mise en ligne d'un module de reconnaissance vocale pour ses assistants virtuels. Ce module utilise des algorithmes d'apprentissage automatique pour améliorer la reconnaissance de la parole.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/24/meta-virtual-assistants-voice-recognition",
+        "title": "Meta lance un module de reconnaissance vocale pour ses assistants virtuels"
+      },
+      {
+        "source": "TechCrunch",
+        "url": "https://techcrunch.com/2026/11/26/new-ai-powered-voice-recognition-tech-developed-by-startup/",
+        "title": "Nouvelle technologie de reconnaissance vocale développée par une startup"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Meta lance un module de reconnaissance vocale pour ses assistants virtuels",
+    "source": "The Verge",
+    "source_url": "https://www.theverge.com/2026/11/24/meta-virtual-assistants-voice-recognition",
+    "summary": "Meta a annoncé la mise en ligne d'un module de reconnaissance vocale pour ses assistants virtuels. Ce module utilise des algorithmes d'apprentissage automatique pour améliorer la reconnaissance de la parole."
   },
   {
     "year": 2026,
