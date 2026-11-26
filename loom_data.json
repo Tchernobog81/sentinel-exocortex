@@ -31387,9 +31387,14 @@
         "source": "MIT Technology Review",
         "url": "https://www.technologyreview.com/2026/11/25/1065519/new-ai-model-developed/",
         "title": "Développement d'un nouveau modèle d'intelligence artificielle"
+      },
+      {
+        "source": "OpenAI",
+        "url": "https://openai.com/fr-FR/",
+        "title": "OpenAI présente son nouveau modèle d'intelligence artificielle"
       }
     ],
-    "occurrences": 5,
+    "occurrences": 6,
     "ema_clock_minutes": null,
     "title": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
     "source": "The Verge",
@@ -31531,9 +31536,14 @@
         "source": "MIT Technology Review",
         "url": "https://www.technologyreview.com/2026/11/25/1094441/new-ai-model-can-learn-in-real-time/",
         "title": "Développement d'un modèle d'intelligence artificielle capable d'apprendre en temps réel"
+      },
+      {
+        "source": "Mistral.ai",
+        "url": "https://mistral.ai/fr/",
+        "title": "Mistral lance le premier modèle d'intelligence artificielle souveraine ouverte"
       }
     ],
-    "occurrences": 5,
+    "occurrences": 6,
     "ema_clock_minutes": null,
     "title": "Résolution d'un problème critique d'intelligence artificielle",
     "source": "Nature",
