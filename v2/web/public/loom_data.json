@@ -32284,17 +32284,30 @@
       "bdb13921d3d0cf0f",
       "cbb7042dade92eb0"
     ],
-    "title": "Nouvelle réglementation sur la géopolitique du silicium",
-    "source": "Réglementation officielle",
-    "source_url": "https://www.reglementation.gov/silicium-2026",
-    "summary": "Une nouvelle réglementation a été adoptée pour contrôler la géopolitique du silicium, visant à prévenir les abus de pouvoir.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Réglementation officielle",
+        "url": "https://www.reglementation.gov/silicium-2026",
+        "title": "Nouvelle réglementation sur la géopolitique du silicium"
+      },
+      {
+        "source": "Alloprof",
+        "url": "https://www.alloprof.qc.ca/fr/eleves/bv/physique/l-acceleration-p1082",
+        "title": "Géopolitique du silicium : tensions entre puissances"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Nouvelle réglementation sur la géopolitique du silicium",
+    "source": "Réglementation officielle",
+    "source_url": "https://www.reglementation.gov/silicium-2026",
+    "summary": "Une nouvelle réglementation a été adoptée pour contrôler la géopolitique du silicium, visant à prévenir les abus de pouvoir."
   },
   {
     "year": 2026,
