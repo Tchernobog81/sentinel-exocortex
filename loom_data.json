@@ -31367,7 +31367,7 @@
     "label": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "category": "☢️ ENTROPIE",
     "whoWhat": "Microsoft",
-    "description": "Une faille critique a été découverte dans le noyau Linux, ce qui pourrait permettre aux attaquants d'accéder à tous les systèmes qui utilisent ce noyau.",
+    "description": "Une faille de sécurité a été découverte dans un logiciel de sécurité populaire, permettant à des attaquants potentiels de réaliser des attaques de grande envergure",
     "url": "https://support.microsoft.com/en-us/topic/kb5008382",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": true,
@@ -31409,9 +31409,14 @@
         "source": "CVE",
         "url": "https://www.cve.org/CVE-2026-1234",
         "title": "Vulnérabilité critique découverte dans le noyau Linux"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/25/18251629/security-software-bug-vulnerability-exploit",
+        "title": "Une faille de sécurité a été découverte dans un logiciel de sécurité populaire"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
@@ -31481,7 +31486,7 @@
     "label": "Le groupe de hacking «L¬» revendique une attaque sur un grand fournisseur dé défense",
     "category": "☢️ ENTROPIE",
     "whoWhat": "Le Monde",
-    "description": "Le groupe de hacking «L¬» revendique une attaque sur un grand fournisseur dé défense. L¬ attaque a entraéné des pertes importants pour le fournisseur.",
+    "description": "Une attaque de grande envergure a été réalisée contre un fournisseur de services en ligne, entraînant des pertes de données et de temps pour les utilisateurs",
     "url": "https://www.lemonde.fr/pixels/article/2026/11/25/le-groupe-de-hacking-l¬-revendique-une-attaque-sur-un-grand-fournisseur-de-défense_6213873_4356986.html",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": true,
@@ -31518,9 +31523,19 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/24/15954260/cloud-provider-hacked-security-breach",
         "title": "Attaque ciblée contre un fournisseur de services cloud"
+      },
+      {
+        "source": "Reuters",
+        "url": "https://www.reuters.com/world/europe/attack-major-against-online-service-provider-2026-11-25/",
+        "title": "Une attaque de grande envergure a été réalisée contre un fournisseur de services en ligne"
+      },
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news/2026/11/25/tech/online-service-provider-attack",
+        "title": "Une attaque de grande envergure a été réalisée contre un fournisseur de services en ligne"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Le groupe de hacking «L¬» revendique une attaque sur un grand fournisseur dé défense",
     "source": "Le Monde",
