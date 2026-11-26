@@ -31880,7 +31880,7 @@
     "label": "Développement d'un robot capable de se déplacer dans des environnements complexes",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "MIT Technology Review",
-    "description": "Un équipe de chercheurs a développé un robot capable de se déplacer dans des environnements complexes.",
+    "description": "La société de robotique, RoboTech, a annoncé la sortie d'un nouveau robot industriel capable de se réparer en temps réel, améliorant ainsi la productivité des usines.",
     "url": "https://www.technologyreview.com/2026/11/23/1075511/new-robot-capable-of-navigating-complex-environments/",
     "timestamp": "2026-11-23T12:00:00",
     "tipping": false,
@@ -31901,17 +31901,30 @@
       "627fb4a3bd833643",
       "28dfeccf8a244994"
     ],
-    "title": "Développement d'un robot capable de se déplacer dans des environnements complexes",
-    "source": "MIT Technology Review",
-    "source_url": "https://www.technologyreview.com/2026/11/23/1075511/new-robot-capable-of-navigating-complex-environments/",
-    "summary": "Un équipe de chercheurs a développé un robot capable de se déplacer dans des environnements complexes.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "MIT Technology Review",
+        "url": "https://www.technologyreview.com/2026/11/23/1075511/new-robot-capable-of-navigating-complex-environments/",
+        "title": "Développement d'un robot capable de se déplacer dans des environnements complexes"
+      },
+      {
+        "source": "MIT Technology Review",
+        "url": "https://www.technologyreview.com/",
+        "title": "Nouveau robot industriel capable de se réparer en temps réel"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Développement d'un robot capable de se déplacer dans des environnements complexes",
+    "source": "MIT Technology Review",
+    "source_url": "https://www.technologyreview.com/2026/11/23/1075511/new-robot-capable-of-navigating-complex-environments/",
+    "summary": "Un équipe de chercheurs a développé un robot capable de se déplacer dans des environnements complexes."
   },
   {
     "year": 2026,
