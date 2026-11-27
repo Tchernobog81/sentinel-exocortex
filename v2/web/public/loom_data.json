@@ -31218,9 +31218,14 @@
         "source": "BBC News",
         "url": "https://www.bbc.com/news/technology-63811940",
         "title": "Attaque de phishing ciblée contre les employés de la NASA"
+      },
+      {
+        "source": "Bleeping Computer",
+        "url": "https://www.bleepingcomputer.com/news/security/phishing-attack-targets-top-enterprises/",
+        "title": "Une attaque de phishing ciblant des entreprises de premier plan a été signalée"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "ema_clock_minutes": null,
     "title": "Plus de 1 million de comptes Instagram compromis dans une attaque de phishing",
     "source": "BBC News",
@@ -31524,9 +31529,14 @@
         "source": "Nature",
         "url": "https://www.nature.com/articles/s41586-026-03421-3",
         "title": "Lancement d'un nouveau modèle de Langue Formelle"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/26/ AI-language-supervisor-model-breaks-performance-record",
+        "title": "Un nouveau modèle de langage superviseur bat le record de performances"
       }
     ],
-    "occurrences": 11,
+    "occurrences": 12,
     "ema_clock_minutes": null,
     "title": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
     "source": "The Verge",
