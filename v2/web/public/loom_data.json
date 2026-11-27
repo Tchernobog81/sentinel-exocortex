@@ -31494,9 +31494,14 @@
         "source": "TechCrunch",
         "url": "https://techcrunch.com/",
         "title": "Développement d'un nouveau modèle d'intelligence artificielle pour les véhicules autonomes"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/26/meta-new-ai-language-model",
+        "title": "Meta lance un nouveau modèle de langage basé sur l'IA"
       }
     ],
-    "occurrences": 8,
+    "occurrences": 9,
     "ema_clock_minutes": null,
     "title": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
     "source": "The Verge",
@@ -31616,9 +31621,14 @@
         "source": "BBC News",
         "url": "https://www.bbc.com/news/technology-65011995",
         "title": "Cyberattaque sur le système de gestion de la sécurité de l'Agence spatiale européenne"
+      },
+      {
+        "source": "Ars Technica",
+        "url": "https://arstechnica.com/gadgets/2026/11/linux-kernel-bug/",
+        "title": "Une faille critique dans le noyau Linux met en danger les systèmes d'exploitation"
       }
     ],
-    "occurrences": 16,
+    "occurrences": 17,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
