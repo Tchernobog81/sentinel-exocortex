@@ -32109,9 +32109,14 @@
         "source": "NASA",
         "url": "https://www.nasa.gov/subject/11441/europa-clipper",
         "title": "La NASA a annoncé la réussite de la mission de la sonde spatiale Europa Clipper"
+      },
+      {
+        "source": "NASA",
+        "url": "https://www.nasa.gov/europa-clipper",
+        "title": "Lancement de la mission spatiale Europa Clipper"
       }
     ],
-    "occurrences": 8,
+    "occurrences": 9,
     "ema_clock_minutes": null,
     "title": "Lancement de la sonde spatiale pour l'exploration de la planète Mars",
     "source": "Agence spatiale européenne",
