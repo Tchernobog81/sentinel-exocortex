@@ -31473,9 +31473,14 @@
         "source": "Le Monde",
         "url": "https://www.lemonde.fr/technologie/article/2026/11/26/google-deepmind-presenter-un-nouveau-modele-d-intelligence-artificielle-capable-de-resoudre-des-problemes-a-la-por-2321233_3234.html",
         "title": "Google DeepMind présente un nouveau modèle d'intelligence artificielle capable de résoudre des problèmes à la portée d'un être humain."
+      },
+      {
+        "source": "TechCrunch",
+        "url": "https://techcrunch.com/",
+        "title": "Développement d'un nouveau modèle d'intelligence artificielle pour les véhicules autonomes"
       }
     ],
-    "occurrences": 7,
+    "occurrences": 8,
     "ema_clock_minutes": null,
     "title": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
     "source": "The Verge",
