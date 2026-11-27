@@ -37156,17 +37156,30 @@
       "d37b76031c26f8ad",
       "c9bec3e1928c5212"
     ],
-    "title": "Nouvelle campagne d'attaque par IA contre les infrastructures énergétiques",
-    "source": "CERT-EU",
-    "source_url": "https://www.cert-eu.org/nouvelle-campagne-dattaque-par-ia-contre-les-infrastructures-energetiques",
-    "summary": "Une nouvelle campagne d'attaque par IA a été détectée visant les infrastructures énergétiques européennes. Les attaquants utilisent des techniques d'exploitation de failles de sécurité pour accéder aux systèmes critiques.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "CERT-EU",
+        "url": "https://www.cert-eu.org/nouvelle-campagne-dattaque-par-ia-contre-les-infrastructures-energetiques",
+        "title": "Nouvelle campagne d'attaque par IA contre les infrastructures énergétiques"
+      },
+      {
+        "source": "Reuters",
+        "url": "https://www.reuters.com/article/uk-europe-ia-attack-idUKKBN2IY0XO",
+        "title": "Attentat IA contre les infrastructures critiques en Europe"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Nouvelle campagne d'attaque par IA contre les infrastructures énergétiques",
+    "source": "CERT-EU",
+    "source_url": "https://www.cert-eu.org/nouvelle-campagne-dattaque-par-ia-contre-les-infrastructures-energetiques",
+    "summary": "Une nouvelle campagne d'attaque par IA a été détectée visant les infrastructures énergétiques européennes. Les attaquants utilisent des techniques d'exploitation de failles de sécurité pour accéder aux systèmes critiques."
   },
   {
     "year": 2026,
