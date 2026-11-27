@@ -31062,9 +31062,14 @@
         "source": "MIT Technology Review",
         "url": "https://www.technologyreview.com/2026/11/27/1066465/artificial-intelligence-progress/",
         "title": "Accélération technologique : nouveaux progrès dans l'intelligence artificielle"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/27/google-new-algorithm-face-recognition",
+        "title": "Google dévoile un nouvel algorithme pour améliorer la reconnaissance faciale"
       }
     ],
-    "occurrences": 7,
+    "occurrences": 8,
     "ema_clock_minutes": null,
     "title": "Lancement d'un nouvel algorithme d'apprentissage automatique pour l'accélération technologique",
     "source": "MIT Technology Review",
@@ -31552,9 +31557,14 @@
         "source": "BBC News",
         "url": "https://www.bbc.com/news/technology-65012396",
         "title": "Une faille critique a été découverte dans le système de sécurité de plusieurs grandes entreprises"
+      },
+      {
+        "source": "Ars Technica",
+        "url": "https://arstechnica.com/gadgets/2026/11/critical-linux-kernel-flaw-puts-many-systems-at-risk/",
+        "title": "Une faille critique dans le noyau Linux met en danger les systèmes d'exploitation"
       }
     ],
-    "occurrences": 12,
+    "occurrences": 13,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
