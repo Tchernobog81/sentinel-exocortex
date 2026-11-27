@@ -37334,7 +37334,7 @@
     "label": "Microsoft se met en alerte « Code Red » après sa grosse panne d’Outlook et Microsoft 365",
     "category": "IA & Cognition",
     "whoWhat": "KultureGeek",
-    "description": "Microsoft se met en alerte « Code Red » après sa grosse panne d’Outlook et Microsoft 365 KultureGeek",
+    "description": "Panne d'Outlook pendant 24 heures : Microsoft avoue ses failles et déclenche l'alerte « Code Red » Selectra",
     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQc2JNcmY2cWxOb09weUY4OU5YN1ZnN3RaVTQ1a3AtMS1Da21KdHExazVMbGFKQVE2cmNkTkMxbXVrOTA0S3c2VDFseld4eGhsWGFjYnhLMlYyT010ejRnMXAzWUJOYUNvVVhLbHZhMHJnYWhqRkNKd0hIYjBkT1RvX3JlUjFpdUVrV29EQ2R0N29JeW5OYkhTN1BPZUo2ZzZ4YjZibGxlSlhWQQ?oc=5",
     "timestamp": "2026-11-26T01:56:13.908209",
     "tipping": false,
@@ -37354,10 +37354,6 @@
       "8d21bf4b0c01d587"
     ],
     "date": "2026-11-26",
-    "title": "Microsoft se met en alerte « Code Red » après sa grosse panne d’Outlook et Microsoft 365",
-    "source": "KultureGeek",
-    "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQc2JNcmY2cWxOb09weUY4OU5YN1ZnN3RaVTQ1a3AtMS1Da21KdHExazVMbGFKQVE2cmNkTkMxbXVrOTA0S3c2VDFseld4eGhsWGFjYnhLMlYyT010ejRnMXAzWUJOYUNvVVhLbHZhMHJnYWhqRkNKd0hIYjBkT1RvX3JlUjFpdUVrV29EQ2R0N29JeW5OYkhTN1BPZUo2ZzZ4YjZibGxlSlhWQQ?oc=5",
-    "summary": "Microsoft se met en alerte « Code Red » après sa grosse panne d’Outlook et Microsoft 365 KultureGeek",
     "is_kinetic_signal": false,
     "impact_score": null,
     "doomsday_minutes": null,
@@ -37365,7 +37361,24 @@
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "KultureGeek",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQc2JNcmY2cWxOb09weUY4OU5YN1ZnN3RaVTQ1a3AtMS1Da21KdHExazVMbGFKQVE2cmNkTkMxbXVrOTA0S3c2VDFseld4eGhsWGFjYnhLMlYyT010ejRnMXAzWUJOYUNvVVhLbHZhMHJnYWhqRkNKd0hIYjBkT1RvX3JlUjFpdUVrV29EQ2R0N29JeW5OYkhTN1BPZUo2ZzZ4YjZibGxlSlhWQQ?oc=5",
+        "title": "Microsoft se met en alerte « Code Red » après sa grosse panne d’Outlook et Microsoft 365"
+      },
+      {
+        "source": "Selectra",
+        "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNMnROT19lTDJRdVRXQVNNcW8tcDEyeFVlNHNOTnpmNVBxR2xZcS02R1FBeHJTcEFucHBlM1VyVUJuWHZPckIzSXMzX2xPa2xMMFVLMUFqcnpkWGE4ek9hOG91eENyMFhPMVRILWRFYnY3MU1qa3c0WS1Va1hPcGlJVmZlcWlRdFdIZHNfSHFB?oc=5",
+        "title": "Panne d'Outlook pendant 24 heures : Microsoft avoue ses failles et déclenche l'alerte « Code Red »"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Microsoft se met en alerte « Code Red » après sa grosse panne d’Outlook et Microsoft 365",
+    "source": "KultureGeek",
+    "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQc2JNcmY2cWxOb09weUY4OU5YN1ZnN3RaVTQ1a3AtMS1Da21KdHExazVMbGFKQVE2cmNkTkMxbXVrOTA0S3c2VDFseld4eGhsWGFjYnhLMlYyT010ejRnMXAzWUJOYUNvVVhLbHZhMHJnYWhqRkNKd0hIYjBkT1RvX3JlUjFpdUVrV29EQ2R0N29JeW5OYkhTN1BPZUo2ZzZ4YjZibGxlSlhWQQ?oc=5",
+    "summary": "Microsoft se met en alerte « Code Red » après sa grosse panne d’Outlook et Microsoft 365 KultureGeek"
   },
   {
     "year": 2026.833,
