@@ -35891,7 +35891,7 @@
     "label": "Découverte d'une nouvelle planète",
     "category": "🟣 ESPACE",
     "whoWhat": "NASA",
-    "description": "Les scientifiques ont découvert une nouvelle planète située à une distance de 10 parsecs de la Terre.",
+    "description": "Les astronomes de la NASA ont découvert un astéroïde potentiellement dangereux qui pourrait être en collision avec la Terre dans les années à venir.",
     "url": "https://www.nasa.gov/feature/goddard/2026/11/26/nasa-announces-discovery-of-new-planet",
     "timestamp": "2026-11-26T12:00:00",
     "tipping": true,
@@ -35912,17 +35912,30 @@
       "b8cb3bc07d164b2e",
       "bfe0863890f14d5e"
     ],
-    "title": "Découverte d'une nouvelle planète",
-    "source": "NASA",
-    "source_url": "https://www.nasa.gov/feature/goddard/2026/11/26/nasa-announces-discovery-of-new-planet",
-    "summary": "Les scientifiques ont découvert une nouvelle planète située à une distance de 10 parsecs de la Terre.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "NASA",
+        "url": "https://www.nasa.gov/feature/goddard/2026/11/26/nasa-announces-discovery-of-new-planet",
+        "title": "Découverte d'une nouvelle planète"
+      },
+      {
+        "source": "NASA",
+        "url": "https://www.nasa.gov/feature/detection-of-potentially-hazardous-asteroid",
+        "title": "Découverte d'un astéroïde potentiellement dangereux"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Découverte d'une nouvelle planète",
+    "source": "NASA",
+    "source_url": "https://www.nasa.gov/feature/goddard/2026/11/26/nasa-announces-discovery-of-new-planet",
+    "summary": "Les scientifiques ont découvert une nouvelle planète située à une distance de 10 parsecs de la Terre."
   },
   {
     "year": 2026,
