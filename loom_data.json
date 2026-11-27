@@ -33175,17 +33175,30 @@
       "2ff5f2386d0f4b9c",
       "bed348eae2e9b6a0"
     ],
-    "title": "Des chercheurs ont développé un nouveau modèle de réseau neuronal capable de réaliser des táches avec une efficacité accrue.",
-    "source": "ArXiv",
-    "source_url": "https://arxiv.org/",
-    "summary": "Des chercheurs ont développé un nouveau modèle de réseau neuronal capable de réaliser des táches avec une efficacité accrue.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "ArXiv",
+        "url": "https://arxiv.org/",
+        "title": "Des chercheurs ont développé un nouveau modèle de réseau neuronal capable de réaliser des táches avec une efficacité accrue."
+      },
+      {
+        "source": "The Verge",
+        "url": "https://theverge.com/2026/11/microsoft-codex",
+        "title": "Un chercheur de lùuvre de Microsoft a présenté un nouveau modèle dà lùnde pour la réalisation de táches complexes."
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Des chercheurs ont développé un nouveau modèle de réseau neuronal capable de réaliser des táches avec une efficacité accrue.",
+    "source": "ArXiv",
+    "source_url": "https://arxiv.org/",
+    "summary": "Des chercheurs ont développé un nouveau modèle de réseau neuronal capable de réaliser des táches avec une efficacité accrue."
   },
   {
     "year": 2026,
