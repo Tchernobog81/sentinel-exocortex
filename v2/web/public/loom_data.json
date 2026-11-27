@@ -31714,9 +31714,14 @@
         "source": "Ars Technica",
         "url": "https://arstechnica.com/gadgets/2026/11/critical-linux-kernel-vulnerability-allow-attackers-to-take-control/",
         "title": "Une faille de sécurité critique a été découvert dans le noyau Linux, permettant aux attaquants de prendre le contrôle du système"
+      },
+      {
+        "source": "Microsoft",
+        "url": "https://support.microsoft.com/fr-fr/",
+        "title": "Incidente cybernétique majeur : Patch overflow sur le système d'exploitation Windows"
       }
     ],
-    "occurrences": 21,
+    "occurrences": 22,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
@@ -36462,10 +36467,60 @@
       "956fd2bc90e51e72",
       "d27dcfa7491f6198"
     ],
+    "is_kinetic_signal": false,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "realYear": null,
+    "realLabel": null,
+    "sources": [
+      {
+        "source": "FBI",
+        "url": "https://www.fbi.gov/",
+        "title": "Compromission de l'Agence fédérale américaine"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/, édition digitale",
+        "title": "Incidente cybernétique majeur : Compromission de la base de données de l'INSEE",
+        "verified": true
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
     "title": "Compromission de l'Agence fédérale américaine",
     "source": "FBI",
     "source_url": "https://www.fbi.gov/",
-    "summary": "L'Agence fédérale a été victime d'une cyberattaque entraînant une panne des systèmes.",
+    "summary": "L'Agence fédérale a été victime d'une cyberattaque entraînant une panne des systèmes."
+  },
+  {
+    "year": 2026,
+    "value": 48143,
+    "label": "Incidente cybernétique majeur : Compromission de la base de données de l'INSEE",
+    "category": "☢️ ENTROPIE",
+    "whoWhat": "Le Monde",
+    "description": "Une cyberattaque a visé la base de données de lîme Institut national de la statistique et des études économiques (INSEE).",
+    "url": "https://www.lemonde.fr/, édition digitale",
+    "timestamp": "2026-11-27T12:00:00",
+    "tipping": true,
+    "verified": true,
+    "date": "2026-11-27",
+    "impact_score": 0.9,
+    "remedy_text": "Répartition des rües de études sur les données à lîme INSEE.",
+    "poison_text": "Exposition à risque dùgiciel sur les données statistiques.",
+    "s_curve_label": "Vitesse de lême attaque",
+    "s_curve_phase": 3,
+    "pharmakon_remedy_percent": 30,
+    "pharmakon_poison_percent": 70,
+    "convergences": "Convergence entre ême attaque cybernétique et ême vúison des données économiques.",
+    "grand_filter_analysis": "Analyse du risque de perturbation des données économiques majeures.",
+    "final_note": "Directive NELA : Isolation physique (Air-Gap), segmentation stricte des études, coupure des flux sortants non essentiels et sandboxing micro-VM.",
+    "id": "b4e2f501f067c041",
+    "merged_into": "e27af34191de343f",
+    "title": "Incidente cybernétique majeur : Compromission de la base de données de l'INSEE",
+    "source": "Le Monde",
+    "source_url": "https://www.lemonde.fr/, édition digitale",
+    "summary": "Une cyberattaque a visé la base de données de lîme Institut national de la statistique et des études économiques (INSEE).",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
