@@ -31595,9 +31595,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/27/university-california-data-breach",
         "title": "Le système de gestion de données de l'université de Californie a été compromis par une faille de sécurité"
+      },
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news/technology-65011995",
+        "title": "Cyberattaque sur le système de gestion de la sécurité de l'Agence spatiale européenne"
       }
     ],
-    "occurrences": 15,
+    "occurrences": 16,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
@@ -34421,17 +34426,30 @@
       "c9bec3e1928c5212",
       "9d7030590004d1aa"
     ],
-    "title": "Nouvelle technologie de stockage de données développée",
-    "source": "CNRS",
-    "source_url": "https://www.cnrs.fr/fr/nouvelle-technologie-de-stockage-de-donnees-developpee",
-    "summary": "Une nouvelle technologie de stockage de données a été développée, ce qui pourrait avoir des implications importantes pour la conservation et la récupération des données.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "CNRS",
+        "url": "https://www.cnrs.fr/fr/nouvelle-technologie-de-stockage-de-donnees-developpee",
+        "title": "Nouvelle technologie de stockage de données développée"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/26/new-facial-recognition-tech-startup-american",
+        "title": "Nouvelle technologie de reconnaissance faciale développée par une startup américaine"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Nouvelle technologie de stockage de données développée",
+    "source": "CNRS",
+    "source_url": "https://www.cnrs.fr/fr/nouvelle-technologie-de-stockage-de-donnees-developpee",
+    "summary": "Une nouvelle technologie de stockage de données a été développée, ce qui pourrait avoir des implications importantes pour la conservation et la récupération des données."
   },
   {
     "year": 2026,
