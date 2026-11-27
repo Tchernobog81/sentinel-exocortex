@@ -32921,9 +32921,14 @@
         "source": "Le Monde",
         "url": "https://www.lemonde.fr/actualite-internationale/article/2026-11-24/lancement-de-l-ia-du-futur_6023641_3210.html",
         "title": "Lancement de l'IA du futur"
+      },
+      {
+        "source": "Google",
+        "url": "https://gemini.google.com/?hl=fr",
+        "title": "Lancement de Google Gemini"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "title": "Lancement de Gemini, l'assistant IA de Google",
     "source": "Google",
     "source_url": null,
