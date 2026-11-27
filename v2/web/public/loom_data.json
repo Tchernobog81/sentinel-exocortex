@@ -31398,7 +31398,7 @@
     "label": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
     "category": "🔵 COGNITION",
     "whoWhat": "The Verge",
-    "description": "Google a récemment présenté son nouvel outil d'intelligence artificielle pour l'analyse de données, qui permet aux utilisateurs de traiter et d'analyser de grandes quantités de données de manière plus rapide et plus efficace.",
+    "description": "Google DeepMind a annoncé la création d'un nouveau modèle d'intelligence artificielle capable de résoudre des problèmes à la portée d'un être humain. Ce modèle, qui a été conçu pour être généralement intelligent, est capable de traiter des quantités massives de données et de résoudre des problèmes complexes.",
     "url": "https://www.theverge.com/2026/11/25/google-ai-voice-recognition-model",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": false,
@@ -31455,9 +31455,14 @@
         "source": "OpenAI",
         "url": "https://openai.com/fr-FR/",
         "title": "OpenAI présente son nouveau modèle d'intelligence artificielle"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/technologie/article/2026/11/26/google-deepmind-presenter-un-nouveau-modele-d-intelligence-artificielle-capable-de-resoudre-des-problemes-a-la-por-2321233_3234.html",
+        "title": "Google DeepMind présente un nouveau modèle d'intelligence artificielle capable de résoudre des problèmes à la portée d'un être humain."
       }
     ],
-    "occurrences": 6,
+    "occurrences": 7,
     "ema_clock_minutes": null,
     "title": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
     "source": "The Verge",
@@ -33408,7 +33413,7 @@
     "label": "Incident de sécurité : des pirates ont violé les systèmes de sécurité d'une entreprise de logiciels",
     "category": "☢️ ENTROPIE",
     "whoWhat": "BleepingComputer",
-    "description": "Une attaque de piratage a permis aux hackers d'accéder à des données sensibles d'une entreprise de logiciels",
+    "description": "Un grand incident de cyber-sécurité a touché une entreprise de logiciels de confiance, provoquant une perte de données importantes.",
     "url": "https://www.bleepingcomputer.com/news/security/cyber-attack-on-software-firm-exposes-sensitive-data/",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": false,
@@ -33426,17 +33431,30 @@
     "final_note": "Les entreprises devront réviser leurs stratégies de sécurité pour se protéger contre ces types d’attaques",
     "id": "a696fb83c149c4f2",
     "merged_into": "956fd2bc90e51e72",
-    "title": "Incident de sécurité : des pirates ont violé les systèmes de sécurité d'une entreprise de logiciels",
-    "source": "BleepingComputer",
-    "source_url": "https://www.bleepingcomputer.com/news/security/cyber-attack-on-software-firm-exposes-sensitive-data/",
-    "summary": "Une attaque de piratage a permis aux hackers d'accéder à des données sensibles d'une entreprise de logiciels",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "BleepingComputer",
+        "url": "https://www.bleepingcomputer.com/news/security/cyber-attack-on-software-firm-exposes-sensitive-data/",
+        "title": "Incident de sécurité : des pirates ont violé les systèmes de sécurité d'une entreprise de logiciels"
+      },
+      {
+        "source": "BBC",
+        "url": "https://www.bbc.com/news/technology-6481232",
+        "title": "Un grand incident de cyber-sécurité a touché une entreprise de logiciels de confiance"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Incident de sécurité : des pirates ont violé les systèmes de sécurité d'une entreprise de logiciels",
+    "source": "BleepingComputer",
+    "source_url": "https://www.bleepingcomputer.com/news/security/cyber-attack-on-software-firm-exposes-sensitive-data/",
+    "summary": "Une attaque de piratage a permis aux hackers d'accéder à des données sensibles d'une entreprise de logiciels"
   },
   {
     "year": 2026,
