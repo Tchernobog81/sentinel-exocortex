@@ -36500,9 +36500,14 @@
         "source": "Le Monde",
         "url": "https://www.lemonde.fr/actualite-societe/2026/11/27/compromission-de-la-commission-europeenne-une-attaque-cyber-destine-a-endommager-la-credibilite-d-europe.html",
         "title": "Compromission de la Commission européenne"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/technologie/article/2026/11/25/compromission-de-l-agence-de-securite-des-infrastructures-ciblee-en-chine_6018765_3444.html",
+        "title": "Compromission de l'Agence de Sécurité des Infrastructures Ciblée (ASIC) en Chine"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Compromission de l'Agence fédérale américaine",
     "source": "FBI",
