@@ -30996,9 +30996,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/27/google-bloom-3-ai-language-model",
         "title": "Google annonce le lancement de son nouveau modèle de langage, \"Bloom-3\""
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/25/google-mum-2-language-model-ai",
+        "title": "Google présente son nouveau modèle de langage, MUM-2"
       }
     ],
-    "occurrences": 5,
+    "occurrences": 6,
     "ema_clock_minutes": null,
     "title": "Google a annoncé la mise en ligne de son modèle de langage 'LaMDA 3', qui est capable de comprendre et de répondre à des questions plus complexes que ses prédécesseurs.",
     "source": "Source 1: The Verge",
