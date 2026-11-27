@@ -32238,9 +32238,14 @@
         "source": "NASA",
         "url": "https://www.nasa.gov/mission_pages/Perseverance/liftoff/index.html",
         "title": "Rapport de lancement réussi d'une mission spatiale vers Mars"
+      },
+      {
+        "source": "NASA",
+        "url": "https://www.nasa.gov/2026/11/27/nasa-announces-mars-mission-launch",
+        "title": "La NASA annonce le lancement définitif de sa mission à Mars"
       }
     ],
-    "occurrences": 10,
+    "occurrences": 11,
     "ema_clock_minutes": null,
     "title": "Lancement de la sonde spatiale pour l'exploration de la planète Mars",
     "source": "Agence spatiale européenne",
@@ -32727,9 +32732,14 @@
         "source": "Gouvernement",
         "url": "https://www.gouvernement.fr/nouvelle-reglementation-sur-les-infrastructures-numeriques",
         "title": "Nouvelle réglementation sur les infrastructures numériques"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/2026/11/25/nouvelle-réglementation-veicules-autonomes",
+        "title": "Le gouvernement annonce une nouvelle réglementation pour les véhicules autonomes"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Nouvelle réglementation sur la géopolitique du silicium",
     "source": "Réglementation officielle",
