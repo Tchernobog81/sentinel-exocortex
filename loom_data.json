@@ -30980,9 +30980,14 @@
         "source": "Le Monde",
         "url": "https://www.lemonde.fr/technologie/article/2026/11/26/google-lance-un-modele-d-intelligence-artificielle-capable-de-simuler-des-evenements-futurs_6191020_3244.html",
         "title": "Google lance un modèle d'intelligence artificielle capable de simuler des événements futurs"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/27/google-bloom-3-ai-language-model",
+        "title": "Google annonce le lancement de son nouveau modèle de langage, \"Bloom-3\""
       }
     ],
-    "occurrences": 4,
+    "occurrences": 5,
     "ema_clock_minutes": null,
     "title": "Google a annoncé la mise en ligne de son modèle de langage 'LaMDA 3', qui est capable de comprendre et de répondre à des questions plus complexes que ses prédécesseurs.",
     "source": "Source 1: The Verge",
@@ -31537,9 +31542,14 @@
         "source": "The Register",
         "url": "https://www.theregister.com/2026/11/24/linux_kernel_vulnerability/",
         "title": "Une faille critique a été découvert dans le noyau Linux"
+      },
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news/technology-65012396",
+        "title": "Une faille critique a été découverte dans le système de sécurité de plusieurs grandes entreprises"
       }
     ],
-    "occurrences": 11,
+    "occurrences": 12,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
