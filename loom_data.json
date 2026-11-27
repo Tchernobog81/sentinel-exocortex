@@ -31233,7 +31233,7 @@
     "label": "Une nouvelle loi sur la cybersécurité a été adoptée par le congrès",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "Reuters",
-    "description": "L'Union Européenne propose une nouvelle régulation pour les plateformes de cybersécurité, qui vise à protéger les données des citoyens.",
+    "description": "Une nouvelle loi a été adoptée pour réguler les activités de l'intelligence artificielle. La loi vise à protéger les droits des individus.",
     "url": "https://www.reuters.com/",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": false,
@@ -31275,9 +31275,14 @@
         "source": "BBC News",
         "url": "https://www.bbc.com/news/technology-64912314",
         "title": "L'Union Européenne propose une nouvelle régulation pour les plateformes de cybersécurité"
+      },
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news/2026-11-26/ai-regulation-law.shtml",
+        "title": "Une nouvelle loi a été adoptée pour réguler les activités de l'intelligence artificielle."
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Une nouvelle loi sur la cybersécurité a été adoptée par le congrès",
     "source": "Reuters",
@@ -31509,9 +31514,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/26/meta-new-ai-language-model",
         "title": "Meta lance un nouveau modèle de langage basé sur l'IA"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/26/google-ai-research-project",
+        "title": "Google annonce le lancement de son nouveau projet de recherche sur l'intelligence artificielle."
       }
     ],
-    "occurrences": 9,
+    "occurrences": 10,
     "ema_clock_minutes": null,
     "title": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
     "source": "The Verge",
