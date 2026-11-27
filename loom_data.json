@@ -31697,9 +31697,14 @@
         "source": "OpenAI",
         "url": "https://openai.com/fr-FR/",
         "title": "OpenAI annonce des progrès dans l'intelligence artificielle générale"
+      },
+      {
+        "source": "Nature",
+        "url": "https://www.nature.com/articles/s41586-026-03101-3",
+        "title": "Développement d'un modèle d'intelligence artificielle capable de raisonnement humain"
       }
     ],
-    "occurrences": 12,
+    "occurrences": 13,
     "ema_clock_minutes": null,
     "title": "Résolution d'un problème critique d'intelligence artificielle",
     "source": "Nature",
