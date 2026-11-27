@@ -31539,9 +31539,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/26/ AI-language-supervisor-model-breaks-performance-record",
         "title": "Un nouveau modèle de langage superviseur bat le record de performances"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/25/google-new-type-calculation-frugal-ai",
+        "title": "Google révèle un nouveau type de processus de calcul frugal"
       }
     ],
-    "occurrences": 12,
+    "occurrences": 13,
     "ema_clock_minutes": null,
     "title": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
     "source": "The Verge",
@@ -31666,9 +31671,14 @@
         "source": "Ars Technica",
         "url": "https://arstechnica.com/gadgets/2026/11/linux-kernel-bug/",
         "title": "Une faille critique dans le noyau Linux met en danger les systèmes d'exploitation"
+      },
+      {
+        "source": "Bleeping Computer",
+        "url": "https://www.bleepingcomputer.com/news/security/chinese-firm-affected-by-critical-cybersecurity-vulnerability/",
+        "title": "Une faille de sécurité dans le système de gestion de la chaîne d'approvisionnement d'une entreprise"
       }
     ],
-    "occurrences": 17,
+    "occurrences": 18,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
@@ -32341,9 +32351,14 @@
         "url": "https://www.technologyreview.com/2026/11/25/1065519/autonomous-robots-manufacturing-efficiency/",
         "title": "Une nouvelle génération de robots autonome a été développée pour améliorer l'efficacité dans les industries manufacturières",
         "verified": true
+      },
+      {
+        "source": "Reuters",
+        "url": "https://www.reuters.com/article/us-robotics-factory-idUSKBN30K2WV",
+        "title": "Une nouvelle robotique autonome pour la fabrication de pâtes"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "ema_clock_minutes": null,
     "title": "Avancement dans la robotique autonome",
     "source": "IEEE Spectrum",
