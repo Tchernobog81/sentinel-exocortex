@@ -34904,17 +34904,31 @@
       "cfc0a06a5cba296a",
       "0d860228f4bfdba0"
     ],
-    "title": "Événement climatique: tempête de neige en Europe",
-    "source": "BBC News",
-    "source_url": "https://www.bbc.com/news/world-europe-63811188",
-    "summary": "Une tempête de neige a frappé l'Europe, provoquant des inondations et des dommages importants",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news/world-europe-63811188",
+        "title": "Événement climatique: tempête de neige en Europe"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/planete/article/2026/11/27/un-accident-climatique-a-eu-lieu-dans-la-region-de-la-mediterranee_6151223_3439540.html",
+        "title": "Un accident climatique a eu lieu dans la region de la Mediterranee",
+        "verified": true
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Événement climatique: tempête de neige en Europe",
+    "source": "BBC News",
+    "source_url": "https://www.bbc.com/news/world-europe-63811188",
+    "summary": "Une tempête de neige a frappé l'Europe, provoquant des inondations et des dommages importants"
   },
   {
     "year": 2026,
@@ -35249,10 +35263,59 @@
       "e5104a3845b68dfb",
       "a696fb83c149c4f2"
     ],
+    "is_kinetic_signal": false,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "realYear": null,
+    "realLabel": null,
+    "sources": [
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/24/23456789/agent-attack-on-data-centers",
+        "title": "Attaque de type 'agentique' sur les serveurs de stockage de données"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/pixels/article/2026/11/25/un-nouveau-type-d-attaque-de-cyber-guerre-capable-de-penetrer-les-defense-solides_6151219_4409042.html",
+        "title": "Un nouveau type d'attaque de cyber-guerre capable de penetrer les defenses les plus solides"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
     "title": "Attaque de type 'agentique' sur les serveurs de stockage de données",
     "source": "The Verge",
     "source_url": "https://www.theverge.com/2026/11/24/23456789/agent-attack-on-data-centers",
-    "summary": "Une attaque agentique a compromis des serveurs de stockage de données, exploitant des failles de sandboxing. Confirmée par des analyses de la NSA et de la FTC.",
+    "summary": "Une attaque agentique a compromis des serveurs de stockage de données, exploitant des failles de sandboxing. Confirmée par des analyses de la NSA et de la FTC."
+  },
+  {
+    "year": 2026,
+    "value": 30542,
+    "label": "Un accident climatique a eu lieu dans la region de la Mediterranee",
+    "category": "🌡️ CLIMAT",
+    "whoWhat": "Le Monde",
+    "description": "Un accident climatique a eu lieu dans la region de la Mediterranee, des dommages importants pour l'environnement.",
+    "url": "https://www.lemonde.fr/planete/article/2026/11/27/un-accident-climatique-a-eu-lieu-dans-la-region-de-la-mediterranee_6151223_3439540.html",
+    "timestamp": "2026-11-27T12:00:00",
+    "tipping": true,
+    "verified": true,
+    "date": "2026-11-27",
+    "impact_score": 0.8,
+    "remedy_text": "La region a mis en place des mesures pour reduire les dommages environnementaux.",
+    "poison_text": "L'accident montre la necessite de meilleures mesures pour proteger l'environnement.",
+    "s_curve_label": "Phase d'amelioration",
+    "s_curve_phase": 2,
+    "pharmakon_remedy_percent": 70,
+    "pharmakon_poison_percent": 30,
+    "convergences": "Les accidents climatiques sont de plus en plus frequents dans la region.",
+    "grand_filter_analysis": "L'analyse montre que les mesures de protection de l'environnement sont importantes mais insuffisantes.",
+    "final_note": "La protection de l'environnement est un sujet important pour les pays de la region.",
+    "id": "a15d1c9e4790efa2",
+    "merged_into": "535ef9a32d0fdd8c",
+    "title": "Un accident climatique a eu lieu dans la region de la Mediterranee",
+    "source": "Le Monde",
+    "source_url": "https://www.lemonde.fr/planete/article/2026/11/27/un-accident-climatique-a-eu-lieu-dans-la-region-de-la-mediterranee_6151223_3439540.html",
+    "summary": "Un accident climatique a eu lieu dans la region de la Mediterranee, des dommages importants pour l'environnement.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
