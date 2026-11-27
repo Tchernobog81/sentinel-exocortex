@@ -31669,9 +31669,14 @@
         "source": "MIT Technology Review",
         "url": "https://www.technologyreview.com/2026/11/26/1098133/new-ai-technology-for-improving-road-safety/",
         "title": "Nouvelle technologie d'intelligence artificielle pour améliorer la sécurité routière"
+      },
+      {
+        "source": "OpenAI",
+        "url": "https://openai.com/fr-FR/",
+        "title": "OpenAI annonce des progrès dans l'intelligence artificielle générale"
       }
     ],
-    "occurrences": 11,
+    "occurrences": 12,
     "ema_clock_minutes": null,
     "title": "Résolution d'un problème critique d'intelligence artificielle",
     "source": "Nature",
