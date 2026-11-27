@@ -31001,9 +31001,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/25/google-mum-2-language-model-ai",
         "title": "Google présente son nouveau modèle de langage, MUM-2"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/26/google-ai-emotions-understanding",
+        "title": "Google dévoile un modèle d'intelligence artificielle capable de comprendre les émotions humaines"
       }
     ],
-    "occurrences": 6,
+    "occurrences": 7,
     "ema_clock_minutes": null,
     "title": "Google a annoncé la mise en ligne de son modèle de langage 'LaMDA 3', qui est capable de comprendre et de répondre à des questions plus complexes que ses prédécesseurs.",
     "source": "Source 1: The Verge",
@@ -31228,7 +31233,7 @@
     "label": "Une nouvelle loi sur la cybersécurité a été adoptée par le congrès",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "Reuters",
-    "description": "La loi a mis en place des mesures pour prévenir les cyberattaques et protéger les informations sensibles.",
+    "description": "L'Union Européenne propose une nouvelle régulation pour les plateformes de cybersécurité, qui vise à protéger les données des citoyens.",
     "url": "https://www.reuters.com/",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": false,
@@ -31265,9 +31270,14 @@
         "source": "Le Monde",
         "url": "https://www.lemonde.fr/presidentielle-2024/article/2026/11/27/la-nouvelle-loi-sur-la-regulation-des-vehicules-autonomes-est-adopte_6032343_4805570.html",
         "title": "La nouvelle loi sur la régulation des véhicules autonomes est adoptée"
+      },
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news/technology-64912314",
+        "title": "L'Union Européenne propose une nouvelle régulation pour les plateformes de cybersécurité"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "ema_clock_minutes": null,
     "title": "Une nouvelle loi sur la cybersécurité a été adoptée par le congrès",
     "source": "Reuters",
