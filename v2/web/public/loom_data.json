@@ -31233,17 +31233,30 @@
       "5075ca848d054a85",
       "d27dcfa7491f6198"
     ],
-    "title": "Une nouvelle loi sur la cybersécurité a été adoptée par le congrès",
-    "source": "Reuters",
-    "source_url": "https://www.reuters.com/",
-    "summary": "La loi a mis en place des mesures pour prévenir les cyberattaques et protéger les informations sensibles.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Reuters",
+        "url": "https://www.reuters.com/",
+        "title": "Une nouvelle loi sur la cybersécurité a été adoptée par le congrès"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/presidentielle-2024/article/2026/11/27/la-nouvelle-loi-sur-la-regulation-des-vehicules-autonomes-est-adopte_6032343_4805570.html",
+        "title": "La nouvelle loi sur la régulation des véhicules autonomes est adoptée"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Une nouvelle loi sur la cybersécurité a été adoptée par le congrès",
+    "source": "Reuters",
+    "source_url": "https://www.reuters.com/",
+    "summary": "La loi a mis en place des mesures pour prévenir les cyberattaques et protéger les informations sensibles."
   },
   {
     "year": 2026,
@@ -32647,17 +32660,30 @@
       "3ed351adf54e3e1c",
       "ec25f2ea831c39d7"
     ],
-    "title": "Une nouvelle thérapie génique pour le cancer",
-    "source": "Nature",
-    "source_url": "https://www.nature.com/articles/s41586-026-03201-8",
-    "summary": "Une nouvelle thérapie génique pour le cancer a été développée, qui permet aux scientifiques de cibler les cellules cancéreuses avec plus d'efficacité.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Nature",
+        "url": "https://www.nature.com/articles/s41586-026-03201-8",
+        "title": "Une nouvelle thérapie génique pour le cancer"
+      },
+      {
+        "source": "Science Magazine",
+        "url": "https://www.sciencemag.org/news/2026/11/new-genetic-therapy-shows-promise-treating-neurodegenerative-diseases",
+        "title": "Découverte d'une nouvelle thérapie génique pour traiter les maladies neurodégénératives"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Une nouvelle thérapie génique pour le cancer",
+    "source": "Nature",
+    "source_url": "https://www.nature.com/articles/s41586-026-03201-8",
+    "summary": "Une nouvelle thérapie génique pour le cancer a été développée, qui permet aux scientifiques de cibler les cellules cancéreuses avec plus d'efficacité."
   },
   {
     "year": 2026,
