@@ -31826,9 +31826,14 @@
         "source": "Le Monde",
         "url": "https://www.lemonde.fr/actualite/article/2026/11/25/les-cyclistes-utilisent-l-intelligence-artificielle-pour-ameliorer-leur-performance_6154560_1382.html",
         "title": "Les cyclistes utilisent l'intelligence artificielle pour améliorer leur performance"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/25/google-ai-research-model",
+        "title": "Google diffuse un modèle d'intelligence artificielle"
       }
     ],
-    "occurrences": 14,
+    "occurrences": 15,
     "ema_clock_minutes": null,
     "title": "Résolution d'un problème critique d'intelligence artificielle",
     "source": "Nature",
@@ -33618,17 +33623,30 @@
     "final_note": "Il est recommandé de continuer à développer des solutions pour réduire les émissions de gaz à effet de serre et lutter contre le changement climatique.",
     "id": "33d9e05054583b13",
     "merged_into": "3dcb4689241ce550",
-    "title": "Le rapport du GIEC souligne l'importance de la réduction des émissions de gaz à effet de serre",
-    "source": "Le Monde",
-    "source_url": null,
-    "summary": "Le rapport du GIEC a souligné l'importance de la réduction des émissions de gaz à effet de serre pour lutter contre le changement climatique.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "ema_clock_minutes": null,
+    "sources": [
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/actualite/international/",
+        "title": "Le rapport du GIEC souligne l'importance de la réduction des émissions de gaz à effet de serre"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/2026/11/26/un-rapport-indique-que-les-emissions-de-gaz-a-effet-de-serre-augmentent_20261126",
+        "title": "Un rapport indique que les émissions de gaz à effet de serre augmentent"
+      }
+    ],
+    "occurrences": 2,
+    "title": "Le rapport du GIEC souligne l'importance de la réduction des émissions de gaz à effet de serre",
+    "source": "Le Monde",
+    "source_url": null,
+    "summary": "Le rapport du GIEC a souligné l'importance de la réduction des émissions de gaz à effet de serre pour lutter contre le changement climatique."
   },
   {
     "year": 2026,
