@@ -31719,9 +31719,14 @@
         "source": "Microsoft",
         "url": "https://support.microsoft.com/fr-fr/",
         "title": "Incidente cybernétique majeur : Patch overflow sur le système d'exploitation Windows"
+      },
+      {
+        "source": "franceinfo",
+        "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/",
+        "title": "Une cyberattaque a compromis le système de sécurité de Maileva"
       }
     ],
-    "occurrences": 22,
+    "occurrences": 23,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
