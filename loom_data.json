@@ -31686,9 +31686,14 @@
         "source": "BBC News",
         "url": "https://www.bbc.com/news/technology-64912340",
         "title": "Une faille critique a été découverte dans un logiciel de sécurité utilisé par des milliers d'entreprises"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://theverge.com/2026/11/27/linux-kernel-vulnerability",
+        "title": "Une faille critique dans le noyau Linux met en danger des millions d'ordinateurs"
       }
     ],
-    "occurrences": 19,
+    "occurrences": 20,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
