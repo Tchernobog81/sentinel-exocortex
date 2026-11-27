@@ -30834,7 +30834,7 @@
     "label": "La NASA a lancé un nouveau satellite pour étudier la Terre",
     "category": "🟣 ESPACE",
     "whoWhat": "NASA",
-    "description": "La NASA a lancé un nouveau projet pour explorer l'univers, affirmant que cela pourrait conduire à des découvertes majeures.",
+    "description": "La NASA a réussi la mission de lancement de son nouveau lanceur réutilisable. Cette réussite pourrait avoir des implications considérables pour les missions spatiales futures.",
     "url": "https://www.nasa.gov/",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": true,
@@ -30877,9 +30877,14 @@
         "url": "https://www.nature.com/articles/s41586-026-03252-4",
         "title": "Un nouveau lanceur spatial est développé pour améliorer les missions spatiales",
         "verified": true
+      },
+      {
+        "source": "NASA",
+        "url": "https://www.nasa.gov/mission Directorate/Space Technology Mission Directorate/successful-launch-of-new-reusable-rocket",
+        "title": "La NASA annonce la réussite d'une nouvelle mission de lancement de son nouveau lanceur réutilisable"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "La NASA a lancé un nouveau satellite pour étudier la Terre",
     "source": "NASA",
@@ -31676,9 +31681,14 @@
         "source": "Bleeping Computer",
         "url": "https://www.bleepingcomputer.com/news/security/chinese-firm-affected-by-critical-cybersecurity-vulnerability/",
         "title": "Une faille de sécurité dans le système de gestion de la chaîne d'approvisionnement d'une entreprise"
+      },
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news/technology-64912340",
+        "title": "Une faille critique a été découverte dans un logiciel de sécurité utilisé par des milliers d'entreprises"
       }
     ],
-    "occurrences": 18,
+    "occurrences": 19,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
@@ -35696,7 +35706,7 @@
     "label": "Proposition de loi visant à réglementer l'utilisation des robots dans les secteurs sensibles",
     "category": "🏛️ POLITIQUE",
     "whoWhat": "BBC News",
-    "description": "Un projet de loi est présenté pour réglementer l'utilisation des robots dans les secteurs sensibles, tels que la santé et la sécurité",
+    "description": "Un accord international a été signé pour réglementer l'utilisation des drones dans les opérations militaires. Cette réglementation pourrait avoir des implications considérables pour les opérations militaires futures.",
     "url": "https://www.bbc.com/news/technology-64912396",
     "timestamp": "2026-11-27T12:00:00",
     "tipping": false,
@@ -35717,17 +35727,30 @@
       "75816c062e9ec1ee",
       "090667c335459d35"
     ],
-    "title": "Proposition de loi visant à réglementer l'utilisation des robots dans les secteurs sensibles",
-    "source": "BBC News",
-    "source_url": "https://www.bbc.com/news/technology-64912396",
-    "summary": "Un projet de loi est présenté pour réglementer l'utilisation des robots dans les secteurs sensibles, tels que la santé et la sécurité",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news/technology-64912396",
+        "title": "Proposition de loi visant à réglementer l'utilisation des robots dans les secteurs sensibles"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/actualite-internationale/2026/11/27/un-accord-international-signe-pour-reglementer-l-utilisation-des-drones-dans-les-opérations-militaires_64912341.html",
+        "title": "Un accord international a été signé pour réglementer l'utilisation des drones dans les opérations militaires"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Proposition de loi visant à réglementer l'utilisation des robots dans les secteurs sensibles",
+    "source": "BBC News",
+    "source_url": "https://www.bbc.com/news/technology-64912396",
+    "summary": "Un projet de loi est présenté pour réglementer l'utilisation des robots dans les secteurs sensibles, tels que la santé et la sécurité"
   },
   {
     "year": 2026,
