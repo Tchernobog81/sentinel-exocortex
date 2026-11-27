@@ -31744,9 +31744,14 @@
         "source": "Bloomberg",
         "url": "https://www.bloomberg.com/",
         "title": "Nouvelle faille critique dans le logiciel de sécurité de nombreuses entreprises"
+      },
+      {
+        "source": "Bleeping Computer",
+        "url": "https://www.bleepingcomputer.com/news/security/new-russian-hacking-group-discovers-new-windows-vulnerability/",
+        "title": "Bande de hackers russe dévoile une nouvelle vulnérabilité dans le système d'exploitation Windows"
       }
     ],
-    "occurrences": 24,
+    "occurrences": 25,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
