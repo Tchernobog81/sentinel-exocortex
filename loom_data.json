@@ -31519,9 +31519,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/26/google-ai-research-project",
         "title": "Google annonce le lancement de son nouveau projet de recherche sur l'intelligence artificielle."
+      },
+      {
+        "source": "Nature",
+        "url": "https://www.nature.com/articles/s41586-026-03421-3",
+        "title": "Lancement d'un nouveau modèle de Langue Formelle"
       }
     ],
-    "occurrences": 10,
+    "occurrences": 11,
     "ema_clock_minutes": null,
     "title": "Google présente un nouveau modèle de reconnaissance de voix basé sur l'IA",
     "source": "The Verge",
