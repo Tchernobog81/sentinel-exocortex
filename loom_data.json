@@ -31590,9 +31590,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/26/google-password-manager-fault",
         "title": "Une faille critique dans le système de gestion de mots de passe de Google a été découverte"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/27/university-california-data-breach",
+        "title": "Le système de gestion de données de l'université de Californie a été compromis par une faille de sécurité"
       }
     ],
-    "occurrences": 14,
+    "occurrences": 15,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
