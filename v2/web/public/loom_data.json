@@ -36758,17 +36758,30 @@
       "ed7a645b5ef60e14",
       "9124aec8da08b4e9"
     ],
-    "title": "Panne de la chaîne de production d'une usine automobile due à une faille logicielle",
-    "source": "Agence Bloomberg",
-    "source_url": "https://www.bloomberg.com/...",
-    "summary": "Une faille logicielle a causé la panne de la chaîne de production d'une usine automobile, entraînant des retards de livraison et des pertes financières importantes.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Agence Bloomberg",
+        "url": "https://www.bloomberg.com/...",
+        "title": "Panne de la chaîne de production d'une usine automobile due à une faille logicielle"
+      },
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news",
+        "title": "Sabotage de l'usine de production d'énergie renouvelable"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Panne de la chaîne de production d'une usine automobile due à une faille logicielle",
+    "source": "Agence Bloomberg",
+    "source_url": "https://www.bloomberg.com/...",
+    "summary": "Une faille logicielle a causé la panne de la chaîne de production d'une usine automobile, entraînant des retards de livraison et des pertes financières importantes."
   },
   {
     "year": 2026,
