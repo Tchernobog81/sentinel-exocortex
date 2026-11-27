@@ -33734,17 +33734,30 @@
       "f1dd563e438e3423",
       "b35bab3019862567"
     ],
-    "title": "Lancement du nouveau modèle de vélo électrique haute performance",
-    "source": "Le Cycle.fr",
-    "source_url": "https://lecycle.fr/",
-    "summary": "Le nouveau modèle de vélo électrique haute performance a été lancé aujourd'hui. Ce vélo est conçu pour les cyclistes expérimentés qui cherchent une expérience de conduite encore plus intense.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Le Cycle.fr",
+        "url": "https://lecycle.fr/",
+        "title": "Lancement du nouveau modèle de vélo électrique haute performance"
+      },
+      {
+        "source": "Reuters",
+        "url": "https://www.reuters.com/business/tesla-unveils-new-electric-vehicle-model-2026-11-27.html",
+        "title": "Lancement du nouveau modèle de voiture électrique de Tesla"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Lancement du nouveau modèle de vélo électrique haute performance",
+    "source": "Le Cycle.fr",
+    "source_url": "https://lecycle.fr/",
+    "summary": "Le nouveau modèle de vélo électrique haute performance a été lancé aujourd'hui. Ce vélo est conçu pour les cyclistes expérimentés qui cherchent une expérience de conduite encore plus intense."
   },
   {
     "year": 2026,
