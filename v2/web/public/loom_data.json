@@ -37141,7 +37141,7 @@
     "label": "La Commission européenne a été victime d'une intrusion",
     "category": "☢️ ENTROPIE",
     "whoWhat": "Le Monde",
-    "description": "La Commission européenne a été victime d'une intrusion, permettant aux attaquants d'accéder à des informations sensibles.",
+    "description": "La Commission européenne a été victime d'une intrusion informatique, mettant en danger les données sensibles de ses employés et des citoyens de l'Union européenne.",
     "url": "https://www.lemonde.fr/pixel/2026/11/27/commission-europeenne-victime-d-intrusion- cyber-securite_6164566_3242.html",
     "timestamp": "2026-11-27T12:00:00",
     "tipping": true,
@@ -37162,17 +37162,30 @@
       "e27af34191de343f",
       "956fd2bc90e51e72"
     ],
-    "title": "La Commission européenne a été victime d'une intrusion",
-    "source": "Le Monde",
-    "source_url": "https://www.lemonde.fr/pixel/2026/11/27/commission-europeenne-victime-d-intrusion- cyber-securite_6164566_3242.html",
-    "summary": "La Commission européenne a été victime d'une intrusion, permettant aux attaquants d'accéder à des informations sensibles.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/pixel/2026/11/27/commission-europeenne-victime-d-intrusion- cyber-securite_6164566_3242.html",
+        "title": "La Commission européenne a été victime d'une intrusion"
+      },
+      {
+        "source": "ANSSI, CERT-EU",
+        "url": "https://www.ssi.gouv.fr/, https://cert.europa.eu/",
+        "title": "Intrusion à la Commission européenne"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "La Commission européenne a été victime d'une intrusion",
+    "source": "Le Monde",
+    "source_url": "https://www.lemonde.fr/pixel/2026/11/27/commission-europeenne-victime-d-intrusion- cyber-securite_6164566_3242.html",
+    "summary": "La Commission européenne a été victime d'une intrusion, permettant aux attaquants d'accéder à des informations sensibles."
   },
   {
     "year": 2026,
@@ -37619,9 +37632,14 @@
         "source": "CISA",
         "url": "https://www.cisa.gov/uscert",
         "title": "Compromission de la plateforme de cloud de l'US Air Force"
+      },
+      {
+        "source": "US Air Force, CISA",
+        "url": "https://www.us.af.mil/, https://www.cisa.gov/",
+        "title": "Compromission de la plateforme cloud militaire US Air Force"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "ema_clock_minutes": null,
     "title": "Compromission de la plateforme de cloud militaire US Air Force",
     "source": "La Presse Canadienne et Reuters",
