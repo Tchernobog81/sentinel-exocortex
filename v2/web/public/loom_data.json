@@ -37642,9 +37642,14 @@
         "source": "US Air Force, CISA",
         "url": "https://www.us.af.mil/, https://www.cisa.gov/",
         "title": "Compromission de la plateforme cloud militaire US Air Force"
+      },
+      {
+        "source": "CISA",
+        "url": "https://www.cisa.gov/news-events/alerts/2026/11/28/cloud-one-compromission",
+        "title": "Compromission de la plateforme cloud militaire Cloud One de l'US Air Force"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Compromission de la plateforme de cloud militaire US Air Force",
     "source": "La Presse Canadienne et Reuters",
