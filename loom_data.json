@@ -31749,9 +31749,14 @@
         "source": "Bleeping Computer",
         "url": "https://www.bleepingcomputer.com/news/security/new-russian-hacking-group-discovers-new-windows-vulnerability/",
         "title": "Bande de hackers russe dévoile une nouvelle vulnérabilité dans le système d'exploitation Windows"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/article/.../",
+        "title": "Faille de chiffrement découverte dans un logiciel populaire"
       }
     ],
-    "occurrences": 25,
+    "occurrences": 26,
     "ema_clock_minutes": null,
     "title": "Une faille de sécurité critique a été découverte dans le système de sécurité de Windows",
     "source": "Microsoft",
@@ -33079,17 +33084,30 @@
       "018b81b2a3c2c705",
       "956fd2bc90e51e72"
     ],
-    "title": "Hackers ont piraté le système de gestion de données d'une société de santé",
-    "source": "BBC News",
-    "source_url": "https://www.bbc.com/news/technology-64901140",
-    "summary": "Un groupe de hackers a réussi à pirater le système de gestion de données d'une société de santé, mettant en danger les informations personnelles de millions de patients.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news/technology-64901140",
+        "title": "Hackers ont piraté le système de gestion de données d'une société de santé"
+      },
+      {
+        "source": "ZDNet",
+        "url": "https://www.zdnet.com/article/.../",
+        "title": "Incident de piratage chez une société de logiciels de gestion des SIEM"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Hackers ont piraté le système de gestion de données d'une société de santé",
+    "source": "BBC News",
+    "source_url": "https://www.bbc.com/news/technology-64901140",
+    "summary": "Un groupe de hackers a réussi à pirater le système de gestion de données d'une société de santé, mettant en danger les informations personnelles de millions de patients."
   },
   {
     "year": 2026,
@@ -33800,9 +33818,15 @@
         "url": "https://www.bbc.com/news/business-63801991",
         "title": "L'entreprise de services financiers \"Eurosol\" a été victime d'une cyberattaque, permettant aux hackers d'accéder à des informations sensibles.",
         "verified": true
+      },
+      {
+        "source": "Bleeping Computer",
+        "url": "https://www.bleepingcomputer.com/news/.../",
+        "title": "Groupe de pirates dévoile un nouveau malware",
+        "verified": true
       }
     ],
-    "occurrences": 4,
+    "occurrences": 5,
     "ema_clock_minutes": null,
     "title": "Incident de sécurité : des pirates ont violé les systèmes de sécurité d'une entreprise de logiciels",
     "source": "BleepingComputer",
@@ -37609,6 +37633,42 @@
     "source": "La Presse Canadienne et Reuters",
     "source_url": null,
     "summary": "Les systèmes OSINT des agences fédérales US ont été compromis, provoquant une panne de 12 heures sur les systèmes de renseignement.",
+    "is_kinetic_signal": false,
+    "doomsday_minutes": null,
+    "apocalypse_clock_seconds": null,
+    "singularity_index": null,
+    "realYear": null,
+    "realLabel": null,
+    "ema_clock_minutes": null
+  },
+  {
+    "year": 2026,
+    "value": 39262,
+    "label": "Groupe de pirates dévoile un nouveau malware",
+    "category": "☢️ ENTROPIE",
+    "whoWhat": "Bleeping Computer",
+    "description": "Un groupe de pirates a dévoilé un nouveau malware qui pourrait affecter les ordinateurs personnels et les systèmes d'entreprise.",
+    "url": "https://www.bleepingcomputer.com/news/.../",
+    "timestamp": "2026-11-28T12:00:00",
+    "tipping": true,
+    "verified": true,
+    "date": "2026-11-28",
+    "impact_score": 0.9,
+    "remedy_text": "Les développeurs de logiciels sont en train de mettre en place des mesures de sécurité pour prévenir de futures attaques.",
+    "poison_text": "Le malware a déjà été utilisé pour attaquer des ordinateurs personnels et des systèmes d'entreprise.",
+    "s_curve_label": "Déploiement opérationnel",
+    "s_curve_phase": 4,
+    "pharmakon_remedy_percent": 25,
+    "pharmakon_poison_percent": 75,
+    "convergences": "Le malware a été découverte grâce à une analyse de la chaîne d'approvisionnement.",
+    "grand_filter_analysis": "L'incident montre l'importance de mettre en place des mesures de sécurité robustes pour protéger les données des utilisateurs.",
+    "final_note": "Le futur est décidément mal écrit.",
+    "id": "3c2f54fc33bc588c",
+    "merged_into": "a696fb83c149c4f2",
+    "title": "Groupe de pirates dévoile un nouveau malware",
+    "source": "Bleeping Computer",
+    "source_url": "https://www.bleepingcomputer.com/news/.../",
+    "summary": "Un groupe de pirates a dévoilé un nouveau malware qui pourrait affecter les ordinateurs personnels et les systèmes d'entreprise.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
