@@ -37813,7 +37813,7 @@
     "label": "HexDex, le hacker responsable de dizaines de cyberattaques, arrêté",
     "category": "☢️ ENTROPIE",
     "whoWhat": "20 Minutes",
-    "description": "HexDex, un jeune hacker, a revendiqué des dizaines de cyberattaques visant administrations, fédérations sportives et institutions publiques.",
+    "description": "HexDex, un jeune hacker de 21 ans, a été arrêté pour sa implication dans une série de cyberattaques visant des administrations, fédérations sportives et institutions publiques.",
     "url": "https://www.20minutes.fr/",
     "timestamp": "2026-11-26T12:00:00",
     "tipping": true,
@@ -37834,17 +37834,30 @@
       "e27af34191de343f",
       "2bcf9b5895b7c8fa"
     ],
-    "title": "HexDex, le hacker responsable de dizaines de cyberattaques, arrêté",
-    "source": "20 Minutes",
-    "source_url": "https://www.20minutes.fr/",
-    "summary": "HexDex, un jeune hacker, a revendiqué des dizaines de cyberattaques visant administrations, fédérations sportives et institutions publiques.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "20 Minutes",
+        "url": "https://www.20minutes.fr/",
+        "title": "HexDex, le hacker responsable de dizaines de cyberattaques, arrêté"
+      },
+      {
+        "source": "Le Figaro",
+        "url": "https://www.lefigaro.fr/actualite-societe/tout-ce-que-je-fais-c-est-pour-l-argent-qui-est-hexdex-le-hacker-arrete-apres-une-serie-de-cyberattaques-20261124-20261124-10000457",
+        "title": "Capture de HexDex, le jeune hacker derrière une série de cyberattaques"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "HexDex, le hacker responsable de dizaines de cyberattaques, arrêté",
+    "source": "20 Minutes",
+    "source_url": "https://www.20minutes.fr/",
+    "summary": "HexDex, un jeune hacker, a revendiqué des dizaines de cyberattaques visant administrations, fédérations sportives et institutions publiques."
   },
   {
     "year": 2026,
