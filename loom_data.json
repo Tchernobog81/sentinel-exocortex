@@ -37522,7 +37522,7 @@
     "label": "Compromission de SCADA",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "BBC News",
-    "description": "Une vulnérabilité dans les systèmes SCADA a été exploitée, entraînant des dommages importants à l'industrie manufacturière.",
+    "description": "Une usine chimique en France a été victime d'une compromission de ses systèmes SCADA, causant des perturbations dans la production.",
     "url": "https://www.bbc.com/news/technology-2026-11-27-scada-compromission",
     "timestamp": "2026-11-27T12:00:00",
     "tipping": true,
@@ -37543,17 +37543,30 @@
       "cbb7042dade92eb0",
       "a696fb83c149c4f2"
     ],
-    "title": "Compromission de SCADA",
-    "source": "BBC News",
-    "source_url": "https://www.bbc.com/news/technology-2026-11-27-scada-compromission",
-    "summary": "Une vulnérabilité dans les systèmes SCADA a été exploitée, entraînant des dommages importants à l'industrie manufacturière.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news/technology-2026-11-27-scada-compromission",
+        "title": "Compromission de SCADA"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/",
+        "title": "Compromission de systèmes SCADA d'une usine chimique en France"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "Compromission de SCADA",
+    "source": "BBC News",
+    "source_url": "https://www.bbc.com/news/technology-2026-11-27-scada-compromission",
+    "summary": "Une vulnérabilité dans les systèmes SCADA a été exploitée, entraînant des dommages importants à l'industrie manufacturière."
   },
   {
     "year": 2026,
