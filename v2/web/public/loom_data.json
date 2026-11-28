@@ -37269,9 +37269,14 @@
         "source": "Reuters",
         "url": "https://www.reuters.com/article/uk-europe-ia-attack-idUKKBN2IY0XO",
         "title": "Attentat IA contre les infrastructures critiques en Europe"
+      },
+      {
+        "source": "The Verge",
+        "url": "https://www.theverge.com/2026/11/27/facebook-ai-campaign",
+        "title": "Une nouvelle campagne d'IA ciblant les utilisateurs de Facebook a été découverte"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "ema_clock_minutes": null,
     "title": "Nouvelle campagne d'attaque par IA contre les infrastructures énergétiques",
     "source": "CERT-EU",
