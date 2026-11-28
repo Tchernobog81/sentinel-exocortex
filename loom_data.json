@@ -37628,7 +37628,7 @@
     "label": "Compromission de la plateforme de cloud militaire US Air Force",
     "category": "☢️ ENTROPIE",
     "whoWhat": "La Presse Canadienne et Reuters",
-    "description": "La plateforme cloud militaire US Air Force, Cloud One, a été compromise, ce qui pourrait avoir des conséquences importantes pour la sécurité nationale.",
+    "description": "La plateforme de cloud de l'US Air Force a été compromises par une attaque cybernétique, entraînant une panne de la logistique des munitions et de la mise à jour des applications.",
     "url": "https://www.lapresse.ca/actualites/societe/2026-11-28/la-faux-pas-de-la-veille-de-la-cybersecurite.php",
     "timestamp": "2026-11-28T12:00:00",
     "tipping": true,
@@ -37680,9 +37680,14 @@
         "source": "CISA",
         "url": "https://www.cisa.gov/news/newsletters/us-cert-cybersecurity-advisory",
         "title": "Compromission de la plateforme cloud militaire US Air Force -- Cloud One"
+      },
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr",
+        "title": "Compromission de la plateforme de cloud de l'US Air Force"
       }
     ],
-    "occurrences": 5,
+    "occurrences": 6,
     "ema_clock_minutes": null,
     "title": "Compromission de la plateforme de cloud militaire US Air Force",
     "source": "La Presse Canadienne et Reuters",
