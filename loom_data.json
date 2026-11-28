@@ -33902,9 +33902,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/27/google-ia-explicite-avancee",
         "title": "Google annonce une avancée majeure dans le domaine de l'IA explicite"
+      },
+      {
+        "source": "Source 2: The Verge",
+        "url": "https://www.theverge.com/",
+        "title": "Google annonce l'intégration de la technologie de réalité augmentée dans ses produits"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Google annonce un progrès dans le domaine des architectures frugales",
     "source": "The Verge",
