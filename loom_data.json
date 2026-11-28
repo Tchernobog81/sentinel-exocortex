@@ -36826,7 +36826,7 @@
     "label": "Panne de la chaîne de production d'une usine automobile due à une faille logicielle",
     "category": "🤖 ROBOTIQUE",
     "whoWhat": "Agence Bloomberg",
-    "description": "Une faille logicielle a causé la panne de la chaîne de production d'une usine automobile, entraînant des retards de livraison et des pertes financières importantes.",
+    "description": "Une faille de sécurité a été découverte dans les systèmes de gestion de production d'une entreprise de fabrication, permettant à des acteurs malveillants d'accéder à des données sensibles.",
     "url": "https://www.bloomberg.com/...",
     "timestamp": "2026-11-27T12:00:00",
     "tipping": true,
@@ -36863,9 +36863,14 @@
         "source": "BBC News",
         "url": "https://www.bbc.com/news",
         "title": "Sabotage de l'usine de production d'énergie renouvelable"
+      },
+      {
+        "source": "CISA",
+        "url": "https://www.cisa.gov/uscert/news/2026/11/27/cisa-advisory-factory-production-systems",
+        "title": "Faille de sécurité dans les systèmes de gestion de production d'une entreprise de fabrication"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "ema_clock_minutes": null,
     "title": "Panne de la chaîne de production d'une usine automobile due à une faille logicielle",
     "source": "Agence Bloomberg",
