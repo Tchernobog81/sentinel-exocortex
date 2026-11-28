@@ -36904,9 +36904,14 @@
         "source": "CISA",
         "url": "https://www.cisa.gov/uscert/news/2026/11/27/cisa-advisory-factory-production-systems",
         "title": "Faille de sécurité dans les systèmes de gestion de production d'une entreprise de fabrication"
+      },
+      {
+        "source": "Ministère de l'Industrie",
+        "url": "https://www.industrie.gouv.fr/",
+        "title": "Panne de production à la sidérurgie : investigation en cours"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Panne de la chaîne de production d'une usine automobile due à une faille logicielle",
     "source": "Agence Bloomberg",
@@ -37232,9 +37237,14 @@
         "source": "ANSSI, CERT-EU",
         "url": "https://www.ssi.gouv.fr/, https://cert.europa.eu/",
         "title": "Intrusion à la Commission européenne"
+      },
+      {
+        "source": "ANSSI",
+        "url": "https://www.ssi.gouv.fr/",
+        "title": "Intrusion de la Commission européenne: rapports de l'ANSSI"
       }
     ],
-    "occurrences": 2,
+    "occurrences": 3,
     "ema_clock_minutes": null,
     "title": "La Commission européenne a été victime d'une intrusion",
     "source": "Le Monde",
