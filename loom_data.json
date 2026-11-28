@@ -41234,7 +41234,7 @@
     "label": "118 millions d’euros détournés : cyberattaque massive contre le Crédit Mutuel Arkéa",
     "category": "☢️ ENTROPIE",
     "whoWhat": "Le Monde",
-    "description": "La banque Crédit Mutuel Arkéa a été victime d’une attaque informatique massive, entraînant la détention de 118 millions d’euros.",
+    "description": "Une attaque cybernétique utilisant des algorithmes d'apprentissage automatique a permis le détournement de 118 millions d'euros. Les systèmes de paiement ont été piratés via des vulnérabilités dans les protocoles de chiffrement des serveurs.",
     "url": "https://www.lemonde.fr/economie/article/2026/11/25/118-millions-de-euros-detournes-cyberattaque-massive-contre-le-credit-mutuel-ark%C3%A9a_6113419_3230.html",
     "timestamp": "2026-11-25T12:00:00",
     "tipping": true,
@@ -41255,17 +41255,30 @@
       "2b3d30463fa4c689",
       "e27af34191de343f"
     ],
-    "title": "118 millions d’euros détournés : cyberattaque massive contre le Crédit Mutuel Arkéa",
-    "source": "Le Monde",
-    "source_url": "https://www.lemonde.fr/economie/article/2026/11/25/118-millions-de-euros-detournes-cyberattaque-massive-contre-le-credit-mutuel-ark%C3%A9a_6113419_3230.html",
-    "summary": "La banque Crédit Mutuel Arkéa a été victime d’une attaque informatique massive, entraînant la détention de 118 millions d’euros.",
     "is_kinetic_signal": false,
     "doomsday_minutes": null,
     "apocalypse_clock_seconds": null,
     "singularity_index": null,
     "realYear": null,
     "realLabel": null,
-    "ema_clock_minutes": null
+    "sources": [
+      {
+        "source": "Le Monde",
+        "url": "https://www.lemonde.fr/economie/article/2026/11/25/118-millions-de-euros-detournes-cyberattaque-massive-contre-le-credit-mutuel-ark%C3%A9a_6113419_3230.html",
+        "title": "118 millions d’euros détournés : cyberattaque massive contre le Crédit Mutuel Arkéa"
+      },
+      {
+        "source": "CERT-FR / ANSSI",
+        "url": "https://www.cert.fr/alertes/cyberattaque-arkéa-2026",
+        "title": "Cyberattaque massive au Crédit Mutuel Arkéa via IA"
+      }
+    ],
+    "occurrences": 2,
+    "ema_clock_minutes": null,
+    "title": "118 millions d’euros détournés : cyberattaque massive contre le Crédit Mutuel Arkéa",
+    "source": "Le Monde",
+    "source_url": "https://www.lemonde.fr/economie/article/2026/11/25/118-millions-de-euros-detournes-cyberattaque-massive-contre-le-credit-mutuel-ark%C3%A9a_6113419_3230.html",
+    "summary": "La banque Crédit Mutuel Arkéa a été victime d’une attaque informatique massive, entraînant la détention de 118 millions d’euros."
   },
   {
     "id": "1b98dd3fcf0f835e",
