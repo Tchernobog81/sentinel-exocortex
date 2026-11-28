@@ -31393,9 +31393,19 @@
         "source": "Le Monde",
         "url": "https://www.lemonde.fr/pixels/article/2026/11/27/fancy-bear-l-hackers-russe-a-l-origine-de-la-cyberattaque-contre-la-societe-de-cyberdefense_6221296_4409006.html",
         "title": "Le groupe de hackers russe 'Fancy Bear' est à l'origine de la cyberattaque contre la société de cyberdéfense"
+      },
+      {
+        "source": "BBC News",
+        "url": "https://www.bbc.com/news/world-europe-64982370",
+        "title": "Cyberattaque contre la Commission européenne : les hackers ont accédé aux systèmes de la Commission européenne"
+      },
+      {
+        "source": "Reuters",
+        "url": "https://www.reuters.com/world/europe/cyber-attack-hit-cybersecurity-firm-sources-2026-11-26/",
+        "title": "Cyberattaque contre une société de cybersécurité : les hackers ont accédé aux systèmes de la société"
       }
     ],
-    "occurrences": 8,
+    "occurrences": 10,
     "title": "Cyberattaque contre une grande entreprise de technologie",
     "source": "Le Monde",
     "source_url": null,
