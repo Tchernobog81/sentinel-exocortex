@@ -32758,7 +32758,7 @@
     "label": "Nouvelle vulnérabilité critique dans le noyau Linux",
     "category": "☢️ ENTROPIE",
     "whoWhat": "CVE",
-    "description": "Une nouvelle vulnérabilité critique a été découverte dans le noyau Linux, permettant à un attaquant de prendre le contrôle du système.",
+    "description": "Une vulnérabilité critique a été découverte dans les systèmes de gestion de stocks, permettant aux attaquants de compromettre la chaîne d'approvisionnement.",
     "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-1234",
     "timestamp": "2026-11-24T12:00:00",
     "tipping": false,
@@ -32800,9 +32800,14 @@
         "source": "CVE",
         "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2026-1234",
         "title": "CVE-2026-1234: Une vulnérabilité critique dans le noyau Linux"
+      },
+      {
+        "source": "ANSSI",
+        "url": "https://www.anssi.fr/news/entropie-de-la-chaine-d-approvisionnement",
+        "title": "Entropie de la chaîne d'approvisionnement : une vulnérabilité critique dans les systèmes de gestion de stocks"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Nouvelle vulnérabilité critique dans le noyau Linux",
     "source": "CVE",
@@ -37279,9 +37284,14 @@
         "source": "The Verge",
         "url": "https://www.theverge.com/2026/11/27/facebook-ai-campaign",
         "title": "Une nouvelle campagne d'IA ciblant les utilisateurs de Facebook a été découverte"
+      },
+      {
+        "source": "CISA",
+        "url": "https://www.cisa.gov/news/alerts/ia-2026-11-27",
+        "title": "CyberStrike : une nouvelle menace d'attaque par IA"
       }
     ],
-    "occurrences": 3,
+    "occurrences": 4,
     "ema_clock_minutes": null,
     "title": "Nouvelle campagne d'attaque par IA contre les infrastructures énergétiques",
     "source": "CERT-EU",
